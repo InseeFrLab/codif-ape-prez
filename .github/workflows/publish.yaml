@@ -49,4 +49,4 @@ jobs:
           with:
             target: gh-pages
           env:
-            GITHUB_TOKEN: ${{ secrets.TOKEN_CI }
+            GITHUB_TOKEN: ${{ secrets.TOKEN_CI }}
