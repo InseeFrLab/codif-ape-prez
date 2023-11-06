@@ -89,7 +89,12 @@ Racinisation des mots | deratis desinsectis desinfect |
   - un jeu issue du [**guichet unique**]{.blue2} [$\approx$ **15 000**]{.green2} observations
 
 
-```{r fig.width=13,fig.height=4.5, fig.align="center"}
+```{r, dev = "png", dev.args=list(bg="transparent")}
+#| label: fig-distrib
+#| fig-cap: Précision en fonction du taux de reprise manuelle effectuée.
+#| fig-width: 13
+#| fig-height: 4.5
+#| fis-pos: center
 
 plot_GU_TEST_distrib <- function(data){
   plot <- ggplot(data, aes(x=ground_truth_1, y=Share, fill=Type))+
@@ -105,12 +110,17 @@ plot_GU_TEST_distrib <- function(data){
       axis.text.y = element_text(size = 18),
       axis.text.x = element_text(size = 18),
     )
-  
+
+
   return(plot)
   
 }
 
-plot_GU_TEST_distrib(GU_TEST_distrib)
+plot_GU_TEST_distrib(GU_TEST_distrib) + 
+    theme(
+        panel.background = element_rect(fill='transparent'),
+         plot.background = element_rect(fill='transparent', color=NA)
+    )
 
 
 ```

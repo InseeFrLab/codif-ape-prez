@@ -3,10 +3,15 @@
 ## Construction d'un indice de confiance
 
 
-```{r fig.width=13, fig.height=5, fig.align="center"}
+```{r, dev = "png", dev.args=list(bg="transparent")}
+#| label: fig-ic
+#| fig-cap: Distribution de l’indice de confiance en fonction du résultat de la prédiction.
+#| fig-width: 13
+#| fig-height: 5
+#| fis-pos: center
+
 plot_IC_distrib <- function(data, thresholds, ypos){
   plot <- ggplot(data)+
-    ggtitle("Distribution de l’indice de confiance en \nfonction du résultat de la prédiction")+
     geom_histogram(aes(x=Score, fill=Results, y=..density..),binwidth=.01, alpha=.5, position="identity") +
     scale_fill_manual(values=c(Palette_col),labels=c("Mauvaises prédictions", "Bonnes prédictions"))+
     geom_vline(xintercept = thresholds$x, color = rgb(83, 83, 83, maxColorValue = 255))+
@@ -23,9 +28,11 @@ plot_IC_distrib <- function(data, thresholds, ypos){
   
 }
 
-plot_IC_distrib(IC_distrib, IC_thresholds, 51)
-
-
+plot_IC_distrib(IC_distrib, IC_thresholds, 51)+ 
+    theme(
+        panel.background = element_rect(fill='transparent'),
+         plot.background = element_rect(fill='transparent', color=NA)
+    )
 ```
 
 - [**Objectif**]{.orange} : [**discriminer**]{.blue2} les *mauvaises* des *bonnes* prédictions.
@@ -35,14 +42,20 @@ plot_IC_distrib(IC_distrib, IC_thresholds, 51)
 ## Efficacité de la reprise manuelle
 
 
-```{r fig.width=13,fig.height=5, fig.align="center"}
-Accuracy_reprise <- Accuracy_reprise %>%
+```{r, dev = "png", dev.args=list(bg="transparent")}
+#| label: fig-reprise
+#| fig-cap: Précision en fonction du taux de reprise manuelle effectuée.
+#| fig-width: 13
+#| fig-height: 5
+#| fis-pos: center
+
+Accuracy_reprise <- Accuracy_reprise |>
       mutate(
            Rate = factor(Rate, levels = paste0(paste(seq(0,25,5)), "%"))
       )
+
 plot_Accuracy_reprise <- function(data){
   plot<- ggplot(data , aes(x=Type, y=Accuracy, fill=Rate))+
-    ggtitle("Accuracy en fonction du taux de reprise manuelle effectuée")+
     geom_bar(stat = "identity", position = position_dodge())+
     geom_text(aes(label=round(Accuracy,2)), position=position_dodge(width=0.9), vjust=-0.25, size= 5)+
     scale_fill_manual(values=c(Palette_col))+
@@ -59,7 +72,12 @@ plot_Accuracy_reprise <- function(data){
 }
 
 
-plot_Accuracy_reprise(Accuracy_reprise)
+plot_Accuracy_reprise(Accuracy_reprise)+ 
+    theme(
+        panel.background = element_rect(fill='transparent'),
+         plot.background = element_rect(fill='transparent', color=NA)
+    )
+
 
 
 ```

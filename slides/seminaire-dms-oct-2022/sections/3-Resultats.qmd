@@ -3,14 +3,20 @@
 ## Une bonne performance globale
 
 
-```{r fig.width=13,fig.height=5, fig.align="center"}
+```{r, dev = "png", dev.args=list(bg="transparent")}
+#| label: fig-acc
+#| fig-cap: Taux de précision pour chaque niveau de la nomenclature du code APE.
+#| fig-width: 13
+#| fig-height: 5
+#| fis-pos: center
+
+
 Accuracy_lvl <- Accuracy_lvl %>%
     mutate(Level = factor(Level, levels = paste("Niveau", paste(seq(5,1,-1))))
     )
 
 plot_Accuracy_lvl <- function(data){
   plot<- ggplot(data , aes(x=Level, y=Accuracy, fill=Type))+
-    ggtitle("Taux de précision pour chaque niveau de la nomenclature du code APE")+
     geom_bar(stat = "identity", position = position_dodge())+
     geom_text(aes(label=round(Accuracy,2)), position=position_dodge(width=0.9), vjust=-0.25, size = 6)+
     scale_fill_manual(values=c(Palette_col), labels=c("Données guichet unique", "Données test"))+
@@ -28,7 +34,12 @@ plot_Accuracy_lvl <- function(data){
   return(plot)
 }
 
-plot_Accuracy_lvl(Accuracy_lvl)
+plot_Accuracy_lvl(Accuracy_lvl)+ 
+    theme(
+        panel.background = element_rect(fill='transparent'),
+         plot.background = element_rect(fill='transparent', color=NA)
+    )
+
 
 ```
 
@@ -39,10 +50,15 @@ plot_Accuracy_lvl(Accuracy_lvl)
 ## Une aide à la reprise manuelle
 
 
-```{r fig.width=13,fig.height=5, fig.align="center"}
-plot_TOPK_Accuracy <- function(data){
+```{r, dev = "png", dev.args=list(bg="transparent")}
+#| label: fig-top-k
+#| fig-cap: Top-K Accuracy pour chaque jeu de données.
+#| fig-width: 13
+#| fig-height: 5
+#| fis-pos: center
+
+plot_TOPK_Accuracy  <- function(data){
   plot<- ggplot(data , aes(x=Type, y=Accuracy, fill=Topk))+
-    ggtitle("Top-K Accuracy pour chaque jeu de données")+
     geom_bar(stat = "identity", position = position_dodge())+
     geom_text(aes(label=round(Accuracy,2)), position=position_dodge(width=0.9), vjust=-0.25, size = 6)+
     scale_fill_manual(values=c(Palette_col))+
@@ -59,7 +75,12 @@ plot_TOPK_Accuracy <- function(data){
   return(plot)
 }
 
-plot_TOPK_Accuracy(TOPK_Accuracy)
+plot_TOPK_Accuracy(TOPK_Accuracy)+ 
+    theme(
+        panel.background = element_rect(fill='transparent'),
+         plot.background = element_rect(fill='transparent', color=NA)
+    )
+
 
 
 ```
@@ -69,7 +90,12 @@ plot_TOPK_Accuracy(TOPK_Accuracy)
 
 ## Une performance hétérogène en fonction des classes
 
-```{r  fig.width=13,fig.height=7, fig.align="center"}
+```{r, dev = "png", dev.args=list(bg="transparent")}
+#| label: fig-f1
+#| fig-cap: Distribution du F1-score en fonction de la fréquence des classes.
+#| fig-width: 13
+#| fig-height: 7
+#| fis-pos: center
 
 F1_distrib_by_cat <- F1_distrib_by_cat %>%
       mutate(
@@ -104,7 +130,12 @@ plot_F1_distrib_by_cat <- function(data){
 
 
 
-plot_F1_distrib_by_cat(F1_distrib_by_cat)
+plot_F1_distrib_by_cat(F1_distrib_by_cat)+ 
+    theme(
+        panel.background = element_rect(fill='transparent'),
+         plot.background = element_rect(fill='transparent', color=NA)
+    )
+
 
 
 ```
