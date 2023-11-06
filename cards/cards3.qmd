@@ -1,12 +1,13 @@
 
 ---
-title: Séminaire DMS
-image: https://upload.wikimedia.org/wikipedia/fr/thumb/1/10/Logo_Insee.svg/1200px-Logo_Insee.svg.png
-date: "2023-09-01"
+title: Conférence UNECE
+image: https://geneve-int.ch/sites/default/files/styles/scale_450x450/public/2021-06/UNECE-logo.png?itok=h7fLK1Qa
+date: "2023-06-05"
 description: |
-  <b>Description :</b> Test
+  <b>Description :</b> Presentation given during the UNECE Machine Learning for Official Statistics Workshop 2023
+author: Thomas Faria and Tom Seimandi
 slides:
   text: Slides
-  url: /slides/seminaire-dms-oct-2022/index.html
+  url: /slides/unece-conf/index.html
 order: 3
 ---

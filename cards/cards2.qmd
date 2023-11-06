@@ -2,9 +2,10 @@
 ---
 title: Journée SSP Hub
 image: https://ssphub.netlify.app/avatar.png
-date: "2023-09-01"
+date: "2023-04-17"
 description: |
-  <b>Description :</b> Test
+  <b>Description :</b> Présentation lors de l'évènement de lancement du SSP Hub
+author: Thomas Faria et Tom Seimandi
 slides:
   text: Slides
   url: /slides/journee-ssphub/index.html
