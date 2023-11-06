@@ -1,0 +1,46 @@
+## La notion de mise en production
+
+- [**Mettre en production**]{.orange} : faire [**vivre**]{.blue2} une application dans l’espace de ses [**utilisateurs**]{.blue2}
+  - Notion simple mais mise en oeuvre compliquée !
+- Dépasser le stade de [**l’expérimentation**]{.orange}
+  - [**Bonnes pratiques**]{.blue2} de développement
+  - Techniques informatiques [**d’industrialisation**]{.blue2}
+- [**Enjeu**]{.orange} : pouvoir jouer le [**rôle d’interface**]{.blue2} entre métier et équipes techniques
+
+## Retour d'expérience à l'Insee {.scrollable}
+
+1. [**Contrainte temporelle**]{.orange} forte : 
+  - Mise en place du [**Guichet Unique**]{.blue2} + refonte [**Sirene 4**]{.blue2}
+  - Équipe en charge de la codification [**surchargée**]{.blue2}
+2. [**Infrastructure**]{.orange} de production rigide : 
+  - Un seul langage disponible, [**Java**]{.blue2}
+  - Pas de modèle de ML en production
+3. [**Confiance**]{.orange} des équipes à acquérir : 
+  - Appréhension concernant la [**performance**]{.blue2} du modèle une fois en production
+- [**Objectif**]{.orange} : Déployer un modèle à la fois [**rapidement**]{.blue2} et [**progressivement**]{.blue2}
+
+
+## Organisation actuelle avant la mise en production
+
+![](img/orga_ape_actuelle.png){fig-align="center"}
+
+- 3 parties prenantes
+
+## Organisation actuelle une fois le modèle déployé en production
+
+![](img/orga-post-prod.png){fig-align="center"}
+
+## Inefficacité organisationelle
+
+- [**Problèmes rencontrés**]{.orange} : 
+  - [**Méconnaissance des problèmes métier**]{.blue2} côté Lab pour la maintenance
+  - [**Contrôle de version**]{.blue2} et [**transmission**]{.blue2} des modèles
+  - Organisation [**inefficace**]{.blue2} entre les parties prenantes
+
+- [**Défis à anticiper**]{.orange} :
+  - [**Surveillance**]{.blue2} du modèle en temps réel
+  - [**Ré-entrainement**]{.blue2} régulier
+
+- [**Conséquence**]{.orange} : Besoin d'adopter les [**bonnes pratiques**]{.blue2} d'un point de vue technique (MLOps) et organisationel
+
+## Organisation visée à l'Insee{background-image="img/orga-visee.png" background-size="55%"} 

@@ -1,0 +1,18 @@
+
+---
+title: Manipulation de données massives
+image: https://intelligence-artificielle.com/wp-content/uploads/2022/02/Data-management-7.jpg
+date: "2023-09-01"
+description: |
+  <b>Description :</b> Ce notebook vous initie à la manipulation de données volumineuses, qu'elles soient locales ou stockées dans le Cloud. Découvrez des techniques essentielles pour gérer efficacement des ensembles de données massives, du stockage à l'analyse.
+categories:
+  - R
+  - Parquet
+  - Arrow
+  - DuckDB
+  - Spark
+slides:
+  text: Notebook
+  url: https://datalab.sspcloud.fr/launcher/ide/rstudio-sparkr?autoLaunch=true&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2FInseeFrLab%2Fformation-bceao%2Fmain%2Ftp%2Finit-tp.sh»&resources.limits.memory=«100Gi»&persistence.size=«40Gi»
+order: 4
+---

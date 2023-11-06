@@ -1,0 +1,138 @@
+
+
+## Une bonne performance globale
+
+
+```{r, dev = "png", dev.args=list(bg="transparent")}
+#| label: fig-acc-lvl
+#| fig-cap: Taux de précision pour chaque niveau de la nomenclature du code APE
+#| fig-width: 13
+#| fig-height: 5
+#| fis-pos: center
+
+Accuracy_lvl <- Accuracy_lvl |>
+    mutate(Level = factor(Level, levels = paste("Level", paste(seq(5,1,-1))))
+    )
+
+plot_Accuracy_lvl <- function(data){
+  plot<- ggplot(data , aes(x=Level, y=Accuracy, fill=Type))+
+    geom_bar(stat = "identity", position = position_dodge())+
+    geom_text(aes(label=round(Accuracy,2)), position=position_dodge(width=0.9), vjust=-0.25, size = 6)+
+    scale_fill_manual(values=c(Palette_col))+
+    annotate("rect", xmin=c(0.5), xmax=c(1.5), ymin=c(-0.01) , ymax=c(1), color="#EE0220", fill=NA, size=1.5)+
+    guides(fill=guide_legend(nrow=1, byrow=TRUE))+
+    expand_limits(y = 1.)+
+    theme_custom()+
+    theme(
+      text = element_text(size = 16),
+      plot.title=element_text(size=26, margin=margin(b=0.7, unit='cm')),
+      legend.text = element_text(size = 18),
+      axis.text.y = element_text(size = 18),
+      axis.text.x = element_text(size = 18),
+    )
+  return(plot)
+}
+
+plot_Accuracy_lvl(Accuracy_lvl)+ 
+    theme(
+        panel.background = element_rect(fill='transparent'),
+         plot.background = element_rect(fill='transparent', color=NA)
+    )
+
+```
+
+
+- Près de [**80%**]{.orange} des libellés issus du guichet unique sont correctement codifiés.
+- Erreurs de prédiction [**proches**]{.orange} dans la nomenclature.
+
+## Fludifier le processus de codification manuel
+
+
+```{r, dev = "png", dev.args=list(bg="transparent")}
+#| label: fig-acc-top-k
+#| fig-cap: Top-$k$ accuracy pour chaque jeu de données.
+#| fig-width: 13
+#| fig-height: 5
+#| fis-pos: center
+
+plot_TOPK_Accuracy <- function(data){
+  plot<- ggplot(data , aes(x=Type, y=Accuracy, fill=Topk))+
+    geom_bar(stat = "identity", position = position_dodge())+
+    geom_text(aes(label=round(Accuracy,2)), position=position_dodge(width=0.9), vjust=-0.25, size = 6)+
+    scale_fill_manual(values=c(Palette_col))+
+    expand_limits(y = 1.)+
+    guides(fill=guide_legend(nrow=1, byrow=TRUE))+
+    theme_custom()+
+    theme(
+      text = element_text(size = 16),
+      plot.title=element_text(size=26, margin=margin(b=0.7, unit='cm')),
+      legend.text = element_text(size = 18),
+      axis.text.y = element_text(size = 18),
+      axis.text.x = element_text(size = 18),
+    )
+  return(plot)
+}
+
+plot_TOPK_Accuracy(TOPK_Accuracy)+ 
+    theme(
+        panel.background = element_rect(fill='transparent'),
+         plot.background = element_rect(fill='transparent', color=NA)
+    )
+
+```
+
+- Connaissance des probabilités pour chaque classe.
+- Dans [**94%**]{.orange} des cas, la bonne classification se trouve dans les 5 prédictions les plus probables. 
+
+
+## Construction d'un indice de confiance {.scrollable}
+
+![](img/fig-ic-distrib.png){fig-align="center"}
+
+
+- [**Objectif**]{.orange} : [**discriminer**]{.blue2} les *mauvaises* des *bonnes* prédictions.
+- [**Indice de confiance retenu**]{.orange} : différence entre les deux probabilités les plus élevées.
+
+
+## Améliorer l'efficacité de la reprise manuelle
+
+
+```{r, dev = "png", dev.args=list(bg="transparent")}
+#| label: fig-reprise
+#| fig-cap: Précision en fonction du taux de reprise manuelle effectuée.
+#| fig-width: 13
+#| fig-height: 5
+#| fis-pos: center
+
+Accuracy_reprise <- Accuracy_reprise |>
+      mutate(
+           Rate = factor(Rate, levels = paste0(paste(seq(0,25,5)), "%"))
+      )
+plot_Accuracy_reprise <- function(data){
+  plot<- ggplot(data , aes(x=Type, y=Accuracy, fill=Rate))+
+    geom_bar(stat = "identity", position = position_dodge())+
+    geom_text(aes(label=round(Accuracy,2)), position=position_dodge(width=0.9), vjust=-0.25, size= 5)+
+    scale_fill_manual(values=c(Palette_col))+
+    guides(fill=guide_legend(nrow=1, byrow=TRUE))+
+    theme_custom()+
+    theme(
+      text = element_text(size = 16),
+      plot.title=element_text(size=26, margin=margin(b=0.7, unit='cm')),
+      legend.text = element_text(size = 18),
+      axis.text.y = element_text(size = 18),
+      axis.text.x = element_text(size = 18),
+    )
+  return(plot)
+}
+
+
+plot_Accuracy_reprise(Accuracy_reprise)+ 
+    theme(
+        panel.background = element_rect(fill='transparent'),
+         plot.background = element_rect(fill='transparent', color=NA)
+    )
+
+
+```
+
+- Optimisation de la reprise manuelle ➨ [**gain de performance**]{.orange}.
