@@ -18,7 +18,7 @@
 
 ## Organisation à terme ?
 
-![](img/orga_ape.png)
+![](../img/orga_ape.png)
 
 ## Problématiques pour la codification en production
 

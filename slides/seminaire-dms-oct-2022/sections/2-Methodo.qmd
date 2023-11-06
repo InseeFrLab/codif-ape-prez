@@ -8,7 +8,7 @@
 - Mais aussi des plongements pour :
   - Les [**n-grams de mots**]{.blue2} et [**n-grams de caractères**]{.blue2}.
 
-![](img/n-grams.png){height="250" fig-align="center"}
+![](../img/n-grams.png){height="250" fig-align="center"}
 
 ## Classifieur linéaire
 
@@ -20,14 +20,14 @@
 
 ## Classification à partir de plongements lexicaux
 
-![](img/fastText_desc_ape.png){height="400" fig-align="center"}
+![](../img/fastText_desc_ape.png){height="400" fig-align="center"}
 
 ## Implémentation, entraînement
 
 ::: {layout-ncol=2}
-![](img/fasttext.png){height="100"}
+![](../img/fasttext.png){height="100"}
 
-![](img/mlflow.png){height="100"}
+![](../img/mlflow.png){height="100"}
 :::
 
 - [**fastText**]{.blue2} : librairie rapide (`C++`) et facilement utilisable.

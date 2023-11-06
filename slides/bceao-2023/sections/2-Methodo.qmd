@@ -7,7 +7,7 @@
 - Mais aussi des plogements de :
   - [**n-grams de mots**]{.blue2} et de [**n-grams de caractères**]{.blue2}.
 
-![](img/n-grams_eng.png){height="250" fig-align="center"}
+![](../img/n-grams_eng.png){height="250" fig-align="center"}
 
 ## Classifieur linéaire
 
@@ -17,7 +17,7 @@
 - [**Optimisation**]{.orange} : algorithme de type [**descente de gradient stochastique**]{.blue2}.
 - [**Fonction de perte**]{.orange} : [**entropie croisée**]{.blue2}.
 
-## Le modèle fastText {background-image="img/diag-fasttext.png" background-size="95%" background-position="50% 75%"} 
+## Le modèle fastText {background-image="../img/diag-fasttext.png" background-size="95%" background-position="50% 75%"} 
 
 - [**fastText**]{.orange}: Modèle de type "bag of n-grams" très [**simple**]{.blue2} et [**rapide**]{.blue2} (`C++`).
 

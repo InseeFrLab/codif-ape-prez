@@ -16,7 +16,7 @@ format:
   onyxia-revealjs:
     output-file: index.html
 controls: true
-css: custom.css
+css: ../custom.css
 from: markdown+emoji
 ascii: true
 execute: 

@@ -87,7 +87,7 @@ plot_TOPK_Accuracy(TOPK_Accuracy)+
 
 ## Construction d'un indice de confiance {.scrollable}
 
-![](img/fig-ic-distrib.png){fig-align="center"}
+![](../img/fig-ic-distrib.png){fig-align="center"}
 
 
 - [**Objectif**]{.orange} : [**discriminer**]{.blue2} les *mauvaises* des *bonnes* prédictions.

@@ -22,13 +22,13 @@
 
 ## Organisation actuelle avant la mise en production
 
-![](img/orga_ape_actuelle.png){fig-align="center"}
+![](../img/orga_ape_actuelle.png){fig-align="center"}
 
 - 3 parties prenantes
 
 ## Organisation actuelle une fois le modèle déployé en production
 
-![](img/orga-post-prod.png){fig-align="center"}
+![](../img/orga-post-prod.png){fig-align="center"}
 
 ## Inefficacité organisationelle
 
@@ -43,4 +43,4 @@
 
 - [**Conséquence**]{.orange} : Besoin d'adopter les [**bonnes pratiques**]{.blue2} d'un point de vue technique (MLOps) et organisationel
 
-## Organisation visée à l'Insee{background-image="img/orga-visee.png" background-size="55%"} 
+## Organisation visée à l'Insee{background-image="../img/orga-visee.png" background-size="55%"} 
