@@ -3,7 +3,7 @@
 ## A good overall performance
 
 
-```{r}
+```{r, dev = "png", dev.args=list(bg="transparent")}
 #| label: fig-acc-lvl
 #| fig-cap: Accuracy for various level of the NACE nomenclature.
 #| fig-width: 13
@@ -33,7 +33,11 @@ plot_Accuracy_lvl <- function(data){
   return(plot)
 }
 
-plot_Accuracy_lvl(Accuracy_lvl)
+plot_Accuracy_lvl(Accuracy_lvl)+ 
+    theme(
+        panel.background = element_rect(fill='transparent'),
+         plot.background = element_rect(fill='transparent', color=NA)
+    )
 
 ```
 
@@ -44,7 +48,7 @@ plot_Accuracy_lvl(Accuracy_lvl)
 ## Streamlining the manual coding process
 
 
-```{r}
+```{r, dev = "png", dev.args=list(bg="transparent")}
 #| label: fig-acc-top-k
 #| fig-cap: Top-$k$ accuracy per sample.
 #| fig-width: 13
@@ -69,7 +73,11 @@ plot_TOPK_Accuracy <- function(data){
   return(plot)
 }
 
-plot_TOPK_Accuracy(TOPK_Accuracy)
+plot_TOPK_Accuracy(TOPK_Accuracy)+ 
+    theme(
+        panel.background = element_rect(fill='transparent'),
+         plot.background = element_rect(fill='transparent', color=NA)
+    )
 
 ```
 
@@ -81,7 +89,7 @@ plot_TOPK_Accuracy(TOPK_Accuracy)
 ## Building a confidence index {.scrollable}
 
 
-```{r}
+```{r, dev = "png", dev.args=list(bg="transparent")}
 #| label: fig-ic-distrib
 #| fig-cap: Distribution of the confidence index based on prediction results.
 #| fig-width: 13
@@ -106,7 +114,11 @@ plot_IC_distrib <- function(data, thresholds, ypos){
   
 }
 
-plot_IC_distrib(IC_distrib, IC_thresholds, 51)
+plot_IC_distrib(IC_distrib, IC_thresholds, 51)+ 
+    theme(
+        panel.background = element_rect(fill='transparent'),
+         plot.background = element_rect(fill='transparent', color=NA)
+    )
 
 
 ```
@@ -118,7 +130,7 @@ plot_IC_distrib(IC_distrib, IC_thresholds, 51)
 ## Efficiency of the manual coding process
 
 
-```{r}
+```{r, dev = "png", dev.args=list(bg="transparent")}
 #| label: fig-reprise
 #| fig-cap: Accuracy for various shares of manual coding.
 #| fig-width: 13
@@ -147,7 +159,11 @@ plot_Accuracy_reprise <- function(data){
 }
 
 
-plot_Accuracy_reprise(Accuracy_reprise)
+plot_Accuracy_reprise(Accuracy_reprise)+ 
+    theme(
+        panel.background = element_rect(fill='transparent'),
+         plot.background = element_rect(fill='transparent', color=NA)
+    )
 
 
 ```

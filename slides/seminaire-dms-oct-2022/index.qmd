@@ -5,7 +5,8 @@ subtitle: |
 author: |
   [Thomas Faria](https://github.com/ThomasFaria),
   [Tom Seimandi](https://github.com/tomseimandi/)
-date: 7 octobre 2022
+date: "10/07/2022"
+date-format: "D MMMM YYYY"
 slide-number: true
 # uncomment for French presentations:
 lang: fr-FR
