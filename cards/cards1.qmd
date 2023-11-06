@@ -1,14 +1,12 @@
 
 ---
-title: Place et enjeux du Big Data à l'Insee
-image: https://www.addictgroup.fr/wp-content/uploads/2017/09/definition-Big-Data.jpg
+title: Formation BCEAO 2023
+image: https://upload.wikimedia.org/wikipedia/fr/a/a1/BCEAO-logo.png?20211030215428
 date: "2023-09-01"
 description: |
-  <b>Description :</b> Cette présentation met en lumière les enjeux et la place essentielle du Big Data au sein de l'Insee. Explorez comment les données massives contribuent à enrichir les analyses et à affiner les statistiques.
-categories:
-  - Big Data
+  <b>Description :</b> Test
 slides:
   text: Slides
-  url: /slides/intro-big-data/index.html
+  url: /slides/bceao-2023/index.html
 order: 1
 ---

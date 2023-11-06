@@ -20,8 +20,7 @@ format:
   onyxia-revealjs:
     output-file: index.html
 controls: true
-css: custom.css
-from: markdown+emoji
+css: ../custom.css
 ascii: true
 ---
 

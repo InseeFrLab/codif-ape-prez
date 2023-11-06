@@ -3,7 +3,7 @@ listing:
   id: presentations
   contents: cards
   sort: "order asc"
-  categories: true
+  categories: false
   template: style/listing-grid.ejs
 page-layout: full
 toc: false

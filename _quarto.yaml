@@ -7,7 +7,7 @@ project:
 
 website:
   page-navigation: true
-  title: "Formation BCEAO"
+  title: "Présentations codification automatique de l'APE"
   site-url: "https://inseefrlab.github.io/codif-ape-prez/"
 
   repo-url: "https://github.com/InseeFrLab/codif-ape-prez"

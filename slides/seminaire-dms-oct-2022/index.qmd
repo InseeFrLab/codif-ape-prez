@@ -19,31 +19,29 @@ format:
   onyxia-revealjs:
     output-file: index.html
 controls: true
-css: custom.css
+css: ../custom.css
 from: markdown+emoji
 ascii: true
+execute: 
+  echo: false
+  warning: false
 ---
 
 # Introduction
 
 ```{r, echo=FALSE}
 ## Initialisation
-list.of.packages <- c("ggplot2", "readr", "dplyr")
-new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages)
-
-library(readr)
 library(ggplot2)
 library(dplyr)
-source("../../../graphs/theme_custom.R")
+source("../theme_custom.R")
 
-Accuracy_lvl <- read_csv("../../../graphs/data_graphs/Accuracy_lvl.csv")
-GU_TEST_distrib <- read_csv("../../../graphs/data_graphs/GU_TEST_distrib.csv")
-TOPK_Accuracy <- read_csv("../../../graphs/data_graphs/TOPK_Accuracy.csv")
-Accuracy_reprise <- read_csv("../../../graphs/data_graphs/Accuracy_reprise.csv")
-F1_distrib_by_cat <- read_csv("../../../graphs/data_graphs/F1_distrib_by_cat.csv")
-IC_distrib <- read_csv("../../../graphs/data_graphs/IC_distrib.csv")
-IC_thresholds <- read_csv("../../../graphs/data_graphs/IC_thresholds.csv")
+Accuracy_lvl <- readr::read_csv("../data/Accuracy_lvl.csv")
+TOPK_Accuracy <- readr::read_csv("../data/TOPK_Accuracy.csv")
+Accuracy_reprise <- readr::read_csv("../data/Accuracy_reprise.csv")
+GU_TEST_distrib <- readr::read_csv("../data/GU_TEST_distrib.csv")
+F1_distrib_by_cat <- readr::read_csv("../data/F1_distrib_by_cat.csv")
+IC_distrib <- readr::read_csv("../data/IC_distrib.csv")
+IC_thresholds <- readr::read_csv("../data/IC_thresholds.csv")
 
 ```
 
