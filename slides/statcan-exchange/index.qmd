@@ -1,0 +1,38 @@
+---
+title: "MLOps exchange : An use case"
+subtitle: |
+  **[Journée SSP Hub]{.orange}**
+author: |
+  [Romain Avouac](https://github.com/avouacr),
+  [Thomas Faria](https://github.com/ThomasFaria),
+  [Tom Seimandi](https://github.com/tomseimandi/)
+date: "03/19/2024"
+date-format: "D MMMM YYYY"
+slide-number: true
+# uncomment for French presentations:
+lang: en-GB
+# for blind readers:
+slide-tone: false
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  onyxia-revealjs:
+    output-file: index.html
+controls: true
+css: ../custom.css
+ascii: true
+---
+
+# Context
+
+{{< include sections/1-Context.qmd >}}
+
+# Methodology
+
+{{< include sections/2-Methodo.qmd >}}
+
+# MLOps
+
+{{< include sections/3-MLOps.qmd >}}
