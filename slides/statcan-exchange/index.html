@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr-FR"><head>
+<html lang="en-GB"><head>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -10,8 +10,9 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.551">
 
-  <meta name="author" content="Thomas Faria, Tom Seimandi">
-  <title>Présentations codification automatique de l’APE - Codification automatique de l’APE dans le cadre du projet Sirene 4</title>
+  <meta name="author" content="Romain Avouac, Thomas Faria, Tom Seimandi">
+  <meta name="dcterms.date" content="2024-03-19">
+  <title>Présentations codification automatique de l’APE - MLOps exchange : An use case</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -325,7 +326,7 @@
     }
   </style>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<meta property="og:title" content="Présentations codification automatique de l’APE - Codification automatique de l’APE dans le cadre du projet Sirene 4">
+<meta property="og:title" content="Présentations codification automatique de l’APE - MLOps exchange : An use case">
 <meta property="og:description" content="Journée SSP Hub">
 <meta property="og:site_name" content="Présentations codification automatique de l'APE">
 </head>
@@ -334,7 +335,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="../_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Codification automatique de l’APE dans le cadre du projet Sirene 4</h1>
+  <h1 class="title">MLOps exchange : An use case</h1>
   <p class="subtitle"></p><p><strong><span class="orange">Journée SSP Hub</span></strong></p><p></p>
 
 <div class="quarto-title-authors">
@@ -345,14 +346,14 @@
 </div>
 </div>
 
-  <p class="date">17 avril 2023</p>
+  <p class="date">19 March 2024</p>
 </section>
 <section>
-<section id="contexte" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Contexte</h1>
+<section id="context" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Context</h1>
 
 </section>
-<section id="contexte-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<section id="contexte" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Contexte</h2>
 <ul>
 <li><p><span class="orange"><strong>Plusieurs changements majeurs</strong></span> :</p>
@@ -431,8 +432,8 @@
 </table>
 </section></section>
 <section>
-<section id="méthodologie" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Méthodologie</h1>
+<section id="methodology" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Methodology</h1>
 
 </section>
 <section id="vectorisation-des-libellés" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -460,8 +461,8 @@
 </ul>
 </section></section>
 <section>
-<section id="mise-en-production" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Mise en production</h1>
+<section id="mlops" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>MLOps</h1>
 
 </section>
 <section id="organisation-actuelle" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -811,12 +812,12 @@
         // flash "checked"
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copi&#xE9;");
+        button.setAttribute("title", "Copied!");
         let tooltip;
         if (window.bootstrap) {
           button.setAttribute("data-bs-toggle", "tooltip");
           button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copi&#xE9;");
+          button.setAttribute("data-bs-title", "Copied!");
           tooltip = new bootstrap.Tooltip(button, 
             { trigger: "manual", 
               customClass: "code-copy-button-tooltip",

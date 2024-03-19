@@ -1,17 +1,108 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Présentations codification automatique de l'APE",
-    "section": "",
-    "text": "Tous les supports sont sur le Github InseeFrLab \n\n\n  \n     \n      \n          \n            \n          \n          \n            \n            \n              Description : Séminaire interne du département des méthodes statistiques de l'Insee\n\n              \n                Thomas Faria et Tom Seimandi\n                Sep 1, 2023\n              \n            \n            \n                \n                    \n                        Slides\n                    \n                \n            \n          \n        \n      \n     \n  \n  \n     \n      \n          \n            \n          \n          \n            \n            \n              Description : Présentation lors de l'évènement de lancement du SSP Hub\n\n              \n                Thomas Faria et Tom Seimandi\n                Apr 17, 2023\n              \n            \n            \n                \n                    \n                        Slides\n                    \n                \n            \n          \n        \n      \n     \n  \n  \n     \n      \n          \n            \n          \n          \n            \n            \n              Description : Presentation given during the UNECE Machine Learning for Official Statistics Workshop 2023\n\n              \n                Thomas Faria and Tom Seimandi\n                Jun 5, 2023\n              \n            \n            \n                \n                    \n                        Slides\n                    \n                \n            \n          \n        \n      \n     \n  \n  \n     \n      \n          \n            \n          \n          \n            \n            \n              Description : Présentation pour la formation Big Data donné à la BCEAO à Dakar\n\n              \n                Romain Avouac, Thomas Faria et Tom Seimandi\n                Sep 27, 2023\n              \n            \n            \n                \n                    \n                        Slides\n                    \n                \n            \n          \n        \n      \n     \n  \n\n\nNo matching items"
+    "objectID": "slides/unece-conf/index.html#context-1",
+    "href": "slides/unece-conf/index.html#context-1",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Context",
+    "text": "Context\n\nSeveral major changes:\n\nInternal: Revamping of the French company registry, Sirene 4.\nExternal: Implementation of a one-stop shop to declare the creation of a business.\n\nObservation: Sicore is no longer a suitable tool ➨ 30% automated coding.\nConsequence: Ideal moment to propose a new methodology for automated NACE coding."
   },
   {
-    "objectID": "index.html#présentation-relative-à-la-codificaation-automatique-de-lape",
-    "href": "index.html#présentation-relative-à-la-codificaation-automatique-de-lape",
-    "title": "Présentations codification automatique de l'APE",
-    "section": "",
-    "text": "Tous les supports sont sur le Github InseeFrLab \n\n\n  \n     \n      \n          \n            \n          \n          \n            \n            \n              Description : Séminaire interne du département des méthodes statistiques de l'Insee\n\n              \n                Thomas Faria et Tom Seimandi\n                Sep 1, 2023\n              \n            \n            \n                \n                    \n                        Slides\n                    \n                \n            \n          \n        \n      \n     \n  \n  \n     \n      \n          \n            \n          \n          \n            \n            \n              Description : Présentation lors de l'évènement de lancement du SSP Hub\n\n              \n                Thomas Faria et Tom Seimandi\n                Apr 17, 2023\n              \n            \n            \n                \n                    \n                        Slides\n                    \n                \n            \n          \n        \n      \n     \n  \n  \n     \n      \n          \n            \n          \n          \n            \n            \n              Description : Presentation given during the UNECE Machine Learning for Official Statistics Workshop 2023\n\n              \n                Thomas Faria and Tom Seimandi\n                Jun 5, 2023\n              \n            \n            \n                \n                    \n                        Slides\n                    \n                \n            \n          \n        \n      \n     \n  \n  \n     \n      \n          \n            \n          \n          \n            \n            \n              Description : Présentation pour la formation Big Data donné à la BCEAO à Dakar\n\n              \n                Romain Avouac, Thomas Faria et Tom Seimandi\n                Sep 27, 2023\n              \n            \n            \n                \n                    \n                        Slides\n                    \n                \n            \n          \n        \n      \n     \n  \n\n\nNo matching items"
+    "objectID": "slides/unece-conf/index.html#data",
+    "href": "slides/unece-conf/index.html#data",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Data",
+    "text": "Data\n\n\\(\\approx\\) 10 million observations from Sirene 3 covering the period 2014-2022.\nData labeled both by Sicore and manually.\nAn observation consists of:\n\nA textual description of the activity\nThe nature of the activity – NAT (23 categories)\nThe type of form – TYP (15 categories)\nThe type of event – EVT (24 categories)\nThe area (\\(m^2\\)) – SUR (4 categories)"
+  },
+  {
+    "objectID": "slides/unece-conf/index.html#hierarchical-structure-of-nace-rev.-2",
+    "href": "slides/unece-conf/index.html#hierarchical-structure-of-nace-rev.-2",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Hierarchical structure of NACE Rev. 2",
+    "text": "Hierarchical structure of NACE Rev. 2\n\n\n\n\n\n\n\n\n\n\nLevel\nNACE\nTitle\nSize\n\n\n\n\nSection\nH\nTransportation and storage\n21\n\n\nDivision\n52\nWarehousing and support activities for transportation\n88\n\n\nGroup\n522\nSupport activities for transportation\n272\n\n\nClass\n5224\nCargo handling\n615\n\n\nSubclass\n5224A\nHarbour handling\n732"
+  },
+  {
+    "objectID": "slides/unece-conf/index.html#feature-extraction",
+    "href": "slides/unece-conf/index.html#feature-extraction",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Feature extraction",
+    "text": "Feature extraction\n\nWord embedding: a method of vectorisation.\nPre-trained embeddings available in open-source.\nWe learn our own word embeddings.\nAdditionally, embeddings for:\n\nword n-grams and character n-grams."
+  },
+  {
+    "objectID": "slides/unece-conf/index.html#linear-classifer",
+    "href": "slides/unece-conf/index.html#linear-classifer",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Linear classifer",
+    "text": "Linear classifer\n\n2 classification methods:\n\nSoftmax: a single multiclass classifier.\nOne-vs-all: multiple binary classifiers.\n\nOptimisation: stochastic gradient descent algorithm.\nLoss function: cross-entropy."
+  },
+  {
+    "objectID": "slides/unece-conf/index.html#fasttext-model",
+    "href": "slides/unece-conf/index.html#fasttext-model",
+    "title": "Classifying companies in France using machine learning",
+    "section": "fastText model",
+    "text": "fastText model\n\nfastText: very simple and fast (C++) “bag of n-grams” model."
+  },
+  {
+    "objectID": "slides/unece-conf/index.html#handling-categorical-variables",
+    "href": "slides/unece-conf/index.html#handling-categorical-variables",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Handling categorical variables",
+    "text": "Handling categorical variables\n\nConcatenation of the text description with the names and values of the auxiliary variables:\n\n\n\n\nText\nNAT\nTYP\nEVT\nSUR\n\n\n\n\nCours de musique\nNaN\nX\n01P\nNaN\n\n\n\n\n🢃\n\n“Cours de musique NAT_NaN TYP_X EVT_01P SUR_NaN”\n\nImperfect method: 3-grams “AT_” or “T_0” used."
+  },
+  {
+    "objectID": "slides/unece-conf/index.html#preprocessing",
+    "href": "slides/unece-conf/index.html#preprocessing",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Preprocessing",
+    "text": "Preprocessing\n\nPreprocessing essential for natural language processing.\nConstraints: simple, light and easily reproducible in Java .\n\n\n\n\n\n\n\n\nTransformation\nText description\n\n\n\n\nInput\n3 D: La Deratisation - La Desinsectisation - La Desinfection\n\n\nLower-case conversion\n3 d: la deratisation - la desinsectisation - la desinfection\n\n\nPunctuations removal\n3 d la deratisation la desinsectisation la desinfection"
+  },
+  {
+    "objectID": "slides/unece-conf/index.html#preprocessing-1",
+    "href": "slides/unece-conf/index.html#preprocessing-1",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Preprocessing",
+    "text": "Preprocessing\n\n\n\n\n\n\n\nTransformation\nText description\n\n\n\n\nInput\n3 D: La Deratisation - La Desinsectisation - La Desinfection\n\n\n…\n…\n\n\nNumbers removal\nd la deratisation la desinsectisation la desinfection\n\n\nOne-letter word removal\nla deratisation la desinsectisation la desinfection\n\n\nStopwords removal\nderatisation desinsectisation desinfection"
+  },
+  {
+    "objectID": "slides/unece-conf/index.html#preprocessing-2",
+    "href": "slides/unece-conf/index.html#preprocessing-2",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Preprocessing",
+    "text": "Preprocessing\n\n\n\nTransformation\nText description\n\n\n\n\nInput\n3 D: La Deratisation - La Desinsectisation - La Desinfection\n\n\n…\n…\n\n\nNaN removal\nderatisation desinsectisation desinfection\n\n\nStemming\nderatis desinsectis desinfect"
+  },
+  {
+    "objectID": "slides/unece-conf/index.html#a-good-overall-performance",
+    "href": "slides/unece-conf/index.html#a-good-overall-performance",
+    "title": "Classifying companies in France using machine learning",
+    "section": "A good overall performance",
+    "text": "A good overall performance\n\n\nFigure 1: Accuracy for various level of the NACE nomenclature.\n\nNearly 80% of labels from the one-stop shop are correctly coded.\nMost prediction errors are close in the nomenclature."
+  },
+  {
+    "objectID": "slides/unece-conf/index.html#streamlining-the-manual-coding-process",
+    "href": "slides/unece-conf/index.html#streamlining-the-manual-coding-process",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Streamlining the manual coding process",
+    "text": "Streamlining the manual coding process\n\n\nFigure 2: Top-\\(k\\) accuracy per sample.\n\nKnowledge of probabilities for each class.\nThe correct classification is among the top 5 most probable predictions in 94% of cases."
+  },
+  {
+    "objectID": "slides/unece-conf/index.html#building-a-confidence-index",
+    "href": "slides/unece-conf/index.html#building-a-confidence-index",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Building a confidence index",
+    "text": "Building a confidence index\n\n\nFigure 3: Distribution of the confidence index based on prediction results.\n\nObjective: discriminate between bad and good predictions.\nSelected Confidence Index: difference between the two highest probabilities."
+  },
+  {
+    "objectID": "slides/unece-conf/index.html#efficiency-of-the-manual-coding-process",
+    "href": "slides/unece-conf/index.html#efficiency-of-the-manual-coding-process",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Efficiency of the manual coding process",
+    "text": "Efficiency of the manual coding process\n\n\nFigure 4: Accuracy for various shares of manual coding.\n\nOptimisation of manual coding process ➨ Performance improvement."
+  },
+  {
+    "objectID": "slides/unece-conf/index.html#deployment-of-the-model",
+    "href": "slides/unece-conf/index.html#deployment-of-the-model",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Deployment of the model",
+    "text": "Deployment of the model\n\nModels have been deployed in a production environment since November 2022.\nEmerging new challenges include:\n\nOrganisational issues.\nReal-time monitoring.\nRegular re-training.\n\nMLOps approach is required:\n\nJoin us on Wednesday, June 7th for a Hands-on Lab!"
   },
   {
     "objectID": "slides/seminaire-dms-oct-2022/index.html#contexte",
@@ -95,7 +186,7 @@
     "href": "slides/seminaire-dms-oct-2022/index.html#évaluation-de-la-performance",
     "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
     "section": "Évaluation de la performance",
-    "text": "Évaluation de la performance\n\nÉvaluation sur 2 jeux de données :\n\nun jeu de test, 20% des données soit \\(\\approx\\) 2.5 millions observations\nun jeu issue du guichet unique \\(\\approx\\) 15 000 observations\n\n\n\nFigure 1: Précision en fonction du taux de reprise manuelle effectuée."
+    "text": "Évaluation de la performance\n\nÉvaluation sur 2 jeux de données :\n\nun jeu de test, 20% des données soit \\(\\approx\\) 2.5 millions observations\nun jeu issue du guichet unique \\(\\approx\\) 15 000 observations\n\n\n\n\nFigure 1: Précision en fonction du taux de reprise manuelle effectuée."
   },
   {
     "objectID": "slides/seminaire-dms-oct-2022/index.html#évaluation-de-la-performance-1",
@@ -109,35 +200,35 @@
     "href": "slides/seminaire-dms-oct-2022/index.html#une-bonne-performance-globale",
     "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
     "section": "Une bonne performance globale",
-    "text": "Une bonne performance globale\n\nFigure 2: Taux de précision pour chaque niveau de la nomenclature du code APE.\nPrès de 80% des libellés issus du guichet unique sont correctement codifiés.\nErreurs de prédiction proches dans la nomenclature."
+    "text": "Une bonne performance globale\n\n\nFigure 2: Taux de précision pour chaque niveau de la nomenclature du code APE.\n\nPrès de 80% des libellés issus du guichet unique sont correctement codifiés.\nErreurs de prédiction proches dans la nomenclature."
   },
   {
     "objectID": "slides/seminaire-dms-oct-2022/index.html#une-aide-à-la-reprise-manuelle",
     "href": "slides/seminaire-dms-oct-2022/index.html#une-aide-à-la-reprise-manuelle",
     "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
     "section": "Une aide à la reprise manuelle",
-    "text": "Une aide à la reprise manuelle\n\nFigure 3: Top-K Accuracy pour chaque jeu de données.\nConnaissance des probabilités pour chaque classe.\nDans 94% des cas, la bonne classification se trouve dans les 5 prédictions les plus probables."
+    "text": "Une aide à la reprise manuelle\n\n\nFigure 3: Top-K Accuracy pour chaque jeu de données.\n\nConnaissance des probabilités pour chaque classe.\nDans 94% des cas, la bonne classification se trouve dans les 5 prédictions les plus probables."
   },
   {
     "objectID": "slides/seminaire-dms-oct-2022/index.html#une-performance-hétérogène-en-fonction-des-classes",
     "href": "slides/seminaire-dms-oct-2022/index.html#une-performance-hétérogène-en-fonction-des-classes",
     "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
     "section": "Une performance hétérogène en fonction des classes",
-    "text": "Une performance hétérogène en fonction des classes\n\nFigure 4: Distribution du F1-score en fonction de la fréquence des classes.\nPerformance mitigée sur plusieurs classes peu fréquentes."
+    "text": "Une performance hétérogène en fonction des classes\n\n\nFigure 4: Distribution du F1-score en fonction de la fréquence des classes.\n\nPerformance mitigée sur plusieurs classes peu fréquentes."
   },
   {
     "objectID": "slides/seminaire-dms-oct-2022/index.html#construction-dun-indice-de-confiance",
     "href": "slides/seminaire-dms-oct-2022/index.html#construction-dun-indice-de-confiance",
     "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
     "section": "Construction d’un indice de confiance",
-    "text": "Construction d’un indice de confiance\n\nFigure 5: Distribution de l’indice de confiance en fonction du résultat de la prédiction.\nObjectif : discriminer les mauvaises des bonnes prédictions.\nIndice de confiance retenu : différence entre les deux probabilités les plus élevées."
+    "text": "Construction d’un indice de confiance\n\n\nFigure 5: Distribution de l’indice de confiance en fonction du résultat de la prédiction.\n\nObjectif : discriminer les mauvaises des bonnes prédictions.\nIndice de confiance retenu : différence entre les deux probabilités les plus élevées."
   },
   {
     "objectID": "slides/seminaire-dms-oct-2022/index.html#efficacité-de-la-reprise-manuelle",
     "href": "slides/seminaire-dms-oct-2022/index.html#efficacité-de-la-reprise-manuelle",
     "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
     "section": "Efficacité de la reprise manuelle",
-    "text": "Efficacité de la reprise manuelle\n\nFigure 6: Précision en fonction du taux de reprise manuelle effectuée.\nOptimisation de la reprise manuelle ➨ gain de performance."
+    "text": "Efficacité de la reprise manuelle\n\n\nFigure 6: Précision en fonction du taux de reprise manuelle effectuée.\n\nOptimisation de la reprise manuelle ➨ gain de performance."
   },
   {
     "objectID": "slides/seminaire-dms-oct-2022/index.html#organisation-prévue",
@@ -235,28 +326,28 @@
     "href": "slides/bceao-2023/index.html#une-bonne-performance-globale",
     "title": "Codification automatique de l’APE avec de l’apprentissage statistique",
     "section": "Une bonne performance globale",
-    "text": "Une bonne performance globale\n\nFigure 1: Taux de précision pour chaque niveau de la nomenclature du code APE\nPrès de 80% des libellés issus du guichet unique sont correctement codifiés.\nErreurs de prédiction proches dans la nomenclature."
+    "text": "Une bonne performance globale\n\n\nFigure 1: Taux de précision pour chaque niveau de la nomenclature du code APE\n\nPrès de 80% des libellés issus du guichet unique sont correctement codifiés.\nErreurs de prédiction proches dans la nomenclature."
   },
   {
     "objectID": "slides/bceao-2023/index.html#fludifier-le-processus-de-codification-manuel",
     "href": "slides/bceao-2023/index.html#fludifier-le-processus-de-codification-manuel",
     "title": "Codification automatique de l’APE avec de l’apprentissage statistique",
     "section": "Fludifier le processus de codification manuel",
-    "text": "Fludifier le processus de codification manuel\n\nFigure 2: Top-\\(k\\) accuracy pour chaque jeu de données.\nConnaissance des probabilités pour chaque classe.\nDans 94% des cas, la bonne classification se trouve dans les 5 prédictions les plus probables."
+    "text": "Fludifier le processus de codification manuel\n\n\nFigure 2: Top-\\(k\\) accuracy pour chaque jeu de données.\n\nConnaissance des probabilités pour chaque classe.\nDans 94% des cas, la bonne classification se trouve dans les 5 prédictions les plus probables."
   },
   {
     "objectID": "slides/bceao-2023/index.html#construction-dun-indice-de-confiance",
     "href": "slides/bceao-2023/index.html#construction-dun-indice-de-confiance",
     "title": "Codification automatique de l’APE avec de l’apprentissage statistique",
     "section": "Construction d’un indice de confiance",
-    "text": "Construction d’un indice de confiance\n\nFigure 3: Distribution de l’indice de confiance en fonction du résultat de la prédiction.\nObjectif : discriminer les mauvaises des bonnes prédictions.\nIndice de confiance retenu : différence entre les deux probabilités les plus élevées."
+    "text": "Construction d’un indice de confiance\n\n\nFigure 3: Distribution de l’indice de confiance en fonction du résultat de la prédiction.\n\nObjectif : discriminer les mauvaises des bonnes prédictions.\nIndice de confiance retenu : différence entre les deux probabilités les plus élevées."
   },
   {
     "objectID": "slides/bceao-2023/index.html#améliorer-lefficacité-de-la-reprise-manuelle",
     "href": "slides/bceao-2023/index.html#améliorer-lefficacité-de-la-reprise-manuelle",
     "title": "Codification automatique de l’APE avec de l’apprentissage statistique",
     "section": "Améliorer l’efficacité de la reprise manuelle",
-    "text": "Améliorer l’efficacité de la reprise manuelle\n\nFigure 4: Précision en fonction du taux de reprise manuelle effectuée.\nOptimisation de la reprise manuelle ➨ gain de performance."
+    "text": "Améliorer l’efficacité de la reprise manuelle\n\n\nFigure 4: Précision en fonction du taux de reprise manuelle effectuée.\n\nOptimisation de la reprise manuelle ➨ gain de performance."
   },
   {
     "objectID": "slides/bceao-2023/index.html#la-notion-de-mise-en-production",
@@ -378,108 +469,94 @@
     "text": "Organisation visée\n\nObservabilité, maintenance du modèle côté Sirene (appui technique du SSP Lab)\nCluster Kubernetes de production\nS’affranchir de FastText\nUtilisation du plein potentiel de MLflow pour la gestion des modèles en production\nDéveloppement d’une API Python"
   },
   {
-    "objectID": "slides/unece-conf/index.html#context-1",
-    "href": "slides/unece-conf/index.html#context-1",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Context",
-    "text": "Context\n\nSeveral major changes:\n\nInternal: Revamping of the French company registry, Sirene 4.\nExternal: Implementation of a one-stop shop to declare the creation of a business.\n\nObservation: Sicore is no longer a suitable tool ➨ 30% automated coding.\nConsequence: Ideal moment to propose a new methodology for automated NACE coding."
+    "objectID": "slides/statcan-exchange/index.html#contexte",
+    "href": "slides/statcan-exchange/index.html#contexte",
+    "title": "MLOps exchange : An use case",
+    "section": "Contexte",
+    "text": "Contexte\n\nPlusieurs changements majeurs :\n\nInterne : Refonte du répertoire Sirene 4.\nExterne : Mise en place d’un guichet unique.\n\nConstat : Sicore n’est plus l’outil adapté ➨ 30% de codification automatique.\nConséquence : moment idéal pour proposer une nouvelle méthodologie de codification automatique de l’APE."
   },
   {
-    "objectID": "slides/unece-conf/index.html#data",
-    "href": "slides/unece-conf/index.html#data",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Data",
-    "text": "Data\n\n\\(\\approx\\) 10 million observations from Sirene 3 covering the period 2014-2022.\nData labeled both by Sicore and manually.\nAn observation consists of:\n\nA textual description of the activity\nThe nature of the activity – NAT (23 categories)\nThe type of form – TYP (15 categories)\nThe type of event – EVT (24 categories)\nThe area (\\(m^2\\)) – SUR (4 categories)"
+    "objectID": "slides/statcan-exchange/index.html#données",
+    "href": "slides/statcan-exchange/index.html#données",
+    "title": "MLOps exchange : An use case",
+    "section": "Données",
+    "text": "Données\n\n\\(\\approx\\) 10 millions de liasses d’entreprises issues de Sirene 3 couvrant la période 2014-2022.\nDonnées labellisées par Sicore ou par un gestionnaire.\nUne observation consiste en :\n\nun descriptif textuel de l’activité\nla nature de l’activité – NAT (23 modalités)\nle type de la liasse – TYP (15 modalités)\nle type d’évènement – EVT (24 modalités)\nla surface (\\(m^2\\))– SUR (4 modalités)"
   },
   {
-    "objectID": "slides/unece-conf/index.html#hierarchical-structure-of-nace-rev.-2",
-    "href": "slides/unece-conf/index.html#hierarchical-structure-of-nace-rev.-2",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Hierarchical structure of NACE Rev. 2",
-    "text": "Hierarchical structure of NACE Rev. 2\n\n\n\n\n\n\n\n\n\n\n\nLevel\nNACE\nTitle\nSize\n\n\n\n\nSection\nH\nTransportation and storage\n21\n\n\nDivision\n52\nWarehousing and support activities for transportation\n88\n\n\nGroup\n522\nSupport activities for transportation\n272\n\n\nClass\n5224\nCargo handling\n615\n\n\nSubclass\n5224A\nHarbour handling\n732"
+    "objectID": "slides/statcan-exchange/index.html#la-nomenclature-hiérarchique-de-lape",
+    "href": "slides/statcan-exchange/index.html#la-nomenclature-hiérarchique-de-lape",
+    "title": "MLOps exchange : An use case",
+    "section": "La nomenclature hiérarchique de l’APE",
+    "text": "La nomenclature hiérarchique de l’APE\n\n\n\n\n\n\n\n\n\nNiveau\nCode\nLibellé\nTaille\n\n\n\n\nSection\nH\nTransports et entreposage\n21\n\n\nDivision\n52\nEntreposage et services auxiliaires des transports\n88\n\n\nGroupe\n522\nServices auxiliaires des transports\n272\n\n\nClasse\n5224\nManutention\n615\n\n\nSous-classe\n5224A\nManutention portuaire\n732"
   },
   {
-    "objectID": "slides/unece-conf/index.html#feature-extraction",
-    "href": "slides/unece-conf/index.html#feature-extraction",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Feature extraction",
-    "text": "Feature extraction\n\nWord embedding: a method of vectorisation.\nPre-trained embeddings available in open-source.\nWe learn our own word embeddings.\nAdditionally, embeddings for:\n\nword n-grams and character n-grams."
+    "objectID": "slides/statcan-exchange/index.html#vectorisation-des-libellés",
+    "href": "slides/statcan-exchange/index.html#vectorisation-des-libellés",
+    "title": "MLOps exchange : An use case",
+    "section": "Vectorisation des libellés",
+    "text": "Vectorisation des libellés\n\nPlongements lexicaux : méthode de vectorisation.\nModèle “Bag of n-grams”. On apprend des plongements pour les mots, les n-grams de mots et n-grams de caractères."
   },
   {
-    "objectID": "slides/unece-conf/index.html#linear-classifer",
-    "href": "slides/unece-conf/index.html#linear-classifer",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Linear classifer",
-    "text": "Linear classifer\n\n2 classification methods:\n\nSoftmax: a single multiclass classifier.\nOne-vs-all: multiple binary classifiers.\n\nOptimisation: stochastic gradient descent algorithm.\nLoss function: cross-entropy."
+    "objectID": "slides/statcan-exchange/index.html#classification",
+    "href": "slides/statcan-exchange/index.html#classification",
+    "title": "MLOps exchange : An use case",
+    "section": "Classification",
+    "text": "Classification\n\n\n\n\n\n\nModèle simple qui fonctionne bien dans notre contexte.\nIndice de confiance calculé pour chaque prédiction."
   },
   {
-    "objectID": "slides/unece-conf/index.html#fasttext-model",
-    "href": "slides/unece-conf/index.html#fasttext-model",
-    "title": "Classifying companies in France using machine learning",
-    "section": "fastText model",
-    "text": "fastText model\n\nfastText: very simple and fast (C++) “bag of n-grams” model."
+    "objectID": "slides/statcan-exchange/index.html#organisation-actuelle",
+    "href": "slides/statcan-exchange/index.html#organisation-actuelle",
+    "title": "MLOps exchange : An use case",
+    "section": "Organisation actuelle",
+    "text": "Organisation actuelle\n\n3 parties prenantes autour du projet :\n\nÉquipe métier\nDéveloppeur Sirene 4\nSSP Lab\n\nMise en production (trop?) rapide :\n\nProblèmatique : équipes Sirene surchargées\nT1 2022 : lancement des expérimentations\nNovembre 2022 : 1ère mise en production de manière progressive et restrictive"
   },
   {
-    "objectID": "slides/unece-conf/index.html#handling-categorical-variables",
-    "href": "slides/unece-conf/index.html#handling-categorical-variables",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Handling categorical variables",
-    "text": "Handling categorical variables\n\nConcatenation of the text description with the names and values of the auxiliary variables:\n\n\n\n\nText\nNAT\nTYP\nEVT\nSUR\n\n\n\n\nCours de musique\nNaN\nX\n01P\nNaN\n\n\n\n\n🢃\n\n“Cours de musique NAT_NaN TYP_X EVT_01P SUR_NaN”\n\nImperfect method: 3-grams “AT_” or “T_0” used."
+    "objectID": "slides/statcan-exchange/index.html#chronologie-avant-la-mise-en-production-dun-modèle",
+    "href": "slides/statcan-exchange/index.html#chronologie-avant-la-mise-en-production-dun-modèle",
+    "title": "MLOps exchange : An use case",
+    "section": "Chronologie avant la mise en production d’un modèle",
+    "text": "Chronologie avant la mise en production d’un modèle\n\nExpérimentations par le SSP Lab et optimisation d’un modèle avec MLflow Tracking\nValidation du modèle par l’équipe métier\nLe SSP Lab transmet le binaire aux développeurs Sirene 4\nLes développeurs traduisent de Python à Java le preprocessing à effectuer en amont et intègre le modèle dans le module de codification"
   },
   {
-    "objectID": "slides/unece-conf/index.html#preprocessing",
-    "href": "slides/unece-conf/index.html#preprocessing",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Preprocessing",
-    "text": "Preprocessing\n\nPreprocessing essential for natural language processing.\nConstraints: simple, light and easily reproducible in Java .\n\n\n\n\n\n\n\n\nTransformation\nText description\n\n\n\n\nInput\n3 D: La Deratisation - La Desinsectisation - La Desinfection\n\n\nLower-case conversion\n3 d: la deratisation - la desinsectisation - la desinfection\n\n\nPunctuations removal\n3 d la deratisation la desinsectisation la desinfection"
+    "objectID": "slides/statcan-exchange/index.html#une-fois-le-modèle-en-production",
+    "href": "slides/statcan-exchange/index.html#une-fois-le-modèle-en-production",
+    "title": "MLOps exchange : An use case",
+    "section": "Une fois le modèle en production",
+    "text": "Une fois le modèle en production\n\n2 appels au module de classification :\n\nClassification automatique du code APE\nAide à la reprise manuelle via une IHM\n\nObservabilité du modèle :\n\nLogs accessibles seulement sur les machines de production ➨ demande nécessaire\nPas de constitution de jeu d’évaluation en continu"
   },
   {
-    "objectID": "slides/unece-conf/index.html#preprocessing-1",
-    "href": "slides/unece-conf/index.html#preprocessing-1",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Preprocessing",
-    "text": "Preprocessing\n\n\n\n\n\n\n\nTransformation\nText description\n\n\n\n\nInput\n3 D: La Deratisation - La Desinsectisation - La Desinfection\n\n\n…\n…\n\n\nNumbers removal\nd la deratisation la desinsectisation la desinfection\n\n\nOne-letter word removal\nla deratisation la desinsectisation la desinfection\n\n\nStopwords removal\nderatisation desinsectisation desinfection"
+    "objectID": "slides/statcan-exchange/index.html#retour-dexpérience",
+    "href": "slides/statcan-exchange/index.html#retour-dexpérience",
+    "title": "MLOps exchange : An use case",
+    "section": "Retour d’expérience",
+    "text": "Retour d’expérience\n\nAPI Java vs. expérimentation Python :\n\nDuplication de code\nRisque d’erreurs accru\n\nProblèmes liés à l’utilisation de FastText :\n\nmaintenance\nreproductibilité\nsécurité\n\nInfrastructure de production rigide."
   },
   {
-    "objectID": "slides/unece-conf/index.html#preprocessing-2",
-    "href": "slides/unece-conf/index.html#preprocessing-2",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Preprocessing",
-    "text": "Preprocessing\n\n\n\nTransformation\nText description\n\n\n\n\nInput\n3 D: La Deratisation - La Desinsectisation - La Desinfection\n\n\n…\n…\n\n\nNaN removal\nderatisation desinsectisation desinfection\n\n\nStemming\nderatis desinsectis desinfect"
+    "objectID": "slides/statcan-exchange/index.html#retour-dexpérience-1",
+    "href": "slides/statcan-exchange/index.html#retour-dexpérience-1",
+    "title": "MLOps exchange : An use case",
+    "section": "Retour d’expérience",
+    "text": "Retour d’expérience\n\nMéconnaissance des problèmes métier côté SSP Lab pour la maintenance.\nContrôle de version et transmission des modèles.\nConfiance et compréhension du classifieur nécessaires côté métier/gestionnaires Sirene.\nLogs difficilement accessibles et au format variable.\nPas d’accès aux bases Sirene (réentraînement)."
   },
   {
-    "objectID": "slides/unece-conf/index.html#a-good-overall-performance",
-    "href": "slides/unece-conf/index.html#a-good-overall-performance",
-    "title": "Classifying companies in France using machine learning",
-    "section": "A good overall performance",
-    "text": "A good overall performance\n\nFigure 1: Accuracy for various level of the NACE nomenclature.\nNearly 80% of labels from the one-stop shop are correctly coded.\nMost prediction errors are close in the nomenclature."
+    "objectID": "slides/statcan-exchange/index.html#organisation-visée",
+    "href": "slides/statcan-exchange/index.html#organisation-visée",
+    "title": "MLOps exchange : An use case",
+    "section": "Organisation visée",
+    "text": "Organisation visée\n\nObservabilité, maintenance du modèle côté Sirene (appui technique du SSP Lab)\nCluster Kubernetes de production\nS’affranchir de FastText\nUtilisation du plein potentiel de MLflow pour la gestion des modèles en production\nDéveloppement d’une API Python"
   },
   {
-    "objectID": "slides/unece-conf/index.html#streamlining-the-manual-coding-process",
-    "href": "slides/unece-conf/index.html#streamlining-the-manual-coding-process",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Streamlining the manual coding process",
-    "text": "Streamlining the manual coding process\n\nFigure 2: Top-\\(k\\) accuracy per sample.\nKnowledge of probabilities for each class.\nThe correct classification is among the top 5 most probable predictions in 94% of cases."
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Présentations codification automatique de l'APE",
+    "section": "",
+    "text": "Tous les supports sont sur le Github InseeFrLab {{&lt; fa brands github &gt;}}\n\n\n\n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Séminaire interne du département des méthodes statistiques de l'Insee\n\n            \n\n            \n            \n              \n                Thomas Faria et Tom Seimandi\n                Sep 1, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation lors de l'évènement de lancement du SSP Hub\n\n            \n\n            \n            \n              \n                Thomas Faria et Tom Seimandi\n                Apr 17, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the UNECE Machine Learning for Official Statistics Workshop 2023\n\n            \n\n            \n            \n              \n                Thomas Faria and Tom Seimandi\n                Jun 5, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation pour la formation Big Data donné à la BCEAO à Dakar\n\n            \n\n            \n            \n              \n                Romain Avouac, Thomas Faria et Tom Seimandi\n                Sep 27, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Slides used for an exchange with StatCan on MLOps\n\n            \n\n            \n            \n              \n                Romain Avouac, Thomas Faria et Tom Seimandi\n                Mar 19, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "slides/unece-conf/index.html#building-a-confidence-index",
-    "href": "slides/unece-conf/index.html#building-a-confidence-index",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Building a confidence index",
-    "text": "Building a confidence index\n\nFigure 3: Distribution of the confidence index based on prediction results.\nObjective: discriminate between bad and good predictions.\nSelected Confidence Index: difference between the two highest probabilities."
-  },
-  {
-    "objectID": "slides/unece-conf/index.html#efficiency-of-the-manual-coding-process",
-    "href": "slides/unece-conf/index.html#efficiency-of-the-manual-coding-process",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Efficiency of the manual coding process",
-    "text": "Efficiency of the manual coding process\n\nFigure 4: Accuracy for various shares of manual coding.\nOptimisation of manual coding process ➨ Performance improvement."
-  },
-  {
-    "objectID": "slides/unece-conf/index.html#deployment-of-the-model",
-    "href": "slides/unece-conf/index.html#deployment-of-the-model",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Deployment of the model",
-    "text": "Deployment of the model\n\nModels have been deployed in a production environment since November 2022.\nEmerging new challenges include:\n\nOrganisational issues.\nReal-time monitoring.\nRegular re-training.\n\nMLOps approach is required:\n\nJoin us on Wednesday, June 7th for a Hands-on Lab!"
+    "objectID": "index.html#présentation-relative-à-la-codificaation-automatique-de-lape",
+    "href": "index.html#présentation-relative-à-la-codificaation-automatique-de-lape",
+    "title": "Présentations codification automatique de l'APE",
+    "section": "",
+    "text": "Tous les supports sont sur le Github InseeFrLab {{&lt; fa brands github &gt;}}\n\n\n\n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Séminaire interne du département des méthodes statistiques de l'Insee\n\n            \n\n            \n            \n              \n                Thomas Faria et Tom Seimandi\n                Sep 1, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation lors de l'évènement de lancement du SSP Hub\n\n            \n\n            \n            \n              \n                Thomas Faria et Tom Seimandi\n                Apr 17, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the UNECE Machine Learning for Official Statistics Workshop 2023\n\n            \n\n            \n            \n              \n                Thomas Faria and Tom Seimandi\n                Jun 5, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation pour la formation Big Data donné à la BCEAO à Dakar\n\n            \n\n            \n            \n              \n                Romain Avouac, Thomas Faria et Tom Seimandi\n                Sep 27, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Slides used for an exchange with StatCan on MLOps\n\n            \n\n            \n            \n              \n                Romain Avouac, Thomas Faria et Tom Seimandi\n                Mar 19, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n\n\n\nNo matching items"
   }
 ]
