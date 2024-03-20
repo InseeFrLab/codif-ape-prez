@@ -1,8 +1,8 @@
 
 ## Current state of affairs
 
-- Model trained on Insee's [**cloud data science platform**]{.orange} :heart_eyes:
-- Coding engine [**developed in Java**]{.orange} inside of a monolithic architecture :tired_face:
+- Model trained on Insee's [**cloud data science platform**]{.orange} 😍
+- Coding engine [**developed in Java**]{.orange} inside of a monolithic architecture 😫
   - [**Code duplication**]{.blue2}
   - [**Reproductibility**]{.blue2} issues
   - [**Increased risk**]{.blue2} of error
@@ -55,6 +55,7 @@ model = mlflow.pyfunc.load_model(
   - [**Scalable**]{.blue2}
   - [**Modular**]{.blue2} and [**portable**]{.blue2}
 - [**Multiple endpoints**]{.orange}: batch, online
+- Continuous deployment with [**Argo CD**]{.orange}
 
 ## API serving
 
@@ -79,7 +80,7 @@ model = mlflow.pyfunc.load_model(
 
 ## Monitoring 
 
-![](../img/dashboard-en.png){fig-align="center"}
+![](../img/dashboard-en.png){height="200" fig-align="center"}
 
 ## Quality control
 

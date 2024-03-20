@@ -23,14 +23,8 @@ css: ../custom.css
 ascii: true
 ---
 
-# Context
-
 {{< include sections/1-Context.qmd >}}
 
-# Methodology
-
 {{< include sections/2-Methodo.qmd >}}
-
-# MLOps
 
 {{< include sections/3-MLOps.qmd >}}
