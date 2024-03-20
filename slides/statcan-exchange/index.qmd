@@ -1,7 +1,5 @@
 ---
-title: "MLOps exchange : An use case"
-subtitle: |
-  **[Journée SSP Hub]{.orange}**
+title: "MLOps at Insee: a use case for text classification"
 author: |
   [Romain Avouac](https://github.com/avouacr),
   [Thomas Faria](https://github.com/ThomasFaria),
