@@ -404,7 +404,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
- 
+<a href="https://github.com/avouacr">Romain Avouac</a>, <a href="https://github.com/ThomasFaria">Thomas Faria</a>, <a href="https://github.com/tomseimandi/">Tom Seimandi</a> 
 </div>
 </div>
 </div>
@@ -421,7 +421,9 @@
 <li>Refactoring of the Sirene <span class="blue2"><strong>information system</strong></span></li>
 <li>Companies register through a <span class="blue2"><strong>new channel</strong></span></li>
 <li><span class="blue2"><strong>Performance drop</strong></span> of the legacy coding engine</li>
+<li>Teams already <span class="blue2"><strong>overwhelmed</strong></span></li>
 </ul></li>
+<li><span class="orange"><strong>Consequence</strong></span>: Ideal moment to innovate (but under the constraint!)</li>
 </ul>
 </section>
 <section id="model" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -443,9 +445,14 @@
 <li><span class="blue2"><strong>Increased risk</strong></span> of error</li>
 <li><span class="blue2"><strong>Maintenance problems</strong></span></li>
 <li><span class="blue2"><strong>No monitoring</strong></span></li>
+<li><span class="blue2"><strong>No test data</strong></span></li>
 </ul></li>
 </ul>
 </section>
+<section id="current-state-of-affairs-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Current state of affairs</h2>
+
+<img data-src="../img/orga-post-prod-en.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="mlops-target" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>MLOps target</h2>
 <ul>
@@ -453,6 +460,7 @@
 <ul>
 <li>Experiment tracking and model store: <span class="blue2"><strong>MLflow</strong></span></li>
 <li>Model served via an API: <span class="blue2"><strong>FastAPI</strong></span></li>
+<li>Automation with <span class="blue2"><strong>ArgoCD</strong></span></li>
 <li>Monitoring dashboard: <span class="blue2"><strong>Quarto</strong></span> and <span class="blue2"><strong>DuckDB</strong></span></li>
 <li>Quality control: annotations with <span class="blue2"><strong>Label Studio</strong></span></li>
 </ul></li>
@@ -503,7 +511,7 @@
 <section id="api-serving-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>API serving</h2>
 
-<img data-src="../img/API.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="../img/api-datalab.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="monitoring" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Monitoring</h2>
 <ul>
@@ -531,12 +539,8 @@
 </section>
 <section id="monitoring-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Monitoring</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../img/dashboard-en.png" class="quarto-figure quarto-figure-center" height="200"></p>
-</figure>
-</div>
-</section>
+
+<img data-src="../img/monitoring-datalab.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="quality-control" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Quality control</h2>
 <ul>
@@ -546,8 +550,12 @@
 <li>Performance is diplayed on the <span class="orange"><strong>monitoring dashboard</strong></span></li>
 <li><span class="orange"><strong>Specific retraining</strong></span> is necessary when specific metrics decrease under a certain threshold (not done yet)</li>
 </ul>
+</section>
+<section id="quality-control-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Quality control</h2>
 
-<div class="quarto-auto-generated-content">
+
+<img data-src="../img/annotation-datalab.png" class="quarto-figure quarto-figure-center r-stretch"><div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
