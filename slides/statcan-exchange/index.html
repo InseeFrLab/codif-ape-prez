@@ -411,12 +411,7 @@
 
   <p class="date">19 March 2024</p>
 </section>
-<section>
-<section id="context" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Context</h1>
-
-</section>
-<section id="context-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<section id="context" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Context</h2>
 <ul>
 <li><span class="orange"><strong>Sirene</strong></span> is the French national company registry</li>
@@ -428,11 +423,6 @@
 <li><span class="blue2"><strong>Performance drop</strong></span> of the legacy coding engine</li>
 </ul></li>
 </ul>
-</section></section>
-<section>
-<section id="methodology" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Methodology</h1>
-
 </section>
 <section id="model" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Model</h2>
@@ -441,17 +431,12 @@
 <li>For now we use the <span class="orange"><strong>fastText</strong></span> library</li>
 <li>Originally trained on legacy data annotated partly by the <span class="orange"><strong>coding engine</strong></span> and partly <span class="orange"><strong>manually</strong></span></li>
 </ul>
-</section></section>
-<section>
-<section id="mlops" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>MLOps</h1>
-
 </section>
 <section id="current-state-of-affairs" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Current state of affairs</h2>
 <ul>
-<li>Model trained on Insee’s <span class="orange"><strong>cloud data science platform</strong></span> :heart_eyes:</li>
-<li>Coding engine <span class="orange"><strong>developed in Java</strong></span> inside of a monolithic architecture :tired_face:
+<li>Model trained on Insee’s <span class="orange"><strong>cloud data science platform</strong></span> 😍</li>
+<li>Coding engine <span class="orange"><strong>developed in Java</strong></span> inside of a monolithic architecture 😫
 <ul>
 <li><span class="blue2"><strong>Code duplication</strong></span></li>
 <li><span class="blue2"><strong>Reproductibility</strong></span> issues</li>
@@ -512,6 +497,7 @@
 <li><span class="blue2"><strong>Modular</strong></span> and <span class="blue2"><strong>portable</strong></span></li>
 </ul></li>
 <li><span class="orange"><strong>Multiple endpoints</strong></span>: batch, online</li>
+<li>Continuous deployment with <span class="orange"><strong>Argo CD</strong></span></li>
 </ul>
 </section>
 <section id="api-serving-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -545,8 +531,12 @@
 </section>
 <section id="monitoring-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Monitoring</h2>
-
-<img data-src="../img/dashboard-en.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../img/dashboard-en.png" class="quarto-figure quarto-figure-center" height="200"></p>
+</figure>
+</div>
+</section>
 <section id="quality-control" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Quality control</h2>
 <ul>
@@ -562,7 +552,7 @@
 
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 

@@ -469,8 +469,8 @@
     "text": "Organisation visée\n\nObservabilité, maintenance du modèle côté Sirene (appui technique du SSP Lab)\nCluster Kubernetes de production\nS’affranchir de FastText\nUtilisation du plein potentiel de MLflow pour la gestion des modèles en production\nDéveloppement d’une API Python"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#context-1",
-    "href": "slides/statcan-exchange/index.html#context-1",
+    "objectID": "slides/statcan-exchange/index.html#context",
+    "href": "slides/statcan-exchange/index.html#context",
     "title": "MLOps at Insee: a use case for text classification",
     "section": "Context",
     "text": "Context\n\nSirene is the French national company registry\nWhen a company registers, an activity code is attributed\nEarly 2023:\n\nRefactoring of the Sirene information system\nCompanies register through a new channel\nPerformance drop of the legacy coding engine"
@@ -487,7 +487,7 @@
     "href": "slides/statcan-exchange/index.html#current-state-of-affairs",
     "title": "MLOps at Insee: a use case for text classification",
     "section": "Current state of affairs",
-    "text": "Current state of affairs\n\nModel trained on Insee’s cloud data science platform :heart_eyes:\nCoding engine developed in Java inside of a monolithic architecture :tired_face:\n\nCode duplication\nReproductibility issues\nIncreased risk of error\nMaintenance problems\nNo monitoring"
+    "text": "Current state of affairs\n\nModel trained on Insee’s cloud data science platform 😍\nCoding engine developed in Java inside of a monolithic architecture 😫\n\nCode duplication\nReproductibility issues\nIncreased risk of error\nMaintenance problems\nNo monitoring"
   },
   {
     "objectID": "slides/statcan-exchange/index.html#mlops-target",
@@ -515,7 +515,7 @@
     "href": "slides/statcan-exchange/index.html#api-serving",
     "title": "MLOps at Insee: a use case for text classification",
     "section": "API serving",
-    "text": "API serving\n\nText classification model served through a containerized REST API:\n\nSimplicity for end users\nStandard query format\nScalable\nModular and portable\n\nMultiple endpoints: batch, online"
+    "text": "API serving\n\nText classification model served through a containerized REST API:\n\nSimplicity for end users\nStandard query format\nScalable\nModular and portable\n\nMultiple endpoints: batch, online\nContinuous deployment with Argo CD"
   },
   {
     "objectID": "slides/statcan-exchange/index.html#api-serving-1",
