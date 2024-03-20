@@ -469,81 +469,67 @@
     "text": "Organisation visée\n\nObservabilité, maintenance du modèle côté Sirene (appui technique du SSP Lab)\nCluster Kubernetes de production\nS’affranchir de FastText\nUtilisation du plein potentiel de MLflow pour la gestion des modèles en production\nDéveloppement d’une API Python"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#contexte",
-    "href": "slides/statcan-exchange/index.html#contexte",
+    "objectID": "slides/statcan-exchange/index.html#context-1",
+    "href": "slides/statcan-exchange/index.html#context-1",
     "title": "MLOps exchange : An use case",
-    "section": "Contexte",
-    "text": "Contexte\n\nPlusieurs changements majeurs :\n\nInterne : Refonte du répertoire Sirene 4.\nExterne : Mise en place d’un guichet unique.\n\nConstat : Sicore n’est plus l’outil adapté ➨ 30% de codification automatique.\nConséquence : moment idéal pour proposer une nouvelle méthodologie de codification automatique de l’APE."
+    "section": "Context",
+    "text": "Context\n\nSirene is the French national company registry\nWhen a company registers, an activity code is attributed\nEarly 2023:\n\nRefactoring of the Sirene information system\nCompanies register through a new channel\nPerformance drop of the legacy coding engine"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#données",
-    "href": "slides/statcan-exchange/index.html#données",
+    "objectID": "slides/statcan-exchange/index.html#model",
+    "href": "slides/statcan-exchange/index.html#model",
     "title": "MLOps exchange : An use case",
-    "section": "Données",
-    "text": "Données\n\n\\(\\approx\\) 10 millions de liasses d’entreprises issues de Sirene 3 couvrant la période 2014-2022.\nDonnées labellisées par Sicore ou par un gestionnaire.\nUne observation consiste en :\n\nun descriptif textuel de l’activité\nla nature de l’activité – NAT (23 modalités)\nle type de la liasse – TYP (15 modalités)\nle type d’évènement – EVT (24 modalités)\nla surface (\\(m^2\\))– SUR (4 modalités)"
+    "section": "Model",
+    "text": "Model\n\nText classification model which uses additional categorical variables\nFor now we use the fastText library\nOriginally trained on legacy data annotated partly by the coding engine and partly manually"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#la-nomenclature-hiérarchique-de-lape",
-    "href": "slides/statcan-exchange/index.html#la-nomenclature-hiérarchique-de-lape",
+    "objectID": "slides/statcan-exchange/index.html#current-state-of-affairs",
+    "href": "slides/statcan-exchange/index.html#current-state-of-affairs",
     "title": "MLOps exchange : An use case",
-    "section": "La nomenclature hiérarchique de l’APE",
-    "text": "La nomenclature hiérarchique de l’APE\n\n\n\n\n\n\n\n\n\nNiveau\nCode\nLibellé\nTaille\n\n\n\n\nSection\nH\nTransports et entreposage\n21\n\n\nDivision\n52\nEntreposage et services auxiliaires des transports\n88\n\n\nGroupe\n522\nServices auxiliaires des transports\n272\n\n\nClasse\n5224\nManutention\n615\n\n\nSous-classe\n5224A\nManutention portuaire\n732"
+    "section": "Current state of affairs",
+    "text": "Current state of affairs\n\nModel trained on Insee’s cloud data science platform :heart_eyes:\nCoding engine developed in Java inside of a monolithic architecture :tired_face:\n\nCode duplication\nReproductibility issues\nIncreased risk of error\nMaintenance problems\nNo monitoring"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#vectorisation-des-libellés",
-    "href": "slides/statcan-exchange/index.html#vectorisation-des-libellés",
+    "objectID": "slides/statcan-exchange/index.html#mlops-target",
+    "href": "slides/statcan-exchange/index.html#mlops-target",
     "title": "MLOps exchange : An use case",
-    "section": "Vectorisation des libellés",
-    "text": "Vectorisation des libellés\n\nPlongements lexicaux : méthode de vectorisation.\nModèle “Bag of n-grams”. On apprend des plongements pour les mots, les n-grams de mots et n-grams de caractères."
+    "section": "MLOps target",
+    "text": "MLOps target\n\nMicroservice architecture running on a Kubernetes cluster\n\nExperiment tracking and model store: MLflow\nModel served via an API: FastAPI\nMonitoring dashboard: Quarto and DuckDB\nQuality control: annotations with Label Studio"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#classification",
-    "href": "slides/statcan-exchange/index.html#classification",
+    "objectID": "slides/statcan-exchange/index.html#experiment-tracking",
+    "href": "slides/statcan-exchange/index.html#experiment-tracking",
     "title": "MLOps exchange : An use case",
-    "section": "Classification",
-    "text": "Classification\n\n\n\n\n\n\nModèle simple qui fonctionne bien dans notre contexte.\nIndice de confiance calculé pour chaque prédiction."
+    "section": "Experiment tracking",
+    "text": "Experiment tracking"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#organisation-actuelle",
-    "href": "slides/statcan-exchange/index.html#organisation-actuelle",
+    "objectID": "slides/statcan-exchange/index.html#model-store",
+    "href": "slides/statcan-exchange/index.html#model-store",
     "title": "MLOps exchange : An use case",
-    "section": "Organisation actuelle",
-    "text": "Organisation actuelle\n\n3 parties prenantes autour du projet :\n\nÉquipe métier\nDéveloppeur Sirene 4\nSSP Lab\n\nMise en production (trop?) rapide :\n\nProblèmatique : équipes Sirene surchargées\nT1 2022 : lancement des expérimentations\nNovembre 2022 : 1ère mise en production de manière progressive et restrictive"
+    "section": "Model store",
+    "text": "Model store"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#chronologie-avant-la-mise-en-production-dun-modèle",
-    "href": "slides/statcan-exchange/index.html#chronologie-avant-la-mise-en-production-dun-modèle",
+    "objectID": "slides/statcan-exchange/index.html#api-serving",
+    "href": "slides/statcan-exchange/index.html#api-serving",
     "title": "MLOps exchange : An use case",
-    "section": "Chronologie avant la mise en production d’un modèle",
-    "text": "Chronologie avant la mise en production d’un modèle\n\nExpérimentations par le SSP Lab et optimisation d’un modèle avec MLflow Tracking\nValidation du modèle par l’équipe métier\nLe SSP Lab transmet le binaire aux développeurs Sirene 4\nLes développeurs traduisent de Python à Java le preprocessing à effectuer en amont et intègre le modèle dans le module de codification"
+    "section": "API serving",
+    "text": "API serving"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#une-fois-le-modèle-en-production",
-    "href": "slides/statcan-exchange/index.html#une-fois-le-modèle-en-production",
+    "objectID": "slides/statcan-exchange/index.html#monitoring",
+    "href": "slides/statcan-exchange/index.html#monitoring",
     "title": "MLOps exchange : An use case",
-    "section": "Une fois le modèle en production",
-    "text": "Une fois le modèle en production\n\n2 appels au module de classification :\n\nClassification automatique du code APE\nAide à la reprise manuelle via une IHM\n\nObservabilité du modèle :\n\nLogs accessibles seulement sur les machines de production ➨ demande nécessaire\nPas de constitution de jeu d’évaluation en continu"
+    "section": "Monitoring",
+    "text": "Monitoring"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#retour-dexpérience",
-    "href": "slides/statcan-exchange/index.html#retour-dexpérience",
+    "objectID": "slides/statcan-exchange/index.html#quality-control",
+    "href": "slides/statcan-exchange/index.html#quality-control",
     "title": "MLOps exchange : An use case",
-    "section": "Retour d’expérience",
-    "text": "Retour d’expérience\n\nAPI Java vs. expérimentation Python :\n\nDuplication de code\nRisque d’erreurs accru\n\nProblèmes liés à l’utilisation de FastText :\n\nmaintenance\nreproductibilité\nsécurité\n\nInfrastructure de production rigide."
-  },
-  {
-    "objectID": "slides/statcan-exchange/index.html#retour-dexpérience-1",
-    "href": "slides/statcan-exchange/index.html#retour-dexpérience-1",
-    "title": "MLOps exchange : An use case",
-    "section": "Retour d’expérience",
-    "text": "Retour d’expérience\n\nMéconnaissance des problèmes métier côté SSP Lab pour la maintenance.\nContrôle de version et transmission des modèles.\nConfiance et compréhension du classifieur nécessaires côté métier/gestionnaires Sirene.\nLogs difficilement accessibles et au format variable.\nPas d’accès aux bases Sirene (réentraînement)."
-  },
-  {
-    "objectID": "slides/statcan-exchange/index.html#organisation-visée",
-    "href": "slides/statcan-exchange/index.html#organisation-visée",
-    "title": "MLOps exchange : An use case",
-    "section": "Organisation visée",
-    "text": "Organisation visée\n\nObservabilité, maintenance du modèle côté Sirene (appui technique du SSP Lab)\nCluster Kubernetes de production\nS’affranchir de FastText\nUtilisation du plein potentiel de MLflow pour la gestion des modèles en production\nDéveloppement d’une API Python"
+    "section": "Quality control",
+    "text": "Quality control"
   },
   {
     "objectID": "index.html",

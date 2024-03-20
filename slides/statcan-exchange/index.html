@@ -353,111 +353,30 @@
 <h1>Context</h1>
 
 </section>
-<section id="contexte" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Contexte</h2>
+<section id="context-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Context</h2>
 <ul>
-<li><p><span class="orange"><strong>Plusieurs changements majeurs</strong></span> :</p>
+<li><span class="orange"><strong>Sirene</strong></span> is the French national company registry</li>
+<li>When a company registers, an <span class="orange"><strong>activity code</strong></span> is attributed</li>
+<li>Early 2023:
 <ul>
-<li><span class="blue2"><strong>Interne</strong></span> : Refonte du répertoire <span class="green2"><strong>Sirene 4</strong></span>.</li>
-<li><span class="blue2"><strong>Externe</strong></span> : Mise en place d’un <span class="green2"><strong>guichet unique</strong></span>.</li>
-</ul></li>
-<li><p><span class="orange"><strong>Constat</strong></span> : <span class="blue2"><strong>Sicore</strong></span> n’est plus l’outil adapté ➨ 30% de codification automatique.</p></li>
-<li><p><span class="orange"><strong>Conséquence</strong></span> : moment idéal pour proposer une nouvelle méthodologie de codification automatique de l’APE.</p></li>
-</ul>
-</section>
-<section id="données" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Données</h2>
-<ul>
-<li><span class="orange"><span class="math inline">\(\approx\)</span> <strong>10 millions</strong></span> de liasses d’entreprises issues de Sirene 3 couvrant la période 2014-2022.</li>
-<li><span class="orange"><strong>Données labellisées</strong></span> par Sicore ou par un gestionnaire.</li>
-<li>Une observation consiste en :
-<ul>
-<li>un <span class="red2"><strong>descriptif textuel</strong></span> de l’activité</li>
-<li>la <span class="blue2"><strong>nature de l’activité</strong></span> – <span class="green2">NAT</span> (23 modalités)</li>
-<li>le <span class="blue2"><strong>type de la liasse</strong></span> – <span class="green2">TYP</span> (15 modalités)</li>
-<li>le <span class="blue2"><strong>type d’évènement</strong></span> – <span class="green2">EVT</span> (24 modalités)</li>
-<li>la <span class="blue2"><strong>surface (<span class="math inline">\(m^2\)</span>)</strong></span>– <span class="green2">SUR</span> (4 modalités)</li>
+<li>Refactoring of the Sirene <span class="blue2"><strong>information system</strong></span></li>
+<li>Companies register through a <span class="blue2"><strong>new channel</strong></span></li>
+<li><span class="blue2"><strong>Performance drop</strong></span> of the legacy coding engine</li>
 </ul></li>
 </ul>
-</section>
-<section id="la-nomenclature-hiérarchique-de-lape" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>La nomenclature hiérarchique de l’APE</h2>
-<table>
-<colgroup>
-<col style="width: 19%">
-<col style="width: 16%">
-<col style="width: 61%">
-<col style="width: 2%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Niveau</th>
-<th>Code</th>
-<th>Libellé</th>
-<th>Taille</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Section</td>
-<td>H</td>
-<td>Transports et entreposage</td>
-<td>21</td>
-</tr>
-<tr class="even">
-<td>Division</td>
-<td>52</td>
-<td>Entreposage et services auxiliaires des transports</td>
-<td>88</td>
-</tr>
-<tr class="odd">
-<td>Groupe</td>
-<td>522</td>
-<td>Services auxiliaires des transports</td>
-<td>272</td>
-</tr>
-<tr class="even">
-<td>Classe</td>
-<td>5224</td>
-<td>Manutention</td>
-<td>615</td>
-</tr>
-<tr class="odd">
-<td><strong>Sous-classe</strong></td>
-<td><span class="red2"><strong>5224A</strong></span></td>
-<td><strong>Manutention portuaire</strong></td>
-<td><span class="orange"><strong>732</strong></span></td>
-</tr>
-</tbody>
-</table>
 </section></section>
 <section>
 <section id="methodology" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
 <h1>Methodology</h1>
 
 </section>
-<section id="vectorisation-des-libellés" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Vectorisation des libellés</h2>
+<section id="model" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Model</h2>
 <ul>
-<li><span class="orange"><strong>Plongements lexicaux</strong></span> : méthode de <span class="blue2"><strong>vectorisation</strong></span>.</li>
-<li>Modèle <span class="orange"><strong>“Bag of n-grams”</strong></span>. On apprend des plongements pour les <span class="blue2"><strong>mots</strong></span>, les <span class="blue2"><strong>n-grams de mots</strong></span> et <span class="blue2"><strong>n-grams de caractères</strong></span>.</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../img/n-grams.png" class="quarto-figure quarto-figure-center" height="250"></p>
-</figure>
-</div>
-</section>
-<section id="classification" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Classification</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../img/fastText_desc_ape.png" class="quarto-figure quarto-figure-center" height="400"></p>
-</figure>
-</div>
-<ul>
-<li>Modèle <span class="orange"><strong>simple</strong></span> qui fonctionne bien dans notre contexte.</li>
-<li><span class="orange"><strong>Indice de confiance</strong></span> calculé pour chaque prédiction.</li>
+<li><span class="orange"><strong>Text classification</strong></span> model which uses additional categorical variables</li>
+<li>For now we use the <span class="orange"><strong>fastText</strong></span> library</li>
+<li>Originally trained on legacy data annotated partly by the <span class="orange"><strong>coding engine</strong></span> and partly <span class="orange"><strong>manually</strong></span></li>
 </ul>
 </section></section>
 <section>
@@ -465,83 +384,46 @@
 <h1>MLOps</h1>
 
 </section>
-<section id="organisation-actuelle" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Organisation actuelle</h2>
+<section id="current-state-of-affairs" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Current state of affairs</h2>
 <ul>
-<li><span class="orange"><strong>3 parties prenantes</strong></span> autour du projet :
+<li>Model trained on Insee’s <span class="orange"><strong>cloud data science platform</strong></span> :heart_eyes:</li>
+<li>Coding engine <span class="orange"><strong>developed in Java</strong></span> inside of a monolithic architecture :tired_face:
 <ul>
-<li><span class="blue2"><strong>Équipe métier</strong></span></li>
-<li><span class="blue2"><strong>Développeur</strong></span> Sirene 4</li>
-<li><span class="blue2"><strong>SSP Lab</strong></span></li>
-</ul></li>
-<li>Mise en production (trop?) <span class="orange"><strong>rapide</strong></span> :
-<ul>
-<li><span class="blue2"><strong>Problèmatique</strong></span> : équipes Sirene surchargées</li>
-<li><span class="blue2"><strong>T1 2022</strong></span> : lancement des expérimentations</li>
-<li><span class="blue2"><strong>Novembre 2022</strong></span> : 1ère mise en production de manière <span class="green2"><strong>progressive</strong></span> et <span class="green2"><strong>restrictive</strong></span></li>
+<li><span class="blue2"><strong>Code duplication</strong></span></li>
+<li><span class="blue2"><strong>Reproductibility</strong></span> issues</li>
+<li><span class="blue2"><strong>Increased risk</strong></span> of error</li>
+<li><span class="blue2"><strong>Maintenance problems</strong></span></li>
+<li><span class="blue2"><strong>No monitoring</strong></span></li>
 </ul></li>
 </ul>
 </section>
-<section id="chronologie-avant-la-mise-en-production-dun-modèle" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Chronologie avant la mise en production d’un modèle</h2>
-<ol type="1">
-<li>Expérimentations par le <span class="orange"><strong>SSP Lab</strong></span> et optimisation d’un modèle avec <em>MLflow Tracking</em></li>
-<li>Validation du modèle par l’<span class="orange"><strong>équipe métier</strong></span></li>
-<li>Le <span class="orange"><strong>SSP Lab</strong></span> transmet le binaire aux <span class="orange"><strong>développeurs</strong></span> Sirene 4</li>
-<li>Les <span class="orange"><strong>développeurs</strong></span> traduisent de Python à Java le <em>preprocessing</em> à effectuer en amont et intègre le modèle dans le module de codification</li>
-</ol>
-</section>
-<section id="une-fois-le-modèle-en-production" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Une fois le modèle en production</h2>
+<section id="mlops-target" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>MLOps target</h2>
 <ul>
-<li><span class="orange"><strong>2 appels</strong></span> au module de classification :
-<ol type="1">
-<li><span class="blue2"><strong>Classification automatique</strong></span> du code APE</li>
-<li><span class="blue2"><strong>Aide à la reprise manuelle</strong></span> via une <em>IHM</em></li>
-</ol></li>
-<li><span class="orange"><strong>Observabilité</strong></span> du modèle :
+<li>Microservice architecture running on a <span class="orange"><strong>Kubernetes cluster</strong></span>
 <ul>
-<li>Logs accessibles seulement sur les machines de production ➨ demande nécessaire</li>
-<li>Pas de constitution de jeu d’évaluation en continu</li>
+<li>Experiment tracking and model store: <span class="blue2"><strong>MLflow</strong></span></li>
+<li>Model served via an API: <span class="blue2"><strong>FastAPI</strong></span></li>
+<li>Monitoring dashboard: <span class="blue2"><strong>Quarto</strong></span> and <span class="blue2"><strong>DuckDB</strong></span></li>
+<li>Quality control: annotations with <span class="blue2"><strong>Label Studio</strong></span></li>
 </ul></li>
 </ul>
 </section>
-<section id="retour-dexpérience" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Retour d’expérience</h2>
-<ul>
-<li>API <span class="orange"><strong>Java</strong></span> vs.&nbsp;expérimentation <span class="orange"><strong>Python</strong></span> :
-<ul>
-<li>Duplication de code</li>
-<li>Risque d’erreurs accru</li>
-</ul></li>
-<li>Problèmes liés à l’utilisation de <span class="orange"><strong>FastText</strong></span> :
-<ul>
-<li><span class="blue2"><strong>maintenance</strong></span></li>
-<li><span class="blue2"><strong>reproductibilité</strong></span></li>
-<li><span class="blue2"><strong>sécurité</strong></span></li>
-</ul></li>
-<li>Infrastructure de production <span class="orange"><strong>rigide</strong></span>.</li>
-</ul>
+<section id="experiment-tracking" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Experiment tracking</h2>
 </section>
-<section id="retour-dexpérience-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Retour d’expérience</h2>
-<ul>
-<li><span class="orange"><strong>Méconnaissance des problèmes métier</strong></span> côté SSP Lab pour la maintenance.</li>
-<li><span class="orange"><strong>Contrôle de version</strong></span> et <span class="orange"><strong>transmission</strong></span> des modèles.</li>
-<li><span class="orange"><strong>Confiance</strong></span> et compréhension du classifieur nécessaires côté métier/gestionnaires Sirene.</li>
-<li>Logs <span class="orange"><strong>difficilement accessibles</strong></span> et au format variable.</li>
-<li>Pas d’accès aux <span class="orange"><strong>bases Sirene</strong></span> (réentraînement).</li>
-</ul>
+<section id="model-store" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Model store</h2>
 </section>
-<section id="organisation-visée" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Organisation visée</h2>
-<ul>
-<li><span class="orange"><strong>Observabilité, maintenance</strong></span> du modèle côté Sirene (appui technique du SSP Lab)</li>
-<li>Cluster Kubernetes de production</li>
-<li>S’affranchir de <span class="orange"><strong>FastText</strong></span></li>
-<li>Utilisation du plein potentiel de <span class="orange"><strong>MLflow</strong></span> pour la gestion des modèles en production</li>
-<li>Développement d’une <a href="https://codification-ape.lab.sspcloud.fr/docs#/Predict/predict_predict_get" data-preview-link="true">API</a> Python</li>
-</ul>
+<section id="api-serving" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>API serving</h2>
+</section>
+<section id="monitoring" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Monitoring</h2>
+</section>
+<section id="quality-control" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Quality control</h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
