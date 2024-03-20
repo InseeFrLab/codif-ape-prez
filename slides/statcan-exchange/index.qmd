@@ -1,9 +1,6 @@
 ---
 title: "MLOps at Insee: a use case for text classification"
-author: |
-  [Romain Avouac](https://github.com/avouacr),
-  [Thomas Faria](https://github.com/ThomasFaria),
-  [Tom Seimandi](https://github.com/tomseimandi/)
+author: "[Romain Avouac](https://github.com/avouacr), [Thomas Faria](https://github.com/ThomasFaria), [Tom Seimandi](https://github.com/tomseimandi/)"
 date: "03/19/2024"
 date-format: "D MMMM YYYY"
 slide-number: true

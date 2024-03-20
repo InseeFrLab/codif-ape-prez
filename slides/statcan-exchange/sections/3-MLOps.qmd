@@ -8,12 +8,19 @@
   - [**Increased risk**]{.blue2} of error
   - [**Maintenance problems**]{.blue2}
   - [**No monitoring**]{.blue2}
+  - [**No test data**]{.blue2}
+
+## Current state of affairs
+
+![](../img/orga-post-prod-en.png){fig-align="center"}
+
 
 ## MLOps target
 
 - Microservice architecture running on a [**Kubernetes cluster**]{.orange}
   - Experiment tracking and model store: [**MLflow**]{.blue2}
   - Model served via an API: [**FastAPI**]{.blue2}
+  - Automation with [**ArgoCD**]{.blue2}
   - Monitoring dashboard: [**Quarto**]{.blue2} and [**DuckDB**]{.blue2}
   - Quality control: annotations with [**Label Studio**]{.blue2}
 
@@ -59,7 +66,7 @@ model = mlflow.pyfunc.load_model(
 
 ## API serving
 
-![](../img/API.png){fig-align="center"}
+![](../img/api-datalab.png){fig-align="center"}
 
 ## Monitoring 
 
@@ -80,7 +87,7 @@ model = mlflow.pyfunc.load_model(
 
 ## Monitoring 
 
-![](../img/dashboard-en.png){height="200" fig-align="center"}
+![](../img/monitoring-datalab){fig-align="center"}
 
 ## Quality control
 
@@ -89,3 +96,7 @@ model = mlflow.pyfunc.load_model(
 - [**Performance metrics**]{.orange} are computed on the test data
 - Performance is diplayed on the [**monitoring dashboard**]{.orange}
 - [**Specific retraining**]{.orange} is necessary when specific metrics decrease under a certain threshold (not done yet)
+
+## Quality control
+
+![](../img/annotation-datalab.png){fig-align="center"}
