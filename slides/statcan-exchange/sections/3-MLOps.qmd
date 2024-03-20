@@ -1,56 +1,29 @@
 
-## Organisation actuelle
+## Current state of affairs
 
-- [**3 parties prenantes**]{.orange} autour du projet :
-  - [**Équipe métier**]{.blue2}
-  - [**Développeur**]{.blue2} Sirene 4
-  - [**SSP Lab**]{.blue2}
+- Model trained on Insee's [**cloud data science platform**]{.orange} :heart_eyes:
+- Coding engine [**developed in Java**]{.orange} inside of a monolithic architecture :tired_face:
+  - [**Code duplication**]{.blue2}
+  - [**Reproductibility**]{.blue2} issues
+  - [**Increased risk**]{.blue2} of error
+  - [**Maintenance problems**]{.blue2}
+  - [**No monitoring**]{.blue2}
 
-- Mise en production (trop?) [**rapide**]{.orange} :
-  - [**Problèmatique**]{.blue2} : équipes Sirene surchargées
-  - [**T1 2022**]{.blue2} : lancement des expérimentations
-  - [**Novembre 2022**]{.blue2} : 1ère mise en production de manière [**progressive**]{.green2} et [**restrictive**]{.green2}
+## MLOps target
 
-## Chronologie avant la mise en production d'un modèle
+- Microservice architecture running on a [**Kubernetes cluster**]{.orange}
+  - Experiment tracking and model store: [**MLflow**]{.blue2}
+  - Model served via an API: [**FastAPI**]{.blue2}
+  - Monitoring dashboard: [**Quarto**]{.blue2} and [**DuckDB**]{.blue2}
+  - Quality control: annotations with [**Label Studio**]{.blue2}
 
-  1) Expérimentations par le [**SSP Lab**]{.orange} et optimisation d'un modèle avec *MLflow Tracking*
-  2) Validation du modèle par l'[**équipe métier**]{.orange}
-  3) Le [**SSP Lab**]{.orange} transmet le binaire aux [**développeurs**]{.orange} Sirene 4
-  4) Les [**développeurs**]{.orange} traduisent de Python à Java le *preprocessing* à effectuer en amont et intègre le modèle dans le module de codification
+## Experiment tracking
 
-## Une fois le modèle en production
+## Model store
 
-- [**2 appels**]{.orange} au module de classification :
-  1) [**Classification automatique**]{.blue2} du code APE
-  2) [**Aide à la reprise manuelle**]{.blue2} via une *IHM*
+## API serving
 
-- [**Observabilité**]{.orange} du modèle :
-  - Logs accessibles seulement sur les machines de production ➨ demande nécessaire
-  - Pas de constitution de jeu d'évaluation en continu
+## Monitoring 
 
-## Retour d'expérience
+## Quality control
 
-- API [**Java**]{.orange} vs. expérimentation [**Python**]{.orange} :
-  - Duplication de code
-  - Risque d'erreurs accru
-- Problèmes liés à l'utilisation de [**FastText**]{.orange} :
-  - [**maintenance**]{.blue2}
-  - [**reproductibilité**]{.blue2}
-  - [**sécurité**]{.blue2}
-- Infrastructure de production [**rigide**]{.orange}.
-
-## Retour d'expérience
-
-- [**Méconnaissance des problèmes métier**]{.orange} côté SSP Lab pour la maintenance.
-- [**Contrôle de version**]{.orange} et [**transmission**]{.orange} des modèles.
-- [**Confiance**]{.orange} et compréhension du classifieur nécessaires côté métier/gestionnaires Sirene.
-- Logs [**difficilement accessibles**]{.orange} et au format variable.
-- Pas d'accès aux [**bases Sirene**]{.orange} (réentraînement).
-
-## Organisation visée
-
-- [**Observabilité, maintenance**]{.orange} du modèle côté Sirene (appui technique du SSP Lab)
-- Cluster Kubernetes de production
-- S'affranchir de [**FastText**]{.orange}
-- Utilisation du plein potentiel de [**MLflow**]{.orange} pour la gestion des modèles en production
-- Développement d'une [API](https://codification-ape.lab.sspcloud.fr/docs#/Predict/predict_predict_get){preview-link="true"} Python
