@@ -1,5 +1,5 @@
 ---
-title: "MLOps at Insee: a use case for text classification"
+title: "Classification of Business Activities by Machine Learning: The Case of France."
 author: "[Nathan Randriamanana](https://github.com/TheAIWizard)"
 date: "03/19/2024"
 date-format: "D MMMM YYYY"
