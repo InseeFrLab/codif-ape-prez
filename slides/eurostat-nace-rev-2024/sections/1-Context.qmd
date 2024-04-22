@@ -1,0 +1,11 @@
+## Context
+
+- [**Sirene**]{.orange} is the French national company registry
+- When a company registers, an [**activity code**]{.orange} is attributed
+- Early 2023:
+  - Refactoring of the Sirene [**information system**]{.blue2}
+  - Companies register through a [**new channel**]{.blue2}
+  - [**Performance drop**]{.blue2} of the legacy coding engine
+  - Teams already [**overwhelmed**]{.blue2}
+
+- [**Consequence**]{.orange}: Ideal moment to innovate (but under the constraint!)

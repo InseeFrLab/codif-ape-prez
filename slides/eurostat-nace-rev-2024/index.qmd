@@ -1,0 +1,27 @@
+---
+title: "MLOps at Insee: a use case for text classification"
+author: "[Nathan Randriamanana](https://github.com/TheAIWizard)"
+date: "03/19/2024"
+date-format: "D MMMM YYYY"
+slide-number: true
+# uncomment for French presentations:
+lang: en-GB
+# for blind readers:
+slide-tone: false
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  onyxia-revealjs:
+    output-file: index.html
+controls: true
+css: ../custom.css
+ascii: true
+---
+
+{{< include sections/1-Context.qmd >}}
+
+{{< include sections/2-Methodo.qmd >}}
+
+{{< include sections/3-MLOps.qmd >}}
