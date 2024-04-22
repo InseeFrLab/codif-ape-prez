@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-GB"><head>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -10,9 +10,9 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.553">
 
-  <meta name="author" content="Thomas Faria, Tom Seimandi">
-  <meta name="dcterms.date" content="2023-06-05">
-  <title>Présentations codification automatique de l’APE - Classifying companies in France using machine learning</title>
+  <meta name="author" content="Nathan Randriamanana">
+  <meta name="dcterms.date" content="2024-03-19">
+  <title>Présentations codification automatique de l’APE - MLOps at Insee: a use case for text classification</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="../_extensions/InseeFrLab/onyxia/logo.css">
@@ -326,8 +391,7 @@
     }
   </style>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<meta property="og:title" content="Présentations codification automatique de l’APE - Classifying companies in France using machine learning">
-<meta property="og:description" content="UNECE Machine Learning for Official Statistics Workshop 2023">
+<meta property="og:title" content="Présentations codification automatique de l’APE - MLOps at Insee: a use case for text classification">
 <meta property="og:site_name" content="Présentations codification automatique de l'APE">
 </head>
 <body class="quarto-light">
@@ -335,357 +399,168 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="../_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Classifying companies in France using machine learning</h1>
-  <p class="subtitle"></p><p><strong><span class="orange">UNECE Machine Learning for Official Statistics Workshop 2023</span></strong></p><p></p>
+  <h1 class="title">MLOps at Insee: a use case for text classification</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<a href="https://github.com/ThomasFaria">Thomas Faria</a>, <a href="https://github.com/tomseimandi/">Tom Seimandi</a> 
+<a href="https://github.com/TheAIWizard">Nathan Randriamanana</a> 
 </div>
 </div>
 </div>
 
-  <p class="date">5 June 2023</p>
+  <p class="date">19 March 2024</p>
 </section>
-<section>
-<section id="context" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Context</h1>
-
-</section>
-<section id="context-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<section id="context" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Context</h2>
 <ul>
-<li><p><span class="orange"><strong>Several major changes</strong></span>:</p>
+<li><span class="orange"><strong>Sirene</strong></span> is the French national company registry</li>
+<li>When a company registers, an <span class="orange"><strong>activity code</strong></span> is attributed</li>
+<li>Early 2023:
 <ul>
-<li><span class="blue2"><strong>Internal</strong></span>: Revamping of the French company registry, <span class="green2"><strong>Sirene 4</strong></span>.</li>
-<li><span class="blue2"><strong>External</strong></span>: Implementation of a <span class="green2"><strong>one-stop shop</strong></span> to declare the creation of a business.</li>
+<li>Refactoring of the Sirene <span class="blue2"><strong>information system</strong></span></li>
+<li>Companies register through a <span class="blue2"><strong>new channel</strong></span></li>
+<li><span class="blue2"><strong>Performance drop</strong></span> of the legacy coding engine</li>
+<li>Teams already <span class="blue2"><strong>overwhelmed</strong></span></li>
 </ul></li>
-<li><p><span class="orange"><strong>Observation</strong></span>: <span class="blue2"><strong>Sicore</strong></span> is no longer a suitable tool ➨ 30% automated coding.</p></li>
-<li><p><span class="orange"><strong>Consequence</strong></span>: Ideal moment to propose a new methodology for automated NACE coding.</p></li>
+<li><span class="orange"><strong>Consequence</strong></span>: Ideal moment to innovate (but under the constraint!)</li>
 </ul>
 </section>
-<section id="data" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Data</h2>
+<section id="model" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Model</h2>
 <ul>
-<li><p><span class="orange"><span class="math inline">\(\approx\)</span> <strong>10 million</strong></span> observations from Sirene 3 covering the period 2014-2022.</p></li>
-<li><p><span class="orange"><strong>Data labeled</strong></span> both by Sicore and manually.</p></li>
-<li><p>An observation consists of:</p>
-<ul>
-<li>A <span class="red2"><strong>textual description</strong></span> of the activity</li>
-<li>The <span class="blue2"><strong>nature of the activity</strong></span> – <span class="green2">NAT</span> (23 categories)</li>
-<li>The <span class="blue2"><strong>type of form</strong></span> – <span class="green2">TYP</span> (15 categories)</li>
-<li>The <span class="blue2"><strong>type of event</strong></span> – <span class="green2">EVT</span> (24 categories)</li>
-<li>The <span class="blue2"><strong>area (<span class="math inline">\(m^2\)</span>)</strong></span> – <span class="green2">SUR</span> (4 categories)</li>
-</ul></li>
+<li><span class="orange"><strong>Text classification</strong></span> model which uses additional categorical variables</li>
+<li>For now we use the <span class="orange"><strong>fastText</strong></span> library</li>
+<li>Originally trained on legacy data annotated partly by the <span class="orange"><strong>coding engine</strong></span> and partly <span class="orange"><strong>manually</strong></span></li>
 </ul>
 </section>
-<section id="hierarchical-structure-of-nace-rev.-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Hierarchical structure of NACE Rev.&nbsp;2</h2>
-<div class="table-responsive">
-<table>
-<colgroup>
-<col style="width: 19%">
-<col style="width: 16%">
-<col style="width: 61%">
-<col style="width: 2%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Level</th>
-<th>NACE</th>
-<th>Title</th>
-<th>Size</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Section</td>
-<td>H</td>
-<td>Transportation and storage</td>
-<td>21</td>
-</tr>
-<tr class="even">
-<td>Division</td>
-<td>52</td>
-<td>Warehousing and support activities for transportation</td>
-<td>88</td>
-</tr>
-<tr class="odd">
-<td>Group</td>
-<td>522</td>
-<td>Support activities for transportation</td>
-<td>272</td>
-</tr>
-<tr class="even">
-<td>Class</td>
-<td>5224</td>
-<td>Cargo handling</td>
-<td>615</td>
-</tr>
-<tr class="odd">
-<td><strong>Subclass</strong></td>
-<td><span class="red2"><strong>5224A</strong></span></td>
-<td><strong>Harbour handling</strong></td>
-<td><span class="orange"><strong>732</strong></span></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section></section>
-<section>
-<section id="methodology" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Methodology</h1>
-
-</section>
-<section id="feature-extraction" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Feature extraction</h2>
+<section id="current-state-of-affairs" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Current state of affairs</h2>
 <ul>
-<li><span class="orange"><strong>Word embedding</strong></span>: a method of <span class="blue2"><strong>vectorisation</strong></span>.</li>
-<li><span class="orange"><strong>Pre-trained</strong></span> embeddings available in open-source.</li>
-<li>We learn <span class="orange"><strong>our own</strong></span> <span class="blue2"><strong>word</strong></span> embeddings.</li>
-<li>Additionally, embeddings for:
+<li>Model trained on Insee’s <span class="orange"><strong>cloud data science platform</strong></span> 😍</li>
+<li>Coding engine <span class="orange"><strong>developed in Java</strong></span> inside of a monolithic architecture 😫
 <ul>
-<li><span class="blue2"><strong>word n-grams</strong></span> and <span class="blue2"><strong>character n-grams</strong></span>.</li>
+<li><span class="blue2"><strong>Code duplication</strong></span></li>
+<li><span class="blue2"><strong>Reproductibility</strong></span> issues</li>
+<li><span class="blue2"><strong>Increased risk</strong></span> of error</li>
+<li><span class="blue2"><strong>Maintenance problems</strong></span></li>
+<li><span class="blue2"><strong>No monitoring</strong></span></li>
+<li><span class="blue2"><strong>No test data</strong></span></li>
 </ul></li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../img/n-grams_eng.png" class="quarto-figure quarto-figure-center" height="250"></p>
-</figure>
-</div>
 </section>
-<section id="linear-classifer" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Linear classifer</h2>
+<section id="current-state-of-affairs-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Current state of affairs</h2>
+
+<img data-src="../img/orga-post-prod-en.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="mlops-target" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>MLOps target</h2>
 <ul>
-<li><span class="orange"><strong>2 classification methods</strong></span>:
+<li>Microservice architecture running on a <span class="orange"><strong>Kubernetes cluster</strong></span>
 <ul>
-<li><span class="blue2"><strong>Softmax</strong></span>: a <span class="green2"><strong>single</strong></span> multiclass classifier.</li>
-<li><span class="blue2"><strong>One-vs-all</strong></span>: <span class="green2"><strong>multiple</strong></span> binary classifiers.</li>
-</ul></li>
-<li><span class="orange"><strong>Optimisation</strong></span>: <span class="blue2"><strong>stochastic gradient descent</strong></span> algorithm.</li>
-<li><span class="orange"><strong>Loss function</strong></span>: <span class="blue2"><strong>cross-entropy</strong></span>.</li>
-</ul>
-</section>
-<section id="fasttext-model" class="slide level2" data-background-image="../img/diag-fasttext.png" data-background-size="95%" data-background-position="50% 75%">
-<h2>fastText model</h2>
-<ul>
-<li><span class="orange"><strong>fastText</strong></span>: very <span class="blue2"><strong>simple</strong></span> and <span class="blue2"><strong>fast</strong></span> (<code>C++</code>) “bag of n-grams” model.</li>
-</ul>
-</section>
-<section id="handling-categorical-variables" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Handling categorical variables</h2>
-<ul>
-<li><span class="orange"><strong>Concatenation</strong></span> of the text description with the names and values of the auxiliary variables:</li>
-</ul>
-<table>
-<thead>
-<tr class="header">
-<th>Text</th>
-<th>NAT</th>
-<th>TYP</th>
-<th>EVT</th>
-<th>SUR</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Cours de musique</td>
-<td>NaN</td>
-<td>X</td>
-<td>01P</td>
-<td>NaN</td>
-</tr>
-</tbody>
-</table>
-<center>
-🢃
-</center>
-<p>“Cours de musique <span class="green2">NAT</span>_<span class="blue2">NaN</span> <span class="green2">TYP</span>_<span class="blue2">X</span> <span class="green2">EVT</span>_<span class="blue2">01P</span> <span class="green2">SUR</span>_<span class="blue2">NaN</span>”</p>
-<ul>
-<li><span class="orange"><strong>Imperfect method</strong></span>: 3-grams “AT_” or “T_0” used.</li>
-</ul>
-</section>
-<section id="preprocessing" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Preprocessing</h2>
-<ul>
-<li><span class="orange"><strong>Preprocessing</strong></span> essential for natural language processing.</li>
-<li><span class="orange"><strong>Constraints</strong></span>: <span class="blue2"><strong>simple</strong></span>, <span class="blue2"><strong>light</strong></span> and easily <span class="blue2"><strong>reproducible</strong></span> in Java <i class="fab fa-java" style="font-size:36px"></i>.</li>
-</ul>
-<table>
-<colgroup>
-<col style="width: 13%">
-<col style="width: 86%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Transformation</th>
-<th>Text description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Input</td>
-<td>3 D: La Deratisation - La Desinsectisation - La Desinfection</td>
-</tr>
-<tr class="even">
-<td>Lower-case conversion</td>
-<td>3 d: la deratisation - la desinsectisation - la desinfection</td>
-</tr>
-<tr class="odd">
-<td>Punctuations removal</td>
-<td>3 d la deratisation la desinsectisation la desinfection</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="preprocessing-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Preprocessing</h2>
-<table>
-<colgroup>
-<col style="width: 13%">
-<col style="width: 86%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Transformation</th>
-<th>Text description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Input</td>
-<td>3 D: La Deratisation - La Desinsectisation - La Desinfection</td>
-</tr>
-<tr class="even">
-<td>…</td>
-<td>…</td>
-</tr>
-<tr class="odd">
-<td>Numbers removal</td>
-<td>d la deratisation la desinsectisation la desinfection</td>
-</tr>
-<tr class="even">
-<td>One-letter word removal</td>
-<td>la deratisation la desinsectisation la desinfection</td>
-</tr>
-<tr class="odd">
-<td>Stopwords removal</td>
-<td>deratisation desinsectisation desinfection</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="preprocessing-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Preprocessing</h2>
-<table>
-<thead>
-<tr class="header">
-<th>Transformation</th>
-<th>Text description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Input</td>
-<td>3 D: La Deratisation - La Desinsectisation - La Desinfection</td>
-</tr>
-<tr class="even">
-<td>…</td>
-<td>…</td>
-</tr>
-<tr class="odd">
-<td>NaN removal</td>
-<td>deratisation desinsectisation desinfection</td>
-</tr>
-<tr class="even">
-<td>Stemming</td>
-<td>deratis desinsectis desinfect</td>
-</tr>
-</tbody>
-</table>
-</section></section>
-<section>
-<section id="results" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Results</h1>
-
-</section>
-<section id="a-good-overall-performance" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>A good overall performance</h2>
-
-<img data-src="index_files/figure-revealjs/fig-acc-lvl-1.png" width="1248" class="r-stretch quarto-figure-center"><p class="caption">
-Figure&nbsp;1: Accuracy for various level of the NACE nomenclature.
-</p><ul>
-<li>Nearly <span class="orange"><strong>80%</strong></span> of labels from the one-stop shop are correctly coded.</li>
-<li>Most prediction errors are <span class="orange"><strong>close</strong></span> in the nomenclature.</li>
-</ul>
-</section>
-<section id="streamlining-the-manual-coding-process" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Streamlining the manual coding process</h2>
-
-<img data-src="index_files/figure-revealjs/fig-acc-top-k-1.png" width="1248" class="r-stretch quarto-figure-center"><p class="caption">
-Figure&nbsp;2: Top-<span class="math inline">\(k\)</span> accuracy per sample.
-</p><ul>
-<li>Knowledge of probabilities for each class.</li>
-<li>The correct classification is among the top 5 most probable predictions in <span class="orange"><strong>94%</strong></span> of cases.</li>
-</ul>
-</section>
-<section id="building-a-confidence-index" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
-<h2>Building a confidence index</h2>
-
-<img data-src="index_files/figure-revealjs/fig-ic-distrib-1.png" width="1248" class="r-stretch quarto-figure-center"><p class="caption">
-Figure&nbsp;3: Distribution of the confidence index based on prediction results.
-</p><ul>
-<li><span class="orange"><strong>Objective</strong></span>: <span class="blue2"><strong>discriminate</strong></span> between <em>bad</em> and <em>good</em> predictions.</li>
-<li><span class="orange"><strong>Selected Confidence Index</strong></span>: difference between the two highest probabilities.</li>
-</ul>
-</section>
-<section id="efficiency-of-the-manual-coding-process" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Efficiency of the manual coding process</h2>
-
-<img data-src="index_files/figure-revealjs/fig-reprise-1.png" width="1248" class="r-stretch quarto-figure-center"><p class="caption">
-Figure&nbsp;4: Accuracy for various shares of manual coding.
-</p><ul>
-<li>Optimisation of manual coding process ➨ <span class="orange"><strong>Performance improvement</strong></span>.</li>
-</ul>
-<!-- 
-
-ANNEXE
-## Une performance h&#xE9;t&#xE9;rog&#xE8;ne en fonction des classes
-
-::: {.cell layout-align="center"}
-
-:::
-
-- [**Performance mitig&#xE9;e**]{.orange} sur plusieurs classes peu fr&#xE9;quentes. -->
-</section></section>
-<section>
-<section id="from-experiment-to-production" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>From experiment to production</h1>
-
-</section>
-<section id="deployment-of-the-model" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Deployment of the model</h2>
-<ul>
-<li>Models have been deployed in a <span class="orange"><strong>production environment</strong></span> since November 2022.</li>
-<li>Emerging <span class="orange"><strong>new challenges</strong></span> include:
-<ul>
-<li><span class="blue2"><strong>Organisational</strong></span> issues.</li>
-<li>Real-time <span class="blue2"><strong>monitoring</strong></span>.</li>
-<li>Regular <span class="blue2"><strong>re-training</strong></span>.</li>
-</ul></li>
-<li><span class="orange"><strong>MLOps</strong></span> approach is required:
-<ul>
-<li>Join us on <span class="blue2"><strong>Wednesday, June 7th</strong></span> for a <span class="blue2"><strong>Hands-on Lab</strong></span>!</li>
+<li>Experiment tracking and model store: <span class="blue2"><strong>MLflow</strong></span></li>
+<li>Model served via an API: <span class="blue2"><strong>FastAPI</strong></span></li>
+<li>Automation with <span class="blue2"><strong>ArgoCD</strong></span></li>
+<li>Monitoring dashboard: <span class="blue2"><strong>Quarto</strong></span> and <span class="blue2"><strong>DuckDB</strong></span></li>
+<li>Quality control: annotations with <span class="blue2"><strong>Label Studio</strong></span></li>
 </ul></li>
 </ul>
+</section>
+<section id="experiment-tracking" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Experiment tracking</h2>
+<ul>
+<li><span class="orange"><strong>Argo Workflows</strong></span> used for <em>distributed</em> training</li>
+<li><span class="orange"><strong>MLflow</strong></span> used to track/log experiments and compare runs</li>
+<li>Custom model class allows to package <span class="orange"><strong>pre-processing steps</strong></span> in the <code>predict</code> method:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Define a custom model</span></span>
+<span id="cb1-2"><a></a><span class="kw">class</span> MyModel(mlflow.pyfunc.PythonModel):</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a>    <span class="kw">def</span> load_context(<span class="va">self</span>, context):</span>
+<span id="cb1-5"><a></a>        <span class="va">self</span>.model <span class="op">=</span> load_model(context.artifacts[<span class="st">"my_model"</span>])</span>
+<span id="cb1-6"><a></a></span>
+<span id="cb1-7"><a></a>    <span class="kw">def</span> predict(<span class="va">self</span>, context, model_input):</span>
+<span id="cb1-8"><a></a>        <span class="co"># &lt;INCLUDE PRE-PROCESSING STEPS HERE&gt;</span></span>
+<span id="cb1-9"><a></a>        <span class="cf">return</span> <span class="va">self</span>.model.predict(model_input)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="model-store" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Model store</h2>
+<ul>
+<li><span class="orange"><strong>MLflow</strong></span> also used as a model store</li>
+<li>Models are packaged with all the metadata necessary to <span class="orange"><strong>run inference</strong></span></li>
+<li>Registered models are <span class="orange"><strong>simply loaded</strong></span> with this command where <code>version</code> is a number or a <code>"Production"</code> tag for example</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>model <span class="op">=</span> mlflow.pyfunc.load_model(</span>
+<span id="cb2-2"><a></a>    model_uri<span class="op">=</span><span class="ss">f"models:/</span><span class="sc">{</span>model_name<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>version<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-3"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="api-serving" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>API serving</h2>
+<ul>
+<li>Text classification model served through a containerized <span class="orange"><strong>REST API</strong></span>:
+<ul>
+<li><span class="blue2"><strong>Simplicity</strong></span> for end users</li>
+<li><span class="blue2"><strong>Standard query format</strong></span></li>
+<li><span class="blue2"><strong>Scalable</strong></span></li>
+<li><span class="blue2"><strong>Modular</strong></span> and <span class="blue2"><strong>portable</strong></span></li>
+</ul></li>
+<li><span class="orange"><strong>Multiple endpoints</strong></span>: batch, online</li>
+<li>Continuous deployment with <span class="orange"><strong>Argo CD</strong></span></li>
+</ul>
+</section>
+<section id="api-serving-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>API serving</h2>
 
-<div class="quarto-auto-generated-content">
+<img data-src="../img/api-datalab.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="monitoring" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Monitoring</h2>
+<ul>
+<li><span class="orange"><strong>Monitoring</strong></span> the model in a production environment is necessary:
+<ul>
+<li>To detect <span class="blue2"><strong>distribution drifts</strong></span> in input data</li>
+<li>To check that the model has a <span class="blue2"><strong>stable behavior</strong></span></li>
+<li>To decide <span class="blue2"><strong>when to retrain</strong></span> a model</li>
+</ul></li>
+<li>Ideally, we would like to track model <span class="orange"><strong>accuracy in real-time</strong></span> but expensive</li>
+<li>In addition, monitoring of the API: <span class="orange"><strong>latency</strong></span>, <span class="orange"><strong>memory managment</strong></span>, <span class="orange"><strong>disk usage</strong></span>, etc.</li>
+</ul>
+</section>
+<section id="monitoring-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Monitoring</h2>
+<ul>
+<li><span class="orange"><strong>How</strong></span> we do it:
+<ul>
+<li>API <span class="blue2"><strong>logs</strong></span> its activity</li>
+<li>Logs are fetched and formatted <span class="blue2"><strong>periodically</strong></span></li>
+<li><span class="blue2"><strong>Metrics</strong></span> are computed from the formatted logs</li>
+<li>Display on a <span class="blue2"><strong>dashboard</strong></span></li>
+</ul></li>
+</ul>
+</section>
+<section id="monitoring-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Monitoring</h2>
+
+<img data-src="../img/monitoring-datalab.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="quality-control" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Quality control</h2>
+<ul>
+<li>Test data is <span class="orange"><strong>gathered and annotated periodically</strong></span></li>
+<li>Annotation is done with <span class="orange"><strong>Label Studio</strong></span></li>
+<li><span class="orange"><strong>Performance metrics</strong></span> are computed on the test data</li>
+<li>Performance is diplayed on the <span class="orange"><strong>monitoring dashboard</strong></span></li>
+<li><span class="orange"><strong>Specific retraining</strong></span> is necessary when specific metrics decrease under a certain threshold (not done yet)</li>
+</ul>
+</section>
+<section id="quality-control-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Quality control</h2>
+
+
+<img data-src="../img/annotation-datalab.png" class="quarto-figure quarto-figure-center r-stretch"><div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
@@ -898,44 +773,6 @@ ANNEXE
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
