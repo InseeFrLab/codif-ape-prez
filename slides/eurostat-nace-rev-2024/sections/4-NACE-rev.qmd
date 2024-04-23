@@ -1,0 +1,102 @@
+
+## Current state of affairs
+
+- Model trained on Insee's [**cloud data science platform**]{.orange} 😍
+- Coding engine [**developed in Java**]{.orange} inside of a monolithic architecture 😫
+  - [**Code duplication**]{.blue2}
+  - [**Reproductibility**]{.blue2} issues
+  - [**Increased risk**]{.blue2} of error
+  - [**Maintenance problems**]{.blue2}
+  - [**No monitoring**]{.blue2}
+  - [**No test data**]{.blue2}
+
+## Current state of affairs
+
+![](../img/orga-post-prod-en.png){fig-align="center"}
+
+
+## MLOps target
+
+- Microservice architecture running on a [**Kubernetes cluster**]{.orange}
+  - Experiment tracking and model store: [**MLflow**]{.blue2}
+  - Model served via an API: [**FastAPI**]{.blue2}
+  - Automation with [**ArgoCD**]{.blue2}
+  - Monitoring dashboard: [**Quarto**]{.blue2} and [**DuckDB**]{.blue2}
+  - Quality control: annotations with [**Label Studio**]{.blue2}
+
+## Experiment tracking
+
+- [**Argo Workflows**]{.orange} used for *distributed* training
+- [**MLflow**]{.orange} used to track/log experiments and compare runs
+- Custom model class allows to package [**pre-processing steps**]{.orange} in the `predict` method:
+
+```python
+# Define a custom model
+class MyModel(mlflow.pyfunc.PythonModel):
+
+    def load_context(self, context):
+        self.model = load_model(context.artifacts["my_model"])
+
+    def predict(self, context, model_input):
+        # <INCLUDE PRE-PROCESSING STEPS HERE>
+        return self.model.predict(model_input)
+```
+
+## Model store
+
+- [**MLflow**]{.orange} also used as a model store
+- Models are packaged with all the metadata necessary to [**run inference**]{.orange}
+- Registered models are [**simply loaded**]{.orange} with this command where `version` is a number or a `"Production"` tag for example
+
+```python
+model = mlflow.pyfunc.load_model(
+    model_uri=f"models:/{model_name}/{version}"
+)
+```
+
+## API serving
+
+- Text classification model served through a containerized [**REST API**]{.orange}:
+  - [**Simplicity**]{.blue2} for end users
+  - [**Standard query format**]{.blue2}
+  - [**Scalable**]{.blue2}
+  - [**Modular**]{.blue2} and [**portable**]{.blue2}
+- [**Multiple endpoints**]{.orange}: batch, online
+- Continuous deployment with [**Argo CD**]{.orange}
+
+## API serving
+
+![](../img/api-datalab.png){fig-align="center"}
+
+## Monitoring 
+
+- [**Monitoring**]{.orange} the model in a production environment is necessary:
+  - To detect [**distribution drifts**]{.blue2} in input data
+  - To check that the model has a [**stable behavior**]{.blue2}
+  - To decide [**when to retrain**]{.blue2} a model
+- Ideally, we would like to track model [**accuracy in real-time**]{.orange} but expensive
+- In addition, monitoring of the API: [**latency**]{.orange}, [**memory managment**]{.orange}, [**disk usage**]{.orange}, etc.
+
+## Monitoring 
+
+- [**How**]{.orange} we do it:
+  - API [**logs**]{.blue2} its activity
+  - Logs are fetched and formatted [**periodically**]{.blue2}
+  - [**Metrics**]{.blue2} are computed from the formatted logs
+  - Display on a [**dashboard**]{.blue2}
+
+## Monitoring 
+
+![](../img/monitoring-datalab){fig-align="center"}
+
+## Quality control
+
+- Test data is [**gathered and annotated periodically**]{.orange}
+- Annotation is done with [**Label Studio**]{.orange}
+- [**Performance metrics**]{.orange} are computed on the test data
+- Performance is diplayed on the [**monitoring dashboard**]{.orange}
+- [**Specific retraining**]{.orange} is necessary when specific metrics decrease under a certain threshold (not done yet)
+
+## Quality control
+
+![](../img/annotation-datalab.png){fig-align="center"}
