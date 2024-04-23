@@ -554,6 +554,127 @@
 <section id="quality-control-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Quality control</h2>
 
+<img data-src="../img/annotation-datalab.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="current-state-of-affairs-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Current state of affairs</h2>
+<ul>
+<li>Model trained on Insee’s <span class="orange"><strong>cloud data science platform</strong></span> 😍</li>
+<li>Coding engine <span class="orange"><strong>developed in Java</strong></span> inside of a monolithic architecture 😫
+<ul>
+<li><span class="blue2"><strong>Code duplication</strong></span></li>
+<li><span class="blue2"><strong>Reproductibility</strong></span> issues</li>
+<li><span class="blue2"><strong>Increased risk</strong></span> of error</li>
+<li><span class="blue2"><strong>Maintenance problems</strong></span></li>
+<li><span class="blue2"><strong>No monitoring</strong></span></li>
+<li><span class="blue2"><strong>No test data</strong></span></li>
+</ul></li>
+</ul>
+</section>
+<section id="current-state-of-affairs-3" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Current state of affairs</h2>
+
+<img data-src="../img/orga-post-prod-en.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="mlops-target-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>MLOps target</h2>
+<ul>
+<li>Microservice architecture running on a <span class="orange"><strong>Kubernetes cluster</strong></span>
+<ul>
+<li>Experiment tracking and model store: <span class="blue2"><strong>MLflow</strong></span></li>
+<li>Model served via an API: <span class="blue2"><strong>FastAPI</strong></span></li>
+<li>Automation with <span class="blue2"><strong>ArgoCD</strong></span></li>
+<li>Monitoring dashboard: <span class="blue2"><strong>Quarto</strong></span> and <span class="blue2"><strong>DuckDB</strong></span></li>
+<li>Quality control: annotations with <span class="blue2"><strong>Label Studio</strong></span></li>
+</ul></li>
+</ul>
+</section>
+<section id="experiment-tracking-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Experiment tracking</h2>
+<ul>
+<li><span class="orange"><strong>Argo Workflows</strong></span> used for <em>distributed</em> training</li>
+<li><span class="orange"><strong>MLflow</strong></span> used to track/log experiments and compare runs</li>
+<li>Custom model class allows to package <span class="orange"><strong>pre-processing steps</strong></span> in the <code>predict</code> method:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Define a custom model</span></span>
+<span id="cb3-2"><a></a><span class="kw">class</span> MyModel(mlflow.pyfunc.PythonModel):</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a>    <span class="kw">def</span> load_context(<span class="va">self</span>, context):</span>
+<span id="cb3-5"><a></a>        <span class="va">self</span>.model <span class="op">=</span> load_model(context.artifacts[<span class="st">"my_model"</span>])</span>
+<span id="cb3-6"><a></a></span>
+<span id="cb3-7"><a></a>    <span class="kw">def</span> predict(<span class="va">self</span>, context, model_input):</span>
+<span id="cb3-8"><a></a>        <span class="co"># &lt;INCLUDE PRE-PROCESSING STEPS HERE&gt;</span></span>
+<span id="cb3-9"><a></a>        <span class="cf">return</span> <span class="va">self</span>.model.predict(model_input)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="model-store-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Model store</h2>
+<ul>
+<li><span class="orange"><strong>MLflow</strong></span> also used as a model store</li>
+<li>Models are packaged with all the metadata necessary to <span class="orange"><strong>run inference</strong></span></li>
+<li>Registered models are <span class="orange"><strong>simply loaded</strong></span> with this command where <code>version</code> is a number or a <code>"Production"</code> tag for example</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>model <span class="op">=</span> mlflow.pyfunc.load_model(</span>
+<span id="cb4-2"><a></a>    model_uri<span class="op">=</span><span class="ss">f"models:/</span><span class="sc">{</span>model_name<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>version<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb4-3"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="api-serving-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>API serving</h2>
+<ul>
+<li>Text classification model served through a containerized <span class="orange"><strong>REST API</strong></span>:
+<ul>
+<li><span class="blue2"><strong>Simplicity</strong></span> for end users</li>
+<li><span class="blue2"><strong>Standard query format</strong></span></li>
+<li><span class="blue2"><strong>Scalable</strong></span></li>
+<li><span class="blue2"><strong>Modular</strong></span> and <span class="blue2"><strong>portable</strong></span></li>
+</ul></li>
+<li><span class="orange"><strong>Multiple endpoints</strong></span>: batch, online</li>
+<li>Continuous deployment with <span class="orange"><strong>Argo CD</strong></span></li>
+</ul>
+</section>
+<section id="api-serving-3" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>API serving</h2>
+
+<img data-src="../img/api-datalab.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="monitoring-3" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Monitoring</h2>
+<ul>
+<li><span class="orange"><strong>Monitoring</strong></span> the model in a production environment is necessary:
+<ul>
+<li>To detect <span class="blue2"><strong>distribution drifts</strong></span> in input data</li>
+<li>To check that the model has a <span class="blue2"><strong>stable behavior</strong></span></li>
+<li>To decide <span class="blue2"><strong>when to retrain</strong></span> a model</li>
+</ul></li>
+<li>Ideally, we would like to track model <span class="orange"><strong>accuracy in real-time</strong></span> but expensive</li>
+<li>In addition, monitoring of the API: <span class="orange"><strong>latency</strong></span>, <span class="orange"><strong>memory managment</strong></span>, <span class="orange"><strong>disk usage</strong></span>, etc.</li>
+</ul>
+</section>
+<section id="monitoring-4" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Monitoring</h2>
+<ul>
+<li><span class="orange"><strong>How</strong></span> we do it:
+<ul>
+<li>API <span class="blue2"><strong>logs</strong></span> its activity</li>
+<li>Logs are fetched and formatted <span class="blue2"><strong>periodically</strong></span></li>
+<li><span class="blue2"><strong>Metrics</strong></span> are computed from the formatted logs</li>
+<li>Display on a <span class="blue2"><strong>dashboard</strong></span></li>
+</ul></li>
+</ul>
+</section>
+<section id="monitoring-5" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Monitoring</h2>
+
+<img data-src="../img/monitoring-datalab.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="quality-control-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Quality control</h2>
+<ul>
+<li>Test data is <span class="orange"><strong>gathered and annotated periodically</strong></span></li>
+<li>Annotation is done with <span class="orange"><strong>Label Studio</strong></span></li>
+<li><span class="orange"><strong>Performance metrics</strong></span> are computed on the test data</li>
+<li>Performance is diplayed on the <span class="orange"><strong>monitoring dashboard</strong></span></li>
+<li><span class="orange"><strong>Specific retraining</strong></span> is necessary when specific metrics decrease under a certain threshold (not done yet)</li>
+</ul>
+</section>
+<section id="quality-control-3" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Quality control</h2>
+
 
 <img data-src="../img/annotation-datalab.png" class="quarto-figure quarto-figure-center r-stretch"><div class="quarto-auto-generated-content">
 <div class="footer footer-default">
