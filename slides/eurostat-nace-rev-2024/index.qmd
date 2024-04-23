@@ -1,7 +1,7 @@
 ---
-title: "Classification of Business Activities by Machine Learning: The Case of France."
+title: "Classification of Business Activities by Machine Learning:\n The Case of France."
 author: "[Nathan Randriamanana](https://github.com/TheAIWizard)"
-date: "03/19/2024"
+date: "04/30/2024"
 date-format: "D MMMM YYYY"
 slide-number: true
 # uncomment for French presentations:
