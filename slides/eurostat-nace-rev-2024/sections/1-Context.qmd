@@ -3,9 +3,24 @@
 - [**Sirene**]{.orange} is the French national company registry
 - When a company registers, an [**activity code**]{.orange} is attributed
 - Early 2023:
-  - Refactoring of the Sirene [**information system**]{.blue2}
+  - Refactoring of the Sirene [**information system**]{.blue2} : 
   - Companies register through a [**new channel**]{.blue2}
   - [**Performance drop**]{.blue2} of the legacy coding engine
   - Teams already [**overwhelmed**]{.blue2}
+- End of March 2023:
+  - Switch from Sirene 3 to Sirene 4
 
 - [**Consequence**]{.orange}: Ideal moment to innovate (but under the constraint!)
+
+## The flow" of formalities
+
+![](../img/flow-formalities.png){fig-align="center"}
+
+## The administrative landscape
+
+- Siren number: company directory identification system
+- Principal activity code (APE)
+- Classification on a daily basis
+- Different administrations 
+- Different information systems
+- Requirements: quick, responsive and flexible to updated instructions

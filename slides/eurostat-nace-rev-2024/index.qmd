@@ -24,6 +24,6 @@ ascii: true
 
 {{< include sections/2-Methodo.qmd >}}
 
-{{< include sections/3-MLOps.qmd >}}
+
 
 {{< include sections/4-NACE-rev.qmd >}}
