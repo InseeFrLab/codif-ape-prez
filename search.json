@@ -333,7 +333,56 @@
     "href": "slides/eurostat-nace-rev-2024/index.html#context",
     "title": "Classification of Business Activities by Machine Learning: The Case of France.",
     "section": "Context",
-    "text": "Context\n\nSirene is the French national company registry\nWhen a company registers, an activity code is attributed\nEarly 2023:\n\nRefactoring of the Sirene information system\nCompanies register through a new channel\nPerformance drop of the legacy coding engine\nTeams already overwhelmed\n\nConsequence: Ideal moment to innovate (but under the constraint!)"
+    "text": "Context\n\nSirene is the French national company registry\nWhen a company registers, an activity code is attributed\nEarly 2023:\n\nRefactoring of the Sirene information system :\nCompanies register through a new channel\nPerformance drop of the legacy coding engine\nTeams already overwhelmed\n\nEnd of March 2023:\n\nSwitch from Sirene 3 to Sirene 4\n\nConsequence: Ideal moment to innovate (but under the constraint!)"
+  },
+  {
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#the-flow-of-formalities",
+    "href": "slides/eurostat-nace-rev-2024/index.html#the-flow-of-formalities",
+    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
+    "section": "The flow” of formalities",
+    "text": "The flow” of formalities"
+  },
+  {
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#the-administrative-landscape",
+    "href": "slides/eurostat-nace-rev-2024/index.html#the-administrative-landscape",
+    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
+    "section": "The administrative landscape",
+    "text": "The administrative landscape\n\nSiren number: company directory identification system\nPrincipal activity code (APE)\nClassification on a daily basis\nDifferent administrations\nDifferent information systems\nRequirements: quick, responsive and flexible to updated instructions"
+  },
+  {
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#assign-an-activy-code-different-processes",
+    "href": "slides/eurostat-nace-rev-2024/index.html#assign-an-activy-code-different-processes",
+    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
+    "section": "Assign an activy code: different processes",
+    "text": "Assign an activy code: different processes"
+  },
+  {
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#assign-an-activy-code-two-outcomes",
+    "href": "slides/eurostat-nace-rev-2024/index.html#assign-an-activy-code-two-outcomes",
+    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
+    "section": "Assign an activy code: two outcomes",
+    "text": "Assign an activy code: two outcomes\n\nAutomatic coding\nHuman review"
+  },
+  {
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#near-ubiquity-of-ml",
+    "href": "slides/eurostat-nace-rev-2024/index.html#near-ubiquity-of-ml",
+    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
+    "section": "Near-ubiquity of ML",
+    "text": "Near-ubiquity of ML"
+  },
+  {
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#automatic-activity-classification",
+    "href": "slides/eurostat-nace-rev-2024/index.html#automatic-activity-classification",
+    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
+    "section": "Automatic activity classification",
+    "text": "Automatic activity classification"
+  },
+  {
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#human-review",
+    "href": "slides/eurostat-nace-rev-2024/index.html#human-review",
+    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
+    "section": "Human review",
+    "text": "Human review"
   },
   {
     "objectID": "slides/eurostat-nace-rev-2024/index.html#model",
@@ -343,172 +392,53 @@
     "text": "Model\n\nText classification model which uses additional categorical variables\nFor now we use the fastText library\nOriginally trained on legacy data annotated partly by the coding engine and partly manually"
   },
   {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#current-state-of-affairs",
-    "href": "slides/eurostat-nace-rev-2024/index.html#current-state-of-affairs",
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#fasttext",
+    "href": "slides/eurostat-nace-rev-2024/index.html#fasttext",
     "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Current state of affairs",
-    "text": "Current state of affairs\n\nModel trained on Insee’s cloud data science platform 😍\nCoding engine developed in Java inside of a monolithic architecture 😫\n\nCode duplication\nReproductibility issues\nIncreased risk of error\nMaintenance problems\nNo monitoring\nNo test data"
+    "section": "FastText",
+    "text": "FastText\n\na rapid and lightweight model"
   },
   {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#current-state-of-affairs-1",
-    "href": "slides/eurostat-nace-rev-2024/index.html#current-state-of-affairs-1",
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#calendar-on-new-nace-adoption",
+    "href": "slides/eurostat-nace-rev-2024/index.html#calendar-on-new-nace-adoption",
     "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Current state of affairs",
-    "text": "Current state of affairs"
+    "section": "Calendar on new NACE adoption",
+    "text": "Calendar on new NACE adoption\n\n2025: statistical business register adopts new NACE\n2026: administrative business register adopts new NACE"
   },
   {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#mlops-target",
-    "href": "slides/eurostat-nace-rev-2024/index.html#mlops-target",
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#to-1-correspondence",
+    "href": "slides/eurostat-nace-rev-2024/index.html#to-1-correspondence",
     "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "MLOps target",
-    "text": "MLOps target\n\nMicroservice architecture running on a Kubernetes cluster\n\nExperiment tracking and model store: MLflow\nModel served via an API: FastAPI\nAutomation with ArgoCD\nMonitoring dashboard: Quarto and DuckDB\nQuality control: annotations with Label Studio"
+    "section": "1-to-1 correspondence",
+    "text": "1-to-1 correspondence\n\nAn easy and ideal case"
   },
   {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#experiment-tracking",
-    "href": "slides/eurostat-nace-rev-2024/index.html#experiment-tracking",
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#to-many-correspondence",
+    "href": "slides/eurostat-nace-rev-2024/index.html#to-many-correspondence",
     "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Experiment tracking",
-    "text": "Experiment tracking\n\nArgo Workflows used for distributed training\nMLflow used to track/log experiments and compare runs\nCustom model class allows to package pre-processing steps in the predict method:\n\n# Define a custom model\nclass MyModel(mlflow.pyfunc.PythonModel):\n\n    def load_context(self, context):\n        self.model = load_model(context.artifacts[\"my_model\"])\n\n    def predict(self, context, model_input):\n        # &lt;INCLUDE PRE-PROCESSING STEPS HERE&gt;\n        return self.model.predict(model_input)"
+    "section": "1-to-many correspondence",
+    "text": "1-to-many correspondence\n\nAn ultimately less desirable solution\nNeed human decision on textual description"
   },
   {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#model-store",
-    "href": "slides/eurostat-nace-rev-2024/index.html#model-store",
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#strategy-for-the-flow-of-formalities",
+    "href": "slides/eurostat-nace-rev-2024/index.html#strategy-for-the-flow-of-formalities",
     "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Model store",
-    "text": "Model store\n\nMLflow also used as a model store\nModels are packaged with all the metadata necessary to run inference\nRegistered models are simply loaded with this command where version is a number or a \"Production\" tag for example\n\nmodel = mlflow.pyfunc.load_model(\n    model_uri=f\"models:/{model_name}/{version}\"\n)"
+    "section": "Strategy for the flow of formalities",
+    "text": "Strategy for the flow of formalities\n\ntrain a ML model on new output: NACE rev 2.1"
   },
   {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#api-serving",
-    "href": "slides/eurostat-nace-rev-2024/index.html#api-serving",
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#strategy-for-the-stock",
+    "href": "slides/eurostat-nace-rev-2024/index.html#strategy-for-the-stock",
     "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "API serving",
-    "text": "API serving\n\nText classification model served through a containerized REST API:\n\nSimplicity for end users\nStandard query format\nScalable\nModular and portable\n\nMultiple endpoints: batch, online\nContinuous deployment with Argo CD"
+    "section": "Strategy for the stock",
+    "text": "Strategy for the stock"
   },
   {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#api-serving-1",
-    "href": "slides/eurostat-nace-rev-2024/index.html#api-serving-1",
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#annotation-campaign-strategy",
+    "href": "slides/eurostat-nace-rev-2024/index.html#annotation-campaign-strategy",
     "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "API serving",
-    "text": "API serving"
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#monitoring",
-    "href": "slides/eurostat-nace-rev-2024/index.html#monitoring",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Monitoring",
-    "text": "Monitoring\n\nMonitoring the model in a production environment is necessary:\n\nTo detect distribution drifts in input data\nTo check that the model has a stable behavior\nTo decide when to retrain a model\n\nIdeally, we would like to track model accuracy in real-time but expensive\nIn addition, monitoring of the API: latency, memory managment, disk usage, etc."
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#monitoring-1",
-    "href": "slides/eurostat-nace-rev-2024/index.html#monitoring-1",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Monitoring",
-    "text": "Monitoring\n\nHow we do it:\n\nAPI logs its activity\nLogs are fetched and formatted periodically\nMetrics are computed from the formatted logs\nDisplay on a dashboard"
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#monitoring-2",
-    "href": "slides/eurostat-nace-rev-2024/index.html#monitoring-2",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Monitoring",
-    "text": "Monitoring"
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#quality-control",
-    "href": "slides/eurostat-nace-rev-2024/index.html#quality-control",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Quality control",
-    "text": "Quality control\n\nTest data is gathered and annotated periodically\nAnnotation is done with Label Studio\nPerformance metrics are computed on the test data\nPerformance is diplayed on the monitoring dashboard\nSpecific retraining is necessary when specific metrics decrease under a certain threshold (not done yet)"
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#quality-control-1",
-    "href": "slides/eurostat-nace-rev-2024/index.html#quality-control-1",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Quality control",
-    "text": "Quality control"
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#current-state-of-affairs-2",
-    "href": "slides/eurostat-nace-rev-2024/index.html#current-state-of-affairs-2",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Current state of affairs",
-    "text": "Current state of affairs\n\nModel trained on Insee’s cloud data science platform 😍\nCoding engine developed in Java inside of a monolithic architecture 😫\n\nCode duplication\nReproductibility issues\nIncreased risk of error\nMaintenance problems\nNo monitoring\nNo test data"
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#current-state-of-affairs-3",
-    "href": "slides/eurostat-nace-rev-2024/index.html#current-state-of-affairs-3",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Current state of affairs",
-    "text": "Current state of affairs"
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#mlops-target-1",
-    "href": "slides/eurostat-nace-rev-2024/index.html#mlops-target-1",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "MLOps target",
-    "text": "MLOps target\n\nMicroservice architecture running on a Kubernetes cluster\n\nExperiment tracking and model store: MLflow\nModel served via an API: FastAPI\nAutomation with ArgoCD\nMonitoring dashboard: Quarto and DuckDB\nQuality control: annotations with Label Studio"
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#experiment-tracking-1",
-    "href": "slides/eurostat-nace-rev-2024/index.html#experiment-tracking-1",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Experiment tracking",
-    "text": "Experiment tracking\n\nArgo Workflows used for distributed training\nMLflow used to track/log experiments and compare runs\nCustom model class allows to package pre-processing steps in the predict method:\n\n# Define a custom model\nclass MyModel(mlflow.pyfunc.PythonModel):\n\n    def load_context(self, context):\n        self.model = load_model(context.artifacts[\"my_model\"])\n\n    def predict(self, context, model_input):\n        # &lt;INCLUDE PRE-PROCESSING STEPS HERE&gt;\n        return self.model.predict(model_input)"
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#model-store-1",
-    "href": "slides/eurostat-nace-rev-2024/index.html#model-store-1",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Model store",
-    "text": "Model store\n\nMLflow also used as a model store\nModels are packaged with all the metadata necessary to run inference\nRegistered models are simply loaded with this command where version is a number or a \"Production\" tag for example\n\nmodel = mlflow.pyfunc.load_model(\n    model_uri=f\"models:/{model_name}/{version}\"\n)"
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#api-serving-2",
-    "href": "slides/eurostat-nace-rev-2024/index.html#api-serving-2",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "API serving",
-    "text": "API serving\n\nText classification model served through a containerized REST API:\n\nSimplicity for end users\nStandard query format\nScalable\nModular and portable\n\nMultiple endpoints: batch, online\nContinuous deployment with Argo CD"
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#api-serving-3",
-    "href": "slides/eurostat-nace-rev-2024/index.html#api-serving-3",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "API serving",
-    "text": "API serving"
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#monitoring-3",
-    "href": "slides/eurostat-nace-rev-2024/index.html#monitoring-3",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Monitoring",
-    "text": "Monitoring\n\nMonitoring the model in a production environment is necessary:\n\nTo detect distribution drifts in input data\nTo check that the model has a stable behavior\nTo decide when to retrain a model\n\nIdeally, we would like to track model accuracy in real-time but expensive\nIn addition, monitoring of the API: latency, memory managment, disk usage, etc."
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#monitoring-4",
-    "href": "slides/eurostat-nace-rev-2024/index.html#monitoring-4",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Monitoring",
-    "text": "Monitoring\n\nHow we do it:\n\nAPI logs its activity\nLogs are fetched and formatted periodically\nMetrics are computed from the formatted logs\nDisplay on a dashboard"
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#monitoring-5",
-    "href": "slides/eurostat-nace-rev-2024/index.html#monitoring-5",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Monitoring",
-    "text": "Monitoring"
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#quality-control-2",
-    "href": "slides/eurostat-nace-rev-2024/index.html#quality-control-2",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Quality control",
-    "text": "Quality control\n\nTest data is gathered and annotated periodically\nAnnotation is done with Label Studio\nPerformance metrics are computed on the test data\nPerformance is diplayed on the monitoring dashboard\nSpecific retraining is necessary when specific metrics decrease under a certain threshold (not done yet)"
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#quality-control-3",
-    "href": "slides/eurostat-nace-rev-2024/index.html#quality-control-3",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Quality control",
-    "text": "Quality control"
+    "section": "Annotation campaign strategy",
+    "text": "Annotation campaign strategy"
   },
   {
     "objectID": "slides/seminaire-dms-oct-2022/index.html#contexte",
