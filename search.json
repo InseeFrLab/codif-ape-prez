@@ -333,7 +333,7 @@
     "href": "slides/eurostat-nace-rev-2024/index.html#context",
     "title": "Classification of Business Activities by Machine Learning: The Case of France.",
     "section": "Context",
-    "text": "Context\n\nSirene is the French national company registry\nWhen a company registers, an activity code is attributed\nEarly 2023:\n\nRefactoring of the Sirene information system :\nCompanies register through a new channel\nPerformance drop of the legacy coding engine\nTeams already overwhelmed\n\nEnd of March 2023:\n\nSwitch from Sirene 3 to Sirene 4\n\nConsequence: Ideal moment to innovate (but under the constraint!)"
+    "text": "Context\n\nSirene is the French national company registry\nWhen a company registers, an activity code is attributed\nChallenges :\n\nRefactoring of the Sirene information system\nNACE revision to come in 2025\nTeams still overwhelmed\n\nEnd of March 2024:\n\nOfficially switch from Sirene 3 to Sirene 4\n\nConsequences: Ideal moment to innovate (but under the constraint!)"
   },
   {
     "objectID": "slides/eurostat-nace-rev-2024/index.html#the-flow-of-formalities",
@@ -417,14 +417,21 @@
     "href": "slides/eurostat-nace-rev-2024/index.html#to-many-correspondence",
     "title": "Classification of Business Activities by Machine Learning: The Case of France.",
     "section": "1-to-many correspondence",
-    "text": "1-to-many correspondence\n\nAn ultimately less desirable solution\nNeed human decision on textual description"
+    "text": "1-to-many correspondence\n\nAn ultimately less desirable solution\nNeed expert decision based on activity description"
   },
   {
     "objectID": "slides/eurostat-nace-rev-2024/index.html#annotation-campaign-strategy",
     "href": "slides/eurostat-nace-rev-2024/index.html#annotation-campaign-strategy",
     "title": "Classification of Business Activities by Machine Learning: The Case of France.",
     "section": "Annotation campaign strategy",
-    "text": "Annotation campaign strategy\n\nmanual labeling only on the 1-to-many codes\nselected data since the implementation of the one-stop shop\nkill two birds with one stone\n\ncheck NACE rev 2 coding quality on the 1-to-many codes\nattribute a NACE rev 2.1 code"
+    "text": "Annotation campaign strategy\n\nA one-shot operation spanning multiple months in 2024\nmanual labeling only on the 1-to-many codes\nselect data to annotate since the implementation of the one-stop shop\nkill two birds with one stone\n\ncheck NACE rev 2 coding quality on the 1-to-many codes\nattribute a NACE rev 2.1 code"
+  },
+  {
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#reduce-tasks-to-annotate",
+    "href": "slides/eurostat-nace-rev-2024/index.html#reduce-tasks-to-annotate",
+    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
+    "section": "Reduce tasks to annotate",
+    "text": "Reduce tasks to annotate\n\ntheoretical 1-to-many scenarios can eventually become 1-to-1 in practice\nduplicated textual descriptions may occur due to shared practices among registrants.\nHow to reduce the annotation workload for our annotators ?\n\nadapt correspondence table by considering real-world business rules\navoid giving the same textual descriptions to annotate"
   },
   {
     "objectID": "slides/seminaire-dms-oct-2022/index.html#contexte",
