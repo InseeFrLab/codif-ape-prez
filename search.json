@@ -424,7 +424,7 @@
     "href": "slides/eurostat-nace-rev-2024/index.html#annotation-campaign-strategy",
     "title": "Classification of Business Activities by Machine Learning: The Case of France.",
     "section": "Annotation campaign strategy",
-    "text": "Annotation campaign strategy\n\nmanual labeling only on the 1-to-many codes\ntraining data since the implementation of the one-stop shop\nkill two birds with one stone\n\ncheck NACE rev 2 coding on the 1-to-many codes\nattribute a NACE rev 2.1 code"
+    "text": "Annotation campaign strategy\n\nmanual labeling only on the 1-to-many codes\ntraining data since the implementation of the one-stop shop\nUse Label Studio\nkill two birds with one stone\n\ncheck NACE rev 2 coding quality on the 1-to-many codes\nattribute a NACE rev 2.1 code"
   },
   {
     "objectID": "slides/seminaire-dms-oct-2022/index.html#contexte",
