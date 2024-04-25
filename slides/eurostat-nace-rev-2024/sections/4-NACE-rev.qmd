@@ -3,11 +3,11 @@
 - 2025: statistical business register adopts new NACE
     - Dual Coding
         - major coding with NACE rev 2
-        - minor coding with NACE rev 2.1 (fully automated processing)
+        - minor coding with NACE rev 2.1
 - 2026: administrative business register adopts new NACE
     - Dual Coding
         - major coding with NACE rev 2.1
-        - minor coding with NACE rev 2 (fully automated processing)
+        - minor coding with NACE rev 2
 
 ## 1-to-1 correspondence
 
@@ -27,7 +27,6 @@
 
 - manual labeling only on the 1-to-many codes
 - training data since the implementation of the one-stop shop
-- Use Label Studio
 - kill two birds with one stone
     - check NACE rev 2 coding quality on the 1-to-many codes
     - attribute a NACE rev 2.1 code
