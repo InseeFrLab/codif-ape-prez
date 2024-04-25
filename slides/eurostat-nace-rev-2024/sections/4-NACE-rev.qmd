@@ -24,3 +24,5 @@
 
 
 ## Annotation campaign strategy
+
+- manual labeling only on the 1-to-many codes
