@@ -1,5 +1,5 @@
 body:after {
-    content: url(Logo_Insee.svg.png);
+    content: url(https://upload.wikimedia.org/wikipedia/fr/1/10/Logo_Insee.svg);
     position: fixed;
     top: 0.5em;
     left: 0.5em;

@@ -1,7 +1,13 @@
 ## Calendar on new NACE adoption 
 
 - 2025: statistical business register adopts new NACE
+    - Dual Coding
+        - major coding with NACE rev 2
+        - minor coding with NACE rev 2.1 (fully automated processing)
 - 2026: administrative business register adopts new NACE
+    - Dual Coding
+        - major coding with NACE rev 2.1
+        - minor coding with NACE rev 2 (fully automated processing)
 
 ## 1-to-1 correspondence
 
@@ -16,13 +22,11 @@
 
 ![](../img/one-to-many.png){fig-align="center"}
 
-## Strategy for the flow of formalities
-
-- train a ML model on new output: NACE rev 2.1
-
-## Strategy for the stock
-
 
 ## Annotation campaign strategy
 
 - manual labeling only on the 1-to-many codes
+- training data since the implementation of the one-stop shop
+- kill two birds with one stone
+    - check NACE rev 2 coding on the 1-to-many codes
+    - attribute a NACE rev 2.1 code
