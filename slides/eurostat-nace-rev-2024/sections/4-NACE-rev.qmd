@@ -27,6 +27,7 @@
 
 - manual labeling only on the 1-to-many codes
 - training data since the implementation of the one-stop shop
+- Use Label Studio
 - kill two birds with one stone
-    - check NACE rev 2 coding on the 1-to-many codes
+    - check NACE rev 2 coding quality on the 1-to-many codes
     - attribute a NACE rev 2.1 code
