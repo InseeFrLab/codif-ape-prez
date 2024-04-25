@@ -18,15 +18,25 @@
 ## 1-to-many correspondence
 
 - An ultimately less desirable solution
-- Need human decision on textual description
+- Need expert decision based on activity description
 
 ![](../img/one-to-many.png){fig-align="center"}
 
 
 ## Annotation campaign strategy
 
+- A one-shot operation spanning multiple months in 2024
 - manual labeling only on the 1-to-many codes
-- selected data since the implementation of the one-stop shop
+- select data to annotate since the implementation of the one-stop shop
 - kill two birds with one stone
     - check NACE rev 2 coding quality on the 1-to-many codes
     - attribute a NACE rev 2.1 code
+
+## Reduce tasks to annotate
+
+- theoretical 1-to-many scenarios can eventually become 1-to-1 in practice
+- duplicated textual descriptions may occur due to shared practices among registrants.
+
+- How to reduce the annotation workload for our annotators ?
+    - adapt correspondence table by considering real-world business rules
+    - avoid giving the same textual descriptions to annotate
