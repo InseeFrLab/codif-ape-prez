@@ -33,7 +33,7 @@
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="../_extensions/InseeFrLab/onyxia/logo.css">
-  <link rel="stylesheet" href="../custom.css">
+  <link rel="stylesheet" href="logo.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -453,6 +453,9 @@
 </section>
 <section id="annotation-campaign-strategy" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Annotation campaign strategy</h2>
+<ul>
+<li>manual labeling only on the 1-to-many codes</li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -485,7 +488,7 @@
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-'controlsAuto': false,
+'controlsAuto': true,
 'previewLinksAuto': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
@@ -496,7 +499,7 @@
 'smaller': false,
  
         // Display controls in the bottom right corner
-        controls: true,
+        controls: false,
 
         // Help the user learn the controls by providing hints, for example by
         // bouncing the down arrow when they first encounter a vertical slide
