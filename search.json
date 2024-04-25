@@ -403,7 +403,7 @@
     "href": "slides/eurostat-nace-rev-2024/index.html#calendar-on-new-nace-adoption",
     "title": "Classification of Business Activities by Machine Learning: The Case of France.",
     "section": "Calendar on new NACE adoption",
-    "text": "Calendar on new NACE adoption\n\n2025: statistical business register adopts new NACE\n2026: administrative business register adopts new NACE"
+    "text": "Calendar on new NACE adoption\n\n2025: statistical business register adopts new NACE\n\nDual Coding\n\nmajor coding with NACE rev 2\nminor coding with NACE rev 2.1 (fully automated processing)\n\n\n2026: administrative business register adopts new NACE\n\nDual Coding\n\nmajor coding with NACE rev 2.1\nminor coding with NACE rev 2 (fully automated processing)"
   },
   {
     "objectID": "slides/eurostat-nace-rev-2024/index.html#to-1-correspondence",
@@ -420,25 +420,11 @@
     "text": "1-to-many correspondence\n\nAn ultimately less desirable solution\nNeed human decision on textual description"
   },
   {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#strategy-for-the-flow-of-formalities",
-    "href": "slides/eurostat-nace-rev-2024/index.html#strategy-for-the-flow-of-formalities",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Strategy for the flow of formalities",
-    "text": "Strategy for the flow of formalities\n\ntrain a ML model on new output: NACE rev 2.1"
-  },
-  {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#strategy-for-the-stock",
-    "href": "slides/eurostat-nace-rev-2024/index.html#strategy-for-the-stock",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Strategy for the stock",
-    "text": "Strategy for the stock"
-  },
-  {
     "objectID": "slides/eurostat-nace-rev-2024/index.html#annotation-campaign-strategy",
     "href": "slides/eurostat-nace-rev-2024/index.html#annotation-campaign-strategy",
     "title": "Classification of Business Activities by Machine Learning: The Case of France.",
     "section": "Annotation campaign strategy",
-    "text": "Annotation campaign strategy\n\nmanual labeling only on the 1-to-many codes"
+    "text": "Annotation campaign strategy\n\nmanual labeling only on the 1-to-many codes\ntraining data since the implementation of the one-stop shop\nkill two birds with one stone\n\ncheck NACE rev 2 coding on the 1-to-many codes\nattribute a NACE rev 2.1 code"
   },
   {
     "objectID": "slides/seminaire-dms-oct-2022/index.html#contexte",

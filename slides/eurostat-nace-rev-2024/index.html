@@ -326,6 +326,7 @@
     }
   </style>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="Logo_Insee-32x32.png">
 <meta property="og:title" content="Présentations codification automatique de l’APE - Classification of Business Activities by Machine Learning: The Case of France.">
 <meta property="og:site_name" content="Présentations codification automatique de l'APE">
 </head>
@@ -423,8 +424,22 @@
 <section id="calendar-on-new-nace-adoption" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Calendar on new NACE adoption</h2>
 <ul>
-<li>2025: statistical business register adopts new NACE</li>
-<li>2026: administrative business register adopts new NACE</li>
+<li>2025: statistical business register adopts new NACE
+<ul>
+<li>Dual Coding
+<ul>
+<li>major coding with NACE rev 2</li>
+<li>minor coding with NACE rev 2.1 (fully automated processing)</li>
+</ul></li>
+</ul></li>
+<li>2026: administrative business register adopts new NACE
+<ul>
+<li>Dual Coding
+<ul>
+<li>major coding with NACE rev 2.1</li>
+<li>minor coding with NACE rev 2 (fully automated processing)</li>
+</ul></li>
+</ul></li>
 </ul>
 </section>
 <section id="to-1-correspondence" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -442,19 +457,16 @@
 </ul>
 
 <img data-src="../img/one-to-many.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="strategy-for-the-flow-of-formalities" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Strategy for the flow of formalities</h2>
-<ul>
-<li>train a ML model on new output: NACE rev 2.1</li>
-</ul>
-</section>
-<section id="strategy-for-the-stock" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Strategy for the stock</h2>
-</section>
 <section id="annotation-campaign-strategy" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Annotation campaign strategy</h2>
 <ul>
 <li>manual labeling only on the 1-to-many codes</li>
+<li>training data since the implementation of the one-stop shop</li>
+<li>kill two birds with one stone
+<ul>
+<li>check NACE rev 2 coding on the 1-to-many codes</li>
+<li>attribute a NACE rev 2.1 code</li>
+</ul></li>
 </ul>
 
 <div class="quarto-auto-generated-content">
