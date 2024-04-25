@@ -26,7 +26,7 @@
 ## Annotation campaign strategy
 
 - manual labeling only on the 1-to-many codes
-- training data since the implementation of the one-stop shop
+- selected data since the implementation of the one-stop shop
 - kill two birds with one stone
     - check NACE rev 2 coding quality on the 1-to-many codes
     - attribute a NACE rev 2.1 code
