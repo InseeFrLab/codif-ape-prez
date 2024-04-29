@@ -420,6 +420,13 @@
     "text": "1-to-many correspondence\n\nAn ultimately less desirable solution\nNeed expert decision based on activity description"
   },
   {
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#labeling-method",
+    "href": "slides/eurostat-nace-rev-2024/index.html#labeling-method",
+    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
+    "section": "Labeling method",
+    "text": "Labeling method"
+  },
+  {
     "objectID": "slides/eurostat-nace-rev-2024/index.html#annotation-campaign-strategy",
     "href": "slides/eurostat-nace-rev-2024/index.html#annotation-campaign-strategy",
     "title": "Classification of Business Activities by Machine Learning: The Case of France.",
