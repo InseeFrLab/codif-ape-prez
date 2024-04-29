@@ -22,6 +22,9 @@
 
 ![](../img/one-to-many.png){fig-align="center"}
 
+## Labeling method
+
+![](../img/decision-tree-annotation){fig-align="center"}
 
 ## Annotation campaign strategy
 
