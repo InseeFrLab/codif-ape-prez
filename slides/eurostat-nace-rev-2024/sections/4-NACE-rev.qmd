@@ -22,10 +22,6 @@
 
 ![](../img/one-to-many.png){fig-align="center"}
 
-## Labeling method
-
-![](../img/decision-tree-annotation){fig-align="center"}
-
 ## Annotation campaign strategy
 
 - A one-shot operation spanning multiple months in 2024
@@ -34,6 +30,10 @@
 - kill two birds with one stone
     - check NACE rev 2 coding quality on the 1-to-many codes
     - attribute a NACE rev 2.1 code
+
+## Labeling method
+
+![](../img/decision-tree-annotation){fig-align="center"}
 
 ## Reduce tasks to annotate
 
