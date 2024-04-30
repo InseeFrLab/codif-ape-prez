@@ -420,18 +420,18 @@
     "text": "1-to-many correspondence\n\nAn ultimately less desirable solution\nNeed expert decision based on activity description"
   },
   {
-    "objectID": "slides/eurostat-nace-rev-2024/index.html#labeling-method",
-    "href": "slides/eurostat-nace-rev-2024/index.html#labeling-method",
-    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
-    "section": "Labeling method",
-    "text": "Labeling method"
-  },
-  {
     "objectID": "slides/eurostat-nace-rev-2024/index.html#annotation-campaign-strategy",
     "href": "slides/eurostat-nace-rev-2024/index.html#annotation-campaign-strategy",
     "title": "Classification of Business Activities by Machine Learning: The Case of France.",
     "section": "Annotation campaign strategy",
     "text": "Annotation campaign strategy\n\nA one-shot operation spanning multiple months in 2024\nmanual labeling only on the 1-to-many codes\nselect data to annotate since the implementation of the one-stop shop\nkill two birds with one stone\n\ncheck NACE rev 2 coding quality on the 1-to-many codes\nattribute a NACE rev 2.1 code"
+  },
+  {
+    "objectID": "slides/eurostat-nace-rev-2024/index.html#labeling-method",
+    "href": "slides/eurostat-nace-rev-2024/index.html#labeling-method",
+    "title": "Classification of Business Activities by Machine Learning: The Case of France.",
+    "section": "Labeling method",
+    "text": "Labeling method"
   },
   {
     "objectID": "slides/eurostat-nace-rev-2024/index.html#reduce-tasks-to-annotate",
