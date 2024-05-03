@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-GB"><head>
+<html lang="fr"><head>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -10,9 +10,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.554">
 
-  <meta name="author" content="Nathan Randriamanana">
-  <meta name="dcterms.date" content="2024-04-30">
-  <title>Présentations codification automatique de l’APE - Classification of Business Activities by Machine Learning: The Case of France.</title>
+  <meta name="author" content="Thomas Faria, Nathan Randriamanana, Tom Seimandi">
+  <title>Présentations codification automatique de l’APE - Codification automatique de l’APE à l’Insee</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -33,7 +32,7 @@
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="../_extensions/InseeFrLab/onyxia/logo.css">
-  <link rel="stylesheet" href="logo.css">
+  <link rel="stylesheet" href="../custom.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -326,8 +325,7 @@
     }
   </style>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="Logo_Insee-32x32.png">
-<meta property="og:title" content="Présentations codification automatique de l’APE - Classification of Business Activities by Machine Learning: The Case of France.">
+<meta property="og:title" content="Présentations codification automatique de l’APE - Codification automatique de l’APE à l’Insee">
 <meta property="og:site_name" content="Présentations codification automatique de l'APE">
 </head>
 <body class="quarto-light">
@@ -335,155 +333,29 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="../_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Classification of Business Activities by Machine Learning: The Case of France.</h1>
+  <h1 class="title">Codification automatique de l’APE à l’Insee</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<a href="https://github.com/TheAIWizard">Nathan Randriamanana</a> 
+<a href="https://github.com/ThomasFaria">Thomas Faria</a>, <a href="https://github.com/TheAIWizard">Nathan Randriamanana</a>, <a href="https://github.com/tomseimandi/">Tom Seimandi</a> 
 </div>
 </div>
 </div>
 
-  <p class="date">30 April 2024</p>
+  <p class="date">19 mars 2024</p>
 </section>
-<section id="context" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Context</h2>
-<ul>
-<li><span class="orange"><strong>Sirene</strong></span> is the French national company registry</li>
-<li>When a company registers, an <span class="orange"><strong>activity code</strong></span> is attributed</li>
-<li>Challenges :
-<ul>
-<li>Refactoring of the Sirene <span class="blue2"><strong>information system</strong></span></li>
-<li>NACE revision to come in 2025</li>
-<li>Teams still <span class="blue2"><strong>overwhelmed</strong></span></li>
-</ul></li>
-<li>End of March 2024:
-<ul>
-<li>Officially switch from <span class="orange"><strong>Sirene 3</strong></span> to <span class="blue"><strong>Sirene 4</strong></span></li>
-</ul></li>
-<li><span class="orange"><strong>Consequences</strong></span>: Ideal moment to innovate (but under the constraint!)</li>
-</ul>
-</section>
-<section id="the-flow-of-formalities" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>The flow” of formalities</h2>
+<section class="slide level2">
 
-<img data-src="../img/flow-formalities.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="the-administrative-landscape" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>The administrative landscape</h2>
-<ul>
-<li>Siren number: company directory identification system</li>
-<li>Principal activity code (APE)</li>
-<li>Classification on a daily basis</li>
-<li>Different administrations</li>
-<li>Different information systems</li>
-<li>Requirements: quick, responsive and flexible to updated instructions</li>
-</ul>
-</section>
-<section id="assign-an-activy-code-different-processes" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Assign an activy code: different processes</h2>
-
-<img data-src="../img/formality-claim-survey.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="assign-an-activy-code-two-outcomes" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Assign an activy code: two outcomes</h2>
-<ul>
-<li>Automatic coding</li>
-<li>Human review</li>
-</ul>
-
-<img data-src="../img/orga-post-prod-en.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="near-ubiquity-of-ml" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Near-ubiquity of ML</h2>
-
-<img data-src="../img/automation_rate.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="automatic-activity-classification" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Automatic activity classification</h2>
-
-<img data-src="../img/automatic-coding-HMI.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="human-review" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Human review</h2>
-
-<img data-src="../img/reprise_gestionnaire_manque_contexte.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="model" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Model</h2>
-<ul>
-<li><span class="orange"><strong>Text classification</strong></span> model which uses additional categorical variables</li>
-<li>For now we use the <span class="orange"><strong>fastText</strong></span> library</li>
-<li>Originally trained on legacy data annotated partly by the <span class="orange"><strong>coding engine</strong></span> and partly <span class="orange"><strong>manually</strong></span></li>
-</ul>
-
-<img data-src="../img/fasttext.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="fasttext" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>FastText</h2>
-<ul>
-<li>a rapid and lightweight model</li>
-</ul>
-
-<img data-src="../img/diag-fasttext-rectif.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="calendar-on-new-nace-adoption" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Calendar on new NACE adoption</h2>
-<ul>
-<li>2025: statistical business register adopts new NACE
-<ul>
-<li>Dual Coding
-<ul>
-<li>major coding with NACE rev 2</li>
-<li>minor coding with NACE rev 2.1</li>
-</ul></li>
-</ul></li>
-<li>2026: administrative business register adopts new NACE
-<ul>
-<li>Dual Coding
-<ul>
-<li>major coding with NACE rev 2.1</li>
-<li>minor coding with NACE rev 2</li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="to-1-correspondence" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>1-to-1 correspondence</h2>
-<ul>
-<li>An easy and ideal case</li>
-</ul>
-
-<img data-src="../img/one-to-one.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="to-many-correspondence" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>1-to-many correspondence</h2>
-<ul>
-<li>An ultimately less desirable solution</li>
-<li>Need expert decision based on activity description</li>
-</ul>
-
-<img data-src="../img/one-to-many.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="annotation-campaign-strategy" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Annotation campaign strategy</h2>
-<ul>
-<li>A one-shot operation spanning multiple months in 2024</li>
-<li>manual labeling only on the 1-to-many codes</li>
-<li>select data to annotate since the implementation of the one-stop shop</li>
-<li>kill two birds with one stone
-<ul>
-<li>check NACE rev 2 coding quality on the 1-to-many codes</li>
-<li>attribute a NACE rev 2.1 code</li>
-</ul></li>
-</ul>
-</section>
-<section id="labeling-method" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Labeling method</h2>
-
-<img data-src="../img/decision-tree-annotation.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="reduce-tasks-to-annotate" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Reduce tasks to annotate</h2>
-<ul>
-<li><p>theoretical 1-to-many scenarios can eventually become 1-to-1 in practice</p></li>
-<li><p>duplicated textual descriptions may occur due to shared practices among registrants.</p></li>
-<li><p>How to reduce the annotation workload for our annotators ?</p>
-<ul>
-<li>adapt correspondence table by considering real-world business rules</li>
-<li>avoid giving the same textual descriptions to annotate</li>
-</ul></li>
-</ul>
+<!-- 
+- Contexte /origine du projet : qu'est ce qu'on cherche &#xE0; faire concretement
+- mini point m&#xE9;thodo/fasttext
+- mise en prod actuelle avec human review (IC etc.) mettre flow chart actuel + UI de reprise
+- vers une approche mlops :
+  - serving api mlflow
+  - monitoring /dashboard
+  - annotation + dashboard 
+  -->
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -516,7 +388,7 @@
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-'controlsAuto': true,
+'controlsAuto': false,
 'previewLinksAuto': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
@@ -527,7 +399,7 @@
 'smaller': false,
  
         // Display controls in the bottom right corner
-        controls: false,
+        controls: true,
 
         // Help the user learn the controls by providing hints, for example by
         // bouncing the down arrow when they first encounter a vertical slide
@@ -754,12 +626,12 @@
         // flash "checked"
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
+        button.setAttribute("title", "Copi&#xE9;");
         let tooltip;
         if (window.bootstrap) {
           button.setAttribute("data-bs-toggle", "tooltip");
           button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
+          button.setAttribute("data-bs-title", "Copi&#xE9;");
           tooltip = new bootstrap.Tooltip(button, 
             { trigger: "manual", 
               customClass: "code-copy-button-tooltip",
