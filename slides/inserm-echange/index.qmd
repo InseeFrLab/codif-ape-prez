@@ -30,8 +30,10 @@ ascii: true
   - annotation + dashboard 
   -->
 
-{{< include sections/1-Context.qmd >}}
+{{< include sections/1-contexte.qmd >}}
 
-{{< include sections/2-Methodo.qmd >}}
+{{< include sections/2-methodo.qmd >}}
 
-{{< include sections/3-MLOps.qmd >}}
+{{< include sections/3-prod-actuelle.qmd >}}
+
+{{< include sections/4-MLOps.qmd >}}
