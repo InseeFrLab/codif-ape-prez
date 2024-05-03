@@ -9,7 +9,7 @@ page-layout: full
 toc: false
 ---
 
-## Présentation relative à la codificaation automatique de l'APE
+## Présentations relatives à la codification automatique de l'APE
 
 
 Tous les supports sont sur le [`Github InseeFrLab` {{< fa brands github >}}](https://github.com/orgs/InseeFrLab/teams/codification-ape/repositories)
