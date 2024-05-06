@@ -80,6 +80,7 @@ import pyarrow.parquet as pq
 import unidecode
 import string
 import numpy as np
+#import nltk
 from nltk.corpus import stopwords as ntlk_stopwords
 from nltk.stem.snowball import SnowballStemmer
 
@@ -87,6 +88,7 @@ from nltk.stem.snowball import SnowballStemmer
 
 
 ```{python}
+#nltk.download('stopwords')
 stopwords = tuple(ntlk_stopwords.words("french")) + tuple(string.ascii_lowercase)
 stemmer = SnowballStemmer(language="french")
 

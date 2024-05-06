@@ -33,19 +33,7 @@ execute:
   - monitoring /dashboard
   - annotation + dashboard 
   -->
-  
-```{r, echo=FALSE}
-## Initialisation
-library(ggplot2)
-library(dplyr)
-source("../theme_custom.R")
 
-Accuracy_lvl <- readr::read_csv("../data/accuracy_lvl.csv")
-TOPK_Accuracy <- readr::read_csv("../data/accuracy_top-k.csv")
-Accuracy_reprise <- readr::read_csv("../data/accuracy_reprise.csv")
-IC_distrib <- readr::read_csv("../data/IC_distrib.csv")
-IC_thresholds <- readr::read_csv("../data/IC_thresholds.csv")
-```
 
 # 1️⃣ Contexte
 
