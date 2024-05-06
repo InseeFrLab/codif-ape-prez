@@ -30,12 +30,18 @@ ascii: true
   - annotation + dashboard 
   -->
 
-# :one: Contexte 
+# 1️⃣ Contexte 
 
 {{< include sections/1-contexte.qmd >}}
 
+# 2️⃣ Méthodologie
+
 {{< include sections/2-methodo.qmd >}}
 
+# 3️⃣ 
+
 {{< include sections/3-prod-actuelle.qmd >}}
+
+# 4️⃣ Vers une approche MLOps
 
 {{< include sections/4-MLOps.qmd >}}

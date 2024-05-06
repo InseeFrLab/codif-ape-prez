@@ -1,0 +1,21 @@
+## Modèle fastText {background-image="../img/diag-fasttext.png" background-size="95%" background-position="50% 75%"} 
+
+- [**fastText**]{.orange}: Modèle "sac de mots" très [**simple**]{.blue2} et [**rapide**]{.blue2} (`C++`).
+
+
+## Prise en compte des variables catégorielles
+
+- [**Concaténation**]{.orange} du libellé avec les noms et valeurs des variables annexes :
+
+Libellé | NAT | TYP | EVT | SUR | 
+--------|-----|-----|-----|-----|
+Cours de musique | NaN | X | 01P |NaN
+
+<center>
+&#129155;
+</center>
+
+"Cours de musique [NAT]{.green2}\_[NaN]{.blue2} [TYP]{.green2}\_[X]{.blue2} [EVT]{.green2}\_[01P]{.blue2} [SUR]{.green2}\_[NaN]{.blue2}"
+
+- [**Méthode imparfaite**]{.orange} : 3-grams "AT_" ou "T_0" utilisés.
+
