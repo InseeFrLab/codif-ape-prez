@@ -22,7 +22,7 @@ plot_IC_distrib <- function(data, thresholds, ypos){
       axis.text.y = element_text(size = 24),
       axis.text.x = element_text(size = 24),
     )+
-    annotate("text", x = thresholds$x+0.03, y = ypos, label = c("5%", "10%", "15%", "20%", "25%"), size = 7)
+    annotate("text", x = thresholds$x+0.03, y = ypos, size = 7)
   
   return(plot)
   

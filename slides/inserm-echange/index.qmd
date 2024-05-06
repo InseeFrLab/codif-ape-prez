@@ -1,7 +1,7 @@
 ---
 title: "Codification automatique de l'APE à l'Insee"
 author: "[Thomas Faria](https://github.com/ThomasFaria), [Nathan Randriamanana](https://github.com/TheAIWizard), [Tom Seimandi](https://github.com/tomseimandi/)"
-date: "03/19/2024"
+date: "05/07/2024"
 date-format: "D MMMM YYYY"
 slide-number: true
 # uncomment for French presentations:
@@ -18,6 +18,10 @@ format:
 controls: true
 css: ../custom.css
 ascii: true
+from: markdown+emoji
+execute: 
+  echo: false
+  warning: false
 ---
 
 <!-- 
@@ -29,6 +33,19 @@ ascii: true
   - monitoring /dashboard
   - annotation + dashboard 
   -->
+  
+```{r, echo=FALSE}
+## Initialisation
+library(ggplot2)
+library(dplyr)
+source("../theme_custom.R")
+
+Accuracy_lvl <- readr::read_csv("../data/accuracy_lvl.csv")
+TOPK_Accuracy <- readr::read_csv("../data/accuracy_top-k.csv")
+Accuracy_reprise <- readr::read_csv("../data/accuracy_reprise.csv")
+IC_distrib <- readr::read_csv("../data/IC_distrib.csv")
+IC_thresholds <- readr::read_csv("../data/IC_thresholds.csv")
+```
 
 # 1️⃣ Contexte
 
@@ -38,7 +55,7 @@ ascii: true
 
 {{< include sections/2-methodo.qmd >}}
 
-# 3️⃣ 
+# 3️⃣ Situation actuelle
 
 {{< include sections/3-prod-actuelle.qmd >}}
 
