@@ -1,0 +1,41 @@
+## Le paysage administratif
+
+- Sirene 
+- Classification on a daily basis
+- Différentes administrations 
+- Differents systèmes d'informations
+- Nécessité de pouvoir adapter la codification: ré-entr
+- Obtention des données conditionnées par le Guichet unique
+
+![](../img/flux-formalites.png){fig-align="center"}
+
+## Différents procédés pour attribuer un code APE
+
+![](../img/formalite-contestation-enquete.png){fig-align="center"}
+
+## Mise en production actuelle
+
+- 2 issues possibles:
+    - codification automatique 
+    - reprise gestionnaire
+
+![](../img/orga-post-prod-fr.png){fig-align="center"}
+
+## Codification déterministe et probabiliste
+
+- Usage de codification déterministe en flux
+
+![](../img/table-passage-codification.png){fig-align="center"}
+
+## Reprise gestionnaire
+
+- 2 approches pour les gestionnaires
+
+![](../img/mode-reprise-gestionnaire.png){fig-align="center"}
+
+## Présence quasi-permanente d'usage de ML 
+
+![](../img/taux_automatisation.png){fig-align="center"}
+
+
+
