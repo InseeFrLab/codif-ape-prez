@@ -298,14 +298,14 @@
     "href": "slides/inserm-echange/index.html#le-paysage-administratif",
     "title": "Codification automatique de l’APE à l’Insee",
     "section": "Le paysage administratif",
-    "text": "Le paysage administratif\n\nSirene\nClassification on a daily basis\nDifférentes administrations\nDifferents systèmes d’informations\nNécessité de pouvoir adapter la codification: ré-entr\nObtention des données conditionnées par le Guichet unique"
+    "text": "Le paysage administratif"
   },
   {
-    "objectID": "slides/inserm-echange/index.html#différents-procédés-pour-attribuer-un-code-ape",
-    "href": "slides/inserm-echange/index.html#différents-procédés-pour-attribuer-un-code-ape",
+    "objectID": "slides/inserm-echange/index.html#construction-dun-indice-de-confiance",
+    "href": "slides/inserm-echange/index.html#construction-dun-indice-de-confiance",
     "title": "Codification automatique de l’APE à l’Insee",
-    "section": "Différents procédés pour attribuer un code APE",
-    "text": "Différents procédés pour attribuer un code APE"
+    "section": "Construction d’un indice de confiance",
+    "text": "Construction d’un indice de confiance\n\n\nObjectif : discriminer les mauvaises des bonnes prédictions.\nIndice de confiance retenu : différence entre les deux probabilités les plus élevées."
   },
   {
     "objectID": "slides/inserm-echange/index.html#mise-en-production-actuelle",
@@ -315,25 +315,39 @@
     "text": "Mise en production actuelle\n\n2 issues possibles:\n\ncodification automatique\nreprise gestionnaire"
   },
   {
-    "objectID": "slides/inserm-echange/index.html#codification-déterministe-et-probabiliste",
-    "href": "slides/inserm-echange/index.html#codification-déterministe-et-probabiliste",
+    "objectID": "slides/inserm-echange/index.html#codification-du-flux-de-liasses",
+    "href": "slides/inserm-echange/index.html#codification-du-flux-de-liasses",
     "title": "Codification automatique de l’APE à l’Insee",
-    "section": "Codification déterministe et probabiliste",
-    "text": "Codification déterministe et probabiliste\n\nUsage de codification déterministe en flux"
+    "section": "Codification du flux de liasses",
+    "text": "Codification du flux de liasses"
   },
   {
     "objectID": "slides/inserm-echange/index.html#reprise-gestionnaire",
     "href": "slides/inserm-echange/index.html#reprise-gestionnaire",
     "title": "Codification automatique de l’APE à l’Insee",
     "section": "Reprise gestionnaire",
-    "text": "Reprise gestionnaire\n\n2 approches pour les gestionnaires"
+    "text": "Reprise gestionnaire"
   },
   {
-    "objectID": "slides/inserm-echange/index.html#présence-quasi-permanente-dusage-de-ml",
-    "href": "slides/inserm-echange/index.html#présence-quasi-permanente-dusage-de-ml",
+    "objectID": "slides/inserm-echange/index.html#codification-automatique-sur-lihm",
+    "href": "slides/inserm-echange/index.html#codification-automatique-sur-lihm",
     "title": "Codification automatique de l’APE à l’Insee",
-    "section": "Présence quasi-permanente d’usage de ML",
-    "text": "Présence quasi-permanente d’usage de ML"
+    "section": "Codification automatique sur l’IHM",
+    "text": "Codification automatique sur l’IHM"
+  },
+  {
+    "objectID": "slides/inserm-echange/index.html#reprise-gestionnaire-sur-lihm",
+    "href": "slides/inserm-echange/index.html#reprise-gestionnaire-sur-lihm",
+    "title": "Codification automatique de l’APE à l’Insee",
+    "section": "Reprise gestionnaire sur l’IHM",
+    "text": "Reprise gestionnaire sur l’IHM"
+  },
+  {
+    "objectID": "slides/inserm-echange/index.html#faible-traitement-manuel",
+    "href": "slides/inserm-echange/index.html#faible-traitement-manuel",
+    "title": "Codification automatique de l’APE à l’Insee",
+    "section": "Faible traitement manuel",
+    "text": "Faible traitement manuel"
   },
   {
     "objectID": "slides/inserm-echange/index.html#situation-actuelle-inefficace",
