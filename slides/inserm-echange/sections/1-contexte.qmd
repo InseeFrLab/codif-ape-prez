@@ -177,7 +177,9 @@ DATA_PATH="projet-ape/data/data_sirene3.parquet"
 TEXT_FEATURE="LIB_SICORE"
 
 fs = s3fs.S3FileSystem(
-    client_kwargs={"endpoint_url": "https://minio.lab.sspcloud.fr"}
+    client_kwargs={"endpoint_url": f"https://{os.environ["AWS_S3_ENDPOINT"]}"}
+    key=os.environ["AWS_ACCESS_KEY_ID"],
+    secret=os.environ["AWS_SECRET_ACCESS_KEY"]
 )
 df = pq.ParquetDataset(DATA_PATH, filesystem=fs).read_pandas().to_pandas()
 df = df.sample(frac=0.001)

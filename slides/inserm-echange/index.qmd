@@ -30,7 +30,7 @@ ascii: true
   - annotation + dashboard 
   -->
 
-# 1️⃣ Contexte 
+# 1️⃣ Contexte
 
 {{< include sections/1-contexte.qmd >}}
 
