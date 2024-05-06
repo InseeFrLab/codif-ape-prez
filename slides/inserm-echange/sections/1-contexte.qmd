@@ -6,9 +6,9 @@
   - [**Refonte**]{.blue2} du répertoire Sirene
   - Mise en place d'un [**guichet unique**]{.blue2} pour les formalitées d'entreprises
   - [**Forte baisse de performance**]{.blue2} de l'outil de codification historique
-  - Equipes Sirene déjà [**surchargée**]{.blue2} avant la refonte
+  - Equipes Sirene déjà [**surchargées**]{.blue2} avant la refonte
 
-- [**Conséquence**]{.orange}: besoin d'un nouvel outil... en innovant
+- [**Conséquence**]{.orange} : besoin d'un nouvel outil... en innovant
 
 ## Données
 
@@ -176,11 +176,16 @@ def clean_lib(df: pd.DataFrame, text_feature: str) -> pd.DataFrame:
 DATA_PATH="projet-ape/data/data_sirene3.parquet"
 TEXT_FEATURE="LIB_SICORE"
 
+kwargs = {
+    "key": os.environ["AWS_ACCESS_KEY_ID"],
+    "secret": os.environ["AWS_SECRET_ACCESS_KEY"]
+}
+
+if "AWS_SESSION_TOKEN" in os.environ:
+    kwargs["token"] = os.environ["AWS_SESSION_TOKEN"]
+
 fs = s3fs.S3FileSystem(
-    client_kwargs={"endpoint_url": f"""https://{os.environ["AWS_S3_ENDPOINT"]}"""},
-    key=os.environ["AWS_ACCESS_KEY_ID"],
-    secret=os.environ["AWS_SECRET_ACCESS_KEY"],
-    token=os.environ["AWS_SESSION_TOKEN"]
+    client_kwargs={"endpoint_url": f"""https://{os.environ["AWS_S3_ENDPOINT"]}"""}, **kwargs
 )
 df = pq.ParquetDataset(DATA_PATH, filesystem=fs).read_pandas().to_pandas()
 df = df.sample(frac=0.001)
