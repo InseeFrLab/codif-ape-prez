@@ -375,14 +375,14 @@
     "href": "slides/inserm-echange/index.html#exposer-un-modèle-via-une-api",
     "title": "Codification automatique de l’APE à l’Insee",
     "section": "Exposer un modèle via une API",
-    "text": "Exposer un modèle via une API\n\nModèle mis à disposition via une API conteneurisée :\n\nSimple pour les utilisateurs\nFormat de requête standard\nPassage à l’échelle optimisé\nModulaire et portable\n\nDéploiement continu avec Argo CD"
+    "text": "Exposer un modèle via une API\n\nModèle mis à disposition via une API conteneurisée :\n\nSimple pour les utilisateurs\n\n\n\nviewof activite = Inputs.text( \n  {label: '', value: 'Institut National de la Santé et de la Recherche Médicale (INSERM)', width: 800}\n)\n\nurlApe = `https://codification-ape-test.lab.sspcloud.fr/predict?nb_echos_max=4&prob_min=0&text_feature=${activite}&type_liasse=C&event=01P`\n\nd3.json(urlApe).then( res =&gt; {\n  var IC, results;\n  ( {IC, ...results} = res )\n\n  IC = parseFloat(IC)\n\n  const rows = Object.values(results).map( obj =&gt; {\n    return `\n    &lt;tr&gt;\n      &lt;td&gt;${obj.code} | ${obj.libelle}&lt;/td&gt;\n      &lt;td&gt;${obj.probabilite.toFixed(3)}&lt;/td&gt;\n    &lt;/tr&gt;\n  `\n  }).join('')\n  \n  return html`\n  &lt;table&gt;\n    &lt;caption&gt;\n      Indice de confiance : ${IC.toFixed(3)}\n    &lt;/caption&gt;\n    &lt;tr&gt;\n      &lt;th style=\"text-align:center;\"&gt;Libellé (NA2008)&lt;/th&gt;\n      &lt;th&gt;Probabilité&lt;/th&gt;\n    &lt;/tr&gt;\n      ${rows}\n  &lt;/table&gt;`\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport { debounce } from \"@mbostock/debouncing-input\""
   },
   {
     "objectID": "slides/inserm-echange/index.html#exposer-un-modèle-via-une-api-1",
     "href": "slides/inserm-echange/index.html#exposer-un-modèle-via-une-api-1",
     "title": "Codification automatique de l’APE à l’Insee",
     "section": "Exposer un modèle via une API",
-    "text": "Exposer un modèle via une API\n\nviewof activite = Inputs.text( \n  {label: '', value: 'Institut National de la Santé Et de la Recherche Médicale (INSERM)', width: 1200}\n)\n\nurlApe = `https://codification-ape-test.lab.sspcloud.fr/predict?nb_echos_max=3&prob_min=0&text_feature=${activite}&type_liasse=C&event=01P`\n\nd3.json(urlApe).then( res =&gt; {\n  var IC, results;\n  ( {IC, ...results} = res )\n\n  IC = parseFloat(IC)\n\n  const rows = Object.values(results).map( obj =&gt; {\n    return `\n    &lt;tr&gt;\n      &lt;td&gt;${obj.code} | ${obj.libelle}&lt;/td&gt;\n      &lt;td&gt;${obj.probabilite.toFixed(3)}&lt;/td&gt;\n    &lt;/tr&gt;\n  `\n  }).join('')\n  \n  return html`\n  &lt;table&gt;\n    &lt;caption&gt;\n      Indice de confiance : ${IC.toFixed(3)}\n    &lt;/caption&gt;\n    &lt;tr&gt;\n      &lt;th style=\"text-align:center;\"&gt;Libellé (NA2008)&lt;/th&gt;\n      &lt;th&gt;Probabilité&lt;/th&gt;\n    &lt;/tr&gt;\n      ${rows}\n  &lt;/table&gt;`\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport { debounce } from \"@mbostock/debouncing-input\""
+    "text": "Exposer un modèle via une API\n\nModèle mis à disposition via une API conteneurisée :\n\nSimple pour les utilisateurs\nFormat de requête standard\nPassage à l’échelle optimisé\nModulaire et portable\n\nDéploiement continu avec Argo CD"
   },
   {
     "objectID": "slides/inserm-echange/index.html#exposer-un-modèle-via-une-api-2",
