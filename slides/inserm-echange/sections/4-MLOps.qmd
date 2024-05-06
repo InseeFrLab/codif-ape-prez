@@ -46,6 +46,52 @@
   - [**Modulaire**]{.blue2} et [**portable**]{.blue2}
 - Déploiement continu avec [**Argo CD**]{.orange}
 
+##  Exposer un modèle via une API
+
+
+```{ojs}
+viewof activite = Inputs.text( 
+  {label: '', value: 'Institut National de la Santé Et de la Recherche Médicale (INSERM)', width: 1200}
+)
+
+urlApe = `https://codification-ape-test.lab.sspcloud.fr/predict?nb_echos_max=3&prob_min=0&text_feature=${activite}&type_liasse=C&event=01P`
+
+d3.json(urlApe).then( res => {
+  var IC, results;
+  ( {IC, ...results} = res )
+
+  IC = parseFloat(IC)
+
+  const rows = Object.values(results).map( obj => {
+    return `
+    <tr>
+      <td>${obj.code} | ${obj.libelle}</td>
+      <td>${obj.probabilite.toFixed(3)}</td>
+    </tr>
+  `
+  }).join('')
+  
+  return html`
+  <table>
+    <caption>
+      Indice de confiance : ${IC.toFixed(3)}
+    </caption>
+    <tr>
+      <th style="text-align:center;">Libellé (NA2008)</th>
+      <th>Probabilité</th>
+    </tr>
+      ${rows}
+  </table>`
+})
+```
+
+
+```{ojs}
+import { debounce } from "@mbostock/debouncing-input" 
+```
+
+
+
 ## Exposer un modèle via une API
 
 ![](../img/api-datalab.png){fig-align="center"}
