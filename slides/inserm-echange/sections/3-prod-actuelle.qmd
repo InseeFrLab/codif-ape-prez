@@ -12,8 +12,8 @@
 ## Mise en production actuelle
 
 - 2 issues possibles:
-    - codification automatique
-    - reprise gestionnaire
+    - codification automatique 🚀
+    - reprise gestionnaire 🔍
 
 ![](../img/orga-post-prod-fr.png){fig-align="center"}
 
