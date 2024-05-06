@@ -1,0 +1,22 @@
+## Situation actuelle inefficace
+
+- [**Infrastructure**]{.orange} divergente : 
+    - Modèle entrainé sur la plateforme [**SSP Cloud**]{.blue2} 😍
+    - Module de codification [**développé en Java**]{.blue2} au sein d'une architecture monolithique 😫
+    - [**Duplication de code**]{.blue2} et risque d'erreurs 
+
+## Situation actuelle inefficace
+
+- Problèmes [**organisationnels**]{.orange} : 
+    - [**Méconnaissance des problèmes métier**]{.blue2} côté Lab pour la maintenance
+    - [**Contrôle de version**]{.blue2} et [**transmission**]{.blue2} des modèles non centralisés
+    - Organisation [**inefficace**]{.blue2} entre les parties prenantes
+
+## Situation actuelle inefficace
+
+- [**Spécificités du ML**]{.orange} non prises en compte :
+  - Pas de [**surveillance**]{.blue2} du modèle en temps réel
+  - Pas de données [**golden standard**]{.blue2}
+  - Pas de [**ré-entrainement**]{.blue2} régulier
+
+- [**Conséquence**]{.orange} : Besoin d'adopter les [**bonnes pratiques**]{.blue2} d'un point de vue technique (MLOps) et organisationel
