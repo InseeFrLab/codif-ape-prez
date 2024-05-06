@@ -20,3 +20,62 @@
   - Pas de [**ré-entrainement**]{.blue2} régulier
 
 - [**Conséquence**]{.orange} : Besoin d'adopter les [**bonnes pratiques**]{.blue2} d'un point de vue technique (MLOps) et organisationel
+
+![](../img/mlops-cycle.png){fig-align="center"}
+
+## Notre implémentation MLOps 🚀
+
+- Architecture en microservices qui tournent sur un [**cluster Kubernetes**]{.orange} :
+  - Contrôle de version des expérimentations et modèles : [**MLflow**]{.blue2}
+  - Mise à dispostion du modèle via API: [**FastAPI**]{.blue2}
+  - Automatisation avec [**ArgoCD**]{.blue2}
+  - Dashboard de surveillance : [**Quarto**]{.blue2} and [**DuckDB**]{.blue2}
+  - Contrôle qualité: annotations avec [**Label Studio**]{.blue2}
+
+## MLflow au coeur de notre projet
+
+![](../img/mlflow-model-registry.png){fig-align="center"}
+
+
+##  Exposer un modèle via une API
+
+- Modèle mis à disposition via une [**API**]{.orange} conteneurisée :
+  - [**Simple**]{.blue2} pour les utilisateurs
+  - [**Format de requête standard**]{.blue2}
+  - Passage à l'[**échelle**]{.blue2} optimisé
+  - [**Modulaire**]{.blue2} et [**portable**]{.blue2}
+- Déploiement continu avec [**Argo CD**]{.orange}
+
+## Exposer un modèle via une API
+
+![](../img/api-datalab.png){fig-align="center"}
+
+## Monitoring 
+
+- [**Surveiller**]{.orange} un modèle ML en production est nécessaire :
+  - Pour détecter des [**distribution drifts**]{.blue2} dans les données d'entrées
+  - Pour s'assurer qu'il a un [**comportement stable**]{.blue2}
+  - Pour savoir [**quand ré-entraîner**]{.blue2} le modèle
+- Idéallement, on voudrait connaître la [**performance en temps réel**]{.orange} mais compliqué.. et coûteux !
+- Surveillance [**technique**]{.orange} aussi importante : [**latence**]{.orange}, [**memoire**]{.orange}, [**usage disque**]{.orange}, etc.
+
+
+## Monitoring 
+
+![](../img/monitoring-datalab){fig-align="center"}
+
+## Contrôle qualité
+
+- Données de test [**collectées et annotées périodiquement**]{.orange}
+- Annotation réalisée avec [**Label Studio**]{.orange}
+- [**Métriques de performance**]{.orange} calculées sur le jeu de test
+- Performance affichée dans un [**dashboard de surveillance**]{.orange}
+- [**Ré-entraînement**]{.orange} déclenché lorsque certaines métriques passent un certain seuil (pas encore fait)
+
+## Contrôle qualité
+
+![](../img/annotation-datalab.png){fig-align="center"}
+
+## Dashboard
+
+[Tableau de bord](https://dashboard-ape.lab.sspcloud.fr/){preview-link="true"}

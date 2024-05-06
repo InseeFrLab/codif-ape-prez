@@ -73,7 +73,7 @@ viewof table_data_prepro = Inputs.table(transpose(data_prepro), {
 
 ```{python}
 import sys
-
+import os
 import pandas as pd
 import s3fs
 import pyarrow.parquet as pq
@@ -177,9 +177,10 @@ DATA_PATH="projet-ape/data/data_sirene3.parquet"
 TEXT_FEATURE="LIB_SICORE"
 
 fs = s3fs.S3FileSystem(
-    client_kwargs={"endpoint_url": f"https://{os.environ["AWS_S3_ENDPOINT"]}"}
+    client_kwargs={"endpoint_url": f"""https://{os.environ["AWS_S3_ENDPOINT"]}"""},
     key=os.environ["AWS_ACCESS_KEY_ID"],
-    secret=os.environ["AWS_SECRET_ACCESS_KEY"]
+    secret=os.environ["AWS_SECRET_ACCESS_KEY"],
+    token=os.environ["AWS_SESSION_TOKEN"]
 )
 df = pq.ParquetDataset(DATA_PATH, filesystem=fs).read_pandas().to_pandas()
 df = df.sample(frac=0.001)
