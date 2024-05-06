@@ -1,0 +1,12 @@
+boto3
+ipykernel
+mlflow
+nbclient
+nbformat
+nltk
+numpy
+pandas
+pyarrow
+pydantic
+s3fs
+unidecode

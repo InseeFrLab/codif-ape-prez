@@ -30,6 +30,8 @@ ascii: true
   - annotation + dashboard 
   -->
 
+# :one: Contexte 
+
 {{< include sections/1-contexte.qmd >}}
 
 {{< include sections/2-methodo.qmd >}}
