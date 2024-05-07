@@ -33,9 +33,6 @@
 
 ![](../img/reprise_gestionnaire_manque_contexte.png){fig-align="center"}
 
-## Faible traitement manuel
-
-![](../img/taux_automatisation.png){fig-align="center"}
 
 
 
