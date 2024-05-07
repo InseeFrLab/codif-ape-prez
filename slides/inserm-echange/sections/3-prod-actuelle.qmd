@@ -11,7 +11,7 @@
 
 ## Mise en production actuelle
 
-- 2 issues possibles:
+- 2 issues possibles :
     - codification automatique 🚀
     - reprise gestionnaire 🔍
 
