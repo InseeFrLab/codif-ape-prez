@@ -26,17 +26,6 @@ execute:
   warning: false
 ---
 
-<!-- 
-- Contexte /origine du projet : qu'est ce qu'on cherche à faire concretement
-- mini point méthodo/fasttext
-- mise en prod actuelle avec human review (IC etc.) mettre flow chart actuel + UI de reprise
-- vers une approche mlops :
-  - serving api mlflow
-  - monitoring /dashboard
-  - annotation + dashboard 
-  -->
-
-
 # 1️⃣ Contexte
 
 {{< include sections/1-contexte.qmd >}}
