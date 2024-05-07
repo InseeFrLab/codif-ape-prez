@@ -1,5 +1,7 @@
 ---
 title: "Codification automatique de l'APE à l'Insee"
+subtitle: |
+  **[Présentation à l'INSERM]{.orange}**
 author: "[Thomas Faria](https://github.com/ThomasFaria), [Nathan Randriamanana](https://github.com/TheAIWizard), [Tom Seimandi](https://github.com/tomseimandi/)"
 date: "05/07/2024"
 date-format: "D MMMM YYYY"
