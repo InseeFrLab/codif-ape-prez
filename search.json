@@ -256,14 +256,14 @@
     "href": "slides/inserm-echange/index.html#contexte-1",
     "title": "Codification automatique de l’APE à l’Insee",
     "section": "Contexte",
-    "text": "Contexte\n\nSirene est le répertoire des entreprises françaises\nUn code APE est attribué à chaque entreprise\nDébut 2023:\n\nRefonte du répertoire Sirene\nMise en place d’un guichet unique pour les formalitées d’entreprises\nForte baisse de performance de l’outil de codification historique\nEquipes Sirene déjà surchargées avant la refonte\n\nConséquence : besoin d’un nouvel outil… en innovant"
+    "text": "Contexte\n\nSirene est le répertoire des entreprises françaises\nUn code APE est attribué à chaque entreprise\nDébut 2023:\n\nRefonte du répertoire Sirene\nMise en place d’un guichet unique pour les formalités d’entreprises\nForte baisse de performance de l’outil de codification historique\nEquipes Sirene déjà surchargées avant la refonte\n\nConséquence : besoin d’un nouvel outil… en innovant"
   },
   {
     "objectID": "slides/inserm-echange/index.html#données",
     "href": "slides/inserm-echange/index.html#données",
     "title": "Codification automatique de l’APE à l’Insee",
     "section": "Données",
-    "text": "Données\n\nPrédiction du code APE à partir descriptifs d’activités\n\\(\\approx\\) 10 millions d’obs. issues de Sirene 3 couvrant la période 2014-2022\nDonnées labellisées par Sicore ou par un gestionnaire\nStructure hiérarchique de la nomenclature"
+    "text": "Données\n\nPrédiction du code APE à partir des descriptifs d’activités\n\\(\\approx\\) 10 millions d’obs. issues de Sirene 3 couvrant la période 2014-2022\nDonnées labellisées par Sicore ou par un gestionnaire\nStructure hiérarchique de la nomenclature"
   },
   {
     "objectID": "slides/inserm-echange/index.html#la-nomenclature-hiérarchique-de-lape",
@@ -312,7 +312,7 @@
     "href": "slides/inserm-echange/index.html#mise-en-production-actuelle",
     "title": "Codification automatique de l’APE à l’Insee",
     "section": "Mise en production actuelle",
-    "text": "Mise en production actuelle\n\n2 issues possibles:\n\ncodification automatique 🚀\nreprise gestionnaire 🔍"
+    "text": "Mise en production actuelle\n\n2 issues possibles :\n\ncodification automatique 🚀\nreprise gestionnaire 🔍"
   },
   {
     "objectID": "slides/inserm-echange/index.html#codification-du-flux-de-liasses",
