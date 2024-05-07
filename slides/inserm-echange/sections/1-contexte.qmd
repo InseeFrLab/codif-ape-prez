@@ -4,7 +4,7 @@
 - Un [**code APE**]{.orange} est attribué à chaque entreprise
 - Début 2023:
   - [**Refonte**]{.blue2} du répertoire Sirene
-  - Mise en place d'un [**guichet unique**]{.blue2} pour les formalitées d'entreprises
+  - Mise en place d'un [**guichet unique**]{.blue2} pour les formalités d'entreprises
   - [**Forte baisse de performance**]{.blue2} de l'outil de codification historique
   - Equipes Sirene déjà [**surchargées**]{.blue2} avant la refonte
 
@@ -12,7 +12,7 @@
 
 ## Données
 
-- Prédiction du code APE à partir descriptifs d'activités
+- Prédiction du code APE à partir des descriptifs d'activités
 - [$\approx$ **10 millions**]{.orange} d'obs. issues de Sirene 3 couvrant la période 2014-2022
 - [**Données labellisées**]{.orange} par Sicore ou par un gestionnaire
 - Structure [**hiérarchique**]{.orange} de la nomenclature
