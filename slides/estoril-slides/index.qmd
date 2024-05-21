@@ -1,0 +1,44 @@
+---
+title: Codification automatique de l’APE dans le cadre du projet Sirene 4
+subtitle: |
+  **[Journée SSP Hub]{.orange}**
+author: |
+  [Thomas Faria](https://github.com/ThomasFaria),
+  [Nathan Randriamanana](https://github.com/TheAIWizard),
+  [Tom Seimandi](https://github.com/tomseimandi/)
+date: "05/21/2024"
+date-format: "D MMMM YYYY"
+slide-number: true
+# uncomment for French presentations:
+# lang: fr-FR
+# for blind readers:
+slide-tone: false
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  onyxia-revealjs:
+    output-file: index.html
+controls: true
+css: ../custom.css
+ascii: true
+---
+
+# Introduction
+
+{{< include sections/introduction.qmd >}}
+
+# Coding system
+
+{{< include sections/coding_system.qmd >}}
+
+# Monitoring
+
+{{< include sections/monitoring.qmd >}}
+
+# Retraining
+
+{{< include sections/retraining.qmd >}}
+
+# Conclusion

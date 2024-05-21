@@ -1,0 +1,24 @@
+## Design
+
+- The model is served via a REST API (developed with FastAPI)
+- A process fetches logs daily, parses them and logs their content on a persistent storage 
+- An interactive dashboard is built with Quarto to offer insight on data and how it is coded
+
+## Dashboard
+
+![Dashboard tab offering daily and weekly insight on the number of queries to the API and its automatic coding rate.](img/tab1.png)
+
+## Dashboard
+
+![Dashboard tab displaying the two distributions of predicted classes at a specified level of the classification system for two specified time windows.](img/tab6.png)
+
+## Continuous performance evaluation
+
+- We continuously increment an evaluation set to monitor the performance of the ML system 
+- Batches are sampled from recent Sirene data and uploaded onto Label Studio
+- For now data is shared between annotators and each description is coded once (could change in the future)
+- The dashboard is enriched with additional tabs leveraging evaluation data
+
+## Continuous performance evaluation
+
+![Dashboard tab giving insight on the monthly accuracy of the evaluation set.](img/tab3.png)

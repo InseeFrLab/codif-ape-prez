@@ -1,0 +1,16 @@
+## Description of the coding system
+
+- [**Sirene**]{.orange} is the French national company registry
+- When a company registers, an [**activity code**]{.orange} is attributed
+- A model trained on historical Sirene data is used when it is confident enough. Otherwise, the description is given a code manually
+
+## Modeling
+
+![](img/fastText_desc_ape.png)
+
+## Performance
+
+- Evaluation on historical data: very high accuracy of 89%
+- With newer hand-coded data: reduced accuracy of 80% due to a distribution shift in the data
+- Company activities evolve over time. New businesses appear, businesses traditionally associated
+with a certain activity may see this activity evolve, etc.

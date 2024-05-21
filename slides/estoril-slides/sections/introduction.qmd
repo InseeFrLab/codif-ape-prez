@@ -1,0 +1,14 @@
+## Machine learning in official statistics
+
+- Today, machine learning systems contribute effectively to the production of official statistics
+- Coding engines, data editing: outlier detection, imputation
+- A Common Quality Framework sets quality standard for official statistics of the European Statistics System
+- "Source data, integrated data, intermediate results and statistical outputs [must be] regularly assessed and validated" and
+"revisions [must be] regularly analysed in order to improve source data, statistical processes and outputs"
+- This naturally applies when ML systems are leveraged in the process of producing statistics
+
+## Quality of ML systems
+
+- A ML model is trained to solve a task based on reference data
+- Real-life data can deviate from the reference data, which leads to performance issues
+- Retraining is necessary to avoid performance issues
