@@ -1,12 +1,12 @@
 ## Description of the coding system
 
-- [**Sirene**]{.orange} is the French national company registry
-- When a company registers, an [**activity code**]{.orange} is attributed
+- Sirene is the French national company registry
+- When a company registers, an activity code is attributed
 - A model trained on historical Sirene data is used when it is confident enough. Otherwise, the description is given a code manually
 
 ## Modeling
 
-![](../img/fastText_desc_ape.png)
+![](../img/fastText_desc_ape.png){width=85%}
 
 ## Performance
 
