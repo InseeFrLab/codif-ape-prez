@@ -143,7 +143,7 @@ To perform continuous performance evaluation of the ML model, we regularly annot
 
 Data batches are automatically uploaded on a Label Studio interface, to which several annotators have access. A single annotation is demanded for each point in the batch: the annotator is presented with the text description of the activity and the additional categorical variables useful for the classification task. Either a code from the NAF classification system is chosen or the text description is marked *uncodable*. The annotator also has the possibility to skip the annotation task, which will leave it available for an other annotator. @fig-ls shows the Label Studio user interface, that includes a tool to browse the classification system efficiently with keywords. With the current system, a single annotation takes about a minute on average. For now, 5 batches have been added to our evaluation set for a total number of around 8400 data points.
 
-![Screenshot of the Label Studio UI for a single annotation task.](img/labelstudio.png){#fig-ls}
+![Screenshot of the Label Studio UI for a single annotation task.](../img/labelstudio.png){#fig-ls}
 
 An issue with the annotation procedure for now is that one single code is collected for each text description, regardless of how simple it is to assign it a code. We would eventually like to modify the procedure by allowing annotators to assign a code but warn that the description is difficult to classify. Such descriptions would then be annotated by a different person not aware of the first code that was assigned (with the intervention of an arbiter in the case of a disagreement).
 
@@ -172,7 +172,7 @@ A third situation should trigger an adjustment of the coding engine. Companies t
 
 A similar situation occurs when businesses traditionally associated with a certain activity see this activity evolve. From a certain point on, the code that should be assigned to such a business changes. This should also trigger a retraining procedure of the model with an updated training set, where observations corresponding to the business in question have been assigned the new updated code. In practice this requires versioning training sets (see @fig-versioning).
 
-![Illustration of model and training set versioning. Here the production model is retrained periodically every six months. It is retrained on three additional occasions, at events A and B when systematic coding errors have been identified and once because the monitoring system has identified a large accuracy drop. Training sets are versioned. They are incremented with an extraction of the latest additions to the registry at each retraining procedure. Additionally, at events A and B, historical data is modified to an extent to modify model behavior on certain text descriptions.](img/versioning.png){#fig-versioning}
+![Illustration of model and training set versioning. Here the production model is retrained periodically every six months. It is retrained on three additional occasions, at events A and B when systematic coding errors have been identified and once because the monitoring system has identified a large accuracy drop. Training sets are versioned. They are incremented with an extraction of the latest additions to the registry at each retraining procedure. Additionally, at events A and B, historical data is modified to an extent to modify model behavior on certain text descriptions.](../img/versioning.png){#fig-versioning}
 
 ## Retraining strategies
 
@@ -185,7 +185,7 @@ There are multiple ways to conduct the retraining procedure. There are two follo
 
 Only the first alternative is tested here, as using the fastText library prevents from easily fine-tuning using pre-trained weights[^5]. @fig-accuracy-training-size displays the accuracies on the Label Studio evaluation set of models trained on SIRENE 4 data and subsets of SIRENE 3 data as a function of the earliest year included in the SIRENE 3 training data. Training set sizes are also displayed. All accuracies measured range from 0.77 to 0.78. On a macroscopic level and for our use-case, there is no clear indication on how to set a date threshold for the training data. It seems reasonable to keep a few years (3-5 years for example) of data in the training set. A more in-depth analysis could help refine this policy.
 
-![Accuracy on the Label Studio evaluation set and training set size as functions of the earliest year included in SIRENE 3 training data](img/acc_training_size.png){#fig-accuracy-training-size width=70%}
+![Accuracy on the Label Studio evaluation set and training set size as functions of the earliest year included in SIRENE 3 training data](../img/acc_training_size.png){#fig-accuracy-training-size width=70%}
 
 [^5]: A possibility for fine-tuning would be to use the alternative Pytorch implementation [https://github.com/InseeFrLab/codif-ape-train/tree/main/src/pytorch_classifier](https://github.com/InseeFrLab/codif-ape-train/tree/main/src/pytorch_classifier). 
 
@@ -214,21 +214,21 @@ In this paper, we present the application of MLOps principles to a specific ML s
 
 # Supplementary material {.unnumbered}
 
-![Dashboard tab offering daily and weekly insight on the number of queries to the API and its automatic coding rate.](img/tab1.png){#fig-tab1}
+![Dashboard tab offering daily and weekly insight on the number of queries to the API and its automatic coding rate.](../img/tab1.png){#fig-tab1}
 
-![Dashboard tab displaying the distribution of confidence values for a specified time window.](img/tab4.png){#fig-tab4}
+![Dashboard tab displaying the distribution of confidence values for a specified time window.](../img/tab4.png){#fig-tab4}
 
-![Dashboard tab displaying numbers of queries and automatic coding rates for classes at a specified level of the classification system and for a specified time window.](img/tab5.png){#fig-tab5}
+![Dashboard tab displaying numbers of queries and automatic coding rates for classes at a specified level of the classification system and for a specified time window.](../img/tab5.png){#fig-tab5}
 
-![Dashboard tab displaying the two distributions of predicted classes at a specified level of the classification system for two specified time windows.](img/tab6.png){#fig-tab6}
+![Dashboard tab displaying the two distributions of predicted classes at a specified level of the classification system for two specified time windows.](../img/tab6.png){#fig-tab6}
 
-![Dashboard tab allowing users to look through the data sent to the coding engine within a specified time window.](img/tab7.png){#fig-tab7}
+![Dashboard tab allowing users to look through the data sent to the coding engine within a specified time window.](../img/tab7.png){#fig-tab7}
 
-![Dashboard tab allowing insight on the most frequent text descriptions, most frequent words and on the average length of the descriptions within a specified time window.](img/tab8.png){#fig-tab8}
+![Dashboard tab allowing insight on the most frequent text descriptions, most frequent words and on the average length of the descriptions within a specified time window.](../img/tab8.png){#fig-tab8}
 
-![Dashboard tab giving insight on the aggregate performance of the coding engine on the evaluation set.](img/tab2.png){#fig-tab2}
+![Dashboard tab giving insight on the aggregate performance of the coding engine on the evaluation set.](../img/tab2.png){#fig-tab2}
 
-![Dashboard tab giving insight on the monthly accuracy of the evaluation set.](img/tab3.png){#fig-tab3}
+![Dashboard tab giving insight on the monthly accuracy of the evaluation set.](../img/tab3.png){#fig-tab3}
 
 {{< pagebreak >}}
 
