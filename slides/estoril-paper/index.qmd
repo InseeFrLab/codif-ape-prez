@@ -24,7 +24,7 @@ bibliography: bibliography.bib
 format:
   pdf:
     template-partials: 
-      - "_extensions/partials/title.tex"
+      - "slides/_extensions/partials/title.tex"
     include-in-header:
       text: |
         \usepackage[noblocks]{authblk}
