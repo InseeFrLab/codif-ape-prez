@@ -6,7 +6,7 @@
 
 ## Modeling
 
-![](img/fastText_desc_ape.png)
+![](../img/fastText_desc_ape.png)
 
 ## Performance
 

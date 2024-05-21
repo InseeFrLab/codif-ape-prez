@@ -6,11 +6,11 @@
 
 ## Dashboard
 
-![Dashboard tab offering daily and weekly insight on the number of queries to the API and its automatic coding rate.](img/tab1.png)
+![Dashboard tab offering daily and weekly insight on the number of queries to the API and its automatic coding rate.](../img/tab1.png)
 
 ## Dashboard
 
-![Dashboard tab displaying the two distributions of predicted classes at a specified level of the classification system for two specified time windows.](img/tab6.png)
+![Dashboard tab displaying the two distributions of predicted classes at a specified level of the classification system for two specified time windows.](../img/tab6.png)
 
 ## Continuous performance evaluation
 
@@ -21,4 +21,4 @@
 
 ## Continuous performance evaluation
 
-![Dashboard tab giving insight on the monthly accuracy of the evaluation set.](img/tab3.png)
+![Dashboard tab giving insight on the monthly accuracy of the evaluation set.](../img/tab3.png)

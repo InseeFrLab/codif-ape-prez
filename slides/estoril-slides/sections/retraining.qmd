@@ -20,4 +20,4 @@
 
 ## What training data ?
 
-![Accuracy and training set size as functions of the earliest year included in historical training data](img/acc_training_size.png)
+![Accuracy and training set size as functions of the earliest year included in historical training data](../img/acc_training_size.png)

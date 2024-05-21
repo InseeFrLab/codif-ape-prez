@@ -1,7 +1,7 @@
 ---
-title: Codification automatique de l’APE dans le cadre du projet Sirene 4
+title: Retraining strategies for an economic activity classification model
 subtitle: |
-  **[Journée SSP Hub]{.orange}**
+  **European Conference on Quality in Official Statistics 2024**
 author: |
   [Thomas Faria](https://github.com/ThomasFaria),
   [Nathan Randriamanana](https://github.com/TheAIWizard),
