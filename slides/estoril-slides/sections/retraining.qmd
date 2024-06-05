@@ -1,22 +1,22 @@
 ## Periodic retraining
 
-- Company activities evolve over time. A first strategy is to retrain the model periodically
-- How frequently ? There is a tradeoff as there should be a validation procedure to use a new model in production  
-- In our case, distribution shifts are not large. It is reasonable to retrain twice a year
+- Company activities evolve over time. A first strategy is to [**retrain the model periodically**]{.orange}
+- How frequently ? There is a [**tradeoff**]{.orange} as there should be a validation procedure to use a new model in production  
+- In our case, distribution shifts are not large. It is reasonable to [**retrain twice a year**]{.orange}
 
 ## Additional retraining
 
-- Additional specific retraining procedures can be triggered:
-  - When the monitoring system detects unusual shifts in the data
-  - When repeated claims are made by certain companies on their activity code
-  - When coding concepts change
+- [**Additional specific retraining procedures**]{.orange} can be triggered:
+  - When the monitoring system [**detects unusual shifts**]{.blue2} in the data
+  - When [**repeated claims**]{.blue2} are made by certain companies on their activity code
+  - When [**coding concepts change**]{.blue2}
 
 ## What training data ?
 
-- When retraining a model from scratch: how far should we go in the past to build the training set ?
-- Empirical evaluation is necessary:
-  - Model capabilities scale with training data
-  - Older data has lower quality labels
+- When retraining a model from scratch: [**how far should we go in the past**]{.orange} to build the training set ?
+- [**Empirical evaluation**]{.orange} is necessary:
+  - Model capabilities [**scale**]{.blue2} with training data
+  - Older data has [**lower quality labels**]{.blue2}
 
 ## What training data ?
 
