@@ -480,7 +480,7 @@
     "href": "slides/estoril-slides/index.html#design",
     "title": "Retraining strategies for an economic activity classification model",
     "section": "Design",
-    "text": "Design\n\nThe model is served via a REST API (developed with FastAPI)\nA process fetches logs daily, parses them and logs their content on a persistent storage\nAn interactive dashboard is built with Quarto to offer insight on data and how it is coded"
+    "text": "Design\n\nThe model is served via a REST API (developed with FastAPI)\nA process fetches logs daily, parses them and saves their content on a persistent storage\nAn interactive dashboard is built with Quarto to offer insight on data and how it is coded"
   },
   {
     "objectID": "slides/estoril-slides/index.html#dashboard",

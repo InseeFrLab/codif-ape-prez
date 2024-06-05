@@ -403,9 +403,9 @@
 <section id="design" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Design</h2>
 <ul>
-<li>The model is served via a REST API (developed with FastAPI)</li>
-<li>A process fetches logs daily, parses them and logs their content on a persistent storage</li>
-<li>An interactive dashboard is built with Quarto to offer insight on data and how it is coded</li>
+<li>The model is served via a <span class="orange"><strong>REST API</strong></span> (developed with FastAPI)</li>
+<li>A process fetches logs daily, parses them and <span class="orange"><strong>saves their content</strong></span> on a persistent storage</li>
+<li><span class="orange"><strong>An interactive dashboard</strong></span> is built with Quarto to offer insight on data and how it is coded</li>
 </ul>
 </section>
 <section id="dashboard" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -419,10 +419,10 @@
 <section id="continuous-performance-evaluation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Continuous performance evaluation</h2>
 <ul>
-<li>We continuously increment an evaluation set to monitor the performance of the ML system</li>
-<li>Batches are sampled from recent Sirene data and uploaded onto Label Studio</li>
-<li>For now data is shared between annotators and each description is coded once (could change in the future)</li>
-<li>The dashboard is enriched with additional tabs leveraging evaluation data</li>
+<li>We continuously increment <span class="orange"><strong>an evaluation set</strong></span> to monitor the performance of the ML system</li>
+<li>Batches are sampled <span class="orange"><strong>from recent Sirene data</strong></span> and uploaded onto Label Studio</li>
+<li>For now data is <span class="orange"><strong>shared between annotators</strong></span> and each description is coded once (could change in the future)</li>
+<li>The dashboard is enriched with additional tabs <span class="orange"><strong>leveraging evaluation data</strong></span></li>
 </ul>
 </section>
 <section id="continuous-performance-evaluation-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -437,31 +437,31 @@
 <section id="periodic-retraining" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Periodic retraining</h2>
 <ul>
-<li>Company activities evolve over time. A first strategy is to retrain the model periodically</li>
-<li>How frequently ? There is a tradeoff as there should be a validation procedure to use a new model in production<br>
+<li>Company activities evolve over time. A first strategy is to <span class="orange"><strong>retrain the model periodically</strong></span></li>
+<li>How frequently ? There is a <span class="orange"><strong>tradeoff</strong></span> as there should be a validation procedure to use a new model in production<br>
 </li>
-<li>In our case, distribution shifts are not large. It is reasonable to retrain twice a year</li>
+<li>In our case, distribution shifts are not large. It is reasonable to <span class="orange"><strong>retrain twice a year</strong></span></li>
 </ul>
 </section>
 <section id="additional-retraining" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Additional retraining</h2>
 <ul>
-<li>Additional specific retraining procedures can be triggered:
+<li><span class="orange"><strong>Additional specific retraining procedures</strong></span> can be triggered:
 <ul>
-<li>When the monitoring system detects unusual shifts in the data</li>
-<li>When repeated claims are made by certain companies on their activity code</li>
-<li>When coding concepts change</li>
+<li>When the monitoring system <span class="blue2"><strong>detects unusual shifts</strong></span> in the data</li>
+<li>When <span class="blue2"><strong>repeated claims</strong></span> are made by certain companies on their activity code</li>
+<li>When <span class="blue2"><strong>coding concepts change</strong></span></li>
 </ul></li>
 </ul>
 </section>
 <section id="what-training-data" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>What training data ?</h2>
 <ul>
-<li>When retraining a model from scratch: how far should we go in the past to build the training set ?</li>
-<li>Empirical evaluation is necessary:
+<li>When retraining a model from scratch: <span class="orange"><strong>how far should we go in the past</strong></span> to build the training set ?</li>
+<li><span class="orange"><strong>Empirical evaluation</strong></span> is necessary:
 <ul>
-<li>Model capabilities scale with training data</li>
-<li>Older data has lower quality labels</li>
+<li>Model capabilities <span class="blue2"><strong>scale</strong></span> with training data</li>
+<li>Older data has <span class="blue2"><strong>lower quality labels</strong></span></li>
 </ul></li>
 </ul>
 </section>
