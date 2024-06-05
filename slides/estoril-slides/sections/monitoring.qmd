@@ -1,8 +1,8 @@
 ## Design
 
-- The model is served via a REST API (developed with FastAPI)
-- A process fetches logs daily, parses them and logs their content on a persistent storage 
-- An interactive dashboard is built with Quarto to offer insight on data and how it is coded
+- The model is served via a [**REST API**]{.orange} (developed with FastAPI)
+- A process fetches logs daily, parses them and [**saves their content**]{.orange} on a persistent storage 
+- [**An interactive dashboard**]{.orange} is built with Quarto to offer insight on data and how it is coded
 
 ## Dashboard
 
@@ -14,10 +14,10 @@
 
 ## Continuous performance evaluation
 
-- We continuously increment an evaluation set to monitor the performance of the ML system 
-- Batches are sampled from recent Sirene data and uploaded onto Label Studio
-- For now data is shared between annotators and each description is coded once (could change in the future)
-- The dashboard is enriched with additional tabs leveraging evaluation data
+- We continuously increment [**an evaluation set**]{.orange} to monitor the performance of the ML system 
+- Batches are sampled [**from recent Sirene data**]{.orange} and uploaded onto Label Studio
+- For now data is [**shared between annotators**]{.orange} and each description is coded once (could change in the future)
+- The dashboard is enriched with additional tabs [**leveraging evaluation data**]{.orange}
 
 ## Continuous performance evaluation
 
