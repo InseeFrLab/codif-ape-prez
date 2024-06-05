@@ -459,7 +459,7 @@
     "href": "slides/estoril-slides/index.html#description-of-the-coding-system",
     "title": "Retraining strategies for an economic activity classification model",
     "section": "Description of the coding system",
-    "text": "Description of the coding system\n\nSirene is the French national company registry\nWhen a company registers, an activity code is attributed\nA model trained on historical Sirene data is used when it is confident enough. Otherwise, the description is given a code manually"
+    "text": "Description of the coding system\n\nSirene is the French national company register\nWhen a company registers, an activity code is attributed\nA model trained on historical Sirene data is used when it is confident enough. Otherwise, the description is given a code manually"
   },
   {
     "objectID": "slides/estoril-slides/index.html#modeling",
