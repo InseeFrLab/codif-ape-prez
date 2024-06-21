@@ -10,6 +10,6 @@ slides:
   url: /slides/estoril-slides/index.html
 paper: 
   text: Paper
-  url: /slides/estoril-paper/index.html
+  url: /slides/estoril-paper/index.pdf
 order: 8
 ---
