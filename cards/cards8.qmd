@@ -6,9 +6,10 @@ description: |
   <b>Description :</b> Retraining strategies for an economic activity classification model
 author: Thomas Faria, Nathan Randriamanana, Tom Seimandi 
 slides:
-  - text: Slides
-    url: /slides/estoril-slides/index.html
-  - text: Paper
-    url: /slides/estoril-paper/paper.html
+  text: Slides
+  url: /slides/estoril-slides/index.html
+paper: 
+  text: Paper
+  url: /slides/estoril-paper/index.html
 order: 8
 ---

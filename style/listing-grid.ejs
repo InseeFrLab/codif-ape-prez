@@ -66,6 +66,17 @@ const imgHeight = "100%";
                   <% } %>
                 </div>
               <% } %>
+              <% if ('paper') { %>
+                <div class="listing-category">
+                  <% if (item.paper.url) { %>
+                    <a class="listing-href" href="<%= item.paper.url %>" target="_blank" rel="noopener">
+                      <% if (item.paper.text) { %>
+                        <%= item.paper.text %>
+                      <% } %>
+                    </a>
+                  <% } %>
+                </div>
+              <% } %>
             </div>
           </div>
         <% } %>
