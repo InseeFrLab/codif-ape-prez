@@ -347,20 +347,25 @@
 
   <p class="date">6 novembre 2024</p>
 </section>
-<section>
 <section id="introduction" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
 <h1>Introduction</h1>
 
 </section>
-<section id="section" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2></h2>
+
+<section id="one-introduction" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>:one: Introduction</h1>
+<p>Mise en prod de modèle de ML c’est quelque chose à maintenir (comme Sicore avant) Besoin de monitoring pour suivre la perf dans le temps quand on a un data/concept drift on réentraine</p>
+<p>Aussi un autre contexte qui génère un réentraienment dans nos cas de stats publiques =&gt; changement de nomenclature Ce n’est rien d’autre qu’un data drift extreme (c’est les X qui change)</p>
+<p>Contexte pour le cas de APE : - 1ère mise en prod novembre 2022 - 1er janvier 2023 passage à Sirene4 : modèle fasttext utilisé pour certaines liasses - Avril 2023 toutes les liasses passent par fasttext - Juin 2023 réentrainement pour corriger un problème de classification récurrent - Depuis rien</p>
+<p>Plusieurs problèmes : - Modèle entrainé sur données sirene 3 pas forcément adapté à sirene 4 =&gt; réentrainement - Changement de nomenclature en NACE 2025 - Explicabilité du modèle pour les gestionnaires</p>
+<p>On va parlé du point 2 auj qui englobe aussi le point 1 Pour le point 3 Meilamme et Julien vous parleront de l’explicabilité en janvier calendar stay tuned</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
