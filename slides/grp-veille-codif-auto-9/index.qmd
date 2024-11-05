@@ -1,0 +1,29 @@
+---
+title: Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025
+subtitle: |
+  [**Groupe de veille Codification Automatique n°9**]{.orange}
+author: |
+  [Thomas Faria](https://github.com/ThomasFaria),
+  [Nathan Randriamanana](https://github.com/TheAIWizard)
+date: "11/06/2024"
+date-format: "D MMMM YYYY"
+slide-number: true
+# uncomment for French presentations:
+lang: fr-FR
+# for blind readers:
+slide-tone: false
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  onyxia-revealjs:
+    output-file: index.html
+controls: true
+css: ../custom.css
+ascii: true
+---
+
+# Introduction
+
+{{< include sections/introduction.qmd >}}

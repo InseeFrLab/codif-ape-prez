@@ -1,6 +1,6 @@
 
 ---
-title: Eurostat webinar 
+title: Échange avec l'Inserm
 image: https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Inserm.svg/1200px-Inserm.svg.png
 date: "2024-05-07"
 description: |

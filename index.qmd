@@ -12,7 +12,7 @@ toc: false
 ## Présentations relatives à la codification automatique de l'APE
 
 
-Tous les supports sont sur le [`Github InseeFrLab` <i class="fa fa-github" aria-hidden="true"></i>](https://github.com/orgs/InseeFrLab/teams/codification-ape/repositories)
+Tous les supports sont accessibles et modifiables sur [`Github InseeFrLab` <i class="fa fa-github" aria-hidden="true"></i>](https://github.com/orgs/InseeFrLab/teams/codification-ape/repositories)
 
 ::: {#presentations}
 :::
