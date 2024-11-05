@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="../_extensions/InseeFrLab/onyxia/logo.css">
@@ -324,6 +389,8 @@
       margin-right: 0; 
     }
   </style>
+  <script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <meta property="og:title" content="Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025 – Présentations codification automatique de l’APE">
 <meta property="og:description" content="Groupe de veille Codification Automatique n°9">
@@ -347,25 +414,424 @@
 
   <p class="date">6 novembre 2024</p>
 </section>
+<section>
 <section id="introduction" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Introduction</h1>
+<h1>1️⃣ Introduction</h1>
 
 </section>
+<section id="les-modèles-de-ml-en-production" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Les modèles de ML en production</h2>
+<ul>
+<li>De plus en plus de modèle ML sont voués à être <span class="orange"><strong>mis en production</strong></span> à l’Insee</li>
+<li><span class="orange"><strong>Multiples cas d’usages</strong></span> : codification automatique, imputation, détection de valeurs extrêmes</li>
+</ul>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Quality Assurance Framework of the European Statistical System</strong></p>
+</div>
+<div class="callout-content">
+<p>Source data, integrated data, intermediate results and statistical outputs must be <span class="orange"><strong>regularly assessed and validated</strong></span>.</p>
+</div>
+</div>
+</div>
+<ul>
+<li>Cela s’applique évidemment aux modèles de ML dans le processus de production statistique ➡️ <span class="orange"><strong>besoin de maintenance</strong></span> dans le temps</li>
+</ul>
+</section>
+<section id="qualité-des-modèles-ml" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Qualité des modèles ML</h2>
+<ul>
+<li>Un modèle ML est entrainé pour résoudre un tâche à partir de <span class="orange"><strong>données de référence</strong></span></li>
+<li>Données réelles <span class="orange"><strong>peuvent dévier</strong></span> de ces données de références dans le temps ➡️ perte de performance ?</li>
+<li><span class="orange"><strong>Ré-entrainement</strong></span> du modèle devient nécessaire</li>
+<li><span class="orange"><strong>Cas extrême</strong></span> courant dans le cas de la statistique publique ➡️ <span class="blue2"><strong>changement de nomenclature</strong></span></li>
+</ul>
+</section>
+<section id="historique-du-projet-ape" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Historique du projet APE</h2>
+<ul>
+<li><span class="orange"><strong>Eté 2022</strong></span> : entraînement d’un modèle fasttext sur les données Sirene 3</li>
+<li><span class="orange"><strong>Novembre 2022</strong></span> : 1ère mise en production d’un modèle ML</li>
+<li><span class="orange"><strong>Janvier 2023</strong></span> : Passage de Sirene 3 à 4. Création d’entreprises seulement</li>
+<li><span class="orange"><strong>Mai 2023</strong></span> : 1er ré-entrainement pour corriger un problème de classification</li>
+<li><span class="orange"><strong>Mars 2024</strong></span> : Toutes les liasses passent par fasttext</li>
+<li>Et maintenant ?</li>
+</ul>
+</section>
+<section id="enjeux-actuels" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Enjeux actuels</h2>
+<ul>
+<li>Plusieurs problématiques :
+<ul>
+<li>Modèle entrainé sur les données <span class="orange"><strong>Sirene 3</strong></span></li>
+<li>Changement de nomenclature NAF 2008 vers <span class="orange"><strong>NAF 2025</strong></span></li>
+<li><span class="orange"><strong>Explicabilité</strong></span> du modèle pour les gestionnaires
+<ul>
+<li>Groupe de veille n°10 en janvier 📅</li>
+</ul></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="passage-de-la-naf-2008-à-la-naf-2025" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>2️⃣ Passage de la NAF 2008 à la NAF 2025</h1>
 
-<section id="one-introduction" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>:one: Introduction</h1>
-<p>Mise en prod de modèle de ML c’est quelque chose à maintenir (comme Sicore avant) Besoin de monitoring pour suivre la perf dans le temps quand on a un data/concept drift on réentraine</p>
-<p>Aussi un autre contexte qui génère un réentraienment dans nos cas de stats publiques =&gt; changement de nomenclature Ce n’est rien d’autre qu’un data drift extreme (c’est les X qui change)</p>
-<p>Contexte pour le cas de APE : - 1ère mise en prod novembre 2022 - 1er janvier 2023 passage à Sirene4 : modèle fasttext utilisé pour certaines liasses - Avril 2023 toutes les liasses passent par fasttext - Juin 2023 réentrainement pour corriger un problème de classification récurrent - Depuis rien</p>
-<p>Plusieurs problèmes : - Modèle entrainé sur données sirene 3 pas forcément adapté à sirene 4 =&gt; réentrainement - Changement de nomenclature en NACE 2025 - Explicabilité du modèle pour les gestionnaires</p>
-<p>On va parlé du point 2 auj qui englobe aussi le point 1 Pour le point 3 Meilamme et Julien vous parleront de l’explicabilité en janvier calendar stay tuned</p>
+</section>
+<section id="calendrier-pour-ladoption-de-la-nouvelle-naf" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Calendrier pour l’adoption de la nouvelle NAF 🗓️</h2>
+<ul>
+<li>Vers une adoption transitoire</li>
+<li>Sirus (dès 2025) : double codification en NAF 2025</li>
+<li>Sirene (à partir de 2026) : codification en NAF 2025 mais maintiens de la codification NAF 2008 (nécessaire pour certaines publications INSEE)</li>
+</ul>
+</section>
+<section id="naf-2025-quels-changements" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>NAF 2025 : quels changements ?</h2>
+<ul>
+<li>Au niveau 5 : 746 sous classes contre 732 auparanvant</li>
+<li>Principalement des éclatements au niveau de la classe (niveau 4) … mais pas que !</li>
+<li>??? classes univoques, correspondance 1-pour-1 ➡️ cas idéal !</li>
+</ul>
+<p>TODO: GRAPHIQUE ICI</p>
+</section>
+<section id="naf-2025-les-cas-multivoques" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>NAF 2025 : les cas multivoques</h2>
+<ul>
+<li>??? classes multivoques, correspondance 1-pour-plusieurs ➡️ cas idéal !</li>
+<li>Parmi cest classe combien ont 2 possibilités? 3 ? etc…</li>
+</ul>
+<p>TODO: GRAPHIQUE ICI</p>
+<ul>
+<li>Besoin d’un expert pour déterminer le nouveau code</li>
+</ul>
+</section>
+<section id="enjeux-et-besoins-multiples" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Enjeux et besoins multiples</h2>
+<ul>
+<li>Besoin de recoder le [<strong>stock</strong>] de liasse de Sirene ➡️ + [<strong>14 millions</strong>]…</li>
+<li>Pouvoir coder le [<strong>flux</strong>] en NAF 2025 ➡️ entraîner un modèle ➡️ besoin d’avoir un [<strong>stock</strong>]</li>
+<li>Modèle en NAF 2008 entrainé sur + [<strong>10 millions</strong>]</li>
+<li>Performance de fastText [<strong>très dépendant</strong>] du nombre de données d’entraînement</li>
+</ul>
+</section>
+<section id="données-à-disposition" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Données à disposition</h2>
+<ul>
+<li>Stock Sirene 3 : ~ 10 millions mais peu adaptées aux nouvelles données</li>
+<li>Stock Sirene 4 : ~ 2.5 millions
+<ul>
+<li>Univoques : ??? millions et ??? sous-classes</li>
+<li>Multivoques : ??? millions et ??? sous-classes TODO:</li>
+</ul></li>
+<li>Campagne d’annotation manuelle indispensable</li>
+</ul>
+</section>
+<section id="campagne-dannotation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Campagne d’annotation</h2>
+<ul>
+<li>Lancement d’une campagne d’annotation depuis mi-2024</li>
+<li>Plateforme développée par l’équipe métier 🤔</li>
+<li>Focus sur les données [<strong>multivoques uniques</strong>]</li>
+<li>🎯 Objectif double :
+<ul>
+<li>Attribuer un code NAF 2025 🚀</li>
+<li>Vérifier la qualité du code NAF 2008 🗸</li>
+</ul></li>
+</ul>
+<p>Aujourd’hui, ~ 27k données annotées… insuffisant !</p>
+</section></section>
+<section>
+<section id="méthodologie-appliquée" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>3️⃣ Méthodologie appliquée</h1>
+
+</section>
+<section id="méthodologie" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Méthodologie</h2>
+<ul>
+<li>🎯 [<strong>Objectif</strong>] : Reconstruire un jeu d’entraînement le plus exhaustif possible</li>
+<li>Expérimentation one-shot ➡️ pas de contrainte de reproductibilité … en production</li>
+<li>Utilisation de LLMs pour générer des annotations en NAF 2025</li>
+<li>Données à disposition :
+<ul>
+<li>Stock Sirene 4 (~ 2.5 millions d’observations)</li>
+<li>Table de passage réalisée par les experts APE</li>
+<li>Notes explicatives de la NAF 2025</li>
+<li>Annotations faites par les gestionnaires (~ 25k observations)</li>
+</ul></li>
+</ul>
+<p>TODO SCHEMA idée : Sirene 4 -&gt; univoques nace 2025 -&gt; -&gt; multivoques -&gt; subset unique multivoques -&gt; LLM -&gt; multivoque nace2025 (770k)-&gt; resampled -&gt; Sirene 4 nace 2025</p>
+</section>
+<section id="tirer-profit-des-llms" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Tirer profit des LLMs</h2>
+<ul>
+<li><p>[<strong>Retrieval Augmented Generation</strong>] (RAG) vs [<strong>fine-tunning</strong>]</p></li>
+<li><p>[<strong>2 possibilités</strong>] :</p>
+<ul>
+<li>RAG avec les [<strong>notes explicatives</strong>]
+<ul>
+<li>Pas encore testé 📝</li>
+</ul></li>
+<li>[<strong>Pseudo-RAG</strong>] :
+<ul>
+<li>[<strong>Retriever manuel</strong>] utilisant la table de passage</li>
+</ul></li>
+</ul></li>
+<li><p>💡 Idée générale :</p>
+<ul>
+<li>Donner les informations les plus pertinentes à un LLM pour qu’il soit capable de recoder les codes NAF 2008 en NAF 2025</li>
+</ul></li>
+</ul>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Avertissement</strong></p>
+</div>
+<div class="callout-content">
+<p>L’idée n’est pas de construire un classifier, seulement créer des annotations.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="le-prompting" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Le prompting</h2>
+<ul>
+<li>Prompt [<strong>système</strong>] identique pour toutes les observations</li>
+</ul>
+<details>
+<summary>
+<font size="3" color="black"><b>Afficher le prompt sytème</b></font>
+</summary>
+<pre><code>Tu es un expert de la Nomenclature statistique des Activités économiques dans la Communauté Européenne (NACE). Tu es chargé de réaliser le changement de nomenclature. Ta mission consiste à attribuer un code NACE 2025 à une entreprise, en t'appuyant sur le descriptif de son activité et à partir d'une liste de codes proposés (identifiée à partir de son code NACE 2008 existant). Voici les instructions à suivre :
+1. Analyse la description de l'activité principale de l'entreprise et le code NACE 2008 fourni par l'utilisateur.
+2. À partir de la liste des codes NACE 2025 disponible, identifie la catégorie la plus appropriée qui correspond à l'activité principale de l'entreprise.
+3. Retourne le code NACE 2025 au format JSON comme spécifié par l'utilisateur. Si la description de l'activité de l'entreprise n'est pas suffisamment précise pour identifier un code NACE 2025 adéquat, retourne `null` dans le JSON.
+4. Évalue la cohérence entre le code NACE 2008 fourni et la description de l'activité de l'entreprise. Si le code NACE 2008 ne semble pas correspondre à cette description, retourne `False` dans le champ `nace08_valid` du JSON. Note que si tu arrives à classer la description de l'activité de l'entreprise dans un code NACE 2025, le champ `nace08_valid` devrait `True`, sinon il y a incohérence.
+5. Réponds seulement avec le JSON complété aucune autres information ne doit être retourné.</code></pre>
+</details>
+<ul>
+<li>Un prompt [<strong>spécifique</strong>] pour chaque observations comprenant :
+<ul>
+<li>le libellé de l’activité principale de l’entreprise</li>
+<li>l’ancien code nace 2008 connu</li>
+<li>La liste des codes possibles issues du mapping avec leurs notes explicatives</li>
+</ul></li>
+<li>Une [<strong>instruction sur le format</strong>] de réponse attendu</li>
+</ul>
+</section>
+<section id="qualifier-la-réponse-générée" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Qualifier la réponse générée</h2>
+<ul>
+<li>Tendance des LLMs a être très [<strong>volubiles</strong>]…</li>
+<li>Construction d’une réponse type, claire et brèves dans un format spécifique</li>
+<li>Format JSON est le plus abondamment utilisé dans l’écosystème</li>
+<li>Réponse attendue :</li>
+</ul>
+<details>
+<summary>
+<font size="3" color="black"><b>Afficher un exemple de réponse attendue</b></font>
+</summary>
+<pre><code>```json
+{
+        "codable": true,
+        "nace_2008_valid": true,
+        "nace2025": "0147J" 
+}</code></pre>
+</details>
+<ul>
+<li>Parsing de la réponse :
+<ul>
+<li>Vérifie que le format est le bon</li>
+<li>S’assurer qu’il n’y a pas d’hallucination dans les générations</li>
+</ul></li>
+</ul>
+</section>
+<section id="llms-utilisés" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>LLMs utilisés</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Modèle</th>
+<th>Taille</th>
+<th>Vitesse d’inférence</th>
+<th>Performance</th>
+<th>Caractéristique</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Qwen 2.5</td>
+<td>32B</td>
+<td><span class="orange">Lent</span></td>
+<td><span class="green">Bonnes performances</span></td>
+<td>Très restrictif</td>
+</tr>
+<tr class="even">
+<td>Ministral</td>
+<td>8B</td>
+<td><span class="green2">Extrêmement rapide</span></td>
+<td><span class="orange">Très raisonnable</span></td>
+<td>Pas restrictif</td>
+</tr>
+<tr class="odd">
+<td>Mistal Small</td>
+<td>44B</td>
+<td><span class="orange">Lent</span></td>
+<td><span class="green">Bonnes performances</span></td>
+<td>Assez restrictif</td>
+</tr>
+<tr class="even">
+<td>Llama 3.1</td>
+<td>70B (quantisé)</td>
+<td><span class="red">Extrêmement lent</span></td>
+<td><span class="green2">Très bonnes performances</span></td>
+<td>Assez restrictif</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="résultats" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>4️⃣ Résultats</h1>
+
+</section>
+<section id="le-fléau-de-lévaluation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Le fléau de l’évaluation</h2>
+<ul>
+<li><p>❓ Question cruciale :</p>
+<ul>
+<li>Comment évaluer un LLM ?</li>
+<li>Dans notre cas : classification ➡️ plus facile, vraiment ?</li>
+<li>Complexité de la nomenclature</li>
+</ul></li>
+<li><p>Utilisation des 27k annotations comme ground truth 🥇</p></li>
+<li><p>3 métriques de performances :</p>
+<ul>
+<li>Précision totale</li>
+<li>Précision parmi les “codables”</li>
+<li>Précision “LLM” (erreurs imputables à la génération seulement)</li>
+</ul></li>
+</ul>
+<p>TODO: METTRE UN GRAPHIQUE ICI AVEC LES 4 MODELES</p>
+</section>
+<section id="reconstruction-du-jeu-multivoques" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Reconstruction du jeu multivoques</h2>
+<ul>
+<li>💡Principe : considérer les LLMs comme des annotateurs standard ➡️ X-annotation</li>
+<li>❓Peut-on améliorer performances en mixant les résultats de chaque modèles ?</li>
+<li>Construction de 3 annotations supplémentaires
+<ol type="1">
+<li>Choix en cascade (un modèle en priorité)</li>
+<li>Choix par vote à la majorité</li>
+<li>Choix par vote pondéré</li>
+</ol></li>
+</ul>
+<p>TODO: METTRE UN GRAPHIQUE AVEC LES RESULTATS</p>
+</section>
+<section id="ré-entrainement-en-naf-2025" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Ré-entrainement en NAF 2025</h2>
+<ul>
+<li>Reconstruction du stock Sirene 4 en NAF 2025 (~ 2 millions d’observations)</li>
+<li>Distribution des données quasi-inchangées</li>
+<li>Utilisation de nouvelles variables propres à Sirene 4</li>
+<li>Performance similaire au modèle en NAF 2008</li>
+</ul>
+<p>TODO: METTRE UN GRAPHIQUE AVEC LES RESULTATS</p>
+<p>mais que vaut le jeu d’évaluation ? (ls contient que les multivoques)</p>
+</section>
+<section id="le-modèle-naf-2025" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
+<h2>Le modèle NAF 2025</h2>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="0" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -1;"><span id="cb3-0"><a></a>viewof activite <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>(</span>
+<span id="cb3-1"><a></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">'coiffeur'</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span>}</span>
+<span id="cb3-2"><a></a>)</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a>viewof type_form <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>(</span>
+<span id="cb3-5"><a></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">'Type de la liasse'</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">'X'</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">80</span>}</span>
+<span id="cb3-6"><a></a>)</span>
+<span id="cb3-7"><a></a>urlApe <span class="op">=</span> <span class="vs">`https://codification-ape-dev.lab.sspcloud.fr/predict?description_activity=</span><span class="sc">${</span>activite<span class="sc">}</span><span class="vs">%20&amp;type_form=</span><span class="sc">${</span>type_form<span class="sc">}</span><span class="vs">&amp;event=01P&amp;nb_echos_max=3&amp;prob_min=0.0009`</span></span>
+<span id="cb3-8"><a></a></span>
+<span id="cb3-9"><a></a>d3<span class="op">.</span><span class="fu">json</span>(urlApe)<span class="op">.</span><span class="fu">then</span>( res <span class="kw">=&gt;</span> {</span>
+<span id="cb3-10"><a></a>  <span class="kw">var</span> IC<span class="op">,</span> results<span class="op">;</span></span>
+<span id="cb3-11"><a></a>  ( {IC<span class="op">,</span> <span class="op">...</span>results} <span class="op">=</span> res )</span>
+<span id="cb3-12"><a></a></span>
+<span id="cb3-13"><a></a>  IC <span class="op">=</span> <span class="pp">parseFloat</span>(IC)</span>
+<span id="cb3-14"><a></a></span>
+<span id="cb3-15"><a></a>  <span class="kw">const</span> rows <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">values</span>(results)<span class="op">.</span><span class="fu">map</span>( obj <span class="kw">=&gt;</span> {</span>
+<span id="cb3-16"><a></a>    <span class="cf">return</span> <span class="vs">`</span></span>
+<span id="cb3-17"><a></a><span class="vs">    &lt;tr&gt;</span></span>
+<span id="cb3-18"><a></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>obj<span class="op">.</span><span class="at">code</span><span class="sc">}</span><span class="vs"> | </span><span class="sc">${</span>obj<span class="op">.</span><span class="at">libelle</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb3-19"><a></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>obj<span class="op">.</span><span class="at">probabilite</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb3-20"><a></a><span class="vs">    &lt;/tr&gt;</span></span>
+<span id="cb3-21"><a></a><span class="vs">  `</span></span>
+<span id="cb3-22"><a></a>  })<span class="op">.</span><span class="fu">join</span>(<span class="st">''</span>)</span>
+<span id="cb3-23"><a></a>  </span>
+<span id="cb3-24"><a></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb3-25"><a></a><span class="vs">  &lt;table&gt;</span></span>
+<span id="cb3-26"><a></a><span class="vs">    &lt;caption&gt;</span></span>
+<span id="cb3-27"><a></a><span class="vs">      Indice de confiance : </span><span class="sc">${</span>IC<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span></span>
+<span id="cb3-28"><a></a><span class="vs">    &lt;/caption&gt;</span></span>
+<span id="cb3-29"><a></a><span class="vs">    &lt;tr&gt;</span></span>
+<span id="cb3-30"><a></a><span class="vs">      &lt;th style="text-align:center;"&gt;Libellé (NAF 2025)&lt;/th&gt;</span></span>
+<span id="cb3-31"><a></a><span class="vs">      &lt;th&gt;Probabilité&lt;/th&gt;</span></span>
+<span id="cb3-32"><a></a><span class="vs">    &lt;/tr&gt;</span></span>
+<span id="cb3-33"><a></a><span class="vs">      </span><span class="sc">${</span>rows<span class="sc">}</span></span>
+<span id="cb3-34"><a></a><span class="vs">  &lt;/table&gt;`</span></span>
+<span id="cb3-35"><a></a>})</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="-1" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -2;"><span id="cb4--1"><a></a><span class="im">import</span> { debounce } <span class="im">from</span> <span class="st">"@mbostock/debouncing-input"</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -577,6 +1043,17 @@
           RevealZoom
         ]
       });
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBhY3Rpdml0ZSA9IElucHV0cy50ZXh0KFxuICB7bGFiZWw6ICcnLCB2YWx1ZTogJ2NvaWZmZXVyJywgd2lkdGg6IDgwMH1cbilcblxudmlld29mIHR5cGVfZm9ybSA9IElucHV0cy50ZXh0KFxuICB7bGFiZWw6ICdUeXBlIGRlIGxhIGxpYXNzZScsIHZhbHVlOiAnWCcsIHdpZHRoOiA4MH1cbilcbnVybEFwZSA9IGBodHRwczovL2NvZGlmaWNhdGlvbi1hcGUtZGV2LmxhYi5zc3BjbG91ZC5mci9wcmVkaWN0P2Rlc2NyaXB0aW9uX2FjdGl2aXR5PSR7YWN0aXZpdGV9JTIwJnR5cGVfZm9ybT0ke3R5cGVfZm9ybX0mZXZlbnQ9MDFQJm5iX2VjaG9zX21heD0zJnByb2JfbWluPTAuMDAwOWBcblxuZDMuanNvbih1cmxBcGUpLnRoZW4oIHJlcyA9PiB7XG4gIHZhciBJQywgcmVzdWx0cztcbiAgKCB7SUMsIC4uLnJlc3VsdHN9ID0gcmVzIClcblxuICBJQyA9IHBhcnNlRmxvYXQoSUMpXG5cbiAgY29uc3Qgcm93cyA9IE9iamVjdC52YWx1ZXMocmVzdWx0cykubWFwKCBvYmogPT4ge1xuICAgIHJldHVybiBgXG4gICAgPHRyPlxuICAgICAgPHRkPiR7b2JqLmNvZGV9IHwgJHtvYmoubGliZWxsZX08L3RkPlxuICAgICAgPHRkPiR7b2JqLnByb2JhYmlsaXRlLnRvRml4ZWQoMyl9PC90ZD5cbiAgICA8L3RyPlxuICBgXG4gIH0pLmpvaW4oJycpXG4gIFxuICByZXR1cm4gaHRtbGBcbiAgPHRhYmxlPlxuICAgIDxjYXB0aW9uPlxuICAgICAgSW5kaWNlIGRlIGNvbmZpYW5jZSA6ICR7SUMudG9GaXhlZCgzKX1cbiAgICA8L2NhcHRpb24+XG4gICAgPHRyPlxuICAgICAgPHRoIHN0eWxlPVwidGV4dC1hbGlnbjpjZW50ZXI7XCI+TGliZWxsw6kgKE5BRiAyMDI1KTwvdGg+XG4gICAgICA8dGg+UHJvYmFiaWxpdMOpPC90aD5cbiAgICA8L3RyPlxuICAgICAgJHtyb3dzfVxuICA8L3RhYmxlPmBcbn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJpbXBvcnQgeyBkZWJvdW5jZSB9IGZyb20gXCJAbWJvc3RvY2svZGVib3VuY2luZy1pbnB1dFwiIFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdhY3Rpdml0ZScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCd0eXBlX2Zvcm0nKSJ9XX0=
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../../slides/grp-veille-codif-auto-9";
+    window._ojs.paths.runtimeToRoot = "../..";
+    window._ojs.paths.docToRoot = "../..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
