@@ -1,31 +1,83 @@
-# :four: Résultats
-
 ## Le fléau de l'évaluation
 
-Quelles données utilisées pour évaluer la performance ? Au vu de la complexité de la nomenclature comment être sur qu'une classification humaine soit la vraie valeur ?
+- ❓ Question cruciale : 
+  - Comment évaluer un LLM ?
+  - Dans notre cas : classification ➡️ plus facile, vraiment ?
+  - Complexité de la nomenclature 
 
-3 métriques utilisées :
-        - accuracy total
-        - accuracy parmi les "codables"
-        - accuracy LLM (sans les erreurs de mapping ou erreur dans le code 2008?)
+- Utilisation des 27k annotations comme ground truth 🥇
+  
+- 3 métriques de performances :
+  - Précision totale
+  - Précision parmi les "codables"
+  - Précision "LLM" (erreurs imputables à la génération seulement)
 
 TODO: METTRE UN GRAPHIQUE ICI AVEC LES 4 MODELES
 
-## reconstruction du jeu multivoques 
+## Reconstruction du jeu multivoques
 
-- Prendre les prédictions des LLMs comme des annotations standards
-- Peut on obtenir de meilleures performance en mixant les résultats de chaque modèles ?
+- 💡Principe : considérer les LLMs comme des annotateurs standard ➡️ X-annotation
+- ❓Peut-on améliorer performances en mixant les résultats de chaque modèles ?
 - Construction de 3 annotations supplémentaires 
-  - 1- choix en cascade (un modèle en priorité)
-  - 2- choix par vote à la majorité 
-  - 3- choix par vote pondéré
+  1. Choix en cascade (un modèle en priorité)
+  2. Choix par vote à la majorité 
+  3. Choix par vote pondéré
 
 TODO: METTRE UN GRAPHIQUE AVEC LES RESULTATS
 
-## Réentrainement
+## Ré-entrainement en NAF 2025
 
-- Jeu sirene 4 nace 2025 avec +2M d'observations
-- utilisation de nouvelles variables propres à sirene 4
-- Performance similaire au modèle en nace 2008 mais que vaut le jeu d'évaluation ? (ls contient que les multivoques)
+- Reconstruction du stock Sirene 4 en NAF 2025 (~ 2 millions d'observations)
+- Distribution des données quasi-inchangées
+- Utilisation de nouvelles variables propres à Sirene 4
+- Performance similaire au modèle en NAF 2008
 
 TODO: METTRE UN GRAPHIQUE AVEC LES RESULTATS
+
+mais que vaut le jeu d'évaluation ? (ls contient que les multivoques)
+
+## Le modèle NAF 2025 {.scrollable}
+
+```{ojs}
+viewof activite = Inputs.text(
+  {label: '', value: 'coiffeur', width: 800}
+)
+
+viewof type_form = Inputs.text(
+  {label: 'Type de la liasse', value: 'X', width: 80}
+)
+urlApe = `https://codification-ape-dev.lab.sspcloud.fr/predict?description_activity=${activite}%20&type_form=${type_form}&event=01P&nb_echos_max=3&prob_min=0.0009`
+
+d3.json(urlApe).then( res => {
+  var IC, results;
+  ( {IC, ...results} = res )
+
+  IC = parseFloat(IC)
+
+  const rows = Object.values(results).map( obj => {
+    return `
+    <tr>
+      <td>${obj.code} | ${obj.libelle}</td>
+      <td>${obj.probabilite.toFixed(3)}</td>
+    </tr>
+  `
+  }).join('')
+  
+  return html`
+  <table>
+    <caption>
+      Indice de confiance : ${IC.toFixed(3)}
+    </caption>
+    <tr>
+      <th style="text-align:center;">Libellé (NAF 2025)</th>
+      <th>Probabilité</th>
+    </tr>
+      ${rows}
+  </table>`
+})
+```
+
+
+```{ojs}
+import { debounce } from "@mbostock/debouncing-input" 
+```

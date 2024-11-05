@@ -1,52 +1,94 @@
-## :three: Méthodologie
+## Méthodologie
 
-Objectif : Reconstruire un jeu de données le plus exhaustif possible
-C'est un one shot => pas de contrainte de de prod + pas construire un classifier, juste créer des annotations
-Pour cela : Utiliser 4 sources :
-- données sirene 4
-- notes explicatives nace 2025
-- mapping
-- ~ 25k annotations fait par les gestionnaires
+- 🎯 [**Objectif**] : Reconstruire un jeu d'entraînement le plus exhaustif possible
+- Expérimentation one-shot ➡️ pas de contrainte de reproductibilité ... en production
+- Utilisation de LLMs pour générer des annotations en NAF 2025
+- Données à disposition : 
+  - Stock Sirene 4 (~ 2.5 millions d'observations)
+  - Table de passage réalisée par les experts APE
+  - Notes explicatives de la NAF 2025
+  - Annotations faites par les gestionnaires (~ 25k observations)
 
-Schéma idée : 
+TODO
+SCHEMA idée : 
 Sirene 4 -> univoques  nace 2025                           ->
         -> multivoques -> subset unique multivoques -> LLM -> multivoque nace2025 (770k)-> resampled -> Sirene 4 nace 2025
 
 ## Tirer profit des LLMs
 
-2 Possibilités :
-        - RAG basé sur les notes explicatives seulement (possibilité de construire un vrai classifier => pas notre objectif). Pas encore testé mais pour comparer faudra + 2 sources potentielles d'erreur (niveau du retriever + generation du llm)
-        - Pseudo RAG : utiliser le mapping réalisé par un expert de la nomenclature APE
+- [**Retrieval Augmented Generation**] (RAG) vs [**fine-tunning**] 
 
-Principe : Donner les informations les plus pertinentes à un LLM pour qu'il soit capable de coder les codes nace 2008 en nace 2025
+- [**2 possibilités**] :
+  - RAG avec les [**notes explicatives**]
+    - Pas encore testé 📝
+  - [**Pseudo-RAG**] : 
+    - [**Retriever manuel**] utilisant la table de passage
+
+- 💡 Idée générale : 
+  - Donner les informations les plus pertinentes à un LLM pour qu'il soit capable de recoder les codes NAF 2008 en NAF 2025
+
+::: {.callout-warning}
+L'idée n'est pas de construire un classifier, seulement créer des annotations.
+:::
 
 ## Le prompting
 
-- Un prompt "systeme" identique pour toutes les obeervations
- => Mettre le prompt ?
+- Prompt [**système**] identique pour toutes les observations
 
-- Un prompt spécifique pour chaque observations comprenant : 
+<details> 
+<summary> 
+    <font size=3 color=black><b>Afficher le prompt sytème</b></font> 
+</summary>
+```
+Tu es un expert de la Nomenclature statistique des Activités économiques dans la Communauté Européenne (NACE). Tu es chargé de réaliser le changement de nomenclature. Ta mission consiste à attribuer un code NACE 2025 à une entreprise, en t'appuyant sur le descriptif de son activité et à partir d'une liste de codes proposés (identifiée à partir de son code NACE 2008 existant). Voici les instructions à suivre :
+1. Analyse la description de l'activité principale de l'entreprise et le code NACE 2008 fourni par l'utilisateur.
+2. À partir de la liste des codes NACE 2025 disponible, identifie la catégorie la plus appropriée qui correspond à l'activité principale de l'entreprise.
+3. Retourne le code NACE 2025 au format JSON comme spécifié par l'utilisateur. Si la description de l'activité de l'entreprise n'est pas suffisamment précise pour identifier un code NACE 2025 adéquat, retourne `null` dans le JSON.
+4. Évalue la cohérence entre le code NACE 2008 fourni et la description de l'activité de l'entreprise. Si le code NACE 2008 ne semble pas correspondre à cette description, retourne `False` dans le champ `nace08_valid` du JSON. Note que si tu arrives à classer la description de l'activité de l'entreprise dans un code NACE 2025, le champ `nace08_valid` devrait `True`, sinon il y a incohérence.
+5. Réponds seulement avec le JSON complété aucune autres information ne doit être retourné.
+```
+</details>
+
+
+- Un prompt [**spécifique**] pour chaque observations comprenant : 
   - le libellé de l'activité principale de l'entreprise
   - l'ancien code nace 2008 connu
   - La liste des codes possibles issues du mapping avec leurs notes explicatives
 
-- Une instruction sur le format de réponse attendu
+- Une [**instruction sur le format**] de réponse attendu
 
-## La reponse 
+## Qualifier la réponse générée
 
-Nécessité d'obtenir des réponses structurée au format json avec : 
-        - codable
-        - validité du code 2008
-        - code 2025
+- Tendance des LLMs a être très [**volubiles**]...
+- Construction d'une réponse type, claire et brèves dans un format spécifique
+- Format JSON est le plus abondamment utilisé dans l'écosystème
+- Réponse attendue : 
 
-S'assurer qu'il n'y a pas d'hallucination dans les générations
+<details> 
+<summary> 
+    <font size=3 color=black><b>Afficher un exemple de réponse attendue</b></font> 
+</summary>
+```
+```json
+{
+        "codable": true,
+        "nace_2008_valid": true,
+        "nace2025": "0147J" 
+}
+```
+</details>
 
-==> parsing de la réponse
+- Parsing de la réponse :
+  - Vérifie que le format est le bon
+  - S'assurer qu'il n'y a pas d'hallucination dans les générations
 
-## LLMs
 
-4 modèles utilisé :
-- Qwen 2.5 32B Instruct : Lent mais bonnes performance (très restrictif)
-- Ministral 8B Instruct : Extrêmement rapide, performance très raisonnable (pas du tout restricif, code tout)
-- Mistal Small Instruct (44B) : Lent mais bonnes performances (assez restrictif)
-- Llama 3.1 70B quantized : Extrêmement lent, très bonnes performances (assez restrictif)
+## LLMs utilisés
+
+
+| Modèle | Taille | Vitesse d'inférence | Performance | Caractéristique |
+| --- | --- | --- | --- | --- |
+| Qwen 2.5 | 32B | [Lent]{.orange} | [Bonnes performances]{.green} | Très restrictif |
+| Ministral | 8B | [Extrêmement rapide]{.green2} | [Très raisonnable]{.orange} | Pas restrictif |
+| Mistal Small | 44B | [Lent]{.orange} | [Bonnes performances]{.green} | Assez restrictif |
+| Llama 3.1 | 70B (quantisé) | [Extrêmement lent]{.red} | [Très bonnes performances]{.green2} | Assez restrictif |

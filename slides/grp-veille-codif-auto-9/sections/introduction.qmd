@@ -1,24 +1,36 @@
-# :one: Introduction
+## Les modèles de ML en production
 
-Mise en prod de modèle de ML c'est quelque chose à maintenir (comme Sicore avant)
-Besoin de monitoring pour suivre la perf dans le temps
-quand on a un data/concept drift on réentraine
+- De plus en plus de modèle ML sont voués à être [**mis en production**]{.orange} à l'Insee
+- [**Multiples cas d'usages**]{.orange} : codification automatique, imputation, détection de valeurs extrêmes
 
-Aussi un autre contexte qui génère un réentraienment dans nos cas de stats publiques => changement de nomenclature
-Ce n'est rien d'autre qu'un data drift extreme (c'est les X qui change)
+::: {.callout-note icon=false}
 
-Contexte pour le cas de APE :
-- 1ère mise en prod novembre 2022
-- 1er janvier 2023 passage à Sirene4 : modèle fasttext utilisé pour certaines liasses
-- Avril 2023 toutes les liasses passent par fasttext
-- Juin 2023 réentrainement pour corriger un problème de classification récurrent
-- Depuis rien
+## Quality Assurance Framework of the European Statistical System
+Source data, integrated data, intermediate results and statistical outputs must be [**regularly assessed and validated**]{.orange}.
+:::
 
-Plusieurs problèmes : 
-- Modèle entrainé sur données sirene 3 pas forcément adapté à sirene 4 => réentrainement
-- Changement de nomenclature en NACE 2025
-- Explicabilité du modèle pour les gestionnaires
+- Cela s'applique évidemment aux modèles de ML dans le processus de production statistique ➡️ [**besoin de maintenance**]{.orange} dans le temps
 
-On va parlé du point 2 auj qui englobe aussi le point 1
-Pour le point 3 Meilamme et Julien vous parleront de l'explicabilité en janvier calendar stay tuned
+## Qualité des modèles ML
 
+- Un modèle ML est entrainé pour résoudre un tâche à partir de [**données de référence**]{.orange}
+- Données réelles [**peuvent dévier**]{.orange} de ces données de références dans le temps ➡️ perte de performance ?
+- [**Ré-entrainement**]{.orange} du modèle devient nécessaire
+- [**Cas extrême**]{.orange} courant dans le cas de la statistique publique ➡️ [**changement de nomenclature**]{.blue2}
+
+## Historique du projet APE
+
+- [**Eté 2022**]{.orange} : entraînement d'un modèle fasttext sur les données Sirene 3
+- [**Novembre 2022**]{.orange} : 1ère mise en production d'un modèle ML
+- [**Janvier 2023**]{.orange} : Passage de Sirene 3 à 4. Création d'entreprises seulement
+- [**Mai 2023**]{.orange} : 1er ré-entrainement pour corriger un problème de classification
+- [**Mars 2024**]{.orange} : Toutes les liasses passent par fasttext
+- Et maintenant ?
+
+## Enjeux actuels
+
+- Plusieurs problématiques : 
+  - Modèle entrainé sur les données [**Sirene 3**]{.orange}
+  - Changement de nomenclature NAF 2008 vers [**NAF 2025**]{.orange}
+  - [**Explicabilité**]{.orange} du modèle pour les gestionnaires
+    - Groupe de veille n°10 en janvier 📅

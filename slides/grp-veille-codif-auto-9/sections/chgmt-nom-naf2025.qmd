@@ -1,32 +1,53 @@
 
-# :two: Changement de nomenclature NACE 2008 vers NACE 2025
+## Calendrier pour l'adoption de la nouvelle NAF 🗓️
 
-## Objectif Calendrier (target):
+- Vers une adoption transitoire
+- Sirus (dès 2025) : double codification en NAF 2025
+- Sirene (à partir de 2026) : codification en NAF 2025 mais maintiens de la codification NAF 2008 (nécessaire pour certaines publications INSEE)
 
-reprendre slide de Nathan
+## NAF 2025 : quels changements ? 
 
-## description de la nouvelle nace
-746 vs 732 codes
-Combien d'unvivoques ? 1-to-1 correspondance = cas idéal
-Combien de multivoques ? 1-to many  = problématique (mettre des stats sur les multivoques)
+- Au niveau 5 : 746 sous classes contre 732 auparanvant
+- Principalement des éclatements au niveau de la classe (niveau 4) ... mais pas que !
+- ??? classes univoques, correspondance 1-pour-1 ➡️ cas idéal !
 
-## plusieurs enjeux
+TODO:
+GRAPHIQUE ICI
 
-Recoder le stock : Comment faire ?
-Recoder le flux : entrainer un nouveau modèle
-Ok mais pour entrainer un nouveau modèle on a besoin de recoder un stock
+## NAF 2025 : les cas multivoques
 
-stock > 14 millions de liasses ? (mais moins d'entreprises sooooo what)
-ancien modèle entrainé sur > 10 millions
+- ??? classes multivoques, correspondance 1-pour-plusieurs ➡️ cas idéal !
+- Parmi cest classe combien ont 2 possibilités? 3 ? etc...
 
-Qu'est ce qu'on a à notre disposition ?
-- Stock sirene 3 :  > 10 millions
-- Stock sirene 4 : 2.5 millions 
+TODO:
+GRAPHIQUE ICI
 
-Stats multivoques et univoques sur sirene 4 => Comment faire pour avoir un modèle en nace 2025 qui code aussi bien qu'avant ?
+- Besoin d'un expert pour déterminer le nouveau code
 
-## Stratégie 
+## Enjeux et besoins multiples
 
-Reprendre la slide 15 de Nathan
+- Besoin de recoder le [**stock**] de liasse de Sirene ➡️ + [**14 millions**]...
+- Pouvoir coder le [**flux**] en NAF 2025 ➡️ entraîner un modèle ➡️ besoin d'avoir un [**stock**]
+- Modèle en NAF 2008 entrainé sur + [**10 millions**]
+- Performance de fastText [**très dépendant**] du nombre de données d'entraînement
 
-Pour avoir des données en nace 2025 et du coup on a assez pour notre modèle ?
+## Données à disposition
+
+- Stock Sirene 3 :  ~ 10 millions mais peu adaptées aux nouvelles données
+- Stock Sirene 4 : ~ 2.5 millions 
+    - Univoques : ??? millions et ??? sous-classes
+    - Multivoques : ??? millions et ??? sous-classes
+TODO:
+
+- Campagne d'annotation manuelle indispensable
+
+## Campagne d'annotation 
+
+- Lancement d'une campagne d'annotation depuis mi-2024
+- Plateforme développée par l'équipe métier 🤔
+- Focus sur les données [**multivoques uniques**]
+- 🎯 Objectif double :
+  - Attribuer un code NAF 2025 🚀
+  - Vérifier la qualité du code NAF 2008 🗸
+
+Aujourd'hui, ~ 27k données annotées... insuffisant !

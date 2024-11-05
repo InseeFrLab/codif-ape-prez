@@ -24,6 +24,18 @@ css: ../custom.css
 ascii: true
 ---
 
-# Introduction
+# 1️⃣ Introduction
 
 {{< include sections/introduction.qmd >}}
+
+# 2️⃣ Passage de la NAF 2008 à la NAF 2025
+
+{{< include sections/chgmt-nom-naf2025.qmd >}}
+
+# 3️⃣ Méthodologie appliquée
+
+{{< include sections/methodo.qmd >}}
+
+# 4️⃣ Résultats 
+
+{{< include sections/resultats.qmd >}}
