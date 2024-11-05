@@ -1,1 +1,24 @@
-## 
+# :one: Introduction
+
+Mise en prod de modèle de ML c'est quelque chose à maintenir (comme Sicore avant)
+Besoin de monitoring pour suivre la perf dans le temps
+quand on a un data/concept drift on réentraine
+
+Aussi un autre contexte qui génère un réentraienment dans nos cas de stats publiques => changement de nomenclature
+Ce n'est rien d'autre qu'un data drift extreme (c'est les X qui change)
+
+Contexte pour le cas de APE :
+- 1ère mise en prod novembre 2022
+- 1er janvier 2023 passage à Sirene4 : modèle fasttext utilisé pour certaines liasses
+- Avril 2023 toutes les liasses passent par fasttext
+- Juin 2023 réentrainement pour corriger un problème de classification récurrent
+- Depuis rien
+
+Plusieurs problèmes : 
+- Modèle entrainé sur données sirene 3 pas forcément adapté à sirene 4 => réentrainement
+- Changement de nomenclature en NACE 2025
+- Explicabilité du modèle pour les gestionnaires
+
+On va parlé du point 2 auj qui englobe aussi le point 1
+Pour le point 3 Meilamme et Julien vous parleront de l'explicabilité en janvier calendar stay tuned
+

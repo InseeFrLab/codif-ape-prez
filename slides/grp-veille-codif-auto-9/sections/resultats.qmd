@@ -1,0 +1,31 @@
+# :four: Résultats
+
+## Le fléau de l'évaluation
+
+Quelles données utilisées pour évaluer la performance ? Au vu de la complexité de la nomenclature comment être sur qu'une classification humaine soit la vraie valeur ?
+
+3 métriques utilisées :
+        - accuracy total
+        - accuracy parmi les "codables"
+        - accuracy LLM (sans les erreurs de mapping ou erreur dans le code 2008?)
+
+TODO: METTRE UN GRAPHIQUE ICI AVEC LES 4 MODELES
+
+## reconstruction du jeu multivoques 
+
+- Prendre les prédictions des LLMs comme des annotations standards
+- Peut on obtenir de meilleures performance en mixant les résultats de chaque modèles ?
+- Construction de 3 annotations supplémentaires 
+  - 1- choix en cascade (un modèle en priorité)
+  - 2- choix par vote à la majorité 
+  - 3- choix par vote pondéré
+
+TODO: METTRE UN GRAPHIQUE AVEC LES RESULTATS
+
+## Réentrainement
+
+- Jeu sirene 4 nace 2025 avec +2M d'observations
+- utilisation de nouvelles variables propres à sirene 4
+- Performance similaire au modèle en nace 2008 mais que vaut le jeu d'évaluation ? (ls contient que les multivoques)
+
+TODO: METTRE UN GRAPHIQUE AVEC LES RESULTATS

@@ -1,0 +1,32 @@
+
+# :two: Changement de nomenclature NACE 2008 vers NACE 2025
+
+## Objectif Calendrier (target):
+
+reprendre slide de Nathan
+
+## description de la nouvelle nace
+746 vs 732 codes
+Combien d'unvivoques ? 1-to-1 correspondance = cas idéal
+Combien de multivoques ? 1-to many  = problématique (mettre des stats sur les multivoques)
+
+## plusieurs enjeux
+
+Recoder le stock : Comment faire ?
+Recoder le flux : entrainer un nouveau modèle
+Ok mais pour entrainer un nouveau modèle on a besoin de recoder un stock
+
+stock > 14 millions de liasses ? (mais moins d'entreprises sooooo what)
+ancien modèle entrainé sur > 10 millions
+
+Qu'est ce qu'on a à notre disposition ?
+- Stock sirene 3 :  > 10 millions
+- Stock sirene 4 : 2.5 millions 
+
+Stats multivoques et univoques sur sirene 4 => Comment faire pour avoir un modèle en nace 2025 qui code aussi bien qu'avant ?
+
+## Stratégie 
+
+Reprendre la slide 15 de Nathan
+
+Pour avoir des données en nace 2025 et du coup on a assez pour notre modèle ?

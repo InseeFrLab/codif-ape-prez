@@ -1,0 +1,52 @@
+## :three: Méthodologie
+
+Objectif : Reconstruire un jeu de données le plus exhaustif possible
+C'est un one shot => pas de contrainte de de prod + pas construire un classifier, juste créer des annotations
+Pour cela : Utiliser 4 sources :
+- données sirene 4
+- notes explicatives nace 2025
+- mapping
+- ~ 25k annotations fait par les gestionnaires
+
+Schéma idée : 
+Sirene 4 -> univoques  nace 2025                           ->
+        -> multivoques -> subset unique multivoques -> LLM -> multivoque nace2025 (770k)-> resampled -> Sirene 4 nace 2025
+
+## Tirer profit des LLMs
+
+2 Possibilités :
+        - RAG basé sur les notes explicatives seulement (possibilité de construire un vrai classifier => pas notre objectif). Pas encore testé mais pour comparer faudra + 2 sources potentielles d'erreur (niveau du retriever + generation du llm)
+        - Pseudo RAG : utiliser le mapping réalisé par un expert de la nomenclature APE
+
+Principe : Donner les informations les plus pertinentes à un LLM pour qu'il soit capable de coder les codes nace 2008 en nace 2025
+
+## Le prompting
+
+- Un prompt "systeme" identique pour toutes les obeervations
+ => Mettre le prompt ?
+
+- Un prompt spécifique pour chaque observations comprenant : 
+  - le libellé de l'activité principale de l'entreprise
+  - l'ancien code nace 2008 connu
+  - La liste des codes possibles issues du mapping avec leurs notes explicatives
+
+- Une instruction sur le format de réponse attendu
+
+## La reponse 
+
+Nécessité d'obtenir des réponses structurée au format json avec : 
+        - codable
+        - validité du code 2008
+        - code 2025
+
+S'assurer qu'il n'y a pas d'hallucination dans les générations
+
+==> parsing de la réponse
+
+## LLMs
+
+4 modèles utilisé :
+- Qwen 2.5 32B Instruct : Lent mais bonnes performance (très restrictif)
+- Ministral 8B Instruct : Extrêmement rapide, performance très raisonnable (pas du tout restricif, code tout)
+- Mistal Small Instruct (44B) : Lent mais bonnes performances (assez restrictif)
+- Llama 3.1 70B quantized : Extrêmement lent, très bonnes performances (assez restrictif)
