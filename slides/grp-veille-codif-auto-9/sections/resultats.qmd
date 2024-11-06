@@ -32,30 +32,66 @@ TODO: METTRE UN GRAPHIQUE AVEC LES RESULTATS
 - Utilisation de nouvelles variables propres à Sirene 4
 - Performance similaire au modèle en NAF 2008
 
-TODO: METTRE UN GRAPHIQUE AVEC LES RESULTATS
+## Ré-entrainement en NAF 2025 {background-color="white"}
 
-accuracy_level_1
-0.8551939324497377
-accuracy_level_2
-0.8328925927834847
-accuracy_level_3
-0.7973293897956999
-accuracy_level_4
-0.7843529836218961
-accuracy_level_5
-0.7762214195942544
-ls_accuracy_level_1
-0.9668600758759206
-ls_accuracy_level_2
-0.95529271739939
-ls_accuracy_level_3
-0.9162389347615859
-ls_accuracy_level_4
-0.8986461355352228
-ls_accuracy_level_5
-0.8887153165216097
+```{python}
+import pandas as pd
+import numpy as np
+from plotnine import *
 
-mais que vaut le jeu d'évaluation ? (ls contient que les multivoques)
+# Create the data
+data = {
+    'data_type': ['Données Test'] * 5 + ['Données manuellement annotées'] * 5,
+    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 2,
+    'accuracy': [
+        0.8551939324497377,
+        0.8328925927834847,
+        0.7973293897956999,
+        0.7843529836218961,
+        0.7762214195942544,
+        0.9668600758759206,
+        0.95529271739939,
+        0.9162389347615859,
+        0.8986461355352228,
+        0.8887153165216097
+    ]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Define the correct order of levels
+level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
+
+# Convert level to categorical with the specified order
+df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
+
+# Format accuracy values for labels (rounded to 3 decimal places)
+df['accuracy_label'] = df['accuracy'].round(2).astype(str)
+
+# Create the lollipop chart
+(ggplot(df, aes(x='level', y='accuracy'))
+ + geom_segment(aes(x='level', xend='level', y=0, yend='accuracy'))
+ + geom_point(size=3, color='blue')
+ + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
+             size=8, nudge_y=0.02)  # Add value labels
+ + facet_wrap('~data_type')
+ + theme_minimal()
+ + labs(
+     x='',
+     y=''
+ )
+ + theme(
+     figure_size=(12, 6),  # Increased width to accommodate labels
+     panel_spacing=0.05,
+     axis_text=element_text(size=10),
+     axis_title=element_text(size=12),
+
+ )
+ + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
+)
+```
+
 
 ## Le modèle NAF 2025 {.scrollable}
 
@@ -102,3 +138,165 @@ d3.json(urlApe).then( res => {
 ```{ojs}
 import { debounce } from "@mbostock/debouncing-input" 
 ```
+
+
+
+
+
+```{ojs}
+lollipopFacetedChart(accuracyFastText, {
+  width: width*1.2,
+  pivot: 80,
+  x: "level",
+  y: "accuracy",
+  fill: "accuracy",
+  facet: "data",
+  domain_x: ["Sous-classe", "Classe", "Groupe", "Division", "Section"]
+})
+```
+
+
+
+```{ojs}
+function lollipopFacetedChart(
+  data,
+  { width, title, pivot = 0.5, x, y, fill, facet, domain_x } = {}
+) {
+  return Plot.plot({
+    title: title,
+    width,
+    height: width * 0.5,
+    marginLeft: 0,
+    color: {
+      scheme: "RdBu",
+      type: "diverging-pow",
+      pivot: pivot,
+      symmetric: false,
+      legend: true,
+      percent: false,
+      label: "Performance"
+      // domain: [0, 100]
+    },
+    facet: {
+      data: data,
+      x: facet,
+      label: null,
+      domain: ["Test", "Annotated"]
+    },
+    y: {
+      grid: true,
+      label: "Performance",
+      domain: [0, 100]
+    },
+    x: {
+      grid: false,
+      label: "Aggrégation",
+      domain: domain_x
+    },
+    marks: [
+      Plot.ruleX(data, {
+        x: x,
+        y: y,
+        stroke: fill,
+        strokeWidth: 1
+      }),
+      Plot.dot(data, {
+        x: x,
+        y: y,
+        fill: fill,
+        r: 5
+      }),
+      Plot.ruleY([0]),
+      Plot.tip(
+        data,
+        Plot.pointerX({
+          stroke: fill,
+          x: x,
+          y: y,
+          format: {
+            stroke: (d) => `${d.toFixed(2)}%`,
+            y: null,
+            fx: null
+          }
+        })
+      )
+    ]
+  });
+}
+```
+
+```{ojs}
+accuracyFastText = [
+  {
+    data: "Test",
+    level: "Section",
+    accuracy: 85.51939324497377
+  },
+  {
+    data: "Test",
+    level: "Division",
+    accuracy: 83.28925927834847
+  },
+  {
+    data: "Test",
+    level: "Groupe",
+    accuracy: 79.73293897956999
+  },
+  {
+    data: "Test",
+    level: "Classe",
+    accuracy: 78.43529836218961
+  },
+  {
+    data: "Test",
+    level: "Sous-classe",
+    accuracy: 77.62214195942544
+  },
+  {
+    data: "Annotated",
+    level: "Section",
+    accuracy: 96.68600758759206
+  },
+  {
+    data: "Annotated",
+    level: "Division",
+    accuracy: 95.529271739939
+  },
+  {
+    data: "Annotated",
+    level: "Groupe",
+    accuracy: 91.62389347615859
+  },
+  {
+    data: "Annotated",
+    level: "Classe",
+    accuracy: 89.86461355352228
+  },
+  {
+    data: "Annotated",
+    level: "Sous-classe",
+    accuracy: 88.87153165216097
+  }
+]
+```
+
+<!-- accuracy_Test_Section
+0.8551939324497377
+accuracy_Test_Division
+0.8328925927834847
+accuracy_Test_Groupe
+0.7973293897956999
+accuracy_Test_Classe
+0.7843529836218961
+accuracy_Test_Sous-classe
+0.7762214195942544
+accuracy_Annotated_Section
+0.9668600758759206
+accuracy_Annotated_Division
+0.95529271739939
+accuracy_Annotated_Groupe
+0.9162389347615859
+accuracy_Annotated_Classe
+0.8986461355352228
+accuracy_Annotated_Sous-classe
+0.8887153165216097 -->

@@ -10,3 +10,4 @@ pyarrow
 pydantic
 s3fs
 unidecode
+plotnine
