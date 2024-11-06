@@ -14,20 +14,40 @@
 
 - Au niveau 5 : 746 sous classes contre 732 auparavant
 - Principalement des éclatements au niveau de la classe (niveau 4) ... mais pas que !
-- ??? classes univoques, correspondance 1-pour-1 ➡️ cas idéal !
+- 551 classes univoques, correspondance 1-pour-1 ➡️ cas idéal ! 👌
 
-TODO:
-GRAPHIQUE ICI
+![](../img/univoques.png){fig-align="center"}
 
-## NAF 2025 : les cas multivoques
 
-- ??? classes multivoques, correspondance 1-pour-plusieurs ➡️ cas idéal !
-- Parmi cest classe combien ont 2 possibilités? 3 ? etc...
+## NAF 2025 : les cas multivoques {.scrollable}
 
-TODO:
-GRAPHIQUE ICI
-
+- 181 classes multivoques, correspondance 1-pour-N ➡️ cas problématiques ! 🚩
 - Besoin d'un expert pour déterminer le nouveau code
+
+![](../img/multivoques.png){fig-align="center"}
+
+
+<details> 
+<summary> 
+    <font size=3 color=black><b>Afficher la distribution des codes multivoques</b></font> 
+</summary>
+
+| 1-to-N | # occurence |
+| ---   | --- |
+| 2 | 109 |
+| 3 | 30 |
+| 4 | 24 |
+| 5 | 6 |
+| 6 | 4 |
+| 8 | 1 |
+| 9 | 2 |
+| 21 | 1 |
+| 27 | 1 |
+| 36 | 1 |
+| 38 | 2 |
+
+</details>
+
 
 ## Enjeux et besoins multiples
 
@@ -38,11 +58,10 @@ GRAPHIQUE ICI
 
 ## Données à disposition
 
-- Stock Sirene 3 :  ~ 10 millions mais peu adaptées aux nouvelles données
-- Stock Sirene 4 : ~ 2.5 millions 
-    - Univoques : ??? millions et ??? sous-classes
-    - Multivoques : ??? millions et ??? sous-classes
-TODO:
+- Stock Sirene 3 :  $~10$ millions obs. mais peu adaptées aux nouvelles données
+- Stock Sirene 4 : $~2.7$ millions obs.
+    - Univoques : $1.3$ millions obs. et 504 sous-classes
+    - Multivoques : $1.4$ millions obs. et 177 sous-classes
 
 - Campagne d'annotation manuelle indispensable
 
@@ -55,4 +74,4 @@ TODO:
   - Attribuer un code NAF 2025 🚀
   - Vérifier la qualité du code NAF 2008 🗸
 
-Aujourd'hui, ~ 27k données annotées... insuffisant !
+Aujourd'hui, $~27k$ données annotées... insuffisant !

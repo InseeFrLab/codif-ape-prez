@@ -4,15 +4,14 @@
 - Expérimentation one-shot ➡️ pas de contrainte de reproductibilité ... en production
 - Utilisation de LLMs pour générer des annotations en NAF 2025
 - Données à disposition : 
-  - Stock Sirene 4 (~ 2.5 millions d'observations)
+  - Stock Sirene 4 ($~2.7$ millions d'observations)
   - Table de passage réalisée par les experts APE
   - Notes explicatives de la NAF 2025
-  - Annotations faites par les gestionnaires (~ 25k observations)
+  - Annotations faites par les gestionnaires ($~25k$ observations)
 
-TODO
-SCHEMA idée : 
-Sirene 4 -> univoques  nace 2025                           ->
-        -> multivoques -> subset unique multivoques -> LLM -> multivoque nace2025 (770k)-> resampled -> Sirene 4 nace 2025
+## Méthodologie
+
+![](../img/methodo-nace-rev.png){fig-align="center"}
 
 ## Tirer profit des LLMs
 
@@ -68,7 +67,6 @@ Tu es un expert de la Nomenclature statistique des Activités économiques dans 
 <summary> 
     <font size=3 color=black><b>Afficher un exemple de réponse attendue</b></font> 
 </summary>
-```
 ```json
 {
         "codable": true,

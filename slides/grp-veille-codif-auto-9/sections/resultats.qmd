@@ -5,7 +5,7 @@
   - Dans notre cas : classification ➡️ plus facile, vraiment ?
   - Complexité de la nomenclature 
 
-- Utilisation des 27k annotations comme ground truth 🥇
+- Utilisation des $27k$ annotations comme ground truth 🥇
   
 - 3 métriques de performances :
   - Précision totale
@@ -27,12 +27,33 @@ TODO: METTRE UN GRAPHIQUE AVEC LES RESULTATS
 
 ## Ré-entrainement en NAF 2025
 
-- Reconstruction du stock Sirene 4 en NAF 2025 (~ 2 millions d'observations)
+- Reconstruction du stock Sirene 4 en NAF 2025 ($~2$ millions d'observations)
 - Distribution des données quasi-inchangées
 - Utilisation de nouvelles variables propres à Sirene 4
 - Performance similaire au modèle en NAF 2008
 
 TODO: METTRE UN GRAPHIQUE AVEC LES RESULTATS
+
+accuracy_level_1
+0.8551939324497377
+accuracy_level_2
+0.8328925927834847
+accuracy_level_3
+0.7973293897956999
+accuracy_level_4
+0.7843529836218961
+accuracy_level_5
+0.7762214195942544
+ls_accuracy_level_1
+0.9668600758759206
+ls_accuracy_level_2
+0.95529271739939
+ls_accuracy_level_3
+0.9162389347615859
+ls_accuracy_level_4
+0.8986461355352228
+ls_accuracy_level_5
+0.8887153165216097
 
 mais que vaut le jeu d'évaluation ? (ls contient que les multivoques)
 
