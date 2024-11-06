@@ -1,13 +1,12 @@
 
 ## Calendrier pour l'adoption de la nouvelle NAF 🗓️
 
-- Encore en attente de validation pour la diffusion
-- Vers une adoption transitoire
-- 2025 --> double codification en NAF 2025
-  - Sirus : recodification pour fin 2025
-  - Sirene : Intégration de la NAF 2025 en flux et d'une infrastructure MLops-compatible
-- 2026 --> amélioration de la codification en NAF 2025
-- Sirene (diffusion en 2027) : codification en NAF 2025 mais maintien de la codification NAF 2008 (nécessaire pour certaines publications INSEE)
+- Vers une [**adoption transitoire**]{.orange}
+- [**2025**]{.orange} ➡️ double codification en NAF 2025
+  - [**Sirus**]{.blue2} : recodification pour fin 2025
+  - [**Sirene**]{.blue2} : Intégration de la NAF 2025 [**en flux**]{.green2} et d'une infrastructure MLOps-compatible
+- [**2026**]{.orange} ➡️ amélioration de la codification en NAF 2025
+- [**2027**]{.orange} ➡️ codification en [**NAF 2025**]{.blue2} avec maintien de la codification NAF 2008
 
 
 ## NAF 2025 : quels changements ? 
@@ -17,9 +16,7 @@
 - [**551 classes univoques**]{.orange}, correspondance 1-pour-1 ➡️ cas idéal ! 👌
 
 ![](../img/univoques.png){fig-align="center"}
-    - "!/slides/bceao-2023"
-    - "!/slides/unece-conf"
-    - "!/slides/seminaire-dms-oct-2022"
+
 
 ## NAF 2025 : les cas multivoques {.scrollable}
 
