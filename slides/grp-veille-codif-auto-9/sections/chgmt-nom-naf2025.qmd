@@ -1,13 +1,18 @@
 
 ## Calendrier pour l'adoption de la nouvelle NAF 🗓️
 
+- Encore en attente de validation pour la diffusion
 - Vers une adoption transitoire
-- Sirus (dès 2025) : double codification en NAF 2025
-- Sirene (à partir de 2026) : codification en NAF 2025 mais maintiens de la codification NAF 2008 (nécessaire pour certaines publications INSEE)
+- 2025 --> double codification en NAF 2025
+  - Sirus : recodification pour fin 2025
+  - Sirene : Intégration de la NAF 2025 en flux et d'une infrastructure MLops-compatible
+- 2026 --> amélioration de la codification en NAF 2025
+- Sirene (diffusion en 2027) : codification en NAF 2025 mais maintien de la codification NAF 2008 (nécessaire pour certaines publications INSEE)
+
 
 ## NAF 2025 : quels changements ? 
 
-- Au niveau 5 : 746 sous classes contre 732 auparanvant
+- Au niveau 5 : 746 sous classes contre 732 auparavant
 - Principalement des éclatements au niveau de la classe (niveau 4) ... mais pas que !
 - ??? classes univoques, correspondance 1-pour-1 ➡️ cas idéal !
 

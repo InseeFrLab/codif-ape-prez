@@ -21,10 +21,12 @@ Source data, integrated data, intermediate results and statistical outputs must 
 ## Historique du projet APE
 
 - [**Eté 2022**]{.orange} : entraînement d'un modèle fasttext sur les données Sirene 3
-- [**Novembre 2022**]{.orange} : 1ère mise en production d'un modèle ML
-- [**Janvier 2023**]{.orange} : Passage de Sirene 3 à 4. Création d'entreprises seulement
+- [**Novembre 2022**]{.orange} : 
+  - 1ère mise en production d'un modèle ML. 
+  - Passage partiel à Sirene 4 : créations d'entreprises 
+- [**Janvier 2023**]{.orange} : Prise en compte des valideurs dans Sirene 4 : éligibilité de l'activité du déclarant (CMA,...)
 - [**Mai 2023**]{.orange} : 1er ré-entrainement pour corriger un problème de classification
-- [**Mars 2024**]{.orange} : Toutes les liasses passent par fasttext
+- [**Mars 2024**]{.orange} : Toutes les liasses passent par fasttext. Complète bascule de Sirene 3 à 4
 - Et maintenant ?
 
 ## Enjeux actuels
