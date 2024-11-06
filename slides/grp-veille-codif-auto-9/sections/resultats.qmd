@@ -1,36 +1,151 @@
 ## Le fléau de l'évaluation
 
 - ❓ Question cruciale : 
-  - Comment évaluer un LLM ?
-  - Dans notre cas : classification ➡️ plus facile, vraiment ?
-  - Complexité de la nomenclature 
+  - Comment [**évaluer**]{.orange} un LLM ?
+  - Classification ➡️ plus facile, vraiment ?
+  - Complexité de la nomenclature
 
 - Utilisation des $27k$ annotations comme ground truth 🥇
   
-- 3 métriques de performances :
-  - Précision totale
-  - Précision parmi les "codables"
-  - Précision "LLM" (erreurs imputables à la génération seulement)
+- [**3 métriques**]{.orange} de performances :
+  - Précision [**totale**]{.blue2}
+  - Précision parmi les [**"codables"**]{.blue2}
+  - Précision [**"LLM"**]{.blue2} (erreurs imputables à la génération seulement)
 
-TODO: METTRE UN GRAPHIQUE ICI AVEC LES 4 MODELES
+
+## Performance des modèles {.scollable}
+```{python}
+import pandas as pd
+import numpy as np
+from plotnine import *
+
+# Create the data
+data = {
+    'model': ['Qwen', 'Qwen', 'Qwen',
+              'Ministral', 'Ministral', 'Ministral',
+              'Mistral', 'Mistral', 'Mistral',
+              'Llama3.1', 'Llama3.1', 'Llama3.1'],
+    'accuracy_type': ["Précision totale", 'Précision "LLM"', 'Précision parmi les "codables"'] * 4,
+    'accuracy': [.6701, .7418, .7333,
+                .6803, .7530, .6805,
+                .9356, .9706, .9360,
+                .6836, .7688, .7209]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Define the model order (you can adjust this if you want a different order)
+model_order = ['Qwen', 'Ministral', 'Mistral', 'Llama3.1']
+df['model'] = pd.Categorical(df['model'], categories=model_order, ordered=True)
+
+accuracy_order = ["Précision totale", 'Précision "LLM"', 'Précision parmi les "codables"']
+df['accuracy_type'] = pd.Categorical(df['accuracy_type'], categories=accuracy_order, ordered=True)
+
+# Format accuracy values for labels
+df['accuracy_label'] = df['accuracy'].round(2).astype(str)
+
+# Create the lollipop chart
+(ggplot(df, aes(x='model', y='accuracy'))
+ + geom_segment(aes(x='model', xend='model', y=0, yend='accuracy'))
+ + geom_point(size=3, color='blue')
+ + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
+             size=8, nudge_y=0.02)
+ + facet_wrap('~accuracy_type', ncol=3)
+ + theme_minimal()
+ + labs(
+     x='',
+     y=''
+ )
+ + theme(
+     figure_size=(12, 4.5),  # Increased width to accommodate labels
+     panel_spacing=0.05,
+     axis_text=element_text(size=10),
+     axis_title=element_text(size=12),
+
+ )
+ + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
+)
+```
+
+::: {.callout-important}
+Les performances du modèle Mistral ne sont pour le moment pas comparables.
+:::
 
 ## Reconstruction du jeu multivoques
 
-- 💡Principe : considérer les LLMs comme des annotateurs standard ➡️ X-annotation
-- ❓Peut-on améliorer performances en mixant les résultats de chaque modèles ?
-- Construction de 3 annotations supplémentaires 
-  1. Choix en cascade (un modèle en priorité)
-  2. Choix par vote à la majorité 
-  3. Choix par vote pondéré
+- 💡[**Principe**]{.orange} : considérer les LLMs comme des [**annotateurs classiques**]{.blue2} ➡️ X-annotation
+- ❓Peut-on améliorer performances en [**mixant les résultats**]{.blue2} de chaque modèles ?
+- Construction de [**3 annotations**]{.orange} supplémentaires 
+  1. Choix en [**cascade**]{.blue2} (un modèle en priorité)
+  2. Choix par [**vote à la majorité**]{.blue2} 
+  3. Choix par [**vote pondéré**]{.blue2}
 
-TODO: METTRE UN GRAPHIQUE AVEC LES RESULTATS
+## Combinaison des annotations
+
+```{python}
+import pandas as pd
+import numpy as np
+from plotnine import *
+
+# Create the data
+data = {
+    'model': ['Qwen'] * 5 + ['Ministral'] * 5 + ['Mistral'] * 5 + ['Llama3.1'] * 5 + ['Cascade'] * 5 + ['Vote'] * 5,
+    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 6,
+    'accuracy': [.8431, .8225, .7371, .6881, .6701,
+                 .8984, .8719, .7772, .7064, .6803,
+                 .9857, .9838, .9624, .9445, .9356,
+                 .8771, .8508, .7627, .7041, .6836,
+                 .9170, .8886, .7847, .7350, .7034,
+                 .9215, .8969, .8074, .7555, .7355]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Define the model order (you can adjust this if you want a different order)
+model_order = ['Qwen', 'Ministral', 'Mistral', 'Llama3.1', "Cascade", "Vote",]
+df['model'] = pd.Categorical(df['model'], categories=model_order, ordered=True)
+
+# Define the correct order of levels
+level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
+
+# Convert level to categorical with the specified order
+df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
+
+# Format accuracy values for labels
+df['accuracy_label'] = df['accuracy'].round(2).astype(str)
+
+# Create the lollipop chart
+(ggplot(df, aes(x='model', y='accuracy'))
+ + geom_segment(aes(x='model', xend='model', y=0, yend='accuracy'))
+ + geom_point(size=3, color='blue')
+ + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
+             size=8, nudge_y=0.02)
+ + facet_wrap('~level', ncol=3)
+ + theme_minimal()
+ + labs(
+     x='',
+     y=''
+ )
+ + theme(
+     figure_size=(12, 6),  # Increased width to accommodate labels
+     panel_spacing=0.05,
+     axis_text=element_text(size=10),
+     axis_title=element_text(size=12),
+
+ )
+ + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
+)
+```
+
 
 ## Ré-entrainement en NAF 2025
 
-- Reconstruction du stock Sirene 4 en NAF 2025 ($~2$ millions d'observations)
-- Distribution des données quasi-inchangées
-- Utilisation de nouvelles variables propres à Sirene 4
-- Performance similaire au modèle en NAF 2008
+- [**Reconstruction**]{.orange} du stock Sirene 4 en NAF 2025 ($~2$ millions d'observations)
+- Distribution des données [**quasi-inchangées**]{.orange}
+- Utilisation de [**nouvelles variables**]{.orange} propres à Sirene 4
+- [**Performances similaires**]{.orange} au modèle en NAF 2008
 
 ## Ré-entrainement en NAF 2025 {background-color="white"}
 

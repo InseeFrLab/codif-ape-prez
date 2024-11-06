@@ -12,17 +12,19 @@
 
 ## NAF 2025 : quels changements ? 
 
-- Au niveau 5 : 746 sous classes contre 732 auparavant
+- Au [**niveau 5**]{.orange} : [**746**]{.blue2} sous classes contre [**732**]{.blue2} auparavant
 - Principalement des éclatements au niveau de la classe (niveau 4) ... mais pas que !
-- 551 classes univoques, correspondance 1-pour-1 ➡️ cas idéal ! 👌
+- [**551 classes univoques**]{.orange}, correspondance 1-pour-1 ➡️ cas idéal ! 👌
 
 ![](../img/univoques.png){fig-align="center"}
-
+    - "!/slides/bceao-2023"
+    - "!/slides/unece-conf"
+    - "!/slides/seminaire-dms-oct-2022"
 
 ## NAF 2025 : les cas multivoques {.scrollable}
 
-- 181 classes multivoques, correspondance 1-pour-N ➡️ cas problématiques ! 🚩
-- Besoin d'un expert pour déterminer le nouveau code
+- [**181 classes multivoques**]{.orange}, correspondance 1-pour-N ➡️ cas problématiques ! 🚩
+- [**Besoin d'un expert**]{.orange} pour déterminer le nouveau code
 
 ![](../img/multivoques.png){fig-align="center"}
 
@@ -51,27 +53,27 @@
 
 ## Enjeux et besoins multiples
 
-- Besoin de recoder le [**stock**] de liasse de Sirene ➡️ + [**14 millions**]...
-- Pouvoir coder le [**flux**] en NAF 2025 ➡️ entraîner un modèle ➡️ besoin d'avoir un [**stock**]
-- Modèle en NAF 2008 entrainé sur + [**10 millions**]
-- Performance de fastText [**très dépendant**] du nombre de données d'entraînement
+- Besoin de recoder le [**stock**]{.orange} de liasse de Sirene ➡️ + [**$14$ millions**]{.orange}...
+- Pouvoir coder le [**flux**]{.orange} en NAF 2025 ➡️ entraîner un modèle ➡️ besoin d'avoir un [**stock**]{.orange}...
+- Modèle en NAF 2008 entrainé sur + [**10 millions**]{.orange}
+- Performance de fastText [**très dépendant**]{.orange} du nombre de données d'entraînement
 
 ## Données à disposition
 
-- Stock Sirene 3 :  $~10$ millions obs. mais peu adaptées aux nouvelles données
-- Stock Sirene 4 : $~2.7$ millions obs.
-    - Univoques : $1.3$ millions obs. et 504 sous-classes
-    - Multivoques : $1.4$ millions obs. et 177 sous-classes
+- Stock [**Sirene 3**]{.orange} : [**$~10$ millions**]{.blue2} obs. mais peu adaptées aux nouvelles données
+- Stock [**Sirene 4**]{.orange} : [**$~2.7$ millions**]{.blue2} obs.
+    - Univoques : [**$1.3$ millions**]{.blue2} obs. et 504 sous-classes
+    - Multivoques : [**$1.4$ millions**]{.blue2} obs. et 177 sous-classes
 
-- Campagne d'annotation manuelle indispensable
+- [**Campagne d'annotation manuelle**]{.orange} indispensable
 
 ## Campagne d'annotation 
 
-- Lancement d'une campagne d'annotation depuis mi-2024
+- Lancement d'une campagne d'annotation depuis [**mi-2024**]{.orange}
 - Plateforme développée par l'équipe métier 🤔
-- Focus sur les données [**multivoques uniques**]
-- 🎯 Objectif double :
-  - Attribuer un code NAF 2025 🚀
-  - Vérifier la qualité du code NAF 2008 🗸
+- Focus sur les données [**multivoques uniques**]{.orange}
+- 🎯 Objectif [**double**]{.orange} :
+  - Attribuer un [**code NAF 2025**]{.blue2} 🚀
+  - Vérifier la [**qualité**]{.blue2} du code NAF 2008 🗸
 
 Aujourd'hui, $~27k$ données annotées... insuffisant !
