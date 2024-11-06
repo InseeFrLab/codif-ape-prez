@@ -326,63 +326,70 @@
     "href": "slides/grp-veille-codif-auto-9/index.html#naf-2025-quels-changements",
     "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
     "section": "NAF 2025 : quels changements ?",
-    "text": "NAF 2025 : quels changements ?\n\nAu niveau 5 : 746 sous classes contre 732 auparavant\nPrincipalement des éclatements au niveau de la classe (niveau 4) … mais pas que !\n??? classes univoques, correspondance 1-pour-1 ➡️ cas idéal !\n\nTODO: GRAPHIQUE ICI"
+    "text": "NAF 2025 : quels changements ?\n\nAu niveau 5 : 746 sous classes contre 732 auparavant\nPrincipalement des éclatements au niveau de la classe (niveau 4) … mais pas que !\n551 classes univoques, correspondance 1-pour-1 ➡️ cas idéal ! 👌\n\n - “!/slides/bceao-2023” - “!/slides/unece-conf” - “!/slides/seminaire-dms-oct-2022”"
   },
   {
     "objectID": "slides/grp-veille-codif-auto-9/index.html#naf-2025-les-cas-multivoques",
     "href": "slides/grp-veille-codif-auto-9/index.html#naf-2025-les-cas-multivoques",
     "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
     "section": "NAF 2025 : les cas multivoques",
-    "text": "NAF 2025 : les cas multivoques\n\n??? classes multivoques, correspondance 1-pour-plusieurs ➡️ cas idéal !\nParmi cest classe combien ont 2 possibilités? 3 ? etc…\n\nTODO: GRAPHIQUE ICI\n\nBesoin d’un expert pour déterminer le nouveau code"
+    "text": "NAF 2025 : les cas multivoques\n\n181 classes multivoques, correspondance 1-pour-N ➡️ cas problématiques ! 🚩\nBesoin d’un expert pour déterminer le nouveau code\n\n\n\n\nAfficher la distribution des codes multivoques\n\n\n\n\n1-to-N\n# occurence\n\n\n\n\n2\n109\n\n\n3\n30\n\n\n4\n24\n\n\n5\n6\n\n\n6\n4\n\n\n8\n1\n\n\n9\n2\n\n\n21\n1\n\n\n27\n1\n\n\n36\n1\n\n\n38\n2"
   },
   {
     "objectID": "slides/grp-veille-codif-auto-9/index.html#enjeux-et-besoins-multiples",
     "href": "slides/grp-veille-codif-auto-9/index.html#enjeux-et-besoins-multiples",
     "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
     "section": "Enjeux et besoins multiples",
-    "text": "Enjeux et besoins multiples\n\nBesoin de recoder le [stock] de liasse de Sirene ➡️ + [14 millions]…\nPouvoir coder le [flux] en NAF 2025 ➡️ entraîner un modèle ➡️ besoin d’avoir un [stock]\nModèle en NAF 2008 entrainé sur + [10 millions]\nPerformance de fastText [très dépendant] du nombre de données d’entraînement"
+    "text": "Enjeux et besoins multiples\n\nBesoin de recoder le stock de liasse de Sirene ➡️ + \\(14\\) millions…\nPouvoir coder le flux en NAF 2025 ➡️ entraîner un modèle ➡️ besoin d’avoir un stock…\nModèle en NAF 2008 entrainé sur + 10 millions\nPerformance de fastText très dépendant du nombre de données d’entraînement"
   },
   {
     "objectID": "slides/grp-veille-codif-auto-9/index.html#données-à-disposition",
     "href": "slides/grp-veille-codif-auto-9/index.html#données-à-disposition",
     "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
     "section": "Données à disposition",
-    "text": "Données à disposition\n\nStock Sirene 3 : ~ 10 millions mais peu adaptées aux nouvelles données\nStock Sirene 4 : ~ 2.5 millions\n\nUnivoques : ??? millions et ??? sous-classes\nMultivoques : ??? millions et ??? sous-classes TODO:\n\nCampagne d’annotation manuelle indispensable"
+    "text": "Données à disposition\n\nStock Sirene 3 : \\(~10\\) millions obs. mais peu adaptées aux nouvelles données\nStock Sirene 4 : \\(~2.7\\) millions obs.\n\nUnivoques : \\(1.3\\) millions obs. et 504 sous-classes\nMultivoques : \\(1.4\\) millions obs. et 177 sous-classes\n\nCampagne d’annotation manuelle indispensable"
   },
   {
     "objectID": "slides/grp-veille-codif-auto-9/index.html#campagne-dannotation",
     "href": "slides/grp-veille-codif-auto-9/index.html#campagne-dannotation",
     "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
     "section": "Campagne d’annotation",
-    "text": "Campagne d’annotation\n\nLancement d’une campagne d’annotation depuis mi-2024\nPlateforme développée par l’équipe métier 🤔\nFocus sur les données [multivoques uniques]\n🎯 Objectif double :\n\nAttribuer un code NAF 2025 🚀\nVérifier la qualité du code NAF 2008 🗸\n\n\nAujourd’hui, ~ 27k données annotées… insuffisant !"
+    "text": "Campagne d’annotation\n\nLancement d’une campagne d’annotation depuis mi-2024\nPlateforme développée par l’équipe métier 🤔\nFocus sur les données multivoques uniques\n🎯 Objectif double :\n\nAttribuer un code NAF 2025 🚀\nVérifier la qualité du code NAF 2008 🗸\n\n\nAujourd’hui, \\(~27k\\) données annotées… insuffisant !"
   },
   {
     "objectID": "slides/grp-veille-codif-auto-9/index.html#méthodologie",
     "href": "slides/grp-veille-codif-auto-9/index.html#méthodologie",
     "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
     "section": "Méthodologie",
-    "text": "Méthodologie\n\n🎯 [Objectif] : Reconstruire un jeu d’entraînement le plus exhaustif possible\nExpérimentation one-shot ➡️ pas de contrainte de reproductibilité … en production\nUtilisation de LLMs pour générer des annotations en NAF 2025\nDonnées à disposition :\n\nStock Sirene 4 (~ 2.5 millions d’observations)\nTable de passage réalisée par les experts APE\nNotes explicatives de la NAF 2025\nAnnotations faites par les gestionnaires (~ 25k observations)\n\n\nTODO SCHEMA idée : Sirene 4 -&gt; univoques nace 2025 -&gt; -&gt; multivoques -&gt; subset unique multivoques -&gt; LLM -&gt; multivoque nace2025 (770k)-&gt; resampled -&gt; Sirene 4 nace 2025"
+    "text": "Méthodologie\n\n🎯 Objectif : Reconstruire un jeu d’entraînement le plus exhaustif possible\nExpérimentation one-shot ➡️ pas de contrainte de reproductibilité … en production\nUtilisation de LLMs pour générer des annotations en NAF 2025\nDonnées à disposition :\n\nStock Sirene 4 (\\(~2.7\\) millions d’observations)\nTable de passage réalisée par les experts APE\nNotes explicatives de la NAF 2025\nAnnotations manuelles (\\(~27k\\) observations)"
+  },
+  {
+    "objectID": "slides/grp-veille-codif-auto-9/index.html#méthodologie-1",
+    "href": "slides/grp-veille-codif-auto-9/index.html#méthodologie-1",
+    "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
+    "section": "Méthodologie",
+    "text": "Méthodologie"
   },
   {
     "objectID": "slides/grp-veille-codif-auto-9/index.html#tirer-profit-des-llms",
     "href": "slides/grp-veille-codif-auto-9/index.html#tirer-profit-des-llms",
     "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
     "section": "Tirer profit des LLMs",
-    "text": "Tirer profit des LLMs\n\n[Retrieval Augmented Generation] (RAG) vs [fine-tunning]\n[2 possibilités] :\n\nRAG avec les [notes explicatives]\n\nPas encore testé 📝\n\n[Pseudo-RAG] :\n\n[Retriever manuel] utilisant la table de passage\n\n\n💡 Idée générale :\n\nDonner les informations les plus pertinentes à un LLM pour qu’il soit capable de recoder les codes NAF 2008 en NAF 2025\n\n\n\n\n\n\n\n\nAvertissement\n\n\nL’idée n’est pas de construire un classifier, seulement créer des annotations."
+    "text": "Tirer profit des LLMs\n\nRetrieval Augmented Generation (RAG) vs fine-tunning\n2 possibilités :\n\nRAG avec les notes explicatives\n\n\nPas encore testé 📝\n\n\nPseudo-RAG :\n\n\nRetriever manuel utilisant la table de passage\n\n💡 Idée générale ➡️ Fournir les données essentielles au LLM pour convertir les codes NAF 2008 vers 2025\n\n\n\n\nAvertissement\n\n\nL’idée n’est pas de construire un classifier, seulement créer des annotations."
   },
   {
     "objectID": "slides/grp-veille-codif-auto-9/index.html#le-prompting",
     "href": "slides/grp-veille-codif-auto-9/index.html#le-prompting",
     "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
     "section": "Le prompting",
-    "text": "Le prompting\n\nPrompt [système] identique pour toutes les observations\n\n\n\nAfficher le prompt sytème\n\nTu es un expert de la Nomenclature statistique des Activités économiques dans la Communauté Européenne (NACE). Tu es chargé de réaliser le changement de nomenclature. Ta mission consiste à attribuer un code NACE 2025 à une entreprise, en t'appuyant sur le descriptif de son activité et à partir d'une liste de codes proposés (identifiée à partir de son code NACE 2008 existant). Voici les instructions à suivre :\n1. Analyse la description de l'activité principale de l'entreprise et le code NACE 2008 fourni par l'utilisateur.\n2. À partir de la liste des codes NACE 2025 disponible, identifie la catégorie la plus appropriée qui correspond à l'activité principale de l'entreprise.\n3. Retourne le code NACE 2025 au format JSON comme spécifié par l'utilisateur. Si la description de l'activité de l'entreprise n'est pas suffisamment précise pour identifier un code NACE 2025 adéquat, retourne `null` dans le JSON.\n4. Évalue la cohérence entre le code NACE 2008 fourni et la description de l'activité de l'entreprise. Si le code NACE 2008 ne semble pas correspondre à cette description, retourne `False` dans le champ `nace08_valid` du JSON. Note que si tu arrives à classer la description de l'activité de l'entreprise dans un code NACE 2025, le champ `nace08_valid` devrait `True`, sinon il y a incohérence.\n5. Réponds seulement avec le JSON complété aucune autres information ne doit être retourné.\n\n\nUn prompt [spécifique] pour chaque observations comprenant :\n\nle libellé de l’activité principale de l’entreprise\nl’ancien code nace 2008 connu\nLa liste des codes possibles issues du mapping avec leurs notes explicatives\n\nUne [instruction sur le format] de réponse attendu"
+    "text": "Le prompting\n\nPrompt système identique pour toutes les observations\n\n\nAfficher le prompt sytème\n\nTu es un expert de la Nomenclature statistique des Activités économiques dans la Communauté Européenne (NACE). Tu es chargé de réaliser le changement de nomenclature. Ta mission consiste à attribuer un code NACE 2025 à une entreprise, en t'appuyant sur le descriptif de son activité et à partir d'une liste de codes proposés (identifiée à partir de son code NACE 2008 existant). Voici les instructions à suivre :\n1. Analyse la description de l'activité principale de l'entreprise et le code NACE 2008 fourni par l'utilisateur.\n2. À partir de la liste des codes NACE 2025 disponible, identifie la catégorie la plus appropriée qui correspond à l'activité principale de l'entreprise.\n3. Retourne le code NACE 2025 au format JSON comme spécifié par l'utilisateur. Si la description de l'activité de l'entreprise n'est pas suffisamment précise pour identifier un code NACE 2025 adéquat, retourne `null` dans le JSON.\n4. Évalue la cohérence entre le code NACE 2008 fourni et la description de l'activité de l'entreprise. Si le code NACE 2008 ne semble pas correspondre à cette description, retourne `False` dans le champ `nace08_valid` du JSON. Note que si tu arrives à classer la description de l'activité de l'entreprise dans un code NACE 2025, le champ `nace08_valid` devrait `True`, sinon il y a incohérence.\n5. Réponds seulement avec le JSON complété aucune autres information ne doit être retourné.\n\nUn prompt spécifique pour chaque observations comprenant :\n\nle libellé de l’activité principale de l’entreprise\nl’ancien code NAF 2008 connu\nLa liste des codes possibles issues du mapping avec leurs notes explicatives\n\nUne instruction sur le format de réponse attendu"
   },
   {
     "objectID": "slides/grp-veille-codif-auto-9/index.html#qualifier-la-réponse-générée",
     "href": "slides/grp-veille-codif-auto-9/index.html#qualifier-la-réponse-générée",
     "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
     "section": "Qualifier la réponse générée",
-    "text": "Qualifier la réponse générée\n\nTendance des LLMs a être très [volubiles]…\nConstruction d’une réponse type, claire et brèves dans un format spécifique\nFormat JSON est le plus abondamment utilisé dans l’écosystème\nRéponse attendue :\n\n\n\nAfficher un exemple de réponse attendue\n\n```json\n{\n        \"codable\": true,\n        \"nace_2008_valid\": true,\n        \"nace2025\": \"0147J\" \n}\n\n\nParsing de la réponse :\n\nVérifie que le format est le bon\nS’assurer qu’il n’y a pas d’hallucination dans les générations"
+    "text": "Qualifier la réponse générée\n\nTendance des LLMs a être très volubiles…\nConstruction d’une réponse type, claire et brèves dans un format spécifique\nFormat JSON est le plus abondamment utilisé dans l’écosystème\n\n\n\nAfficher un exemple de réponse attendue\n\n{\n    \"codable\": true,\n    \"nace_2008_valid\": true,\n    \"nace2025\": \"0147J\" \n}\n\n\nParsing de la réponse :\n\nVérification du format\nContrôle des hallucinations"
   },
   {
     "objectID": "slides/grp-veille-codif-auto-9/index.html#llms-utilisés",
@@ -396,21 +403,42 @@
     "href": "slides/grp-veille-codif-auto-9/index.html#le-fléau-de-lévaluation",
     "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
     "section": "Le fléau de l’évaluation",
-    "text": "Le fléau de l’évaluation\n\n❓ Question cruciale :\n\nComment évaluer un LLM ?\nDans notre cas : classification ➡️ plus facile, vraiment ?\nComplexité de la nomenclature\n\nUtilisation des 27k annotations comme ground truth 🥇\n3 métriques de performances :\n\nPrécision totale\nPrécision parmi les “codables”\nPrécision “LLM” (erreurs imputables à la génération seulement)\n\n\nTODO: METTRE UN GRAPHIQUE ICI AVEC LES 4 MODELES"
+    "text": "Le fléau de l’évaluation\n\n❓ Question cruciale :\n\nComment évaluer un LLM ?\nClassification ➡️ plus facile, vraiment ?\nComplexité de la nomenclature\n\nUtilisation des \\(27k\\) annotations comme ground truth 🥇\n3 métriques de performances :\n\nPrécision totale\nPrécision parmi les “codables”\nPrécision “LLM” (erreurs imputables à la génération seulement)"
+  },
+  {
+    "objectID": "slides/grp-veille-codif-auto-9/index.html#performance-des-modèles",
+    "href": "slides/grp-veille-codif-auto-9/index.html#performance-des-modèles",
+    "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
+    "section": "Performance des modèles",
+    "text": "Performance des modèles\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nLes performances du modèle Mistral ne sont pour le moment pas comparables."
   },
   {
     "objectID": "slides/grp-veille-codif-auto-9/index.html#reconstruction-du-jeu-multivoques",
     "href": "slides/grp-veille-codif-auto-9/index.html#reconstruction-du-jeu-multivoques",
     "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
     "section": "Reconstruction du jeu multivoques",
-    "text": "Reconstruction du jeu multivoques\n\n💡Principe : considérer les LLMs comme des annotateurs standard ➡️ X-annotation\n❓Peut-on améliorer performances en mixant les résultats de chaque modèles ?\nConstruction de 3 annotations supplémentaires\n\nChoix en cascade (un modèle en priorité)\nChoix par vote à la majorité\nChoix par vote pondéré\n\n\nTODO: METTRE UN GRAPHIQUE AVEC LES RESULTATS"
+    "text": "Reconstruction du jeu multivoques\n\n💡Principe : considérer les LLMs comme des annotateurs classiques ➡️ X-annotation\n❓Peut-on améliorer performances en mixant les résultats de chaque modèles ?\nConstruction de 3 annotations supplémentaires\n\nChoix en cascade (un modèle en priorité)\nChoix par vote à la majorité\nChoix par vote pondéré"
+  },
+  {
+    "objectID": "slides/grp-veille-codif-auto-9/index.html#combinaison-des-annotations",
+    "href": "slides/grp-veille-codif-auto-9/index.html#combinaison-des-annotations",
+    "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
+    "section": "Combinaison des annotations",
+    "text": "Combinaison des annotations"
   },
   {
     "objectID": "slides/grp-veille-codif-auto-9/index.html#ré-entrainement-en-naf-2025",
     "href": "slides/grp-veille-codif-auto-9/index.html#ré-entrainement-en-naf-2025",
     "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
     "section": "Ré-entrainement en NAF 2025",
-    "text": "Ré-entrainement en NAF 2025\n\nReconstruction du stock Sirene 4 en NAF 2025 (~ 2 millions d’observations)\nDistribution des données quasi-inchangées\nUtilisation de nouvelles variables propres à Sirene 4\nPerformance similaire au modèle en NAF 2008\n\nTODO: METTRE UN GRAPHIQUE AVEC LES RESULTATS\nmais que vaut le jeu d’évaluation ? (ls contient que les multivoques)"
+    "text": "Ré-entrainement en NAF 2025\n\nReconstruction du stock Sirene 4 en NAF 2025 (\\(~2\\) millions d’observations)\nDistribution des données quasi-inchangées\nUtilisation de nouvelles variables propres à Sirene 4\nPerformances similaires au modèle en NAF 2008"
+  },
+  {
+    "objectID": "slides/grp-veille-codif-auto-9/index.html#ré-entrainement-en-naf-2025-1",
+    "href": "slides/grp-veille-codif-auto-9/index.html#ré-entrainement-en-naf-2025-1",
+    "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
+    "section": "Ré-entrainement en NAF 2025",
+    "text": "Ré-entrainement en NAF 2025"
   },
   {
     "objectID": "slides/grp-veille-codif-auto-9/index.html#le-modèle-naf-2025",
