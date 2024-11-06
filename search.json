@@ -305,7 +305,7 @@
     "href": "slides/grp-veille-codif-auto-9/index.html#historique-du-projet-ape",
     "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
     "section": "Historique du projet APE",
-    "text": "Historique du projet APE\n\nEté 2022 : entraînement d’un modèle fasttext sur les données Sirene 3\nNovembre 2022 : 1ère mise en production d’un modèle ML\nJanvier 2023 : Passage de Sirene 3 à 4. Création d’entreprises seulement\nMai 2023 : 1er ré-entrainement pour corriger un problème de classification\nMars 2024 : Toutes les liasses passent par fasttext\nEt maintenant ?"
+    "text": "Historique du projet APE\n\nEté 2022 : entraînement d’un modèle fasttext sur les données Sirene 3\nNovembre 2022 :\n\n1ère mise en production d’un modèle ML.\nPassage partiel à Sirene 4 : créations d’entreprises\n\nJanvier 2023 : Prise en compte des valideurs dans Sirene 4 : éligibilité de l’activité du déclarant (CMA,…)\nMai 2023 : 1er ré-entrainement pour corriger un problème de classification\nMars 2024 : Toutes les liasses passent par fasttext. Complète bascule de Sirene 3 à 4\nEt maintenant ?"
   },
   {
     "objectID": "slides/grp-veille-codif-auto-9/index.html#enjeux-actuels",
@@ -319,14 +319,14 @@
     "href": "slides/grp-veille-codif-auto-9/index.html#calendrier-pour-ladoption-de-la-nouvelle-naf",
     "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
     "section": "Calendrier pour l’adoption de la nouvelle NAF 🗓️",
-    "text": "Calendrier pour l’adoption de la nouvelle NAF 🗓️\n\nVers une adoption transitoire\nSirus (dès 2025) : double codification en NAF 2025\nSirene (à partir de 2026) : codification en NAF 2025 mais maintiens de la codification NAF 2008 (nécessaire pour certaines publications INSEE)"
+    "text": "Calendrier pour l’adoption de la nouvelle NAF 🗓️\n\nEncore en attente de validation pour la diffusion\nVers une adoption transitoire\n2025 –&gt; double codification en NAF 2025\n\nSirus : recodification pour fin 2025\nSirene : Intégration de la NAF 2025 en flux et d’une infrastructure MLops-compatible\n\n2026 –&gt; amélioration de la codification en NAF 2025\nSirene (diffusion en 2027) : codification en NAF 2025 mais maintien de la codification NAF 2008 (nécessaire pour certaines publications INSEE)"
   },
   {
     "objectID": "slides/grp-veille-codif-auto-9/index.html#naf-2025-quels-changements",
     "href": "slides/grp-veille-codif-auto-9/index.html#naf-2025-quels-changements",
     "title": "Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025",
     "section": "NAF 2025 : quels changements ?",
-    "text": "NAF 2025 : quels changements ?\n\nAu niveau 5 : 746 sous classes contre 732 auparanvant\nPrincipalement des éclatements au niveau de la classe (niveau 4) … mais pas que !\n??? classes univoques, correspondance 1-pour-1 ➡️ cas idéal !\n\nTODO: GRAPHIQUE ICI"
+    "text": "NAF 2025 : quels changements ?\n\nAu niveau 5 : 746 sous classes contre 732 auparavant\nPrincipalement des éclatements au niveau de la classe (niveau 4) … mais pas que !\n??? classes univoques, correspondance 1-pour-1 ➡️ cas idéal !\n\nTODO: GRAPHIQUE ICI"
   },
   {
     "objectID": "slides/grp-veille-codif-auto-9/index.html#naf-2025-les-cas-multivoques",

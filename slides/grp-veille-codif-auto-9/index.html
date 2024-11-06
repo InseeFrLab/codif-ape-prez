@@ -452,10 +452,14 @@
 <h2>Historique du projet APE</h2>
 <ul>
 <li><span class="orange"><strong>Eté 2022</strong></span> : entraînement d’un modèle fasttext sur les données Sirene 3</li>
-<li><span class="orange"><strong>Novembre 2022</strong></span> : 1ère mise en production d’un modèle ML</li>
-<li><span class="orange"><strong>Janvier 2023</strong></span> : Passage de Sirene 3 à 4. Création d’entreprises seulement</li>
+<li><span class="orange"><strong>Novembre 2022</strong></span> :
+<ul>
+<li>1ère mise en production d’un modèle ML.</li>
+<li>Passage partiel à Sirene 4 : créations d’entreprises</li>
+</ul></li>
+<li><span class="orange"><strong>Janvier 2023</strong></span> : Prise en compte des valideurs dans Sirene 4 : éligibilité de l’activité du déclarant (CMA,…)</li>
 <li><span class="orange"><strong>Mai 2023</strong></span> : 1er ré-entrainement pour corriger un problème de classification</li>
-<li><span class="orange"><strong>Mars 2024</strong></span> : Toutes les liasses passent par fasttext</li>
+<li><span class="orange"><strong>Mars 2024</strong></span> : Toutes les liasses passent par fasttext. Complète bascule de Sirene 3 à 4</li>
 <li>Et maintenant ?</li>
 </ul>
 </section>
@@ -481,15 +485,21 @@
 <section id="calendrier-pour-ladoption-de-la-nouvelle-naf" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Calendrier pour l’adoption de la nouvelle NAF 🗓️</h2>
 <ul>
+<li>Encore en attente de validation pour la diffusion</li>
 <li>Vers une adoption transitoire</li>
-<li>Sirus (dès 2025) : double codification en NAF 2025</li>
-<li>Sirene (à partir de 2026) : codification en NAF 2025 mais maintiens de la codification NAF 2008 (nécessaire pour certaines publications INSEE)</li>
+<li>2025 –&gt; double codification en NAF 2025
+<ul>
+<li>Sirus : recodification pour fin 2025</li>
+<li>Sirene : Intégration de la NAF 2025 en flux et d’une infrastructure MLops-compatible</li>
+</ul></li>
+<li>2026 –&gt; amélioration de la codification en NAF 2025</li>
+<li>Sirene (diffusion en 2027) : codification en NAF 2025 mais maintien de la codification NAF 2008 (nécessaire pour certaines publications INSEE)</li>
 </ul>
 </section>
 <section id="naf-2025-quels-changements" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>NAF 2025 : quels changements ?</h2>
 <ul>
-<li>Au niveau 5 : 746 sous classes contre 732 auparanvant</li>
+<li>Au niveau 5 : 746 sous classes contre 732 auparavant</li>
 <li>Principalement des éclatements au niveau de la classe (niveau 4) … mais pas que !</li>
 <li>??? classes univoques, correspondance 1-pour-1 ➡️ cas idéal !</li>
 </ul>
