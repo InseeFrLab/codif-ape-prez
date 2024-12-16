@@ -68,9 +68,6 @@ df['accuracy_label'] = df['accuracy'].round(2).astype(str)
 )
 ```
 
-::: {.callout-important}
-Les performances du modèle Mistral ne sont pour le moment pas comparables.
-:::
 
 ## Reconstruction du jeu multivoques
 
