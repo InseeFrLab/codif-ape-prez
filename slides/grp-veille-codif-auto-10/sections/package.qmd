@@ -1,0 +1,93 @@
+
+## Objectifs
+
+- Distribution d'une architecture de *deep learning* standardisée pour les besoins de classification de texte avec variables catégorielles
+- Publication en *open-source* pour favoriser la collaboration
+- A destination d'autres équipes de l'Insee, SSM et INS européens
+
+## Le modèle PyTorch
+
+- Le modèle en tant que tel en PyTorch natif
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'} 
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+
+
+
+
+
+
+
+
+## NAF 2025 : les cas multivoques {.scrollable}
+
+- [**181 classes multivoques**]{.orange}, correspondance 1-pour-N ➡️ cas problématiques ! 🚩
+- [**Besoin d'un expert**]{.orange} pour déterminer le nouveau code
+
+![](../img/multivoques.png){fig-align="center"}
+
+
+<details> 
+<summary> 
+    <font size=3 color=black><b>Afficher la distribution des codes multivoques</b></font> 
+</summary>
+
+| 1-to-N | # occurence |
+| ---   | --- |
+| 2 | 109 |
+| 3 | 30 |
+| 4 | 24 |
+| 5 | 6 |
+| 6 | 4 |
+| 8 | 1 |
+| 9 | 2 |
+| 21 | 1 |
+| 27 | 1 |
+| 36 | 1 |
+| 38 | 2 |
+
+</details>
+
+
+## Enjeux et besoins multiples
+
+- Besoin de recoder le [**stock**]{.orange} de liasse de Sirene ➡️ + [**$14$ millions**]{.orange}...
+- Pouvoir coder le [**flux**]{.orange} en NAF 2025 ➡️ entraîner un modèle ➡️ besoin d'avoir un [**stock**]{.orange}...
+- Modèle en NAF 2008 entrainé sur + [**10 millions**]{.orange}
+- Performance de fastText [**très dépendant**]{.orange} du nombre de données d'entraînement
+
+## Données à disposition
+
+- Stock [**Sirene 3**]{.orange} : [**$~10$ millions**]{.blue2} obs. mais peu adaptées aux nouvelles données
+- Stock [**Sirene 4**]{.orange} : [**$~2.7$ millions**]{.blue2} obs.
+    - Univoques : [**$1.3$ millions**]{.blue2} obs. et 504 sous-classes
+    - Multivoques : [**$1.4$ millions**]{.blue2} obs. et 177 sous-classes
+
+- [**Campagne d'annotation manuelle**]{.orange} indispensable
+
+## Campagne d'annotation 
+
+- Lancement d'une campagne d'annotation depuis [**mi-2024**]{.orange}
+- Plateforme développée par l'équipe métier 🤔
+- Focus sur les données [**multivoques uniques**]{.orange}
+- 🎯 Objectif [**double**]{.orange} :
+  - Attribuer un [**code NAF 2025**]{.blue2} 🚀
+  - Vérifier la [**qualité**]{.blue2} du code NAF 2008 🗸
+
+Aujourd'hui, $~27k$ données annotées... insuffisant !
