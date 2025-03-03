@@ -1,9 +1,10 @@
 project:
   type: website
   render:
-    - /slides/*/*.qmd
-    - index.qmd
-    - /cards/*.qmd
+    # - /slides/*/*.qmd
+    # - index.qmd
+    # - /cards/*.qmd
+    - slides/grp-veille-codif-auto-9/**
 
 website:
   page-navigation: true
