@@ -13,9 +13,9 @@
 
 ## Opportunités
 
-- Architecture *in-house*, adaptée aux besoins maison
+- Architecture [***in-house*** ]{.orange}, adaptée aux besoins maison
 - Maintenance internalisée
-- Passage en PyTorch ouvre des opportunités de modernisation : explicabilité, modèles plus performants...
+- Passage en PyTorch ouvre des opportunités de [**modernisation**]{.orange} : explicabilité, modèles plus performants...
 
 Mais des questions sur le temps d'inférence...
 
