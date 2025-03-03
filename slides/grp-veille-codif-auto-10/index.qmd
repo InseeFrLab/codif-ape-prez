@@ -1,0 +1,40 @@
+---
+title: Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025
+subtitle: |
+  [**Groupe de veille Codification Automatique n°10**]{.orange}
+author: |
+  [Meilame Tayebjee](https://github.com/meilame-tayebjee)
+date: "11/06/2024"
+date-format: "D MMMM YYYY"
+slide-number: true
+# uncomment for French presentations:
+lang: fr-FR
+# for blind readers:
+slide-tone: false
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  onyxia-revealjs:
+    output-file: index.html
+controls: true
+css: ../custom.css
+ascii: true
+---
+
+# 1️⃣ Contexte
+
+{{< include sections/contexte.qmd >}}
+
+# 2️⃣ Passage de la NAF 2008 à la NAF 2025
+
+{{< include sections/chgmt-nom-naf2025.qmd >}}
+
+# 3️⃣ Méthodologie appliquée
+
+{{< include sections/methodo.qmd >}}
+
+# 4️⃣ Résultats 
+
+{{< include sections/resultats.qmd >}}
