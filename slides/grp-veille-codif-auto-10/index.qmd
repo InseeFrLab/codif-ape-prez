@@ -1,5 +1,5 @@
 ---
-title: Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025
+title: "L'après fastText: Présentation de torchFastText"
 subtitle: |
   [**Groupe de veille Codification Automatique n°10**]{.orange}
 author: |
