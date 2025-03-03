@@ -27,14 +27,12 @@ ascii: true
 
 {{< include sections/contexte.qmd >}}
 
-# 2️⃣ Passage de la NAF 2008 à la NAF 2025
+# 2️⃣ Présentation du package
 
-{{< include sections/chgmt-nom-naf2025.qmd >}}
+{{< include sections/package.qmd >}}
 
-# 3️⃣ Méthodologie appliquée
-
-{{< include sections/methodo.qmd >}}
-
-# 4️⃣ Résultats 
+# 3️⃣ Tests sur la codification APE
 
 {{< include sections/resultats.qmd >}}
+
+
