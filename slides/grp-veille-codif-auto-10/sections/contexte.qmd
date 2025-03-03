@@ -8,12 +8,15 @@
 
 - La non-maintenance de la librairie : à terme, risques de maintenance, de compatibilité...
 - Surtout : freine les possibilités de [**modernisation**]{.orange}
-- Une alternative : `torchFastText` 
+- Une alternative : [`torchFastText`](https://github.com/InseeFrLab/torch-fastText)
+- Avec toujours un horizon de production
 
-## Enjeux actuels
+## Opportunités
 
-- Plusieurs problématiques : 
-  - Modèle entrainé sur les données [**Sirene 3**]{.orange}
-  - Changement de nomenclature NAF 2008 vers [**NAF 2025**]{.orange}
-  - [**Explicabilité**]{.orange} du modèle pour les gestionnaires
-    - Groupe de veille n°10 en janvier 📅
+- Architecture *in-house*, adaptée aux besoins maison
+- Maintenance internalisée
+- Passage en PyTorch ouvre des opportunités de modernisation : explicabilité, modèles plus performants...
+
+Mais des questions sur le temps d'inférence...
+
+
