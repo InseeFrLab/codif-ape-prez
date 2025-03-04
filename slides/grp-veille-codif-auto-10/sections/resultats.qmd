@@ -1,82 +1,140 @@
-## Le fléau de l'évaluation
+## Stratégie
 
-- ❓ Question cruciale : 
-  - Comment [**évaluer**]{.orange} un LLM ?
-  - Classification ➡️ plus facile, vraiment ?
-  - Complexité de la nomenclature
+📈 Données :
 
-- Utilisation des $27k$ annotations comme ground truth 🥇
-  
-- [**3 métriques**]{.orange} de performances :
-  - Précision [**totale**]{.blue2}
-  - Précision parmi les [**"codables"**]{.blue2}
-  - Précision [**"LLM"**]{.blue2} (erreurs imputables à la génération seulement)
+- Extraction Sirene 4 : de janvier 2023 à février 2025
+- Split en train (2.5M de libellés) / val (300k)  / test (300k)
+- Dataset de test externe annoté par des humains (8k)
+
+🚀 Objectifs :
+
+- Grid search sur la dimension d'embedding et le nombre de buckets avec entraînement GPU
+- Sélection du modèle le plus petit possible sans rogner sur la performance
+- Test sur CPU (précision, calibration, temps d'inférence)
 
 
-## Performance des modèles {.scollable}
+## Entraînement - bilan
 ```{python}
+import mlflow
 import pandas as pd
-import numpy as np
-from plotnine import *
+import plotly.express as px
+import plotly.graph_objects as go
+import plotly.io as pio
+pio.renderers.default = "notebook"
 
-# Create the data
-data = {
-    'model': ['Qwen', 'Qwen', 'Qwen',
-              'Ministral', 'Ministral', 'Ministral',
-              'Mistral', 'Mistral', 'Mistral',
-              'Llama3.1', 'Llama3.1', 'Llama3.1'],
-    'accuracy_type': ["Précision totale", 'Précision "LLM"', 'Précision parmi les "codables"'] * 4,
-    'accuracy': [.6657, .7397, .7300,
-                .6784, .7538, .6786,
-                .7173, .7971, .7238,
-                .6836, .7688, .7209]
-}
+# Set the experiment ID or name
+mlflow.set_tracking_uri("https://projet-ape-mlflow.user.lab.sspcloud.fr/")
+experiment_name = "model_comparison_s4"
+mlflow.set_experiment(experiment_name)
 
-# Convert to DataFrame
-df = pd.DataFrame(data)
+# Retrieve all runs for the experiment
+experiment = mlflow.get_experiment_by_name(experiment_name)
+runs_df = mlflow.search_runs(experiment_ids=[experiment.experiment_id])
 
-# Define the model order (you can adjust this if you want a different order)
-model_order = ['Qwen', 'Ministral', 'Mistral', 'Llama3.1']
-df['model'] = pd.Categorical(df['model'], categories=model_order, ordered=True)
+metrics_df = runs_df.filter(like="metrics.")
+params_df = runs_df.filter(like="params.")
 
-accuracy_order = ["Précision totale", 'Précision "LLM"', 'Précision parmi les "codables"']
-df['accuracy_type'] = pd.Categorical(df['accuracy_type'], categories=accuracy_order, ordered=True)
+# Create a DataFrame with relevant columns
+plot_df = pd.DataFrame({
+    "num_trainable_parameters": params_df["params.num_trainable_parameters"].astype(float),
+    "val_accuracy": metrics_df["metrics.val_accuracy"].astype(float),
+    "num_tokens": params_df["params.num_tokens"],
+    "embedding_dim": params_df["params.embedding_dim"]
+})
 
-# Format accuracy values for labels
-df['accuracy_label'] = df['accuracy'].round(2).astype(str)
-
-# Create the lollipop chart
-(ggplot(df, aes(x='model', y='accuracy'))
- + geom_segment(aes(x='model', xend='model', y=0, yend='accuracy'))
- + geom_point(size=3, color='blue')
- + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
-             size=8, nudge_y=0.02)
- + facet_wrap('~accuracy_type', ncol=3)
- + theme_minimal()
- + labs(
-     x='',
-     y=''
- )
- + theme(
-     figure_size=(12, 4.5),  # Increased width to accommodate labels
-     panel_spacing=0.05,
-     axis_text=element_text(size=10),
-     axis_title=element_text(size=12),
-
- )
- + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
+# Create interactive scatter plot
+fig = px.scatter(
+    plot_df,
+    x="num_trainable_parameters",
+    y="val_accuracy",
+    hover_data=["num_tokens", "embedding_dim"],  # Display extra info on hover
+    labels={"num_trainable_parameters": "Number of Trainable Parameters", "val_accuracy": "Validation Accuracy"}
 )
+
+sampled_df = plot_df[(plot_df["embedding_dim"] == "10") | ((plot_df["embedding_dim"] == "20") & (plot_df["num_tokens"] == "100000")) | (plot_df["num_tokens"] == "100000")]
+
+
+# Add text annotations for selected points
+for _, row in sampled_df.iterrows():
+    fig.add_annotation(
+        x=row["num_trainable_parameters"],
+        y=row["val_accuracy"],
+        text=f"({row['num_tokens']}, {row['embedding_dim']})",
+        showarrow=True,
+        arrowhead=1,
+        font=dict(size=10, color="black"),
+        ax=15, ay=-15  # Offset for better readability
+    )
+
+highlight_point = (10000, "80")  # (num_tokens, embedding_dim)
+
+highlight_df = plot_df[
+    (plot_df["num_tokens"] == str(highlight_point[0])) &
+    (plot_df["embedding_dim"] == str(highlight_point[1]))
+]
+
+for _, row in highlight_df.iterrows():
+    fig.add_annotation(
+        x=row["num_trainable_parameters"],
+        y=row["val_accuracy"],
+        text=f"({row['num_tokens']}, {row['embedding_dim']})",
+        showarrow=True,
+        arrowhead=2,
+        font=dict(size=10, color="red"),
+        ax=-10, ay=-25  # Offset for better readability
+    )
+
+fig.add_trace(go.Scatter(
+    x=highlight_df["num_trainable_parameters"],
+    y=highlight_df["val_accuracy"],
+    mode="markers",
+    marker=dict(
+        color="rgba(0,0,0,0)",  # White fill for contrast
+        size=8,  # Bigger size
+        line=dict(color="red", width=1)  # Red border
+    ),
+    showlegend=False
+))
+
+# Show the plot
+fig.show()
 ```
 
 
-## Reconstruction du jeu multivoques
+## Résultats de la validation
 
-- 💡[**Principe**]{.orange} : considérer les LLMs comme des [**annotateurs classiques**]{.blue2} ➡️ X-annotation
-- ❓Peut-on améliorer performances en [**mixant les résultats**]{.blue2} de chaque modèles ?
-- Construction de [**3 annotations**]{.orange} supplémentaires 
-  1. Choix en [**cascade**]{.blue2} (un modèle en priorité)
-  2. Choix par [**vote à la majorité**]{.blue2} 
-  3. Choix par [**vote pondéré**]{.blue2}
+☑️ On choisit le modèle $(10000, 80)$
+
+```{python}
+import os 
+
+experiment_name = "model_comparison_s4_test"
+mlflow.set_experiment(experiment_name)
+
+# Retrieve all runs for the experiment
+experiment = mlflow.get_experiment_by_name(experiment_name)
+
+# Fetch all runs in the experiment
+runs_df = mlflow.search_runs(experiment_ids=[experiment.experiment_id])
+
+# Extract metrics
+metrics_df = runs_df.filter(like="metrics.")
+
+# Initialize MLflow client
+client = mlflow.tracking.MlflowClient()
+
+# Directory to save images
+save_dir = "mlflow_images"
+os.makedirs(save_dir, exist_ok=True)
+
+# Loop through runs to retrieve artifacts (images)
+for run_id in runs_df["run_id"]:
+    artifacts = client.list_artifacts(run_id)
+    
+    for artifact in artifacts:
+        if artifact.path.endswith((".png", ".jpg", ".jpeg")):  # Adjust for other image formats if needed
+            local_path = client.download_artifacts(run_id, artifact.path, dst_path=save_dir)
+```
 
 ## Combinaison des annotations
 
