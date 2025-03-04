@@ -1,93 +1,145 @@
 
 ## Objectifs
 
-- Distribution d'une architecture de *deep learning* standardisée pour les besoins de classification de texte avec variables catégorielles
-- Publication en *open-source* pour favoriser la collaboration
+- Distribution d'une architecture de [***deep learning***]{.orange} standardisée pour les besoins de [***classification de texte***]{.orange} avec variables catégorielles
+- Publication en [***open-source***]{.orange} pour favoriser la collaboration
 - A destination d'autres équipes de l'Insee, SSM et INS européens
+- Progressivement pouvoir mettre en production du PyTorch
 
 ## Le modèle PyTorch
 
 - Le modèle en tant que tel en PyTorch natif
 
 ```{python}
-#| label: fig-polar
-#| fig-cap: "A line plot on a polar axis"
+#| label: pytorch-model
+#| echo: true
+#| fig-cap: "Initializing the torchFastText PyTorch model"
 
-import numpy as np
-import matplotlib.pyplot as plt
+from torchFastText.model import FastTextModel
 
-r = np.arange(0, 2, 0.01)
-theta = 2 * np.pi * r
-fig, ax = plt.subplots(
-  subplot_kw = {'projection': 'polar'} 
+model = FastTextModel(embedding_dim=80,
+                      num_classes=732,
+                      num_rows = 20000,
+                      )
+print(model)
+
+```
+
+## Gestion des variables catégorielles
+
+- Véritable ajout par rapport à la librairie originale : chaque variable catégorielle a une matrice d'embedding associée
+- Le [*read-me*](https://github.com/InseeFrLab/torch-fastText) précise la façon dont le modèle les gère
+
+```{python}
+#| label: pytorch-model-cat-var
+#| echo: true
+#| fig-cap: "Initializing the torchFastText PyTorch model with categorical variables handling"
+
+from torchFastText.model import FastTextModel
+
+model = FastTextModel(embedding_dim=80,
+                      num_classes=732,
+                      num_rows = 20000,
+                      categorical_vocabulary_sizes=[10, 20],
+                      categorical_embedding_dims=5
+                      )
+print(model)
+
+```
+
+## Le module Lightning
+
+- La librairie [`Lightning`](https://lightning.ai/docs/pytorch/stable/) est une surcouche de PyTorch qui permet de gérer l'entraînement
+- Le package fournit également le "module" Lightning qui peut être donné en entrée au `Trainer`
+
+##
+
+```{python}
+#| label: lightning-module
+#| echo: true
+#| fig-cap: "Initializing the torchFastText Lightning module"
+
+from torchFastText.model import FastTextModel, FastTextModule
+import torch
+
+model = FastTextModel(embedding_dim=80,
+                      num_classes=732,
+                      num_rows = 20000,
+                      )
+
+module = FastTextModule(
+    model=model,
+    loss= torch.nn.CrossEntropyLoss(),
+    optimizer=torch.optim.Adam,
+    optimizer_params={"lr": 0.001},
+    scheduler = None,
+    scheduler_params=None
 )
-ax.plot(theta, r)
-ax.set_rticks([0.5, 1, 1.5, 2])
-ax.grid(True)
-plt.show()
+print(module)
+```
+
+## Le tokenizer
+
+- L'objet `NGramTokenizer` reprend la méthode des ***ngrams*** du [papier original](https://arxiv.org/abs/1607.01759) pour transformer une phrase en une liste de tokens
+
+```{python}
+#| label: tokenizer
+#| echo: true
+#| fig-cap: "Initializing the NGramTokenizer"
+
+from torchFastText.datasets import NGramTokenizer
+
+training_text = ['boulanger', 'coiffeur', 'boucherie', 'boucherie charcuterie']
+
+tokenizer = NGramTokenizer(
+    min_n=3, 
+    max_n=6, 
+    num_tokens= 100,
+    len_word_ngrams=2, 
+    min_count=1, 
+    training_text=training_text
+    )
+
+print(tokenizer.tokenize(["boulangerie"])[0])
 ```
 
 
+## La classe wrapper
 
+- A destination d'utilisateurs débutants en deep learning
+- Orchestre l'ensemble des briques pour lancer un entraînement rapidement
 
+```{python}
 
+#| label: wrapper
+#| echo: true
+#| eval: false
+#| fig-cap: "Launching quickly a training with torchFastText"
+#| execute: 
+#|  enabled: false
+from torchFastText import torchFastText
 
+# Initialize the model
+model = torchFastText(
+    num_tokens=1000000,
+    embedding_dim=100,
+    min_count=5,
+    min_n=3,
+    max_n=6,
+    len_word_ngrams=True,
+    sparse=True
+)
 
+# Train the model
+model.train(
+    X_train=train_data,
+    y_train=train_labels,
+    X_val=val_data,
+    y_val=val_labels,
+    num_epochs=10,
+    batch_size=64
+)
+# Make predictions
+predictions = model.predict(test_data)
+```
 
-
-## NAF 2025 : les cas multivoques {.scrollable}
-
-- [**181 classes multivoques**]{.orange}, correspondance 1-pour-N ➡️ cas problématiques ! 🚩
-- [**Besoin d'un expert**]{.orange} pour déterminer le nouveau code
-
-![](../img/multivoques.png){fig-align="center"}
-
-
-<details> 
-<summary> 
-    <font size=3 color=black><b>Afficher la distribution des codes multivoques</b></font> 
-</summary>
-
-| 1-to-N | # occurence |
-| ---   | --- |
-| 2 | 109 |
-| 3 | 30 |
-| 4 | 24 |
-| 5 | 6 |
-| 6 | 4 |
-| 8 | 1 |
-| 9 | 2 |
-| 21 | 1 |
-| 27 | 1 |
-| 36 | 1 |
-| 38 | 2 |
-
-</details>
-
-
-## Enjeux et besoins multiples
-
-- Besoin de recoder le [**stock**]{.orange} de liasse de Sirene ➡️ + [**$14$ millions**]{.orange}...
-- Pouvoir coder le [**flux**]{.orange} en NAF 2025 ➡️ entraîner un modèle ➡️ besoin d'avoir un [**stock**]{.orange}...
-- Modèle en NAF 2008 entrainé sur + [**10 millions**]{.orange}
-- Performance de fastText [**très dépendant**]{.orange} du nombre de données d'entraînement
-
-## Données à disposition
-
-- Stock [**Sirene 3**]{.orange} : [**$~10$ millions**]{.blue2} obs. mais peu adaptées aux nouvelles données
-- Stock [**Sirene 4**]{.orange} : [**$~2.7$ millions**]{.blue2} obs.
-    - Univoques : [**$1.3$ millions**]{.blue2} obs. et 504 sous-classes
-    - Multivoques : [**$1.4$ millions**]{.blue2} obs. et 177 sous-classes
-
-- [**Campagne d'annotation manuelle**]{.orange} indispensable
-
-## Campagne d'annotation 
-
-- Lancement d'une campagne d'annotation depuis [**mi-2024**]{.orange}
-- Plateforme développée par l'équipe métier 🤔
-- Focus sur les données [**multivoques uniques**]{.orange}
-- 🎯 Objectif [**double**]{.orange} :
-  - Attribuer un [**code NAF 2025**]{.blue2} 🚀
-  - Vérifier la [**qualité**]{.blue2} du code NAF 2008 🗸
-
-Aujourd'hui, $~27k$ données annotées... insuffisant !
