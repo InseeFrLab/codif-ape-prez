@@ -106,6 +106,9 @@ fig.show()
 ☑️ On choisit le modèle $(10000, 80)$
 
 ```{python}
+#| echo: false
+#| output: false
+
 import os 
 
 experiment_name = "model_comparison_s4_test"
@@ -132,179 +135,180 @@ for run_id in runs_df["run_id"]:
     artifacts = client.list_artifacts(run_id)
     
     for artifact in artifacts:
-        if artifact.path.endswith((".png", ".jpg", ".jpeg")):  # Adjust for other image formats if needed
-            local_path = client.download_artifacts(run_id, artifact.path, dst_path=save_dir)
+        if artifact.path.endswith((".png", ".jpg", ".jpeg")):
+          local_path = client.download_artifacts(run_id, artifact.path, dst_path=save_dir)
 ```
+
+```{python}
+import pandas as pd
+
+# Rename columns for readability
+metrics_df = metrics_df.rename(columns={
+    "metrics.test_accuracy_ls": "Test Accuracy (LS)",
+    "metrics.brier_score_ls": "Brier Score (LS)",
+    "metrics.test_accuracy_s4": "Test Accuracy (S4)",
+    "metrics.brier_score_s4": "Brier Score (S4)"
+})
+
+# Select the latest run for each dataset (assuming last row is most recent)
+latest_metrics = metrics_df.iloc[-1]  # Adjust selection if needed
+
+# Create a DataFrame for display
+table_data = pd.DataFrame({
+    "Dataset": ["Label Studio", "S4"],
+    "Test Accuracy ⬆️": [latest_metrics["Test Accuracy (LS)"], latest_metrics["Test Accuracy (S4)"]],
+    "Brier Score ⬇️": [latest_metrics["Brier Score (LS)"], latest_metrics["Brier Score (S4)"]]
+})
+
+table_data["Test Accuracy ⬆️"] = table_data["Test Accuracy ⬆️"].apply(lambda x: f"{x:.3f}") 
+table_data["Brier Score ⬇️"] = table_data["Brier Score ⬇️"].apply(lambda x: f"{x:.3f}") 
+
+display(table_data.set_index("Dataset"))
+```
+
+
 
 ## Combinaison des annotations
 
 ```{python}
-import pandas as pd
-import numpy as np
-from plotnine import *
+import os
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 
-# Create the data
-data = {
-    'model': ['Qwen'] * 5 + ['Ministral'] * 5 + ['Mistral'] * 5 + ['Llama3.1'] * 5 + ['Cascade'] * 5 + ['Vote'] * 5,
-    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 6,
-    'accuracy': [.8431, .8213, .7335, .6835, .6657,
-                 .9016, .8726, .7729, .7044, .6784,
-                 .9110, .8869, .7928, .7375, .7173,
-                 .8771, .8508, .7627, .7041, .6836,
-                 .9233, .8978, .8063, .7544, .7351,
-                 .9215, .8963, .8044, .7529, .7330]
+# Paths to images (modify if needed)
+save_dir = "mlflow_images"
+image_paths = {
+    "LS - Calibration Curve": os.path.join(save_dir, "calibration_curve_ls.png"),
+    "LS - Confidence Histogram": os.path.join(save_dir, "confidence_histogram_ls.png"),
+    "S4 - Calibration Curve": os.path.join(save_dir, "calibration_curve_s4.png"),
+    "S4 - Confidence Histogram": os.path.join(save_dir, "confidence_histogram_s4.png"),
 }
 
-# Convert to DataFrame
-df = pd.DataFrame(data)
+# Create a 2x2 grid
+fig, axes = plt.subplots(2, 2, figsize=(10, 6))
 
-# Define the model order (you can adjust this if you want a different order)
-model_order = ['Qwen', 'Ministral', 'Mistral', 'Llama3.1', "Cascade", "Vote",]
-df['model'] = pd.Categorical(df['model'], categories=model_order, ordered=True)
+# Plot each image in the grid
+for ax, (title, img_path) in zip(axes.flatten(), image_paths.items()):
+    img = mpimg.imread(img_path)
+    ax.imshow(img)
+    ax.axis("off")  # Hide axes
 
-# Define the correct order of levels
-level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
+# Add row labels ("LS" and "S4") on the left
+row_labels = ["LS", "S4"]
+for i, label in enumerate(row_labels):
+    fig.text(0.0, 0.75 - i * 0.5, label, fontsize=14, va="center", ha="center", fontweight="bold")
 
-# Convert level to categorical with the specified order
-df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
-
-# Format accuracy values for labels
-df['accuracy_label'] = df['accuracy'].round(2).astype(str)
-
-# Create the lollipop chart
-(ggplot(df, aes(x='model', y='accuracy'))
- + geom_segment(aes(x='model', xend='model', y=0, yend='accuracy'))
- + geom_point(size=3, color='blue')
- + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
-             size=8, nudge_y=0.02)
- + facet_wrap('~level', ncol=3)
- + theme_minimal()
- + labs(
-     x='',
-     y=''
- )
- + theme(
-     figure_size=(12, 6),  # Increased width to accommodate labels
-     panel_spacing=0.05,
-     axis_text=element_text(size=10),
-     axis_title=element_text(size=12),
-
- )
- + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
-)
+plt.tight_layout()
+plt.show()
 ```
 
 
-## Ré-entrainement en NAF 2025
-
-- [**Reconstruction**]{.orange} du stock Sirene 4 en NAF 2025 ($~2$ millions d'observations)
-- Distribution des données [**quasi-inchangées**]{.orange}
-- Utilisation de [**nouvelles variables**]{.orange} propres à Sirene 4
-- [**Performances similaires**]{.orange} au modèle en NAF 2008
-
-## Ré-entrainement en NAF 2025 {background-color="white"}
-
-```{python}
-import pandas as pd
-import numpy as np
-from plotnine import *
-
-# Create the data
-data = {
-    'data_type': ['Données Test'] * 5 + ['Données manuellement annotées'] * 5,
-    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 2,
-    'accuracy': [
-        0.8551939324497377,
-        0.8328925927834847,
-        0.7973293897956999,
-        0.7843529836218961,
-        0.7762214195942544,
-        0.9668600758759206,
-        0.95529271739939,
-        0.9162389347615859,
-        0.8986461355352228,
-        0.8887153165216097
-    ]
-}
-
-# Convert to DataFrame
-df = pd.DataFrame(data)
-
-# Define the correct order of levels
-level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
-
-# Convert level to categorical with the specified order
-df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
-
-# Format accuracy values for labels (rounded to 3 decimal places)
-df['accuracy_label'] = df['accuracy'].round(2).astype(str)
-
-# Create the lollipop chart
-(ggplot(df, aes(x='level', y='accuracy'))
- + geom_segment(aes(x='level', xend='level', y=0, yend='accuracy'))
- + geom_point(size=3, color='blue')
- + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
-             size=8, nudge_y=0.02)  # Add value labels
- + facet_wrap('~data_type')
- + theme_minimal()
- + labs(
-     x='',
-     y=''
- )
- + theme(
-     figure_size=(12, 6),  # Increased width to accommodate labels
-     panel_spacing=0.05,
-     axis_text=element_text(size=10),
-     axis_title=element_text(size=12),
-
- )
- + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
-)
-```
+## Temps d'inférence
 
 
-## Le modèle NAF 2025 {.scrollable}
+## Explicabilité
 
 ```{ojs}
-viewof activite = Inputs.text(
-  {label: '', value: 'coiffeur', width: 800}
+
+viewof top_k = Inputs.range([0, 10], {value: 3, step: 1, label: "Top k"})
+viewof activite = Inputs.text({label: "", value: "coiffeur", width:800})
+
+urlApe = transformToUrl(activite, top_k)
+
+predictions = d3.json(urlApe)
+
+predictions_arr = Object.values(predictions)
+
+Inputs.table(
+  predictions_arr, {
+    format: {
+     probabilite: (d) => d.toFixed(3)},
+
+     columns: [
+    "code",
+    "libelle",
+    "probabilite",
+  ],
+  header: {
+    code: "Code NAF",
+    libelle: "Libellé",
+    probabilite:"Score de confiance"
+  }
+    }
 )
 
-viewof type_form = Inputs.text(
-  {label: 'Type de la liasse', value: 'X', width: 80}
-)
-urlApe = `https://codification-ape-dev.lab.sspcloud.fr/predict?description_activity=${activite}%20&type_form=${type_form}&event=01P&nb_echos_max=3&prob_min=0.0009`
 
-d3.json(urlApe).then( res => {
-  var IC, results;
-  ( {IC, ...results} = res )
+letters = activite.split('').filter(letter => letter != ' ')
+words = activite.split(" ").filter(word => word !== "")
 
-  IC = parseFloat(IC)
+lettersData = letters.map((letter, i) => ({
+        x: `${letter}_${i}`, 
+        y: chosen_label.letter_attr[i], 
+        code: chosen_label.code,
+        letter: letter,
+        idx: i,
+      }))
 
-  const rows = Object.values(results).map( obj => {
-    return `
-    <tr>
-      <td>${obj.code} | ${obj.libelle}</td>
-      <td>${obj.probabilite.toFixed(3)}</td>
-    </tr>
-  `
-  }).join('')
-  
-  return html`
-  <table>
-    <caption>
-      Indice de confiance : ${IC.toFixed(3)}
-    </caption>
-    <tr>
-      <th style="text-align:center;">Libellé (NAF 2025)</th>
-      <th>Probabilité</th>
-    </tr>
-      ${rows}
-  </table>`
+wordsData = words.map((word, i) => ({
+        x: `${word}_${i}`, 
+        y: chosen_label.word_attr[i], 
+        code: chosen_label.code,
+        word:word,
+        idx:i,
+      }))
+
+lettersDomain = letters.map((letter, i) => `${letter}_${i}`)
+wordsDomain = words.map((word, i) => `${word}_${i}`)
+
+viewof chosen_label =
+  Inputs.select(predictions_arr, {label: "", format: x=>x.code, value:predictions_arr[0].code})
+
+viewof aggregateWords = Inputs.toggle({
+  label: ""
 })
+
+data_to_plot = (aggregateWords == true) ? wordsData : lettersData
+domain_to_plot = (aggregateWords == true) ? wordsDomain : lettersDomain
+
+
+Plot.plot({
+  marks: [
+    Plot.barY(
+      data_to_plot,
+      { 
+        x: "x", 
+        y: "y", 
+        fill: "code",
+      }
+    )
+  ],
+  x: { label: "", tickFormat: d => d.split('_')[0], domain:domain_to_plot },
+  y: { label: "Score d'influence", grid: true },
+  color: { scheme: "Tableau10", legend: true },
+})
+
 ```
 
 
 ```{ojs}
 import { debounce } from "@mbostock/debouncing-input" 
+import {Plot} from "@observablehq/plot";
+
+function transformToUrl(description, top_k) {
+  // Base URL
+  const baseUrl = "https://codification-ape-pytorch.lab.sspcloud.fr/predict-and-explain";
+  
+  // Encode the description to make it URL-safe
+  const encodedDescription = encodeURIComponent(description);
+  
+  // Append parameters to the URL
+  const fullUrl = `${baseUrl}?text_description=${encodedDescription}&prob_min=0.01&top_k=${top_k}`;
+
+  return fullUrl;
+}
+
+function generateLetterLabels(length) {
+  return Array.from({ length }, (_, i) => String.fromCharCode(65 + (i % 26)));
+}
+
 ```
