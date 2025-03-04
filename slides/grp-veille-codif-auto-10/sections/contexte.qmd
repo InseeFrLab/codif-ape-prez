@@ -11,10 +11,14 @@
 - Une alternative : [`torchFastText`](https://github.com/InseeFrLab/torch-fastText)
 - Avec toujours un horizon de production
 
-## Opportunités
+## Opportunités (et contraintes ?)
+
+💪
 
 - Architecture [***in-house*** ]{.orange}, adaptée aux besoins maison
 - Maintenance internalisée
 - Passage en PyTorch ouvre des opportunités de [**modernisation**]{.orange} : explicabilité, modèles plus performants...
 
-Mais des questions sur le temps d'inférence...
+😖 Nécessite une GPU pour garder des temps d'entraînement similaires
+
+Surtout, des questions sur le temps d'inférence (forcément sur CPU)...

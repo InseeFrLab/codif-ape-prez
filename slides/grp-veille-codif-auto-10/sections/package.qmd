@@ -1,7 +1,7 @@
 
 ## Objectifs
 
-- Distribution d'une architecture de [***deep learning***]{.orange} standardisée pour les besoins de [***classification de texte***]{.orange} avec variables catégorielles
+- Distribution d'une architecture de [***deep learning***]{.orange} standardisée pour les besoins de [**classification de texte**]{.orange} avec variables catégorielles
 - Publication en [***open-source***]{.orange} pour favoriser la collaboration
 - A destination d'autres équipes de l'Insee, SSM et INS européens
 - Progressivement pouvoir mettre en production du PyTorch
@@ -104,7 +104,7 @@ print(tokenizer.tokenize(["boulangerie"])[0])
 ```
 
 
-## La classe wrapper
+## La classe wrapper {.scrollable}
 
 - A destination d'utilisateurs débutants en deep learning
 - Orchestre l'ensemble des briques pour lancer un entraînement rapidement

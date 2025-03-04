@@ -34,5 +34,3 @@ ascii: true
 # 3️⃣ Tests sur la codification APE
 
 {{< include sections/resultats.qmd >}}
-
-aaa
