@@ -1,0 +1,392 @@
+## Stratégie
+
+📈 Données :
+
+- Extraction Sirene 4 : de janvier 2023 à février 2025
+- Split en train (2.5M de libellés) / val (300k)  / test (300k)
+- Dataset de test externe annoté par des humains (8k)
+
+🚀 Objectifs :
+
+- Grid search sur la dimension d'embedding et le nombre de buckets avec entraînement GPU (~2 mn / epoch)
+- Sélection du modèle le plus petit possible sans rogner sur la performance
+- Test sur CPU (précision, calibration, temps d'inférence)
+
+
+## Entraînement - bilan
+```{python}
+import mlflow
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+import plotly.io as pio
+pio.renderers.default = "notebook"
+
+# Set the experiment ID or name
+mlflow.set_tracking_uri("https://projet-ape-mlflow.user.lab.sspcloud.fr/")
+experiment_name = "model_comparison_s4"
+mlflow.set_experiment(experiment_name)
+
+# Retrieve all runs for the experiment
+experiment = mlflow.get_experiment_by_name(experiment_name)
+runs_df = mlflow.search_runs(experiment_ids=[experiment.experiment_id])
+
+metrics_df = runs_df.filter(like="metrics.")
+params_df = runs_df.filter(like="params.")
+
+# Create a DataFrame with relevant columns
+plot_df = pd.DataFrame({
+    "num_trainable_parameters": params_df["params.num_trainable_parameters"].astype(float),
+    "val_accuracy": metrics_df["metrics.val_accuracy"].astype(float),
+    "num_tokens": params_df["params.num_tokens"],
+    "embedding_dim": params_df["params.embedding_dim"]
+})
+
+# Create interactive scatter plot
+fig = px.scatter(
+    plot_df,
+    x="num_trainable_parameters",
+    y="val_accuracy",
+    hover_data=["num_tokens", "embedding_dim"],  # Display extra info on hover
+    labels={"num_trainable_parameters": "Number of Trainable Parameters", "val_accuracy": "Validation Accuracy"}
+)
+
+sampled_df = plot_df[(plot_df["embedding_dim"] == "10") | ((plot_df["embedding_dim"] == "20") & (plot_df["num_tokens"] == "100000")) | (plot_df["num_tokens"] == "100000")]
+
+
+# Add text annotations for selected points
+for _, row in sampled_df.iterrows():
+    fig.add_annotation(
+        x=row["num_trainable_parameters"],
+        y=row["val_accuracy"],
+        text=f"({row['num_tokens']}, {row['embedding_dim']})",
+        showarrow=True,
+        arrowhead=1,
+        font=dict(size=10, color="black"),
+        ax=15, ay=-15  # Offset for better readability
+    )
+
+highlight_point = (10000, "80")  # (num_tokens, embedding_dim)
+
+highlight_df = plot_df[
+    (plot_df["num_tokens"] == str(highlight_point[0])) &
+    (plot_df["embedding_dim"] == str(highlight_point[1]))
+]
+
+for _, row in highlight_df.iterrows():
+    fig.add_annotation(
+        x=row["num_trainable_parameters"],
+        y=row["val_accuracy"],
+        text=f"({row['num_tokens']}, {row['embedding_dim']})",
+        showarrow=True,
+        arrowhead=2,
+        font=dict(size=10, color="red"),
+        ax=-10, ay=-25  # Offset for better readability
+    )
+
+fig.add_trace(go.Scatter(
+    x=highlight_df["num_trainable_parameters"],
+    y=highlight_df["val_accuracy"],
+    mode="markers",
+    marker=dict(
+        color="rgba(0,0,0,0)",  # White fill for contrast
+        size=8,  # Bigger size
+        line=dict(color="red", width=1)  # Red border
+    ),
+    showlegend=False
+))
+
+fig.update_layout(
+    width=800, height=600
+)
+
+# Show the plot
+fig.show()
+```
+
+
+## Résultats de la validation
+
+☑️ On choisit le modèle $(10000, 80)$
+
+```{python}
+#| echo: false
+#| output: false
+
+import os 
+
+experiment_name = "model_comparison_s4_test"
+mlflow.set_experiment(experiment_name)
+
+# Retrieve all runs for the experiment
+experiment = mlflow.get_experiment_by_name(experiment_name)
+
+# Fetch all runs in the experiment
+runs_df = mlflow.search_runs(experiment_ids=[experiment.experiment_id])
+
+# Extract metrics
+metrics_df = runs_df.filter(like="metrics.")
+
+# Initialize MLflow client
+client = mlflow.tracking.MlflowClient()
+
+# Directory to save images
+save_dir = "mlflow_images"
+os.makedirs(save_dir, exist_ok=True)
+
+# Loop through runs to retrieve artifacts (images)
+for run_id in runs_df["run_id"]:
+    artifacts = client.list_artifacts(run_id)
+    
+    for artifact in artifacts:
+        if artifact.path.endswith((".png", ".jpg", ".jpeg")):
+          local_path = client.download_artifacts(run_id, artifact.path, dst_path=save_dir)
+```
+
+```{python}
+import pandas as pd
+
+# Rename columns for readability
+metrics_df = metrics_df.rename(columns={
+    "metrics.test_accuracy_ls": "Test Accuracy (LS)",
+    "metrics.brier_score_ls": "Brier Score (LS)",
+    "metrics.test_accuracy_s4": "Test Accuracy (S4)",
+    "metrics.brier_score_s4": "Brier Score (S4)"
+})
+
+# Select the latest run for each dataset (assuming last row is most recent)
+latest_metrics = metrics_df.iloc[-1]  # Adjust selection if needed
+
+# Create a DataFrame for display
+table_data = pd.DataFrame({
+    "Dataset": ["Label Studio", "S4"],
+    "Test Accuracy ⬆️": [latest_metrics["Test Accuracy (LS)"], latest_metrics["Test Accuracy (S4)"]],
+    "Brier Score ⬇️": [latest_metrics["Brier Score (LS)"], latest_metrics["Brier Score (S4)"]]
+})
+
+table_data["Test Accuracy ⬆️"] = table_data["Test Accuracy ⬆️"].apply(lambda x: f"{x:.3f}") 
+table_data["Brier Score ⬇️"] = table_data["Brier Score ⬇️"].apply(lambda x: f"{x:.3f}") 
+
+display(table_data.set_index("Dataset"))
+```
+
+
+
+## Calibration
+
+```{python}
+import os
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+# Paths to images (modify if needed)
+save_dir = "mlflow_images"
+image_paths = {
+    "LS - Calibration Curve": os.path.join(save_dir, "calibration_curve_ls.png"),
+    "LS - Confidence Histogram": os.path.join(save_dir, "confidence_histogram_ls.png"),
+    "S4 - Calibration Curve": os.path.join(save_dir, "calibration_curve_s4.png"),
+    "S4 - Confidence Histogram": os.path.join(save_dir, "confidence_histogram_s4.png"),
+}
+
+# Create a 2x2 grid
+fig, axes = plt.subplots(2, 2, figsize=(10, 6))
+
+# Plot each image in the grid
+for ax, (title, img_path) in zip(axes.flatten(), image_paths.items()):
+    img = mpimg.imread(img_path)
+    ax.imshow(img)
+    ax.axis("off")  # Hide axes
+
+# Add row labels ("LS" and "S4") on the left
+row_labels = ["LS", "S4"]
+for i, label in enumerate(row_labels):
+    fig.text(0.0, 0.75 - i * 0.5, label, fontsize=14, va="center", ha="center", fontweight="bold")
+
+plt.tight_layout()
+plt.show()
+```
+
+
+## Temps d'inférence
+
+
+```{python}
+import mlflow
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+import plotly.io as pio
+pio.renderers.default = "notebook"
+
+# Set the experiment ID or name
+mlflow.set_tracking_uri("https://projet-ape-mlflow.user.lab.sspcloud.fr/")
+experiment_name = "model_comparison_s4_time"
+mlflow.set_experiment(experiment_name)
+
+# Retrieve all runs for the experiment
+experiment = mlflow.get_experiment_by_name(experiment_name)
+experiment_id = experiment.experiment_id
+runs = mlflow.search_runs(experiment_ids=experiment_id)
+df = runs[["params.test_batch_size", "params.num_steps_ls", "metrics.inference_time_ls"]].copy()
+
+df = df.apply(pd.to_numeric, errors="coerce")
+
+# Compute secondary Y-axis metric
+df["inference_time_per_step"] = df["metrics.inference_time_ls"] / df["params.num_steps_ls"]
+
+# Extract baseline value (for runs where test_batch_size is missing)
+baseline_value = df["metrics.inference_time_ls"].iloc[-1]
+
+
+# Define colors
+color_primary = "royalblue"
+color_secondary = "orangered"
+
+# Create figure
+fig = go.Figure()
+
+# Primary Y-axis: inference_time_ls
+fig.add_trace(go.Scatter(
+    x=df["params.test_batch_size"], 
+    y=df["metrics.inference_time_ls"], 
+    mode="lines+markers",
+    name="Inference Time (LS)",
+    line=dict(color=color_primary),
+    yaxis="y1",
+))
+
+# Secondary Y-axis: inference_time_per_step
+fig.add_trace(go.Scatter(
+    x=df["params.test_batch_size"], 
+    y=df["inference_time_per_step"], 
+    mode="lines+markers",
+    name="Inference Time / Num Steps",
+    line=dict(color=color_secondary),
+    yaxis="y2",
+))
+
+# # Add baseline horizontal line
+fig.add_hline(y=baseline_value, line_dash="dash", 
+              annotation_text="fastText default parameters", 
+              annotation_position="top left",
+              line_color=color_primary)
+
+# Update layout with colored Y-axes
+fig.update_layout(
+    xaxis_title="Test Batch Size",
+    yaxis=dict(title="Inference Time (LS)", side="left", titlefont=dict(color=color_primary), tickfont=dict(color=color_primary)),
+    yaxis2=dict(title="Inference Time / Num Steps", overlaying="y", side="right", titlefont=dict(color=color_secondary), tickfont=dict(color=color_secondary)),
+    legend=dict(x=5, y=1),
+    width=800, height=600
+)
+
+fig.show()
+```
+
+
+## Explicabilité
+
+```{ojs}
+
+viewof top_k = Inputs.range([0, 10], {value: 3, step: 1, label: "Top k"})
+viewof activite = Inputs.text({label: "", value: "coiffeur", width:800})
+
+urlApe = transformToUrl(activite, top_k)
+
+predictions = d3.json(urlApe)
+
+predictions_arr = Object.values(predictions)
+
+Inputs.table(
+  predictions_arr, {
+    format: {
+     probabilite: (d) => d.toFixed(3)},
+
+     columns: [
+    "code",
+    "libelle",
+    "probabilite",
+  ],
+  header: {
+    code: "Code NAF",
+    libelle: "Libellé",
+    probabilite:"Score de confiance"
+  }
+    }
+)
+
+
+letters = activite.split('').filter(letter => letter != ' ')
+words = activite.split(" ").filter(word => word !== "")
+
+lettersData = letters.map((letter, i) => ({
+        x: `${letter}_${i}`, 
+        y: chosen_label.letter_attr[i], 
+        code: chosen_label.code,
+        letter: letter,
+        idx: i,
+      }))
+
+wordsData = words.map((word, i) => ({
+        x: `${word}_${i}`, 
+        y: chosen_label.word_attr[i], 
+        code: chosen_label.code,
+        word:word,
+        idx:i,
+      }))
+
+lettersDomain = letters.map((letter, i) => `${letter}_${i}`)
+wordsDomain = words.map((word, i) => `${word}_${i}`)
+
+viewof chosen_label =
+  Inputs.select(predictions_arr, {label: "", format: x=>x.code, value:predictions_arr[0].code})
+
+viewof aggregateWords = Inputs.toggle({
+  label: ""
+})
+
+data_to_plot = (aggregateWords == true) ? wordsData : lettersData
+domain_to_plot = (aggregateWords == true) ? wordsDomain : lettersDomain
+
+
+Plot.plot({
+  marks: [
+    Plot.barY(
+      data_to_plot,
+      { 
+        x: "x", 
+        y: "y", 
+        fill: "code",
+      }
+    )
+  ],
+  x: { label: "", tickFormat: d => d.split('_')[0], domain:domain_to_plot },
+  y: { label: "Score d'influence", grid: true },
+  color: { scheme: "Tableau10", legend: true },
+})
+
+```
+
+
+```{ojs}
+import { debounce } from "@mbostock/debouncing-input" 
+import {Plot} from "@observablehq/plot";
+
+function transformToUrl(description, top_k) {
+  // Base URL
+  const baseUrl = "https://codification-ape-pytorch.lab.sspcloud.fr/predict-and-explain";
+  
+  // Encode the description to make it URL-safe
+  const encodedDescription = encodeURIComponent(description);
+  
+  // Append parameters to the URL
+  const fullUrl = `${baseUrl}?text_description=${encodedDescription}&prob_min=0.01&top_k=${top_k}`;
+
+  return fullUrl;
+}
+
+function generateLetterLabels(length) {
+  return Array.from({ length }, (_, i) => String.fromCharCode(65 + (i % 26)));
+}
+
+```

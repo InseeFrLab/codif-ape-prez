@@ -11,3 +11,5 @@ pydantic
 s3fs
 unidecode
 plotnine
+torchFastText
+plotly==5.24

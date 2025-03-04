@@ -1,0 +1,36 @@
+---
+title: "L'après fastText: Présentation de torchFastText"
+subtitle: |
+  [**Groupe de veille Codification Automatique n°10**]{.orange}
+author: |
+  [Meilame Tayebjee](https://github.com/meilame-tayebjee)
+date: "03/05/2024"
+date-format: "D MMMM YYYY"
+slide-number: true
+# uncomment for French presentations:
+lang: fr-FR
+# for blind readers:
+slide-tone: false
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  onyxia-revealjs:
+    output-file: index.html
+controls: true
+css: ../custom.css
+ascii: true
+---
+
+# 1️⃣ Contexte
+
+{{< include sections/contexte.qmd >}}
+
+# 2️⃣ Présentation du package
+
+{{< include sections/package.qmd >}}
+
+# 3️⃣ Tests sur la codification APE
+
+{{< include sections/resultats.qmd >}}
