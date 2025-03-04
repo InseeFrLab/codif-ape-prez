@@ -269,7 +269,7 @@ fig.add_trace(go.Scatter(
 fig.add_hline(y=baseline_value, line_dash="dash", 
               annotation_text="fastText default parameters", 
               annotation_position="top left",
-              line_color="gray")
+              line_color=color_primary)
 
 # Update layout with colored Y-axes
 fig.update_layout(
