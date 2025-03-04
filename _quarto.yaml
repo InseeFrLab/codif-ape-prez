@@ -1,12 +1,10 @@
 project:
   type: website
   render:
-    # - /slides/*/*.qmd
-    # - index.qmd
-    # - /cards/*.qmd
-    - slides/grp-veille-codif-auto-10/*.qmd
+    - /slides/*/*.qmd
     - index.qmd
     - /cards/*.qmd
+    
 website:
   page-navigation: true
   title: "Présentations codification automatique de l'APE"
