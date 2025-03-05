@@ -6,7 +6,13 @@
 - Split en train (2.5M de libellés) / val (300k)  / test (300k)
 - Dataset de test externe annoté par des humains (8k)
 
-🚀 Objectifs :
+⛓️ Méthode : 
+
+- Entraînement parallélisé (*Argo Workflow*), tracking avec MLFlow
+- Sur GPU (A2 et H100)
+- 10 *epochs*, *batch size* de 256
+
+## 🚀 Objectifs :
 
 - Grid search sur la dimension d'embedding et le nombre de buckets avec entraînement GPU (~2 mn / epoch)
 - Sélection du modèle le plus petit possible sans rogner sur la performance
