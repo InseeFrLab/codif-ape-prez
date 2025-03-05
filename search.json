@@ -718,7 +718,7 @@
     "href": "slides/grp-veille-codif-auto-10/index.html#opportunités-et-contraintes",
     "title": "L’après fastText: Présentation de torchFastText",
     "section": "Opportunités (et contraintes ?)",
-    "text": "Opportunités (et contraintes ?)\n💪\n\nArchitecture in-house, adaptée aux besoins maison\nMaintenance internalisée\nPassage en PyTorch ouvre des opportunités de modernisation : explicabilité, modèles plus performants…\n\n😖 Nécessite une GPU pour garder des temps d’entraînement similaires\nSurtout, des questions sur le temps d’inférence (forcément sur CPU)…"
+    "text": "Opportunités (et contraintes ?)\n💪\n\nArchitecture in-house, adaptée aux besoins maison\nMaintenance internalisée\nMeilleur monitoring de l’entraînement 📈\nPassage en PyTorch ouvre des opportunités de modernisation : explicabilité, modèles plus performants…\n\n😖 Nécessite une GPU pour garder des temps d’entraînement similaires\nSurtout, des questions sur le temps d’inférence (forcément sur CPU)…"
   },
   {
     "objectID": "slides/grp-veille-codif-auto-10/index.html#objectifs",
@@ -774,7 +774,14 @@
     "href": "slides/grp-veille-codif-auto-10/index.html#stratégie",
     "title": "L’après fastText: Présentation de torchFastText",
     "section": "Stratégie",
-    "text": "Stratégie\n📈 Données :\n\nExtraction Sirene 4 : de janvier 2023 à février 2025\nSplit en train (2.5M de libellés) / val (300k) / test (300k)\nDataset de test externe annoté par des humains (8k)\n\n🚀 Objectifs :\n\nGrid search sur la dimension d’embedding et le nombre de buckets avec entraînement GPU (~2 mn / epoch)\nSélection du modèle le plus petit possible sans rogner sur la performance\nTest sur CPU (précision, calibration, temps d’inférence)"
+    "text": "Stratégie\n📈 Données :\n\nExtraction Sirene 4 : de janvier 2023 à février 2025\nSplit en train (2.5M de libellés) / val (300k) / test (300k)\nDataset de test externe annoté par des humains (8k)\n\n⛓️ Méthode :\n\nEntraînement parallélisé (Argo Workflow), tracking avec MLFlow\nSur GPU (A2 et H100)\n10 epochs, batch size de 256"
+  },
+  {
+    "objectID": "slides/grp-veille-codif-auto-10/index.html#objectifs-1",
+    "href": "slides/grp-veille-codif-auto-10/index.html#objectifs-1",
+    "title": "L’après fastText: Présentation de torchFastText",
+    "section": "🚀 Objectifs :",
+    "text": "🚀 Objectifs :\n\nGrid search sur la dimension d’embedding et le nombre de buckets avec entraînement GPU (~2 mn / epoch)\nSélection du modèle le plus petit possible sans rogner sur la performance\nTest sur CPU (précision, calibration, temps d’inférence)"
   },
   {
     "objectID": "slides/grp-veille-codif-auto-10/index.html#entraînement---bilan",
