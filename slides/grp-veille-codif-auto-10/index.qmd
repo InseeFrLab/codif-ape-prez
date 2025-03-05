@@ -4,7 +4,7 @@ subtitle: |
   [**Groupe de veille Codification Automatique n°10**]{.orange}
 author: |
   [Meilame Tayebjee](https://github.com/meilame-tayebjee)
-date: "03/05/2024"
+date: "03/05/2025"
 date-format: "D MMMM YYYY"
 slide-number: true
 # uncomment for French presentations:
