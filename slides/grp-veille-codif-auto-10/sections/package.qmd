@@ -3,7 +3,7 @@
 
 - Distribution d'une architecture de [***deep learning***]{.orange} standardisée pour les besoins de [**classification de texte**]{.orange} avec variables catégorielles
 - Publication en [***open-source***]{.orange} pour favoriser la collaboration
-- A destination d'autres équipes de l'Insee, SSM et INS européens
+- A destination d'autres équipes de l'Insee, SSM et INS européens 👐
 - Progressivement pouvoir mettre en production du PyTorch
 
 ## Le modèle PyTorch
@@ -78,7 +78,7 @@ module = FastTextModule(
 print(module)
 ```
 
-## Le tokenizer
+## Le tokenizer {.scrollable}
 
 - L'objet `NGramTokenizer` reprend la méthode des ***ngrams*** du [papier original](https://arxiv.org/abs/1607.01759) pour transformer une phrase en une liste de tokens
 

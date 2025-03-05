@@ -9,7 +9,7 @@
 - La non-maintenance de la librairie : à terme, risques de maintenance, de compatibilité...
 - Surtout : freine les possibilités de [**modernisation**]{.orange}
 - Une alternative : [`torchFastText`](https://github.com/InseeFrLab/torch-fastText)
-- Avec toujours un horizon de production
+- Avec toujours [**un horizon de production**]{.orange}
 
 ## Opportunités (et contraintes ?)
 
