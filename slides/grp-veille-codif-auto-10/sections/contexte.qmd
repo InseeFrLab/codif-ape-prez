@@ -17,6 +17,7 @@
 
 - Architecture [***in-house*** ]{.orange}, adaptée aux besoins maison
 - Maintenance internalisée
+- Meilleur *monitoring* de l'entraînement 📈
 - Passage en PyTorch ouvre des opportunités de [**modernisation**]{.orange} : explicabilité, modèles plus performants...
 
 😖 Nécessite une GPU pour garder des temps d'entraînement similaires
