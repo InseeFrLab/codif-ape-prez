@@ -1,0 +1,126 @@
+## Le paysage administratif
+
+![](../img/flux-formalites.png){fig-align="center"}
+
+## Construction d'un indice de confiance {.scrollable}
+
+![](../img/IC.png){fig-align="center"}
+
+- [**Objectif**]{.orange} : [**discriminer**]{.blue2} les *mauvaises* des *bonnes* prédictions.
+- [**Indice de confiance retenu**]{.orange} : différence entre les deux probabilités les plus élevées.
+
+## Mise en production actuelle
+
+- 2 issues possibles :
+    - codification automatique 🚀
+    - reprise gestionnaire 🔍
+
+![](../img/orga-post-prod-fr.png){fig-align="center"}
+
+## Codification du flux de liasses
+
+![](../img/table-passage-codification.png){fig-align="center"}
+
+## Reprise gestionnaire
+
+![](../img/mode-reprise-gestionnaire.png){fig-align="center"}
+
+## Codification automatique sur l'IHM
+
+![](../img/automatic-coding-HMI.png){fig-align="center"}
+
+## Reprise gestionnaire sur l'IHM
+
+![](../img/reprise_gestionnaire_manque_contexte.png){fig-align="center"}
+
+##  Utilisation du modèle
+
+- Modèle mis à disposition via une [**API**]{.orange} conteneurisée :
+
+```{ojs}
+viewof activite = Inputs.text( 
+  {label: '', value: 'coiffure', width: 800}
+)
+
+urlApe = `https://codification-ape-test.lab.sspcloud.fr/predict?nb_echos_max=4&prob_min=0&text_feature=${activite}&type_liasse=C&event=01P`
+
+d3.json(urlApe).then( res => {
+  var IC, results;
+  ( {IC, ...results} = res )
+
+  IC = parseFloat(IC)
+
+  const rows = Object.values(results).map( obj => {
+    return `
+    <tr>
+      <td>${obj.code} | ${obj.libelle}</td>
+      <td>${obj.probabilite.toFixed(3)}</td>
+    </tr>
+  `
+  }).join('')
+  
+  return html`
+  <table>
+    <caption>
+      Indice de confiance : ${IC.toFixed(3)}
+    </caption>
+    <tr>
+      <th style="text-align:center;">Libellé (NA2008)</th>
+      <th>Probabilité</th>
+    </tr>
+      ${rows}
+  </table>`
+})
+```
+
+
+```{ojs}
+import { debounce } from "@mbostock/debouncing-input" 
+```
+
+## Le modèle NAF 2025 {.scrollable}
+
+```{ojs}
+viewof activite1 = Inputs.text(
+  {label: '', value: 'coiffeur', width: 800}
+)
+
+viewof type_form = Inputs.text(
+  {label: 'Type de la liasse', value: 'X', width: 80}
+)
+urlApe1 = `https://codification-ape-dev.lab.sspcloud.fr/predict?description_activity=${activite1}%20&type_form=${type_form}&event=01P&nb_echos_max=3&prob_min=0.0009`
+
+d3.json(urlApe1).then( res => {
+  var IC, results;
+  ( {IC, ...results} = res )
+
+  IC = parseFloat(IC)
+
+  const rows = Object.values(results).map( obj => {
+    return `
+    <tr>
+      <td>${obj.code} | ${obj.libelle}</td>
+      <td>${obj.probabilite.toFixed(3)}</td>
+    </tr>
+  `
+  }).join('')
+  
+  return html`
+  <table>
+    <caption>
+      Indice de confiance : ${IC.toFixed(3)}
+    </caption>
+    <tr>
+      <th style="text-align:center;">Libellé (NAF 2025)</th>
+      <th>Probabilité</th>
+    </tr>
+      ${rows}
+  </table>`
+})
+```
+
+
+```{ojs}
+import { debounce } from "@mbostock/debouncing-input" 
+```
+

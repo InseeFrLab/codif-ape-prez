@@ -1,0 +1,6 @@
+## Des défis en cours {.scrollable}
+
+- [**Refonte du système de transfert du modèle**]{.orange} entre le Lab et les équipes métiers, via une API locale sur Kubedev
+- Surveillance des performances du modèle
+- [**Changement de nomenclature**]{.orange} (Sirene 4, NAF2025) nécessite des **adaptations** de méthodologie et des ré-entraînements réguliers
+- Modernisation du modèle dans un contexte dynamique : internalisation du développement via le package [[**torchFastText**]{.orange}](https://github.com/InseeFrLab/torch-fastText)
