@@ -1,7 +1,7 @@
 project:
   type: website
   render:
-    - /slides/ateliers-concepteurs/*.qmd
+    - /slides/*/*.qmd
     - index.qmd
     - /cards/*.qmd
     
