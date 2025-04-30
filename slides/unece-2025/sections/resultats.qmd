@@ -1,0 +1,249 @@
+## Evaluation Challenge
+
+- ❓ Key question: How to [**evaluate**]{.orange} an LLM?: 
+  - Comment [**évaluer**]{.orange} un LLM ?
+  - Classification seems simpler... but [**complexity of taxonomy**] matters.
+
+- Used $27k$ manual annotations as the benchmark 🥇
+  
+- [**3 performance metrics**]{.orange}:
+  - Overall [**accuracy**]{.blue2}
+  - Accuracy among [**codable entries**]{.blue2}
+  - Accuracy of [**LLM-only decisions**]{.blue2}
+
+## Performance of models {.scollable}
+```{python}
+import pandas as pd
+import numpy as np
+from plotnine import *
+
+# Create the data
+data = {
+    'model': ['Qwen', 'Qwen', 'Qwen',
+              'Ministral', 'Ministral', 'Ministral',
+              'Mistral', 'Mistral', 'Mistral',
+              'Llama3.1', 'Llama3.1', 'Llama3.1'],
+    'accuracy_type': ["Précision totale", 'Précision "LLM"', 'Précision parmi les "codables"'] * 4,
+    'accuracy': [.6657, .7397, .7300,
+                .6784, .7538, .6786,
+                .7173, .7971, .7238,
+                .6836, .7688, .7209]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Define the model order (you can adjust this if you want a different order)
+model_order = ['Qwen', 'Ministral', 'Mistral', 'Llama3.1']
+df['model'] = pd.Categorical(df['model'], categories=model_order, ordered=True)
+
+accuracy_order = ["Précision totale", 'Précision "LLM"', 'Précision parmi les "codables"']
+df['accuracy_type'] = pd.Categorical(df['accuracy_type'], categories=accuracy_order, ordered=True)
+
+# Format accuracy values for labels
+df['accuracy_label'] = df['accuracy'].round(2).astype(str)
+
+# Create the lollipop chart
+(ggplot(df, aes(x='model', y='accuracy'))
+ + geom_segment(aes(x='model', xend='model', y=0, yend='accuracy'))
+ + geom_point(size=3, color='blue')
+ + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
+             size=8, nudge_y=0.02)
+ + facet_wrap('~accuracy_type', ncol=3)
+ + theme_minimal()
+ + labs(
+     x='',
+     y=''
+ )
+ + theme(
+     figure_size=(12, 4.5),  # Increased width to accommodate labels
+     panel_spacing=0.05,
+     axis_text=element_text(size=10),
+     axis_title=element_text(size=12),
+
+ )
+ + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
+)
+```
+
+
+## Reconstructing Ambiguous Dataset
+- 💡[**Idea**]{.orange}: Treat LLMs as [**additional annotators**]{.blue2}
+- ❓Can we boost performance via [ensemble methods]{.blue2}?
+- Built 3 more annotations:
+1. [Cascade selection]{.blue2}
+2. [Majority vote]{.blue2}
+3. [Weighted vote]{.blue2}
+
+## Annotation Fusion
+
+```{python}
+import pandas as pd
+import numpy as np
+from plotnine import *
+
+# Create the data
+data = {
+    'model': ['Qwen'] * 5 + ['Ministral'] * 5 + ['Mistral'] * 5 + ['Llama3.1'] * 5 + ['Cascade'] * 5 + ['Vote'] * 5,
+    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 6,
+    'accuracy': [.8431, .8213, .7335, .6835, .6657,
+                 .9016, .8726, .7729, .7044, .6784,
+                 .9110, .8869, .7928, .7375, .7173,
+                 .8771, .8508, .7627, .7041, .6836,
+                 .9233, .8978, .8063, .7544, .7351,
+                 .9215, .8963, .8044, .7529, .7330]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Define the model order (you can adjust this if you want a different order)
+model_order = ['Qwen', 'Ministral', 'Mistral', 'Llama3.1', "Cascade", "Vote",]
+df['model'] = pd.Categorical(df['model'], categories=model_order, ordered=True)
+
+# Define the correct order of levels
+level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
+
+# Convert level to categorical with the specified order
+df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
+
+# Format accuracy values for labels
+df['accuracy_label'] = df['accuracy'].round(2).astype(str)
+
+# Create the lollipop chart
+(ggplot(df, aes(x='model', y='accuracy'))
+ + geom_segment(aes(x='model', xend='model', y=0, yend='accuracy'))
+ + geom_point(size=3, color='blue')
+ + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
+             size=8, nudge_y=0.02)
+ + facet_wrap('~level', ncol=3)
+ + theme_minimal()
+ + labs(
+     x='',
+     y=''
+ )
+ + theme(
+     figure_size=(12, 6),  # Increased width to accommodate labels
+     panel_spacing=0.05,
+     axis_text=element_text(size=10),
+     axis_title=element_text(size=12),
+
+ )
+ + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
+)
+```
+
+
+## Retraining with NAF 2025
+
+- [**Rebuilt**]{.orange} Sirene 4 with NAF 2025 (~2M records)
+- [**Data distribution unchanged**]{.orange}
+- New Sirene 4 [**variables used**]{.orange}
+- Achieved [**comparable performance**]{.orange} to NAF 2008 model
+
+## Retraining Accuracy {background-color="white"}
+
+```{python}
+import pandas as pd
+import numpy as np
+from plotnine import *
+
+# Create the data
+data = {
+    'data_type': ['Données Test'] * 5 + ['Données manuellement annotées'] * 5,
+    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 2,
+    'accuracy': [
+        0.8551939324497377,
+        0.8328925927834847,
+        0.7973293897956999,
+        0.7843529836218961,
+        0.7762214195942544,
+        0.9668600758759206,
+        0.95529271739939,
+        0.9162389347615859,
+        0.8986461355352228,
+        0.8887153165216097
+    ]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Define the correct order of levels
+level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
+
+# Convert level to categorical with the specified order
+df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
+
+# Format accuracy values for labels (rounded to 3 decimal places)
+df['accuracy_label'] = df['accuracy'].round(2).astype(str)
+
+# Create the lollipop chart
+(ggplot(df, aes(x='level', y='accuracy'))
+ + geom_segment(aes(x='level', xend='level', y=0, yend='accuracy'))
+ + geom_point(size=3, color='blue')
+ + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
+             size=8, nudge_y=0.02)  # Add value labels
+ + facet_wrap('~data_type')
+ + theme_minimal()
+ + labs(
+     x='',
+     y=''
+ )
+ + theme(
+     figure_size=(12, 6),  # Increased width to accommodate labels
+     panel_spacing=0.05,
+     axis_text=element_text(size=10),
+     axis_title=element_text(size=12),
+
+ )
+ + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
+)
+```
+
+
+## The NAF 2025 Model {.scrollable}
+
+```{ojs}
+viewof activite = Inputs.text(
+  {label: '', value: 'coiffeur', width: 800}
+)
+
+viewof type_form = Inputs.text(
+  {label: 'Type de la liasse', value: 'X', width: 80}
+)
+urlApe = `https://codification-ape-dev.lab.sspcloud.fr/predict?description_activity=${activite}%20&type_form=${type_form}&event=01P&nb_echos_max=3&prob_min=0.0009`
+
+d3.json(urlApe).then( res => {
+  var IC, results;
+  ( {IC, ...results} = res )
+
+  IC = parseFloat(IC)
+
+  const rows = Object.values(results).map( obj => {
+    return `
+    <tr>
+      <td>${obj.code} | ${obj.libelle}</td>
+      <td>${obj.probabilite.toFixed(3)}</td>
+    </tr>
+  `
+  }).join('')
+  
+  return html`
+  <table>
+    <caption>
+      Indice de confiance: ${IC.toFixed(3)}
+    </caption>
+    <tr>
+      <th style="text-align:center;">Libellé (NAF 2025)</th>
+      <th>Probabilité</th>
+    </tr>
+      ${rows}
+  </table>`
+})
+```
+
+
+```{ojs}
+import { debounce } from "@mbostock/debouncing-input" 
+```

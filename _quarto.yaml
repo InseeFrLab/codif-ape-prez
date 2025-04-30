@@ -1,9 +1,11 @@
 project:
   type: website
   render:
-    - /slides/*/*.qmd
+    - /slides/unece-2025/*.qmd
+    - /slides/grp-veille-codif-auto-9/*.qmd
     - index.qmd
     - /cards/*.qmd
+    
     
 website:
   page-navigation: true
