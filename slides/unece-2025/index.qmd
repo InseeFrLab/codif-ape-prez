@@ -1,5 +1,5 @@
 ---
-title: "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models"
+title: "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM"
 subtitle: |
   **[UNECE Machine Learning for Official Statistics Workshop 2025]{.orange}**
 author: |
@@ -8,7 +8,7 @@ date: "11/06/2024"
 date-format: "D MMMM YYYY"
 slide-number: true
 # uncomment for French presentations:
-lang: fr-FR
+lang: en-GB
 # for blind readers:
 slide-tone: false
 chalkboard: # press the B key to toggle chalkboard
@@ -27,7 +27,7 @@ ascii: true
 
 {{< include sections/introduction.qmd >}}
 
-# 2️⃣ Passage de la NAF 2008 à la NAF 2025
+# 2️⃣ Transition towards NACE Rév. 2.1
 
 {{< include sections/chgmt-nom-naf2025.qmd >}}
 

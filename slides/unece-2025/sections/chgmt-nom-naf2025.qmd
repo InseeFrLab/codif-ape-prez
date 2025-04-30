@@ -1,15 +1,15 @@
 
 ## Timeline for Adoption 🗓️
 
-- [Phased adoption]{.orange} approach:
-- [**2025**]{.orange} ➡️ dual labeling in both NAF 2008 and NAF 2025.
-- [**2026**]{.orange} ➡️ improved classification using NAF 2025.
-- [**2027**]{.orange} ➡️ full [NAF 2025]{.blue2} classification while maintaining legacy NAF 2008 codes.
+- [**Phased adoption**]{.orange} approach:
+- [**2025**]{.orange} ➡️ dual labeling in both NACE Rév. 2 and 2.1
+- [**2026**]{.orange} ➡️ improved classification using NACE Rév. 2.1.
+- [**2027**]{.orange} ➡️ full [**NACE Rév. 2.1**]{.blue2} classification while maintaining legacy NACE Rév. 2 codes.
 
 
-## What’s New in NAF 2025?
+## What’s New in NACE Rév. 2.1?
 
-- At [level 5]{.orange}: [746]{.blue2} sub-classes compared to [732]{.blue2} before.
+- At [**level 5**]{.orange}: [**746**]{.blue2} sub-classes compared to [**732**]{.blue2} before.
 - Mainly fine-grained splits at class level (level 4), but not exclusively.
 - [**551 unambiguous mappings**]{.orange}, i.e., one-to-one correspondence ➡️ ideal case! 👌
 
@@ -48,7 +48,7 @@
 
 ## Multiple Challenges
 
-- Need to recode the [**stock**]{.orange}  of Sirene forms ➡️ over [14 million]{.orange} entries.
+- Need to recode the [**stock**]{.orange}  of Sirene forms ➡️ over [**14 million**]{.orange} entries.
 - Model prediction on [**new data flow**]{.orange} requires a clean [**stock**]{.orange} base.
 - Previous fastText model trained on over [**10 million**]{.orange} labeled entries.
 - Performance is [**highly sensitive**]{.orange} to training data volume.
@@ -67,7 +67,7 @@
 - Annotation launched since [**mid-2024**]{.orange}.
 - Focused on [**uniquely ambiguous**]{.orange} cases.
 - 🎯 [**Dual objectives**]{.orange}:
-  - Assign a **[NAF 2025**]{.blue2} code 🚀
-  - Assess [**NAF 2008**]{.blue2} code quality 🗸
+  - Assign a [**NACE Rév. 2.1**]{.blue2} code 🚀
+  - Assess [**NACE Rév. 2**]{.blue2} code quality 🗸
   - 
 Current count: $~27k$ annotated entries... still insufficient!

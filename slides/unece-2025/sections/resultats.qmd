@@ -2,7 +2,7 @@
 
 - ❓ Key question: How to [**evaluate**]{.orange} an LLM?: 
   - Comment [**évaluer**]{.orange} un LLM ?
-  - Classification seems simpler... but [**complexity of taxonomy**] matters.
+  - Classification seems simpler... but [**complexity of taxonomy**]{.orange} matters.
 
 - Used $27k$ manual annotations as the benchmark 🥇
   
@@ -71,9 +71,9 @@ df['accuracy_label'] = df['accuracy'].round(2).astype(str)
 - 💡[**Idea**]{.orange}: Treat LLMs as [**additional annotators**]{.blue2}
 - ❓Can we boost performance via [ensemble methods]{.blue2}?
 - Built 3 more annotations:
-1. [Cascade selection]{.blue2}
-2. [Majority vote]{.blue2}
-3. [Weighted vote]{.blue2}
+1. [**Cascade selection**]{.blue2}
+2. [**Majority vote**]{.blue2}
+3. [**Weighted vote**]{.blue2}
 
 ## Annotation Fusion
 
@@ -134,12 +134,12 @@ df['accuracy_label'] = df['accuracy'].round(2).astype(str)
 ```
 
 
-## Retraining with NAF 2025
+## Retraining with NACE Rév. 2.1
 
-- [**Rebuilt**]{.orange} Sirene 4 with NAF 2025 (~2M records)
+- [**Rebuilt**]{.orange} new registry dataset with NACE Rév. 2.1 (~2M records)
 - [**Data distribution unchanged**]{.orange}
-- New Sirene 4 [**variables used**]{.orange}
-- Achieved [**comparable performance**]{.orange} to NAF 2008 model
+- New registry [**variables used**]{.orange}
+- Achieved [**comparable performance**]{.orange} to NACE Rév. 2 model
 
 ## Retraining Accuracy {background-color="white"}
 
@@ -202,17 +202,14 @@ df['accuracy_label'] = df['accuracy'].round(2).astype(str)
 ```
 
 
-## The NAF 2025 Model {.scrollable}
+## The NACE Rév. 2.1 Model {.scrollable}
 
 ```{ojs}
 viewof activite = Inputs.text(
   {label: '', value: 'coiffeur', width: 800}
 )
 
-viewof type_form = Inputs.text(
-  {label: 'Type de la liasse', value: 'X', width: 80}
-)
-urlApe = `https://codification-ape-dev.lab.sspcloud.fr/predict?description_activity=${activite}%20&type_form=${type_form}&event=01P&nb_echos_max=3&prob_min=0.0009`
+urlApe = `https://codification-ape-dev.lab.sspcloud.fr/predict?description_activity=${activite}%20&type_form=X&event=01P&nb_echos_max=3&prob_min=0.0009`
 
 d3.json(urlApe).then( res => {
   var IC, results;
@@ -232,10 +229,10 @@ d3.json(urlApe).then( res => {
   return html`
   <table>
     <caption>
-      Indice de confiance: ${IC.toFixed(3)}
+      Confidence index: ${IC.toFixed(3)}
     </caption>
     <tr>
-      <th style="text-align:center;">Libellé (NAF 2025)</th>
+      <th style="text-align:center;">Description (NACE Rév. 2.1)</th>
       <th>Probabilité</th>
     </tr>
       ${rows}
