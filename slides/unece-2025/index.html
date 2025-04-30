@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr-FR"><head>
+<html lang="en-GB"><head>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -10,7 +10,8 @@
   <meta name="generator" content="quarto-1.7.29">
 
   <meta name="author" content="Thomas Faria,">
-  <title>Présentations codification automatique de l'APE – From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models</title>
+  <meta name="dcterms.date" content="2024-11-06">
+  <title>Présentations codification automatique de l'APE – NACE Rév. 2.1 transition: Retraining an ML model in production using LLM</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -194,7 +195,7 @@
   <script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
   <link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<meta property="og:title" content="From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models – Présentations codification automatique de l’APE">
+<meta property="og:title" content="NACE Rév. 2.1 transition: Retraining an ML model in production using LLM – Présentations codification automatique de l’APE">
 <meta property="og:description" content="UNECE Machine Learning for Official Statistics Workshop 2025">
 <meta property="og:site_name" content="Présentations codification automatique de l'APE">
 </head>
@@ -203,7 +204,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="../_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models</h1>
+  <h1 class="title">NACE Rév. 2.1 transition: Retraining an ML model in production using LLM</h1>
   <p class="subtitle"></p><p><strong><span class="orange">UNECE Machine Learning for Official Statistics Workshop 2025</span></strong></p><p></p>
 
 <div class="quarto-title-authors">
@@ -214,7 +215,7 @@
 </div>
 </div>
 
-  <p class="date">6 novembre 2024</p>
+  <p class="date">6 November 2024</p>
 </section>
 <section>
 <section id="introduction" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
@@ -231,23 +232,23 @@
 </ul>
 </section></section>
 <section>
-<section id="passage-de-la-naf-2008-à-la-naf-2025" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>2️⃣ Passage de la NAF 2008 à la NAF 2025</h1>
+<section id="transition-towards-nace-rév.-2.1" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>2️⃣ Transition towards NACE Rév. 2.1</h1>
 
 </section>
 <section id="timeline-for-adoption" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Timeline for Adoption 🗓️</h2>
 <ul>
-<li><span class="orange">Phased adoption</span> approach:</li>
-<li><span class="orange"><strong>2025</strong></span> ➡️ dual labeling in both NAF 2008 and NAF 2025.</li>
-<li><span class="orange"><strong>2026</strong></span> ➡️ improved classification using NAF 2025.</li>
-<li><span class="orange"><strong>2027</strong></span> ➡️ full <span class="blue2">NAF 2025</span> classification while maintaining legacy NAF 2008 codes.</li>
+<li><span class="orange"><strong>Phased adoption</strong></span> approach:</li>
+<li><span class="orange"><strong>2025</strong></span> ➡️ dual labeling in both NACE Rév. 2 and 2.1</li>
+<li><span class="orange"><strong>2026</strong></span> ➡️ improved classification using NACE Rév. 2.1.</li>
+<li><span class="orange"><strong>2027</strong></span> ➡️ full <span class="blue2"><strong>NACE Rév. 2.1</strong></span> classification while maintaining legacy NACE Rév. 2 codes.</li>
 </ul>
 </section>
-<section id="whats-new-in-naf-2025" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>What’s New in NAF 2025?</h2>
+<section id="whats-new-in-nace-rév.-2.1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>What’s New in NACE Rév. 2.1?</h2>
 <ul>
-<li>At <span class="orange">level 5</span>: <span class="blue2">746</span> sub-classes compared to <span class="blue2">732</span> before.</li>
+<li>At <span class="orange"><strong>level 5</strong></span>: <span class="blue2"><strong>746</strong></span> sub-classes compared to <span class="blue2"><strong>732</strong></span> before.</li>
 <li>Mainly fine-grained splits at class level (level 4), but not exclusively.</li>
 <li><span class="orange"><strong>551 unambiguous mappings</strong></span>, i.e., one-to-one correspondence ➡️ ideal case! 👌</li>
 </ul>
@@ -323,7 +324,7 @@
 <section id="multiple-challenges" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Multiple Challenges</h2>
 <ul>
-<li>Need to recode the <span class="orange"><strong>stock</strong></span> of Sirene forms ➡️ over <span class="orange">14 million</span> entries.</li>
+<li>Need to recode the <span class="orange"><strong>stock</strong></span> of Sirene forms ➡️ over <span class="orange"><strong>14 million</strong></span> entries.</li>
 <li>Model prediction on <span class="orange"><strong>new data flow</strong></span> requires a clean <span class="orange"><strong>stock</strong></span> base.</li>
 <li>Previous fastText model trained on over <span class="orange"><strong>10 million</strong></span> labeled entries.</li>
 <li>Performance is <span class="orange"><strong>highly sensitive</strong></span> to training data volume.</li>
@@ -348,8 +349,8 @@
 <li>Focused on <span class="orange"><strong>uniquely ambiguous</strong></span> cases.</li>
 <li>🎯 <span class="orange"><strong>Dual objectives</strong></span>:
 <ul>
-<li>Assign a **<span class="blue2">NAF 2025**</span> code 🚀</li>
-<li>Assess <span class="blue2"><strong>NAF 2008</strong></span> code quality 🗸</li>
+<li>Assign a <span class="blue2"><strong>NACE Rév. 2.1</strong></span> code 🚀</li>
+<li>Assess <span class="blue2"><strong>NACE Rév. 2</strong></span> code quality 🗸</li>
 <li>Current count: <span class="math inline">\(~27k\)</span> annotated entries… still insufficient!</li>
 </ul></li>
 </ul>
@@ -364,7 +365,7 @@
 <ul>
 <li>🎯 <span class="orange"><strong>Goal</strong></span>: Build the most comprehensive training dataset possible.</li>
 <li>One-shot experimentation ➡️ not intended for production reproducibility.</li>
-<li>Leveraging <span class="orange"><strong>LLMs</strong></span> for automated NAF 2025 labeling.</li>
+<li>Leveraging <span class="orange"><strong>LLMs</strong></span> for automated NNACE Rév. 2.1 labeling.</li>
 <li><span class="orange"><strong>Data</strong></span> used:
 <ol type="1">
 <li>Stock <span class="blue2"><strong>Sirene 4</strong></span> (<span class="math inline">\(~2.7M\)</span> records)</li>
@@ -384,18 +385,10 @@
 <li><p><span class="orange"><strong>Retrieval/Context Augmented Generation</strong></span> (RAG/CAG) vs <span class="orange"><strong>fine-tunning</strong></span></p></li>
 <li><p><span class="orange"><strong>2 possibilities</strong></span>:</p>
 <ol type="1">
-<li><span class="blue2"><strong>RAG</strong></span></li>
-</ol>
-<ul>
-<li><span class="green2"><strong>Unstructured prior knowledge</strong></span> based on similarity of notes embeddings</li>
-</ul>
-<ol start="2" type="1">
-<li><span class="blue2"><strong>CAG</strong></span>:</li>
-</ol>
-<ul>
-<li><span class="green2"><strong>Structured prior knowledge</strong></span> based on known mappings</li>
-</ul></li>
-<li><p>💡 Core idea ➡️ Provide key information to the LLM to translate NAF 2008 into 2025</p></li>
+<li><span class="blue2"><strong>RAG</strong></span>: <span class="green2"><strong>Unstructured prior knowledge</strong></span> based on similarity of notes embeddings</li>
+<li><span class="blue2"><strong>CAG</strong></span>: <span class="green2"><strong>Structured prior knowledge</strong></span> based on known mappings</li>
+</ol></li>
+<li><p>💡 Core idea ➡️ Provide key information to the LLM to translate NACE Rév. 2 into 2.1</p></li>
 </ul>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -403,7 +396,7 @@
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Avertissement</strong></p>
+<p><strong>Warning</strong></p>
 </div>
 <div class="callout-content">
 <p>RAG can act like a zero-shot classifier, while CAG is not a classifier as it relies on prior knowledge.</p>
@@ -429,7 +422,7 @@
 <li><p>Each observation gets a <span class="orange"><strong>custom prompt</strong></span> including:</p>
 <ul>
 <li>Business activity <span class="blue2"><strong>description</strong></span></li>
-<li>Original <span class="blue2"><strong>NAF 2008 code</strong></span> (in CAG)</li>
+<li>Original <span class="blue2"><strong>NACE Rév. 2 code</strong></span> (in CAG)</li>
 <li><span class="blue2"><strong>Candidate codes list</strong></span> from retriever</li>
 </ul></li>
 <li><p><span class="orange"><strong>Instruction on output format</strong></span> required.</p></li>
@@ -450,7 +443,7 @@
 <span id="cb2-2"><a></a>    <span class="dt">"codable"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
 <span id="cb2-3"><a></a>    <span class="dt">"nace_2008_valid"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
 <span id="cb2-4"><a></a>    <span class="dt">"nace2025"</span><span class="fu">:</span> <span class="st">"0147J"</span> </span>
-<span id="cb2-5"><a></a><span class="fu">}</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <ul>
 <li>Response parsing:
@@ -471,7 +464,7 @@
 <li><p>❓ Key question: How to <span class="orange"><strong>evaluate</strong></span> an LLM?:</p>
 <ul>
 <li>Comment <span class="orange"><strong>évaluer</strong></span> un LLM ?</li>
-<li>Classification seems simpler… but [<strong>complexity of taxonomy</strong>] matters.</li>
+<li>Classification seems simpler… but <span class="orange"><strong>complexity of taxonomy</strong></span> matters.</li>
 </ul></li>
 <li><p>Used <span class="math inline">\(27k\)</span> manual annotations as the benchmark 🥇</p></li>
 <li><p><span class="orange"><strong>3 performance metrics</strong></span>:</p>
@@ -484,7 +477,7 @@
 </section>
 <section id="performance-of-models" class="slide level2 scollable" data-background-image="background.svg" data-background-size="contain">
 <h2>Performance of models</h2>
-<div id="2a6351a1" class="cell" data-execution_count="1">
+<div id="573dc049" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -502,14 +495,14 @@
 <li>Built 3 more annotations:</li>
 </ul>
 <ol type="1">
-<li><span class="blue2">Cascade selection</span></li>
-<li><span class="blue2">Majority vote</span></li>
-<li><span class="blue2">Weighted vote</span></li>
+<li><span class="blue2"><strong>Cascade selection</strong></span></li>
+<li><span class="blue2"><strong>Majority vote</strong></span></li>
+<li><span class="blue2"><strong>Weighted vote</strong></span></li>
 </ol>
 </section>
 <section id="annotation-fusion" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Annotation Fusion</h2>
-<div id="5cbb7620" class="cell" data-execution_count="2">
+<div id="e848d9b9" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -519,18 +512,18 @@
 </div>
 </div>
 </section>
-<section id="retraining-with-naf-2025" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Retraining with NAF 2025</h2>
+<section id="retraining-with-nace-rév.-2.1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Retraining with NACE Rév. 2.1</h2>
 <ul>
-<li><span class="orange"><strong>Rebuilt</strong></span> Sirene 4 with NAF 2025 (~2M records)</li>
+<li><span class="orange"><strong>Rebuilt</strong></span> new registry dataset with NACE Rév. 2.1 (~2M records)</li>
 <li><span class="orange"><strong>Data distribution unchanged</strong></span></li>
-<li>New Sirene 4 <span class="orange"><strong>variables used</strong></span></li>
-<li>Achieved <span class="orange"><strong>comparable performance</strong></span> to NAF 2008 model</li>
+<li>New registry <span class="orange"><strong>variables used</strong></span></li>
+<li>Achieved <span class="orange"><strong>comparable performance</strong></span> to NACE Rév. 2 model</li>
 </ul>
 </section>
 <section id="retraining-accuracy" class="slide level2" data-background-color="white" data-background-image="background.svg" data-background-size="contain">
 <h2>Retraining Accuracy</h2>
-<div id="143d58bd" class="cell" data-execution_count="3">
+<div id="f72d2be5" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -540,45 +533,42 @@
 </div>
 </div>
 </section>
-<section id="the-naf-2025-model" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
-<h2>The NAF 2025 Model</h2>
+<section id="the-nace-rév.-2.1-model" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
+<h2>The NACE Rév. 2.1 Model</h2>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb3" data-startfrom="0" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -1;"><span id="cb3-0"><a></a>viewof activite <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>(</span>
 <span id="cb3-1"><a></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">'coiffeur'</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span>}</span>
 <span id="cb3-2"><a></a>)</span>
 <span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a>viewof type_form <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>(</span>
-<span id="cb3-5"><a></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">'Type de la liasse'</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">'X'</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">80</span>}</span>
-<span id="cb3-6"><a></a>)</span>
-<span id="cb3-7"><a></a>urlApe <span class="op">=</span> <span class="vs">`https://codification-ape-dev.lab.sspcloud.fr/predict?description_activity=</span><span class="sc">${</span>activite<span class="sc">}</span><span class="vs">%20&amp;type_form=</span><span class="sc">${</span>type_form<span class="sc">}</span><span class="vs">&amp;event=01P&amp;nb_echos_max=3&amp;prob_min=0.0009`</span></span>
-<span id="cb3-8"><a></a></span>
-<span id="cb3-9"><a></a>d3<span class="op">.</span><span class="fu">json</span>(urlApe)<span class="op">.</span><span class="fu">then</span>( res <span class="kw">=&gt;</span> {</span>
-<span id="cb3-10"><a></a>  <span class="kw">var</span> IC<span class="op">,</span> results<span class="op">;</span></span>
-<span id="cb3-11"><a></a>  ( {IC<span class="op">,</span> <span class="op">...</span>results} <span class="op">=</span> res )</span>
-<span id="cb3-12"><a></a></span>
-<span id="cb3-13"><a></a>  IC <span class="op">=</span> <span class="pp">parseFloat</span>(IC)</span>
-<span id="cb3-14"><a></a></span>
-<span id="cb3-15"><a></a>  <span class="kw">const</span> rows <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">values</span>(results)<span class="op">.</span><span class="fu">map</span>( obj <span class="kw">=&gt;</span> {</span>
-<span id="cb3-16"><a></a>    <span class="cf">return</span> <span class="vs">`</span></span>
-<span id="cb3-17"><a></a><span class="vs">    &lt;tr&gt;</span></span>
-<span id="cb3-18"><a></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>obj<span class="op">.</span><span class="at">code</span><span class="sc">}</span><span class="vs"> | </span><span class="sc">${</span>obj<span class="op">.</span><span class="at">libelle</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
-<span id="cb3-19"><a></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>obj<span class="op">.</span><span class="at">probabilite</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
-<span id="cb3-20"><a></a><span class="vs">    &lt;/tr&gt;</span></span>
-<span id="cb3-21"><a></a><span class="vs">  `</span></span>
-<span id="cb3-22"><a></a>  })<span class="op">.</span><span class="fu">join</span>(<span class="st">''</span>)</span>
-<span id="cb3-23"><a></a>  </span>
-<span id="cb3-24"><a></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb3-25"><a></a><span class="vs">  &lt;table&gt;</span></span>
-<span id="cb3-26"><a></a><span class="vs">    &lt;caption&gt;</span></span>
-<span id="cb3-27"><a></a><span class="vs">      Indice de confiance: </span><span class="sc">${</span>IC<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span></span>
-<span id="cb3-28"><a></a><span class="vs">    &lt;/caption&gt;</span></span>
-<span id="cb3-29"><a></a><span class="vs">    &lt;tr&gt;</span></span>
-<span id="cb3-30"><a></a><span class="vs">      &lt;th style="text-align:center;"&gt;Libellé (NAF 2025)&lt;/th&gt;</span></span>
-<span id="cb3-31"><a></a><span class="vs">      &lt;th&gt;Probabilité&lt;/th&gt;</span></span>
-<span id="cb3-32"><a></a><span class="vs">    &lt;/tr&gt;</span></span>
-<span id="cb3-33"><a></a><span class="vs">      </span><span class="sc">${</span>rows<span class="sc">}</span></span>
-<span id="cb3-34"><a></a><span class="vs">  &lt;/table&gt;`</span></span>
-<span id="cb3-35"><a></a>})</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a></a>urlApe <span class="op">=</span> <span class="vs">`https://codification-ape-dev.lab.sspcloud.fr/predict?description_activity=</span><span class="sc">${</span>activite<span class="sc">}</span><span class="vs">%20&amp;type_form=X&amp;event=01P&amp;nb_echos_max=3&amp;prob_min=0.0009`</span></span>
+<span id="cb3-5"><a></a></span>
+<span id="cb3-6"><a></a>d3<span class="op">.</span><span class="fu">json</span>(urlApe)<span class="op">.</span><span class="fu">then</span>( res <span class="kw">=&gt;</span> {</span>
+<span id="cb3-7"><a></a>  <span class="kw">var</span> IC<span class="op">,</span> results<span class="op">;</span></span>
+<span id="cb3-8"><a></a>  ( {IC<span class="op">,</span> <span class="op">...</span>results} <span class="op">=</span> res )</span>
+<span id="cb3-9"><a></a></span>
+<span id="cb3-10"><a></a>  IC <span class="op">=</span> <span class="pp">parseFloat</span>(IC)</span>
+<span id="cb3-11"><a></a></span>
+<span id="cb3-12"><a></a>  <span class="kw">const</span> rows <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">values</span>(results)<span class="op">.</span><span class="fu">map</span>( obj <span class="kw">=&gt;</span> {</span>
+<span id="cb3-13"><a></a>    <span class="cf">return</span> <span class="vs">`</span></span>
+<span id="cb3-14"><a></a><span class="vs">    &lt;tr&gt;</span></span>
+<span id="cb3-15"><a></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>obj<span class="op">.</span><span class="at">code</span><span class="sc">}</span><span class="vs"> | </span><span class="sc">${</span>obj<span class="op">.</span><span class="at">libelle</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb3-16"><a></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>obj<span class="op">.</span><span class="at">probabilite</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb3-17"><a></a><span class="vs">    &lt;/tr&gt;</span></span>
+<span id="cb3-18"><a></a><span class="vs">  `</span></span>
+<span id="cb3-19"><a></a>  })<span class="op">.</span><span class="fu">join</span>(<span class="st">''</span>)</span>
+<span id="cb3-20"><a></a>  </span>
+<span id="cb3-21"><a></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb3-22"><a></a><span class="vs">  &lt;table&gt;</span></span>
+<span id="cb3-23"><a></a><span class="vs">    &lt;caption&gt;</span></span>
+<span id="cb3-24"><a></a><span class="vs">      Confidence index: </span><span class="sc">${</span>IC<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span></span>
+<span id="cb3-25"><a></a><span class="vs">    &lt;/caption&gt;</span></span>
+<span id="cb3-26"><a></a><span class="vs">    &lt;tr&gt;</span></span>
+<span id="cb3-27"><a></a><span class="vs">      &lt;th style="text-align:center;"&gt;Description (NACE Rév. 2.1)&lt;/th&gt;</span></span>
+<span id="cb3-28"><a></a><span class="vs">      &lt;th&gt;Probabilité&lt;/th&gt;</span></span>
+<span id="cb3-29"><a></a><span class="vs">    &lt;/tr&gt;</span></span>
+<span id="cb3-30"><a></a><span class="vs">      </span><span class="sc">${</span>rows<span class="sc">}</span></span>
+<span id="cb3-31"><a></a><span class="vs">  &lt;/table&gt;`</span></span>
+<span id="cb3-32"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -595,21 +585,14 @@
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-1-3" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-4" data-nodetype="expression">
+<div id="ojs-cell-1-3" data-nodetype="expression">
 
 </div>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="-1" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -2;"><span id="cb4--1"><a></a><span class="im">import</span> { debounce } <span class="im">from</span> <span class="st">"@mbostock/debouncing-input"</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="-1" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -2;"><span id="cb4--1"><a></a><span class="im">import</span> { debounce } <span class="im">from</span> <span class="st">"@mbostock/debouncing-input"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 
@@ -837,7 +820,7 @@
       });
     </script>
     <script type="ojs-module-contents">
-    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBhY3Rpdml0ZSA9IElucHV0cy50ZXh0KFxuICB7bGFiZWw6ICcnLCB2YWx1ZTogJ2NvaWZmZXVyJywgd2lkdGg6IDgwMH1cbilcblxudmlld29mIHR5cGVfZm9ybSA9IElucHV0cy50ZXh0KFxuICB7bGFiZWw6ICdUeXBlIGRlIGxhIGxpYXNzZScsIHZhbHVlOiAnWCcsIHdpZHRoOiA4MH1cbilcbnVybEFwZSA9IGBodHRwczovL2NvZGlmaWNhdGlvbi1hcGUtZGV2LmxhYi5zc3BjbG91ZC5mci9wcmVkaWN0P2Rlc2NyaXB0aW9uX2FjdGl2aXR5PSR7YWN0aXZpdGV9JTIwJnR5cGVfZm9ybT0ke3R5cGVfZm9ybX0mZXZlbnQ9MDFQJm5iX2VjaG9zX21heD0zJnByb2JfbWluPTAuMDAwOWBcblxuZDMuanNvbih1cmxBcGUpLnRoZW4oIHJlcyA9PiB7XG4gIHZhciBJQywgcmVzdWx0cztcbiAgKCB7SUMsIC4uLnJlc3VsdHN9ID0gcmVzIClcblxuICBJQyA9IHBhcnNlRmxvYXQoSUMpXG5cbiAgY29uc3Qgcm93cyA9IE9iamVjdC52YWx1ZXMocmVzdWx0cykubWFwKCBvYmogPT4ge1xuICAgIHJldHVybiBgXG4gICAgPHRyPlxuICAgICAgPHRkPiR7b2JqLmNvZGV9IHwgJHtvYmoubGliZWxsZX08L3RkPlxuICAgICAgPHRkPiR7b2JqLnByb2JhYmlsaXRlLnRvRml4ZWQoMyl9PC90ZD5cbiAgICA8L3RyPlxuICBgXG4gIH0pLmpvaW4oJycpXG4gIFxuICByZXR1cm4gaHRtbGBcbiAgPHRhYmxlPlxuICAgIDxjYXB0aW9uPlxuICAgICAgSW5kaWNlIGRlIGNvbmZpYW5jZTogJHtJQy50b0ZpeGVkKDMpfVxuICAgIDwvY2FwdGlvbj5cbiAgICA8dHI+XG4gICAgICA8dGggc3R5bGU9XCJ0ZXh0LWFsaWduOmNlbnRlcjtcIj5MaWJlbGzDqSAoTkFGIDIwMjUpPC90aD5cbiAgICAgIDx0aD5Qcm9iYWJpbGl0w6k8L3RoPlxuICAgIDwvdHI+XG4gICAgICAke3Jvd3N9XG4gIDwvdGFibGU+YFxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImltcG9ydCB7IGRlYm91bmNlIH0gZnJvbSBcIkBtYm9zdG9jay9kZWJvdW5jaW5nLWlucHV0XCIgXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2FjdGl2aXRlJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3R5cGVfZm9ybScpIn1dfQ==
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBhY3Rpdml0ZSA9IElucHV0cy50ZXh0KFxuICB7bGFiZWw6ICcnLCB2YWx1ZTogJ2NvaWZmZXVyJywgd2lkdGg6IDgwMH1cbilcblxudXJsQXBlID0gYGh0dHBzOi8vY29kaWZpY2F0aW9uLWFwZS1kZXYubGFiLnNzcGNsb3VkLmZyL3ByZWRpY3Q/ZGVzY3JpcHRpb25fYWN0aXZpdHk9JHthY3Rpdml0ZX0lMjAmdHlwZV9mb3JtPVgmZXZlbnQ9MDFQJm5iX2VjaG9zX21heD0zJnByb2JfbWluPTAuMDAwOWBcblxuZDMuanNvbih1cmxBcGUpLnRoZW4oIHJlcyA9PiB7XG4gIHZhciBJQywgcmVzdWx0cztcbiAgKCB7SUMsIC4uLnJlc3VsdHN9ID0gcmVzIClcblxuICBJQyA9IHBhcnNlRmxvYXQoSUMpXG5cbiAgY29uc3Qgcm93cyA9IE9iamVjdC52YWx1ZXMocmVzdWx0cykubWFwKCBvYmogPT4ge1xuICAgIHJldHVybiBgXG4gICAgPHRyPlxuICAgICAgPHRkPiR7b2JqLmNvZGV9IHwgJHtvYmoubGliZWxsZX08L3RkPlxuICAgICAgPHRkPiR7b2JqLnByb2JhYmlsaXRlLnRvRml4ZWQoMyl9PC90ZD5cbiAgICA8L3RyPlxuICBgXG4gIH0pLmpvaW4oJycpXG4gIFxuICByZXR1cm4gaHRtbGBcbiAgPHRhYmxlPlxuICAgIDxjYXB0aW9uPlxuICAgICAgQ29uZmlkZW5jZSBpbmRleDogJHtJQy50b0ZpeGVkKDMpfVxuICAgIDwvY2FwdGlvbj5cbiAgICA8dHI+XG4gICAgICA8dGggc3R5bGU9XCJ0ZXh0LWFsaWduOmNlbnRlcjtcIj5EZXNjcmlwdGlvbiAoTkFDRSBSw6l2LiAyLjEpPC90aD5cbiAgICAgIDx0aD5Qcm9iYWJpbGl0w6k8L3RoPlxuICAgIDwvdHI+XG4gICAgICAke3Jvd3N9XG4gIDwvdGFibGU+YFxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImltcG9ydCB7IGRlYm91bmNlIH0gZnJvbSBcIkBtYm9zdG9jay9kZWJvdW5jaW5nLWlucHV0XCIgXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2FjdGl2aXRlJykifV19
     </script>
     <script type="module">
     if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -869,12 +852,12 @@
           // flash "checked"
           button.classList.add('code-copy-button-checked');
           var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copi&#xE9;");
+          button.setAttribute("title", "Copied!");
           let tooltip;
           if (window.bootstrap) {
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copi&#xE9;");
+            button.setAttribute("data-bs-title", "Copied!");
             tooltip = new bootstrap.Tooltip(button, 
               { trigger: "manual", 
                 customClass: "code-copy-button-tooltip",

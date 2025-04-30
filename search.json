@@ -16,135 +16,135 @@
   {
     "objectID": "slides/unece-2025/index.html#ml-model-robustness",
     "href": "slides/unece-2025/index.html#ml-model-robustness",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
     "section": "ML Model Robustness",
     "text": "ML Model Robustness\n\nML models are trained using reference datasets tailored for a specific task.\nIn practice, real-world data often drifts over time from these reference sets ➡️ performance degradation?\nRegular retraining becomes essential.\nA particularly challenging case in public statistics is the change in classification systems."
   },
   {
     "objectID": "slides/unece-2025/index.html#timeline-for-adoption",
     "href": "slides/unece-2025/index.html#timeline-for-adoption",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
     "section": "Timeline for Adoption 🗓️",
-    "text": "Timeline for Adoption 🗓️\n\nPhased adoption approach:\n2025 ➡️ dual labeling in both NAF 2008 and NAF 2025.\n2026 ➡️ improved classification using NAF 2025.\n2027 ➡️ full NAF 2025 classification while maintaining legacy NAF 2008 codes."
+    "text": "Timeline for Adoption 🗓️\n\nPhased adoption approach:\n2025 ➡️ dual labeling in both NACE Rév. 2 and 2.1\n2026 ➡️ improved classification using NACE Rév. 2.1.\n2027 ➡️ full NACE Rév. 2.1 classification while maintaining legacy NACE Rév. 2 codes."
   },
   {
-    "objectID": "slides/unece-2025/index.html#whats-new-in-naf-2025",
-    "href": "slides/unece-2025/index.html#whats-new-in-naf-2025",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
-    "section": "What’s New in NAF 2025?",
-    "text": "What’s New in NAF 2025?\n\nAt level 5: 746 sub-classes compared to 732 before.\nMainly fine-grained splits at class level (level 4), but not exclusively.\n551 unambiguous mappings, i.e., one-to-one correspondence ➡️ ideal case! 👌"
+    "objectID": "slides/unece-2025/index.html#whats-new-in-nace-rév.-2.1",
+    "href": "slides/unece-2025/index.html#whats-new-in-nace-rév.-2.1",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
+    "section": "What’s New in NACE Rév. 2.1?",
+    "text": "What’s New in NACE Rév. 2.1?\n\nAt level 5: 746 sub-classes compared to 732 before.\nMainly fine-grained splits at class level (level 4), but not exclusively.\n551 unambiguous mappings, i.e., one-to-one correspondence ➡️ ideal case! 👌"
   },
   {
     "objectID": "slides/unece-2025/index.html#ambiguous-cases",
     "href": "slides/unece-2025/index.html#ambiguous-cases",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
     "section": "Ambiguous Cases",
     "text": "Ambiguous Cases\n\n181 ambiguous mappings, i.e., one-to-many ➡️ challenging! 🚩\nRequires expert review for proper recoding.\n\n\n\n\nShow distribution of ambiguous codes\n\n\n\n\n1-to-N\n# occurence\n\n\n\n\n2\n109\n\n\n3\n30\n\n\n4\n24\n\n\n5\n6\n\n\n6\n4\n\n\n8\n1\n\n\n9\n2\n\n\n21\n1\n\n\n27\n1\n\n\n36\n1\n\n\n38\n2"
   },
   {
     "objectID": "slides/unece-2025/index.html#multiple-challenges",
     "href": "slides/unece-2025/index.html#multiple-challenges",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
     "section": "Multiple Challenges",
     "text": "Multiple Challenges\n\nNeed to recode the stock of Sirene forms ➡️ over 14 million entries.\nModel prediction on new data flow requires a clean stock base.\nPrevious fastText model trained on over 10 million labeled entries.\nPerformance is highly sensitive to training data volume."
   },
   {
     "objectID": "slides/unece-2025/index.html#available-data",
     "href": "slides/unece-2025/index.html#available-data",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
     "section": "Available Data",
     "text": "Available Data\n\nOld registry dataset: \\(~10\\) millions entries, but poorly suited for new labels.\nNew registry dataset: \\(~2.7\\) millions entries.\n\nUnambiguous: \\(1.3\\) millions, covering 504 sub-classes.\nAmbiguous: \\(1.4\\) millions obs. et 177 sous-classes\n\nManual annotation campaign is critical."
   },
   {
     "objectID": "slides/unece-2025/index.html#annotation-campaign",
     "href": "slides/unece-2025/index.html#annotation-campaign",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
     "section": "Annotation Campaign",
-    "text": "Annotation Campaign\n\nAnnotation launched since mid-2024.\nFocused on uniquely ambiguous cases.\n🎯 Dual objectives:\n\nAssign a **NAF 2025** code 🚀\nAssess NAF 2008 code quality 🗸\nCurrent count: \\(~27k\\) annotated entries… still insufficient!"
+    "text": "Annotation Campaign\n\nAnnotation launched since mid-2024.\nFocused on uniquely ambiguous cases.\n🎯 Dual objectives:\n\nAssign a NACE Rév. 2.1 code 🚀\nAssess NACE Rév. 2 code quality 🗸\nCurrent count: \\(~27k\\) annotated entries… still insufficient!"
   },
   {
     "objectID": "slides/unece-2025/index.html#methodology",
     "href": "slides/unece-2025/index.html#methodology",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
     "section": "Methodology",
-    "text": "Methodology\n\n🎯 Goal: Build the most comprehensive training dataset possible.\nOne-shot experimentation ➡️ not intended for production reproducibility.\nLeveraging LLMs for automated NAF 2025 labeling.\nData used:\n\nStock Sirene 4 (\\(~2.7M\\) records)\nTable de passage from NACE experts\nNACE explanatory notes\nManually annotated data (\\(~27k\\) entries)"
+    "text": "Methodology\n\n🎯 Goal: Build the most comprehensive training dataset possible.\nOne-shot experimentation ➡️ not intended for production reproducibility.\nLeveraging LLMs for automated NNACE Rév. 2.1 labeling.\nData used:\n\nStock Sirene 4 (\\(~2.7M\\) records)\nTable de passage from NACE experts\nNACE explanatory notes\nManually annotated data (\\(~27k\\) entries)"
   },
   {
     "objectID": "slides/unece-2025/index.html#methodology-1",
     "href": "slides/unece-2025/index.html#methodology-1",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
     "section": "Methodology",
     "text": "Methodology"
   },
   {
     "objectID": "slides/unece-2025/index.html#leveraging-llms",
     "href": "slides/unece-2025/index.html#leveraging-llms",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
     "section": "Leveraging LLMs",
-    "text": "Leveraging LLMs\n\nRetrieval/Context Augmented Generation (RAG/CAG) vs fine-tunning\n2 possibilities:\n\nRAG\n\n\nUnstructured prior knowledge based on similarity of notes embeddings\n\n\nCAG:\n\n\nStructured prior knowledge based on known mappings\n\n💡 Core idea ➡️ Provide key information to the LLM to translate NAF 2008 into 2025\n\n\n\n\n\n\n\nAvertissement\n\n\nRAG can act like a zero-shot classifier, while CAG is not a classifier as it relies on prior knowledge."
+    "text": "Leveraging LLMs\n\nRetrieval/Context Augmented Generation (RAG/CAG) vs fine-tunning\n2 possibilities:\n\nRAG: Unstructured prior knowledge based on similarity of notes embeddings\nCAG: Structured prior knowledge based on known mappings\n\n💡 Core idea ➡️ Provide key information to the LLM to translate NACE Rév. 2 into 2.1\n\n\n\n\n\n\n\nWarning\n\n\nRAG can act like a zero-shot classifier, while CAG is not a classifier as it relies on prior knowledge."
   },
   {
     "objectID": "slides/unece-2025/index.html#prompt-design",
     "href": "slides/unece-2025/index.html#prompt-design",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
     "section": "Prompt Design",
-    "text": "Prompt Design\n\nA common system prompt for all entries\n\n\nAfficher le prompt sytème\n\nTu es un expert de la Nomenclature statistique des Activités économiques dans la Communauté Européenne (NACE). Tu es chargé de réaliser le changement de nomenclature. Ta mission consiste à attribuer un code NACE 2025 à une entreprise, en t'appuyant sur le descriptif de son activité et à partir d'une liste de codes proposés (identifiée à partir de son code NACE 2008 existant). Voici les instructions à suivre:\n1. Analyse la description de l'activité principale de l'entreprise et le code NACE 2008 fourni par l'utilisateur.\n2. À partir de la liste des codes NACE 2025 disponible, identifie la catégorie la plus appropriée qui correspond à l'activité principale de l'entreprise.\n3. Retourne le code NACE 2025 au format JSON comme spécifié par l'utilisateur. Si la description de l'activité de l'entreprise n'est pas suffisamment précise pour identifier un code NACE 2025 adéquat, retourne `null` dans le JSON.\n4. Évalue la cohérence entre le code NACE 2008 fourni et la description de l'activité de l'entreprise. Si le code NACE 2008 ne semble pas correspondre à cette description, retourne `False` dans le champ `nace08_valid` du JSON. Note que si tu arrives à classer la description de l'activité de l'entreprise dans un code NACE 2025, le champ `nace08_valid` devrait `True`, sinon il y a incohérence.\n5. Réponds seulement avec le JSON complété aucune autres information ne doit être retourné.\n\nEach observation gets a custom prompt including:\n\nBusiness activity description\nOriginal NAF 2008 code (in CAG)\nCandidate codes list from retriever\n\nInstruction on output format required."
+    "text": "Prompt Design\n\nA common system prompt for all entries\n\n\nAfficher le prompt sytème\n\nTu es un expert de la Nomenclature statistique des Activités économiques dans la Communauté Européenne (NACE). Tu es chargé de réaliser le changement de nomenclature. Ta mission consiste à attribuer un code NACE 2025 à une entreprise, en t'appuyant sur le descriptif de son activité et à partir d'une liste de codes proposés (identifiée à partir de son code NACE 2008 existant). Voici les instructions à suivre:\n1. Analyse la description de l'activité principale de l'entreprise et le code NACE 2008 fourni par l'utilisateur.\n2. À partir de la liste des codes NACE 2025 disponible, identifie la catégorie la plus appropriée qui correspond à l'activité principale de l'entreprise.\n3. Retourne le code NACE 2025 au format JSON comme spécifié par l'utilisateur. Si la description de l'activité de l'entreprise n'est pas suffisamment précise pour identifier un code NACE 2025 adéquat, retourne `null` dans le JSON.\n4. Évalue la cohérence entre le code NACE 2008 fourni et la description de l'activité de l'entreprise. Si le code NACE 2008 ne semble pas correspondre à cette description, retourne `False` dans le champ `nace08_valid` du JSON. Note que si tu arrives à classer la description de l'activité de l'entreprise dans un code NACE 2025, le champ `nace08_valid` devrait `True`, sinon il y a incohérence.\n5. Réponds seulement avec le JSON complété aucune autres information ne doit être retourné.\n\nEach observation gets a custom prompt including:\n\nBusiness activity description\nOriginal NACE Rév. 2 code (in CAG)\nCandidate codes list from retriever\n\nInstruction on output format required."
   },
   {
     "objectID": "slides/unece-2025/index.html#output-validation",
     "href": "slides/unece-2025/index.html#output-validation",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
     "section": "Output Validation",
     "text": "Output Validation\n\nLLMs tend to be overly verbose\nResponses shaped into structured, minimal format\nJSON is the preferred schema.\n\n\n\nShow expected response format\n\n{\n    \"codable\": true,\n    \"nace_2008_valid\": true,\n    \"nace2025\": \"0147J\" \n}\n\n\nResponse parsing:\n\nFormat check\nDetecting hallucinations"
   },
   {
     "objectID": "slides/unece-2025/index.html#evaluation-challenge",
     "href": "slides/unece-2025/index.html#evaluation-challenge",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
     "section": "Evaluation Challenge",
-    "text": "Evaluation Challenge\n\n❓ Key question: How to evaluate an LLM?:\n\nComment évaluer un LLM ?\nClassification seems simpler… but [complexity of taxonomy] matters.\n\nUsed \\(27k\\) manual annotations as the benchmark 🥇\n3 performance metrics:\n\nOverall accuracy\nAccuracy among codable entries\nAccuracy of LLM-only decisions"
+    "text": "Evaluation Challenge\n\n❓ Key question: How to evaluate an LLM?:\n\nComment évaluer un LLM ?\nClassification seems simpler… but complexity of taxonomy matters.\n\nUsed \\(27k\\) manual annotations as the benchmark 🥇\n3 performance metrics:\n\nOverall accuracy\nAccuracy among codable entries\nAccuracy of LLM-only decisions"
   },
   {
     "objectID": "slides/unece-2025/index.html#performance-of-models",
     "href": "slides/unece-2025/index.html#performance-of-models",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
     "section": "Performance of models",
     "text": "Performance of models"
   },
   {
     "objectID": "slides/unece-2025/index.html#reconstructing-ambiguous-dataset",
     "href": "slides/unece-2025/index.html#reconstructing-ambiguous-dataset",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
     "section": "Reconstructing Ambiguous Dataset",
     "text": "Reconstructing Ambiguous Dataset\n\n💡Idea: Treat LLMs as additional annotators\n❓Can we boost performance via ensemble methods?\nBuilt 3 more annotations:\n\n\nCascade selection\nMajority vote\nWeighted vote"
   },
   {
     "objectID": "slides/unece-2025/index.html#annotation-fusion",
     "href": "slides/unece-2025/index.html#annotation-fusion",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
     "section": "Annotation Fusion",
     "text": "Annotation Fusion"
   },
   {
-    "objectID": "slides/unece-2025/index.html#retraining-with-naf-2025",
-    "href": "slides/unece-2025/index.html#retraining-with-naf-2025",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
-    "section": "Retraining with NAF 2025",
-    "text": "Retraining with NAF 2025\n\nRebuilt Sirene 4 with NAF 2025 (~2M records)\nData distribution unchanged\nNew Sirene 4 variables used\nAchieved comparable performance to NAF 2008 model"
+    "objectID": "slides/unece-2025/index.html#retraining-with-nace-rév.-2.1",
+    "href": "slides/unece-2025/index.html#retraining-with-nace-rév.-2.1",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
+    "section": "Retraining with NACE Rév. 2.1",
+    "text": "Retraining with NACE Rév. 2.1\n\nRebuilt new registry dataset with NACE Rév. 2.1 (~2M records)\nData distribution unchanged\nNew registry variables used\nAchieved comparable performance to NACE Rév. 2 model"
   },
   {
     "objectID": "slides/unece-2025/index.html#retraining-accuracy",
     "href": "slides/unece-2025/index.html#retraining-accuracy",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
     "section": "Retraining Accuracy",
     "text": "Retraining Accuracy"
   },
   {
-    "objectID": "slides/unece-2025/index.html#the-naf-2025-model",
-    "href": "slides/unece-2025/index.html#the-naf-2025-model",
-    "title": "From NACE 2008 to NACE 2025: Retraining an ML model in production using Large Language Models",
-    "section": "The NAF 2025 Model",
-    "text": "The NAF 2025 Model\n\nviewof activite = Inputs.text(\n  {label: '', value: 'coiffeur', width: 800}\n)\n\nviewof type_form = Inputs.text(\n  {label: 'Type de la liasse', value: 'X', width: 80}\n)\nurlApe = `https://codification-ape-dev.lab.sspcloud.fr/predict?description_activity=${activite}%20&type_form=${type_form}&event=01P&nb_echos_max=3&prob_min=0.0009`\n\nd3.json(urlApe).then( res =&gt; {\n  var IC, results;\n  ( {IC, ...results} = res )\n\n  IC = parseFloat(IC)\n\n  const rows = Object.values(results).map( obj =&gt; {\n    return `\n    &lt;tr&gt;\n      &lt;td&gt;${obj.code} | ${obj.libelle}&lt;/td&gt;\n      &lt;td&gt;${obj.probabilite.toFixed(3)}&lt;/td&gt;\n    &lt;/tr&gt;\n  `\n  }).join('')\n  \n  return html`\n  &lt;table&gt;\n    &lt;caption&gt;\n      Indice de confiance: ${IC.toFixed(3)}\n    &lt;/caption&gt;\n    &lt;tr&gt;\n      &lt;th style=\"text-align:center;\"&gt;Libellé (NAF 2025)&lt;/th&gt;\n      &lt;th&gt;Probabilité&lt;/th&gt;\n    &lt;/tr&gt;\n      ${rows}\n  &lt;/table&gt;`\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport { debounce } from \"@mbostock/debouncing-input\""
+    "objectID": "slides/unece-2025/index.html#the-nace-rév.-2.1-model",
+    "href": "slides/unece-2025/index.html#the-nace-rév.-2.1-model",
+    "title": "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM",
+    "section": "The NACE Rév. 2.1 Model",
+    "text": "The NACE Rév. 2.1 Model\n\nviewof activite = Inputs.text(\n  {label: '', value: 'coiffeur', width: 800}\n)\n\nurlApe = `https://codification-ape-dev.lab.sspcloud.fr/predict?description_activity=${activite}%20&type_form=X&event=01P&nb_echos_max=3&prob_min=0.0009`\n\nd3.json(urlApe).then( res =&gt; {\n  var IC, results;\n  ( {IC, ...results} = res )\n\n  IC = parseFloat(IC)\n\n  const rows = Object.values(results).map( obj =&gt; {\n    return `\n    &lt;tr&gt;\n      &lt;td&gt;${obj.code} | ${obj.libelle}&lt;/td&gt;\n      &lt;td&gt;${obj.probabilite.toFixed(3)}&lt;/td&gt;\n    &lt;/tr&gt;\n  `\n  }).join('')\n  \n  return html`\n  &lt;table&gt;\n    &lt;caption&gt;\n      Confidence index: ${IC.toFixed(3)}\n    &lt;/caption&gt;\n    &lt;tr&gt;\n      &lt;th style=\"text-align:center;\"&gt;Description (NACE Rév. 2.1)&lt;/th&gt;\n      &lt;th&gt;Probabilité&lt;/th&gt;\n    &lt;/tr&gt;\n      ${rows}\n  &lt;/table&gt;`\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport { debounce } from \"@mbostock/debouncing-input\""
   },
   {
     "objectID": "slides/grp-veille-codif-auto-9/index.html#les-modèles-de-ml-en-production",
