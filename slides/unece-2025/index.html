@@ -11,7 +11,7 @@
 
   <meta name="author" content="Thomas Faria,">
   <meta name="dcterms.date" content="2024-11-06">
-  <title>Présentations codification automatique de l'APE – NACE Rév. 2.1 transition: Retraining an ML model in production using LLM</title>
+  <title>Présentations codification automatique de l'APE – NACE Rév. 2.1 update: Retraining an ML model in production using LLM</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -195,7 +195,7 @@
   <script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
   <link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<meta property="og:title" content="NACE Rév. 2.1 transition: Retraining an ML model in production using LLM – Présentations codification automatique de l’APE">
+<meta property="og:title" content="NACE Rév. 2.1 update: Retraining an ML model in production using LLM – Présentations codification automatique de l’APE">
 <meta property="og:description" content="UNECE Machine Learning for Official Statistics Workshop 2025">
 <meta property="og:site_name" content="Présentations codification automatique de l'APE">
 </head>
@@ -204,7 +204,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="../_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">NACE Rév. 2.1 transition: Retraining an ML model in production using LLM</h1>
+  <h1 class="title">NACE Rév. 2.1 update: Retraining an ML model in production using LLM</h1>
   <p class="subtitle"></p><p><strong><span class="orange">UNECE Machine Learning for Official Statistics Workshop 2025</span></strong></p><p></p>
 
 <div class="quarto-title-authors">
@@ -226,9 +226,9 @@
 <h2>ML Model Robustness</h2>
 <ul>
 <li>ML models are trained using <span class="orange"><strong>reference datasets</strong></span> tailored for a specific task.</li>
-<li>In practice, real-world data often <span class="orange"><strong>drifts over time</strong></span> from these reference sets ➡️ performance degradation?</li>
+<li>In practice, real-world data often <span class="orange"><strong>drifts over time</strong></span> from these reference datasets ➡️ performance degradation?</li>
 <li>Regular <span class="orange"><strong>retraining</strong></span> becomes essential.</li>
-<li>A particularly challenging case in public statistics is the <span class="blue2"><strong>change in classification systems</strong></span>.</li>
+<li>A particularly challenging case in official statistics is the <span class="blue2"><strong>change in the classification</strong></span>.</li>
 </ul>
 </section></section>
 <section>
@@ -241,8 +241,8 @@
 <ul>
 <li><span class="orange"><strong>Phased adoption</strong></span> approach:</li>
 <li><span class="orange"><strong>2025</strong></span> ➡️ dual labeling in both NACE Rév. 2 and 2.1</li>
-<li><span class="orange"><strong>2026</strong></span> ➡️ improved classification using NACE Rév. 2.1.</li>
-<li><span class="orange"><strong>2027</strong></span> ➡️ full <span class="blue2"><strong>NACE Rév. 2.1</strong></span> classification while maintaining legacy NACE Rév. 2 codes.</li>
+<li><span class="orange"><strong>2026</strong></span> ➡️ improving the NACE Rév. 2.1. classifier model</li>
+<li><span class="orange"><strong>2027</strong></span> ➡️ full <span class="blue2"><strong>NACE Rév. 2.1</strong></span> classification while maintaining legacy NACE Rév. 2 codes for specific usages.</li>
 </ul>
 </section>
 <section id="whats-new-in-nace-rév.-2.1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -253,7 +253,7 @@
 <li><span class="orange"><strong>551 unambiguous mappings</strong></span>, i.e., one-to-one correspondence ➡️ ideal case! 👌</li>
 </ul>
 
-<img data-src="../img/univoques.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="../img/univoques_en.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="ambiguous-cases" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
 <h2>Ambiguous Cases</h2>
 <ul>
@@ -261,7 +261,7 @@
 <li>Requires <span class="orange"><strong>expert review</strong></span> for proper recoding.</li>
 </ul>
 
-<img data-src="../img/multivoques.png" class="quarto-figure quarto-figure-center r-stretch"><details>
+<img data-src="../img/multivoques_en.png" class="quarto-figure quarto-figure-center r-stretch"><details>
 <summary>
 <font size="3" color="black"><b>Show distribution of ambiguous codes</b></font>
 </summary>
@@ -324,8 +324,8 @@
 <section id="multiple-challenges" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Multiple Challenges</h2>
 <ul>
-<li>Need to recode the <span class="orange"><strong>stock</strong></span> of Sirene forms ➡️ over <span class="orange"><strong>14 million</strong></span> entries.</li>
-<li>Model prediction on <span class="orange"><strong>new data flow</strong></span> requires a clean <span class="orange"><strong>stock</strong></span> base.</li>
+<li>Need to recode the <span class="orange"><strong>stock</strong></span> of the registry forms ➡️ over <span class="orange"><strong>14 million</strong></span> entries.</li>
+<li>Building a classifier for <span class="orange"><strong>new data flow</strong></span> requires a clean <span class="orange"><strong>stock</strong></span> base as a training dataset.</li>
 <li>Previous fastText model trained on over <span class="orange"><strong>10 million</strong></span> labeled entries.</li>
 <li>Performance is <span class="orange"><strong>highly sensitive</strong></span> to training data volume.</li>
 </ul>
@@ -333,11 +333,11 @@
 <section id="available-data" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Available Data</h2>
 <ul>
-<li>Old registry dataset: <span class="blue2"><strong><span class="math inline">\(~10\)</span> millions</strong></span> entries, but poorly suited for new labels.</li>
-<li>New registry dataset: <span class="blue2"><strong><span class="math inline">\(~2.7\)</span> millions</strong></span> entries.
+<li>Old registry dataset: <span class="blue2"><strong><span class="math inline">\(~10\)</span> million</strong></span> entries, but poorly suited for new labels.</li>
+<li>New registry dataset: <span class="blue2"><strong><span class="math inline">\(~2.7\)</span> million</strong></span> entries.
 <ul>
-<li>Unambiguous: <span class="blue2"><strong><span class="math inline">\(1.3\)</span> millions</strong></span>, covering 504 sub-classes.</li>
-<li>Ambiguous: <span class="blue2"><strong><span class="math inline">\(1.4\)</span> millions</strong></span> obs. et 177 sous-classes</li>
+<li>Unambiguous: <span class="blue2"><strong><span class="math inline">\(1.3\)</span> million</strong></span>, covering <span class="green2"><strong>504 sub-classes</strong></span>.</li>
+<li>Ambiguous: <span class="blue2"><strong><span class="math inline">\(1.4\)</span> million</strong></span>, covering <span class="green2"><strong>177 sub-classes</strong></span>.</li>
 </ul></li>
 <li><span class="orange"><strong>Manual annotation campaign</strong></span> is critical.</li>
 </ul>
@@ -351,7 +351,7 @@
 <ul>
 <li>Assign a <span class="blue2"><strong>NACE Rév. 2.1</strong></span> code 🚀</li>
 <li>Assess <span class="blue2"><strong>NACE Rév. 2</strong></span> code quality 🗸</li>
-<li>Current count: <span class="math inline">\(~27k\)</span> annotated entries… still insufficient!</li>
+<li>Current count: <span class="math inline">\(~27k\)</span> <span class="green2"><strong>annotated entries</strong></span>… still insufficient!</li>
 </ul></li>
 </ul>
 </section></section>
@@ -365,11 +365,11 @@
 <ul>
 <li>🎯 <span class="orange"><strong>Goal</strong></span>: Build the most comprehensive training dataset possible.</li>
 <li>One-shot experimentation ➡️ not intended for production reproducibility.</li>
-<li>Leveraging <span class="orange"><strong>LLMs</strong></span> for automated NNACE Rév. 2.1 labeling.</li>
+<li>Leveraging <span class="orange"><strong>LLMs</strong></span> for automated NACE Rév. 2.1 labeling.</li>
 <li><span class="orange"><strong>Data</strong></span> used:
 <ol type="1">
-<li>Stock <span class="blue2"><strong>Sirene 4</strong></span> (<span class="math inline">\(~2.7M\)</span> records)</li>
-<li><span class="blue2"><strong>Table de passage</strong></span> from NACE experts</li>
+<li><span class="blue2"><strong>New registry</strong></span> stock dataset (<span class="math inline">\(~2.7M\)</span> records)</li>
+<li><span class="blue2"><strong>Mapping table</strong></span> from NACE experts</li>
 <li>NACE <span class="blue2"><strong>explanatory notes</strong></span></li>
 <li><span class="blue2"><strong>Manually annotated data</strong></span> (<span class="math inline">\(~27k\)</span> entries)</li>
 </ol></li>
@@ -378,17 +378,18 @@
 <section id="methodology-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Methodology</h2>
 
-<img data-src="../img/methodo-nace-rev.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="../img/methodo-nace-rev_en.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="leveraging-llms" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Leveraging LLMs</h2>
 <ul>
-<li><p><span class="orange"><strong>Retrieval/Context Augmented Generation</strong></span> (RAG/CAG) vs <span class="orange"><strong>fine-tunning</strong></span></p></li>
-<li><p><span class="orange"><strong>2 possibilities</strong></span>:</p>
+<li><span class="orange"><strong>Augmented Generation</strong></span> (RAG/CAG) vs <span class="orange"><strong>fine-tunning</strong></span></li>
+</ul>
 <ol type="1">
 <li><span class="blue2"><strong>RAG</strong></span>: <span class="green2"><strong>Unstructured prior knowledge</strong></span> based on similarity of notes embeddings</li>
 <li><span class="blue2"><strong>CAG</strong></span>: <span class="green2"><strong>Structured prior knowledge</strong></span> based on known mappings</li>
-</ol></li>
-<li><p>💡 Core idea ➡️ Provide key information to the LLM to translate NACE Rév. 2 into 2.1</p></li>
+</ol>
+<ul>
+<li>💡 Core idea ➡️ Provide key information to the LLM to translate NACE Rév. 2 into 2.1</li>
 </ul>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -461,11 +462,8 @@
 <section id="evaluation-challenge" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Evaluation Challenge</h2>
 <ul>
-<li><p>❓ Key question: How to <span class="orange"><strong>evaluate</strong></span> an LLM?:</p>
-<ul>
-<li>Comment <span class="orange"><strong>évaluer</strong></span> un LLM ?</li>
-<li>Classification seems simpler… but <span class="orange"><strong>complexity of taxonomy</strong></span> matters.</li>
-</ul></li>
+<li><p>❓ Key question: How to <span class="orange"><strong>evaluate</strong></span> an LLM?:</p></li>
+<li><p>Classification seems simpler… but <span class="orange"><strong>complexity of taxonomy</strong></span> matters.</p></li>
 <li><p>Used <span class="math inline">\(27k\)</span> manual annotations as the benchmark 🥇</p></li>
 <li><p><span class="orange"><strong>3 performance metrics</strong></span>:</p>
 <ul>
@@ -477,7 +475,7 @@
 </section>
 <section id="performance-of-models" class="slide level2 scollable" data-background-image="background.svg" data-background-size="contain">
 <h2>Performance of models</h2>
-<div id="573dc049" class="cell" data-execution_count="1">
+<div id="1bbefe68" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -502,7 +500,7 @@
 </section>
 <section id="annotation-fusion" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Annotation Fusion</h2>
-<div id="e848d9b9" class="cell" data-execution_count="2">
+<div id="959174fa" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -523,7 +521,7 @@
 </section>
 <section id="retraining-accuracy" class="slide level2" data-background-color="white" data-background-image="background.svg" data-background-size="contain">
 <h2>Retraining Accuracy</h2>
-<div id="f72d2be5" class="cell" data-execution_count="3">
+<div id="baaf261a" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
