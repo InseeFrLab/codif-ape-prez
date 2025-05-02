@@ -1,5 +1,5 @@
 ---
-title: "NACE Rév. 2.1 transition: Retraining an ML model in production using LLM"
+title: "NACE Rév. 2.1 update: Retraining an ML model in production using LLM"
 subtitle: |
   **[UNECE Machine Learning for Official Statistics Workshop 2025]{.orange}**
 author: |

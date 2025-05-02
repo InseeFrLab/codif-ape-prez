@@ -1,6 +1,6 @@
 ## ML Model Robustness
 
 - ML models are trained using [**reference datasets**]{.orange} tailored for a specific task.
-- In practice, real-world data often [**drifts over time**]{.orange} from these reference sets ➡️ performance degradation?
+- In practice, real-world data often [**drifts over time**]{.orange} from these reference datasets ➡️ performance degradation?
 - Regular [**retraining**]{.orange} becomes essential.
-- A particularly challenging case in public statistics is the [**change in classification systems**]{.blue2}.
+- A particularly challenging case in official statistics is the [**change in the classification**]{.blue2}.

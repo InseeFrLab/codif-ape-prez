@@ -1,8 +1,7 @@
 ## Evaluation Challenge
 
 - ❓ Key question: How to [**evaluate**]{.orange} an LLM?: 
-  - Comment [**évaluer**]{.orange} un LLM ?
-  - Classification seems simpler... but [**complexity of taxonomy**]{.orange} matters.
+- Classification seems simpler... but [**complexity of taxonomy**]{.orange} matters.
 
 - Used $27k$ manual annotations as the benchmark 🥇
   
@@ -19,7 +18,7 @@ from plotnine import *
 
 # Create the data
 data = {
-    'model': ['Qwen', 'Qwen', 'Qwen',
+    'model': ['Qwen2.5', 'Qwen2.5', 'Qwen2.5',
               'Ministral', 'Ministral', 'Ministral',
               'Mistral', 'Mistral', 'Mistral',
               'Llama3.1', 'Llama3.1', 'Llama3.1'],
@@ -34,7 +33,7 @@ data = {
 df = pd.DataFrame(data)
 
 # Define the model order (you can adjust this if you want a different order)
-model_order = ['Qwen', 'Ministral', 'Mistral', 'Llama3.1']
+model_order = ['Qwen2.5', 'Ministral', 'Mistral', 'Llama3.1']
 df['model'] = pd.Categorical(df['model'], categories=model_order, ordered=True)
 
 accuracy_order = ["Précision totale", 'Précision "LLM"', 'Précision parmi les "codables"']
@@ -84,7 +83,7 @@ from plotnine import *
 
 # Create the data
 data = {
-    'model': ['Qwen'] * 5 + ['Ministral'] * 5 + ['Mistral'] * 5 + ['Llama3.1'] * 5 + ['Cascade'] * 5 + ['Vote'] * 5,
+    'model': ['Qwen2.5'] * 5 + ['Ministral'] * 5 + ['Mistral'] * 5 + ['Llama3.1'] * 5 + ['Cascade'] * 5 + ['Vote'] * 5,
     'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 6,
     'accuracy': [.8431, .8213, .7335, .6835, .6657,
                  .9016, .8726, .7729, .7044, .6784,
@@ -98,7 +97,7 @@ data = {
 df = pd.DataFrame(data)
 
 # Define the model order (you can adjust this if you want a different order)
-model_order = ['Qwen', 'Ministral', 'Mistral', 'Llama3.1', "Cascade", "Vote",]
+model_order = ['Qwen2.5', 'Ministral', 'Mistral', 'Llama3.1', "Cascade", "Vote",]
 df['model'] = pd.Categorical(df['model'], categories=model_order, ordered=True)
 
 # Define the correct order of levels

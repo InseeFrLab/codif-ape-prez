@@ -2,24 +2,23 @@
 
 - 🎯 [**Goal**]{.orange}: Build the most comprehensive training dataset possible.
 - One-shot experimentation ➡️ not intended for production reproducibility.
-- Leveraging [**LLMs**]{.orange} for automated NNACE Rév. 2.1 labeling.
+- Leveraging [**LLMs**]{.orange} for automated NACE Rév. 2.1 labeling.
 - [**Data**]{.orange} used: 
-  1. Stock [**Sirene 4**]{.blue2}  ($~2.7M$ records)
-  2. [**Table de passage**]{.blue2} from NACE experts
+  1. [**New registry**]{.blue2} stock dataset ($~2.7M$ records)
+  2. [**Mapping table**]{.blue2} from NACE experts
   3. NACE [**explanatory notes**]{.blue2}
   4. [**Manually annotated data**]{.blue2} ($~27k$ entries)
 
 ## Methodology
 
-![](../img/methodo-nace-rev.png){fig-align="center"}
+![](../img/methodo-nace-rev_en.png){fig-align="center"}
 
 ## Leveraging LLMs
 
-- [**Retrieval/Context Augmented Generation**]{.orange} (RAG/CAG) vs [**fine-tunning**]{.orange}
+- [**Augmented Generation**]{.orange} (RAG/CAG) vs [**fine-tunning**]{.orange}
 
-- [**2 possibilities**]{.orange}:
-  1. [**RAG**]{.blue2}: [**Unstructured prior knowledge**]{.green2} based on similarity of notes embeddings
-  2. [**CAG**]{.blue2}: [**Structured prior knowledge**]{.green2} based on known mappings
+1. [**RAG**]{.blue2}: [**Unstructured prior knowledge**]{.green2} based on similarity of notes embeddings
+2. [**CAG**]{.blue2}: [**Structured prior knowledge**]{.green2} based on known mappings
 
 - 💡 Core idea ➡️ Provide key information to the LLM to translate NACE Rév. 2 into 2.1
 

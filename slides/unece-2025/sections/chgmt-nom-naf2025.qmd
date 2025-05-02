@@ -3,8 +3,8 @@
 
 - [**Phased adoption**]{.orange} approach:
 - [**2025**]{.orange} ➡️ dual labeling in both NACE Rév. 2 and 2.1
-- [**2026**]{.orange} ➡️ improved classification using NACE Rév. 2.1.
-- [**2027**]{.orange} ➡️ full [**NACE Rév. 2.1**]{.blue2} classification while maintaining legacy NACE Rév. 2 codes.
+- [**2026**]{.orange} ➡️ improving the NACE Rév. 2.1. classifier model
+- [**2027**]{.orange} ➡️ full [**NACE Rév. 2.1**]{.blue2} classification while maintaining legacy NACE Rév. 2 codes for specific usages.
 
 
 ## What’s New in NACE Rév. 2.1?
@@ -13,7 +13,7 @@
 - Mainly fine-grained splits at class level (level 4), but not exclusively.
 - [**551 unambiguous mappings**]{.orange}, i.e., one-to-one correspondence ➡️ ideal case! 👌
 
-![](../img/univoques.png){fig-align="center"}
+![](../img/univoques_en.png){fig-align="center"}
 
 
 ## Ambiguous Cases {.scrollable}
@@ -21,7 +21,7 @@
 - [**181 ambiguous mappings**]{.orange}, i.e., one-to-many ➡️ challenging! 🚩
 - Requires [**expert review**]{.orange} for proper recoding.
 
-![](../img/multivoques.png){fig-align="center"}
+![](../img/multivoques_en.png){fig-align="center"}
 
 
 <details> 
@@ -48,17 +48,17 @@
 
 ## Multiple Challenges
 
-- Need to recode the [**stock**]{.orange}  of Sirene forms ➡️ over [**14 million**]{.orange} entries.
-- Model prediction on [**new data flow**]{.orange} requires a clean [**stock**]{.orange} base.
+- Need to recode the [**stock**]{.orange} of the registry forms ➡️ over [**14 million**]{.orange} entries.
+- Building a classifier for [**new data flow**]{.orange} requires a clean [**stock**]{.orange} base as a training dataset.
 - Previous fastText model trained on over [**10 million**]{.orange} labeled entries.
 - Performance is [**highly sensitive**]{.orange} to training data volume.
 
 ## Available Data
 
-- Old registry dataset: [**$~10$ millions**]{.blue2}  entries, but poorly suited for new labels.
-- New registry dataset: [**$~2.7$ millions**]{.blue2} entries.
-    - Unambiguous: [**$1.3$ millions**]{.blue2}, covering 504 sub-classes.
-    - Ambiguous: [**$1.4$ millions**]{.blue2} obs. et 177 sous-classes
+- Old registry dataset: [**$~10$ million**]{.blue2}  entries, but poorly suited for new labels.
+- New registry dataset: [**$~2.7$ million**]{.blue2} entries.
+    - Unambiguous: [**$1.3$ million**]{.blue2}, covering [**504 sub-classes**]{.green2}.
+    - Ambiguous: [**$1.4$ million**]{.blue2}, covering [**177 sub-classes**]{.green2}.
 
 - [**Manual annotation campaign**]{.orange} is critical.
 
@@ -70,4 +70,4 @@
   - Assign a [**NACE Rév. 2.1**]{.blue2} code 🚀
   - Assess [**NACE Rév. 2**]{.blue2} code quality 🗸
   - 
-Current count: $~27k$ annotated entries... still insufficient!
+Current count: $~27k$ [**annotated entries**]{.green2}... still insufficient!
