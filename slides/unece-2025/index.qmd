@@ -22,7 +22,7 @@ controls: true
 css: ../custom.css
 ascii: true
 ---
-
+ 
 # 1️⃣ Introduction
 
 {{< include sections/introduction.qmd >}}
@@ -31,11 +31,11 @@ ascii: true
 
 {{< include sections/chgmt-nom-naf2025.qmd >}}
 
-# 3️⃣ Méthodologie appliquée
+# 3️⃣ Methodology applied
 
 {{< include sections/methodo.qmd >}}
 
-# 4️⃣ Résultats 
+# 4️⃣ Results 
 
 
 {{< include sections/resultats.qmd >}}
