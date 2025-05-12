@@ -8,7 +8,7 @@
 - [**3 performance metrics**]{.orange}:
   - Overall [**accuracy**]{.blue2}
   - Accuracy among [**codable entries**]{.blue2}
-  - Accuracy of [**LLM-only decisions**]{.blue2}
+  - Accuracy of [**LLM only**]{.blue2}
 
 ## Performance of models {.scollable}
 ```{python}
@@ -22,7 +22,7 @@ data = {
               'Ministral', 'Ministral', 'Ministral',
               'Mistral', 'Mistral', 'Mistral',
               'Llama3.1', 'Llama3.1', 'Llama3.1'],
-    'accuracy_type': ["Précision totale", 'Précision "LLM"', 'Précision parmi les "codables"'] * 4,
+    'accuracy_type': ["Overall accuracy", 'Accuracy "LLM-only"', 'Accuracy among "codable"'] * 4,
     'accuracy': [.6657, .7397, .7300,
                 .6784, .7538, .6786,
                 .7173, .7971, .7238,
@@ -36,7 +36,7 @@ df = pd.DataFrame(data)
 model_order = ['Qwen2.5', 'Ministral', 'Mistral', 'Llama3.1']
 df['model'] = pd.Categorical(df['model'], categories=model_order, ordered=True)
 
-accuracy_order = ["Précision totale", 'Précision "LLM"', 'Précision parmi les "codables"']
+accuracy_order = ["Overall accuracy", 'Accuracy "LLM-only"', 'Accuracy among "codable"']
 df['accuracy_type'] = pd.Categorical(df['accuracy_type'], categories=accuracy_order, ordered=True)
 
 # Format accuracy values for labels
@@ -84,7 +84,7 @@ from plotnine import *
 # Create the data
 data = {
     'model': ['Qwen2.5'] * 5 + ['Ministral'] * 5 + ['Mistral'] * 5 + ['Cascade'] * 5 + ['Vote'] * 5,
-    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 5,
+    'level': ['Section', 'Division', 'Group', 'Class', 'Sub-class'] * 5,
     'accuracy': [.8431, .8213, .7335, .6835, .6657,
                  .9016, .8726, .7729, .7044, .6784,
                  .9110, .8869, .7928, .7375, .7173,
@@ -100,7 +100,7 @@ model_order = ['Qwen2.5', 'Ministral', 'Mistral', "Cascade", "Vote",]
 df['model'] = pd.Categorical(df['model'], categories=model_order, ordered=True)
 
 # Define the correct order of levels
-level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
+level_order = ['Sub-class', 'Class', 'Group', 'Division','Section',]
 
 # Convert level to categorical with the specified order
 df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
@@ -148,8 +148,8 @@ from plotnine import *
 
 # Create the data
 data = {
-    'data_type': ['Données Test'] * 5 + ['Données manuellement annotées'] * 5,
-    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 2,
+    'data_type': ['Test data'] * 5 + ['Manually annotated data'] * 5,
+    'level': ['Section', 'Division', 'Group', 'Class', 'Sub-class'] * 2,
     'accuracy': [
         0.8551939324497377,
         0.8328925927834847,
@@ -168,7 +168,7 @@ data = {
 df = pd.DataFrame(data)
 
 # Define the correct order of levels
-level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
+level_order = ['Sub-class', 'Class', 'Group', 'Division','Section',]
 
 # Convert level to categorical with the specified order
 df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
@@ -231,7 +231,7 @@ d3.json(urlApe).then( res => {
     </caption>
     <tr>
       <th style="text-align:center;">Description (NACE Rév. 2.1)</th>
-      <th>Probabilité</th>
+      <th>Probability</th>
     </tr>
       ${rows}
   </table>`
