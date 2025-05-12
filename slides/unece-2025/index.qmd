@@ -1,10 +1,10 @@
 ---
 title: "NACE Rév. 2.1 update: Retraining an ML model in production using LLM"
 subtitle: |
-  **[UNECE Machine Learning for Official Statistics Workshop 2025]{.orange}**
-author: |
+  **[UNECE Generative AI and Official Statistics Workshop 2025]{.orange}**
+author: Generative AI and Official Statistics
   [Thomas Faria](https://github.com/ThomasFaria),
-date: "11/06/2024"
+date: "13/05/2025"
 date-format: "D MMMM YYYY"
 slide-number: true
 # uncomment for French presentations:
@@ -22,7 +22,7 @@ controls: true
 css: ../custom.css
 ascii: true
 ---
- 
+
 # 1️⃣ Introduction
 
 {{< include sections/introduction.qmd >}}
