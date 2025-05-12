@@ -9,8 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.30">
 
-  <meta name="author" content="Generative AI and Official Statistics Thomas Faria,">
-  <meta name="dcterms.date" content="2026-01-05">
+  <meta name="author" content="Thomas Faria,">
   <title>Présentations codification automatique de l'APE – NACE Rév. 2.1 update: Retraining an ML model in production using LLM</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -210,12 +209,11 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Generative AI and Official Statistics <a href="https://github.com/ThomasFaria">Thomas Faria</a>, 
+ 
 </div>
 </div>
 </div>
 
-  <p class="date">5 January 2026</p>
 </section>
 <section>
 <section id="introduction" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
@@ -469,13 +467,13 @@ Generative AI and Official Statistics <a href="https://github.com/ThomasFaria">T
 <ul>
 <li>Overall <span class="blue2"><strong>accuracy</strong></span></li>
 <li>Accuracy among <span class="blue2"><strong>codable entries</strong></span></li>
-<li>Accuracy of <span class="blue2"><strong>LLM-only decisions</strong></span></li>
+<li>Accuracy of <span class="blue2"><strong>LLM only</strong></span></li>
 </ul></li>
 </ul>
 </section>
 <section id="performance-of-models" class="slide level2 scollable" data-background-image="background.svg" data-background-size="contain">
 <h2>Performance of models</h2>
-<div id="96397f42" class="cell" data-execution_count="1">
+<div id="6412c98f" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -500,7 +498,7 @@ Generative AI and Official Statistics <a href="https://github.com/ThomasFaria">T
 </section>
 <section id="annotation-fusion" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Annotation Fusion</h2>
-<div id="4a230540" class="cell" data-execution_count="2">
+<div id="a10bf816" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -521,7 +519,7 @@ Generative AI and Official Statistics <a href="https://github.com/ThomasFaria">T
 </section>
 <section id="retraining-accuracy" class="slide level2" data-background-color="white" data-background-image="background.svg" data-background-size="contain">
 <h2>Retraining Accuracy</h2>
-<div id="7cbb18da" class="cell" data-execution_count="3">
+<div id="8f1892dd" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -562,7 +560,7 @@ Generative AI and Official Statistics <a href="https://github.com/ThomasFaria">T
 <span id="cb3-25"><a></a><span class="vs">    &lt;/caption&gt;</span></span>
 <span id="cb3-26"><a></a><span class="vs">    &lt;tr&gt;</span></span>
 <span id="cb3-27"><a></a><span class="vs">      &lt;th style="text-align:center;"&gt;Description (NACE Rév. 2.1)&lt;/th&gt;</span></span>
-<span id="cb3-28"><a></a><span class="vs">      &lt;th&gt;Probabilité&lt;/th&gt;</span></span>
+<span id="cb3-28"><a></a><span class="vs">      &lt;th&gt;Probability&lt;/th&gt;</span></span>
 <span id="cb3-29"><a></a><span class="vs">    &lt;/tr&gt;</span></span>
 <span id="cb3-30"><a></a><span class="vs">      </span><span class="sc">${</span>rows<span class="sc">}</span></span>
 <span id="cb3-31"><a></a><span class="vs">  &lt;/table&gt;`</span></span>
@@ -818,7 +816,7 @@ Generative AI and Official Statistics <a href="https://github.com/ThomasFaria">T
       });
     </script>
     <script type="ojs-module-contents">
-    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBhY3Rpdml0ZSA9IElucHV0cy50ZXh0KFxuICB7bGFiZWw6ICcnLCB2YWx1ZTogJ2NvaWZmZXVyJywgd2lkdGg6IDgwMH1cbilcblxudXJsQXBlID0gYGh0dHBzOi8vY29kaWZpY2F0aW9uLWFwZS1kZXYubGFiLnNzcGNsb3VkLmZyL3ByZWRpY3Q/ZGVzY3JpcHRpb25fYWN0aXZpdHk9JHthY3Rpdml0ZX0lMjAmdHlwZV9mb3JtPVgmZXZlbnQ9MDFQJm5iX2VjaG9zX21heD0zJnByb2JfbWluPTAuMDAwOWBcblxuZDMuanNvbih1cmxBcGUpLnRoZW4oIHJlcyA9PiB7XG4gIHZhciBJQywgcmVzdWx0cztcbiAgKCB7SUMsIC4uLnJlc3VsdHN9ID0gcmVzIClcblxuICBJQyA9IHBhcnNlRmxvYXQoSUMpXG5cbiAgY29uc3Qgcm93cyA9IE9iamVjdC52YWx1ZXMocmVzdWx0cykubWFwKCBvYmogPT4ge1xuICAgIHJldHVybiBgXG4gICAgPHRyPlxuICAgICAgPHRkPiR7b2JqLmNvZGV9IHwgJHtvYmoubGliZWxsZX08L3RkPlxuICAgICAgPHRkPiR7b2JqLnByb2JhYmlsaXRlLnRvRml4ZWQoMyl9PC90ZD5cbiAgICA8L3RyPlxuICBgXG4gIH0pLmpvaW4oJycpXG4gIFxuICByZXR1cm4gaHRtbGBcbiAgPHRhYmxlPlxuICAgIDxjYXB0aW9uPlxuICAgICAgQ29uZmlkZW5jZSBpbmRleDogJHtJQy50b0ZpeGVkKDMpfVxuICAgIDwvY2FwdGlvbj5cbiAgICA8dHI+XG4gICAgICA8dGggc3R5bGU9XCJ0ZXh0LWFsaWduOmNlbnRlcjtcIj5EZXNjcmlwdGlvbiAoTkFDRSBSw6l2LiAyLjEpPC90aD5cbiAgICAgIDx0aD5Qcm9iYWJpbGl0w6k8L3RoPlxuICAgIDwvdHI+XG4gICAgICAke3Jvd3N9XG4gIDwvdGFibGU+YFxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImltcG9ydCB7IGRlYm91bmNlIH0gZnJvbSBcIkBtYm9zdG9jay9kZWJvdW5jaW5nLWlucHV0XCIgXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2FjdGl2aXRlJykifV19
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBhY3Rpdml0ZSA9IElucHV0cy50ZXh0KFxuICB7bGFiZWw6ICcnLCB2YWx1ZTogJ2NvaWZmZXVyJywgd2lkdGg6IDgwMH1cbilcblxudXJsQXBlID0gYGh0dHBzOi8vY29kaWZpY2F0aW9uLWFwZS1kZXYubGFiLnNzcGNsb3VkLmZyL3ByZWRpY3Q/ZGVzY3JpcHRpb25fYWN0aXZpdHk9JHthY3Rpdml0ZX0lMjAmdHlwZV9mb3JtPVgmZXZlbnQ9MDFQJm5iX2VjaG9zX21heD0zJnByb2JfbWluPTAuMDAwOWBcblxuZDMuanNvbih1cmxBcGUpLnRoZW4oIHJlcyA9PiB7XG4gIHZhciBJQywgcmVzdWx0cztcbiAgKCB7SUMsIC4uLnJlc3VsdHN9ID0gcmVzIClcblxuICBJQyA9IHBhcnNlRmxvYXQoSUMpXG5cbiAgY29uc3Qgcm93cyA9IE9iamVjdC52YWx1ZXMocmVzdWx0cykubWFwKCBvYmogPT4ge1xuICAgIHJldHVybiBgXG4gICAgPHRyPlxuICAgICAgPHRkPiR7b2JqLmNvZGV9IHwgJHtvYmoubGliZWxsZX08L3RkPlxuICAgICAgPHRkPiR7b2JqLnByb2JhYmlsaXRlLnRvRml4ZWQoMyl9PC90ZD5cbiAgICA8L3RyPlxuICBgXG4gIH0pLmpvaW4oJycpXG4gIFxuICByZXR1cm4gaHRtbGBcbiAgPHRhYmxlPlxuICAgIDxjYXB0aW9uPlxuICAgICAgQ29uZmlkZW5jZSBpbmRleDogJHtJQy50b0ZpeGVkKDMpfVxuICAgIDwvY2FwdGlvbj5cbiAgICA8dHI+XG4gICAgICA8dGggc3R5bGU9XCJ0ZXh0LWFsaWduOmNlbnRlcjtcIj5EZXNjcmlwdGlvbiAoTkFDRSBSw6l2LiAyLjEpPC90aD5cbiAgICAgIDx0aD5Qcm9iYWJpbGl0eTwvdGg+XG4gICAgPC90cj5cbiAgICAgICR7cm93c31cbiAgPC90YWJsZT5gXG59KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaW1wb3J0IHsgZGVib3VuY2UgfSBmcm9tIFwiQG1ib3N0b2NrL2RlYm91bmNpbmctaW5wdXRcIiBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnYWN0aXZpdGUnKSJ9XX0=
     </script>
     <script type="module">
     if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
