@@ -1,0 +1,39 @@
+---
+title: "Retraining a traditional ML model in production using LLM and next steps"
+subtitle: |
+  **[INSEE projects]{.orange}**
+author: "[Thomas Faria](https://github.com/ThomasFaria) and [Meilame Tayebjee](https://github.com/meilame-tayebjee)"
+# date: "13/05/2025"
+# date-format: "D MMMM YYYY"
+slide-number: true
+# uncomment for French presentations:
+lang: en-GB
+# for blind readers:
+slide-tone: false
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  onyxia-revealjs:
+    output-file: index.html
+controls: true
+css: ../custom.css
+ascii: true
+---
+
+# 1️⃣ Introduction
+
+{{< include sections/introduction.qmd >}}
+
+# 2️⃣ Transition towards NACE Rév. 2.1
+
+{{< include sections/chgmt-nom-naf2025.qmd >}}
+
+# 3️⃣ Methodology applied
+
+{{< include sections/methodo.qmd >}}
+
+# 4️⃣ Results 
+
+{{< include sections/resultats.qmd >}}
