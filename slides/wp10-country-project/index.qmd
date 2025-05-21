@@ -1,7 +1,5 @@
 ---
-title: "Retraining a traditional ML model in production using LLM and next steps"
-subtitle: |
-  **[INSEE projects]{.orange}**
+title: "Ongoing automatic coding projects at Insee"
 author: "[Thomas Faria](https://github.com/ThomasFaria) and [Meilame Tayebjee](https://github.com/meilame-tayebjee)"
 # date: "13/05/2025"
 # date-format: "D MMMM YYYY"
@@ -22,18 +20,41 @@ css: ../custom.css
 ascii: true
 ---
 
+# Plan
+
+Dual presentation:
+
+- **Relabeling training sets in a new nomenclature** (cluster 5)
+- **Modernize the model using PyTorch in production** (cluster 4)
+
+# Retraining a traditional ML model in production using LLM and next steps
+
 # 1️⃣ Introduction
 
-{{< include sections/introduction.qmd >}}
+{{< include sections/changement-naf/introduction.qmd >}}
 
 # 2️⃣ Transition towards NACE Rév. 2.1
 
-{{< include sections/chgmt-nom-naf2025.qmd >}}
+{{< include sections/changement-naf/chgmt-nom-naf2025.qmd >}}
 
 # 3️⃣ Methodology applied
 
-{{< include sections/methodo.qmd >}}
+{{< include sections/changement-naf/methodo.qmd >}}
 
 # 4️⃣ Results 
 
-{{< include sections/resultats.qmd >}}
+{{< include sections/changement-naf/resultats.qmd >}}
+
+# PyTorch in production: why and how ?
+
+# 1️⃣ Current situation
+
+{{< include sections/pytorch-MLOps/current_state.qmd >}}
+
+# 2️⃣ Towards PyTorch-based models...
+
+{{< include sections/pytorch-MLOps/pytorch.qmd >}}
+
+# 3️⃣ ... in production
+
+{{< include sections/pytorch-MLOps/production.qmd >}}

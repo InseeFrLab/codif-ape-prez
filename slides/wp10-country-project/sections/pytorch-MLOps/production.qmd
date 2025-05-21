@@ -1,0 +1,32 @@
+## Some obstacles:
+
+Being a general framework, PyTorch-based models are *slower* than the original fastText library.
+
+- ⚡ Better to have GPU for high-scale training in reasonable time
+- ☢️ A constraint: [**CPU-bound inference in production**]{.orange}. Requires to be extremely careful regarding size of the model and pre-deployment tests.
+
+First step has been to train a model small enough to have a response time [**lower than 400 ms**]{.orange} on CPU, while keeping [**high prediction accuracies**]{.orange}.
+
+## Deployment stack
+
+[MLFlow](https://mlflow.org/) is at the core of the pipeline:
+
+- Classicly: model life cycle incl. training monitoring, evaluation metric logging, model versioning...
+- And also fast deployment using a [**PyFunc**]{.orange} wrapper specifically designed by MLFlow
+
+[FastAPI](https://fastapi.tiangolo.com/) for API development, and [Pydantic](https://docs.pydantic.dev/latest/) for data validation. API is deployed on a [Kubernetes](https://kubernetes.io/) cluster.
+
+## Conclusion and next steps {.scrollable}
+
+- ⚠️ Transitioning to PyTorch in production requires [**care**]{.orange} to deploy in production...
+- 👐 ... but enables to open many doors: modernization, better maintenance, state-of-the-art technology... [**It's well worth it !**]{.orange}
+
+
+Next steps include:
+
+
+- [**More complex architectures**]{.orange}: attention mechanisms, more layers... - to improve on the fastText methodology
+- Use [**HuggingFace**]{.orange}: pre-trained models, tokenizers (or train a new tokenizer)
+- Better handling of uncertainty: calibration and conformal prediction
+
+

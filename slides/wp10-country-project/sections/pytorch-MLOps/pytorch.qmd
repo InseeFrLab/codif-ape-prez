@@ -1,0 +1,110 @@
+## PyTorch: why ? Some strategic reflections...
+
+💡 Idea: Develop our custom PyTorch-based model to:
+
+- [**adapt**]{.orange} and [**customize**]{.orange} the architecture for our specific needs (text classification with additional categorical variables)
+- limit dependencies to external libraries and [**internalize maintenance**]{.orange} for more robustness in the long-term
+- access to the [**vibrant deep learning / NLP community**]{.orange} to develop additional features (**explainability** with [Captum](https://captum.ai/), **calibration** with [torch-uncertainty](https://github.com/ENSTA-U2IS-AI/torch-uncertainty/tree/main)...)...
+- ... or use [**pre-trained models**]{.orange} on [Hugging Face](https://huggingface.co/)
+
+## Our solution: the [torchFastText](https://github.com/InseeFrLab/torch-fastText) package
+
+The package:
+
+- Provides a [**standard**]{.orange} yet [**flexible**]{.orange} architecture for automatic coding needs...
+- ... that stays close to the fastText methodology for now but is [**led to evolve**]{.orange}
+- Distributes the raw PyTorch model, a [**Lightning module**]{.orange} as well as a wrapper class for a quick grip
+- Is open-sourced and aims at fostering [**collaboration**]{.orange} ! Feel free to raise an issue, report a bug or open a PR.
+
+
+## PyTorch model & Lightning module {.scrollable}
+
+```{python}
+#| label: lightning-module
+#| echo: true
+#| fig-cap: "Initializing the torchFastText Lightning module"
+
+from torchFastText.model import FastTextModel, FastTextModule
+import torch
+
+model = FastTextModel(embedding_dim=80,
+                      num_classes=732,
+                      num_rows = 20000,
+                      categorical_vocabulary_sizes=[10, 20],
+                      categorical_embedding_dims=5
+                      )
+
+module = FastTextModule(
+    model=model,
+    loss= torch.nn.CrossEntropyLoss(),
+    optimizer=torch.optim.Adam,
+    optimizer_params={"lr": 0.001},
+    scheduler = None,
+    scheduler_params=None
+)
+print(model)
+print(module)
+```
+
+
+## Tokenizer {.scrollable}
+
+```{python}
+#| label: tokenizer
+#| echo: true
+#| fig-cap: "Initializing the NGramTokenizer"
+
+from torchFastText.datasets import NGramTokenizer
+
+training_text = ['boulanger', 'coiffeur', 'boucherie', 'boucherie charcuterie']
+
+tokenizer = NGramTokenizer(
+    min_n=3, 
+    max_n=6, 
+    num_tokens= 100,
+    len_word_ngrams=2, 
+    min_count=1, 
+    training_text=training_text
+    )
+
+print(tokenizer.tokenize(["boulangerie"])[0])
+```
+
+## The wrapper class {.scrollable}
+
+A quick way to launch a training in two lines of code.
+
+```{python}
+
+#| label: wrapper
+#| echo: true
+#| eval: false
+#| fig-cap: "Launching quickly a training with torchFastText"
+#| execute: 
+#|  enabled: false
+from torchFastText import torchFastText
+
+# Initialize the model
+model = torchFastText(
+    num_tokens=1000000,
+    embedding_dim=100,
+    min_count=5,
+    min_n=3,
+    max_n=6,
+    len_word_ngrams=True,
+    sparse=True
+)
+
+# Train the model
+model.train(
+    X_train=train_data,
+    y_train=train_labels,
+    X_val=val_data,
+    y_val=val_labels,
+    num_epochs=10,
+    batch_size=64
+)
+# Make predictions
+predictions = model.predict(test_data)
+```
+
