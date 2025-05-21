@@ -1,5 +1,5 @@
 ---
-title: "Retraining a traditional ML model in production using LLM and next steps"
+title: "Ongoing automatic coding projects at Insee"
 subtitle: |
   **[INSEE projects]{.orange}**
 author: "[Thomas Faria](https://github.com/ThomasFaria) and [Meilame Tayebjee](https://github.com/meilame-tayebjee)"
