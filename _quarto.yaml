@@ -1,7 +1,7 @@
 project:
   type: website
   render:
-    - /slides/wp10-country-project/*.qmd
+    - /slides/*.qmd
     - index.qmd
     - /cards/*.qmd
     
