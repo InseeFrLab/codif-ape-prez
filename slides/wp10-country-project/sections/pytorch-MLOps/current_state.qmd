@@ -1,0 +1,11 @@
+## fastText on production, but outdated ?
+
+- fastText: a powerful and efficient model currently used in production for NACE coding at Insee...
+- ... but the library [repo](https://github.com/facebookresearch/fastText/) has been archived on March 19th, 2024
+
+
+This non-maintenance is highly problematic in the medium-term:
+
+- Potential appearance of (non-fixable) [**bugs**]{.orange}
+- Conflicting versions of dependencies
+- [**Modernization hindrance**]{.orange}
