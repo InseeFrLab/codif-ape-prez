@@ -191,8 +191,6 @@
       margin-right: 0; 
     }
   </style>
-  <script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
-  <link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <meta property="og:title" content="Ongoing automatic coding projects at Insee – Présentations codification automatique de l’APE">
 <meta property="og:site_name" content="Présentations codification automatique de l'APE">
@@ -217,13 +215,13 @@
 <h1>Plan</h1>
 <p>Dual presentation:</p>
 <ul>
-<li><strong>Relabeling training sets in a new nomenclature</strong> (cluster 5)</li>
-<li><strong>Modernize the model using PyTorch in production</strong> (cluster 4)</li>
+<li><span class="orange"><strong>Relabeling training sets in a new nomenclature</strong></span> (cluster 5)</li>
+<li><span class="orange"><strong>Modernize the model using PyTorch in production</strong></span> (cluster 4)</li>
 </ul>
 </section>
 
-<section id="retraining-a-traditional-ml-model-in-production-using-llm-and-next-steps" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Retraining a traditional ML model in production using LLM and next steps</h1>
+<section id="retraining-a-traditional-ml-model-in-production-using-llm" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Retraining a traditional ML model in production using LLM</h1>
 
 </section>
 
@@ -485,7 +483,7 @@
 </section>
 <section id="performance-of-models" class="slide level2 scollable" data-background-image="background.svg" data-background-size="contain">
 <h2>Performance of models</h2>
-<div id="048c098b" class="cell" data-execution_count="1">
+<div id="59b9dbf0" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -510,7 +508,7 @@
 </section>
 <section id="annotation-fusion" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Annotation Fusion</h2>
-<div id="795b3411" class="cell" data-execution_count="2">
+<div id="7209b3ba" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -531,79 +529,12 @@
 </section>
 <section id="retraining-accuracy" class="slide level2" data-background-color="white" data-background-image="background.svg" data-background-size="contain">
 <h2>Retraining Accuracy</h2>
-<div id="77ec6d72" class="cell" data-execution_count="3">
+<div id="897a9883" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
 <p><img data-src="index_files/figure-revealjs/cell-4-output-1.png" width="1152" height="576"></p>
 </figure>
-</div>
-</div>
-</div>
-</section>
-<section id="the-nace-rév.-2.1-model" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
-<h2>The NACE Rév. 2.1 Model</h2>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="0" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -1;"><span id="cb3-0"><a></a>viewof activite <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>(</span>
-<span id="cb3-1"><a></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">'coiffeur'</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span>}</span>
-<span id="cb3-2"><a></a>)</span>
-<span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a>urlApe <span class="op">=</span> <span class="vs">`https://codification-ape-dev.lab.sspcloud.fr/predict?description_activity=</span><span class="sc">${</span>activite<span class="sc">}</span><span class="vs">%20&amp;type_form=X&amp;event=01P&amp;nb_echos_max=3&amp;prob_min=0.0009`</span></span>
-<span id="cb3-5"><a></a></span>
-<span id="cb3-6"><a></a>d3<span class="op">.</span><span class="fu">json</span>(urlApe)<span class="op">.</span><span class="fu">then</span>( res <span class="kw">=&gt;</span> {</span>
-<span id="cb3-7"><a></a>  <span class="kw">var</span> IC<span class="op">,</span> results<span class="op">;</span></span>
-<span id="cb3-8"><a></a>  ( {IC<span class="op">,</span> <span class="op">...</span>results} <span class="op">=</span> res )</span>
-<span id="cb3-9"><a></a></span>
-<span id="cb3-10"><a></a>  IC <span class="op">=</span> <span class="pp">parseFloat</span>(IC)</span>
-<span id="cb3-11"><a></a></span>
-<span id="cb3-12"><a></a>  <span class="kw">const</span> rows <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">values</span>(results)<span class="op">.</span><span class="fu">map</span>( obj <span class="kw">=&gt;</span> {</span>
-<span id="cb3-13"><a></a>    <span class="cf">return</span> <span class="vs">`</span></span>
-<span id="cb3-14"><a></a><span class="vs">    &lt;tr&gt;</span></span>
-<span id="cb3-15"><a></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>obj<span class="op">.</span><span class="at">code</span><span class="sc">}</span><span class="vs"> | </span><span class="sc">${</span>obj<span class="op">.</span><span class="at">libelle</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
-<span id="cb3-16"><a></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>obj<span class="op">.</span><span class="at">probabilite</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
-<span id="cb3-17"><a></a><span class="vs">    &lt;/tr&gt;</span></span>
-<span id="cb3-18"><a></a><span class="vs">  `</span></span>
-<span id="cb3-19"><a></a>  })<span class="op">.</span><span class="fu">join</span>(<span class="st">''</span>)</span>
-<span id="cb3-20"><a></a>  </span>
-<span id="cb3-21"><a></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb3-22"><a></a><span class="vs">  &lt;table&gt;</span></span>
-<span id="cb3-23"><a></a><span class="vs">    &lt;caption&gt;</span></span>
-<span id="cb3-24"><a></a><span class="vs">      Confidence index: </span><span class="sc">${</span>IC<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span></span>
-<span id="cb3-25"><a></a><span class="vs">    &lt;/caption&gt;</span></span>
-<span id="cb3-26"><a></a><span class="vs">    &lt;tr&gt;</span></span>
-<span id="cb3-27"><a></a><span class="vs">      &lt;th style="text-align:center;"&gt;Description (NACE Rév. 2.1)&lt;/th&gt;</span></span>
-<span id="cb3-28"><a></a><span class="vs">      &lt;th&gt;Probability&lt;/th&gt;</span></span>
-<span id="cb3-29"><a></a><span class="vs">    &lt;/tr&gt;</span></span>
-<span id="cb3-30"><a></a><span class="vs">      </span><span class="sc">${</span>rows<span class="sc">}</span></span>
-<span id="cb3-31"><a></a><span class="vs">  &lt;/table&gt;`</span></span>
-<span id="cb3-32"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-1" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-2" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-3" data-nodetype="expression">
-
-</div>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="-1" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -2;"><span id="cb4--1"><a></a><span class="im">import</span> { debounce } <span class="im">from</span> <span class="st">"@mbostock/debouncing-input"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-2" data-nodetype="declaration">
-
 </div>
 </div>
 </div>
@@ -659,26 +590,26 @@
 <section id="pytorch-model-lightning-module" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
 <h2>PyTorch model &amp; Lightning module</h2>
 <div id="lightning-module" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">from</span> torchFastText.model <span class="im">import</span> FastTextModel, FastTextModule</span>
-<span id="cb5-2"><a></a><span class="im">import</span> torch</span>
-<span id="cb5-3"><a></a></span>
-<span id="cb5-4"><a></a>model <span class="op">=</span> FastTextModel(embedding_dim<span class="op">=</span><span class="dv">80</span>,</span>
-<span id="cb5-5"><a></a>                      num_classes<span class="op">=</span><span class="dv">732</span>,</span>
-<span id="cb5-6"><a></a>                      num_rows <span class="op">=</span> <span class="dv">20000</span>,</span>
-<span id="cb5-7"><a></a>                      categorical_vocabulary_sizes<span class="op">=</span>[<span class="dv">10</span>, <span class="dv">20</span>],</span>
-<span id="cb5-8"><a></a>                      categorical_embedding_dims<span class="op">=</span><span class="dv">5</span></span>
-<span id="cb5-9"><a></a>                      )</span>
-<span id="cb5-10"><a></a></span>
-<span id="cb5-11"><a></a>module <span class="op">=</span> FastTextModule(</span>
-<span id="cb5-12"><a></a>    model<span class="op">=</span>model,</span>
-<span id="cb5-13"><a></a>    loss<span class="op">=</span> torch.nn.CrossEntropyLoss(),</span>
-<span id="cb5-14"><a></a>    optimizer<span class="op">=</span>torch.optim.Adam,</span>
-<span id="cb5-15"><a></a>    optimizer_params<span class="op">=</span>{<span class="st">"lr"</span>: <span class="fl">0.001</span>},</span>
-<span id="cb5-16"><a></a>    scheduler <span class="op">=</span> <span class="va">None</span>,</span>
-<span id="cb5-17"><a></a>    scheduler_params<span class="op">=</span><span class="va">None</span></span>
-<span id="cb5-18"><a></a>)</span>
-<span id="cb5-19"><a></a><span class="bu">print</span>(model)</span>
-<span id="cb5-20"><a></a><span class="bu">print</span>(module)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">from</span> torchFastText.model <span class="im">import</span> FastTextModel, FastTextModule</span>
+<span id="cb3-2"><a></a><span class="im">import</span> torch</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a>model <span class="op">=</span> FastTextModel(embedding_dim<span class="op">=</span><span class="dv">80</span>,</span>
+<span id="cb3-5"><a></a>                      num_classes<span class="op">=</span><span class="dv">732</span>,</span>
+<span id="cb3-6"><a></a>                      num_rows <span class="op">=</span> <span class="dv">20000</span>,</span>
+<span id="cb3-7"><a></a>                      categorical_vocabulary_sizes<span class="op">=</span>[<span class="dv">10</span>, <span class="dv">20</span>],</span>
+<span id="cb3-8"><a></a>                      categorical_embedding_dims<span class="op">=</span><span class="dv">5</span></span>
+<span id="cb3-9"><a></a>                      )</span>
+<span id="cb3-10"><a></a></span>
+<span id="cb3-11"><a></a>module <span class="op">=</span> FastTextModule(</span>
+<span id="cb3-12"><a></a>    model<span class="op">=</span>model,</span>
+<span id="cb3-13"><a></a>    loss<span class="op">=</span> torch.nn.CrossEntropyLoss(),</span>
+<span id="cb3-14"><a></a>    optimizer<span class="op">=</span>torch.optim.Adam,</span>
+<span id="cb3-15"><a></a>    optimizer_params<span class="op">=</span>{<span class="st">"lr"</span>: <span class="fl">0.001</span>},</span>
+<span id="cb3-16"><a></a>    scheduler <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb3-17"><a></a>    scheduler_params<span class="op">=</span><span class="va">None</span></span>
+<span id="cb3-18"><a></a>)</span>
+<span id="cb3-19"><a></a><span class="bu">print</span>(model)</span>
+<span id="cb3-20"><a></a><span class="bu">print</span>(module)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>FastTextModel(
   (embeddings): Embedding(20000, 80, padding_idx=0, sparse=True)
@@ -702,20 +633,20 @@ FastTextModule(
 <section id="tokenizer" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
 <h2>Tokenizer</h2>
 <div id="tokenizer" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> torchFastText.datasets <span class="im">import</span> NGramTokenizer</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a>training_text <span class="op">=</span> [<span class="st">'boulanger'</span>, <span class="st">'coiffeur'</span>, <span class="st">'boucherie'</span>, <span class="st">'boucherie charcuterie'</span>]</span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a>tokenizer <span class="op">=</span> NGramTokenizer(</span>
-<span id="cb7-6"><a></a>    min_n<span class="op">=</span><span class="dv">3</span>, </span>
-<span id="cb7-7"><a></a>    max_n<span class="op">=</span><span class="dv">6</span>, </span>
-<span id="cb7-8"><a></a>    num_tokens<span class="op">=</span> <span class="dv">100</span>,</span>
-<span id="cb7-9"><a></a>    len_word_ngrams<span class="op">=</span><span class="dv">2</span>, </span>
-<span id="cb7-10"><a></a>    min_count<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb7-11"><a></a>    training_text<span class="op">=</span>training_text</span>
-<span id="cb7-12"><a></a>    )</span>
-<span id="cb7-13"><a></a></span>
-<span id="cb7-14"><a></a><span class="bu">print</span>(tokenizer.tokenize([<span class="st">"boulangerie"</span>])[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">from</span> torchFastText.datasets <span class="im">import</span> NGramTokenizer</span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a>training_text <span class="op">=</span> [<span class="st">'boulanger'</span>, <span class="st">'coiffeur'</span>, <span class="st">'boucherie'</span>, <span class="st">'boucherie charcuterie'</span>]</span>
+<span id="cb5-4"><a></a></span>
+<span id="cb5-5"><a></a>tokenizer <span class="op">=</span> NGramTokenizer(</span>
+<span id="cb5-6"><a></a>    min_n<span class="op">=</span><span class="dv">3</span>, </span>
+<span id="cb5-7"><a></a>    max_n<span class="op">=</span><span class="dv">6</span>, </span>
+<span id="cb5-8"><a></a>    num_tokens<span class="op">=</span> <span class="dv">100</span>,</span>
+<span id="cb5-9"><a></a>    len_word_ngrams<span class="op">=</span><span class="dv">2</span>, </span>
+<span id="cb5-10"><a></a>    min_count<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb5-11"><a></a>    training_text<span class="op">=</span>training_text</span>
+<span id="cb5-12"><a></a>    )</span>
+<span id="cb5-13"><a></a></span>
+<span id="cb5-14"><a></a><span class="bu">print</span>(tokenizer.tokenize([<span class="st">"boulangerie"</span>])[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[['&lt;bo', 'bou', 'oul', 'ula', 'lan', 'boul', 'nge', '&lt;boul', 'eri', 'rie', 'ie&gt;', 'boul', 'boul', 'oula', 'ulan', 'lang', 'ange', 'nger', 'geri', 'erie', 'rie&gt;', '&lt;boul', 'boula', 'oulan', 'ulang', 'lange', 'anger', 'ngeri', 'gerie', 'erie&gt;', '&lt;boula', 'boulan', 'oulang', 'ngerie', 'langer', 'angeri', 'ngerie', 'gerie&gt;', '&lt;/s&gt;', 'boulangerie &lt;/s&gt;']]</code></pre>
 </div>
@@ -725,30 +656,30 @@ FastTextModule(
 <h2>The wrapper class</h2>
 <p>A quick way to launch a training in two lines of code.</p>
 <div id="wrapper" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execute&quot;,&quot;value&quot;:{&quot;enabled&quot;:false}}" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">from</span> torchFastText <span class="im">import</span> torchFastText</span>
-<span id="cb9-2"><a></a></span>
-<span id="cb9-3"><a></a><span class="co"># Initialize the model</span></span>
-<span id="cb9-4"><a></a>model <span class="op">=</span> torchFastText(</span>
-<span id="cb9-5"><a></a>    num_tokens<span class="op">=</span><span class="dv">1000000</span>,</span>
-<span id="cb9-6"><a></a>    embedding_dim<span class="op">=</span><span class="dv">100</span>,</span>
-<span id="cb9-7"><a></a>    min_count<span class="op">=</span><span class="dv">5</span>,</span>
-<span id="cb9-8"><a></a>    min_n<span class="op">=</span><span class="dv">3</span>,</span>
-<span id="cb9-9"><a></a>    max_n<span class="op">=</span><span class="dv">6</span>,</span>
-<span id="cb9-10"><a></a>    len_word_ngrams<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb9-11"><a></a>    sparse<span class="op">=</span><span class="va">True</span></span>
-<span id="cb9-12"><a></a>)</span>
-<span id="cb9-13"><a></a></span>
-<span id="cb9-14"><a></a><span class="co"># Train the model</span></span>
-<span id="cb9-15"><a></a>model.train(</span>
-<span id="cb9-16"><a></a>    X_train<span class="op">=</span>train_data,</span>
-<span id="cb9-17"><a></a>    y_train<span class="op">=</span>train_labels,</span>
-<span id="cb9-18"><a></a>    X_val<span class="op">=</span>val_data,</span>
-<span id="cb9-19"><a></a>    y_val<span class="op">=</span>val_labels,</span>
-<span id="cb9-20"><a></a>    num_epochs<span class="op">=</span><span class="dv">10</span>,</span>
-<span id="cb9-21"><a></a>    batch_size<span class="op">=</span><span class="dv">64</span></span>
-<span id="cb9-22"><a></a>)</span>
-<span id="cb9-23"><a></a><span class="co"># Make predictions</span></span>
-<span id="cb9-24"><a></a>predictions <span class="op">=</span> model.predict(test_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> torchFastText <span class="im">import</span> torchFastText</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a><span class="co"># Initialize the model</span></span>
+<span id="cb7-4"><a></a>model <span class="op">=</span> torchFastText(</span>
+<span id="cb7-5"><a></a>    num_tokens<span class="op">=</span><span class="dv">1000000</span>,</span>
+<span id="cb7-6"><a></a>    embedding_dim<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb7-7"><a></a>    min_count<span class="op">=</span><span class="dv">5</span>,</span>
+<span id="cb7-8"><a></a>    min_n<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb7-9"><a></a>    max_n<span class="op">=</span><span class="dv">6</span>,</span>
+<span id="cb7-10"><a></a>    len_word_ngrams<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb7-11"><a></a>    sparse<span class="op">=</span><span class="va">True</span></span>
+<span id="cb7-12"><a></a>)</span>
+<span id="cb7-13"><a></a></span>
+<span id="cb7-14"><a></a><span class="co"># Train the model</span></span>
+<span id="cb7-15"><a></a>model.train(</span>
+<span id="cb7-16"><a></a>    X_train<span class="op">=</span>train_data,</span>
+<span id="cb7-17"><a></a>    y_train<span class="op">=</span>train_labels,</span>
+<span id="cb7-18"><a></a>    X_val<span class="op">=</span>val_data,</span>
+<span id="cb7-19"><a></a>    y_val<span class="op">=</span>val_labels,</span>
+<span id="cb7-20"><a></a>    num_epochs<span class="op">=</span><span class="dv">10</span>,</span>
+<span id="cb7-21"><a></a>    batch_size<span class="op">=</span><span class="dv">64</span></span>
+<span id="cb7-22"><a></a>)</span>
+<span id="cb7-23"><a></a><span class="co"># Make predictions</span></span>
+<span id="cb7-24"><a></a>predictions <span class="op">=</span> model.predict(test_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -1005,17 +936,6 @@ FastTextModule(
           RevealZoom
         ]
       });
-    </script>
-    <script type="ojs-module-contents">
-    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBhY3Rpdml0ZSA9IElucHV0cy50ZXh0KFxuICB7bGFiZWw6ICcnLCB2YWx1ZTogJ2NvaWZmZXVyJywgd2lkdGg6IDgwMH1cbilcblxudXJsQXBlID0gYGh0dHBzOi8vY29kaWZpY2F0aW9uLWFwZS1kZXYubGFiLnNzcGNsb3VkLmZyL3ByZWRpY3Q/ZGVzY3JpcHRpb25fYWN0aXZpdHk9JHthY3Rpdml0ZX0lMjAmdHlwZV9mb3JtPVgmZXZlbnQ9MDFQJm5iX2VjaG9zX21heD0zJnByb2JfbWluPTAuMDAwOWBcblxuZDMuanNvbih1cmxBcGUpLnRoZW4oIHJlcyA9PiB7XG4gIHZhciBJQywgcmVzdWx0cztcbiAgKCB7SUMsIC4uLnJlc3VsdHN9ID0gcmVzIClcblxuICBJQyA9IHBhcnNlRmxvYXQoSUMpXG5cbiAgY29uc3Qgcm93cyA9IE9iamVjdC52YWx1ZXMocmVzdWx0cykubWFwKCBvYmogPT4ge1xuICAgIHJldHVybiBgXG4gICAgPHRyPlxuICAgICAgPHRkPiR7b2JqLmNvZGV9IHwgJHtvYmoubGliZWxsZX08L3RkPlxuICAgICAgPHRkPiR7b2JqLnByb2JhYmlsaXRlLnRvRml4ZWQoMyl9PC90ZD5cbiAgICA8L3RyPlxuICBgXG4gIH0pLmpvaW4oJycpXG4gIFxuICByZXR1cm4gaHRtbGBcbiAgPHRhYmxlPlxuICAgIDxjYXB0aW9uPlxuICAgICAgQ29uZmlkZW5jZSBpbmRleDogJHtJQy50b0ZpeGVkKDMpfVxuICAgIDwvY2FwdGlvbj5cbiAgICA8dHI+XG4gICAgICA8dGggc3R5bGU9XCJ0ZXh0LWFsaWduOmNlbnRlcjtcIj5EZXNjcmlwdGlvbiAoTkFDRSBSw6l2LiAyLjEpPC90aD5cbiAgICAgIDx0aD5Qcm9iYWJpbGl0eTwvdGg+XG4gICAgPC90cj5cbiAgICAgICR7cm93c31cbiAgPC90YWJsZT5gXG59KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaW1wb3J0IHsgZGVib3VuY2UgfSBmcm9tIFwiQG1ib3N0b2NrL2RlYm91bmNpbmctaW5wdXRcIiBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnYWN0aXZpdGUnKSJ9XX0=
-    </script>
-    <script type="module">
-    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
-    window._ojs.paths.runtimeToDoc = "../../slides/wp10-country-project";
-    window._ojs.paths.runtimeToRoot = "../..";
-    window._ojs.paths.docToRoot = "../..";
-    window._ojs.selfContained = false;
-    window._ojs.runtime.interpretFromScriptTags();
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
