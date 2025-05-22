@@ -24,10 +24,10 @@ ascii: true
 
 Dual presentation:
 
-- **Relabeling training sets in a new nomenclature** (cluster 5)
-- **Modernize the model using PyTorch in production** (cluster 4)
+- [**Relabeling training sets in a new nomenclature**]{.orange} (cluster 5)
+- [**Modernize the model using PyTorch in production**]{.orange} (cluster 4)
 
-# Retraining a traditional ML model in production using LLM and next steps
+# Retraining a traditional ML model in production using LLM 
 
 # 1️⃣ Introduction
 
