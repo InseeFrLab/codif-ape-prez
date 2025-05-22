@@ -50,9 +50,9 @@ jobs:
             AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
 
-        # - name: Install R packages
-        #   run: |
-        #     Rscript -e "install.packages(c('rmarkdown','readr','dplyr','ggplot2'))"
+        - name: Install R packages
+          run: |
+            Rscript -e "install.packages(c('rmarkdown','readr','dplyr','ggplot2'))"
 
         - name: Install python Dependencies
           run: | 

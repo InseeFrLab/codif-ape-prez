@@ -2,9 +2,6 @@ project:
   type: website
   render:
     - /slides/*/*.qmd
-    - "!/slides/bceao-2023/*.qmd"
-    - "!/slides/seminaire-dms-oct-2022/*.qmd"
-    - "!/slides/unece-conf/*.qmd"
     - index.qmd
     - /cards/*.qmd
     
