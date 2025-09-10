@@ -1,0 +1,43 @@
+---
+title: "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification"
+author: "[Cédric Couralet](https://github.com/micedre) and [Meilame Tayebjee](https://github.com/meilame-tayebjee)"
+date: "2025-10-01"
+date-format: "D MMMM YYYY"
+slide-number: true
+# uncomment for French presentations:
+lang: en-GB
+# for blind readers:
+slide-tone: false
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  onyxia-revealjs:
+    output-file: index.html
+controls: true
+css: ../custom.css
+ascii: true
+---
+
+💡 What will we  discuss about ?
+
+- MLOps pipeline for text classification at Insee
+- Deploying a PyTorch model in secured offline environment
+- Open-sourcing a PyTorch package
+
+# 1️⃣ Context
+
+{{< include sections/contexte.qmd >}}
+
+# 2️⃣ MLOps pipeline
+
+{{< include sections/pipeline.qmd >}}
+
+# 3️⃣ _torchFastText_, an open-source package to distribute PyTorch models
+
+{{< include sections/torchft.qmd >}}
+
+# 4️⃣ Perspectives 
+
+{{< include sections/perspectives.qmd >}}
