@@ -1,0 +1,13 @@
+## Use case
+
+- NACE automatic coding for the national business registry (Sirene)
+  - Text classification task with additional variables
+- If model is not confident, human annotators enter the loop (_reprise manuelle_)
+  - The automatic coding model is highly
+- Lot of training data, but not necessarily reliable
+  - Coming from previous classification by a deterministic algorithm (Sicore) (1996-2018) and fastText (2018-2025)
+- Training on GPU, inference on CPU (secured offline environment)
+
+## Beyond fastText ?
+
+- Archival of the library [repo](https://github.com/facebookresearch/fastText/) on March 19th, 2024

@@ -1,0 +1,149 @@
+
+
+
+## MLOps target
+
+- Model trained on Insee's [**cloud data science platform**]{.orange}, powered by Onyxia 😍
+- Microservice architecture running on a [**Kubernetes cluster**]{.orange}
+  - Experiment tracking and model store: [**MLflow**]{.blue2}
+  - Model served via an API: [**FastAPI**]{.blue2}
+  - Automation with [**ArgoCD**]{.blue2}
+  - Monitoring dashboard: [**Quarto**]{.blue2} and [**DuckDB**]{.blue2}
+  - Quality control: annotations with [**Label Studio**]{.blue2}
+
+## Experiment tracking
+
+- [**Argo Workflows**]{.orange} used for *distributed* training
+- [**MLflow**]{.orange} used to track/log experiments and compare runs
+
+## Model store
+
+- [**MLflow**]{.orange} also used as a model store
+- Models are packaged with all the metadata necessary to [**run inference**]{.orange}
+- Registered models are [**simply loaded**]{.orange} with this command where `version` is a number or a `"Production"` tag for example
+
+```python
+model = mlflow.pyfunc.load_model(
+    model_uri=f"models:/{model_name}/{version}"
+)
+```
+
+## API serving (1/2)
+
+- Text classification model served through a containerized [**REST API**]{.orange}:
+  - [**Simplicity**]{.blue2} for end users
+  - [**Standard query format**]{.blue2}
+  - [**Scalable**]{.blue2}
+  - [**Modular**]{.blue2} and [**portable**]{.blue2}
+- [**Multiple endpoints**]{.orange}: batch, online
+- Continuous deployment with [**Argo CD**]{.orange}
+
+## API serving (1/2)
+
+
+```{ojs}
+async function transformToPost(description, top_k) {
+  // Base URL with query parameters
+  const baseUrl = `https://codification-ape2025-pytorch.lab.sspcloud.fr/predict/?nb_echos_max=${top_k}&prob_min=0.01&num_workers=0&batch_size=1`;
+
+  // Build the request body according to the expected schema
+  const body = {
+    forms: [
+      {
+        description_activity: description
+      }
+    ]
+  };
+
+  // Send the POST request
+  const response = await fetch(baseUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  });
+
+  // Parse and return the JSON response
+  return response.json();
+}
+```
+
+
+```{ojs}
+viewof activite = Inputs.text({
+  label: '',
+  value: 'coiffure',
+  width: 800
+})
+
+viewof prediction = Inputs.button("Run Prediction", {
+  reduce: async () => {
+    return await transformToPost(activite, 5);
+  }
+})
+
+// afficher les résultats joliment
+prediction_table = {
+
+  // la réponse est un tableau avec un seul objet
+  const result = prediction[0]
+  const { IC, ...codes } = result
+
+  const rows = Object.values(codes).map(({ code, libelle, probabilite }) => {
+    return html`
+      <tr>
+        <td>${code} – ${libelle}</td>
+        <td style="text-align:right;">${probabilite.toFixed(3)}</td>
+      </tr>
+    `
+  })
+
+  return html`
+    <table style="border-collapse: collapse; width: 100%;">
+      <caption style="margin-bottom: 0.5em;">
+        Indice de confiance : ${(+IC).toFixed(3)}
+      </caption>
+      <thead>
+        <tr>
+          <th style="text-align:left;">Libellé (NA2008)</th>
+          <th style="text-align:right;">Probabilité</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows}
+      </tbody>
+    </table>
+  `
+}
+```
+
+
+```{ojs}
+import { debounce } from "@mbostock/debouncing-input" 
+```
+
+## API serving
+
+![](../img/api-datalab.png){fig-align="center"}
+
+## Monitoring 
+
+- [**Monitoring**]{.orange} the model in a production environment is necessary:
+  - To detect [**distribution drifts**]{.blue2} in input data
+  - To check that the model has a [**stable behavior**]{.blue2}
+  - To decide [**when to retrain**]{.blue2} a model
+- Ideally, we would like to track model [**accuracy in real-time**]{.orange} but expensive
+- In addition, monitoring of the API: [**latency**]{.orange}, [**memory managment**]{.orange}, [**disk usage**]{.orange}, etc.
+
+## Monitoring 
+
+- [**How**]{.orange} we do it:
+  - API [**logs**]{.blue2} its activity
+  - Logs are fetched and formatted [**periodically**]{.blue2}
+  - [**Metrics**]{.blue2} are computed from the formatted logs
+  - Display on a [**dashboard**]{.blue2}
+
+## Monitoring 
+
+![](../img/monitoring-datalab){fig-align="center"}
