@@ -1,44 +1,138 @@
+## The ideal MLOps pipeline...
+
+![](https://www.ml4devs.com/images/illustrations/ml-lifecycle-mlops-eternal-knot.webp)
 
 
+## ... vs ours
 
-## MLOps target
+![](../img/MLOps-pipeline.png)
 
-- Model trained on Insee's [**cloud data science platform**]{.orange}, powered by Onyxia 😍
-- Microservice architecture running on a [**Kubernetes cluster**]{.orange}
-  - Experiment tracking and model store: [**MLflow**]{.blue2}
-  - Model served via an API: [**FastAPI**]{.blue2}
-  - Automation with [**ArgoCD**]{.blue2}
-  - Monitoring dashboard: [**Quarto**]{.blue2} and [**DuckDB**]{.blue2}
-  - Quality control: annotations with [**Label Studio**]{.blue2}
+## Data cleaning
 
-## Experiment tracking
 
-- [**Argo Workflows**]{.orange} used for *distributed* training
-- [**MLflow**]{.orange} used to track/log experiments and compare runs
+The first step of our pipeline (before any preprocessing or splitting) is a label correction based on [**expert rules**]{.orange}:
 
-## Model store
+::: {.incremental}
+- Raw labels are coming from the previous production model: they are not fully reliable
+- We correct them using several techniques, based on expert-guided rules
+  - The simplest one being REGEX (_if text contains xxx then relabel as yyy_)
+:::
 
-- [**MLflow**]{.orange} also used as a model store
-- Models are packaged with all the metadata necessary to [**run inference**]{.orange}
-- Registered models are [**simply loaded**]{.orange} with this command where `version` is a number or a `"Production"` tag for example
+## Extensive use of MLFLow
 
-```python
-model = mlflow.pyfunc.load_model(
-    model_uri=f"models:/{model_name}/{version}"
-)
+::: {.incremental}
+- [**MLflow**]{.orange} used as a:
+  1. Training monitor
+  2. Model store and "versioner"
+  3. Model wrapper (using _pyfunc_ object from MLFLow)
+    - Models are packaged with all the metadata necessary to [**run inference**]{.orange}
+:::
+
+## The wrapper {.scrollable}
+
+```{python}
+#| label: wrapper
+#| echo: true
+#| eval: false
+#| fig-cap: "Structure of the wrapper"
+#| execute: 
+#|  enabled: false
+class MLFlowPyTorchWrapper(mlflow.pyfunc.PythonModel):
+  def __init__()
+    ...
+  
+  def predict(self, model_input: list[SingleForm], params=None) -> list[PredictionResponse]:
+    query = self.preprocess_inputs(
+            inputs=model_input,
+        )
+
+    # Preprocess inputs
+    text = query[self.text_feature].values
+    categorical_variables = query[self.categorical_features].values
+
+    ...
+
+    all_scores = []
+    for batch_idx, batch in enumerate(dataloader):
+        with torch.no_grad():
+            scores = self.module(batch).detach()
+            all_scores.append(scores)
+    all_scores = torch.cat(all_scores)
+    probs = torch.nn.functional.softmax(all_scores, dim=1)
+
+    ...
+
+    responses = []
+    for i in range(len(predictions[0])):
+        response = process_response(predictions, i, nb_echos_max, prob_min, self.libs)
+        responses.append(response)
+
+    return responses
 ```
 
-## API serving (1/2)
+## Model validation
+
+We use a [**custom metric**]{.orange} reflecting the needs of our use case: [**the automation rate vs accuracy on automatically coded samples curve**]{.orange}
+
+![](../img/automatic_coding_accuracy_curve.png)
+
+## API serving
 
 - Text classification model served through a containerized [**REST API**]{.orange}:
   - [**Simplicity**]{.blue2} for end users
   - [**Standard query format**]{.blue2}
   - [**Scalable**]{.blue2}
   - [**Modular**]{.blue2} and [**portable**]{.blue2}
-- [**Multiple endpoints**]{.orange}: batch, online
+- Simple design thanks to the MLFLow wrapper
 - Continuous deployment with [**Argo CD**]{.orange}
 
-## API serving (1/2)
+## {.scrollable}
+
+```{python}
+#| label: api
+#| echo: true
+#| eval: false
+#| fig-cap: "Structure of API"
+#| execute: 
+#|  enabled: false
+@router.post("/", response_model=List[PredictionResponse])
+async def predict(
+    credentials: Annotated[HTTPBasicCredentials, Depends(get_credentials)],
+    request: Request,
+    forms: BatchForms,
+    ...
+    num_workers: int = 0,
+    batch_size: int = 1,
+):
+    """
+    Endpoint for predicting batches of data.
+
+    Args:
+        credentials (HTTPBasicCredentials): The credentials for authentication.
+        forms (Forms): The input data in the form of Forms object.
+        num_workers (int, optional): Number of CPU for multiprocessing in Dataloader. Defaults to 1.
+        batch_size (int, optional): Size of a batch for batch prediction.
+
+    For single predictions, we recommend keeping num_workers and batch_size to 1 for better performance.
+    For batched predictions, consider increasing these two parameters (num_workers can range from 4 to 12, batch size can be increased up to 256) to optimize performance.
+
+    Returns:
+        list: The list of predicted responses.
+    """
+    input_data = forms.forms
+
+    ...
+
+    output = request.app.state.model.predict(input_data, params=params_dict)
+    return [out.model_dump() for out in output]
+```
+
+## API serving
+
+![](../img/api-datalab.png){fig-align="center"}
+
+
+## API serving
 
 
 ```{ojs}
@@ -70,6 +164,7 @@ async function transformToPost(description, top_k) {
 ```
 
 
+
 ```{ojs}
 viewof activite = Inputs.text({
   label: '',
@@ -85,6 +180,9 @@ viewof prediction = Inputs.button("Run Prediction", {
 
 // afficher les résultats joliment
 prediction_table = {
+  if (!prediction || !prediction.length) {
+    return html``
+  }
 
   // la réponse est un tableau avec un seul objet
   const result = prediction[0]
@@ -106,8 +204,8 @@ prediction_table = {
       </caption>
       <thead>
         <tr>
-          <th style="text-align:left;">Libellé (NA2008)</th>
-          <th style="text-align:right;">Probabilité</th>
+          <th style="text-align:left;">Description (NA2008)</th>
+          <th style="text-align:right;">Probability</th>
         </tr>
       </thead>
       <tbody>
@@ -118,23 +216,16 @@ prediction_table = {
 }
 ```
 
-
-```{ojs}
-import { debounce } from "@mbostock/debouncing-input" 
-```
-
-## API serving
-
-![](../img/api-datalab.png){fig-align="center"}
-
 ## Monitoring 
 
+::: {.incremental}
 - [**Monitoring**]{.orange} the model in a production environment is necessary:
   - To detect [**distribution drifts**]{.blue2} in input data
   - To check that the model has a [**stable behavior**]{.blue2}
   - To decide [**when to retrain**]{.blue2} a model
 - Ideally, we would like to track model [**accuracy in real-time**]{.orange} but expensive
 - In addition, monitoring of the API: [**latency**]{.orange}, [**memory managment**]{.orange}, [**disk usage**]{.orange}, etc.
+:::
 
 ## Monitoring 
 

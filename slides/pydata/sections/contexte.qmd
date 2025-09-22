@@ -1,13 +1,18 @@
-## Use case
+## Use case (1/2)
 
-- NACE automatic coding for the national business registry (Sirene)
-  - Text classification task with additional variables
-- If model is not confident, human annotators enter the loop (_reprise manuelle_)
-  - The automatic coding model is highly
-- Lot of training data, but not necessarily reliable
-  - Coming from previous classification by a deterministic algorithm (Sicore) (1996-2018) and fastText (2018-2025)
-- Training on GPU, inference on CPU (secured offline environment)
+::: {.incremental}
+- [**NACE automatic coding**]{.orange} (_code APE_) for the national business registry (Sirene)
+  - Given an activity description and some additional info, assign one of the ~750 NACE labels
+  - [**Sparse-label**]{.orange} extreme multi-class [**text classification task**]{.orange} with categorical variables
+- If model is not confident, human annotators enter the loop ([**_reprise manuelle_**]{.orange})
+  - The automatic coding model reliability is highly critical
+:::
 
-## Beyond fastText ?
+## Use case (2/2)
 
-- Archival of the library [repo](https://github.com/facebookresearch/fastText/) on March 19th, 2024
+::: {.incremental}
+- Lot of training data, but [**not necessarily reliable**]{.orange}
+  - Coming from previous classification by a deterministic algorithm (Sicore) (1996-2021) and fastText (2021-2025)
+- Training on GPU but non-batched ([**online**]{.orange}) [**inference on CPU**]{.orange} (secured offline environment)
+  - Special care about [**responsive inference time**]{.orange} (<200 ms)
+:::
