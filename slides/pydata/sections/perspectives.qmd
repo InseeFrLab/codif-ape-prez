@@ -1,0 +1,28 @@
+## MLOps
+
+:::{.incremental}
+- [**Bridging the gap**]{.orange} between Paris and Nantes:
+    - full automation between data extraction, model training and qualification, model deployment
+    - observability of the model in production: logs, continuous annotation...
+:::
+
+## From torchFastText to [**torchTextClassifiers**]{.blue}
+
+:::{.incremental}
+- Distribution of _untrained_ raw PyTorch text classification architectures
+    - including [**all SOTA architectures**]{.blue}, incl. BERT, Label Attention etc.
+    - enable [**custom parametrization**]{.blue} (you can make your own small BERT!)
+    - enable easy training and inference on GPU/CPU
+:::
+
+## From torchFastText to [**torchTextClassifiers**]{.blue}
+
+:::{.incremental}
+- [**Additional features**]{.orange}:
+    - train and use a custom tokenizer
+    - [**controlling uncertainty**]{.blue}: explainability, calibration & conformal prediction
+    - quantization
+    - push / pull from HF
+- For those who can not directly use big models from HF and/or want to train their own flexible models
+- [**Always fully open-sourced!**]{.orange}
+:::
