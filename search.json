@@ -1,472 +1,416 @@
 [
   {
-    "objectID": "slides/wp10-country-project/index.html#ml-model-robustness",
-    "href": "slides/wp10-country-project/index.html#ml-model-robustness",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "ML Model Robustness",
-    "text": "ML Model Robustness\n\nML models are trained using reference datasets tailored for a specific task.\nIn practice, real-world data often drifts over time from these reference datasets ➡️ performance degradation?\nRegular retraining becomes essential.\nA particularly challenging case in official statistics is the change in the classification."
+    "objectID": "cards/cards14.html",
+    "href": "cards/cards14.html",
+    "title": "PyData Paris",
+    "section": "",
+    "text": "Faciliter l’entraînement mais pas forcément –&gt;"
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#timeline-for-adoption",
-    "href": "slides/wp10-country-project/index.html#timeline-for-adoption",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Timeline for Adoption 🗓️",
-    "text": "Timeline for Adoption 🗓️\n\nPhased adoption approach:\n2025 ➡️ dual labeling in both NACE Rév. 2 and 2.1\n2026 ➡️ improving the NACE Rév. 2.1. classifier model\n2027 ➡️ full NACE Rév. 2.1 classification while maintaining legacy NACE Rév. 2 codes for specific usages."
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Présentations codification automatique de l'APE",
+    "section": "",
+    "text": "Tous les supports sont accessibles et modifiables sur Github InseeFrLab \n\n\n\n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Séminaire interne du département des méthodes statistiques de l'Insee\n\n            \n\n            \n            \n              \n                Thomas Faria et Tom Seimandi\n                Sep 1, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation lors de l'évènement de lancement du SSP Hub\n\n            \n\n            \n            \n              \n                Thomas Faria et Tom Seimandi\n                Apr 17, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the UNECE Machine Learning for Official Statistics Workshop 2023\n\n            \n\n            \n            \n              \n                Thomas Faria and Tom Seimandi\n                Jun 5, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation pour la formation Big Data donné à la BCEAO à Dakar\n\n            \n\n            \n            \n              \n                Romain Avouac, Thomas Faria et Tom Seimandi\n                Sep 27, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Slides used for an exchange with StatCan on MLOps\n\n            \n\n            \n            \n              \n                Romain Avouac, Thomas Faria et Tom Seimandi\n                Mar 19, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the NACE implementation webinar\n\n            \n\n            \n            \n              \n                Nathan Randriamanana\n                Apr 30, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Codification automatique de l'APE à l'Insee\n\n            \n\n            \n            \n              \n                Thomas Faria et Nathan Randriamanana\n                May 7, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Retraining strategies for an economic activity classification model\n\n            \n\n            \n            \n              \n                Thomas Faria, Nathan Randriamanana, Tom Seimandi\n                May 24, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n                \n                  \n                    \n                      \n                        Paper\n                      \n                    \n                  \n                \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025\n\n            \n\n            \n            \n              \n                Thomas Faria, Nathan Randriamanana\n                Nov 6, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation du package torchFastText et ses performances sur la codification de l'APE\n\n            \n\n            \n            \n              \n                Meilame Tayebjee\n                Mar 5, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation non technique de la codification automatique de la NAF\n\n            \n\n            \n            \n              \n                Meilame Tayebjee\n                Apr 4, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the UNECE Generative AI and Official Statistics Workshop 2025\n\n            \n\n            \n            \n              \n                Thomas Faria\n                May 12, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the WP10\n\n            \n\n            \n            \n              \n                Thomas Faria, Meilame Tayebjee\n                May 22, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation at PyData Paris 2025\n\n            \n\n            \n            \n              \n                Cédric Couralet, Meilame Tayebjee\n                Oct 1, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n\n\nNo matching items"
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#whats-new-in-nace-rév.-2.1",
-    "href": "slides/wp10-country-project/index.html#whats-new-in-nace-rév.-2.1",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "What’s New in NACE Rév. 2.1?",
-    "text": "What’s New in NACE Rév. 2.1?\n\nAt level 5: 746 sub-classes compared to 732 before.\nMainly fine-grained splits at class level (level 4), but not exclusively.\n551 unambiguous mappings, i.e., one-to-one correspondence ➡️ ideal case! 👌"
+    "objectID": "index.html#présentations-relatives-à-la-codification-automatique-de-lape",
+    "href": "index.html#présentations-relatives-à-la-codification-automatique-de-lape",
+    "title": "Présentations codification automatique de l'APE",
+    "section": "",
+    "text": "Tous les supports sont accessibles et modifiables sur Github InseeFrLab \n\n\n\n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Séminaire interne du département des méthodes statistiques de l'Insee\n\n            \n\n            \n            \n              \n                Thomas Faria et Tom Seimandi\n                Sep 1, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation lors de l'évènement de lancement du SSP Hub\n\n            \n\n            \n            \n              \n                Thomas Faria et Tom Seimandi\n                Apr 17, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the UNECE Machine Learning for Official Statistics Workshop 2023\n\n            \n\n            \n            \n              \n                Thomas Faria and Tom Seimandi\n                Jun 5, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation pour la formation Big Data donné à la BCEAO à Dakar\n\n            \n\n            \n            \n              \n                Romain Avouac, Thomas Faria et Tom Seimandi\n                Sep 27, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Slides used for an exchange with StatCan on MLOps\n\n            \n\n            \n            \n              \n                Romain Avouac, Thomas Faria et Tom Seimandi\n                Mar 19, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the NACE implementation webinar\n\n            \n\n            \n            \n              \n                Nathan Randriamanana\n                Apr 30, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Codification automatique de l'APE à l'Insee\n\n            \n\n            \n            \n              \n                Thomas Faria et Nathan Randriamanana\n                May 7, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Retraining strategies for an economic activity classification model\n\n            \n\n            \n            \n              \n                Thomas Faria, Nathan Randriamanana, Tom Seimandi\n                May 24, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n                \n                  \n                    \n                      \n                        Paper\n                      \n                    \n                  \n                \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025\n\n            \n\n            \n            \n              \n                Thomas Faria, Nathan Randriamanana\n                Nov 6, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation du package torchFastText et ses performances sur la codification de l'APE\n\n            \n\n            \n            \n              \n                Meilame Tayebjee\n                Mar 5, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation non technique de la codification automatique de la NAF\n\n            \n\n            \n            \n              \n                Meilame Tayebjee\n                Apr 4, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the UNECE Generative AI and Official Statistics Workshop 2025\n\n            \n\n            \n            \n              \n                Thomas Faria\n                May 12, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the WP10\n\n            \n\n            \n            \n              \n                Thomas Faria, Meilame Tayebjee\n                May 22, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation at PyData Paris 2025\n\n            \n\n            \n            \n              \n                Cédric Couralet, Meilame Tayebjee\n                Oct 1, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n\n\nNo matching items"
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#ambiguous-cases",
-    "href": "slides/wp10-country-project/index.html#ambiguous-cases",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Ambiguous Cases",
-    "text": "Ambiguous Cases\n\n181 ambiguous mappings, i.e., one-to-many ➡️ challenging! 🚩\nRequires expert review for proper recoding.\n\n\n\n\nShow distribution of ambiguous codes\n\n\n\n\n1-to-N\n# occurence\n\n\n\n\n2\n109\n\n\n3\n30\n\n\n4\n24\n\n\n5\n6\n\n\n6\n4\n\n\n8\n1\n\n\n9\n2\n\n\n21\n1\n\n\n27\n1\n\n\n36\n1\n\n\n38\n2"
+    "objectID": "slides/unece-conf/index.html#context-1",
+    "href": "slides/unece-conf/index.html#context-1",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Context",
+    "text": "Context\n\nSeveral major changes:\n\nInternal: Revamping of the French company registry, Sirene 4.\nExternal: Implementation of a one-stop shop to declare the creation of a business.\n\nObservation: Sicore is no longer a suitable tool ➨ 30% automated coding.\nConsequence: Ideal moment to propose a new methodology for automated NACE coding."
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#multiple-challenges",
-    "href": "slides/wp10-country-project/index.html#multiple-challenges",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Multiple Challenges",
-    "text": "Multiple Challenges\n\nNeed to recode the stock of the registry forms ➡️ over 14 million entries.\nBuilding a classifier for new data flow requires a clean stock base as a training dataset.\nPrevious fastText model trained on over 10 million labeled entries.\nPerformance is highly sensitive to training data volume."
+    "objectID": "slides/unece-conf/index.html#data",
+    "href": "slides/unece-conf/index.html#data",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Data",
+    "text": "Data\n\n\\(\\approx\\) 10 million observations from Sirene 3 covering the period 2014-2022.\nData labeled both by Sicore and manually.\nAn observation consists of:\n\nA textual description of the activity\nThe nature of the activity – NAT (23 categories)\nThe type of form – TYP (15 categories)\nThe type of event – EVT (24 categories)\nThe area (\\(m^2\\)) – SUR (4 categories)"
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#available-data",
-    "href": "slides/wp10-country-project/index.html#available-data",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Available Data",
-    "text": "Available Data\n\nOld registry dataset: \\(~10\\) million entries, but poorly suited for new labels.\nNew registry dataset: \\(~2.7\\) million entries.\n\nUnambiguous: \\(1.3\\) million, covering 504 sub-classes.\nAmbiguous: \\(1.4\\) million, covering 177 sub-classes.\n\nManual annotation campaign is critical."
+    "objectID": "slides/unece-conf/index.html#hierarchical-structure-of-nace-rev.-2",
+    "href": "slides/unece-conf/index.html#hierarchical-structure-of-nace-rev.-2",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Hierarchical structure of NACE Rev. 2",
+    "text": "Hierarchical structure of NACE Rev. 2\n\n\n\n\n\n\n\n\n\n\nLevel\nNACE\nTitle\nSize\n\n\n\n\nSection\nH\nTransportation and storage\n21\n\n\nDivision\n52\nWarehousing and support activities for transportation\n88\n\n\nGroup\n522\nSupport activities for transportation\n272\n\n\nClass\n5224\nCargo handling\n615\n\n\nSubclass\n5224A\nHarbour handling\n732"
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#annotation-campaign",
-    "href": "slides/wp10-country-project/index.html#annotation-campaign",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Annotation Campaign",
-    "text": "Annotation Campaign\n\nAnnotation launched since mid-2024.\nFocused on uniquely ambiguous cases.\n🎯 Dual objectives:\n\nAssign a NACE Rév. 2.1 code 🚀\nAssess NACE Rév. 2 code quality 🗸\nCurrent count: \\(~27k\\) annotated entries… still insufficient!"
+    "objectID": "slides/unece-conf/index.html#feature-extraction",
+    "href": "slides/unece-conf/index.html#feature-extraction",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Feature extraction",
+    "text": "Feature extraction\n\nWord embedding: a method of vectorisation.\nPre-trained embeddings available in open-source.\nWe learn our own word embeddings.\nAdditionally, embeddings for:\n\nword n-grams and character n-grams."
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#methodology",
-    "href": "slides/wp10-country-project/index.html#methodology",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Methodology",
-    "text": "Methodology\n\n🎯 Goal: Build the most comprehensive training dataset possible.\nOne-shot experimentation ➡️ not intended for production reproducibility.\nLeveraging LLMs for automated NACE Rév. 2.1 labeling.\nData used:\n\nNew registry stock dataset (\\(~2.7M\\) records)\nMapping table from NACE experts\nNACE explanatory notes\nManually annotated data (\\(~27k\\) entries)"
+    "objectID": "slides/unece-conf/index.html#linear-classifer",
+    "href": "slides/unece-conf/index.html#linear-classifer",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Linear classifer",
+    "text": "Linear classifer\n\n2 classification methods:\n\nSoftmax: a single multiclass classifier.\nOne-vs-all: multiple binary classifiers.\n\nOptimisation: stochastic gradient descent algorithm.\nLoss function: cross-entropy."
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#methodology-1",
-    "href": "slides/wp10-country-project/index.html#methodology-1",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Methodology",
-    "text": "Methodology"
+    "objectID": "slides/unece-conf/index.html#fasttext-model",
+    "href": "slides/unece-conf/index.html#fasttext-model",
+    "title": "Classifying companies in France using machine learning",
+    "section": "fastText model",
+    "text": "fastText model\n\nfastText: very simple and fast (C++) “bag of n-grams” model."
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#leveraging-llms",
-    "href": "slides/wp10-country-project/index.html#leveraging-llms",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Leveraging LLMs",
-    "text": "Leveraging LLMs\n\nAugmented Generation (RAG/CAG) vs fine-tunning\n\n\nRAG: Unstructured prior knowledge based on similarity of notes embeddings\nCAG: Structured prior knowledge based on known mappings\n\n\n💡 Core idea ➡️ Provide key information to the LLM to translate NACE Rév. 2 into 2.1\n\n\n\n\n\n\n\nWarning\n\n\nRAG can act like a zero-shot classifier, while CAG is not a classifier as it relies on prior knowledge."
+    "objectID": "slides/unece-conf/index.html#handling-categorical-variables",
+    "href": "slides/unece-conf/index.html#handling-categorical-variables",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Handling categorical variables",
+    "text": "Handling categorical variables\n\nConcatenation of the text description with the names and values of the auxiliary variables:\n\n\n\n\nText\nNAT\nTYP\nEVT\nSUR\n\n\n\n\nCours de musique\nNaN\nX\n01P\nNaN\n\n\n\n\n🢃\n\n“Cours de musique NAT_NaN TYP_X EVT_01P SUR_NaN”\n\nImperfect method: 3-grams “AT_” or “T_0” used."
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#prompt-design",
-    "href": "slides/wp10-country-project/index.html#prompt-design",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Prompt Design",
-    "text": "Prompt Design\n\nA common system prompt for all entries\n\n\nAfficher le prompt sytème\n\nTu es un expert de la Nomenclature statistique des Activités économiques dans la Communauté Européenne (NACE). Tu es chargé de réaliser le changement de nomenclature. Ta mission consiste à attribuer un code NACE 2025 à une entreprise, en t'appuyant sur le descriptif de son activité et à partir d'une liste de codes proposés (identifiée à partir de son code NACE 2008 existant). Voici les instructions à suivre:\n1. Analyse la description de l'activité principale de l'entreprise et le code NACE 2008 fourni par l'utilisateur.\n2. À partir de la liste des codes NACE 2025 disponible, identifie la catégorie la plus appropriée qui correspond à l'activité principale de l'entreprise.\n3. Retourne le code NACE 2025 au format JSON comme spécifié par l'utilisateur. Si la description de l'activité de l'entreprise n'est pas suffisamment précise pour identifier un code NACE 2025 adéquat, retourne `null` dans le JSON.\n4. Évalue la cohérence entre le code NACE 2008 fourni et la description de l'activité de l'entreprise. Si le code NACE 2008 ne semble pas correspondre à cette description, retourne `False` dans le champ `nace08_valid` du JSON. Note que si tu arrives à classer la description de l'activité de l'entreprise dans un code NACE 2025, le champ `nace08_valid` devrait `True`, sinon il y a incohérence.\n5. Réponds seulement avec le JSON complété aucune autres information ne doit être retourné.\n\nEach observation gets a custom prompt including:\n\nBusiness activity description\nOriginal NACE Rév. 2 code (in CAG)\nCandidate codes list from retriever\n\nInstruction on output format required."
+    "objectID": "slides/unece-conf/index.html#preprocessing",
+    "href": "slides/unece-conf/index.html#preprocessing",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Preprocessing",
+    "text": "Preprocessing\n\nPreprocessing essential for natural language processing.\nConstraints: simple, light and easily reproducible in Java .\n\n\n\n\n\n\n\n\nTransformation\nText description\n\n\n\n\nInput\n3 D: La Deratisation - La Desinsectisation - La Desinfection\n\n\nLower-case conversion\n3 d: la deratisation - la desinsectisation - la desinfection\n\n\nPunctuations removal\n3 d la deratisation la desinsectisation la desinfection"
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#output-validation",
-    "href": "slides/wp10-country-project/index.html#output-validation",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Output Validation",
-    "text": "Output Validation\n\nLLMs tend to be overly verbose\nResponses shaped into structured, minimal format\nJSON is the preferred schema.\n\n\n\nShow expected response format\n\n{\n    \"codable\": true,\n    \"nace_2008_valid\": true,\n    \"nace2025\": \"0147J\" \n}\n\n\nResponse parsing:\n\nFormat check\nDetecting hallucinations"
+    "objectID": "slides/unece-conf/index.html#preprocessing-1",
+    "href": "slides/unece-conf/index.html#preprocessing-1",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Preprocessing",
+    "text": "Preprocessing\n\n\n\n\n\n\n\nTransformation\nText description\n\n\n\n\nInput\n3 D: La Deratisation - La Desinsectisation - La Desinfection\n\n\n…\n…\n\n\nNumbers removal\nd la deratisation la desinsectisation la desinfection\n\n\nOne-letter word removal\nla deratisation la desinsectisation la desinfection\n\n\nStopwords removal\nderatisation desinsectisation desinfection"
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#evaluation-challenge",
-    "href": "slides/wp10-country-project/index.html#evaluation-challenge",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Evaluation Challenge",
-    "text": "Evaluation Challenge\n\n❓ Key question: How to evaluate an LLM?:\nClassification seems simpler… but complexity of taxonomy matters.\nUsed \\(27k\\) manual annotations as the benchmark 🥇\n3 performance metrics:\n\nOverall accuracy\nAccuracy among codable entries\nAccuracy of LLM only"
+    "objectID": "slides/unece-conf/index.html#preprocessing-2",
+    "href": "slides/unece-conf/index.html#preprocessing-2",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Preprocessing",
+    "text": "Preprocessing\n\n\n\nTransformation\nText description\n\n\n\n\nInput\n3 D: La Deratisation - La Desinsectisation - La Desinfection\n\n\n…\n…\n\n\nNaN removal\nderatisation desinsectisation desinfection\n\n\nStemming\nderatis desinsectis desinfect"
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#performance-of-models",
-    "href": "slides/wp10-country-project/index.html#performance-of-models",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Performance of models",
-    "text": "Performance of models"
+    "objectID": "slides/unece-conf/index.html#a-good-overall-performance",
+    "href": "slides/unece-conf/index.html#a-good-overall-performance",
+    "title": "Classifying companies in France using machine learning",
+    "section": "A good overall performance",
+    "text": "A good overall performance\n\n\nFigure 1: Accuracy for various level of the NACE nomenclature.\n\nNearly 80% of labels from the one-stop shop are correctly coded.\nMost prediction errors are close in the nomenclature."
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#reconstructing-ambiguous-dataset",
-    "href": "slides/wp10-country-project/index.html#reconstructing-ambiguous-dataset",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Reconstructing Ambiguous Dataset",
-    "text": "Reconstructing Ambiguous Dataset\n\n💡Idea: Treat LLMs as additional annotators\n❓Can we boost performance via ensemble methods?\nBuilt 3 more annotations:\n\n\nCascade selection\nMajority vote\nWeighted vote"
+    "objectID": "slides/unece-conf/index.html#streamlining-the-manual-coding-process",
+    "href": "slides/unece-conf/index.html#streamlining-the-manual-coding-process",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Streamlining the manual coding process",
+    "text": "Streamlining the manual coding process\n\n\nFigure 2: Top-\\(k\\) accuracy per sample.\n\nKnowledge of probabilities for each class.\nThe correct classification is among the top 5 most probable predictions in 94% of cases."
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#annotation-fusion",
-    "href": "slides/wp10-country-project/index.html#annotation-fusion",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Annotation Fusion",
-    "text": "Annotation Fusion"
+    "objectID": "slides/unece-conf/index.html#building-a-confidence-index",
+    "href": "slides/unece-conf/index.html#building-a-confidence-index",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Building a confidence index",
+    "text": "Building a confidence index\n\n\nFigure 3: Distribution of the confidence index based on prediction results.\n\nObjective: discriminate between bad and good predictions.\nSelected Confidence Index: difference between the two highest probabilities."
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#retraining-with-nace-rév.-2.1",
-    "href": "slides/wp10-country-project/index.html#retraining-with-nace-rév.-2.1",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Retraining with NACE Rév. 2.1",
-    "text": "Retraining with NACE Rév. 2.1\n\nRebuilt new registry dataset with NACE Rév. 2.1 (~2M records)\nData distribution unchanged\nNew registry variables used\nAchieved comparable performance to NACE Rév. 2 model"
+    "objectID": "slides/unece-conf/index.html#efficiency-of-the-manual-coding-process",
+    "href": "slides/unece-conf/index.html#efficiency-of-the-manual-coding-process",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Efficiency of the manual coding process",
+    "text": "Efficiency of the manual coding process\n\n\nFigure 4: Accuracy for various shares of manual coding.\n\nOptimisation of manual coding process ➨ Performance improvement."
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#retraining-accuracy",
-    "href": "slides/wp10-country-project/index.html#retraining-accuracy",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Retraining Accuracy",
-    "text": "Retraining Accuracy"
+    "objectID": "slides/unece-conf/index.html#deployment-of-the-model",
+    "href": "slides/unece-conf/index.html#deployment-of-the-model",
+    "title": "Classifying companies in France using machine learning",
+    "section": "Deployment of the model",
+    "text": "Deployment of the model\n\nModels have been deployed in a production environment since November 2022.\nEmerging new challenges include:\n\nOrganisational issues.\nReal-time monitoring.\nRegular re-training.\n\nMLOps approach is required:\n\nJoin us on Wednesday, June 7th for a Hands-on Lab!"
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#fasttext-on-production-but-outdated",
-    "href": "slides/wp10-country-project/index.html#fasttext-on-production-but-outdated",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "fastText on production, but outdated ?",
-    "text": "fastText on production, but outdated ?\n\nfastText: a powerful and efficient model currently used in production for NACE coding at Insee…\n… but the library repo has been archived on March 19th, 2024\n\nThis non-maintenance is highly problematic in the medium-term:\n\nPotential appearance of (non-fixable) bugs\nConflicting versions of dependencies\nModernization hindrance"
+    "objectID": "slides/statcan-exchange/index.html#context",
+    "href": "slides/statcan-exchange/index.html#context",
+    "title": "MLOps at Insee: a use case for text classification",
+    "section": "Context",
+    "text": "Context\n\nSirene is the French national company registry\nWhen a company registers, an activity code is attributed\nEarly 2023:\n\nRefactoring of the Sirene information system\nCompanies register through a new channel\nPerformance drop of the legacy coding engine\nTeams already overwhelmed\n\nConsequence: Ideal moment to innovate (but under the constraint!)"
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#pytorch-why-some-strategic-reflections",
-    "href": "slides/wp10-country-project/index.html#pytorch-why-some-strategic-reflections",
-    "title": "Ongoing automatic coding projects at Insee",
+    "objectID": "slides/statcan-exchange/index.html#model",
+    "href": "slides/statcan-exchange/index.html#model",
+    "title": "MLOps at Insee: a use case for text classification",
+    "section": "Model",
+    "text": "Model\n\nText classification model which uses additional categorical variables\nFor now we use the fastText library\nOriginally trained on legacy data annotated partly by the coding engine and partly manually"
+  },
+  {
+    "objectID": "slides/statcan-exchange/index.html#current-state-of-affairs",
+    "href": "slides/statcan-exchange/index.html#current-state-of-affairs",
+    "title": "MLOps at Insee: a use case for text classification",
+    "section": "Current state of affairs",
+    "text": "Current state of affairs\n\nModel trained on Insee’s cloud data science platform 😍\nCoding engine developed in Java inside of a monolithic architecture 😫\n\nCode duplication\nReproductibility issues\nIncreased risk of error\nMaintenance problems\nNo monitoring\nNo test data"
+  },
+  {
+    "objectID": "slides/statcan-exchange/index.html#current-state-of-affairs-1",
+    "href": "slides/statcan-exchange/index.html#current-state-of-affairs-1",
+    "title": "MLOps at Insee: a use case for text classification",
+    "section": "Current state of affairs",
+    "text": "Current state of affairs"
+  },
+  {
+    "objectID": "slides/statcan-exchange/index.html#mlops-target",
+    "href": "slides/statcan-exchange/index.html#mlops-target",
+    "title": "MLOps at Insee: a use case for text classification",
+    "section": "MLOps target",
+    "text": "MLOps target\n\nMicroservice architecture running on a Kubernetes cluster\n\nExperiment tracking and model store: MLflow\nModel served via an API: FastAPI\nAutomation with ArgoCD\nMonitoring dashboard: Quarto and DuckDB\nQuality control: annotations with Label Studio"
+  },
+  {
+    "objectID": "slides/statcan-exchange/index.html#experiment-tracking",
+    "href": "slides/statcan-exchange/index.html#experiment-tracking",
+    "title": "MLOps at Insee: a use case for text classification",
+    "section": "Experiment tracking",
+    "text": "Experiment tracking\n\nArgo Workflows used for distributed training\nMLflow used to track/log experiments and compare runs\nCustom model class allows to package pre-processing steps in the predict method:\n\n# Define a custom model\nclass MyModel(mlflow.pyfunc.PythonModel):\n\n    def load_context(self, context):\n        self.model = load_model(context.artifacts[\"my_model\"])\n\n    def predict(self, context, model_input):\n        # &lt;INCLUDE PRE-PROCESSING STEPS HERE&gt;\n        return self.model.predict(model_input)"
+  },
+  {
+    "objectID": "slides/statcan-exchange/index.html#model-store",
+    "href": "slides/statcan-exchange/index.html#model-store",
+    "title": "MLOps at Insee: a use case for text classification",
+    "section": "Model store",
+    "text": "Model store\n\nMLflow also used as a model store\nModels are packaged with all the metadata necessary to run inference\nRegistered models are simply loaded with this command where version is a number or a \"Production\" tag for example\n\nmodel = mlflow.pyfunc.load_model(\n    model_uri=f\"models:/{model_name}/{version}\"\n)"
+  },
+  {
+    "objectID": "slides/statcan-exchange/index.html#api-serving",
+    "href": "slides/statcan-exchange/index.html#api-serving",
+    "title": "MLOps at Insee: a use case for text classification",
+    "section": "API serving",
+    "text": "API serving\n\nText classification model served through a containerized REST API:\n\nSimplicity for end users\nStandard query format\nScalable\nModular and portable\n\nMultiple endpoints: batch, online\nContinuous deployment with Argo CD"
+  },
+  {
+    "objectID": "slides/statcan-exchange/index.html#api-serving-1",
+    "href": "slides/statcan-exchange/index.html#api-serving-1",
+    "title": "MLOps at Insee: a use case for text classification",
+    "section": "API serving",
+    "text": "API serving"
+  },
+  {
+    "objectID": "slides/statcan-exchange/index.html#monitoring",
+    "href": "slides/statcan-exchange/index.html#monitoring",
+    "title": "MLOps at Insee: a use case for text classification",
+    "section": "Monitoring",
+    "text": "Monitoring\n\nMonitoring the model in a production environment is necessary:\n\nTo detect distribution drifts in input data\nTo check that the model has a stable behavior\nTo decide when to retrain a model\n\nIdeally, we would like to track model accuracy in real-time but expensive\nIn addition, monitoring of the API: latency, memory managment, disk usage, etc."
+  },
+  {
+    "objectID": "slides/statcan-exchange/index.html#monitoring-1",
+    "href": "slides/statcan-exchange/index.html#monitoring-1",
+    "title": "MLOps at Insee: a use case for text classification",
+    "section": "Monitoring",
+    "text": "Monitoring\n\nHow we do it:\n\nAPI logs its activity\nLogs are fetched and formatted periodically\nMetrics are computed from the formatted logs\nDisplay on a dashboard"
+  },
+  {
+    "objectID": "slides/statcan-exchange/index.html#monitoring-2",
+    "href": "slides/statcan-exchange/index.html#monitoring-2",
+    "title": "MLOps at Insee: a use case for text classification",
+    "section": "Monitoring",
+    "text": "Monitoring"
+  },
+  {
+    "objectID": "slides/statcan-exchange/index.html#quality-control",
+    "href": "slides/statcan-exchange/index.html#quality-control",
+    "title": "MLOps at Insee: a use case for text classification",
+    "section": "Quality control",
+    "text": "Quality control\n\nTest data is gathered and annotated periodically\nAnnotation is done with Label Studio\nPerformance metrics are computed on the test data\nPerformance is diplayed on the monitoring dashboard\nSpecific retraining is necessary when specific metrics decrease under a certain threshold (not done yet)"
+  },
+  {
+    "objectID": "slides/statcan-exchange/index.html#quality-control-1",
+    "href": "slides/statcan-exchange/index.html#quality-control-1",
+    "title": "MLOps at Insee: a use case for text classification",
+    "section": "Quality control",
+    "text": "Quality control"
+  },
+  {
+    "objectID": "slides/pydata/index.html#who-are-we",
+    "href": "slides/pydata/index.html#who-are-we",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "👨‍🔬 Who are we ?",
+    "text": "👨‍🔬 Who are we ?\nTwo data scientists from the innovation team at Insee:\n\nCédric Couralet"
+  },
+  {
+    "objectID": "slides/pydata/index.html#who-are-we-1",
+    "href": "slides/pydata/index.html#who-are-we-1",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "👨‍🔬 Who are we ?",
+    "text": "👨‍🔬 Who are we ?\nTwo data scientists from the innovation team at Insee:\n\nMeilame Tayebjee\n\nGraduated 2024\nCurrently pursuing a part-time PhD in AI applied to health econometrics\nAt Insee:\n\nworking on deep learning for text classification, computer vision with remote sensing data, MLOps practices\nexploring explainability, calibration, LLMS, RAGs & agentic workflows"
+  },
+  {
+    "objectID": "slides/pydata/index.html#what-will-we-discuss-about",
+    "href": "slides/pydata/index.html#what-will-we-discuss-about",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "💡 What will we discuss about ?",
+    "text": "💡 What will we discuss about ?\n\nMLOps pipeline for text classification at Insee\nDeploying a PyTorch model on CPU-bound secured offline environment\nOpen-sourcing a PyTorch package: why and how"
+  },
+  {
+    "objectID": "slides/pydata/index.html#use-case-12",
+    "href": "slides/pydata/index.html#use-case-12",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "Use case (1/2)",
+    "text": "Use case (1/2)\n\nNACE automatic coding (code APE) for the national business registry (Sirene)\n\nGiven an activity description and some additional info, assign one of the ~750 NACE labels\nSparse-label extreme multi-class text classification task with categorical variables\n\nIf model is not confident, human annotators enter the loop (reprise manuelle)\n\nThe automatic coding model reliability is highly critical"
+  },
+  {
+    "objectID": "slides/pydata/index.html#use-case-22",
+    "href": "slides/pydata/index.html#use-case-22",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "Use case (2/2)",
+    "text": "Use case (2/2)\n\nLot of training data, but not necessarily reliable\n\nComing from previous classification by a deterministic algorithm (Sicore) (1996-2021) and fastText (2021-2025)\n\nTraining on GPU but non-batched (online) inference on CPU (secured offline environment)\n\nSpecial care about responsive inference time (&lt;200 ms)"
+  },
+  {
+    "objectID": "slides/pydata/index.html#the-ideal-mlops-pipeline",
+    "href": "slides/pydata/index.html#the-ideal-mlops-pipeline",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "The ideal MLOps pipeline…",
+    "text": "The ideal MLOps pipeline…"
+  },
+  {
+    "objectID": "slides/pydata/index.html#vs-ours",
+    "href": "slides/pydata/index.html#vs-ours",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "… vs ours",
+    "text": "… vs ours"
+  },
+  {
+    "objectID": "slides/pydata/index.html#data-cleaning",
+    "href": "slides/pydata/index.html#data-cleaning",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "Data cleaning",
+    "text": "Data cleaning\nThe first step of our pipeline (before any preprocessing or splitting) is a label correction based on expert rules:\n\nRaw labels are coming from the previous production model: they are not fully reliable\nWe correct them using several techniques, based on expert-guided rules\n\nThe simplest one being REGEX (if text contains xxx then relabel as yyy)"
+  },
+  {
+    "objectID": "slides/pydata/index.html#extensive-use-of-mlflow",
+    "href": "slides/pydata/index.html#extensive-use-of-mlflow",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "Extensive use of MLFLow",
+    "text": "Extensive use of MLFLow\n\nMLflow used as a:\n\nTraining monitor\nModel store and “versioner”\nModel wrapper (using pyfunc object from MLFLow)\n\n\nModels are packaged with all the metadata necessary to run inference"
+  },
+  {
+    "objectID": "slides/pydata/index.html#the-wrapper",
+    "href": "slides/pydata/index.html#the-wrapper",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "The wrapper",
+    "text": "The wrapper\n\nclass MLFlowPyTorchWrapper(mlflow.pyfunc.PythonModel):\n  def __init__()\n    ...\n  \n  def predict(self, model_input: list[SingleForm], params=None) -&gt; list[PredictionResponse]:\n    query = self.preprocess_inputs(\n            inputs=model_input,\n        )\n\n    # Preprocess inputs\n    text = query[self.text_feature].values\n    categorical_variables = query[self.categorical_features].values\n\n    ...\n\n    all_scores = []\n    for batch_idx, batch in enumerate(dataloader):\n        with torch.no_grad():\n            scores = self.module(batch).detach()\n            all_scores.append(scores)\n    all_scores = torch.cat(all_scores)\n    probs = torch.nn.functional.softmax(all_scores, dim=1)\n\n    ...\n\n    responses = []\n    for i in range(len(predictions[0])):\n        response = process_response(predictions, i, nb_echos_max, prob_min, self.libs)\n        responses.append(response)\n\n    return responses"
+  },
+  {
+    "objectID": "slides/pydata/index.html#model-validation",
+    "href": "slides/pydata/index.html#model-validation",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "Model validation",
+    "text": "Model validation\nWe use a custom metric reflecting the needs of our use case: the automation rate vs accuracy on automatically coded samples curve"
+  },
+  {
+    "objectID": "slides/pydata/index.html#api-serving",
+    "href": "slides/pydata/index.html#api-serving",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "API serving",
+    "text": "API serving\n\nText classification model served through a containerized REST API:\n\nSimplicity for end users\nStandard query format\nScalable\nModular and portable\n\nSimple design thanks to the MLFLow wrapper\nContinuous deployment with Argo CD"
+  },
+  {
+    "objectID": "slides/pydata/index.html#section",
+    "href": "slides/pydata/index.html#section",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "",
+    "text": "@router.post(\"/\", response_model=List[PredictionResponse])\nasync def predict(\n    credentials: Annotated[HTTPBasicCredentials, Depends(get_credentials)],\n    request: Request,\n    forms: BatchForms,\n    ...\n    num_workers: int = 0,\n    batch_size: int = 1,\n):\n    \"\"\"\n    Endpoint for predicting batches of data.\n\n    Args:\n        credentials (HTTPBasicCredentials): The credentials for authentication.\n        forms (Forms): The input data in the form of Forms object.\n        num_workers (int, optional): Number of CPU for multiprocessing in Dataloader. Defaults to 1.\n        batch_size (int, optional): Size of a batch for batch prediction.\n\n    For single predictions, we recommend keeping num_workers and batch_size to 1 for better performance.\n    For batched predictions, consider increasing these two parameters (num_workers can range from 4 to 12, batch size can be increased up to 256) to optimize performance.\n\n    Returns:\n        list: The list of predicted responses.\n    \"\"\"\n    input_data = forms.forms\n\n    ...\n\n    output = request.app.state.model.predict(input_data, params=params_dict)\n    return [out.model_dump() for out in output]"
+  },
+  {
+    "objectID": "slides/pydata/index.html#api-serving-1",
+    "href": "slides/pydata/index.html#api-serving-1",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "API serving",
+    "text": "API serving"
+  },
+  {
+    "objectID": "slides/pydata/index.html#api-serving-2",
+    "href": "slides/pydata/index.html#api-serving-2",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "API serving",
+    "text": "API serving\n\nasync function transformToPost(description, top_k) {\n  // Base URL with query parameters\n  const baseUrl = `https://codification-ape2025-pytorch.lab.sspcloud.fr/predict/?nb_echos_max=${top_k}&prob_min=0.01&num_workers=0&batch_size=1`;\n\n  // Build the request body according to the expected schema\n  const body = {\n    forms: [\n      {\n        description_activity: description\n      }\n    ]\n  };\n\n  // Send the POST request\n  const response = await fetch(baseUrl, {\n    method: \"POST\",\n    headers: {\n      \"Content-Type\": \"application/json\"\n    },\n    body: JSON.stringify(body)\n  });\n\n  // Parse and return the JSON response\n  return response.json();\n}\n\n\n\n\n\n\n\nviewof activite = Inputs.text({\n  label: '',\n  value: 'coiffure',\n  width: 800\n})\n\nviewof prediction = Inputs.button(\"Run Prediction\", {\n  reduce: async () =&gt; {\n    return await transformToPost(activite, 5);\n  }\n})\n\n// afficher les résultats joliment\nprediction_table = {\n  if (!prediction || !prediction.length) {\n    return html``\n  }\n\n  // la réponse est un tableau avec un seul objet\n  const result = prediction[0]\n  const { IC, ...codes } = result\n\n  const rows = Object.values(codes).map(({ code, libelle, probabilite }) =&gt; {\n    return html`\n      &lt;tr&gt;\n        &lt;td&gt;${code} – ${libelle}&lt;/td&gt;\n        &lt;td style=\"text-align:right;\"&gt;${probabilite.toFixed(3)}&lt;/td&gt;\n      &lt;/tr&gt;\n    `\n  })\n\n  return html`\n    &lt;table style=\"border-collapse: collapse; width: 100%;\"&gt;\n      &lt;caption style=\"margin-bottom: 0.5em;\"&gt;\n        Indice de confiance : ${(+IC).toFixed(3)}\n      &lt;/caption&gt;\n      &lt;thead&gt;\n        &lt;tr&gt;\n          &lt;th style=\"text-align:left;\"&gt;Description (NA2008)&lt;/th&gt;\n          &lt;th style=\"text-align:right;\"&gt;Probability&lt;/th&gt;\n        &lt;/tr&gt;\n      &lt;/thead&gt;\n      &lt;tbody&gt;\n        ${rows}\n      &lt;/tbody&gt;\n    &lt;/table&gt;\n  `\n}"
+  },
+  {
+    "objectID": "slides/pydata/index.html#monitoring",
+    "href": "slides/pydata/index.html#monitoring",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "Monitoring",
+    "text": "Monitoring\n\nMonitoring the model in a production environment is necessary:\n\nTo detect distribution drifts in input data\nTo check that the model has a stable behavior\nTo decide when to retrain a model\n\nIdeally, we would like to track model accuracy in real-time but expensive\nIn addition, monitoring of the API: latency, memory managment, disk usage, etc."
+  },
+  {
+    "objectID": "slides/pydata/index.html#monitoring-1",
+    "href": "slides/pydata/index.html#monitoring-1",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "Monitoring",
+    "text": "Monitoring\n\nHow we do it:\n\nAPI logs its activity\nLogs are fetched and formatted periodically\nMetrics are computed from the formatted logs\nDisplay on a dashboard"
+  },
+  {
+    "objectID": "slides/pydata/index.html#monitoring-2",
+    "href": "slides/pydata/index.html#monitoring-2",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "Monitoring",
+    "text": "Monitoring"
+  },
+  {
+    "objectID": "slides/pydata/index.html#beyond-fasttext",
+    "href": "slides/pydata/index.html#beyond-fasttext",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "Beyond fastText ?",
+    "text": "Beyond fastText ?\n\nfastText: a powerful and efficient model that has been used in production since 2021…\n… but the library repo has been archived on March 19th, 2024\n\nThis non-maintenance is highly problematic in the medium-term:\n\nPotential appearance of (non-fixable) bugs\nConflicting versions of dependencies\nModernization hindrance"
+  },
+  {
+    "objectID": "slides/pydata/index.html#pytorch-why-some-strategic-reflections",
+    "href": "slides/pydata/index.html#pytorch-why-some-strategic-reflections",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
     "section": "PyTorch: why ? Some strategic reflections…",
-    "text": "PyTorch: why ? Some strategic reflections…\n💡 Idea: Develop our custom PyTorch-based model to:\n\nadapt and customize the architecture for our specific needs (text classification with additional categorical variables)\nlimit dependencies to external libraries and internalize maintenance for more robustness in the long-term\naccess to the vibrant deep learning / NLP community to develop additional features (explainability with Captum, calibration with torch-uncertainty…)…\n… or use pre-trained models on Hugging Face"
+    "text": "PyTorch: why ? Some strategic reflections…\n💡 Idea: Develop our custom PyTorch-based model to:\n\nadapt and customize the architecture for our specific needs (text classification with categorical variables)\nlimit dependencies to external libraries and internalize maintenance for more robustness in the long-term\naccess to the vibrant deep learning / NLP community to develop additional features (explainability with Captum, calibration with torch-uncertainty…)…\n… or use pre-trained models on Hugging Face down the road (when we have GPUs in production…)"
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#our-solution-the-torchfasttext-package",
-    "href": "slides/wp10-country-project/index.html#our-solution-the-torchfasttext-package",
-    "title": "Ongoing automatic coding projects at Insee",
+    "objectID": "slides/pydata/index.html#our-solution-the-torchfasttext-package",
+    "href": "slides/pydata/index.html#our-solution-the-torchfasttext-package",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
     "section": "Our solution: the torchFastText package",
     "text": "Our solution: the torchFastText package\nThe package:\n\nProvides a standard yet flexible architecture for automatic coding needs…\n… that stays close to the fastText methodology for now but is led to evolve\nDistributes the raw PyTorch model, a Lightning module as well as a wrapper class for a quick grip\nIs open-sourced and aims at fostering collaboration ! Feel free to raise an issue, report a bug or open a PR."
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#pytorch-model-lightning-module",
-    "href": "slides/wp10-country-project/index.html#pytorch-model-lightning-module",
-    "title": "Ongoing automatic coding projects at Insee",
+    "objectID": "slides/pydata/index.html#pytorch-model-lightning-module",
+    "href": "slides/pydata/index.html#pytorch-model-lightning-module",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
     "section": "PyTorch model & Lightning module",
     "text": "PyTorch model & Lightning module\n\nfrom torchFastText.model import FastTextModel, FastTextModule\nimport torch\n\nmodel = FastTextModel(embedding_dim=80,\n                      num_classes=732,\n                      num_rows = 20000,\n                      categorical_vocabulary_sizes=[10, 20],\n                      categorical_embedding_dims=5\n                      )\n\nmodule = FastTextModule(\n    model=model,\n    loss= torch.nn.CrossEntropyLoss(),\n    optimizer=torch.optim.Adam,\n    optimizer_params={\"lr\": 0.001},\n    scheduler = None,\n    scheduler_params=None\n)\nprint(model)\nprint(module)\n\nFastTextModel(\n  (embeddings): Embedding(20000, 80, padding_idx=0, sparse=True)\n  (emb_0): Embedding(10, 5)\n  (emb_1): Embedding(20, 5)\n  (fc): Linear(in_features=85, out_features=732, bias=True)\n)\nFastTextModule(\n  (model): FastTextModel(\n    (embeddings): Embedding(20000, 80, padding_idx=0, sparse=True)\n    (emb_0): Embedding(10, 5)\n    (emb_1): Embedding(20, 5)\n    (fc): Linear(in_features=85, out_features=732, bias=True)\n  )\n  (loss): CrossEntropyLoss()\n  (accuracy_fn): MulticlassAccuracy()\n)"
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#tokenizer",
-    "href": "slides/wp10-country-project/index.html#tokenizer",
-    "title": "Ongoing automatic coding projects at Insee",
+    "objectID": "slides/pydata/index.html#tokenizer",
+    "href": "slides/pydata/index.html#tokenizer",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
     "section": "Tokenizer",
     "text": "Tokenizer\n\nfrom torchFastText.datasets import NGramTokenizer\n\ntraining_text = ['boulanger', 'coiffeur', 'boucherie', 'boucherie charcuterie']\n\ntokenizer = NGramTokenizer(\n    min_n=3, \n    max_n=6, \n    num_tokens= 100,\n    len_word_ngrams=2, \n    min_count=1, \n    training_text=training_text\n    )\n\nprint(tokenizer.tokenize([\"boulangerie\"])[0])\n\n[['&lt;bo', 'bou', 'oul', 'ula', 'lan', 'boul', 'nge', '&lt;boul', 'eri', 'rie', 'ie&gt;', 'boul', 'boul', 'oula', 'ulan', 'lang', 'ange', 'nger', 'geri', 'erie', 'rie&gt;', '&lt;boul', 'boula', 'oulan', 'ulang', 'lange', 'anger', 'ngeri', 'gerie', 'erie&gt;', '&lt;boula', 'boulan', 'oulang', 'ngerie', 'langer', 'angeri', 'ngerie', 'gerie&gt;', '&lt;/s&gt;', 'boulangerie &lt;/s&gt;']]"
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#the-wrapper-class",
-    "href": "slides/wp10-country-project/index.html#the-wrapper-class",
-    "title": "Ongoing automatic coding projects at Insee",
+    "objectID": "slides/pydata/index.html#the-wrapper-class",
+    "href": "slides/pydata/index.html#the-wrapper-class",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
     "section": "The wrapper class",
     "text": "The wrapper class\nA quick way to launch a training in two lines of code.\n\nfrom torchFastText import torchFastText\n\n# Initialize the model\nmodel = torchFastText(\n    num_tokens=1000000,\n    embedding_dim=100,\n    min_count=5,\n    min_n=3,\n    max_n=6,\n    len_word_ngrams=True,\n    sparse=True\n)\n\n# Train the model\nmodel.train(\n    X_train=train_data,\n    y_train=train_labels,\n    X_val=val_data,\n    y_val=val_labels,\n    num_epochs=10,\n    batch_size=64\n)\n# Make predictions\npredictions = model.predict(test_data)"
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#some-obstacles",
-    "href": "slides/wp10-country-project/index.html#some-obstacles",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Some obstacles:",
-    "text": "Some obstacles:\nBeing a general framework, PyTorch-based models are slower than the original fastText library.\n\n⚡ Better to have GPU for high-scale training in reasonable time\n☢️ A constraint: CPU-bound inference in production. Requires to be extremely careful regarding size of the model and pre-deployment tests.\n\nFirst step has been to train a model small enough to have a response time lower than 400 ms on CPU, while keeping high prediction accuracies."
+    "objectID": "slides/pydata/index.html#mlops",
+    "href": "slides/pydata/index.html#mlops",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "MLOps",
+    "text": "MLOps\n\nBridging the gap between Paris and Nantes:\n\nfull automation between data extraction, model training and qualification, model deployment\nobservability of the model in production: logs, continuous annotation…"
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#deployment-stack",
-    "href": "slides/wp10-country-project/index.html#deployment-stack",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Deployment stack",
-    "text": "Deployment stack\nMLFlow is at the core of the pipeline:\n\nClassicly: model life cycle incl. training monitoring, evaluation metric logging, model versioning…\nAnd also fast deployment using a PyFunc wrapper specifically designed by MLFlow\n\nFastAPI for API development, and Pydantic for data validation. API is deployed on a Kubernetes cluster."
+    "objectID": "slides/pydata/index.html#from-torchfasttext-to-torchtextclassifiers",
+    "href": "slides/pydata/index.html#from-torchfasttext-to-torchtextclassifiers",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "From torchFastText to torchTextClassifiers",
+    "text": "From torchFastText to torchTextClassifiers\n\nDistribution of untrained raw PyTorch text classification architectures\n\nincluding all SOTA architectures, incl. BERT, Label Attention etc.\nenable custom parametrization (you can make your own small BERT!)\nenable easy training and inference on GPU/CPU"
   },
   {
-    "objectID": "slides/wp10-country-project/index.html#conclusion-and-next-steps",
-    "href": "slides/wp10-country-project/index.html#conclusion-and-next-steps",
-    "title": "Ongoing automatic coding projects at Insee",
-    "section": "Conclusion and next steps",
-    "text": "Conclusion and next steps\n\n⚠️ Transitioning to PyTorch in production requires care to deploy in production…\n👐 … but enables to open many doors: modernization, better maintenance, state-of-the-art technology… It’s well worth it !\n\nNext steps include:\n\nMore complex architectures: attention mechanisms, more layers… - to improve on the fastText methodology\nUse HuggingFace: pre-trained models, tokenizers (or train a new tokenizer)\nBetter handling of uncertainty: calibration and conformal prediction"
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#ml-model-robustness",
-    "href": "slides/unece-2025/index.html#ml-model-robustness",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "ML Model Robustness",
-    "text": "ML Model Robustness\n\nML models are trained using reference datasets tailored for a specific task.\nIn practice, real-world data often drifts over time from these reference datasets ➡️ performance degradation?\nRegular retraining becomes essential.\nA particularly challenging case in official statistics is the change in the classification."
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#timeline-for-adoption",
-    "href": "slides/unece-2025/index.html#timeline-for-adoption",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "Timeline for Adoption 🗓️",
-    "text": "Timeline for Adoption 🗓️\n\nPhased adoption approach:\n2025 ➡️ dual labeling in both NACE Rév. 2 and 2.1\n2026 ➡️ improving the NACE Rév. 2.1. classifier model\n2027 ➡️ full NACE Rév. 2.1 classification while maintaining legacy NACE Rév. 2 codes for specific usages."
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#whats-new-in-nace-rév.-2.1",
-    "href": "slides/unece-2025/index.html#whats-new-in-nace-rév.-2.1",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "What’s New in NACE Rév. 2.1?",
-    "text": "What’s New in NACE Rév. 2.1?\n\nAt level 5: 746 sub-classes compared to 732 before.\nMainly fine-grained splits at class level (level 4), but not exclusively.\n551 unambiguous mappings, i.e., one-to-one correspondence ➡️ ideal case! 👌"
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#ambiguous-cases",
-    "href": "slides/unece-2025/index.html#ambiguous-cases",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "Ambiguous Cases",
-    "text": "Ambiguous Cases\n\n181 ambiguous mappings, i.e., one-to-many ➡️ challenging! 🚩\nRequires expert review for proper recoding.\n\n\n\n\nShow distribution of ambiguous codes\n\n\n\n\n1-to-N\n# occurence\n\n\n\n\n2\n109\n\n\n3\n30\n\n\n4\n24\n\n\n5\n6\n\n\n6\n4\n\n\n8\n1\n\n\n9\n2\n\n\n21\n1\n\n\n27\n1\n\n\n36\n1\n\n\n38\n2"
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#multiple-challenges",
-    "href": "slides/unece-2025/index.html#multiple-challenges",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "Multiple Challenges",
-    "text": "Multiple Challenges\n\nNeed to recode the stock of the registry forms ➡️ over 14 million entries.\nBuilding a classifier for new data flow requires a clean stock base as a training dataset.\nPrevious fastText model trained on over 10 million labeled entries.\nPerformance is highly sensitive to training data volume."
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#available-data",
-    "href": "slides/unece-2025/index.html#available-data",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "Available Data",
-    "text": "Available Data\n\nOld registry dataset: \\(~10\\) million entries, but poorly suited for new labels.\nNew registry dataset: \\(~2.7\\) million entries.\n\nUnambiguous: \\(1.3\\) million, covering 504 sub-classes.\nAmbiguous: \\(1.4\\) million, covering 177 sub-classes.\n\nManual annotation campaign is critical."
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#annotation-campaign",
-    "href": "slides/unece-2025/index.html#annotation-campaign",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "Annotation Campaign",
-    "text": "Annotation Campaign\n\nAnnotation launched since mid-2024.\nFocused on uniquely ambiguous cases.\n🎯 Dual objectives:\n\nAssign a NACE Rév. 2.1 code 🚀\nAssess NACE Rév. 2 code quality 🗸\nCurrent count: \\(~27k\\) annotated entries… still insufficient!"
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#methodology",
-    "href": "slides/unece-2025/index.html#methodology",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "Methodology",
-    "text": "Methodology\n\n🎯 Goal: Build the most comprehensive training dataset possible.\nOne-shot experimentation ➡️ not intended for production reproducibility.\nLeveraging LLMs for automated NACE Rév. 2.1 labeling.\nData used:\n\nNew registry stock dataset (\\(~2.7M\\) records)\nMapping table from NACE experts\nNACE explanatory notes\nManually annotated data (\\(~27k\\) entries)"
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#methodology-1",
-    "href": "slides/unece-2025/index.html#methodology-1",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "Methodology",
-    "text": "Methodology"
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#leveraging-llms",
-    "href": "slides/unece-2025/index.html#leveraging-llms",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "Leveraging LLMs",
-    "text": "Leveraging LLMs\n\nAugmented Generation (RAG/CAG) vs fine-tunning\n\n\nRAG: Unstructured prior knowledge based on similarity of notes embeddings\nCAG: Structured prior knowledge based on known mappings\n\n\n💡 Core idea ➡️ Provide key information to the LLM to translate NACE Rév. 2 into 2.1\n\n\n\n\n\n\n\nWarning\n\n\nRAG can act like a zero-shot classifier, while CAG is not a classifier as it relies on prior knowledge."
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#prompt-design",
-    "href": "slides/unece-2025/index.html#prompt-design",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "Prompt Design",
-    "text": "Prompt Design\n\nA common system prompt for all entries\n\n\nAfficher le prompt sytème\n\nTu es un expert de la Nomenclature statistique des Activités économiques dans la Communauté Européenne (NACE). Tu es chargé de réaliser le changement de nomenclature. Ta mission consiste à attribuer un code NACE 2025 à une entreprise, en t'appuyant sur le descriptif de son activité et à partir d'une liste de codes proposés (identifiée à partir de son code NACE 2008 existant). Voici les instructions à suivre:\n1. Analyse la description de l'activité principale de l'entreprise et le code NACE 2008 fourni par l'utilisateur.\n2. À partir de la liste des codes NACE 2025 disponible, identifie la catégorie la plus appropriée qui correspond à l'activité principale de l'entreprise.\n3. Retourne le code NACE 2025 au format JSON comme spécifié par l'utilisateur. Si la description de l'activité de l'entreprise n'est pas suffisamment précise pour identifier un code NACE 2025 adéquat, retourne `null` dans le JSON.\n4. Évalue la cohérence entre le code NACE 2008 fourni et la description de l'activité de l'entreprise. Si le code NACE 2008 ne semble pas correspondre à cette description, retourne `False` dans le champ `nace08_valid` du JSON. Note que si tu arrives à classer la description de l'activité de l'entreprise dans un code NACE 2025, le champ `nace08_valid` devrait `True`, sinon il y a incohérence.\n5. Réponds seulement avec le JSON complété aucune autres information ne doit être retourné.\n\nEach observation gets a custom prompt including:\n\nBusiness activity description\nOriginal NACE Rév. 2 code (in CAG)\nCandidate codes list from retriever\n\nInstruction on output format required."
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#output-validation",
-    "href": "slides/unece-2025/index.html#output-validation",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "Output Validation",
-    "text": "Output Validation\n\nLLMs tend to be overly verbose\nResponses shaped into structured, minimal format\nJSON is the preferred schema.\n\n\n\nShow expected response format\n\n{\n    \"codable\": true,\n    \"nace_2008_valid\": true,\n    \"nace2025\": \"0147J\" \n}\n\n\nResponse parsing:\n\nFormat check\nDetecting hallucinations"
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#evaluation-challenge",
-    "href": "slides/unece-2025/index.html#evaluation-challenge",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "Evaluation Challenge",
-    "text": "Evaluation Challenge\n\n❓ Key question: How to evaluate an LLM?:\nClassification seems simpler… but complexity of taxonomy matters.\nUsed \\(27k\\) manual annotations as the benchmark 🥇\n3 performance metrics:\n\nOverall accuracy\nAccuracy among codable entries\nAccuracy of LLM only"
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#performance-of-models",
-    "href": "slides/unece-2025/index.html#performance-of-models",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "Performance of models",
-    "text": "Performance of models"
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#reconstructing-ambiguous-dataset",
-    "href": "slides/unece-2025/index.html#reconstructing-ambiguous-dataset",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "Reconstructing Ambiguous Dataset",
-    "text": "Reconstructing Ambiguous Dataset\n\n💡Idea: Treat LLMs as additional annotators\n❓Can we boost performance via ensemble methods?\nBuilt 3 more annotations:\n\n\nCascade selection\nMajority vote\nWeighted vote"
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#annotation-fusion",
-    "href": "slides/unece-2025/index.html#annotation-fusion",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "Annotation Fusion",
-    "text": "Annotation Fusion"
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#retraining-with-nace-rév.-2.1",
-    "href": "slides/unece-2025/index.html#retraining-with-nace-rév.-2.1",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "Retraining with NACE Rév. 2.1",
-    "text": "Retraining with NACE Rév. 2.1\n\nRebuilt new registry dataset with NACE Rév. 2.1 (~2M records)\nData distribution unchanged\nNew registry variables used\nAchieved comparable performance to NACE Rév. 2 model"
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#retraining-accuracy",
-    "href": "slides/unece-2025/index.html#retraining-accuracy",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "Retraining Accuracy",
-    "text": "Retraining Accuracy"
-  },
-  {
-    "objectID": "slides/unece-2025/index.html#the-nace-rév.-2.1-model",
-    "href": "slides/unece-2025/index.html#the-nace-rév.-2.1-model",
-    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
-    "section": "The NACE Rév. 2.1 Model",
-    "text": "The NACE Rév. 2.1 Model\n\nviewof activite = Inputs.text(\n  {label: '', value: 'coiffeur', width: 800}\n)\n\nurlApe = `https://codification-ape-dev.lab.sspcloud.fr/predict?description_activity=${activite}%20&type_form=X&event=01P&nb_echos_max=3&prob_min=0.0009`\n\nd3.json(urlApe).then( res =&gt; {\n  var IC, results;\n  ( {IC, ...results} = res )\n\n  IC = parseFloat(IC)\n\n  const rows = Object.values(results).map( obj =&gt; {\n    return `\n    &lt;tr&gt;\n      &lt;td&gt;${obj.code} | ${obj.libelle}&lt;/td&gt;\n      &lt;td&gt;${obj.probabilite.toFixed(3)}&lt;/td&gt;\n    &lt;/tr&gt;\n  `\n  }).join('')\n  \n  return html`\n  &lt;table&gt;\n    &lt;caption&gt;\n      Confidence index: ${IC.toFixed(3)}\n    &lt;/caption&gt;\n    &lt;tr&gt;\n      &lt;th style=\"text-align:center;\"&gt;Description (NACE Rév. 2.1)&lt;/th&gt;\n      &lt;th&gt;Probability&lt;/th&gt;\n    &lt;/tr&gt;\n      ${rows}\n  &lt;/table&gt;`\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport { debounce } from \"@mbostock/debouncing-input\""
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#contexte",
-    "href": "slides/seminaire-dms-oct-2022/index.html#contexte",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Contexte",
-    "text": "Contexte\n\nPlusieurs changements majeurs :\n\nInterne : Refonte du répertoire Sirene 4.\nExterne : Mise en place d’un guichet unique.\n\nConstat : Sicore n’est plus l’outil adapté ➨ 30% de codification automatique.\nConséquence : moment idéal pour proposer une nouvelle méthodologie de codification automatique de l’APE."
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#données",
-    "href": "slides/seminaire-dms-oct-2022/index.html#données",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Données",
-    "text": "Données\n\n\\(\\approx\\) 10 millions de liasses d’entreprises issues de Sirene 3 couvrant la période 2014-2022.\nDonnées labellisées par Sicore ou par un gestionnaire.\nUne observation consiste en :\n\nun descriptif textuel de l’activité\nla nature de l’activité – NAT (23 modalités)\nle type de la liasse – TYP (15 modalités)\nle type d’évènement – EVT (24 modalités)\nla surface (\\(m^2\\))– SUR (4 modalités)"
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#la-nomenclature-hiérarchique-de-lape",
-    "href": "slides/seminaire-dms-oct-2022/index.html#la-nomenclature-hiérarchique-de-lape",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "La nomenclature hiérarchique de l’APE",
-    "text": "La nomenclature hiérarchique de l’APE\n\n\n\n\n\n\n\n\n\nNiveau\nCode\nLibellé\nTaille\n\n\n\n\nSection\nH\nTransports et entreposage\n21\n\n\nDivision\n52\nEntreposage et services auxiliaires des transports\n88\n\n\nGroupe\n522\nServices auxiliaires des transports\n272\n\n\nClasse\n5224\nManutention\n615\n\n\nSous-classe\n5224A\nManutention portuaire\n732"
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#vectorisation-des-libellés",
-    "href": "slides/seminaire-dms-oct-2022/index.html#vectorisation-des-libellés",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Vectorisation des libellés",
-    "text": "Vectorisation des libellés\n\nPlongements lexicaux : méthode de vectorisation.\nPlongements pré-entraînés disponibles en open-source.\nOn apprend nos propres plongements de mots.\nMais aussi des plongements pour :\n\nLes n-grams de mots et n-grams de caractères."
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#classifieur-linéaire",
-    "href": "slides/seminaire-dms-oct-2022/index.html#classifieur-linéaire",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Classifieur linéaire",
-    "text": "Classifieur linéaire\n\n2 méthodes pour la classification :\n\nSoftmax : un unique classifieur multiclasse.\nOne-vs-all : de multiples classifieurs binaires.\n\nOptimisation : algorithme de type descente de gradient stochastique.\nFonction de perte : entropie croisée."
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#classification-à-partir-de-plongements-lexicaux",
-    "href": "slides/seminaire-dms-oct-2022/index.html#classification-à-partir-de-plongements-lexicaux",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Classification à partir de plongements lexicaux",
-    "text": "Classification à partir de plongements lexicaux"
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#implémentation-entraînement",
-    "href": "slides/seminaire-dms-oct-2022/index.html#implémentation-entraînement",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Implémentation, entraînement",
-    "text": "Implémentation, entraînement\n\n\n\n\n\n\n\n\n\n\n\nfastText : librairie rapide (C++) et facilement utilisable.\nOptimisation des paramètres d’entraînement et hyperparamètres avec mlflow."
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#prise-en-compte-des-variables-catégorielles",
-    "href": "slides/seminaire-dms-oct-2022/index.html#prise-en-compte-des-variables-catégorielles",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Prise en compte des variables catégorielles",
-    "text": "Prise en compte des variables catégorielles\n\nConcaténation du libellé avec les noms et valeurs des variables annexes :\n\n\n\n\nLibellé\nNAT\nTYP\nEVT\nSUR\n\n\n\n\nCours de musique\nNaN\nX\n01P\nNaN\n\n\n\n\n🢃\n\n“Cours de musique NAT_NaN TYP_X EVT_01P SUR_NaN”\n\nMéthode imparfaite : 3-grams “AT_” ou “T_0” utilisés."
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#prétraitements-effectués",
-    "href": "slides/seminaire-dms-oct-2022/index.html#prétraitements-effectués",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Prétraitements effectués",
-    "text": "Prétraitements effectués\n\nNettoyage indispensable pour l’analyse textuelle.\nContrainte : simple, léger et facilement reproductible en Java.\n\n\n\n\n\n\n\n\nTransformation\nLibellé\n\n\n\n\nEntrée\n3 D : La Deratisation - La Desinsectisation - La Desinfection\n\n\nPassage en minuscule\n3 d : la deratisation - la desinsectisation - la desinfection\n\n\nSuppression des ponctuations\n3 d la deratisation la desinsectisation la desinfection"
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#prétraitements-effectués-1",
-    "href": "slides/seminaire-dms-oct-2022/index.html#prétraitements-effectués-1",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Prétraitements effectués",
-    "text": "Prétraitements effectués\n\n\n\n\n\n\n\nTransformation\nLibellé\n\n\n\n\nEntrée\n3 D : La Deratisation - La Desinsectisation - La Desinfection\n\n\n…\n…\n\n\nSuppression des chiffres\nd la deratisation la desinsectisation la desinfection\n\n\nSuppression des mots à une lettre\nla deratisation la desinsectisation la desinfection\n\n\nSuppression des stopwords\nderatisation desinsectisation desinfection"
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#prétraitements-effectués-2",
-    "href": "slides/seminaire-dms-oct-2022/index.html#prétraitements-effectués-2",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Prétraitements effectués",
-    "text": "Prétraitements effectués\n\n\n\n\n\n\n\nTransformation\nLibellé\n\n\n\n\nEntrée\n3 D : La Deratisation - La Desinsectisation - La Desinfection\n\n\n…\n…\n\n\nSuppression des NaN\nderatisation desinsectisation desinfection\n\n\nRacinisation des mots\nderatis desinsectis desinfect"
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#évaluation-de-la-performance",
-    "href": "slides/seminaire-dms-oct-2022/index.html#évaluation-de-la-performance",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Évaluation de la performance",
-    "text": "Évaluation de la performance\n\nÉvaluation sur 2 jeux de données :\n\nun jeu de test, 20% des données soit \\(\\approx\\) 2.5 millions observations\nun jeu issue du guichet unique \\(\\approx\\) 15 000 observations\n\n\n\n\nFigure 1: Précision en fonction du taux de reprise manuelle effectuée."
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#évaluation-de-la-performance-1",
-    "href": "slides/seminaire-dms-oct-2022/index.html#évaluation-de-la-performance-1",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Évaluation de la performance",
-    "text": "Évaluation de la performance\n\n4 métriques pour l’analyse de la performance :\n\nLe taux de précision : taux global de liasses bien prédites (accuracy).\nLe rappel : taux de bonnes prédictions de la classe K parmi les vraies valeurs K.\nLa précision : taux de bonnes prédictions de la classe K parmi les prédictions K.\nLe score F1 : Moyenne harmonique du rappel et de la précision."
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#une-bonne-performance-globale",
-    "href": "slides/seminaire-dms-oct-2022/index.html#une-bonne-performance-globale",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Une bonne performance globale",
-    "text": "Une bonne performance globale\n\n\nFigure 2: Taux de précision pour chaque niveau de la nomenclature du code APE.\n\nPrès de 80% des libellés issus du guichet unique sont correctement codifiés.\nErreurs de prédiction proches dans la nomenclature."
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#une-aide-à-la-reprise-manuelle",
-    "href": "slides/seminaire-dms-oct-2022/index.html#une-aide-à-la-reprise-manuelle",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Une aide à la reprise manuelle",
-    "text": "Une aide à la reprise manuelle\n\n\nFigure 3: Top-K Accuracy pour chaque jeu de données.\n\nConnaissance des probabilités pour chaque classe.\nDans 94% des cas, la bonne classification se trouve dans les 5 prédictions les plus probables."
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#une-performance-hétérogène-en-fonction-des-classes",
-    "href": "slides/seminaire-dms-oct-2022/index.html#une-performance-hétérogène-en-fonction-des-classes",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Une performance hétérogène en fonction des classes",
-    "text": "Une performance hétérogène en fonction des classes\n\n\nFigure 4: Distribution du F1-score en fonction de la fréquence des classes.\n\nPerformance mitigée sur plusieurs classes peu fréquentes."
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#construction-dun-indice-de-confiance",
-    "href": "slides/seminaire-dms-oct-2022/index.html#construction-dun-indice-de-confiance",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Construction d’un indice de confiance",
-    "text": "Construction d’un indice de confiance\n\n\nFigure 5: Distribution de l’indice de confiance en fonction du résultat de la prédiction.\n\nObjectif : discriminer les mauvaises des bonnes prédictions.\nIndice de confiance retenu : différence entre les deux probabilités les plus élevées."
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#efficacité-de-la-reprise-manuelle",
-    "href": "slides/seminaire-dms-oct-2022/index.html#efficacité-de-la-reprise-manuelle",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Efficacité de la reprise manuelle",
-    "text": "Efficacité de la reprise manuelle\n\n\nFigure 6: Précision en fonction du taux de reprise manuelle effectuée.\n\nOptimisation de la reprise manuelle ➨ gain de performance."
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#organisation-prévue",
-    "href": "slides/seminaire-dms-oct-2022/index.html#organisation-prévue",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Organisation prévue",
-    "text": "Organisation prévue\n\nIntégration dans Sirene 4 pour coder le guichet unique.\nModule de codification : API construite sur JFastText.\nDéfinition du contenu des logs pour contrôle futur.\nDouble rôle du SSP Lab à moyen terme :\n\nLivraison des modèles entraînés.\nContrôle qualité.\n\n\n\n\n\n\n\n\nÀ clarifier\n\n\n\nIdentification des liasses non-codables.\nUtilisation du module comme aide à la reprise manuelle."
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#organisation-à-terme",
-    "href": "slides/seminaire-dms-oct-2022/index.html#organisation-à-terme",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Organisation à terme ?",
-    "text": "Organisation à terme ?"
-  },
-  {
-    "objectID": "slides/seminaire-dms-oct-2022/index.html#problématiques-pour-la-codification-en-production",
-    "href": "slides/seminaire-dms-oct-2022/index.html#problématiques-pour-la-codification-en-production",
-    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
-    "section": "Problématiques pour la codification en production",
-    "text": "Problématiques pour la codification en production\n\nGestion des versions des modèles en production ?\nContrôle du modèle en production : quoi et à quelle fréquence ?\nContrôle des entrées à coder ?\nRéentraînement d’un modèle : comment et à quelle fréquence ?\nUtilisation et maintenance des différents modules ?\nGestion des changements de nomenclature ?"
+    "objectID": "slides/pydata/index.html#from-torchfasttext-to-torchtextclassifiers-1",
+    "href": "slides/pydata/index.html#from-torchfasttext-to-torchtextclassifiers-1",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "From torchFastText to torchTextClassifiers",
+    "text": "From torchFastText to torchTextClassifiers\n\nAdditional features:\n\ntrain and use a custom tokenizer\ncontrolling uncertainty: explainability, calibration & conformal prediction\nquantization\npush / pull from HF\n\nFor those who can not directly use big models from HF and/or want to train their own flexible models\nAlways fully open-sourced!"
   },
   {
     "objectID": "slides/inserm-echange/index.html#contexte-1",
@@ -1463,220 +1407,472 @@
     "text": "Organisation visée\n\nObservabilité, maintenance du modèle côté Sirene (appui technique du SSP Lab)\nCluster Kubernetes de production\nS’affranchir de FastText\nUtilisation du plein potentiel de MLflow pour la gestion des modèles en production\nDéveloppement d’une API Python"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#context",
-    "href": "slides/statcan-exchange/index.html#context",
-    "title": "MLOps at Insee: a use case for text classification",
-    "section": "Context",
-    "text": "Context\n\nSirene is the French national company registry\nWhen a company registers, an activity code is attributed\nEarly 2023:\n\nRefactoring of the Sirene information system\nCompanies register through a new channel\nPerformance drop of the legacy coding engine\nTeams already overwhelmed\n\nConsequence: Ideal moment to innovate (but under the constraint!)"
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#contexte",
+    "href": "slides/seminaire-dms-oct-2022/index.html#contexte",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Contexte",
+    "text": "Contexte\n\nPlusieurs changements majeurs :\n\nInterne : Refonte du répertoire Sirene 4.\nExterne : Mise en place d’un guichet unique.\n\nConstat : Sicore n’est plus l’outil adapté ➨ 30% de codification automatique.\nConséquence : moment idéal pour proposer une nouvelle méthodologie de codification automatique de l’APE."
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#model",
-    "href": "slides/statcan-exchange/index.html#model",
-    "title": "MLOps at Insee: a use case for text classification",
-    "section": "Model",
-    "text": "Model\n\nText classification model which uses additional categorical variables\nFor now we use the fastText library\nOriginally trained on legacy data annotated partly by the coding engine and partly manually"
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#données",
+    "href": "slides/seminaire-dms-oct-2022/index.html#données",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Données",
+    "text": "Données\n\n\\(\\approx\\) 10 millions de liasses d’entreprises issues de Sirene 3 couvrant la période 2014-2022.\nDonnées labellisées par Sicore ou par un gestionnaire.\nUne observation consiste en :\n\nun descriptif textuel de l’activité\nla nature de l’activité – NAT (23 modalités)\nle type de la liasse – TYP (15 modalités)\nle type d’évènement – EVT (24 modalités)\nla surface (\\(m^2\\))– SUR (4 modalités)"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#current-state-of-affairs",
-    "href": "slides/statcan-exchange/index.html#current-state-of-affairs",
-    "title": "MLOps at Insee: a use case for text classification",
-    "section": "Current state of affairs",
-    "text": "Current state of affairs\n\nModel trained on Insee’s cloud data science platform 😍\nCoding engine developed in Java inside of a monolithic architecture 😫\n\nCode duplication\nReproductibility issues\nIncreased risk of error\nMaintenance problems\nNo monitoring\nNo test data"
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#la-nomenclature-hiérarchique-de-lape",
+    "href": "slides/seminaire-dms-oct-2022/index.html#la-nomenclature-hiérarchique-de-lape",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "La nomenclature hiérarchique de l’APE",
+    "text": "La nomenclature hiérarchique de l’APE\n\n\n\n\n\n\n\n\n\nNiveau\nCode\nLibellé\nTaille\n\n\n\n\nSection\nH\nTransports et entreposage\n21\n\n\nDivision\n52\nEntreposage et services auxiliaires des transports\n88\n\n\nGroupe\n522\nServices auxiliaires des transports\n272\n\n\nClasse\n5224\nManutention\n615\n\n\nSous-classe\n5224A\nManutention portuaire\n732"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#current-state-of-affairs-1",
-    "href": "slides/statcan-exchange/index.html#current-state-of-affairs-1",
-    "title": "MLOps at Insee: a use case for text classification",
-    "section": "Current state of affairs",
-    "text": "Current state of affairs"
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#vectorisation-des-libellés",
+    "href": "slides/seminaire-dms-oct-2022/index.html#vectorisation-des-libellés",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Vectorisation des libellés",
+    "text": "Vectorisation des libellés\n\nPlongements lexicaux : méthode de vectorisation.\nPlongements pré-entraînés disponibles en open-source.\nOn apprend nos propres plongements de mots.\nMais aussi des plongements pour :\n\nLes n-grams de mots et n-grams de caractères."
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#mlops-target",
-    "href": "slides/statcan-exchange/index.html#mlops-target",
-    "title": "MLOps at Insee: a use case for text classification",
-    "section": "MLOps target",
-    "text": "MLOps target\n\nMicroservice architecture running on a Kubernetes cluster\n\nExperiment tracking and model store: MLflow\nModel served via an API: FastAPI\nAutomation with ArgoCD\nMonitoring dashboard: Quarto and DuckDB\nQuality control: annotations with Label Studio"
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#classifieur-linéaire",
+    "href": "slides/seminaire-dms-oct-2022/index.html#classifieur-linéaire",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Classifieur linéaire",
+    "text": "Classifieur linéaire\n\n2 méthodes pour la classification :\n\nSoftmax : un unique classifieur multiclasse.\nOne-vs-all : de multiples classifieurs binaires.\n\nOptimisation : algorithme de type descente de gradient stochastique.\nFonction de perte : entropie croisée."
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#experiment-tracking",
-    "href": "slides/statcan-exchange/index.html#experiment-tracking",
-    "title": "MLOps at Insee: a use case for text classification",
-    "section": "Experiment tracking",
-    "text": "Experiment tracking\n\nArgo Workflows used for distributed training\nMLflow used to track/log experiments and compare runs\nCustom model class allows to package pre-processing steps in the predict method:\n\n# Define a custom model\nclass MyModel(mlflow.pyfunc.PythonModel):\n\n    def load_context(self, context):\n        self.model = load_model(context.artifacts[\"my_model\"])\n\n    def predict(self, context, model_input):\n        # &lt;INCLUDE PRE-PROCESSING STEPS HERE&gt;\n        return self.model.predict(model_input)"
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#classification-à-partir-de-plongements-lexicaux",
+    "href": "slides/seminaire-dms-oct-2022/index.html#classification-à-partir-de-plongements-lexicaux",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Classification à partir de plongements lexicaux",
+    "text": "Classification à partir de plongements lexicaux"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#model-store",
-    "href": "slides/statcan-exchange/index.html#model-store",
-    "title": "MLOps at Insee: a use case for text classification",
-    "section": "Model store",
-    "text": "Model store\n\nMLflow also used as a model store\nModels are packaged with all the metadata necessary to run inference\nRegistered models are simply loaded with this command where version is a number or a \"Production\" tag for example\n\nmodel = mlflow.pyfunc.load_model(\n    model_uri=f\"models:/{model_name}/{version}\"\n)"
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#implémentation-entraînement",
+    "href": "slides/seminaire-dms-oct-2022/index.html#implémentation-entraînement",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Implémentation, entraînement",
+    "text": "Implémentation, entraînement\n\n\n\n\n\n\n\n\n\n\n\nfastText : librairie rapide (C++) et facilement utilisable.\nOptimisation des paramètres d’entraînement et hyperparamètres avec mlflow."
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#api-serving",
-    "href": "slides/statcan-exchange/index.html#api-serving",
-    "title": "MLOps at Insee: a use case for text classification",
-    "section": "API serving",
-    "text": "API serving\n\nText classification model served through a containerized REST API:\n\nSimplicity for end users\nStandard query format\nScalable\nModular and portable\n\nMultiple endpoints: batch, online\nContinuous deployment with Argo CD"
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#prise-en-compte-des-variables-catégorielles",
+    "href": "slides/seminaire-dms-oct-2022/index.html#prise-en-compte-des-variables-catégorielles",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Prise en compte des variables catégorielles",
+    "text": "Prise en compte des variables catégorielles\n\nConcaténation du libellé avec les noms et valeurs des variables annexes :\n\n\n\n\nLibellé\nNAT\nTYP\nEVT\nSUR\n\n\n\n\nCours de musique\nNaN\nX\n01P\nNaN\n\n\n\n\n🢃\n\n“Cours de musique NAT_NaN TYP_X EVT_01P SUR_NaN”\n\nMéthode imparfaite : 3-grams “AT_” ou “T_0” utilisés."
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#api-serving-1",
-    "href": "slides/statcan-exchange/index.html#api-serving-1",
-    "title": "MLOps at Insee: a use case for text classification",
-    "section": "API serving",
-    "text": "API serving"
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#prétraitements-effectués",
+    "href": "slides/seminaire-dms-oct-2022/index.html#prétraitements-effectués",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Prétraitements effectués",
+    "text": "Prétraitements effectués\n\nNettoyage indispensable pour l’analyse textuelle.\nContrainte : simple, léger et facilement reproductible en Java.\n\n\n\n\n\n\n\n\nTransformation\nLibellé\n\n\n\n\nEntrée\n3 D : La Deratisation - La Desinsectisation - La Desinfection\n\n\nPassage en minuscule\n3 d : la deratisation - la desinsectisation - la desinfection\n\n\nSuppression des ponctuations\n3 d la deratisation la desinsectisation la desinfection"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#monitoring",
-    "href": "slides/statcan-exchange/index.html#monitoring",
-    "title": "MLOps at Insee: a use case for text classification",
-    "section": "Monitoring",
-    "text": "Monitoring\n\nMonitoring the model in a production environment is necessary:\n\nTo detect distribution drifts in input data\nTo check that the model has a stable behavior\nTo decide when to retrain a model\n\nIdeally, we would like to track model accuracy in real-time but expensive\nIn addition, monitoring of the API: latency, memory managment, disk usage, etc."
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#prétraitements-effectués-1",
+    "href": "slides/seminaire-dms-oct-2022/index.html#prétraitements-effectués-1",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Prétraitements effectués",
+    "text": "Prétraitements effectués\n\n\n\n\n\n\n\nTransformation\nLibellé\n\n\n\n\nEntrée\n3 D : La Deratisation - La Desinsectisation - La Desinfection\n\n\n…\n…\n\n\nSuppression des chiffres\nd la deratisation la desinsectisation la desinfection\n\n\nSuppression des mots à une lettre\nla deratisation la desinsectisation la desinfection\n\n\nSuppression des stopwords\nderatisation desinsectisation desinfection"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#monitoring-1",
-    "href": "slides/statcan-exchange/index.html#monitoring-1",
-    "title": "MLOps at Insee: a use case for text classification",
-    "section": "Monitoring",
-    "text": "Monitoring\n\nHow we do it:\n\nAPI logs its activity\nLogs are fetched and formatted periodically\nMetrics are computed from the formatted logs\nDisplay on a dashboard"
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#prétraitements-effectués-2",
+    "href": "slides/seminaire-dms-oct-2022/index.html#prétraitements-effectués-2",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Prétraitements effectués",
+    "text": "Prétraitements effectués\n\n\n\n\n\n\n\nTransformation\nLibellé\n\n\n\n\nEntrée\n3 D : La Deratisation - La Desinsectisation - La Desinfection\n\n\n…\n…\n\n\nSuppression des NaN\nderatisation desinsectisation desinfection\n\n\nRacinisation des mots\nderatis desinsectis desinfect"
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#monitoring-2",
-    "href": "slides/statcan-exchange/index.html#monitoring-2",
-    "title": "MLOps at Insee: a use case for text classification",
-    "section": "Monitoring",
-    "text": "Monitoring"
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#évaluation-de-la-performance",
+    "href": "slides/seminaire-dms-oct-2022/index.html#évaluation-de-la-performance",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Évaluation de la performance",
+    "text": "Évaluation de la performance\n\nÉvaluation sur 2 jeux de données :\n\nun jeu de test, 20% des données soit \\(\\approx\\) 2.5 millions observations\nun jeu issue du guichet unique \\(\\approx\\) 15 000 observations\n\n\n\n\nFigure 1: Précision en fonction du taux de reprise manuelle effectuée."
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#quality-control",
-    "href": "slides/statcan-exchange/index.html#quality-control",
-    "title": "MLOps at Insee: a use case for text classification",
-    "section": "Quality control",
-    "text": "Quality control\n\nTest data is gathered and annotated periodically\nAnnotation is done with Label Studio\nPerformance metrics are computed on the test data\nPerformance is diplayed on the monitoring dashboard\nSpecific retraining is necessary when specific metrics decrease under a certain threshold (not done yet)"
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#évaluation-de-la-performance-1",
+    "href": "slides/seminaire-dms-oct-2022/index.html#évaluation-de-la-performance-1",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Évaluation de la performance",
+    "text": "Évaluation de la performance\n\n4 métriques pour l’analyse de la performance :\n\nLe taux de précision : taux global de liasses bien prédites (accuracy).\nLe rappel : taux de bonnes prédictions de la classe K parmi les vraies valeurs K.\nLa précision : taux de bonnes prédictions de la classe K parmi les prédictions K.\nLe score F1 : Moyenne harmonique du rappel et de la précision."
   },
   {
-    "objectID": "slides/statcan-exchange/index.html#quality-control-1",
-    "href": "slides/statcan-exchange/index.html#quality-control-1",
-    "title": "MLOps at Insee: a use case for text classification",
-    "section": "Quality control",
-    "text": "Quality control"
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#une-bonne-performance-globale",
+    "href": "slides/seminaire-dms-oct-2022/index.html#une-bonne-performance-globale",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Une bonne performance globale",
+    "text": "Une bonne performance globale\n\n\nFigure 2: Taux de précision pour chaque niveau de la nomenclature du code APE.\n\nPrès de 80% des libellés issus du guichet unique sont correctement codifiés.\nErreurs de prédiction proches dans la nomenclature."
   },
   {
-    "objectID": "slides/unece-conf/index.html#context-1",
-    "href": "slides/unece-conf/index.html#context-1",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Context",
-    "text": "Context\n\nSeveral major changes:\n\nInternal: Revamping of the French company registry, Sirene 4.\nExternal: Implementation of a one-stop shop to declare the creation of a business.\n\nObservation: Sicore is no longer a suitable tool ➨ 30% automated coding.\nConsequence: Ideal moment to propose a new methodology for automated NACE coding."
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#une-aide-à-la-reprise-manuelle",
+    "href": "slides/seminaire-dms-oct-2022/index.html#une-aide-à-la-reprise-manuelle",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Une aide à la reprise manuelle",
+    "text": "Une aide à la reprise manuelle\n\n\nFigure 3: Top-K Accuracy pour chaque jeu de données.\n\nConnaissance des probabilités pour chaque classe.\nDans 94% des cas, la bonne classification se trouve dans les 5 prédictions les plus probables."
   },
   {
-    "objectID": "slides/unece-conf/index.html#data",
-    "href": "slides/unece-conf/index.html#data",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Data",
-    "text": "Data\n\n\\(\\approx\\) 10 million observations from Sirene 3 covering the period 2014-2022.\nData labeled both by Sicore and manually.\nAn observation consists of:\n\nA textual description of the activity\nThe nature of the activity – NAT (23 categories)\nThe type of form – TYP (15 categories)\nThe type of event – EVT (24 categories)\nThe area (\\(m^2\\)) – SUR (4 categories)"
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#une-performance-hétérogène-en-fonction-des-classes",
+    "href": "slides/seminaire-dms-oct-2022/index.html#une-performance-hétérogène-en-fonction-des-classes",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Une performance hétérogène en fonction des classes",
+    "text": "Une performance hétérogène en fonction des classes\n\n\nFigure 4: Distribution du F1-score en fonction de la fréquence des classes.\n\nPerformance mitigée sur plusieurs classes peu fréquentes."
   },
   {
-    "objectID": "slides/unece-conf/index.html#hierarchical-structure-of-nace-rev.-2",
-    "href": "slides/unece-conf/index.html#hierarchical-structure-of-nace-rev.-2",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Hierarchical structure of NACE Rev. 2",
-    "text": "Hierarchical structure of NACE Rev. 2\n\n\n\n\n\n\n\n\n\n\nLevel\nNACE\nTitle\nSize\n\n\n\n\nSection\nH\nTransportation and storage\n21\n\n\nDivision\n52\nWarehousing and support activities for transportation\n88\n\n\nGroup\n522\nSupport activities for transportation\n272\n\n\nClass\n5224\nCargo handling\n615\n\n\nSubclass\n5224A\nHarbour handling\n732"
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#construction-dun-indice-de-confiance",
+    "href": "slides/seminaire-dms-oct-2022/index.html#construction-dun-indice-de-confiance",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Construction d’un indice de confiance",
+    "text": "Construction d’un indice de confiance\n\n\nFigure 5: Distribution de l’indice de confiance en fonction du résultat de la prédiction.\n\nObjectif : discriminer les mauvaises des bonnes prédictions.\nIndice de confiance retenu : différence entre les deux probabilités les plus élevées."
   },
   {
-    "objectID": "slides/unece-conf/index.html#feature-extraction",
-    "href": "slides/unece-conf/index.html#feature-extraction",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Feature extraction",
-    "text": "Feature extraction\n\nWord embedding: a method of vectorisation.\nPre-trained embeddings available in open-source.\nWe learn our own word embeddings.\nAdditionally, embeddings for:\n\nword n-grams and character n-grams."
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#efficacité-de-la-reprise-manuelle",
+    "href": "slides/seminaire-dms-oct-2022/index.html#efficacité-de-la-reprise-manuelle",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Efficacité de la reprise manuelle",
+    "text": "Efficacité de la reprise manuelle\n\n\nFigure 6: Précision en fonction du taux de reprise manuelle effectuée.\n\nOptimisation de la reprise manuelle ➨ gain de performance."
   },
   {
-    "objectID": "slides/unece-conf/index.html#linear-classifer",
-    "href": "slides/unece-conf/index.html#linear-classifer",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Linear classifer",
-    "text": "Linear classifer\n\n2 classification methods:\n\nSoftmax: a single multiclass classifier.\nOne-vs-all: multiple binary classifiers.\n\nOptimisation: stochastic gradient descent algorithm.\nLoss function: cross-entropy."
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#organisation-prévue",
+    "href": "slides/seminaire-dms-oct-2022/index.html#organisation-prévue",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Organisation prévue",
+    "text": "Organisation prévue\n\nIntégration dans Sirene 4 pour coder le guichet unique.\nModule de codification : API construite sur JFastText.\nDéfinition du contenu des logs pour contrôle futur.\nDouble rôle du SSP Lab à moyen terme :\n\nLivraison des modèles entraînés.\nContrôle qualité.\n\n\n\n\n\n\n\n\nÀ clarifier\n\n\n\nIdentification des liasses non-codables.\nUtilisation du module comme aide à la reprise manuelle."
   },
   {
-    "objectID": "slides/unece-conf/index.html#fasttext-model",
-    "href": "slides/unece-conf/index.html#fasttext-model",
-    "title": "Classifying companies in France using machine learning",
-    "section": "fastText model",
-    "text": "fastText model\n\nfastText: very simple and fast (C++) “bag of n-grams” model."
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#organisation-à-terme",
+    "href": "slides/seminaire-dms-oct-2022/index.html#organisation-à-terme",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Organisation à terme ?",
+    "text": "Organisation à terme ?"
   },
   {
-    "objectID": "slides/unece-conf/index.html#handling-categorical-variables",
-    "href": "slides/unece-conf/index.html#handling-categorical-variables",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Handling categorical variables",
-    "text": "Handling categorical variables\n\nConcatenation of the text description with the names and values of the auxiliary variables:\n\n\n\n\nText\nNAT\nTYP\nEVT\nSUR\n\n\n\n\nCours de musique\nNaN\nX\n01P\nNaN\n\n\n\n\n🢃\n\n“Cours de musique NAT_NaN TYP_X EVT_01P SUR_NaN”\n\nImperfect method: 3-grams “AT_” or “T_0” used."
+    "objectID": "slides/seminaire-dms-oct-2022/index.html#problématiques-pour-la-codification-en-production",
+    "href": "slides/seminaire-dms-oct-2022/index.html#problématiques-pour-la-codification-en-production",
+    "title": "Codification automatique de l’APE dans le cadre du projet Sirene 4",
+    "section": "Problématiques pour la codification en production",
+    "text": "Problématiques pour la codification en production\n\nGestion des versions des modèles en production ?\nContrôle du modèle en production : quoi et à quelle fréquence ?\nContrôle des entrées à coder ?\nRéentraînement d’un modèle : comment et à quelle fréquence ?\nUtilisation et maintenance des différents modules ?\nGestion des changements de nomenclature ?"
   },
   {
-    "objectID": "slides/unece-conf/index.html#preprocessing",
-    "href": "slides/unece-conf/index.html#preprocessing",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Preprocessing",
-    "text": "Preprocessing\n\nPreprocessing essential for natural language processing.\nConstraints: simple, light and easily reproducible in Java .\n\n\n\n\n\n\n\n\nTransformation\nText description\n\n\n\n\nInput\n3 D: La Deratisation - La Desinsectisation - La Desinfection\n\n\nLower-case conversion\n3 d: la deratisation - la desinsectisation - la desinfection\n\n\nPunctuations removal\n3 d la deratisation la desinsectisation la desinfection"
+    "objectID": "slides/unece-2025/index.html#ml-model-robustness",
+    "href": "slides/unece-2025/index.html#ml-model-robustness",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "ML Model Robustness",
+    "text": "ML Model Robustness\n\nML models are trained using reference datasets tailored for a specific task.\nIn practice, real-world data often drifts over time from these reference datasets ➡️ performance degradation?\nRegular retraining becomes essential.\nA particularly challenging case in official statistics is the change in the classification."
   },
   {
-    "objectID": "slides/unece-conf/index.html#preprocessing-1",
-    "href": "slides/unece-conf/index.html#preprocessing-1",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Preprocessing",
-    "text": "Preprocessing\n\n\n\n\n\n\n\nTransformation\nText description\n\n\n\n\nInput\n3 D: La Deratisation - La Desinsectisation - La Desinfection\n\n\n…\n…\n\n\nNumbers removal\nd la deratisation la desinsectisation la desinfection\n\n\nOne-letter word removal\nla deratisation la desinsectisation la desinfection\n\n\nStopwords removal\nderatisation desinsectisation desinfection"
+    "objectID": "slides/unece-2025/index.html#timeline-for-adoption",
+    "href": "slides/unece-2025/index.html#timeline-for-adoption",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "Timeline for Adoption 🗓️",
+    "text": "Timeline for Adoption 🗓️\n\nPhased adoption approach:\n2025 ➡️ dual labeling in both NACE Rév. 2 and 2.1\n2026 ➡️ improving the NACE Rév. 2.1. classifier model\n2027 ➡️ full NACE Rév. 2.1 classification while maintaining legacy NACE Rév. 2 codes for specific usages."
   },
   {
-    "objectID": "slides/unece-conf/index.html#preprocessing-2",
-    "href": "slides/unece-conf/index.html#preprocessing-2",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Preprocessing",
-    "text": "Preprocessing\n\n\n\nTransformation\nText description\n\n\n\n\nInput\n3 D: La Deratisation - La Desinsectisation - La Desinfection\n\n\n…\n…\n\n\nNaN removal\nderatisation desinsectisation desinfection\n\n\nStemming\nderatis desinsectis desinfect"
+    "objectID": "slides/unece-2025/index.html#whats-new-in-nace-rév.-2.1",
+    "href": "slides/unece-2025/index.html#whats-new-in-nace-rév.-2.1",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "What’s New in NACE Rév. 2.1?",
+    "text": "What’s New in NACE Rév. 2.1?\n\nAt level 5: 746 sub-classes compared to 732 before.\nMainly fine-grained splits at class level (level 4), but not exclusively.\n551 unambiguous mappings, i.e., one-to-one correspondence ➡️ ideal case! 👌"
   },
   {
-    "objectID": "slides/unece-conf/index.html#a-good-overall-performance",
-    "href": "slides/unece-conf/index.html#a-good-overall-performance",
-    "title": "Classifying companies in France using machine learning",
-    "section": "A good overall performance",
-    "text": "A good overall performance\n\n\nFigure 1: Accuracy for various level of the NACE nomenclature.\n\nNearly 80% of labels from the one-stop shop are correctly coded.\nMost prediction errors are close in the nomenclature."
+    "objectID": "slides/unece-2025/index.html#ambiguous-cases",
+    "href": "slides/unece-2025/index.html#ambiguous-cases",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "Ambiguous Cases",
+    "text": "Ambiguous Cases\n\n181 ambiguous mappings, i.e., one-to-many ➡️ challenging! 🚩\nRequires expert review for proper recoding.\n\n\n\n\nShow distribution of ambiguous codes\n\n\n\n\n1-to-N\n# occurence\n\n\n\n\n2\n109\n\n\n3\n30\n\n\n4\n24\n\n\n5\n6\n\n\n6\n4\n\n\n8\n1\n\n\n9\n2\n\n\n21\n1\n\n\n27\n1\n\n\n36\n1\n\n\n38\n2"
   },
   {
-    "objectID": "slides/unece-conf/index.html#streamlining-the-manual-coding-process",
-    "href": "slides/unece-conf/index.html#streamlining-the-manual-coding-process",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Streamlining the manual coding process",
-    "text": "Streamlining the manual coding process\n\n\nFigure 2: Top-\\(k\\) accuracy per sample.\n\nKnowledge of probabilities for each class.\nThe correct classification is among the top 5 most probable predictions in 94% of cases."
+    "objectID": "slides/unece-2025/index.html#multiple-challenges",
+    "href": "slides/unece-2025/index.html#multiple-challenges",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "Multiple Challenges",
+    "text": "Multiple Challenges\n\nNeed to recode the stock of the registry forms ➡️ over 14 million entries.\nBuilding a classifier for new data flow requires a clean stock base as a training dataset.\nPrevious fastText model trained on over 10 million labeled entries.\nPerformance is highly sensitive to training data volume."
   },
   {
-    "objectID": "slides/unece-conf/index.html#building-a-confidence-index",
-    "href": "slides/unece-conf/index.html#building-a-confidence-index",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Building a confidence index",
-    "text": "Building a confidence index\n\n\nFigure 3: Distribution of the confidence index based on prediction results.\n\nObjective: discriminate between bad and good predictions.\nSelected Confidence Index: difference between the two highest probabilities."
+    "objectID": "slides/unece-2025/index.html#available-data",
+    "href": "slides/unece-2025/index.html#available-data",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "Available Data",
+    "text": "Available Data\n\nOld registry dataset: \\(~10\\) million entries, but poorly suited for new labels.\nNew registry dataset: \\(~2.7\\) million entries.\n\nUnambiguous: \\(1.3\\) million, covering 504 sub-classes.\nAmbiguous: \\(1.4\\) million, covering 177 sub-classes.\n\nManual annotation campaign is critical."
   },
   {
-    "objectID": "slides/unece-conf/index.html#efficiency-of-the-manual-coding-process",
-    "href": "slides/unece-conf/index.html#efficiency-of-the-manual-coding-process",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Efficiency of the manual coding process",
-    "text": "Efficiency of the manual coding process\n\n\nFigure 4: Accuracy for various shares of manual coding.\n\nOptimisation of manual coding process ➨ Performance improvement."
+    "objectID": "slides/unece-2025/index.html#annotation-campaign",
+    "href": "slides/unece-2025/index.html#annotation-campaign",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "Annotation Campaign",
+    "text": "Annotation Campaign\n\nAnnotation launched since mid-2024.\nFocused on uniquely ambiguous cases.\n🎯 Dual objectives:\n\nAssign a NACE Rév. 2.1 code 🚀\nAssess NACE Rév. 2 code quality 🗸\nCurrent count: \\(~27k\\) annotated entries… still insufficient!"
   },
   {
-    "objectID": "slides/unece-conf/index.html#deployment-of-the-model",
-    "href": "slides/unece-conf/index.html#deployment-of-the-model",
-    "title": "Classifying companies in France using machine learning",
-    "section": "Deployment of the model",
-    "text": "Deployment of the model\n\nModels have been deployed in a production environment since November 2022.\nEmerging new challenges include:\n\nOrganisational issues.\nReal-time monitoring.\nRegular re-training.\n\nMLOps approach is required:\n\nJoin us on Wednesday, June 7th for a Hands-on Lab!"
+    "objectID": "slides/unece-2025/index.html#methodology",
+    "href": "slides/unece-2025/index.html#methodology",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "Methodology",
+    "text": "Methodology\n\n🎯 Goal: Build the most comprehensive training dataset possible.\nOne-shot experimentation ➡️ not intended for production reproducibility.\nLeveraging LLMs for automated NACE Rév. 2.1 labeling.\nData used:\n\nNew registry stock dataset (\\(~2.7M\\) records)\nMapping table from NACE experts\nNACE explanatory notes\nManually annotated data (\\(~27k\\) entries)"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Présentations codification automatique de l'APE",
-    "section": "",
-    "text": "Tous les supports sont accessibles et modifiables sur Github InseeFrLab \n\n\n\n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Séminaire interne du département des méthodes statistiques de l'Insee\n\n            \n\n            \n            \n              \n                Thomas Faria et Tom Seimandi\n                Sep 1, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation lors de l'évènement de lancement du SSP Hub\n\n            \n\n            \n            \n              \n                Thomas Faria et Tom Seimandi\n                Apr 17, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the UNECE Machine Learning for Official Statistics Workshop 2023\n\n            \n\n            \n            \n              \n                Thomas Faria and Tom Seimandi\n                Jun 5, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation pour la formation Big Data donné à la BCEAO à Dakar\n\n            \n\n            \n            \n              \n                Romain Avouac, Thomas Faria et Tom Seimandi\n                Sep 27, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Slides used for an exchange with StatCan on MLOps\n\n            \n\n            \n            \n              \n                Romain Avouac, Thomas Faria et Tom Seimandi\n                Mar 19, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the NACE implementation webinar\n\n            \n\n            \n            \n              \n                Nathan Randriamanana\n                Apr 30, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Codification automatique de l'APE à l'Insee\n\n            \n\n            \n            \n              \n                Thomas Faria et Nathan Randriamanana\n                May 7, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Retraining strategies for an economic activity classification model\n\n            \n\n            \n            \n              \n                Thomas Faria, Nathan Randriamanana, Tom Seimandi\n                May 24, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n                \n                  \n                    \n                      \n                        Paper\n                      \n                    \n                  \n                \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025\n\n            \n\n            \n            \n              \n                Thomas Faria, Nathan Randriamanana\n                Nov 6, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation du package torchFastText et ses performances sur la codification de l'APE\n\n            \n\n            \n            \n              \n                Meilame Tayebjee\n                Mar 5, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation non technique de la codification automatique de la NAF\n\n            \n\n            \n            \n              \n                Meilame Tayebjee\n                Apr 4, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the UNECE Generative AI and Official Statistics Workshop 2025\n\n            \n\n            \n            \n              \n                Thomas Faria\n                May 12, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the WP10\n\n            \n\n            \n            \n              \n                Thomas Faria, Meilame Tayebjee\n                May 22, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n\n\nNo matching items"
+    "objectID": "slides/unece-2025/index.html#methodology-1",
+    "href": "slides/unece-2025/index.html#methodology-1",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "Methodology",
+    "text": "Methodology"
   },
   {
-    "objectID": "index.html#présentations-relatives-à-la-codification-automatique-de-lape",
-    "href": "index.html#présentations-relatives-à-la-codification-automatique-de-lape",
-    "title": "Présentations codification automatique de l'APE",
-    "section": "",
-    "text": "Tous les supports sont accessibles et modifiables sur Github InseeFrLab \n\n\n\n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Séminaire interne du département des méthodes statistiques de l'Insee\n\n            \n\n            \n            \n              \n                Thomas Faria et Tom Seimandi\n                Sep 1, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation lors de l'évènement de lancement du SSP Hub\n\n            \n\n            \n            \n              \n                Thomas Faria et Tom Seimandi\n                Apr 17, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the UNECE Machine Learning for Official Statistics Workshop 2023\n\n            \n\n            \n            \n              \n                Thomas Faria and Tom Seimandi\n                Jun 5, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation pour la formation Big Data donné à la BCEAO à Dakar\n\n            \n\n            \n            \n              \n                Romain Avouac, Thomas Faria et Tom Seimandi\n                Sep 27, 2023\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Slides used for an exchange with StatCan on MLOps\n\n            \n\n            \n            \n              \n                Romain Avouac, Thomas Faria et Tom Seimandi\n                Mar 19, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the NACE implementation webinar\n\n            \n\n            \n            \n              \n                Nathan Randriamanana\n                Apr 30, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Codification automatique de l'APE à l'Insee\n\n            \n\n            \n            \n              \n                Thomas Faria et Nathan Randriamanana\n                May 7, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Retraining strategies for an economic activity classification model\n\n            \n\n            \n            \n              \n                Thomas Faria, Nathan Randriamanana, Tom Seimandi\n                May 24, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n                \n                  \n                    \n                      \n                        Paper\n                      \n                    \n                  \n                \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025\n\n            \n\n            \n            \n              \n                Thomas Faria, Nathan Randriamanana\n                Nov 6, 2024\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation du package torchFastText et ses performances sur la codification de l'APE\n\n            \n\n            \n            \n              \n                Meilame Tayebjee\n                Mar 5, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Présentation non technique de la codification automatique de la NAF\n\n            \n\n            \n            \n              \n                Meilame Tayebjee\n                Apr 4, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the UNECE Generative AI and Official Statistics Workshop 2025\n\n            \n\n            \n            \n              \n                Thomas Faria\n                May 12, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n  \n     \n      \n        \n          \n            \n          \n         \n        \n          \n            \n            \n\n            \n              Description : Presentation given during the WP10\n\n            \n\n            \n            \n              \n                Thomas Faria, Meilame Tayebjee\n                May 22, 2025\n              \n            \n            \n            \n              \n                \n                  \n                    \n                      \n                        Slides\n                      \n                    \n                  \n                \n              \n              \n            \n          \n        \n\n        \n\n      \n     \n  \n\n\n\nNo matching items"
+    "objectID": "slides/unece-2025/index.html#leveraging-llms",
+    "href": "slides/unece-2025/index.html#leveraging-llms",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "Leveraging LLMs",
+    "text": "Leveraging LLMs\n\nAugmented Generation (RAG/CAG) vs fine-tunning\n\n\nRAG: Unstructured prior knowledge based on similarity of notes embeddings\nCAG: Structured prior knowledge based on known mappings\n\n\n💡 Core idea ➡️ Provide key information to the LLM to translate NACE Rév. 2 into 2.1\n\n\n\n\n\n\n\nWarning\n\n\nRAG can act like a zero-shot classifier, while CAG is not a classifier as it relies on prior knowledge."
+  },
+  {
+    "objectID": "slides/unece-2025/index.html#prompt-design",
+    "href": "slides/unece-2025/index.html#prompt-design",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "Prompt Design",
+    "text": "Prompt Design\n\nA common system prompt for all entries\n\n\nAfficher le prompt sytème\n\nTu es un expert de la Nomenclature statistique des Activités économiques dans la Communauté Européenne (NACE). Tu es chargé de réaliser le changement de nomenclature. Ta mission consiste à attribuer un code NACE 2025 à une entreprise, en t'appuyant sur le descriptif de son activité et à partir d'une liste de codes proposés (identifiée à partir de son code NACE 2008 existant). Voici les instructions à suivre:\n1. Analyse la description de l'activité principale de l'entreprise et le code NACE 2008 fourni par l'utilisateur.\n2. À partir de la liste des codes NACE 2025 disponible, identifie la catégorie la plus appropriée qui correspond à l'activité principale de l'entreprise.\n3. Retourne le code NACE 2025 au format JSON comme spécifié par l'utilisateur. Si la description de l'activité de l'entreprise n'est pas suffisamment précise pour identifier un code NACE 2025 adéquat, retourne `null` dans le JSON.\n4. Évalue la cohérence entre le code NACE 2008 fourni et la description de l'activité de l'entreprise. Si le code NACE 2008 ne semble pas correspondre à cette description, retourne `False` dans le champ `nace08_valid` du JSON. Note que si tu arrives à classer la description de l'activité de l'entreprise dans un code NACE 2025, le champ `nace08_valid` devrait `True`, sinon il y a incohérence.\n5. Réponds seulement avec le JSON complété aucune autres information ne doit être retourné.\n\nEach observation gets a custom prompt including:\n\nBusiness activity description\nOriginal NACE Rév. 2 code (in CAG)\nCandidate codes list from retriever\n\nInstruction on output format required."
+  },
+  {
+    "objectID": "slides/unece-2025/index.html#output-validation",
+    "href": "slides/unece-2025/index.html#output-validation",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "Output Validation",
+    "text": "Output Validation\n\nLLMs tend to be overly verbose\nResponses shaped into structured, minimal format\nJSON is the preferred schema.\n\n\n\nShow expected response format\n\n{\n    \"codable\": true,\n    \"nace_2008_valid\": true,\n    \"nace2025\": \"0147J\" \n}\n\n\nResponse parsing:\n\nFormat check\nDetecting hallucinations"
+  },
+  {
+    "objectID": "slides/unece-2025/index.html#evaluation-challenge",
+    "href": "slides/unece-2025/index.html#evaluation-challenge",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "Evaluation Challenge",
+    "text": "Evaluation Challenge\n\n❓ Key question: How to evaluate an LLM?:\nClassification seems simpler… but complexity of taxonomy matters.\nUsed \\(27k\\) manual annotations as the benchmark 🥇\n3 performance metrics:\n\nOverall accuracy\nAccuracy among codable entries\nAccuracy of LLM only"
+  },
+  {
+    "objectID": "slides/unece-2025/index.html#performance-of-models",
+    "href": "slides/unece-2025/index.html#performance-of-models",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "Performance of models",
+    "text": "Performance of models"
+  },
+  {
+    "objectID": "slides/unece-2025/index.html#reconstructing-ambiguous-dataset",
+    "href": "slides/unece-2025/index.html#reconstructing-ambiguous-dataset",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "Reconstructing Ambiguous Dataset",
+    "text": "Reconstructing Ambiguous Dataset\n\n💡Idea: Treat LLMs as additional annotators\n❓Can we boost performance via ensemble methods?\nBuilt 3 more annotations:\n\n\nCascade selection\nMajority vote\nWeighted vote"
+  },
+  {
+    "objectID": "slides/unece-2025/index.html#annotation-fusion",
+    "href": "slides/unece-2025/index.html#annotation-fusion",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "Annotation Fusion",
+    "text": "Annotation Fusion"
+  },
+  {
+    "objectID": "slides/unece-2025/index.html#retraining-with-nace-rév.-2.1",
+    "href": "slides/unece-2025/index.html#retraining-with-nace-rév.-2.1",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "Retraining with NACE Rév. 2.1",
+    "text": "Retraining with NACE Rév. 2.1\n\nRebuilt new registry dataset with NACE Rév. 2.1 (~2M records)\nData distribution unchanged\nNew registry variables used\nAchieved comparable performance to NACE Rév. 2 model"
+  },
+  {
+    "objectID": "slides/unece-2025/index.html#retraining-accuracy",
+    "href": "slides/unece-2025/index.html#retraining-accuracy",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "Retraining Accuracy",
+    "text": "Retraining Accuracy"
+  },
+  {
+    "objectID": "slides/unece-2025/index.html#the-nace-rév.-2.1-model",
+    "href": "slides/unece-2025/index.html#the-nace-rév.-2.1-model",
+    "title": "NACE Rév. 2.1 update: Retraining an ML model in production using LLM",
+    "section": "The NACE Rév. 2.1 Model",
+    "text": "The NACE Rév. 2.1 Model\n\nviewof activite = Inputs.text(\n  {label: '', value: 'coiffeur', width: 800}\n)\n\nurlApe = `https://codification-ape-dev.lab.sspcloud.fr/predict?description_activity=${activite}%20&type_form=X&event=01P&nb_echos_max=3&prob_min=0.0009`\n\nd3.json(urlApe).then( res =&gt; {\n  var IC, results;\n  ( {IC, ...results} = res )\n\n  IC = parseFloat(IC)\n\n  const rows = Object.values(results).map( obj =&gt; {\n    return `\n    &lt;tr&gt;\n      &lt;td&gt;${obj.code} | ${obj.libelle}&lt;/td&gt;\n      &lt;td&gt;${obj.probabilite.toFixed(3)}&lt;/td&gt;\n    &lt;/tr&gt;\n  `\n  }).join('')\n  \n  return html`\n  &lt;table&gt;\n    &lt;caption&gt;\n      Confidence index: ${IC.toFixed(3)}\n    &lt;/caption&gt;\n    &lt;tr&gt;\n      &lt;th style=\"text-align:center;\"&gt;Description (NACE Rév. 2.1)&lt;/th&gt;\n      &lt;th&gt;Probability&lt;/th&gt;\n    &lt;/tr&gt;\n      ${rows}\n  &lt;/table&gt;`\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport { debounce } from \"@mbostock/debouncing-input\""
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#ml-model-robustness",
+    "href": "slides/wp10-country-project/index.html#ml-model-robustness",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "ML Model Robustness",
+    "text": "ML Model Robustness\n\nML models are trained using reference datasets tailored for a specific task.\nIn practice, real-world data often drifts over time from these reference datasets ➡️ performance degradation?\nRegular retraining becomes essential.\nA particularly challenging case in official statistics is the change in the classification."
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#timeline-for-adoption",
+    "href": "slides/wp10-country-project/index.html#timeline-for-adoption",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Timeline for Adoption 🗓️",
+    "text": "Timeline for Adoption 🗓️\n\nPhased adoption approach:\n2025 ➡️ dual labeling in both NACE Rév. 2 and 2.1\n2026 ➡️ improving the NACE Rév. 2.1. classifier model\n2027 ➡️ full NACE Rév. 2.1 classification while maintaining legacy NACE Rév. 2 codes for specific usages."
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#whats-new-in-nace-rév.-2.1",
+    "href": "slides/wp10-country-project/index.html#whats-new-in-nace-rév.-2.1",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "What’s New in NACE Rév. 2.1?",
+    "text": "What’s New in NACE Rév. 2.1?\n\nAt level 5: 746 sub-classes compared to 732 before.\nMainly fine-grained splits at class level (level 4), but not exclusively.\n551 unambiguous mappings, i.e., one-to-one correspondence ➡️ ideal case! 👌"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#ambiguous-cases",
+    "href": "slides/wp10-country-project/index.html#ambiguous-cases",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Ambiguous Cases",
+    "text": "Ambiguous Cases\n\n181 ambiguous mappings, i.e., one-to-many ➡️ challenging! 🚩\nRequires expert review for proper recoding.\n\n\n\n\nShow distribution of ambiguous codes\n\n\n\n\n1-to-N\n# occurence\n\n\n\n\n2\n109\n\n\n3\n30\n\n\n4\n24\n\n\n5\n6\n\n\n6\n4\n\n\n8\n1\n\n\n9\n2\n\n\n21\n1\n\n\n27\n1\n\n\n36\n1\n\n\n38\n2"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#multiple-challenges",
+    "href": "slides/wp10-country-project/index.html#multiple-challenges",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Multiple Challenges",
+    "text": "Multiple Challenges\n\nNeed to recode the stock of the registry forms ➡️ over 14 million entries.\nBuilding a classifier for new data flow requires a clean stock base as a training dataset.\nPrevious fastText model trained on over 10 million labeled entries.\nPerformance is highly sensitive to training data volume."
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#available-data",
+    "href": "slides/wp10-country-project/index.html#available-data",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Available Data",
+    "text": "Available Data\n\nOld registry dataset: \\(~10\\) million entries, but poorly suited for new labels.\nNew registry dataset: \\(~2.7\\) million entries.\n\nUnambiguous: \\(1.3\\) million, covering 504 sub-classes.\nAmbiguous: \\(1.4\\) million, covering 177 sub-classes.\n\nManual annotation campaign is critical."
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#annotation-campaign",
+    "href": "slides/wp10-country-project/index.html#annotation-campaign",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Annotation Campaign",
+    "text": "Annotation Campaign\n\nAnnotation launched since mid-2024.\nFocused on uniquely ambiguous cases.\n🎯 Dual objectives:\n\nAssign a NACE Rév. 2.1 code 🚀\nAssess NACE Rév. 2 code quality 🗸\nCurrent count: \\(~27k\\) annotated entries… still insufficient!"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#methodology",
+    "href": "slides/wp10-country-project/index.html#methodology",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Methodology",
+    "text": "Methodology\n\n🎯 Goal: Build the most comprehensive training dataset possible.\nOne-shot experimentation ➡️ not intended for production reproducibility.\nLeveraging LLMs for automated NACE Rév. 2.1 labeling.\nData used:\n\nNew registry stock dataset (\\(~2.7M\\) records)\nMapping table from NACE experts\nNACE explanatory notes\nManually annotated data (\\(~27k\\) entries)"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#methodology-1",
+    "href": "slides/wp10-country-project/index.html#methodology-1",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Methodology",
+    "text": "Methodology"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#leveraging-llms",
+    "href": "slides/wp10-country-project/index.html#leveraging-llms",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Leveraging LLMs",
+    "text": "Leveraging LLMs\n\nAugmented Generation (RAG/CAG) vs fine-tunning\n\n\nRAG: Unstructured prior knowledge based on similarity of notes embeddings\nCAG: Structured prior knowledge based on known mappings\n\n\n💡 Core idea ➡️ Provide key information to the LLM to translate NACE Rév. 2 into 2.1\n\n\n\n\n\n\n\nWarning\n\n\nRAG can act like a zero-shot classifier, while CAG is not a classifier as it relies on prior knowledge."
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#prompt-design",
+    "href": "slides/wp10-country-project/index.html#prompt-design",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Prompt Design",
+    "text": "Prompt Design\n\nA common system prompt for all entries\n\n\nAfficher le prompt sytème\n\nTu es un expert de la Nomenclature statistique des Activités économiques dans la Communauté Européenne (NACE). Tu es chargé de réaliser le changement de nomenclature. Ta mission consiste à attribuer un code NACE 2025 à une entreprise, en t'appuyant sur le descriptif de son activité et à partir d'une liste de codes proposés (identifiée à partir de son code NACE 2008 existant). Voici les instructions à suivre:\n1. Analyse la description de l'activité principale de l'entreprise et le code NACE 2008 fourni par l'utilisateur.\n2. À partir de la liste des codes NACE 2025 disponible, identifie la catégorie la plus appropriée qui correspond à l'activité principale de l'entreprise.\n3. Retourne le code NACE 2025 au format JSON comme spécifié par l'utilisateur. Si la description de l'activité de l'entreprise n'est pas suffisamment précise pour identifier un code NACE 2025 adéquat, retourne `null` dans le JSON.\n4. Évalue la cohérence entre le code NACE 2008 fourni et la description de l'activité de l'entreprise. Si le code NACE 2008 ne semble pas correspondre à cette description, retourne `False` dans le champ `nace08_valid` du JSON. Note que si tu arrives à classer la description de l'activité de l'entreprise dans un code NACE 2025, le champ `nace08_valid` devrait `True`, sinon il y a incohérence.\n5. Réponds seulement avec le JSON complété aucune autres information ne doit être retourné.\n\nEach observation gets a custom prompt including:\n\nBusiness activity description\nOriginal NACE Rév. 2 code (in CAG)\nCandidate codes list from retriever\n\nInstruction on output format required."
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#output-validation",
+    "href": "slides/wp10-country-project/index.html#output-validation",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Output Validation",
+    "text": "Output Validation\n\nLLMs tend to be overly verbose\nResponses shaped into structured, minimal format\nJSON is the preferred schema.\n\n\n\nShow expected response format\n\n{\n    \"codable\": true,\n    \"nace_2008_valid\": true,\n    \"nace2025\": \"0147J\" \n}\n\n\nResponse parsing:\n\nFormat check\nDetecting hallucinations"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#evaluation-challenge",
+    "href": "slides/wp10-country-project/index.html#evaluation-challenge",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Evaluation Challenge",
+    "text": "Evaluation Challenge\n\n❓ Key question: How to evaluate an LLM?:\nClassification seems simpler… but complexity of taxonomy matters.\nUsed \\(27k\\) manual annotations as the benchmark 🥇\n3 performance metrics:\n\nOverall accuracy\nAccuracy among codable entries\nAccuracy of LLM only"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#performance-of-models",
+    "href": "slides/wp10-country-project/index.html#performance-of-models",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Performance of models",
+    "text": "Performance of models"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#reconstructing-ambiguous-dataset",
+    "href": "slides/wp10-country-project/index.html#reconstructing-ambiguous-dataset",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Reconstructing Ambiguous Dataset",
+    "text": "Reconstructing Ambiguous Dataset\n\n💡Idea: Treat LLMs as additional annotators\n❓Can we boost performance via ensemble methods?\nBuilt 3 more annotations:\n\n\nCascade selection\nMajority vote\nWeighted vote"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#annotation-fusion",
+    "href": "slides/wp10-country-project/index.html#annotation-fusion",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Annotation Fusion",
+    "text": "Annotation Fusion"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#retraining-with-nace-rév.-2.1",
+    "href": "slides/wp10-country-project/index.html#retraining-with-nace-rév.-2.1",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Retraining with NACE Rév. 2.1",
+    "text": "Retraining with NACE Rév. 2.1\n\nRebuilt new registry dataset with NACE Rév. 2.1 (~2M records)\nData distribution unchanged\nNew registry variables used\nAchieved comparable performance to NACE Rév. 2 model"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#retraining-accuracy",
+    "href": "slides/wp10-country-project/index.html#retraining-accuracy",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Retraining Accuracy",
+    "text": "Retraining Accuracy"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#fasttext-on-production-but-outdated",
+    "href": "slides/wp10-country-project/index.html#fasttext-on-production-but-outdated",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "fastText on production, but outdated ?",
+    "text": "fastText on production, but outdated ?\n\nfastText: a powerful and efficient model currently used in production for NACE coding at Insee…\n… but the library repo has been archived on March 19th, 2024\n\nThis non-maintenance is highly problematic in the medium-term:\n\nPotential appearance of (non-fixable) bugs\nConflicting versions of dependencies\nModernization hindrance"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#pytorch-why-some-strategic-reflections",
+    "href": "slides/wp10-country-project/index.html#pytorch-why-some-strategic-reflections",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "PyTorch: why ? Some strategic reflections…",
+    "text": "PyTorch: why ? Some strategic reflections…\n💡 Idea: Develop our custom PyTorch-based model to:\n\nadapt and customize the architecture for our specific needs (text classification with additional categorical variables)\nlimit dependencies to external libraries and internalize maintenance for more robustness in the long-term\naccess to the vibrant deep learning / NLP community to develop additional features (explainability with Captum, calibration with torch-uncertainty…)…\n… or use pre-trained models on Hugging Face"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#our-solution-the-torchfasttext-package",
+    "href": "slides/wp10-country-project/index.html#our-solution-the-torchfasttext-package",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Our solution: the torchFastText package",
+    "text": "Our solution: the torchFastText package\nThe package:\n\nProvides a standard yet flexible architecture for automatic coding needs…\n… that stays close to the fastText methodology for now but is led to evolve\nDistributes the raw PyTorch model, a Lightning module as well as a wrapper class for a quick grip\nIs open-sourced and aims at fostering collaboration ! Feel free to raise an issue, report a bug or open a PR."
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#pytorch-model-lightning-module",
+    "href": "slides/wp10-country-project/index.html#pytorch-model-lightning-module",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "PyTorch model & Lightning module",
+    "text": "PyTorch model & Lightning module\n\nfrom torchFastText.model import FastTextModel, FastTextModule\nimport torch\n\nmodel = FastTextModel(embedding_dim=80,\n                      num_classes=732,\n                      num_rows = 20000,\n                      categorical_vocabulary_sizes=[10, 20],\n                      categorical_embedding_dims=5\n                      )\n\nmodule = FastTextModule(\n    model=model,\n    loss= torch.nn.CrossEntropyLoss(),\n    optimizer=torch.optim.Adam,\n    optimizer_params={\"lr\": 0.001},\n    scheduler = None,\n    scheduler_params=None\n)\nprint(model)\nprint(module)\n\nFastTextModel(\n  (embeddings): Embedding(20000, 80, padding_idx=0, sparse=True)\n  (emb_0): Embedding(10, 5)\n  (emb_1): Embedding(20, 5)\n  (fc): Linear(in_features=85, out_features=732, bias=True)\n)\nFastTextModule(\n  (model): FastTextModel(\n    (embeddings): Embedding(20000, 80, padding_idx=0, sparse=True)\n    (emb_0): Embedding(10, 5)\n    (emb_1): Embedding(20, 5)\n    (fc): Linear(in_features=85, out_features=732, bias=True)\n  )\n  (loss): CrossEntropyLoss()\n  (accuracy_fn): MulticlassAccuracy()\n)"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#tokenizer",
+    "href": "slides/wp10-country-project/index.html#tokenizer",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Tokenizer",
+    "text": "Tokenizer\n\nfrom torchFastText.datasets import NGramTokenizer\n\ntraining_text = ['boulanger', 'coiffeur', 'boucherie', 'boucherie charcuterie']\n\ntokenizer = NGramTokenizer(\n    min_n=3, \n    max_n=6, \n    num_tokens= 100,\n    len_word_ngrams=2, \n    min_count=1, \n    training_text=training_text\n    )\n\nprint(tokenizer.tokenize([\"boulangerie\"])[0])\n\n[['&lt;bo', 'bou', 'oul', 'ula', 'lan', 'boul', 'nge', '&lt;boul', 'eri', 'rie', 'ie&gt;', 'boul', 'boul', 'oula', 'ulan', 'lang', 'ange', 'nger', 'geri', 'erie', 'rie&gt;', '&lt;boul', 'boula', 'oulan', 'ulang', 'lange', 'anger', 'ngeri', 'gerie', 'erie&gt;', '&lt;boula', 'boulan', 'oulang', 'ngerie', 'langer', 'angeri', 'ngerie', 'gerie&gt;', '&lt;/s&gt;', 'boulangerie &lt;/s&gt;']]"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#the-wrapper-class",
+    "href": "slides/wp10-country-project/index.html#the-wrapper-class",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "The wrapper class",
+    "text": "The wrapper class\nA quick way to launch a training in two lines of code.\n\nfrom torchFastText import torchFastText\n\n# Initialize the model\nmodel = torchFastText(\n    num_tokens=1000000,\n    embedding_dim=100,\n    min_count=5,\n    min_n=3,\n    max_n=6,\n    len_word_ngrams=True,\n    sparse=True\n)\n\n# Train the model\nmodel.train(\n    X_train=train_data,\n    y_train=train_labels,\n    X_val=val_data,\n    y_val=val_labels,\n    num_epochs=10,\n    batch_size=64\n)\n# Make predictions\npredictions = model.predict(test_data)"
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#some-obstacles",
+    "href": "slides/wp10-country-project/index.html#some-obstacles",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Some obstacles:",
+    "text": "Some obstacles:\nBeing a general framework, PyTorch-based models are slower than the original fastText library.\n\n⚡ Better to have GPU for high-scale training in reasonable time\n☢️ A constraint: CPU-bound inference in production. Requires to be extremely careful regarding size of the model and pre-deployment tests.\n\nFirst step has been to train a model small enough to have a response time lower than 400 ms on CPU, while keeping high prediction accuracies."
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#deployment-stack",
+    "href": "slides/wp10-country-project/index.html#deployment-stack",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Deployment stack",
+    "text": "Deployment stack\nMLFlow is at the core of the pipeline:\n\nClassicly: model life cycle incl. training monitoring, evaluation metric logging, model versioning…\nAnd also fast deployment using a PyFunc wrapper specifically designed by MLFlow\n\nFastAPI for API development, and Pydantic for data validation. API is deployed on a Kubernetes cluster."
+  },
+  {
+    "objectID": "slides/wp10-country-project/index.html#conclusion-and-next-steps",
+    "href": "slides/wp10-country-project/index.html#conclusion-and-next-steps",
+    "title": "Ongoing automatic coding projects at Insee",
+    "section": "Conclusion and next steps",
+    "text": "Conclusion and next steps\n\n⚠️ Transitioning to PyTorch in production requires care to deploy in production…\n👐 … but enables to open many doors: modernization, better maintenance, state-of-the-art technology… It’s well worth it !\n\nNext steps include:\n\nMore complex architectures: attention mechanisms, more layers… - to improve on the fastText methodology\nUse HuggingFace: pre-trained models, tokenizers (or train a new tokenizer)\nBetter handling of uncertainty: calibration and conformal prediction"
   }
 ]

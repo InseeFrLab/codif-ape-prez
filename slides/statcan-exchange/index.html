@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="Romain Avouac, Thomas Faria, Tom Seimandi">
   <meta name="dcterms.date" content="2024-03-19">
@@ -96,7 +96,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-7230c0af59ab1606bc2ed49e76979e8e.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ea8535d309a38c52e88d69daf30b07d0.css">
   <link rel="stylesheet" href="../_extensions/InseeFrLab/onyxia/logo.css">
   <link rel="stylesheet" href="../custom.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -275,7 +275,7 @@
 <li><span class="orange"><strong>MLflow</strong></span> used to track/log experiments and compare runs</li>
 <li>Custom model class allows to package <span class="orange"><strong>pre-processing steps</strong></span> in the <code>predict</code> method:</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Define a custom model</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Define a custom model</span></span>
 <span id="cb1-2"><a></a><span class="kw">class</span> MyModel(mlflow.pyfunc.PythonModel):</span>
 <span id="cb1-3"><a></a></span>
 <span id="cb1-4"><a></a>    <span class="kw">def</span> load_context(<span class="va">self</span>, context):</span>
@@ -283,7 +283,7 @@
 <span id="cb1-6"><a></a></span>
 <span id="cb1-7"><a></a>    <span class="kw">def</span> predict(<span class="va">self</span>, context, model_input):</span>
 <span id="cb1-8"><a></a>        <span class="co"># &lt;INCLUDE PRE-PROCESSING STEPS HERE&gt;</span></span>
-<span id="cb1-9"><a></a>        <span class="cf">return</span> <span class="va">self</span>.model.predict(model_input)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a></a>        <span class="cf">return</span> <span class="va">self</span>.model.predict(model_input)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="model-store" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Model store</h2>
@@ -292,9 +292,9 @@
 <li>Models are packaged with all the metadata necessary to <span class="orange"><strong>run inference</strong></span></li>
 <li>Registered models are <span class="orange"><strong>simply loaded</strong></span> with this command where <code>version</code> is a number or a <code>"Production"</code> tag for example</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>model <span class="op">=</span> mlflow.pyfunc.load_model(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>model <span class="op">=</span> mlflow.pyfunc.load_model(</span>
 <span id="cb2-2"><a></a>    model_uri<span class="op">=</span><span class="ss">f"models:/</span><span class="sc">{</span>model_name<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>version<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb2-3"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="api-serving" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>API serving</h2>
@@ -550,7 +550,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -624,13 +624,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
