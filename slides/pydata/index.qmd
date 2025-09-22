@@ -1,0 +1,75 @@
+---
+title: "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification"
+title-slide-attributes:
+  style: "font-size:0.9em;"
+author: "[Cédric Couralet](https://github.com/micedre) and [Meilame Tayebjee](https://github.com/meilame-tayebjee)"
+date: "2025-10-01"
+date-format: "D MMMM YYYY"
+slide-number: true
+# uncomment for French presentations:
+lang: en-GB
+# for blind readers:
+slide-tone: false
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  onyxia-revealjs:
+    output-file: index.html
+controls: true
+css: ../custom.css
+ascii: true
+---
+
+## 👨‍🔬 Who are we ?
+
+Two data scientists from the innovation team at Insee:
+
+- **Cédric Couralet**
+   - 
+
+
+## 👨‍🔬 Who are we ?
+
+Two data scientists from the innovation team at Insee:
+
+- **Meilame Tayebjee** 
+  - Graduated 2024
+  - Currently pursuing a part-time PhD in AI applied to health econometrics
+  - At Insee: 
+    - working on [**deep learning for text classification**]{.orange}, computer vision with remote sensing data, [**MLOps practices**]{.orange}
+    - exploring explainability, calibration, LLMS, RAGs & agentic workflows
+
+
+## 💡 What will we  discuss about ? {.center}
+
+- [**MLOps pipeline**]{.orange} for [**text classification**]{.orange} at Insee
+- Deploying a [**PyTorch model**]{.orange} on [**CPU-bound**]{.orange} secured offline environment
+- [**Open-sourcing a PyTorch package**]{.orange}: why and how
+
+
+# 1️⃣ Context
+
+{{< include sections/contexte.qmd >}}
+
+# 2️⃣ MLOps pipeline
+
+{{< include sections/pipeline.qmd >}}
+
+# 3️⃣ _torchFastText_, an open-source package to distribute PyTorch models
+
+{{< include sections/torchft.qmd >}}
+
+# 4️⃣ Perspectives 
+
+{{< include sections/perspectives.qmd >}}
+
+# 
+
+**Thank you for your attention.**
+
+
+Find here all of our repos on the NACE coding project: 
+
+![](../img/QRcodeGitHub.png){fig-align="center" width=25%}
