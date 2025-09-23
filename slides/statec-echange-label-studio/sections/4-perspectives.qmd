@@ -1,0 +1,4 @@
+## La cible
+- Mise en production en interne maintenue par nos développeurs
+- Flux d'annotation continu: données de test récentes
+- Améliorer surveillance et maintenance de nos modèles

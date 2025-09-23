@@ -1,0 +1,43 @@
+---
+title: "Cas d'usage de Label Studio à Sirene"
+subtitle: |
+  **[Présentation pour Statec Luxembourg]{.orange}**
+author: "[Nathan Randriamanana](https://github.com/TheAIWizard)"
+date: "23/09/2025"
+date-format: "D MMMM YYYY"
+slide-number: true
+# uncomment for French presentations:
+lang: fr
+# for blind readers:
+slide-tone: false
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  onyxia-revealjs:
+    output-file: index.html
+controls: true
+css: ../custom.css
+ascii: true
+from: markdown+emoji
+execute: 
+  echo: false
+  warning: false
+---
+
+# 1️⃣ Contexte
+
+{{< include sections/1-contexte.qmd >}}
+
+# 2️⃣ Présentation et cas d'usage
+
+{{< include sections/2-usecases.qmd >}}
+
+# 3️⃣ Petite démonstration
+
+{{< include sections/3-demo.qmd >}}
+
+# 4️⃣ Perspectives
+
+{{< include sections/4-perspectives.qmd >}}
