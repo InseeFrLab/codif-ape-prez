@@ -28,7 +28,7 @@ Two data scientists from the innovation team at Insee:
 
 - **Cédric Couralet**
    - Previously software developer, architect, devops/security engineer... at Insee
-   - Currently helping real data scientists bridge the gap between research and production
+   - Currently helping real data scientists bridge the gap between experimentation and production ([**How to talk to IT**]{.orange})
    - Open Source advocate
 
 
