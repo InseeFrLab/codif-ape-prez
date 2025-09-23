@@ -1,0 +1,126 @@
+## Contexte 
+
+- [**Sirene**]{.orange} est le répertoire des entreprises françaises
+- Mise en place d'un [**guichet unique**]{.blue2} pour les formalités d'entreprises
+- Un [**code APE**]{.orange} est attribué à chaque entreprise
+- Fin 2022: Première mise en production d'un modèle de ML pour la codification APE
+- Début 2024:
+  - [**Refonte**]{.blue2} du répertoire Sirene
+  - [**Bascule officielle**]{.blue2} vers l'application Sirene 4
+  - Fin du système expert pour la codification de l'ancienne application Sirene 3
+  - Préparation à la nouvelle nomenclature: NAF 2025
+
+- [**Conséquence**]{.orange} : Données de test Sirene 3 obsolètes, révision de la NAF et donc des outputs du modèle à anticiper
+
+## Deux principaux besoins
+- [**Absence d'un gold standard**]{.blue2} pour évaluer notre modèle en production en [**NAF rev 2 i.e NAF 2008**]{.orange}
+- [**Absence de données en NAF 2025**]{.blue2} pour notre futur modèle (changement d'output)
+
+## Deux campagnes d'annotation
+- 1 semestre par campagne
+- Des ressources limitées
+- [**Une campagne en NAF rev 2**]{.blue2} pour évaluer notre modèle en production
+    - Moyens à dispositions: 7 experts pour évaluer la qualité de codification
+- [**Une campagne en NAF 2025**]{.blue2} pour notre futur modèle
+    - Moyens à dispositions: 25 experts pour enrichir un jeu de données en NAF 2025
+    - Formation en parallèle des experts en NAF 2025
+
+## Données
+
+- Prédiction du code APE à partir des descriptifs d'activités
+- [$\approx$ **10 millions**]{.orange} d'obs. issues de Sirene 3 couvrant la période 2014-2022
+- [$\approx$ **3 millions**]{.orange} d'obs. issues de Sirene 4 à partir de fin 2022
+- [**Données labellisées**]{.orange} par Sicore ou par un gestionnaire
+- Structure [**hiérarchique**]{.orange} de la nomenclature
+
+## La nomenclature hiérarchique de l'APE
+
+| Niveau | Code | Libellé | Taille |
+|-------|------|----------------------|-|
+| Section     | H     |Transports et entreposage|21|
+| Division    | 52    |Entreposage et services auxiliaires des transports|88|
+| Groupe      | 522   |Services auxiliaires des transports|272|
+| Classe      | 5224  |Manutention|615|
+| **Sous-classe** | [**5224A**]{.red2} |**Manutention portuaire**|[**732**]{.orange}|
+
+## Calendrier pour l'adoption de la nouvelle NAF 🗓️
+
+- [**Mi-octobre 2025**]{.orange} ➡️ double codification en NAF 2025
+  - [**Sirus**]{.blue2} : recodification du stock pour fin 2025
+  - [**Sirene**]{.blue2} : Intégration de la NAF 2025 [**en flux**]{.green2} et d'une infrastructure MLOps-compatible
+- [**2026**]{.orange} ➡️ amélioration de la codification en NAF 2025
+- [**2027**]{.orange} ➡️ codification officielle en [**NAF 2025**]{.blue2} avec maintien de la codification NAF 2008
+
+
+## NAF 2025 : quels changements ? 
+
+- Au [**niveau 5**]{.orange} : [**746**]{.blue2} sous classes contre [**732**]{.blue2} auparavant
+- Principalement des éclatements au niveau de la classe (niveau 4) ... mais pas que !
+- [**551 classes univoques**]{.orange}, correspondance 1-pour-1 ➡️ cas idéal ! 👌
+
+![](../img/univoques.png){fig-align="center"}
+
+
+## NAF 2025 : les cas multivoques {.scrollable}
+
+- [**181 classes multivoques**]{.orange}, correspondance 1-pour-N ➡️ cas problématiques ! 🚩
+- [**Besoin d'un expert**]{.orange} pour déterminer le nouveau code
+
+![](../img/multivoques.png){fig-align="center"}
+
+
+<details> 
+<summary> 
+    <font size=3 color=black><b>Afficher la distribution des codes multivoques</b></font> 
+</summary>
+
+| 1-to-N | # occurence |
+| ---   | --- |
+| 2 | 109 |
+| 3 | 30 |
+| 4 | 24 |
+| 5 | 6 |
+| 6 | 4 |
+| 8 | 1 |
+| 9 | 2 |
+| 21 | 1 |
+| 27 | 1 |
+| 36 | 1 |
+| 38 | 2 |
+
+</details>
+
+
+## Enjeux et besoins multiples
+
+- Maintenance de l'application côté métier
+- Gérer la [**saisie**]{.orange} de plusieurs participants...
+- Mener une campagne d'annotation ➡️ [**animation**]{.orange} d'un réseau
+- Faciliter la [**maintenance**]{.orange} ➡️ besoins d'automatiser
+- Assurer la [**persistence**]{.orange} des données annotées
+- Prendre en compte les retours, difficultés, commentaires
+
+## Données à annoter
+
+- Issues de cas traités en gestion courante dans [**Sirene 4**]{.orange} : [**~ 4millions**]{.blue2} provenant du Guichet Unique
+
+
+## Données utilisées {.scrollable}
+
+::: {.panel-tabset}
+
+### Données 
+
+  - Une observation consiste en : 
+  - [Description textuelle]{.blue2} de l'activité - [text]{.green2}
+    - [**Code APE vrai**]{.blue2} labelisé par le moteur de règles –- [APE_SICORE]{.green2} (732 modalités)
+    - un [**descriptif textuel**]{.red2} de l'activité -- [LIB_SICORE]{.green2}
+    - la [**nature de l’activité**]{.blue2} -- [NAT]{.green2} (23 modalités)
+    - le [**type de la liasse**]{.blue2} -- [TYP]{.green2} (15 modalités)
+    - le [**type d’évènement**]{.blue2} -- [EVT]{.green2} (24 modalités)
+    - la [**surface ($m^2$)**]{.blue2}-- [SUR]{.green2} (4 modalités)
+
+:::
+
+
+

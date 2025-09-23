@@ -1,0 +1,39 @@
+## Label Studio {background-image="../img/label-studio-logo.png" background-size="25%" background-position="50% 75%"} 
+
+- [**Label Studio**]{.orange}: Plateforme [**open source**]{.blue2} de [**labellisation**]{.blue2} de données.
+
+## Différentes types de données 
+
+- Entraînement ou évaluation
+- [**Texte**]{.orange}: évaluer NER, fine-tuning, RAG, reranker ... 
+- [**Image**]{.orange} : OCR, segmentation sémantique, détection, ...
+- [**Son**]{.orange} : classification audio, d'intention, ...
+
+## Problématiques déjà pensées par l'outil
+
+- Gestion accès concurrent des participants
+- Possibilité de passer une tâche (`skip`)
+- Ergonomie
+- Petites animations pour briser la monotonie
+- Facilite la saisie de données
+- Rappel des consignes possibles
+
+## Modes d'interaction avec Label Studio
+- Gestion des projets:
+  - En clic-bouton via l'interface
+  - En programmant via l'API de l'application
+- Gestion du stockage:
+  - Téléchargement en local
+  - Compatible S3
+
+## Principe
+- Des données à importer
+- Un template XML pour le formulaire
+
+## Pour nos deux cas d'usage
+- Un template pour annoter en NAF rev 2
+- Un template pour annoter en NAF 2025
+
+## Répond à nos besoins ?
+- Des limites par rapport à la version [Enterprise]{.purple}
+- Version [Community]{.orange} (`open source`) répond largement à nos besoins
