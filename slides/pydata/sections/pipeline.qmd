@@ -186,7 +186,7 @@ prediction_table = {
 
   // la réponse est un tableau avec un seul objet
   const result = prediction[0]
-  const { IC, ...codes } = result
+  const { IC, MLversion, ...codes } = result
 
   const rows = Object.values(codes).map(({ code, libelle, probabilite }) => {
     return html`
@@ -200,7 +200,7 @@ prediction_table = {
   return html`
     <table style="border-collapse: collapse; width: 100%;">
       <caption style="margin-bottom: 0.5em;">
-        Indice de confiance : ${(+IC).toFixed(3)}
+        Confidence score : ${(+IC).toFixed(3)}
       </caption>
       <thead>
         <tr>

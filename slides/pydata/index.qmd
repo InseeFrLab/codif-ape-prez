@@ -41,7 +41,7 @@ Two data scientists from the innovation team at Insee:
   - Currently pursuing a part-time PhD in AI applied to health econometrics
   - At Insee: 
     - working on [**deep learning for text classification**]{.orange}, computer vision with remote sensing data, [**MLOps practices**]{.orange}
-    - exploring explainability, calibration, LLMS, RAGs & agentic workflows
+    - exploring explainability, calibration, LLMs, RAGs & agentic workflows
 
 
 ## 💡 What will we  discuss about ? {.center}
