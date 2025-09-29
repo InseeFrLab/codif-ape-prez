@@ -420,6 +420,13 @@
     "text": "Quality control"
   },
   {
+    "objectID": "slides/pydata/index.html#link-to-the-presentation",
+    "href": "slides/pydata/index.html#link-to-the-presentation",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "Link to the presentation:",
+    "text": "Link to the presentation:"
+  },
+  {
     "objectID": "slides/pydata/index.html#who-are-we",
     "href": "slides/pydata/index.html#who-are-we",
     "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
