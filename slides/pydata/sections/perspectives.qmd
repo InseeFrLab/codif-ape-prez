@@ -1,7 +1,7 @@
 ## MLOps
 
 :::{.incremental}
-- [**Bridging the gap**]{.orange} between Paris and Nantes:
+- [**Bridging the gap**]{.orange} between innovation and production:
     - full automation between data extraction, model training and qualification, model deployment
     - observability of the model in production: logs, continuous annotation...
 :::
