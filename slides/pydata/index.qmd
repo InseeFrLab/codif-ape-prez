@@ -22,6 +22,10 @@ css: ../custom.css
 ascii: true
 ---
 
+## Link to the presentation:
+
+![](../img/QRcode_prez_pydata.png){fig-align="center" width=25%}
+
 ## 👨‍🔬 Who are we ?
 
 Two data scientists from the innovation team at Insee:
