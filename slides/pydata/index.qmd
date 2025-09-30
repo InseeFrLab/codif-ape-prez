@@ -30,7 +30,7 @@ ascii: true
 
 Two data scientists from the innovation team at Insee:
 
-- **Cédric Couralet**
+- **Cédric Couralet** <cedric.couralet@insee.fr>
    - Previously software developer, architect, devops/security engineer... at Insee
    - Currently helping real data scientists bridge the gap between experimentation and production ([**How to talk to IT**]{.orange})
    - Open Source advocate
@@ -40,7 +40,7 @@ Two data scientists from the innovation team at Insee:
 
 Two data scientists from the innovation team at Insee:
 
-- **Meilame Tayebjee** 
+- **Meilame Tayebjee** <meilame.tayebjee@insee.fr>
   - Graduated 2024
   - Currently pursuing a part-time PhD in AI applied to health econometrics
   - At Insee: 
