@@ -431,14 +431,14 @@
     "href": "slides/pydata/index.html#who-are-we",
     "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
     "section": "👨‍🔬 Who are we ?",
-    "text": "👨‍🔬 Who are we ?\nTwo data scientists from the innovation team at Insee:\n\nCédric Couralet\n\nPreviously software developer, architect, devops/security engineer… at Insee\nCurrently helping real data scientists bridge the gap between experimentation and production (How to talk to IT)\nOpen Source advocate"
+    "text": "👨‍🔬 Who are we ?\nTwo data scientists from the innovation team at Insee:\n\nCédric Couralet cedric.couralet at insee dot fr\n\nPreviously software developer, architect, devops/security engineer… at Insee\nCurrently helping real data scientists bridge the gap between experimentation and production (How to talk to IT)\nOpen Source advocate"
   },
   {
     "objectID": "slides/pydata/index.html#who-are-we-1",
     "href": "slides/pydata/index.html#who-are-we-1",
     "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
     "section": "👨‍🔬 Who are we ?",
-    "text": "👨‍🔬 Who are we ?\nTwo data scientists from the innovation team at Insee:\n\nMeilame Tayebjee\n\nGraduated 2024\nCurrently pursuing a part-time PhD in AI applied to health econometrics\nAt Insee:\n\nworking on deep learning for text classification, computer vision with remote sensing data, MLOps practices\nexploring explainability, calibration, LLMs, RAGs & agentic workflows"
+    "text": "👨‍🔬 Who are we ?\nTwo data scientists from the innovation team at Insee:\n\nMeilame Tayebjee meilame.tayebjee at insee dot fr\n\nGraduated 2024\nCurrently pursuing a part-time PhD in AI applied to health econometrics\nAt Insee:\n\nworking on deep learning for text classification, computer vision with remote sensing data, MLOps practices\nexploring explainability, calibration, LLMs, RAGs & agentic workflows"
   },
   {
     "objectID": "slides/pydata/index.html#what-will-we-discuss-about",
