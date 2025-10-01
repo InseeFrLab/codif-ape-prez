@@ -595,6 +595,13 @@
     "text": "The wrapper class\nA quick way to launch a training in two lines of code.\n\nfrom torchFastText import torchFastText\n\n# Initialize the model\nmodel = torchFastText(\n    num_tokens=1000000,\n    embedding_dim=100,\n    min_count=5,\n    min_n=3,\n    max_n=6,\n    len_word_ngrams=True,\n    sparse=True\n)\n\n# Train the model\nmodel.train(\n    X_train=train_data,\n    y_train=train_labels,\n    X_val=val_data,\n    y_val=val_labels,\n    num_epochs=10,\n    batch_size=64\n)\n# Make predictions\npredictions = model.predict(test_data)"
   },
   {
+    "objectID": "slides/pydata/index.html#additional-features-explainability",
+    "href": "slides/pydata/index.html#additional-features-explainability",
+    "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
+    "section": "Additional features: explainability",
+    "text": "Additional features: explainability\nUsing integrated predictions from Captum, we can measure feature importance in predictions:"
+  },
+  {
     "objectID": "slides/pydata/index.html#mlops",
     "href": "slides/pydata/index.html#mlops",
     "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
