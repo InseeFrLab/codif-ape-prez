@@ -441,11 +441,11 @@
     "text": "👨‍🔬 Who are we ?\nTwo data scientists from the innovation team at Insee:\n\nMeilame Tayebjee meilame.tayebjee at insee dot fr\n\nGraduated 2024\nCurrently pursuing a part-time PhD in AI applied to health econometrics\nAt Insee:\n\nworking on deep learning for text classification, computer vision with remote sensing data, MLOps practices\nexploring explainability, calibration, LLMs, RAGs & agentic workflows"
   },
   {
-    "objectID": "slides/pydata/index.html#what-will-we-discuss-about",
-    "href": "slides/pydata/index.html#what-will-we-discuss-about",
+    "objectID": "slides/pydata/index.html#what-will-we-talk-about",
+    "href": "slides/pydata/index.html#what-will-we-talk-about",
     "title": "torchFastText: Modernizing the MLOps pipeline at Insee for text classsification",
-    "section": "💡 What will we discuss about ?",
-    "text": "💡 What will we discuss about ?\n\nMLOps pipeline for text classification at Insee\nDeploying a PyTorch model on CPU-bound secured offline environment\nOpen-sourcing a PyTorch package: why and how"
+    "section": "💡 What will we talk about ?",
+    "text": "💡 What will we talk about ?\n\nMLOps pipeline for text classification at Insee\nDeploying a PyTorch model on CPU-bound secured offline environment\nOpen-sourcing a PyTorch package: why and how"
   },
   {
     "objectID": "slides/pydata/index.html#use-case-12",
