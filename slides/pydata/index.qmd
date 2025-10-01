@@ -76,6 +76,6 @@ Two data scientists from the innovation team at Insee:
 **Thank you for your attention.**
 
 
-Find here all of our repos on the NACE coding project: 
+Find here all of our repos on the NACE coding project and our packages: 
 
 ![](../img/QRcodeGitHub.png){fig-align="center" width=25%}
