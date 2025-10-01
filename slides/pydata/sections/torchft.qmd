@@ -123,3 +123,10 @@ model.train(
 # Make predictions
 predictions = model.predict(test_data)
 ```
+
+## Additional features: explainability
+
+Using integrated predictions from [**Captum**](https://captum.ai/){.orange}, we can measure feature importance in predictions:
+
+| ![](../img/4332A-word.png){width=90%} | ![](../img/4332A-letter.png){width=90%} |
+|--------------------------|--------------------------|
