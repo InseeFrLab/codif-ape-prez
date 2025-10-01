@@ -78,4 +78,4 @@ Two data scientists from the innovation team at Insee:
 
 Find here all of our repos on the NACE coding project and our packages: 
 
-![](../img/QRcodeGitHub.png){fig-align="center" width=25%}
+![](../img/qr-code-github-repo-search.png‎){fig-align="center" width=25%}
