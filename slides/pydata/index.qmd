@@ -48,7 +48,7 @@ Two data scientists from the innovation team at Insee:
     - exploring explainability, calibration, LLMs, RAGs & agentic workflows
 
 
-## 💡 What will we  discuss about ? {.center}
+## 💡 What will we talk about ? {.center}
 
 - [**MLOps pipeline**]{.orange} for [**text classification**]{.orange} at Insee
 - Deploying a [**PyTorch model**]{.orange} on [**CPU-bound**]{.orange} secured offline environment
