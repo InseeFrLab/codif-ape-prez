@@ -5,3 +5,4 @@
 *favicon-32x32.png
 *.csv
 mlflow_images/
+**/*.quarto_ipynb
