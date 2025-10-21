@@ -1,4 +1,5 @@
 /.quarto/
+**/*.quarto_ipynb
 /_site/
 *background.svg
 *logo.svg
