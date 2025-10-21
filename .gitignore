@@ -6,3 +6,4 @@
 *.csv
 mlflow_images/
 **/*.quarto_ipynb
+*.typ
