@@ -1,0 +1,6 @@
+<!-- A faire une fois les parties DMTR et DMGC/SPPLAB finies ? -->
+
+Reprendre l'abstract soumis pour faire l'intro 
+Reprendre les slides du séminaire à la DIRAG pour le contexte "Momentum de Varsovie"
+Repartir de l'origine du projet (demande DROM Mayotte/Guyane)
+Parler de l'IGN et de leur travaux avec leur dataset FLAIR et leur modèle CoSIA

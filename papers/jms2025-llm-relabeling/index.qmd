@@ -1,0 +1,69 @@
+---
+title: Utilisation des images satellites pour améliorer le repérage des logements à Mayotte
+authors:
+  - name: Nathan Randriamanana
+    affiliation: Insee, Direction de la méthodologie et de la coordination statistique et internationale
+    email: <nathan.randriamanana@insee.fr>
+  - name: Thomas Faria
+    affiliation: Insee, Direction de la méthodologie et de la coordination statistique et internationale
+    email: <thomas.faria@insee.fr>
+keywords: # 6 maximum
+  - codification automatique
+  - classification de texte
+  - prompt
+  - annotation
+  - révision de nomenclature
+domains: # utiliser la nomenclature du site (menu déroulant) --> a modifier
+  - science des données
+  - codification automatique
+  - analyse du langage naturel
+resume: |
+    La Nomenclature d’activités française (NAF) a connu une rénovation en décembre 2023. Dès lors, le passage de la NAF rév. 2 à la NAF 2025 impacte la codification automatique de l’Activité Principale Exercée (APE), aussi appelé code NAF, à partir de libellés textuels. Cette codification représente un enjeu opérationnel majeur pour l'Insee, en particulier pour le répertoire *Sirene* (Système national d'identification et du répertoire des entreprises et de leurs établissements). Depuis novembre 2022, un modèle *fastText* de *machine learning*, rapide et répondant aux écueils du précédent système expert *Sicore*, est utilisé en production par l'application *Sirene* pour cette tâche.
+
+    Jusqu'ici l'entraînement du modèle se repose sur une base d'entraînement s'appuyant sur des exemples historiques rencontrés **en production**. Le changement de nomenclature rend caduque la base d'entraînement dès lors qu'il existe des codes NAF **multivoques**, c'est-à-dire qu'il existe plus d'une seule correspondance entre un code de l'ancienne version de la nomenclature et la nouvelle. Ainsi, il n'est pas possible de recoder tous les codes de la base par une bijection. A priori, une intervention manuelle de la part d'experts de la codification de l'APE est donc nécessaire pour **compléter la base d'entraînement**.
+    Une vaste campagne d'annotation a donc eu lieu au second semestre de 2024. L'objectif est d'*entraîner un classifieur pouvant coder en nouvelle nomenclature*.
+
+    Toutefois, cette campagne d'annotation se fait sous contraintes: à la fois de charge et de temps. La capacité d'annotation de l'ensemble des experts mobilisés est estimée à 30 000 libellés textuels. Or, le volume à annoter est de l'ordre du million d'observations. Les approches métiers comme la requalification de certains codes très fréquents en flux, multivoques en théories en univoques et la limitation aux multivoques ne suffisent pas à réduire le volume. Puisque les performances du modèle fastText sont très sensibles au volume des données d'entraînement, des techniques d'échantillonnage des données à annoter ne suffiraient pas.
+
+    Cette campagne d'annotation est soumise à des contraintes de charge et de temps. La capacité d'annotation des experts mobilisés est estimée à environ 30 000 libellés textuels, tandis que le volume à annoter avoisine les 1,4 millions d'observations. Les stratégies métiers, telles que la requalification de codes à correspondance multivoque en biunivoque et la limitation aux multivoques, ne suffisent pas à réduire ce volume. Même avec un bon échantillonnage des données d'annotation, la performance de fastText, sensible au volume, nécessite une taille conséquente du corpus d'entraînement. En ordre de grandeur, le premier modèle mis en production est entraîné sur 10 millions d'observation. Ce volume renforce la confiance du modèle, déterminant un bon taux de codification, crucial en flux pour alléger la charge des gestionnaires.
+
+abstract: |
+    (Texte en anglais de 5 à 10 lignes)\ 
+    `#lorem(30)`{=typst}
+bibliography: biblio.bib
+format:
+  jms2025-typst:
+    logo:
+      location: center-top # ne pas modifier
+      width: 160mm # ne pas modifier
+    mainfont: "tex gyre heros" # peut être modifié pour "calibri" sous windows, voir le script install-fonts.sh
+    footer: 15^e^ édition des journées de méthodologie statistique de l'Insee (JMS 2025) # ne pas modifier
+    section-numbering: 1.1.1.
+    keep-typ: true
+---
+
+{{< pagebreak >}}
+
+# Introduction
+
+{{< include sections/1-introduction.qmd >}}
+
+{{< pagebreak >}}
+
+# Méthodologie
+
+{{< include sections/2-methodo.qmd >}}
+
+{{< pagebreak >}}
+
+# Résultats
+
+{{< include sections/3-results.qmd >}}
+
+{{< pagebreak >}}
+
+# Cas d'usage {#sec-use_case}
+
+{{< include sections/4-use_case.qmd >}}
+
+{{< pagebreak >}}
