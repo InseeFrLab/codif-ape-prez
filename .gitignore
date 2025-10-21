@@ -7,3 +7,4 @@
 mlflow_images/
 **/*.quarto_ipynb
 *.typ
+site_libs/
