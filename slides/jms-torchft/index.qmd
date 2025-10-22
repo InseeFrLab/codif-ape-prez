@@ -1,24 +1,70 @@
 ---
-title: Échantillonnage optimum sous contraintes fortes
+title: fastText, tout juste en production et déjà obsolète? Présentation du package torchTextClassifiers pour la modernisation de la codification automatique via l'exemple de l'APE
 authors:
-  - name: Antoine DUPONT
-    affiliation: Insee, Direction de la méthodologie et de la coordination statistique et internationale
-    email: <antoine.dupont@insee.fr>
-  - name: Alii
-    affiliation: Insee, Département de la Démographie
+  - name: Meilame Tayebjee
+    affiliation: Insee, DMCSI, Unité SSP Lab
+    email: <meilame.tayebjee@insee.fr>
+  - name: Cédric Couralet
+    affiliation: Insee, DMCSI, Unité SSP Lab
+    email: <cedric.couralet@insee.fr>
+  - name: Nathan Randriamanana
+    affiliation: Insee, DSE
+    email: <nathan.randriamanana@insee.fr>
+  - name: Julien Pramil
+    affiliation: Insee, DMCSI, Unité SSP Lab
+    email: <julien.pramil@insee.fr>
 keywords: # 6 maximum
-  - échantillonnage
-  - calage
-  - collecte
-  - équilibrage
-  - multimode
-  - séries temporelles
+  - codification automatique
+  - classification de texte
+  - fastText
+  - torchTextClassifiers
+  - deep learning
+  - PyTorch
 domains: # utiliser la nomenclature du site (menu déroulant) 
-  - enquêtes
-  - sondages
+  - Données et traitements statistiques
+  - Données administratives et qualité
 resume: |
-    (entre 350 et 900 mots environ)\ 
-    `#lorem(30)`{=typst}
+  La codification automatique de l'Activité Principale Exercée (APE) à partir de libellés textuels
+  représente un enjeu opérationnel majeur pour l'Insee. Depuis 2020, un modèle fastText 1 est utilisé
+  en production pour cette tâche. À la fois méthodologie et librairie logicielle développée par
+  Facebook AI Research, fastText repose sur des classifieurs linéaires efficaces, combinés à des représentations
+  vectorielles de mots et de sous-mots. Il offre une solution simple, rapide et précise
+  pour la classification de texte à large échelle, particulièrement adaptée aux nomenclatures métiers.
+
+  Mais quatre ans après sa mise en oeuvre, ce modèle soulève une double préoccupation. D'une
+  part, la pérennité technique est fragilisée par l'usage d'un binaire compilé, difficile à maintenir
+  dans le temps, susceptible d'engendrer des conflits de version, et éloigné des standards actuels de développement collaboratif. D'autre part, le besoin de modernisation se fait sentir - les évolutions
+  rapides des outils de deep learning ouvrent de nouvelles perspectives que l'approche fastText ne permet pas d'exploiter.
+
+  Pour répondre à ces défis, l'Insee a initié le développement de torchFastText, un nouveau package
+  Python basé sur PyTorch, conçu pour reproduire l'approche de fastText dans un cadre plus moderne, transparent et modulaire.
+  Ce package évolue désormais vers torchTextClassifiers, qui distribuera toutes les architectures classiques de classification de texte, à destination de tous usagers souhaitant entraîner rapidement et efficacement un modèle d'apprentissage profond pour la classification de texte.
+
+  Ce développement, réalisé en open source, répond à un besoin partagé entre plusieurs instituts
+  statistiques européens, dans une logique - espérée - d'interopérabilité et de mutualisation. L'objectif -
+  garantir la frugalité des modèles, tout en préservant les performances du modèle initial en termes
+  de rapidité et de précision. torchFastText a été validé à l'issue d'une série de tests rigoureux sur les
+  jeux de données de production. Il est aujourd'hui prêt à être mis en production.
+
+  Outre l'aspect technique, ce projet incarne une démarche d'appropriation collective des outils
+  d'IA, en s'appuyant sur des langages et frameworks largement adoptés dans la communauté scientifique,
+  favorisant leur diffusion et leur maintenance dans le temps.
+
+  En plus de la simple réimplémentation, le passage à PyTorch ouvre des perspectives de développement
+  ambitieuses :
+
+  1. Amélioration du modèle - grâce à la flexibilité du framework, il devient possible d'explorer de nouvelles architectures, d'optimiser les fonctions de perte ou encore d'incorporer la hiérarchie propre aux nomenclatures dans l'apprentissage. C'est l'objectif de la nouvelle mouture, torchTextClassifiers.
+
+  2. Explicabilité - les outils d'interprétabilité compatibles avec PyTorch (comme Captum) permettent d'apporter des éclairages plus fins sur les prédictions du modèle, favorisant leur auditabilité.
+
+  3. Intégration à l'ecosystème deep learning - l'intégration de tokenizers entraînés sur des corpus spécifiques, ou encore l'utilisation de modèles préentraînés issus de bibliothèques comme Hugging Face (de type BERT ou CamemBERT3), autorise une personnalisation plus poussée, éloignant progressivement l'approche du modèle fastText originel.
+
+  4. Meilleure expérience pour les data scientists - l'environnement PyTorch facilite le suivi de l'apprentissage (logs, visualisation des courbes de perte, early stopping. . . ), accélérant les cycles de développement et de validation.
+
+  Au-delà de ce cas d'usage spécifique, l'objectif est aussi de diffuser la culture PyTorch à l'Insee,
+  pour en faire un socle commun pour les futurs projets de deep learning en statistique publique. Des
+  formations internes sont en cours pour accompagner cette montée en compétence collective.
+
 abstract: |
     (Texte en anglais de 5 à 10 lignes)\ 
     `#lorem(30)`{=typst}
@@ -35,39 +81,12 @@ format:
     keep-typ: true
 ---
 
-## Titre de niveau 1 numéroté
+## Historique de la codification automatique de l'APE : de Sicore à fastText
 
-Cet article reprend et enrichit une problématique déjà présentée aux JMS 2000. Il s’agit de constituer, au sein d’une population de référence, des classes présentant des conditions d’homogénéité ou d’hétérogénéité maximales vis-à-vis de certaines caractéristiques quantitatives.
+### Le guichet unique
 
-Le projet Nautile va se substituer au projet Octopusse : mais la filiation est claire.
-Il est possible en fait de généraliser cette notion d’inertie en introduisant une pseudo-distance  entre les unités de la population de référence, non nécessairement euclidienne, et non nécessairement nulle lorsqu’on mesure la distance d’une unité à elle-même. Sous réserve de donner des poids à chaque unité de la population, l’inertie d’une classe K sera donnée par :
+### fastText et MLOps
 
-$$
-I(K) = \frac{1}{2}\frac{\sum_{i \in K} \sum_{j \in K} \alpha_{i} \alpha_{j} d_{i,j}^2}{\sum_{i \in K} \alpha_{i}}
-$$
+## PyTorch : enjeux et défis de la mise en production
 
-Cette formule redonne l’expression de la variance de la classe lorsque la distance considérée $d_{i,j}$ est euclidienne.
-
-Dans le second groupe d’exemples, on cherchera à appliquer ces techniques à des cas non euclidiens, par exemple en comparant département de naissance et département de résidence.
-
-Une référence à la bibliographie [@elstonlatafa1994].
-
-### Titre de niveau 2 numéroté
-
-```{=typst}
-#lorem(100)
-```
-\
-
-Un exemple de note de bas de page[^1]
-
-[^1]: « Un algorithme de regroupement d’unités statistiques selon certains critères de similitude », Marc CHRISTINE et Michel ISNARD, VIIèmes  Journées de Méthodologie statistique, 4-5 décembre 2000.
-
-#### Titre de niveau 3 numéroté
-
-```{=typst}
-#lorem(40)
-```
-\
-
-Une autre référence à la bibliographie [@eratosthene].
+## torchTextClassifiers: perspectives
