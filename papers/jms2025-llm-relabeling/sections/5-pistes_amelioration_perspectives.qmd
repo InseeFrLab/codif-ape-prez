@@ -1,0 +1,17 @@
+## Passage en production: cleaning, retour des gestionnaires
+
+
+
+## Toujours de nouveaux et meilleurs modèles
+
+## Re-ranker 
+
+## Evaluation
+
+Evaluation plus fine du RAG
+Imputer au retrieval ou la génération
+
+## Nouvelles sources et approche agentique
+
+## Champ d'application plus vaste
+

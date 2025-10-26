@@ -1,7 +1,7 @@
 ---
 title: JMS - Ré-entraînement basé sur les LLM pour la révision de la NAF
-image: /cards/img/logo-card-16.jpg
-date: "2025-09-23"
+image: /cards/img/logo-card-17.jpg
+date: "2025-10-31"
 description: |
   <b>Description :</b> Article sur la génération de données d'entraînement pour un modèle de ML dans un contexte de changement de nomenclature
 author: Nathan Randriamanana

@@ -1,0 +1,59 @@
+Rappeler les 2 enjeux: évaluer LLM + évaluer modèle ML
+
+## Différents comportements (plusieurs dimensions importantes)
+
+## Le fléau de l'évaluation des LLM
+
+### Le jeu d'évaluation
+
+### Différentes métriques 
+
+### Performances des modèles
+
+### Stratégies de reconstruction du jeu des multivoques "Plusieurs cerveaux valent mieux qu'un seul"
+
+## Réentraînement en NAF 2025
+
+
+
+#### Exemple
+
+1\. pour l’ensemble 
+
+2\. pour les 
+
+Pour chacun de ces sous-ensembles, \$score=score\_{évolution} + score\_{sens} + score\_{distance} \$ et vaut entre 0 et 5.
+
+**Une évolution du ?**
+
+Pour chaque , le $score_{évolution}$ vaut :
+
+-   1 si 
+
+-   0 sinon
+
+**Une évolution du  ?**
+
+Pour chaque , le $score_{sens}$ vaut :
+
+-   1 si
+
+-   0 sinon
+
+**Importance ?**
+
+On mesure ici l’importance du différentiel de 
+
+ $score_{distance}$ vaut :
+
+-   0 si \$distance\_{i} ≤ Q1 \$
+
+-   1 si \$Q1 ≺ distance\_{i} ≤ médiane\$
+
+-   2 si \$médiane ≺ distance\_{il} ≤ Q3 \$
+
+-   3 si \$distance\_{i} ≻ Q3 \$
+
+
+## Conclusions et perspectives
+

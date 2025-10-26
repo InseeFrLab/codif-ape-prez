@@ -1,6 +1,9 @@
-<!-- A faire une fois les parties DMTR et DMGC/SPPLAB finies ? -->
+Recontextualisation
 
-Reprendre l'abstract soumis pour faire l'intro 
-Reprendre les slides du séminaire à la DIRAG pour le contexte "Momentum de Varsovie"
-Repartir de l'origine du projet (demande DROM Mayotte/Guyane)
-Parler de l'IGN et de leur travaux avec leur dataset FLAIR et leur modèle CoSIA
+modèles en production 
+
+# Sirene 4 : une nouvelle application pour traiter les déclarations d'entreprises en continu - écosystème des formalités
+
+Genèse de notre base d'apprentissage
+
+

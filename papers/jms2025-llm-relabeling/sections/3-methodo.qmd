@@ -1,0 +1,41 @@
+Comment reconstruire la base d'apprentissage ?
+
+Rappel des enjeux
+Explication de la feuille de route de la méthodologie
+
+## Données à disposition
+
+### Stock Sirene 4
+
+### Matériaux des experts de la nomenclature (DNE)
+
+#### Table de passage
+
+#### Annotation manuelle comme ground truth
+
+## Plateforme: Utilisation du datalab Onyxia SSP Cloud, H100, vllm
+
+référer à l'article: "mettre les technologies cloud au service de la production publique"
+
+#### LLM en production ? Non Type d'opération : ponctuelle
+
+spécificité de l'inférence par batch. Défis récents
+
+#### souveraineté et indépendance: auto-hébergement
+
+## Schéma global: approche innovante
+
+### Tirer profit des LLM    
+
+#### RAG
+
+#### CAG 
+
+avantage/inconvénients: retrieval immédiat mais propagation de l'erreur en NAF rev 2
+Pertinent si très bonne classification en NAF rev 2
+
+rappeler l'obectif dans cette partie: ne pas construire de classifieur basé sur LLM mais construire annotation
+
+#### Prompting
+
+#### Qu'attend-on en sortie du LLM ?

@@ -1,0 +1,152 @@
+Nous allons dans cette partie revenir sur les concepts d'apprentissage afin d'expliquer notre démarche et la construction de notre vérité terrain. Nous définirons ensuite les données que nous avons utilisé pour appliquer notre méthodologie.
+
+Met en avant toute la partie manuelle
+
+## Les conséquences du changement de nomenclature
+
+### Des regroupements mais aussi des scissions
+
+#### Univoques
+
+|   Niveau classe (niveau 4) |   Niveau sous-classe (niveau 5) |
+|---------------------------:|--------------------------------:|
+|                        573 |                             551 |
+
+: Distribution de codes univoques ou bijections
+
+#### Multivoques
+
+Se limiter aux multivoques
+
+**correspondance théorique**
+
+Les surjections i.e correspondance N-1 ne nous posent pas de problèmes.
+Dans notre système, cela se ramène fonctionnellement à un cas univoque car pour un code donné, il n'y a qu'un choix possible dans la nouvelle nomenclature.
+
+Ce que nous appellerons **multivoques**, tout long de l'article, sont les **correspondances 1-N**, avec N le nombre de possibilités dans la nomenclature
+
+::: {#tbl-dist-multivoques layout-ncol=2}
+|   1-to-N |   Occurrences |
+|---------:|--------------:|
+|        2 |           101 |
+|        3 |            28 |
+|        4 |            15 |
+|        5 |             3 |
+|        6 |             5 |
+|        7 |             1 |
+|        8 |             1 |
+|       17 |             1 |
+|       25 |             1 |
+|       29 |             1 |
+|       30 |             2 |
+
+:  Niveau classe: 4 positions {#tbl-dist-multivoques-niv4}
+
+
+|   1-to-N |   Occurrences |
+|---------:|--------------:|
+|        2 |           109 |
+|        3 |            30 |
+|        4 |            24 |
+|        5 |             6 |
+|        6 |             4 |
+|        8 |             1 |
+|        9 |             2 |
+|       21 |             1 |
+|       27 |             1 |
+|       36 |             1 |
+|       38 |             2 |
+
+: Niveau sous-classe: 5 positions {#tbl-dist-multivoques-niv5}
+
+Distribution des codes multivoques pour la NAF
+:::
+
+**correspondance fonctionnelle**
+
+ stratégie métier: requalification de codes à correspondance multivoque en biunivoque
+ sur la base du principe de réalité notamment des informations fournies
+
+table de passage métier: "faux" multivoques
+
+Impact dans le jeu d'apprentissage
+
+|      Type d'activité principale concerné       | Code initial | Code final | Proportion | Parti pris métier |
+|----------------------------------------------------:|-------------:|-----------:|------------:|-----------------------------:|
+|                  Location de logements |        6820A |      6820G |            16% | Très souvent de longue durée |
+|          Location de biens immobiliers |        6820B |      6820H |           10 % |                              |
+|               Production d'électricité |        3511Z |      3512Y |            3 % | Type renouvelable, si personne physique |
+|            Restauration traditionnelle |        5610A |      5611G |            2 % | Service principalement à table |
+|                 Réparation de voitures |        4520A |      9531G |          1,5 % | Quasi-absence d'intermédiation |
+|       Commerce d'alimentation générale |        4711B |      4711G |          0,5 % | Rarement intermédiation ou vente en ligne|
+|  Construction de maisons individuelles |        4120A |      4100G |          0,5 % | Exclure la restauration de monuments |
+
+: Requalification de certaines correspondances en biunivoque dans le jeu  : {#tbl-dist-faux-multivoques-niv5}
+
+Suppression de près d'un tiers [^remarque-tbl-passage] des multivoque dans la base d'apprentissage.
+Pas mal mais toujours insuffisant.
+
+
+[^remarque-3512Y] : pour les personnes physiques, approximation que l'activité se classe en production d'électricité renouvelable.
+
+[^remarque-tbl-passage] : Certains codes dont le 6820B et le 4520A ont, au final, été corrigé lors de la mise à jour de la table de correspondance officielle, confirmant l'hypothèse de départ. Après cette revue, l'économie de multivoques à traiter représenterait tout de même encore 22 % dans la base d'apprentissage
+
+
+### Comment construire un modèle en NAF 2025
+
+
+### Le modèle FastText
+
+
+Pour interpréter ces scores comme des probabilités, on applique la fonction *softmax* :
+
+$$
+\text{Softmax}(x_i) = \frac{\exp{x_i}} {\sum\limits_{j=0}^{9}{\exp{x_j}}}.
+$$
+
+Cette opération convertit les scores en une distribution de probabilité, dont la somme vaut 1, et permet de sélectionner la classe associée à la probabilité la plus élevée comme prédiction finale. La fonction *softmax* est particulièrement utile car elle est infiniment dérivable, ce qui garantit la dérivabilité de tout le modèle $f_{\theta}$ par rapport à ses paramètres $\theta$. Cela rend possible l’utilisation de la descente de gradient pour ajuster les poids du réseau au cours de l’apprentissage.
+
+
+### Une adaptation sauce Pytorch
+
+cf second article : "fasttext tout uste en production et déjà obsolète ?"
+
+
+## La campagne d'annotation: à l'origine de nos matériaux
+
+### Déroulé 
+
+### Mode opératoire des experts 
+
+### Difficulté et nombre de multivoques: un lien pas si immédiat
+
+[Analyse notebook]
+
+Même pour les cas inclassables, on retrouve le même phénomène. 
+Avoir beaucoup de cas multivoques n'augmentent pas la part de tâches difficiles.
+A partir de 20 correspondances possibles, la difficulté augmente progressivement.
+seuil de difficulté autour de 30 options (niv4) et 35 niv5
+
+Entre 10 et 20 options, la difficulté perçue par les répondants reste globalement stable. À partir d’une vingtaine de choix, on observe une montée progressive de la charge cognitive, qui s’accentue nettement autour de 30 (niv4) et 35 au niv5
+
+Parmi les activités particulièrement difficiles, il y avait donc le 4399D (Autres travaux spécialisés de construction), le 4399A (Vente à domicile) et le 4791B (Vente à distance sur catalogue spécialisée). Pour autant, toutes ces activités combinés ne représentent que 2077 cas soit moins de 7% des tâches.
+
+::: {.center}
+![Représentation schématique du Segformer](img/segformer_architecture.png){#fig-segformer}
+
+*Note de lecture : TODO*
+:::
+
+### L'apport de Label Studio
+
+Un outil pour mieux gérer la saisie manuelle
+organisation campagne: capacité à skipp, inclassable, triple annoté
+
+
+## Data Editing: correction de la base d'apprentissage
+
+nécessite correction manuelle ou semi-manuelle
+
+moteur de règles pour corriger la base d'apprentissage, data cleansing,
+matching d'expressions: expression régulières, fuzzy, recherche par similarité
+ajout de termes manquants.
