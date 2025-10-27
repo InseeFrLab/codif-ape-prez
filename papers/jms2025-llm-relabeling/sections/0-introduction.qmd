@@ -1,0 +1,39 @@
+De plus en plus de modèles de _machine learning_ sont voués à être mis en production à l'Insee. 
+Les domaines d'application sont multiples: intégration de nouvelles sources de données, correction d'anomalies-imputation (data editing), classification-codification automatique.
+En particulier, la classification automatique, dans une nomenclature prédéfinie, concerne de nombreux projets passés en production (les exemples sont nombreux). C'est le cas de la codification de l'activité de l'entreprise en APE dans Sirene, à l'occasion de la bascule progressive à Sirene 4 à partir de mi-novembre 2022 (dans une moindre mesure data editing sporadiquement aussi). Le codage de l'APE se caractérise par une utilisation quotidienne du modèle dûe à la fréquence du traitement des formalités en temps quasi-réel. 
+
+Par ailleurs, l'Insee a des engagements d'évaluation et validation des données produites. Ce concept est introduit par le _code de bonnes pratiques de la statistique européenne_ dans les termes suivants: **les données collectées, les données intégrées, les résultats intermédiaires et les productions statistiques sont régulièrement évalués et validés**. Cela s'applique évidemment aux modèles de _machine learning_ dans le processus de production. Par conséquent, ces modèles ont besoin de maintenance dans le temps. 
+
+De surcroît, Sirene est un répertoire administratif et en tant que répertoire de référence, des méthodes rigoureuses et éprouvées doivent _assurer la qualité de la codification_ des variables.
+Pour la tenue d'un répertoire, est notamment recensé le besoin que :
+
+  * des procédures performantes de codification soient mises en œuvre
+  * les procédures automatiques soient contrôlées par des expertises individuelles
+  * le responsable du répertoire exerce une veille sur l'état de l'art en matière de techniques de codification pour améliorer son efficacité.
+
+La qualité des modèles de _machine learning_ impacte directement la qualité de la codification. Il y a donc un enjeu de qualité de ces modèles.
+En effet, un modèle d'apprentissage est entraîné pour résoudre une tâche à partir de _données de référence_. 
+Or, les données réelles peuvent dévier de ces données de référence dans le temps pouvant ainsi mener à une perte de performance.
+
+C'est ce qu'on appelle une _dérive des données_ et notamment une _dérive conceptuelle_ lorsque la relation se dégrade entre les entrées (X) et la cible (Y).
+Pour maintenir voire améliorer la qualité de codification et donc du répertoire, le réentrainement du modèle devient ainsi nécessaire.
+À plus forte raison, pour un répertoire de référence, une surveillance par des expertises individuelles doivent assurer la qualité de la codification.
+Qui plus est, un répertoire est un _système vivant_: de nouvelles activités apparaissent, d’autres disparaissent, et les descriptifs textuels peuvent évoluer.
+
+Un cas extrême de dérive conceptuelle, courant dans le cas de la statistique publique, se produit ici: un changement de nomenclature, celui de la NAF.
+Il s'agit d'une rupture totale et exogène de la définition même des modalités de la variable cible, rendant les codes non bijectifs immédiatement obsolètes.
+
+Particulier, partenaires INPI
+
+Les données, bijectives, sont toutefois incomplètes pour voir un modèle performant en terme de précision et d'automatisation
+
+D'où besoin de construire un nouveau modèle.
+
+se prête au tryptioque collecter, traiter et diffuser
+
+> **NOTE POUR LE RELECTEUR :** Dans la bibliographie, est-ce qu'il est possible de citer le rapport IG 2024 correspondant ? J'ai vu l'ASP le citer sans donner de lien: https://www.autorite-statistique-publique.fr/event/delibere-sur-lintegration-des-innovations-de-traitement-des-donnees-dans-la-production-statistique/
+Même question pour une note de réflexion interne: L’Insee et l’activité de gestion de répertoires administratifs
+Pour le cas des nouvelles sources, on a l'usage de données satellites sauf que ce n'est pas encore gagné pour un passage en production donc je ne sais pas s'il est pertinent de tout de même mentionner ce domaine. C'est surtout exploratoire.
+Est-ce qu'il est parfois préférable d'utiliser les termes "en continu", "en temps réels", "temps quasi-réels" pour varier la rédaction ?
+
+

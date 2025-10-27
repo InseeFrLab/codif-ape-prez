@@ -39,3 +39,15 @@ rappeler l'obectif dans cette partie: ne pas construire de classifieur basé sur
 #### Prompting
 
 #### Qu'attend-on en sortie du LLM ?
+
+## Différents comportements (plusieurs dimensions importantes)
+
+## Le fléau de l'évaluation des LLM
+
+### Le jeu d'évaluation
+
+### Différentes métriques 
+
+### Performances des modèles
+
+### Stratégies de reconstruction du jeu des multivoques "Plusieurs cerveaux valent mieux qu'un seul"

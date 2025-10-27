@@ -1,9 +1,5 @@
-Recontextualisation
-
-modèles en production 
-
 # Sirene 4 : une nouvelle application pour traiter les déclarations d'entreprises en continu - écosystème des formalités
 
 Genèse de notre base d'apprentissage
 
-
+par les créations d'entreprises mi-novembre 2022, puis les modifications étant intégrées en mars 2024.

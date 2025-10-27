@@ -1,10 +1,10 @@
-## Passage en production: cleaning, retour des gestionnaires
-
 
 
 ## Toujours de nouveaux et meilleurs modèles
 
-## Re-ranker 
+## Les défis de l'inférence par batch: évolutivité horizontale GPU, ressources précieuses, optimisation 
+
+## Améliorer le RAG: reranker, 
 
 ## Evaluation
 
@@ -13,5 +13,5 @@ Imputer au retrieval ou la génération
 
 ## Nouvelles sources et approche agentique
 
-## Champ d'application plus vaste
+## Champ d'application plus vaste: autres nomenclatures INS
 
