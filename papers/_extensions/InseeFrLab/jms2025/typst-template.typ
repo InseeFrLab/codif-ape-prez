@@ -68,7 +68,7 @@
       }
     }
   )
-  set par(justify: true)
+  set par(justify: true, first-line-indent: 1em) // alinéa a chaque début de paragraphe
   set text(lang: lang,
            region: region,
            font: font,
@@ -184,6 +184,7 @@
   if resume != none {
     block[
       #text(weight: "semibold", size: 1.2em)[Résumé] \ 
+      #set par(justify: true, first-line-indent: 1em)
       #emph(resume)
     ]
   }
@@ -191,6 +192,7 @@
   if abstract != none {
     block[
       #text(weight: "semibold", size: 1.2em)[#abstract-title] \ 
+      #set par(justify: true, first-line-indent: 1em)
       #emph(abstract)
     ]
   }

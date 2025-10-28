@@ -116,7 +116,7 @@ cf second article : "fasttext tout uste en production et déjà obsolète ?"
 
 ### Déroulé 
 
-### Mode opératoire des experts 
+### Débouché à un Mode opératoire des experts 
 
 ### Difficulté et nombre de multivoques: un lien pas si immédiat
 

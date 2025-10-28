@@ -1,10 +1,10 @@
-De plus en plus de modèles de _machine learning_ sont voués à être mis en production à l'Insee. 
+  De plus en plus de modèles de _machine learning_ sont voués à être mis en production à l'Insee. 
 Les domaines d'application sont multiples: intégration de nouvelles sources de données, correction d'anomalies-imputation (data editing), classification-codification automatique.
-En particulier, la classification automatique, dans une nomenclature prédéfinie, concerne de nombreux projets passés en production (les exemples sont nombreux). C'est le cas de la codification de l'activité de l'entreprise en APE dans Sirene, à l'occasion de la bascule progressive à Sirene 4 à partir de mi-novembre 2022 (dans une moindre mesure data editing sporadiquement aussi). Le codage de l'APE se caractérise par une utilisation quotidienne du modèle dûe à la fréquence du traitement des formalités en temps quasi-réel. 
+En particulier, la classification automatique, dans une nomenclature prédéfinie, concerne de nombreux projets passés en production. C'est le cas de la codification de l'activité de l'entreprise en APE dans Sirene [^remark-data-editing], à l'occasion de la bascule progressive à Sirene 4 à partir de mi-novembre 2022. À titre d'exemples, la codification à partir de libellés concerne aussi la classification des produits (en nomenclature _COICOP_ et _NA2008_), des dépenses des ménages déclarées dans les carnets de l'enquête _Budget de famille_ et de la _PCS 2020_ dans les enquêtes annuelles de recensement. La spécificité du codage de l'APE est son utilisation quotidienne en flux du modèle dûe à la fréquence du traitement des formalités en temps quasi-réel. 
 
-Par ailleurs, l'Insee a des engagements d'évaluation et validation des données produites. Ce concept est introduit par le _code de bonnes pratiques de la statistique européenne_ dans les termes suivants: **les données collectées, les données intégrées, les résultats intermédiaires et les productions statistiques sont régulièrement évalués et validés**. Cela s'applique évidemment aux modèles de _machine learning_ dans le processus de production. Par conséquent, ces modèles ont besoin de maintenance dans le temps. 
+Par ailleurs, l'Insee a des engagements d'évaluation et validation des données produites aux différentes étapes de la production. Ce principe d'exactitude et de fiabilité est introduit par le _code de bonnes pratiques de la statistique européenne_ dans les termes suivants: **les données collectées, les données intégrées, les résultats intermédiaires et les productions statistiques sont régulièrement évalués et validés**. Cela s'applique évidemment aux modèles de _machine learning_ dans le processus de production. Par conséquent, ces modèles ont besoin de maintenance dans le temps. 
 
-De surcroît, Sirene est un répertoire administratif et en tant que répertoire de référence, des méthodes rigoureuses et éprouvées doivent _assurer la qualité de la codification_ des variables.
+De surcroît, Sirene est un répertoire administratif et en tant que répertoire de référence, des méthodes rigoureuses et éprouvées doivent _assurer la qualité de la codification_ des variables. Ainsi, le traitement de l'APE repose sur une approche algorithmique, probabiliste mais aussi sur une reprise des cas complexes par les gestionnaires.
 Pour la tenue d'un répertoire, est notamment recensé le besoin que :
 
   * des procédures performantes de codification soient mises en œuvre
@@ -12,28 +12,29 @@ Pour la tenue d'un répertoire, est notamment recensé le besoin que :
   * le responsable du répertoire exerce une veille sur l'état de l'art en matière de techniques de codification pour améliorer son efficacité.
 
 La qualité des modèles de _machine learning_ impacte directement la qualité de la codification. Il y a donc un enjeu de qualité de ces modèles.
-En effet, un modèle d'apprentissage est entraîné pour résoudre une tâche à partir de _données de référence_. 
+En effet, un modèle d'apprentissage, supervisé ici, est entraîné pour résoudre une tâche à partir de _données de référence_. 
 Or, les données réelles peuvent dévier de ces données de référence dans le temps pouvant ainsi mener à une perte de performance.
 
 C'est ce qu'on appelle une _dérive des données_ et notamment une _dérive conceptuelle_ lorsque la relation se dégrade entre les entrées (X) et la cible (Y).
 Pour maintenir voire améliorer la qualité de codification et donc du répertoire, le réentrainement du modèle devient ainsi nécessaire.
-À plus forte raison, pour un répertoire de référence, une surveillance par des expertises individuelles doivent assurer la qualité de la codification.
-Qui plus est, un répertoire est un _système vivant_: de nouvelles activités apparaissent, d’autres disparaissent, et les descriptifs textuels peuvent évoluer.
+À plus forte raison, pour un répertoire de référence, une **surveillance** par des expertises individuelles doivent assurer la qualité de la codification.
+Qui plus est, un répertoire est un _système vivant_: de nouvelles activités apparaissent, d’autres disparaissent, et les descriptifs textuels dans la mesure où le monde n'est pas figé: la démographie des entreprises peut évoluer et l'action des partenaires aussi.
+Tout particulièrement, les libellés d'activités sont envoyés à Sirene par le portail du _Guichet Unique des Entreprises_ (GUE) de l' _Institut National de la Propriété Industrielle_
+(INPI), plateforme sur laquelle les déclarants renseignent les informations de leur entreprise dont leur activité principale, ce qui implique que toute modification du formulaire ou de son interprétation est susceptible de provoquer une dérive de données. 
 
 Un cas extrême de dérive conceptuelle, courant dans le cas de la statistique publique, se produit ici: un changement de nomenclature, celui de la NAF.
 Il s'agit d'une rupture totale et exogène de la définition même des modalités de la variable cible, rendant les codes non bijectifs immédiatement obsolètes.
+Une simple application de la table de correspondance sur le jeu d'apprentissage ne saurait suffire dans la mesure où des sous-classes de la nomenclature, et donc des activités, ne seraient pas représentées. Par conséquent, ces données du jeu d'apprentissage sont incomplètes pour entraîner un modèle performant en terme de précision et d'automatisation.
 
-Particulier, partenaires INPI
+Pour coder des millions de données en nouvelles nomenclature, il faut une expertise métier et un volume d'annotation conséquent. L'expert APE dispose de la connaissance métier mais ne peut traiter l'exhaustivité manuellement. Comment passer à l'échelle et tirer profit du travail et du savoir-faire des experts ?
 
-Les données, bijectives, sont toutefois incomplètes pour voir un modèle performant en terme de précision et d'automatisation
+Après avoir présenté le contexte de traitement en flux dans lequel s'inscrit le modèle de _machine learning_ actuellement en production et son évolution, la seconde partie de cet article s'articulera autour de la problématique de la correspondance entre la NAF rev 2 (ou NAF 2008) et la NAF 2025 pour la conversion du jeu d'apprentissage, notamment sur la campagne d'annotation débouchant sur une vérité terrain et l'explicitation du mode opératoire des experts sur cet exercice, puis la génération de données d'apprentissage calibrées sur la vérité terrain sera abordée, en s'appuyant sur les notes explicatives de la nomenclature, avec dans une autre partie, la construction du modèle d'apprentissage supervisé adapté en nouvelle nomenclature, ses performances et l'approche pour le corriger et le qualifier pour un passage en production. Enfin, des pistes prometteuses d'améliorations seront illustrées ainsi que des perspectives de cas d'usage au sein de répertoires de référence de la statistique publique intégrant des systèmes de codification.
 
-D'où besoin de construire un nouveau modèle.
 
-se prête au tryptioque collecter, traiter et diffuser
-
-> **NOTE POUR LE RELECTEUR :** Dans la bibliographie, est-ce qu'il est possible de citer le rapport IG 2024 correspondant ? J'ai vu l'ASP le citer sans donner de lien: https://www.autorite-statistique-publique.fr/event/delibere-sur-lintegration-des-innovations-de-traitement-des-donnees-dans-la-production-statistique/
+> **NOTE POUR LE RELECTEUR :** Dans la bibliographie, est-ce qu'il est possible de citer le rapport IG 2024 correspondant sans donner de lien ? J'ai vu l'ASP le citer sans donner de lien: https://www.autorite-statistique-publique.fr/event/delibere-sur-lintegration-des-innovations-de-traitement-des-donnees-dans-la-production-statistique/
 Même question pour une note de réflexion interne: L’Insee et l’activité de gestion de répertoires administratifs
 Pour le cas des nouvelles sources, on a l'usage de données satellites sauf que ce n'est pas encore gagné pour un passage en production donc je ne sais pas s'il est pertinent de tout de même mentionner ce domaine. C'est surtout exploratoire.
 Est-ce qu'il est parfois préférable d'utiliser les termes "en continu", "en temps réels", "temps quasi-réels" pour varier la rédaction ?
 
 
+[^remark-data-editing]: Du _data editing_ est aussi employé pour corriger la base d'apprentissage dans une moindre mesure.
