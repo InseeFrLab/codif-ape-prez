@@ -25,9 +25,9 @@ domains: # utiliser la nomenclature du site (menu déroulant)
   - Données administratives et qualité
 resume: |
   La codification automatique de l'Activité Principale Exercée (APE) à partir de libellés textuels
-  représente un enjeu opérationnel majeur pour l'Insee. Depuis 2020, un modèle fastText 1 est utilisé
+  représente un enjeu opérationnel majeur pour l'Insee. Depuis 2020, un modèle fastText est utilisé
   en production pour cette tâche. À la fois méthodologie et librairie logicielle développée par
-  Facebook AI Research, fastText repose sur des classifieurs linéaires efficaces, combinés à des représentations
+  Facebook AI Research, fastText repose sur des classificateurs linéaires efficaces, combinés à des représentations
   vectorielles de mots et de sous-mots. Il offre une solution simple, rapide et précise
   pour la classification de texte à large échelle, particulièrement adaptée aux nomenclatures métiers.
 
@@ -88,30 +88,30 @@ Tâche commune au sein des instituts de statistique publique, la codification au
 
 Historiquement, le système Sicore a été développé dans les années 90 (@sicore) pour les grands usages de codification à travers l'Institut. Basé sur un principe d'"apprentissage", l'algorithme permettait d'identifier de façon déterministe un code unique, ou bien de choisir de ne rien proposer, menant à une reprise manuelle par un gestionnaire. C'était justement Sicore qui était utilisé dans le cadre de la codification automatique de l'Activité Principale de l'Entreprise dans le répertoire Sirene des entreprises.
 
-Cependant, l'arrivée du guichet unique dans le cadre de la loi PACTE (n° 2019-486 du 22 mai 2019) a offert aux chefs d’entreprises plus de flexibilité dans la description de leurs activités principales mais les rendant ainsi mécaniquement plus verbeux que précédemment. Sicore s'est retrouvé hors de fonctionnement, avec seulement 30% de codage automatique et donc près de 70% de reprise manuelle, surchargeant les équipes Sirene.
+Cependant, l'arrivée du guichet unique dans le cadre de la loi PACTE (n° 2019-486 du 22 mai 2019) a offert aux chefs d’entreprises plus de flexibilité dans la description de leurs activités principales, les rendant mécaniquement plus verbeux que précédemment. L'efficacité du système Sicore a été directement impactée, avec seulement 30% de codage automatique et donc près de 70% de reprise manuelle, surchargeant les équipes Sirene.
 
 L’arrivée des modèles de traitement automatique du langage (NLP) a ouvert la voie à une nouvelle génération de systèmes de codification automatique. Parmi eux, fastText, développé initialement par Facebook AI Research, a été retenu pour son excellent compromis entre rapidité et performance. Son architecture simple, fondée sur des représentations vectorielles de mots et de n-grammes, permet une adaptation rapide à la structure particulière des libellés d’activités.
 
-Depuis le 1er janvier 2023, un modèle *fastText* a donc remplacé aves succès l'algorithme Sicore en production, permettant une automatisation à 80%/ de la codification, avec un temps de réponse unitaire de moins de 100ms et une précision satisfaisante.
+Depuis le 1er janvier 2023, un modèle *fastText* a donc remplacé aves succès l'algorithme Sicore en production, permettant une automatisation à 80% de la codification, avec un temps de réponse unitaire de moins de 100ms et une précision satisfaisante(??).
 
 ### fastText et MLOps
 
-*fastText* se base sur une représentation vectorielle de *n-grams* (association de sous-éléments) de mots et de caractères. Cette représentation est apprise, comme dans tout modèle d'apprentissage profond, à partir d'un jeu de données d'entraînement. Nous invitions le lecteur à lire le papier original (@joulin2016bag) pour comprendre les détails de cette méthodologie et l'architecture du modèle 
+*fastText* se base sur une représentation vectorielle de *n-grams* (association de sous-éléments) de mots et de caractères. Cette représentation est apprise, comme dans tout modèle d'apprentissage profond, à partir d'un jeu de données d'entraînement. Nous invitons le lecteur à lire le papier original (@joulin2016bag) pour comprendre les détails de cette méthodologie et l'architecture du modèle 
 
 Le déploiement d'un modèle de *machine learning* en production a nécessité de nombreuses adaptations, dans une philosophie *MLOps*. L’idée fondamentale est d’intégrer tout le cycle de vie d’un projet dans un continuum automatisé, de la gestion des données à la surveillance du modèle déployé en passant par l'entraînement et le versionnage des modèles.
 
-Cette approche MLOps s'inscrit fondamentalement dans une perspective d'utilisation de technologies *cloud-native*, en particulier Onyxia. La description des travaux et la philosophie générale du déploiement d'un modèle *fastText* est décrite dans le document de travail *L'apport des technologies cloud pour industrialiser le processus d’innovation statistique* par par Romain AVOUAC, Thomas FARIA et Frédéric COMTE (N° M2025-05– Juillet 2025).
+Cette approche MLOps s'inscrit fondamentalement dans une perspective d'utilisation de technologies *cloud-native*, en particulier Onyxia. La description des travaux et la philosophie générale du déploiement d'un modèle *fastText* est décrite dans le document de travail *L'apport des technologies cloud pour industrialiser le processus d’innovation statistique* (@apportcloudstat).
 
 Elle a abouti à des principes clés qui servent de base à la mise en production d'un modèle de *machine learning*:
 
-- séparation stricte des environnements de calcul et de stockage des donées : utilisation de l'espace S3 du SSPCloud pour la gestion des données
+- séparation stricte des environnements de calcul et de stockage des données : utilisation de l'espace de stockage S3 du SSPCloud pour la gestion des données
 - automatisation des pipelines d'entraînement via ArgoWorkflows avec un minimum d'intervention humaine
 - utilisation extensive de MLFlow pour la surveillance de l'entraînement, le stockage et le versionnage des modèles, ainsi que son encapsulation pour service (*wrapper* contenant les logiques de traitement du texte)
 - service du modèle via une API REST en Python
 - travail conjoint entre métiers et innovation (SSP Lab)
 - surveillance du modèle via des dashboards basés sur Quarto
 
-![La pipeline MLOps idéale](../img/ml-lifecycle-mlops-eternal-knot.png){width=90%}
+![Le pipeline MLOps idéal](../img/ml-lifecycle-mlops-eternal-knot.png){width=90%}
 
 
 ## PyTorch : enjeux et défis de la mise en production
@@ -151,7 +151,7 @@ Des fonctionnalités supplémentaires sont également prévues, comme:
 - quantization
 
 
-La libraries *torchTextClasifiers* repose sur du PyTorch natif ainsi que le framework [PyTorch Lightning](https://lightning.ai/docs/pytorch/stable/), standard actuel pour l'entraînement de réseaux de neurones. Des dépendances optionnelles en fonction des fonctionnalités utilisées peuvent être ajoutées - [*Captum*](https://captum.ai/) pour l'explicabilité par exemple.
+Le package *torchTextClasifiers* repose sur du PyTorch natif ainsi que le framework [PyTorch Lightning](https://lightning.ai/docs/pytorch/stable/), standard actuel pour l'entraînement de réseaux de neurones. Des dépendances optionnelles en fonction des fonctionnalités utilisées peuvent être ajoutées - [*Captum*](https://captum.ai/) pour l'explicabilité par exemple.
 
 
  | ![L'explicabilité est une des fonctionnalités implémentées : quel mot a influencé la prédiction ?](../img/4332A-word.png){width=90%} | ![](../img/4332A-letter.png){width=90%} |
