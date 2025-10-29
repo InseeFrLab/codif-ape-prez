@@ -66,8 +66,7 @@ resume: |
   formations internes sont en cours pour accompagner cette montée en compétence collective.
 
 abstract: |
-    (Texte en anglais de 5 à 10 lignes)\ 
-    `#lorem(30)`{=typst}
+    The automatic coding of the Activité Principale Exercée (APE) from textual labels is a major operational challenge for Insee. Since 2020, a fastText-based model has been used in production to perform this task efficiently. However, after four years, both technical sustainability and methodological modernization have become pressing issues. To address them, Insee has developed torchFastText, a new open-source Python package built on PyTorch that reproduces the fastText approach within a modern, modular, and maintainable framework. Now evolving into torchTextClassifiers, the package aims to provide a suite of lightweight, high-performance text classification models for broad institutional and public use. Beyond its technical benefits, this initiative reflects a collective effort to strengthen sovereignty over AI tools while fostering interoperability and shared development across European statistical institutes. It also paves the way for future advances in model interpretability, hierarchical learning, and deep learning adoption within public statistics.
 bibliography: references.bib
 format:
   jms2025-typst:
@@ -97,7 +96,7 @@ Depuis le 1er janvier 2023, un modèle *fastText* a donc remplacé aves succès 
 
 ### fastText et MLOps
 
-*fastText* se base sur une représentation vectorielle de *n-grams* (association de sous-éléments) de mots et de caractères. Cette représentation est apprise, comme dans tout modèle d'apprentissage profond, à partir d'un jeu de données d'entraînement.
+*fastText* se base sur une représentation vectorielle de *n-grams* (association de sous-éléments) de mots et de caractères. Cette représentation est apprise, comme dans tout modèle d'apprentissage profond, à partir d'un jeu de données d'entraînement. Nous invitions le lecteur à lire le papier original (@joulin2016bag) pour comprendre les détails de cette méthodologie et l'architecture du modèle 
 
 Le déploiement d'un modèle de *machine learning* en production a nécessité de nombreuses adaptations, dans une philosophie *MLOps*. L’idée fondamentale est d’intégrer tout le cycle de vie d’un projet dans un continuum automatisé, de la gestion des données à la surveillance du modèle déployé en passant par l'entraînement et le versionnage des modèles.
 
@@ -112,7 +111,7 @@ Elle a abouti à des principes clés qui servent de base à la mise en productio
 - travail conjoint entre métiers et innovation (SSP Lab)
 - surveillance du modèle via des dashboards basés sur Quarto
 
-![La pipeline MLOps idéale](https://www.ml4devs.com/images/illustrations/ml-lifecycle-mlops-eternal-knot.webp)
+![La pipeline MLOps idéale](../img/ml-lifecycle-mlops-eternal-knot.png){width=90%}
 
 
 ## PyTorch : enjeux et défis de la mise en production
@@ -120,6 +119,7 @@ Elle a abouti à des principes clés qui servent de base à la mise en productio
 **La librairie *fastText* développée par Meta a été archivée en juin 2024**, posant différentes question quant à la maintenabilité et la viabilité d'un modèle *fastText* en production. 
 
 Le passage à l'écosystème **PyTorch**, standard actuel pour le développement de réseaux de neurones, a donc été envisagé. Il entrouvre de nombreuses possibilités:
+
  - maintenance et développement en interne du modèle de codification automatique (par exemple, avec une prise en compte mieux gérée des variables additionnelles et  la possibilité d'améliorer les performances avec des architectures plus sophistiquées)
  - connexion à un écosystème dynamique et donc à de nombreuses librairies permettant des ajouts utiles : utilisation de modèles et/ou  de tokenizers pré-entraînés depuis *Hugging Face*, explicabilité avec la librairies Captum, calibration des modèles avec torch-uncertainty etc.
 
@@ -129,14 +129,14 @@ Le passage à l'écosystème **PyTorch**, standard actuel pour le développement
 
  ![Sur un échantillon de test de 300 000 libellés, histogramme des niveaux de confiance prédits par le modèle, sur les libellés correctement ou mal classés. Le modèle arrive à bien discriminer, ne se trompant que lorsqu'il a une faible confiance. ](../img/confidence_histogram_test.png)
 
- ![Sur un échantillon de test de 300 000 libellés, courbe de calibration du modèle. Le modèle est très bien calibré : quand il indique un niveau de confiance de xx%, il est effectivement correct dans xx% des cas. ](../img/confidence_histogram_test.png)
+ ![Sur un échantillon de test de 300 000 libellés, courbe de calibration du modèle. Le modèle est très bien calibré : quand il indique un niveau de confiance de xx%, il est effectivement correct dans xx% des cas. ](../img/calibration_curve_test.png)
 
 
 ## torchTextClassifiers: perspectives
 
 Le SSP Lab a centralisé sous la forme d'un package Python ce modèle PyTorch (disponible sur ce [lien](https://github.com/InseeFrLab/torchTextClassifiers)), et ce pour plusieurs raisons :
+
 - le modèle a une existence propre et est indépendant de ce pour quoi il est entraîné
-- séparation des codes d'entraînement et des expérimentations du modèle "en production" *per se*. 
 - portabilité et versionnage optimisés (l'architecture sous forme de package est accessible depuis PyPI qui agit comme un stockage distant)
 - la méthodologie n'est pas propre à la codification de l'APE mais a pour but d'être diffusée et de servir de standard au sein de l'Institut : diffusion rapide et installation efficace
 - opportunités de collaboration avec d'autres acteurs
@@ -144,6 +144,7 @@ Le SSP Lab a centralisé sous la forme d'un package Python ce modèle PyTorch (d
 L'idée à terme est d'avoir une librairie permettant d'initialiser et entraîner très facilement un modèle de classification de texte parmi les architectures plus modernes. Les utilisateurs visés sont ceux qui ne peuvent pas utiliser de modèles lourds pré-entraînés depuis HuggingFace mais veulent entraîner efficacement leurs propres modèles de taille réduite - pour une inférence CPU par exemple. Les instituts de statistique publique européens font donc naturellement partie de la cible.
 
 Des fonctionnalités supplémentaires sont également prévues, comme:
+
 - utilisation et entraînement de tokenizers HuggingFace
 - explicabilité
 - calibration
