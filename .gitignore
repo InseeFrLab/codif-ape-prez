@@ -1,7 +1,11 @@
 /.quarto/
+**/*.quarto_ipynb
 /_site/
 *background.svg
 *logo.svg
 *favicon-32x32.png
 *.csv
 mlflow_images/
+**/*.quarto_ipynb
+*.typ
+site_libs/
