@@ -96,7 +96,7 @@
 
   if header.len() > 0 {
     align(header.location,
-      box(inset: (left: 0.8cm))[
+      box(inset: (left: 1cm))[
         #image(header.path, width: header.width, alt: header.alt)
       ]
     )
