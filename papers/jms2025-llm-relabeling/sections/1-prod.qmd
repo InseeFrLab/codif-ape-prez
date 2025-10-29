@@ -1,5 +1,183 @@
-# Sirene 4 : une nouvelle application pour traiter les déclarations d'entreprises en continu - écosystème des formalités
 
+- écosystème des formalités
 Genèse de notre base d'apprentissage
 
 par les créations d'entreprises mi-novembre 2022, puis les modifications étant intégrées en mars 2024.
+
+## Le Guichet Unique des Entreprises
+
+Contexte: loi PACTE, gestion des papiers, flux d'alimentation des liasses pour Sirene 
+
+## Sirene 4
+
+### Le répertoire Sirene 
+
+répertoire ancien, raison d'être, répertoire de référence
+
+### La bascule de Sirene 3 à Sirene 4
+
+changement de paradigme: quitter le monde des batchs
+modernisation, architecture micro-services, gestion continue des formalités, workflow, automatisation, opportunité d'innovation
+
+#### Le système de codification dans Sirene 
+
+
+### Le traitement automatique des libellés
+
+::: {.center}
+![Détail de la codification de l'APE dans Sirene 4](img/table-passage-codification.png){#fig-codif-sirene}
+
+*Note de lecture : TODO*
+:::
+
+### Critère de passage en reprise
+
+S'appuie sur un indicateur de confiance
+$$
+IC = p_1 - p_2, 
+$$
+
+avec p_i la probabilité de la i-ème prédiction. Les probabilités étant triées par ordre décroissant.
+
+Le critère:
+$$
+\text{Ind}_{\text{Auto}} = \mathbf{1}_{IC \ge Seuil} =
+\begin{cases}
+    1 & \text{si } IC \ge Seuil \\
+    0 & \text{sinon}
+\end{cases}
+$$
+
+::: {.center}
+![Critère de passage en codification automatique ou en reprise](img/schema-fasttext.png){#fig-critere-codif}
+
+*Note de lecture : TODO*
+:::
+
+Objectif: séparer les bonnes codifications, des mauvaises ou incertaines.
+Risque de ne pas mettre de seuil: codification complètement aléatoire non reprise
+
+::: {.center}
+![Distributions des bonnes et mauvaises codifications selon IC](img/IC.png){#fig-IC}
+
+*Note de lecture : TODO*
+:::
+
+### La reprise gestionnaire des cas incertains
+
+::: {.center}
+![Exemple de poste de reprise de la codification](img/reprise_gestionnaire_manque_contexte.png){#fig-poste-reprise-gestionnaire}
+
+*Le modèle hésite entre plusieurs codes possibles. La proposition des échos permet au gestionnaire de coder plus vite le fait gagner du temps de recherche.*
+:::
+
+La codification automatique est la plus prépondérante soulageant la charge gestionnaire.
+Ordre de grandeur: 2 millions de cas par an
+
+::: {.center}
+![Représentation temporelle de la part des différents types de codification](img/taux_automatisation.png){#fig-poste-reprise-gestionnaire}
+
+*Le modèle hésite entre plusieurs codes possibles. La proposition des échos permet au gestionnaire de coder plus vite le fait gagner du temps de recherche.*
+:::
+
+### Le classifieur fastText comme modèle d'apprentissage supervisé
+
+architecture _fastText_  du modèle. Plusieurs implémentations possibles: une librairie officielle et un papier formel
+Pour la codification, l'application du modèle donne:
+
+::: {.center}
+![Architecture de fastText](img/diag-fasttext-rectif.png){#fig-diag-simple-fasttext}
+
+*Architecture simple avec plongement lexical et moyennage des plongements (ou vectorisation), classification des vecteurs, puis conversion des scores en probabilité.*
+:::
+
+
+Pour interpréter ces scores comme des probabilités, on applique la fonction *softmax* :
+
+$$
+\text{Softmax}(x_i) = \frac{\exp{x_i}} {\sum\limits_{j=0}^{9}{\exp{x_j}}}.
+$$
+
+Cette opération convertit les scores en une distribution de probabilité, dont la somme vaut 1, et permet de sélectionner la classe associée à la probabilité la plus élevée comme prédiction finale. La fonction *softmax* est particulièrement utile car elle est infiniment dérivable, ce qui garantit la dérivabilité de tout le modèle $f_{\theta}$ par rapport à ses paramètres $\theta$. Cela rend possible l’utilisation de la descente de gradient pour ajuster les poids du réseau au cours de l’apprentissage.
+
+L’algorithme d’entraînement retenu correspond à un schéma one-versus-all. Dans ce schéma, un classifieur binaire indépendant est entraîné pour chaque classe. Cette
+variation est particulièrement utile lorsqu’on souhaite pouvoir prédire plusieurs classes pour un
+même libellé.
+
+référer à l'article JMS de l'an dernier: Application de techniques de machine learning pour coder les
+professions en PCS 2020
+
+
+#### Première implémentation historique via librairie Meta i.e Facebook
+
+Première librairie, rapidement dépréciée.
+
+#### Implémentation via Pytorch
+
+::: {.center}
+![Exemple d'architecture possible séparant les variables catégorielles](img/NN.drawio.png){#fig-fasttext-pytorch}
+
+*Exemple d'architecture possible via la librairie: on ne concatène plus les variables catégorielles*
+:::
+
+cf session JMS sur la nouvelle librairie Insee
+
+## L'entraînement et la livraison du modèle
+
+Explication du process d'entraînement et mise en production
+
+::: {.center}
+![Process simplifié de qualification du modèle](img/orga_ape_actuelle.png){#fig-orga_modele}
+
+*Note de lecture : TODO*
+:::
+
+### Le datalab comme environnement d'entraînement
+
+données open data, capacité d'innovation et ressources computationnelles conséquentes
+gestion des modèles dans le gestionnaire de modèles ou _Model Store_.
+
+::: {.center}
+![Environnement et gestion de l'entraînement du modèle ](img/api-datalab.png){#fig-model-store}
+
+*Note de lecture : TODO*
+:::
+
+### Environnement d'inférence: qualification et mise en production
+
+
+::: {.center}
+![Inférence du modèle en environnement de développement](img/API.png){#fig-critere-codif}
+
+*Note de lecture : TODO*
+:::
+
+## Maintenance et surveillance du modèle
+
+Appliquer en NAF rev 2 pour s'assurer de la qualité de codification en auto initialement 
+avant changement de NAF.
+
+Expérimentation fructueuse: prochain objectif de mise en prod.
+moyens metier temporairement sur la NAF
+
+::: {.center}
+![Monitoring du modèle sur inférence d'un échantillon de surveillance représentatif](img/tab2.png){#fig-critere-codif}
+
+*  *
+:::
+
+::: {.center}
+![Comparaison des taux d'automatisation des activités par période](img/tab6.png){#fig-critere-codif}
+
+*    *
+:::
+
+::: {.center}
+![Surveillance des performances au cours de l'année 2024](img/tab3.png){#fig-critere-codif}
+
+*Le couloir représente l'intervalle de confiance: plus il y a d'annotations, plus il est resserré*
+:::
+
+
+
+Transition: le changement de nomenclature a des conséquences transversales à plusieurs maillons de la chaîne de production.

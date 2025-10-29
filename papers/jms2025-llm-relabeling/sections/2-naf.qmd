@@ -94,48 +94,52 @@ Pas mal mais toujours insuffisant.
 
 ### Comment construire un modèle en NAF 2025
 
-
-### Le modèle FastText
-
-
-Pour interpréter ces scores comme des probabilités, on applique la fonction *softmax* :
-
-$$
-\text{Softmax}(x_i) = \frac{\exp{x_i}} {\sum\limits_{j=0}^{9}{\exp{x_j}}}.
-$$
-
-Cette opération convertit les scores en une distribution de probabilité, dont la somme vaut 1, et permet de sélectionner la classe associée à la probabilité la plus élevée comme prédiction finale. La fonction *softmax* est particulièrement utile car elle est infiniment dérivable, ce qui garantit la dérivabilité de tout le modèle $f_{\theta}$ par rapport à ses paramètres $\theta$. Cela rend possible l’utilisation de la descente de gradient pour ajuster les poids du réseau au cours de l’apprentissage.
-
-
-### Une adaptation sauce Pytorch
-
-cf second article : "fasttext tout uste en production et déjà obsolète ?"
-
-
 ## La campagne d'annotation: à l'origine de nos matériaux
 
 ### Déroulé 
 
-### Débouché à un Mode opératoire des experts 
+### Résultats
 
-### Difficulté et nombre de multivoques: un lien pas si immédiat
+#### Documents et expérience de codage
 
-[Analyse notebook]
+Débouche sur l'affinage de la structure, table de correspondance et notes explicatives
+Première formation des experts.
 
-Même pour les cas inclassables, on retrouve le même phénomène. 
-Avoir beaucoup de cas multivoques n'augmentent pas la part de tâches difficiles.
-A partir de 20 correspondances possibles, la difficulté augmente progressivement.
+#### Mode opératoire des experts 
+
+::: {.center}
+![Algorithme de labellisation ou consignes](img/decision-tree-annotation.png){#fig-decision-tree}
+
+*Note de lecture : TODO*
+:::
+
+#### Difficulté de l'exercice et nombre de multivoques: un lien pas si immédiat
+
+Globalement modéré sauf quelques cas. Est-ce nécessairement des cas où les multivoques sont nombreux ?
+
+::: {.center}
+![Difficulté ressentie en fonction des multivoques](img/difficulte_brute_niv5.png){#fig-diff-brute-niv5}
+
+*Note de lecture : TODO*
+:::
+
+::: {.center}
+![Difficulté ressentie en fonction des multivoques (autre librairie pour la représentation)](img/difficulte_brute_niv5_plotly.png){#fig-diff-brute-niv5}
+
+*Note de lecture : TODO*
+:::
+
+A partir de 20 correspondances possibles, la difficulté ressentie augmente progressivement.
 seuil de difficulté autour de 30 options (niv4) et 35 niv5
 
 Entre 10 et 20 options, la difficulté perçue par les répondants reste globalement stable. À partir d’une vingtaine de choix, on observe une montée progressive de la charge cognitive, qui s’accentue nettement autour de 30 (niv4) et 35 au niv5
 
 Parmi les activités particulièrement difficiles, il y avait donc le 4399D (Autres travaux spécialisés de construction), le 4399A (Vente à domicile) et le 4791B (Vente à distance sur catalogue spécialisée). Pour autant, toutes ces activités combinés ne représentent que 2077 cas soit moins de 7% des tâches.
 
-::: {.center}
-![Représentation schématique du Segformer](img/segformer_architecture.png){#fig-segformer}
 
-*Note de lecture : TODO*
-:::
+Avoir beaucoup de cas multivoques n'augmente pas la part de tâches difficiles.
+Même pour les cas inclassables, on retrouve le même phénomène.
+
 
 ### L'apport de Label Studio
 

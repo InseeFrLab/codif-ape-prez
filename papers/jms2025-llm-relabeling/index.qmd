@@ -60,13 +60,13 @@ format:
 
 {{< pagebreak >}}
 
-# L'application Sirene 4: une nouvelle application embarquant de la codification automatique de données en flux
+# Sirene 4 : une nouvelle application pour traiter les déclarations d'entreprises en continu 
 
 {{< include sections/1-prod.qmd >}}
 
 {{< pagebreak >}}
 
-# Construction de la nouvelle nomenclature et d'une vérité terrain, des besoins de nouvelles données
+# Comment coder en NAF 2025 ? campagne d'annotation et vérité terrain
 
 {{< include sections/2-naf.qmd >}}
 

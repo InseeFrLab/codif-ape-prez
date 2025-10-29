@@ -13,7 +13,7 @@ Explication de la feuille de route de la méthodologie
 
 #### Annotation manuelle comme ground truth
 
-## Plateforme: Utilisation du datalab Onyxia SSP Cloud, H100, vllm
+## Plateforme: Utilisation du datalab Onyxia SSP Cloud, H100, vllm, Langfuse
 
 référer à l'article: "mettre les technologies cloud au service de la production publique"
 
@@ -25,6 +25,12 @@ spécificité de l'inférence par batch. Défis récents
 
 ## Schéma global: approche innovante
 
+::: {.center}
+![Approche globale pour construire le modèle en NAF 2025](img/methodo-nace-rev.png){#fig-methodo-nace-rev}
+
+*Note de lecture : TODO*
+:::
+
 ### Tirer profit des LLM    
 
 #### RAG
@@ -32,11 +38,13 @@ spécificité de l'inférence par batch. Défis récents
 #### CAG 
 
 avantage/inconvénients: retrieval immédiat mais propagation de l'erreur en NAF rev 2
-Pertinent si très bonne classification en NAF rev 2
+Intéressant si bonne classification en NAF rev 2, notre cas
 
-rappeler l'obectif dans cette partie: ne pas construire de classifieur basé sur LLM mais construire annotation
+rappeler l'objectif dans cette partie: ne pas construire de classifieur basé sur LLM mais construire annotation
 
 #### Prompting
+
+
 
 #### Qu'attend-on en sortie du LLM ?
 
@@ -49,5 +57,11 @@ rappeler l'obectif dans cette partie: ne pas construire de classifieur basé sur
 ### Différentes métriques 
 
 ### Performances des modèles
+
+::: {.center}
+![Différentes performances des LLM](img/benchmark_LLM.png){#fig-benchmark-LLM}
+
+*Note de lecture : TODO*
+:::
 
 ### Stratégies de reconstruction du jeu des multivoques "Plusieurs cerveaux valent mieux qu'un seul"
