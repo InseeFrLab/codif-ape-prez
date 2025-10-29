@@ -44,7 +44,7 @@ resume: |
   statistiques européens, dans une logique - espérée - d'interopérabilité et de mutualisation. L'objectif -
   garantir la frugalité des modèles, tout en préservant les performances du modèle initial en termes
   de rapidité et de précision. torchFastText a été validé à l'issue d'une série de tests rigoureux sur les
-  jeux de données de production. Il est aujourd'hui prêt à être mis en production.
+  jeux de données de production. Il est aujourd'hui en production.
 
   Outre l'aspect technique, ce projet incarne une démarche d'appropriation collective des outils
   d'IA, en s'appuyant sur des langages et frameworks largement adoptés dans la communauté scientifique,
@@ -81,12 +81,77 @@ format:
     keep-typ: true
 ---
 
-## Historique de la codification automatique de l'APE : de Sicore à fastText
+## Introduction et contexte
 
-### Le guichet unique
+### Historique de la codification automatique de l'APE : de Sicore à fastText
+
+Tâche commune au sein des instituts de statistique publique, la codification automatique de libellés textuels dans une nomenclature donnée peut s'avérer complexe à grande échelle, complexité d'autant plus relevée que la nomenclature est de grande taille.
+
+Historiquement, le système Sicore a été développé dans les années 90 (@sicore) pour les grands usages de codification à travers l'Institut. Basé sur un principe d'"apprentissage", l'algorithme permettait d'identifier de façon déterministe un code unique, ou bien de choisir de ne rien proposer, menant à une reprise manuelle par un gestionnaire. C'était justement Sicore qui était utilisé dans le cadre de la codification automatique de l'Activité Principale de l'Entreprise dans le répertoire Sirene des entreprises.
+
+Cependant, l'arrivée du guichet unique dans le cadre de la loi PACTE (n° 2019-486 du 22 mai 2019) a offert aux chefs d’entreprises plus de flexibilité dans la description de leurs activités principales mais les rendant ainsi mécaniquement plus verbeux que précédemment. Sicore s'est retrouvé hors de fonctionnement, avec seulement 30% de codage automatique et donc près de 70% de reprise manuelle, surchargeant les équipes Sirene.
+
+L’arrivée des modèles de traitement automatique du langage (NLP) a ouvert la voie à une nouvelle génération de systèmes de codification automatique. Parmi eux, fastText, développé initialement par Facebook AI Research, a été retenu pour son excellent compromis entre rapidité et performance. Son architecture simple, fondée sur des représentations vectorielles de mots et de n-grammes, permet une adaptation rapide à la structure particulière des libellés d’activités.
+
+Depuis le 1er janvier 2023, un modèle *fastText* a donc remplacé aves succès l'algorithme Sicore en production, permettant une automatisation à 80%/ de la codification, avec un temps de réponse unitaire de moins de 100ms et une précision satisfaisante.
 
 ### fastText et MLOps
 
+*fastText* se base sur une représentation vectorielle de *n-grams* (association de sous-éléments) de mots et de caractères. Cette représentation est apprise, comme dans tout modèle d'apprentissage profond, à partir d'un jeu de données d'entraînement.
+
+Le déploiement d'un modèle de *machine learning* en production a nécessité de nombreuses adaptations, dans une philosophie *MLOps*. L’idée fondamentale est d’intégrer tout le cycle de vie d’un projet dans un continuum automatisé, de la gestion des données à la surveillance du modèle déployé en passant par l'entraînement et le versionnage des modèles.
+
+Cette approche MLOps s'inscrit fondamentalement dans une perspective d'utilisation de technologies *cloud-native*, en particulier Onyxia. La description des travaux et la philosophie générale du déploiement d'un modèle *fastText* est décrite dans le document de travail *L'apport des technologies cloud pour industrialiser le processus d’innovation statistique* par par Romain AVOUAC, Thomas FARIA et Frédéric COMTE (N° M2025-05– Juillet 2025).
+
+Elle a abouti à des principes clés qui servent de base à la mise en production d'un modèle de *machine learning*:
+
+- séparation stricte des environnements de calcul et de stockage des donées : utilisation de l'espace S3 du SSPCloud pour la gestion des données
+- automatisation des pipelines d'entraînement via ArgoWorkflows avec un minimum d'intervention humaine
+- utilisation extensive de MLFlow pour la surveillance de l'entraînement, le stockage et le versionnage des modèles, ainsi que son encapsulation pour service (*wrapper* contenant les logiques de traitement du texte)
+- service du modèle via une API REST en Python
+- travail conjoint entre métiers et innovation (SSP Lab)
+- surveillance du modèle via des dashboards basés sur Quarto
+
+![La pipeline MLOps idéale](https://www.ml4devs.com/images/illustrations/ml-lifecycle-mlops-eternal-knot.webp)
+
+
 ## PyTorch : enjeux et défis de la mise en production
 
+**La librairie *fastText* développée par Meta a été archivée en juin 2024**, posant différentes question quant à la maintenabilité et la viabilité d'un modèle *fastText* en production. 
+
+Le passage à l'écosystème **PyTorch**, standard actuel pour le développement de réseaux de neurones, a donc été envisagé. Il entrouvre de nombreuses possibilités:
+ - maintenance et développement en interne du modèle de codification automatique (par exemple, avec une prise en compte mieux gérée des variables additionnelles et  la possibilité d'améliorer les performances avec des architectures plus sophistiquées)
+ - connexion à un écosystème dynamique et donc à de nombreuses librairies permettant des ajouts utiles : utilisation de modèles et/ou  de tokenizers pré-entraînés depuis *Hugging Face*, explicabilité avec la librairies Captum, calibration des modèles avec torch-uncertainty etc.
+
+ La question principale qui restait en suspens était celle de la performance et du temps d'inférence sur CPU. PyTorch est une librairie généraliste, destinée à pouvoir implémenter n'importe quelle architecture de réseaux de neurones, contrairement à la librairie fastText (qui par définition n'implémente que la méthodologie fastText). PyTorch est par ailleurs particulièrement destinée à une utilisation sur GPU : si les GPUs du SSP Cloud permettent un entraînement rapide, la question de l'inférence en production (sans GPU) était cruciale. 
+ 
+ Après des tests conclusifs, un modèle PyTorch d'environ 1 million de paramètres a été mis en production, avec des temps d'inférence satisfaisants de moins de 300 ms - bien que supérieurs à ceux de fastText. Mais cette légère dégradation s'accompagne d'une meilleure précision, d'une meilleure calibration, d'un meilleur contrôle sur l'entraînement et des fonctionnalités supplémentaires (voir [ci-après](#torchtextclassifiers-perspectives)).
+
+ ![Sur un échantillon de test de 300 000 libellés, histogramme des niveaux de confiance prédits par le modèle, sur les libellés correctement ou mal classés. Le modèle arrive à bien discriminer, ne se trompant que lorsqu'il a une faible confiance. ](../img/confidence_histogram_test.png)
+
+ ![Sur un échantillon de test de 300 000 libellés, courbe de calibration du modèle. Le modèle est très bien calibré : quand il indique un niveau de confiance de xx%, il est effectivement correct dans xx% des cas. ](../img/confidence_histogram_test.png)
+
+
 ## torchTextClassifiers: perspectives
+
+Le SSP Lab a centralisé sous la forme d'un package Python ce modèle PyTorch (disponible sur ce [lien](https://github.com/InseeFrLab/torchTextClassifiers)), et ce pour plusieurs raisons :
+- le modèle a une existence propre et est indépendant de ce pour quoi il est entraîné
+- séparation des codes d'entraînement et des expérimentations du modèle "en production" *per se*. 
+- portabilité et versionnage optimisés (l'architecture sous forme de package est accessible depuis PyPI qui agit comme un stockage distant)
+- la méthodologie n'est pas propre à la codification de l'APE mais a pour but d'être diffusée et de servir de standard au sein de l'Institut : diffusion rapide et installation efficace
+- opportunités de collaboration avec d'autres acteurs
+
+L'idée à terme est d'avoir une librairie permettant d'initialiser et entraîner très facilement un modèle de classification de texte parmi les architectures plus modernes. Les utilisateurs visés sont ceux qui ne peuvent pas utiliser de modèles lourds pré-entraînés depuis HuggingFace mais veulent entraîner efficacement leurs propres modèles de taille réduite - pour une inférence CPU par exemple. Les instituts de statistique publique européens font donc naturellement partie de la cible.
+
+Des fonctionnalités supplémentaires sont également prévues, comme:
+- utilisation et entraînement de tokenizers HuggingFace
+- explicabilité
+- calibration
+- quantization
+
+
+La libraries *torchTextClasifiers* repose sur du PyTorch natif ainsi que le framework [PyTorch Lightning](https://lightning.ai/docs/pytorch/stable/), standard actuel pour l'entraînement de réseaux de neurones. Des dépendances optionnelles en fonction des fonctionnalités utilisées peuvent être ajoutées - [*Captum*](https://captum.ai/) pour l'explicabilité par exemple.
+
+
+ | ![L'explicabilité est une des fonctionnalités implémentées : quel mot a influencé la prédiction ?](../img/4332A-word.png){width=90%} | ![](../img/4332A-letter.png){width=90%} |
+|--------------------------|--------------------------|
