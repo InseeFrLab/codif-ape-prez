@@ -2,7 +2,7 @@ project:
   type: website
 
   render:
-    - slides/*/*.qmd
+    - slides/jms-torchft/*.qmd
     - index.qmd
     - cards/*.qmd
     
