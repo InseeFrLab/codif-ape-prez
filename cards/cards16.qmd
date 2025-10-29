@@ -6,7 +6,7 @@ description: |
   <b>Description :</b> Papier JMS sur le package
 author: Meilame Tayebjee
 slides:
-  text: Slides
+  text: Paper
   url: /slides/jms-torchft/index.pdf
 order: 16
 ---

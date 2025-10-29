@@ -92,7 +92,7 @@ Cependant, l'arrivée du guichet unique dans le cadre de la loi PACTE (n° 2019-
 
 L’arrivée des modèles de traitement automatique du langage (NLP) a ouvert la voie à une nouvelle génération de systèmes de codification automatique. Parmi eux, fastText, développé initialement par Facebook AI Research, a été retenu pour son excellent compromis entre rapidité et performance. Son architecture simple, fondée sur des représentations vectorielles de mots et de n-grammes, permet une adaptation rapide à la structure particulière des libellés d’activités.
 
-Depuis le 1er janvier 2023, un modèle *fastText* a donc remplacé aves succès l'algorithme Sicore en production, permettant une automatisation à 80% de la codification, avec un temps de réponse unitaire de moins de 100ms et une précision satisfaisante(??).
+Depuis le 1er janvier 2023, un modèle *fastText* a donc remplacé aves succès l'algorithme Sicore en production, permettant une automatisation à 80% de la codification, avec un temps de réponse unitaire de moins de 100ms et une qualité de prédiction satisfaisante (évaluée sur des données de test avant le déploiement et également en continu par des gestionnaires).
 
 ### fastText et MLOps
 
