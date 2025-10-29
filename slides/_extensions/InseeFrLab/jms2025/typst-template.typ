@@ -95,8 +95,13 @@
   }
 
   if header.len() > 0 {
-    align(header.location,  image(header.path, width: header.width, alt: header.alt))
+    align(header.location,
+      box(inset: (left: 0.6cm))[
+        #image(header.path, width: header.width, alt: header.alt)
+      ]
+    )
   }
+
   
   if title != none {
     align(center)[#block(inset: 1em)[
