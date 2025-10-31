@@ -99,9 +99,9 @@ Depuis le 1er janvier 2023, un modèle *fastText* a donc remplacé aves succès 
 
 ### L'intégration d'un modèle *fastText* dans le système d'information de l'Insee
 
-*fastText* se base sur une représentation vectorielle de *n-grams* (association de sous-éléments) de mots et de caractères. Cette représentation est apprise, comme dans tout modèle d'apprentissage profond, à partir d'un jeu de données d'entraînement.  L'architecture du modèle est relativement simple, l'efficacité venant pour une grande partie de la transformation des mots en token, permettant de se concentrer sur la sémantique des mots (leur racine). De plus, la simplicité du modèle le rend tres performant en terme de temps de réponses lors de son utilisation. Nous invitons le lecteur à lire le papier original (@joulin2016bag) pour comprendre les détails de cette méthodologie et l'architecture du modèle.
+*fastText* se base sur une représentation vectorielle de *n-grams* (association de sous-éléments) de mots et de caractères. Cette représentation est apprise, comme dans tout modèle d'apprentissage profond, à partir d'un jeu de données d'entraînement.  L'architecture du modèle est relativement simple, l'efficacité venant pour une grande partie de la transformation des mots en tokens, permettant de se concentrer sur la sémantique des mots (leur racine). De plus, la simplicité du modèle le rend très performant en terme de temps de réponses lors de son utilisation. Nous invitons le lecteur à lire le papier original (@joulin2016bag) pour comprendre les détails de cette méthodologie et l'architecture du modèle.
 
-Le déploiement d'un modèle de *machine learning* en production a nécessité de nombreuses adaptations, dans une philosophie *MLOps*. L’idée fondamentale est d’intégrer tout le cycle de vie d’un projet dans un continuum automatisé, de la gestion des données à la surveillance du modèle déployé en passant par l'entraînement et le versionnage des modèles.
+Le déploiement d'un modèle de *machine learning* en production a nécessité de nombreuses adaptations, dans une philosophie ***MLOps***. L’idée fondamentale est d’intégrer tout le cycle de vie d’un projet dans un continuum automatisé, de la gestion des données à la surveillance du modèle déployé en passant par l'entraînement et le versionnage des modèles.
 
 Cette approche MLOps s'inscrit fondamentalement dans une perspective d'utilisation de technologies *cloud-native*, en particulier Onyxia. La description des travaux et la philosophie générale du déploiement d'un modèle *fastText* est décrite dans le document de travail *L'apport des technologies cloud pour industrialiser le processus d’innovation statistique* (@apportcloudstat).
 
@@ -111,8 +111,8 @@ L'architecture mise en place repose sur plusieurs piliers :
   sont découplés, avec utilisation de l'espace de stockage S3 du SSP Cloud pour la gestion des données
 - **Automatisation des pipelines** : ArgoWorkflows orchestre l'entraînement avec un minimum
   d'intervention humaine
-- **Gestion du cycle de vie des modèles** : MLflow assure le suivi de l'entraînement, le stockage
-  et le versionnage des modèles, ainsi que leur encapsulation pour le service (wrapper contenant
+- **Gestion du cycle de vie des modèles** : MLFlow assure le suivi de l'entraînement, le stockage
+  et le versionnage des modèles, ainsi que leur encapsulation pour le service (*wrapper* contenant
   les logiques de prétraitement du texte)
 - **Service via API REST** : exposition du modèle pour intégration dans les systèmes de production
 - **Collaboration métier-innovation** : travail conjoint entre les équipes Sirene et le SSP Lab
@@ -124,9 +124,10 @@ L'architecture mise en place repose sur plusieurs piliers :
 
 ## PyTorch : enjeux et défis de la mise en production
 
-**La librairie *fastText* développée par Meta a été archivée en juin 2024**, posant différentes question quant à la maintenabilité et la viabilité d'un modèle *fastText* en production:
+**La librairie *fastText* développée par Meta a été archivée en juin 2024**, posant différentes questions quant à la maintenabilité et la viabilité d'un modèle *fastText* en production:
 
 **Dépendance à un binaire compilé** : fastText s'appuie sur du code C++ compilé, ce qui entraîne :
+
 - Difficultés de maintenance en cas de bug ou de besoins d'évolutions
 - Conflits de version potentiels avec d'autres dépendances
 - Éloignement du cadre de cohérence technique du système d'information de l'Insee
@@ -134,12 +135,15 @@ L'architecture mise en place repose sur plusieurs piliers :
 **Absence de perspectives d'évolution** : sans support actif, la librairie ne bénéficiera plus de correctifs de sécurité ni d'améliorations méthodologiques, alors que le domaine du NLP évolue rapidement (utilisation de GPU, absence d'explicabilité native, aucune prise en compte de variables additionnelles...)
 
 Le passage à l'écosystème **PyTorch**, devenu standard *de facto* pour le développement de réseaux de neurones, a donc été naturellement envisagé pour les possibilités que cela permettait: 
- - maintenance et développement en interne du modèle de codification automatique (par exemple, avec une prise en compte mieux gérée des variables additionnelles et  la possibilité d'améliorer les performances avec des architectures plus sophistiquées)
- - connexion à un écosystème dynamique et donc à de nombreuses librairies permettant des ajouts utiles : utilisation de modèles et/ou  de tokenizers pré-entraînés depuis *Hugging Face*, explicabilité avec la librairies Captum, calibration des modèles avec torch-uncertainty etc.
 
- La question principale qui restait en suspens était celle de la performance et du temps d'inférence  en utilisant uniquement des CPU. PyTorch est une librairie généraliste, destinée à pouvoir implémenter n'importe quelle architecture de réseaux de neurones, contrairement à la librairie fastText (qui par définition n'implémente que la méthodologie fastText). PyTorch est par ailleurs particulièrement destinée à une utilisation sur GPU : si les GPUs du SSP Cloud permettent un entraînement rapide, la question de l'inférence en production à l'Insee (dont les serveurs ne disposent pas encore de GPU) était cruciale. 
+ - maintenance et développement en interne du modèle de codification automatique (par exemple, avec une prise en compte mieux gérée des variables additionnelles et  la possibilité d'améliorer les performances avec des architectures plus sophistiquées)
+ - connexion à un écosystème dynamique et donc à de nombreuses librairies permettant des ajouts utiles : utilisation de modèles et/ou  de tokenizers pré-entraînés depuis [*Hugging Face*](https://huggingface.co/), explicabilité avec [*Captum*](https://captum.ai/), calibration des modèles avec [*torch-uncertainty*](https://github.com/ENSTA-U2IS-AI/torch-uncertainty) etc.
+
+ La question principale qui restait en suspens était celle de la performance et du temps d'inférence en utilisant uniquement des CPU. PyTorch est une librairie généraliste, destinée à pouvoir implémenter n'importe quelle architecture de réseaux de neurones, contrairement à la librairie fastText (qui par définition n'implémente que la méthodologie fastText). PyTorch est par ailleurs particulièrement destinée à une utilisation sur GPU : si les GPUs du SSP Cloud permettent un entraînement rapide, la question de l'inférence en production à l'Insee (dont les serveurs ne disposent pas encore de GPU) était cruciale. 
  
- Après des tests conclusifs, un modèle PyTorch d'environ 1 million de paramètres a été mis en production, avec des temps d'inférence satisfaisants de moins de 300 ms - bien que supérieurs à ceux de fastText. Mais cette légère dégradation s'accompagne d'une meilleure précision, d'une meilleure calibration, d'un meilleur contrôle sur l'entraînement et des fonctionnalités supplémentaires (voir [ci-après](#torchtextclassifiers-architecture-et-perspectives)).
+ Après des tests conclusifs, un modèle PyTorch d'environ 1 million de paramètres a été mis en production, avec des temps d'inférence satisfaisants de moins de 300ms - bien que supérieurs à ceux de fastText. Mais cette légère dégradation s'accompagne d'une meilleure précision, d'une meilleure calibration, d'un meilleur contrôle sur l'entraînement et des fonctionnalités supplémentaires (voir [ci-après](#torchtextclassifiers-architecture-et-perspectives)).
+
+ {{< pagebreak >}}
 
  **Tableau 1 : Comparaison fastText vs torchTextClassifiers**
 
@@ -169,7 +173,7 @@ Le SSP Lab a centralisé sous la forme d'un package Python ce modèle PyTorch (d
 - **Diffusion méthodologique** : la méthodologie dépasse le cadre de l'APE et peut servir de standard à l'Institut pour tout projet de classification de texte
 - **Collaboration institutionnelle** : facilite le partage avec d'autres instituts statistiques européens partageant des besoins similaires
 
-A terme, le but est de disposer (et mettre à disposition) une librairie permettant d'initialiser et entraîner très facilement un modèle de classification de texte utilisant les architectures les plus modernes si besoin. Les utilisateurs visés sont ceux qui ne peuvent pas utiliser de modèles lourds pré-entraînés depuis HuggingFace mais veulent entraîner efficacement leurs propres modèles de taille réduite - pour une inférence CPU par exemple. Les organismes de la statistique publique font donc naturellement partie de cette cible.
+A terme, le but est de disposer (et mettre à disposition) une librairie permettant d'initialiser et entraîner très facilement un modèle de classification de texte utilisant les architectures les plus modernes si besoin. Les utilisateurs visés sont ceux qui ne peuvent pas utiliser de modèles lourds pré-entraînés depuis Hugging Face mais veulent entraîner efficacement leurs propres modèles de taille réduite - pour une inférence CPU par exemple. Les organismes de la statistique publique font donc naturellement partie de cette cible.
 
 Le package repose sur deux piliers :
 
@@ -177,15 +181,22 @@ Le package repose sur deux piliers :
 - **PyTorch Lightning** comme framework d'entraînement, standard actuel pour les réseaux de neurones,
   qui simplifie la gestion du cycle d'entraînement (boucles, validation, checkpointing, logging)
 
-L'utilisation de dépendances optionnelles (**captum**) permet d'enrichir les possibilités de base. Le package mis à disposition dispose des aujourd'hui: 
+L'utilisation de dépendances optionnelles ([**Captum**](https://captum.ai/), par exemple) permet d'enrichir les possibilités de base. Le package mis à disposition dispose dès aujourd'hui: 
 
 - d'une réimplémentation fidèle de l'architecture fastText en PyTorch
 - des fonctionnalités d'entraînement permises avec PyTorch Lightning (suivi des métriques, early stopping, checkpointing)
 - de la calibration des probabilités de sortie
 - de l'explicabilité au niveau des mots et des caractères via Captum
 
- | ![L'explicabilité est une des fonctionnalités implémentées : quel mot a influencé la prédiction ?](../img/4332A-word.png){width=90%} | ![](../img/4332A-letter.png){width=90%} |
-|--------------------------|--------------------------|
+::: {#fig-explainability .figure layout-ncol=2}
+
+![](../img/4332A-word.png){width=90%}
+
+![](../img/4332A-letter.png){width=90%}
+
+L'explicabilité est une des fonctionnalités implémentées : quel mot ou caractère a influencé la prédiction ?
+
+:::
 
 Cette fonctionnalité offre plusieurs bénéfices opérationnels :
 
