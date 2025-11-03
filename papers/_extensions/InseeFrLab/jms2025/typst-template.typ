@@ -95,7 +95,11 @@
   }
 
   if header.len() > 0 {
-    align(header.location,  image(header.path, width: header.width, alt: header.alt))
+    align(header.location,
+      box(inset: (left: 0.8cm))[
+        #image(header.path, width: header.width, alt: header.alt)
+      ]
+    )
   }
   
   if title != none {
@@ -242,3 +246,12 @@
   inset: 6pt,
   stroke: none
 )
+#show table.cell.where(y: 0): strong
+#show table.cell: set text(size: 0.8em)
+
+
+#show figure.where(
+): set figure(scope: "parent", placement: auto)
+#show figure: set text(size: 0.9em)
+#show figure: set block(inset: (bottom: 0.2em))
+

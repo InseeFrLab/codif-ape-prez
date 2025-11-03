@@ -22,7 +22,7 @@ Tout au long de cet article, nous emploierons les termes univoques et multivoque
 
 #### Univoques
 
-Les correspondances **univoques** (ou bijections) désignent les cas où un code de l'ancienne nomenclature (NAF rev 2) correspond à un seul code dans la nouvelle nomenclature (NAF 2025). Ces cas ne présentent pas de difficulté majeure pour la conversion automatique des données d'apprentissage.
+Les correspondances **univoques** (ou bijections) désignent les cas où un code de l'ancienne nomenclature (NAF rev 2 ou NAF 2008) correspond à un seul code dans la nouvelle nomenclature (NAF 2025). Ces cas ne présentent pas de difficulté majeure pour la conversion automatique des données d'apprentissage.
 
 ::: {.center}
 ![Exemple de correspondance univoque 1:1](img/univoques.png){#fig-bijection}
@@ -356,11 +356,13 @@ Cette observation est importante, car elle montre qu’un désalignement marqué
 
 La même analyse menée au **niveau 4** et au **niveau 5** donne les résultats suivants :
 
+::: {.center}
 | Pair  |     Niveau 4 |     Niveau 5 |
 | :---- | ---------: | ---------: |
 | A – B | 76.56% | 73.05% |
 | A – C | 80.86% | 76.17% |
 | B – C | 79.69% | 61.72% |
+:::
 
 Malgré une concordance absolue limitée, la **concordance partielle est élevée**, ce qui signifie que le consensus majoritaire est très souvent atteint :
 
@@ -379,8 +381,8 @@ Sur les **256 cas annotés**, **97** correspondaient à des libellés issus de l
 
 | Alignement avec le ground truth            | Taux    |
 | ------------------------------------------ | ----------- |
-|  au niveau 5 | **79.38 %** |
-|  au niveau 4 | **85.57 %** |
+|  Au niveau sous-classe (niv 5) | **79.38 %** |
+|  au niveau classe (niv 4) | **85.57 %** |
 :::
 
 La proximité de ces taux avec les niveaux de concordance observés montre que :

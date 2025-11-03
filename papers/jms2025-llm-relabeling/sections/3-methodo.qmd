@@ -1,83 +1,99 @@
-Cette partie présente une méthodologie innovante visant à reconstruire l’exhaustivité de la base d’apprentissage en tirant parti des LLM, et plus particulièrement des modèles compétitifs publiés en open source. L’approche s’appuie sur l’expertise des annotateurs, les notes explicatives de la DNE et l’inspiration de projets réussis dans d’autres INS, comme @ClassifAI. La puissance de calcul du Datalab SSP Cloud permet de tester cette approche prometteuse et de l’adapter aux besoins métier spécifiques de la base Sirene, en intégrant le passage à la NAF 2025.
+Cette partie présente une méthodologie innovante visant à reconstruire l’exhaustivité de la base d’apprentissage en tirant parti des LLM, et plus particulièrement des modèles compétitifs publiés en open source. L’approche s’appuie sur le mode opératoire des annotateurs, les notes explicatives de la DNE et l’inspiration de projets réussis dans d’autres INS, comme @ClassifAI. Les technologies cloud et la puissance de calcul du datalab SSP Cloud permettent de tester cette approche prometteuse et de l’adapter aux besoins métier spécifiques de la base Sirene, en intégrant le passage à la NAF 2025.
 
-L’utilisation de données open data évite les contraintes d’anonymisation, et l’auto-hébergement avec les technologies cloud assure indépendance et reproductibilité sur des infrastructures similaires pour tous les utilisateurs du SSP Cloud.
+L’utilisation de données non-sensibles évite les contraintes d’anonymisation, et l’auto-hébergement avec les technologies cloud[^ref-techno-cloud] assure indépendance et reproductibilité sur des infrastructures similaires pour tous les utilisateurs d'Onyxia [^k8s-cluster].
+
+[^k8s-cluster]: ou plus largement de cluster Kubernetes
 
 ## Méthodologie 
 
-Objectif : Reconstruire un jeu d’entraînement le plus exhaustif possible
-Expérimentation one-shot ➡️ pas de contrainte de reproductibilité … en production
-Utilisation de LLMs pour générer des annotations en NAF 2025
+L’objectif n’est pas de développer un classifieur basé sur un LLM, mais de produire une base annotée en NAF 2025 suffisamment large et qualitative pour entraîner ultérieurement un modèle de classification. Conçue comme une opération ponctuelle et sans contrainte de mise en production, l’expérimentation a bénéficié d’une grande liberté technique, permettant d’innover, d’itérer rapidement et de se concentrer sur les approches les plus pertinentes pour construire la base d’apprentissage NAF 2025.
 
-Pour la suite, les résultats s'appuient sur l'utilisation du CAG.
-L’idée est de considérer les LLM comme des **annotateurs humains**, en imitant leur démarche. Particulièrement, le mode opératoire présenté dans la partie précédente. 
+Le principe consiste à utiliser les LLM comme des _annotateurs virtuels_, en reproduisant la démarche décrite précédemment. À partir des notes explicatives, le LLM attribue le code NAF 2025 le plus approprié parmi les choix proposés et, lorsqu’il ne peut statuer, classe le cas comme incodable. La base recodée correspond donc à l’ensemble des unités que le LLM parvient à annoter : une partie restera incodable et exclue, mais une proportion substantielle de la base multivoque est recodée, constituant ainsi une première version de la base d’apprentissage NAF 2025, destinée à l’entraînement d’un futur classifieur.
 
-Les LLM sur la base des notes explicatives attribuent le code NAF 2025 le plus approprié parmi les choix proposés. Lorsqu'il ne sait pas, il considère la tâche comme inclassable. La base recodé résultante correspondra à celle que le LLM aura réussi à recoder. Il y aura donc des pertes mais une partie prépondérante de la base multivoque sera recodé, ce sera la nouvelle et une initialisation de la base d'apprentissage en NAF 2025 pour un classifieur.
+À partir de la base d’apprentissage initiale en NAF 2008, la démarche consiste d’abord à séparer les unités univoques des unités multivoques à l’aide de la table de correspondance. Les univoques sont ensuite directement recodées et constituent une première composante de la future base d’apprentissage. Les multivoques font, quant à elles, l’objet d’un traitement spécifique: après suppression des libellés dupliqués afin de réduire le nombre d’inférences, un LLM est mobilisé comme _annotateur virtuel_. Comme le modèle ne dispose pas de l’expertise métier des annotateurs, et encore moins en NAF 2025 qui est encore provisoire, son contexte est enrichi en lui fournissant, pour chaque observation, la liste des codes NAF 2025 envisageables accompagnés de leurs notes explicatives. Plusieurs approches d’augmentation du contexte seront présentées, notamment le RAG[^remark-rag] et le CAG ; ce dernier sera privilégié, car il répond le mieux aux besoins métier tout en minimisant le coût d’inférence. Une phase d’évaluation permet ensuite d’identifier le LLM dont les annotations sont les plus alignées avec la vérité terrain issue de la campagne d’annotation manuelle. Enfin, les multivoques ainsi recodées sont réunies avec les univoques, afin de constituer la nouvelle base d’apprentissage en NAF 2025 destinée à entraîner le futur classifieur.
 
-rappeler l'objectif dans cette partie, ne pas construire de classifieur basé sur LLM mais construire annotation
+[^remark-rag]: Le RAG (Retrieval‑Augmented Generation) décrit plus se montre très prometteur. Cependant, son intégration reste aujourd’hui confrontée à des défis techniques et métier (temps d'inférence, évaluation et efficacité du retrieval, performance globale avec la génération). Pour ces raisons, le RAG est encore en phase de recherche et de prototypage dans notre contexte. Les résultats associés ne seront pas présentés dans cet article.
+[^ref-techno-cloud]: Pour en savoir plus sur l’apport des technologies cloud à la statistique publique, il est recommandé de consulter l’article de l’édition JMS de cette année @cloudprod.
 
 ::: {.center}
 ![Approche globale pour construire le modèle en NAF 2025](img/methodo-nace-rev.png){#fig-methodo-nace-rev}
 
-*Note de lecture : TODO*
+*Le schéma illustre fastText comme modèle de classification, car il a servi aux premières itérations, mais la méthodologie est indépendante du modèle : une fois la base d’apprentissage NAF 2025 constituée, tout autre classifieur supervisé peut être utilisé, notamment ceux de la librairie torchTextClassifiers ou d’architectures plus récentes adaptées au contexte métier.*
 :::
 
-## Contexte technique et ressources disponibles
+## Le datalab SSP Cloud comme plateforme d’expérimentation
 
-### Le datalab SSP Cloud comme plateforme d'expérimentation
+Le datalab **SSP Cloud** n’est pas destiné à héberger un LLM en production ; il s’agit d’un environnement **expérimental et ponctuel** qui permet de tester des modèles et des pipelines sans les contraintes d’une mise en service continue. Cette orientation expérimentale s’inscrit naturellement dans une démarche **open‑source**, car elle favorise la transparence, la réutilisabilité du code et la maîtrise des coûts.
 
-Toutes les technologies citées sont auto-hébergées et open-source.
-Bien que les données ne soient pas sensibles, pas d'utilisation d'offre propriétaire
+Développée à l’Insee, la plateforme SSP Cloud repose sur une **infrastructure normalisée** : tous les serveurs partagent la même configuration matérielle et utilisent la même distribution Linux (Debian). Cette homogénéité garantit la **reproductibilité** des environnements de travail et facilite le partage des résultats entre équipes. En outre, le SSP Cloud s’appuie sur un **cluster Kubernetes** qui constitue le socle d’une infrastructure robuste. Grâce à ce cluster, le déploiement automatisé d’applications potentiellement intensives en données devient possible, ce qui permet de **simuler un véritable environnement de production** tout en conservant la flexibilité d’un cadre de test.
 
-LLM environnement production ? Non Type d'opération : expérimentale et ponctuelle
-Avantage de l'open source 
+Par ailleurs, le SSP Cloud a été construit selon les **standards les plus récents des infrastructures de data‑science**. Concrètement, les services sont lancés sous forme de **conteneurs Docker** ; ainsi, chaque composant est empaqueté avec ses dépendances, ce qui assure une forte **reproductibilité des déploiements**. Cette approche implique toutefois une phase de développement légèrement plus coûteuse, car elle requiert la définition et la gestion des images Docker. Le datalab adopte également une philosophie **cloud‑native** : il est organisé autour d’un ensemble **modulaire de briques logicielles** (code, données, configuration, environnement d’exécution). Cette séparation nette constitue un principe majeur des bonnes pratiques, car elle facilite la maintenance, le scaling et l’intégration de nouveaux outils.
 
-#### souveraineté et indépendance: auto-hébergement
+Sur le plan de la **souveraineté et de l’indépendance**, toutes les technologies utilisées sont **auto‑hébergées et open‑source**. Même si les jeux de données manipulés ne sont pas sensibles, aucune offre propriétaire n’est employée, ce qui préserve la maîtrise totale du système. Il convient de préciser que, conformément à la politique de la plateforme, **seules des données non sensibles**[^remarque-onyxia-interne] (données publiques, jeux de données synthétiques, données agrégées anonymisées, etc.) peuvent être déposées ou traitées sur le datalab ; les données à caractère personnel ou confidentielles sont strictement exclues. En adoptant une **approche frugale**, nous sélectionnons des modèles open‑source adaptés à nos besoins pour une période déterminée, réduisant ainsi les dépenses liées aux licences de solutions commerciales. L’auto‑hébergement nous garantit en outre un **contrôle complet sur nos données** et un accès à des modèles affichant des performances comparables à celles des solutions propriétaires, spécifiquement pour notre cas d’usage.
 
-#### Des ressources matérielles précieuses
+Enfin, le SSP Cloud met à disposition des **ressources matérielles précieuses**. Chaque projet bénéficie d’un espace de calcul pouvant atteindre **30 CPU**, ainsi que d’un accès sur demande à des **GPU NVIDIA H100** (PCI‑e, NVLink), ressources rares mais essentielles pour les traitements IA massifs. Le stockage est assuré par un **espace S3**, offrant une capacité élevée et une grande disponibilité pour le versionnage et le partage des jeux de données.
 
-GPU H100, CPU, S3
+En résumé, le datalab SSP Cloud combine normalisation, modularité, souveraineté et puissance de calcul, tout en imposant la restriction à des données non sensibles, ce qui en fait une plateforme idéale pour mener des expérimentations IA rigoureuses, maîtriser les coûts et respecter les exigences de la fonction publique.
 
-#### Des services à disposition pour les traitements IA
+[^remarque-onyxia-interne]: Pour le traitement de données stratégiques, il est possible d’instancier Onyxia en interne pour avoir son propre datalab et manipuler des données sensibles à l'instar de _Nubo_, le cloud privé sécurisé de la DGFIP.
 
-Références : *mettre les technologies cloud au service de la production publique*. 
-@cloudprod 
+### Des services à disposition pour les traitements IA
 
-##### Base de données vectorielles
+Le SSP Cloud propose un catalogue de services variés, adaptés aux besoins des traitements IA. Certaines solutions sont particulièrement pertinentes pour les workflows de LLM et pour l’inférence sur de larges volumes de données. L’objectif est de présenter brièvement les concepts clés, les exemples disponibles dans le datalab et ceux qui seront exploités dans ce cadre.
 
-Milvius, ChromaDB, Qdrant
+#### Bases de données vectorielles
 
-##### Serveur d'inférence optimisé
+Les bases de données vectorielles permettent de stocker et d’interroger des représentations vectorielles de données, indispensables pour la recherche sémantique et l’analyse par similarité. Sur le datalab, plusieurs solutions sont proposées, pour en citer quelques-unes, Milvus, ChromaDB et Qdrant, cette dernière étant retenue pour les travaux présentés. Ce type de base peut notamment servir à conserver les représentations vectorielles de notes explicatives générées par un modèle de type transformer ou par un LLM spécialisé dans l’embedding, afin de faciliter des requêtes sémantiques pertinentes sur de larges corpus.
 
-vllm pour optimiser le calcul sur GPU
-défi de l'inférence par batch ==> besoin de vitesse très rapide
-spécificité de l'inférence par batch. Défis récents
-domaine très récent
-flash-attention
+Au-delà du simple stockage, l’enjeu réside dans la capacité à interroger efficacement ces vecteurs. En effet, un dataframe se limiterait à conserver les embeddings et imposerait des comparaisons successives entre vecteurs, ce qui devient rapidement inefficace lorsque le volume de données augmente. À l’inverse, une base de donnée vectorielle comme _Qdrant_ intègre des structures d’indexation dédiées permettant de retrouver rapidement les vecteurs les plus proches sur le plan sémantique. Cette capacité est déterminante pour interroger un nombre important d’embeddings de manière performante, par exemple pour identifier les notes explicatives les plus similaires au sein d’un corpus volumineux.
 
-### Gestionnaire de prompts
+#### Serveurs d’inférence optimisés
 
-Plateforme Langfuse
+Les serveurs d’inférence permettent l’exécution performante des modèles LLM. Plusieurs projets open source existent, dont _Llama.cpp_ et _Ollama_, mais _vLLM_ se distingue par son optimisation sur GPU et sa capacité à gérer l’inférence sur des millions de données. Cette solution est particulièrement adaptée au traitement par batch, un domaine récent présentant des défis spécifiques, notamment en termes de vitesse et de scalabilité. 
 
-### Gestionnaire de modèles MLflow
+Les moteurs d’inférence classiques fonctionnent avec un **batching statique**, comparable à une chaîne de production traditionnelle : un lot de requêtes est traité, puis l’opération s’arrête avant de passer au lot suivant. Cette approche entraîne des latences, notamment lorsque de nouvelles requêtes arrivent alors qu’un batch est déjà en cours de traitement.
 
-Plateforme Langfuse
+À l’inverse, _vLLM_ adopte le principe du **continuous batching** : au lieu d’attendre que toutes les séquences d’un lot soient terminées, les requêtes finalisées sont immédiatement remplacées par de nouvelles, à chaque itération. Cela permet de maintenir les GPU constamment occupés, d’augmenter drastiquement le débit de traitement, de réduire la latence et d’améliorer l’utilisation des ressources. L’analogie serait celle d’un serveur de restaurant prenant les commandes de plusieurs tables en continu, plutôt que de multiplier les allers-retours pour chaque commande individuellement. Grâce à cette approche dynamique, vLLM est particulièrement adapté aux traitements portant sur des millions de données, en particulier lorsqu’une exécution en batch est requise.
+
+#### Gestionnaire de prompts
+
+Les gestionnaires de prompts permettent de versionner, tracer et évaluer les prompts afin d’optimiser l’interaction avec les LLM. Dans le datalab, la plateforme _Langfuse_, open source, est utilisée pour ces tâches. Dans le cadre de ce projet, il sera crucial de trouver les bonnes formulations de consignes pour les LLM afin d’assurer que le comportement attendu soit respecté, tout en conservant la traçabilité et la reproductibilité des expérimentations.
+
+#### Gestionnaire de modèles
+
+Les artefacts des modèles sont centralisés dans un model store, ici géré via _MLflow_, permettant de suivre les versions, les déploiements et la traçabilité des modèles utilisés dans les workflows. Cette gestion garantit un suivi précis des modèles employés pour les différents traitements IA et facilite la reproductibilité des résultats.
+
+### Les enjeux de l'inférence LLM par batch
+
+L’inférence désigne le processus par lequel un modèle de langage (LLM) génère des prédictions ou des réponses à partir d’entrées données. Dans une inférence unitaire classique, chaque requête est traitée individuellement. Même dans ce cadre, plusieurs facteurs influencent déjà la performance et la fiabilité, tels que le modèle utilisé, la formulation du prompt, le serveur d’inférence ou les spécificités matérielles. Ces éléments déterminent le temps de réponse et peuvent provoquer des ralentissements ou des erreurs, mais restent généralement maîtrisables lorsque les volumes de données sont limités.
+
+En revanche, lorsque l’inférence est effectuée par batch, des contraintes supplémentaires apparaissent. Le temps d’inférence n’est jamais linéaire et le traitement simultané de plusieurs éléments peut générer des variations importantes de performance. La vitesse globale est fortement impactée, le risque d’interruption augmente en cas d’erreur sur un élément, et la capacité de traitement devient limitée par l’infrastructure locale ou par d’éventuelles restrictions des services externes. Par ailleurs, le traitement de larges volumes de données entraîne des charges matérielles et financières significatives.
+
+Afin de répondre à ces enjeux, une approche entièrement hors-ligne est adoptée, avec l’importation locale de toutes les technologies nécessaires. Cette méthode permet d’éliminer les ralentissements et interruptions liés aux flux réseau, de traiter de très grands volumes de données sans être limité par des quotas ou des restrictions d’API, et d’optimiser la parallélisation des tâches pour réduire le temps de traitement. Elle permet également de maîtriser pleinement les coûts et l’infrastructure.
+
+Ainsi, l’inférence par batch devient plus rapide, fiable et scalable. À titre d’exemple, l’application de cette méthodologie sur une base de 2 millions de données nécessite jusqu’à 5 jours, bien que des optimisations aient permis de réduire ce temps de manière significative, ce qui souligne l’importance stratégique d’une telle organisation.
 
 ## Détail des étapes et concepts clés appliqués
 
 ### Étape 1: Préparer les données à disposition
 
-Principalement des extractions de données préparées par le métier
-Base d'apprentissage issue de Sirene 4
-Matériaux des experts de la nomenclature (DNE)
-Table de correspondance théorique
-Annotation manuelle comme ground truth
+La première étape consiste à rassembler et structurer l’ensemble des données nécessaires à l’annotation automatique par LLM. Les sources principales incluent les extractions préparées par le métier, issues du Système Sirene version 4, et destinées à être recodées en NAF 2025, constituant ainsi la base d’apprentissage initiale.
 
-chargement en bdd vectorielle
+S’y ajoutent les ressources des experts de la nomenclature de la DNE, en particulier la table de correspondance théorique et les notes explicatives, qui apportent un contexte métier crucial pour traiter les cas multivoques ou ambigus. L’annotation manuelle effectuée lors de la campagne nationale fournit une première vérité terrain (ground truth), servant de référence pour évaluer la qualité des prédictions générées par les modèles.
+
+Selon la stratégie choisie pour enrichir le contexte, les données sont organisées différemment. Avec la stratégie RAG (Retrieval-Augmented Generation), elles sont stockées dans une base de données vectorielle, permettant une recherche efficace de passages pertinents pour chaque libellé. Avec la stratégie CAG (Context-Augmented Generation), elles sont encapsulées sous forme d’objets en programmation orientée objet, ce qui facilite la manipulation et l’exploitation des informations lors de l’inférence.
+
+Les notions de RAG et CAG seront définies plus en détail ultérieurement, afin de préciser leur impact sur l’annotation automatique.
 
 ### Étape 2 : Chargement de LLM
 
-Qu'est ce qu'un LLM ?
-Hugging Face
+Un **LLM (Large Language Model)** repose sur l’architecture transformer, introduite dans l’article _Attention Is All You Need_ @attentionisallyouneed. Cette architecture est centrée sur le mécanisme d’auto-attention, qui permet au modèle de pondérer l’importance relative de chaque élément d’une séquence lorsqu’il produit une sortie. Dans les LLM, cette structure est largement étendue : de très nombreux paramètres sont entraînés pour prédire la probabilité d’apparition d’un mot ou d’un token à partir de son contexte. Plusieurs modèles de type GPT existent, différenciés par leur taille, le volume de données d’entraînement et la finesse de leurs représentations internes.
+
+Le modèle pré-entraîné dispose de représentations internes complexes qui codent de façon compressée des connaissances extraites du texte utilisé lors de son entraînement. Il ne s’agit pas d’une base de connaissances explicite ou consultable comme une base de données classique, mais d’une structure de paramètres qui capture des régularités statistiques et sémantiques. Cette compression de l’information permet au LLM de générer des réponses cohérentes, de compléter du texte ou d’attribuer des classes aux données, en mobilisant ces représentations implicites.
+
+Cette perspective permet de comprendre pourquoi la taille du modèle et la richesse de ses données d’entraînement jouent un rôle central dans ses performances. La course actuelle à la puissance de calcul et à la multiplication des paramètres suit cette logique, comme l’illustre l'essai _The Bitter Lesson_ @thebitterlesson.
+
+Pour ce qui concerne les LLM à utiliser, la recherche se fait sur _Hugging Face_, la plateforme la plus répandue à l’heure actuelle pour accéder aux modèles de langage open source. Elle propose un large catalogue de modèles pré-entraînés et fournit des outils pratiques pour leur téléchargement et leur intégration dans différents environnements expérimentaux.
 
 ### Étape 3: Paramétrer le LLM
 
@@ -182,61 +198,7 @@ La sélection des Large Language Models (LLM) s'est concentrée sur les modèles
 
 
 #### Performance des LLM {.scollable}
-```{python}
-#| echo: false
-#| fig-cap: Performance des LLM 
-import pandas as pd
-import numpy as np
-from plotnine import *
 
-# Create the data
-data = {
-    'model': ['Qwen', 'Qwen', 'Qwen',
-              'Ministral', 'Ministral', 'Ministral',
-              'Mistral', 'Mistral', 'Mistral',
-              'Llama3.1', 'Llama3.1', 'Llama3.1'],
-    'accuracy_type': ["Précision totale", 'Précision "LLM"', 'Précision parmi les "codables"'] * 4,
-    'accuracy': [.6657, .7397, .7300,
-                .6784, .7538, .6786,
-                .7173, .7971, .7238,
-                .6836, .7688, .7209]
-}
-
-# Convert to DataFrame
-df = pd.DataFrame(data)
-
-# Define the model order (you can adjust this if you want a different order)
-model_order = ['Qwen', 'Ministral', 'Mistral', 'Llama3.1']
-df['model'] = pd.Categorical(df['model'], categories=model_order, ordered=True)
-
-accuracy_order = ["Précision totale", 'Précision "LLM"', 'Précision parmi les "codables"']
-df['accuracy_type'] = pd.Categorical(df['accuracy_type'], categories=accuracy_order, ordered=True)
-
-# Format accuracy values for labels
-df['accuracy_label'] = df['accuracy'].round(2).astype(str)
-
-# Create the lollipop chart
-(ggplot(df, aes(x='model', y='accuracy'))
- + geom_segment(aes(x='model', xend='model', y=0, yend='accuracy'))
- + geom_point(size=3, color='blue')
- + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
-             size=8, nudge_y=0.02)
- + facet_wrap('~accuracy_type', ncol=3)
- + theme_minimal()
- + labs(
-     x='',
-     y=''
- )
- + theme(
-     figure_size=(12, 4.5),  # Increased width to accommodate labels
-     panel_spacing=0.05,
-     axis_text=element_text(size=10),
-     axis_title=element_text(size=12),
-
- )
- + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
-)
-```
 
 
 
