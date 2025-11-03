@@ -1,52 +1,238 @@
 Rappeler les 2 enjeux: évaluer LLM + évaluer modèle ML
 
-
-
 ## Réentraînement en NAF 2025
 
 ### Résultats 
 
+
+Un premier modèle en NAF 2025
+Une v0 satisfaisante : performance similaire que le modèle actuel
+Mais à améliorer
+Opération de remontée sur le modèle en cours
+⇒ Objectif : rectifier les cas problématiques 
+Contrainte de cohérence
+Nécessité aussi d’améliorer le modèle en NAF rev 2
+⇒ Réentraînement du modèle actuellement en production
+
+
+## Ré-entrainement en NAF 2025
+
+- [**Reconstruction**]{.orange} du stock Sirene 4 en NAF 2025 ($~2$ millions d'observations)
+- Distribution des données [**quasi-inchangées**]{.orange}
+- Utilisation de [**nouvelles variables**]{.orange} propres à Sirene 4
+- [**Performances similaires**]{.orange} au modèle en NAF 2008
+
+## Ré-entrainement en NAF 2025 {background-color="white"}
+
+::: {.center}
+```{python}
+#| echo: false
+#| fig-cap: Comparaison performances sur jeu de test classique et manuellement annoté
+
+import pandas as pd
+import numpy as np
+from plotnine import *
+
+# Create the data
+data = {
+    'data_type': ['Données Test'] * 5 + ['Données manuellement annotées'] * 5,
+    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 2,
+    'accuracy': [
+        0.8551939324497377,
+        0.8328925927834847,
+        0.7973293897956999,
+        0.7843529836218961,
+        0.7762214195942544,
+        0.9668600758759206,
+        0.95529271739939,
+        0.9162389347615859,
+        0.8986461355352228,
+        0.8887153165216097
+    ]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Define the correct order of levels
+level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
+
+# Convert level to categorical with the specified order
+df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
+
+# Format accuracy values for labels (rounded to 3 decimal places)
+df['accuracy_label'] = df['accuracy'].round(2).astype(str)
+
+# Create the lollipop chart
+(ggplot(df, aes(x='level', y='accuracy'))
+ + geom_segment(aes(x='level', xend='level', y=0, yend='accuracy'))
+ + geom_point(size=3, color='blue')
+ + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
+             size=8, nudge_y=0.02)  # Add value labels
+ + facet_wrap('~data_type')
+ + theme_minimal()
+ + labs(
+     x='',
+     y=''
+ )
+ + theme(
+     figure_size=(12, 6),  # Increased width to accommodate labels
+     panel_spacing=0.05,
+     axis_text=element_text(size=10),
+     axis_title=element_text(size=12),
+
+ )
+ + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
+)
+```
+
+:::
+
+## Le modèle NAF 2025 {.scrollable}
+
+::: {.center}
+```{python}
+#| echo: false
+#| fig-cap: Comparaison fastText vs torchTextClassifiers
+
+import pandas as pd
+import numpy as np
+from plotnine import *
+
+# Create the data
+data = {
+    'data_type': ['Modèle via librairie fastText'] * 5 + ['Modèle fastText via TorchTextClassifiers'] * 5,
+    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 2,
+    'accuracy': [
+        0.8551939324497377,
+        0.8328925927834847,
+        0.7973293897956999,
+        0.7843529836218961,
+        0.7762214195942544,
+        0.92,
+        0.89,
+        0.86,
+        0.84,
+        0.83
+    ]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Define the correct order of levels
+level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
+
+# Convert level to categorical with the specified order
+df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
+
+# Format accuracy values for labels (rounded to 3 decimal places)
+df['accuracy_label'] = df['accuracy'].round(2).astype(str)
+
+# Create the lollipop chart
+(ggplot(df, aes(x='level', y='accuracy'))
+ + geom_segment(aes(x='level', xend='level', y=0, yend='accuracy'))
+ + geom_point(size=3, color='blue')
+ + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
+             size=8, nudge_y=0.02)  # Add value labels
+ + facet_wrap('~data_type')
+ + theme_minimal()
+ + labs(
+     x='',
+     y=''
+ )
+ + theme(
+     figure_size=(12, 6),  # Increased width to accommodate labels
+     panel_spacing=0.05,
+     axis_text=element_text(size=10),
+     axis_title=element_text(size=12),
+
+ )
+ + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
+)
+```
+
+:::
+
 ### Suffisant pour passer en prod ? data editing retour des gestionnaires
 
 
-#### Exemple
-
-1\. pour l’ensemble 
-
-2\. pour les 
-
-Pour chacun de ces sous-ensembles, \$score=score\_{évolution} + score\_{sens} + score\_{distance} \$ et vaut entre 0 et 5.
-
-**Une évolution du ?**
-
-Pour chaque , le $score_{évolution}$ vaut :
-
--   1 si 
-
--   0 sinon
-
-**Une évolution du  ?**
-
-Pour chaque , le $score_{sens}$ vaut :
-
--   1 si
-
--   0 sinon
-
-**Importance ?**
-
-On mesure ici l’importance du différentiel de 
-
- $score_{distance}$ vaut :
-
--   0 si \$distance\_{i} ≤ Q1 \$
-
--   1 si \$Q1 ≺ distance\_{i} ≤ médiane\$
-
--   2 si \$médiane ≺ distance\_{il} ≤ Q3 \$
-
--   3 si \$distance\_{i} ≻ Q3 \$
+## Data Editing: correction de la base d'apprentissage
 
 
-## Conclusions et perspectives
 
+
+::: {.center}
+```{python}
+#| echo: false 
+#| fig-cap: Comparaison après nettoyage 
+import pandas as pd
+import numpy as np
+from plotnine import *
+
+# Create the data
+data = {
+    'data_type': ['Modèle via librairie FastText'] * 5 + ['Modèle fastText via TorchTextClassifiers'] * 5,
+    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 2,
+    'accuracy': [
+        0.95,
+        0.93,
+        0.91,
+        0.90,
+        0.90,
+        0.95,
+        0.93,
+        0.90,
+        0.89,
+        0.88
+    ]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Define the correct order of levels
+level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
+
+# Convert level to categorical with the specified order
+df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
+
+# Format accuracy values for labels (rounded to 3 decimal places)
+df['accuracy_label'] = df['accuracy'].round(2).astype(str)
+
+# Create the lollipop chart
+(ggplot(df, aes(x='level', y='accuracy'))
+ + geom_segment(aes(x='level', xend='level', y=0, yend='accuracy'))
+ + geom_point(size=3, color='blue')
+ + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
+             size=8, nudge_y=0.02)  # Add value labels
+ + facet_wrap('~data_type')
+ + theme_minimal()
+ + labs(
+     x='',
+     y=''
+ )
+ + theme(
+     figure_size=(12, 6),  # Increased width to accommodate labels
+     panel_spacing=0.05,
+     axis_text=element_text(size=10),
+     axis_title=element_text(size=12),
+
+ )
+ + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
+)
+```
+
+:::
+
+nécessite correction manuelle ou semi-manuelle
+
+moteur de règles pour corriger la base d'apprentissage, data cleansing,
+matching d'expressions: expression régulières, fuzzy, recherche par similarité
+ajout de termes manquants.
+
+
+## Des besoins de surveillance
+
+golden test insuffisant
+besoin d'une métrique plus globale

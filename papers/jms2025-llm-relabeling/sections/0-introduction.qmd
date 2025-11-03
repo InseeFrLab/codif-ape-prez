@@ -30,11 +30,4 @@ Pour coder des millions de données en nouvelles nomenclature, il faut une exper
 
 Après avoir présenté le contexte de traitement en flux dans lequel s'inscrit le modèle de _machine learning_ actuellement en production et son évolution, la seconde partie de cet article s'articulera autour de la problématique de la correspondance entre la NAF rev 2 (ou NAF 2008) et la NAF 2025 pour la conversion du jeu d'apprentissage, notamment sur la campagne d'annotation débouchant sur une vérité terrain et l'explicitation du mode opératoire des experts sur cet exercice, puis la génération de données d'apprentissage calibrées sur la vérité terrain sera abordée, en s'appuyant sur les notes explicatives de la nomenclature, avec dans une autre partie, la construction du modèle d'apprentissage supervisé adapté en nouvelle nomenclature, ses performances et l'approche pour le corriger et le qualifier pour un passage en production. Enfin, des pistes prometteuses d'améliorations seront illustrées ainsi que des perspectives de cas d'usage au sein de répertoires de référence de la statistique publique intégrant des systèmes de codification.
 
-
-> **NOTE POUR LE RELECTEUR :** Dans la bibliographie, est-ce qu'il est possible de citer le rapport IG 2024 correspondant sans donner de lien ? J'ai vu l'ASP le citer sans donner de lien: https://www.autorite-statistique-publique.fr/event/delibere-sur-lintegration-des-innovations-de-traitement-des-donnees-dans-la-production-statistique/
-Même question pour une note de réflexion interne: L’Insee et l’activité de gestion de répertoires administratifs
-Pour le cas des nouvelles sources, on a l'usage de données satellites sauf que ce n'est pas encore gagné pour un passage en production donc je ne sais pas s'il est pertinent de tout de même mentionner ce domaine. C'est surtout exploratoire.
-Est-ce qu'il est parfois préférable d'utiliser les termes "en continu", "en temps réels", "temps quasi-réels" pour varier la rédaction ?
-
-
 [^remark-data-editing]: Du _data editing_ est aussi employé pour corriger la base d'apprentissage dans une moindre mesure.

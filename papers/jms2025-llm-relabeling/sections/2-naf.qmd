@@ -1,29 +1,62 @@
-Nous allons dans cette partie revenir sur les concepts d'apprentissage afin d'expliquer notre démarche et la construction de notre vérité terrain. Nous définirons ensuite les données que nous avons utilisé pour appliquer notre méthodologie.
-
-Met en avant toute la partie manuelle
+Cette partie abordera les conséquences de la révision de la nomenclature NAF, tant au niveau de sa structure que sur le volume de travail qu'elle représente pour les données d'entraînement. En particulier, les enjeux soulevés par l'exercice d'annotation en NAF 2025 y seront détaillés. Cette expérience permettra d'alimenter la matière première nécessaire à la méthodologie innovante qui sera présentée dans la partie suivante. Enfin, cette section dédiée à la tâche humaine permettra de mettre ultérieurement en perspective l'exercice manuel par rapport à l'utilisation des Large Language Models (LLM) dans la partie suivante.
 
 ## Les conséquences du changement de nomenclature
 
-### Des regroupements mais aussi des scissions
+### la table de correspondance théorique
+
+Comme documenté par le rapport du groupe de travail du CNIS, la révision de la NAF pour 2025 implique d'importantes modifications structurelles, notamment des regroupements de codes mais aussi de nombreuses scissions. Pour constater le détail de ces évolutions, il convient de se référer à l'Annexe 10 - Bilan détaillé de l'instruction, classe par classe du rapport @rev_naf_2025.
+
+::: { .center}
+| Niveau de la Nomenclature | Terme (Intitulé) | Nombre de Positions | 
+| :--- | :--- | :--- | 
+| Niveau 1 | Section | 1 (Lettre) | 
+| Niveau 2 | Division | 2 (Chiffres) | 
+| Niveau 3 | Groupe | 3 (Chiffres) | 
+| Niveau 4 | Classe | 4 (Chiffres) | 
+| Niveau 5 | Sous-classe | 5 (Chiffres + Lettre) |
+
+: Quelques éléments de vocabulaire sur la structure de la NAF {#tbl-vocab-naf}
+:::
+
+Tout au long de cet article, nous emploierons les termes univoques et multivoques pour caractériser ces changements, selon les définitions détaillées ci-dessous
 
 #### Univoques
 
+Les correspondances **univoques** (ou bijections) désignent les cas où un code de l'ancienne nomenclature (NAF rev 2) correspond à un seul code dans la nouvelle nomenclature (NAF 2025). Ces cas ne présentent pas de difficulté majeure pour la conversion automatique des données d'apprentissage.
+
+::: {.center}
+![Exemple de correspondance univoque 1:1](img/univoques.png){#fig-bijection}
+
+*Cette figure illustre une correspondance de type 1:1 entre un code de l'ancienne NAF et un code unique de la NAF 2025.*
+:::
+
+::: {.center}
 |   Niveau classe (niveau 4) |   Niveau sous-classe (niveau 5) |
 |---------------------------:|--------------------------------:|
 |                        573 |                             551 |
 
-: Distribution de codes univoques ou bijections
+: Distribution de codes univoques ou bijections (Cette table indique qu'une large majorité des codes, 75%, sont univoques.) {#tbl-dist-univoques}
+:::
 
 #### Multivoques
 
-Se limiter aux multivoques
+Les cas multivoques représentent les situations où l'expertise humaine est indispensable, car ils introduisent une ambiguïté dans la conversion. Deux cas de figures se présentent mais l'attention se portera sur un cas particulier de correspondance.
 
-**correspondance théorique**
+::: {.center}
+![Exemple de correspondance N:1 ou surjection](img/surjection.png){#fig-surjection}
 
-Les surjections i.e correspondance N-1 ne nous posent pas de problèmes.
-Dans notre système, cela se ramène fonctionnellement à un cas univoque car pour un code donné, il n'y a qu'un choix possible dans la nouvelle nomenclature.
+*Cette figure illustre une surjection (N:1) où plusieurs anciens codes sont regroupés dans un seul nouveau code*
+:::
 
-Ce que nous appellerons **multivoques**, tout long de l'article, sont les **correspondances 1-N**, avec N le nombre de possibilités dans la nomenclature
+Les surjections (correspondances N:1) ne posent pas de problème fonctionnel majeur dans le système de codification, car pour chaque ancien code considéré individuellement, il n'y a qu'un choix possible dans la nouvelle nomenclature. Elles peuvent donc être traitées de manière univoque dans le sens de la conversion.
+
+::: {.center}
+![Exemple de correspondance multivoque 1:N](img/multivoques.png){#fig-multivoques}
+
+*Cette figure illustre un éclatement (1:N) où un ancien code correspond à plusieurs codes possibles de la NAF 2025.*
+:::
+
+Les **multivoques désigneront**, tout au long de cet article, principalement les correspondances 1:N (éclatements), où N représente le nombre de possibilités dans la nouvelle nomenclature. Ces cas, qui concernent 25 % des codes, sont ceux qui requièrent une annotation manuelle pour déterminer la
 
 ::: {#tbl-dist-multivoques layout-ncol=2}
 |   1-to-N |   Occurrences |
@@ -41,7 +74,6 @@ Ce que nous appellerons **multivoques**, tout long de l'article, sont les **corr
 |       30 |             2 |
 
 :  Niveau classe: 4 positions {#tbl-dist-multivoques-niv4}
-
 
 |   1-to-N |   Occurrences |
 |---------:|--------------:|
@@ -62,17 +94,44 @@ Ce que nous appellerons **multivoques**, tout long de l'article, sont les **corr
 Distribution des codes multivoques pour la NAF
 :::
 
-**correspondance fonctionnelle**
+::: {.center}
 
- stratégie métier: requalification de codes à correspondance multivoque en biunivoque
- sur la base du principe de réalité notamment des informations fournies
+|   Part de multivoques  |   Part d'univoques   |
+|---------------------------:|--------------------------------:|
+|                        25 % |                             75 % |
 
-table de passage métier: "faux" multivoques
 
-Impact dans le jeu d'apprentissage
+: Représentation des multivoques dans la table de correspondance {#tbl-dist-multivoques-corresp}
+:::
+
+### Le jeu d'apprentissage
+
+Le jeu d'apprentissage est fixé sur les données de l'année 2024 pour servir de base de travail à l'ensemble de l'article.
+
+Afin de rationner les ressources d'annotation, une première étape consiste à séparer les codes univoques (1:1), qui peuvent être facilement convertis en NAF 2025 via la table de correspondance théorique. La problématique se restreint alors à ne traiter que les codes multivoques. La question est de savoir quel volume de données ces derniers représentent.
+
+#### Un volume de multivoques toutefois plus conséquent 
+
+Bien que les codes multivoques ne représentent que 25% des codes dans la nomenclature elle-même (comme établi dans la section précédente), leur fréquence d'apparition dans les données d'apprentissage est importante. Ils constituent en effet 52% du volume total des données d'entraînement à convertir en NAF 2025. Cette proportion révèle l'ampleur du travail d'annotation nécessaire pour obtenir une vérité terrain fiable.
+
+::: {.center}
+
+|   Part de multivoques  |   Part d'univoques   |
+|---------------------------:|--------------------------------:|
+|                        52 % |                             48 % |
+
+: Représentation des multivoques dans le jeu d'apprentissage {#tbl-dist-multivoques-data}
+*Malgré un impact sur seulement 25% des codes de la NAF, ces cas multivoques représentent l'essentiel du volume des données d'entraînement à convertir en NAF 2025.*
+:::
+
+#### Une approche métier insuffisante pour réduire le nombre
+
+Une stratégie métier a été mise en place pour réduire ce volume. Elle consiste en la requalification de certains codes multivoques en correspondances biunivoques sur la base du principe de réalité métier et des informations contextuelles disponibles dans la déclaration.
+
+Cette table de passage métier identifie les "faux" multivoques[^remarque-tbl-passage]. Par exemple, le code 6820A ("Location de logements") est souvent requalifié en 6820G dans 16% des cas, en partant du postulat métier que ces locations sont majoritairement de longue durée. De même, les activités de production d'électricité des personnes physiques (3511Z) sont approximées comme de l'électricité de type renouvelable (3512Y).
 
 |      Type d'activité principale concerné       | Code initial | Code final | Proportion | Parti pris métier |
-|----------------------------------------------------:|-------------:|-----------:|------------:|-----------------------------:|
+|----------------------------------------------------:|-------------:|-----------:|------------:|------------------------------------:|
 |                  Location de logements |        6820A |      6820G |            16% | Très souvent de longue durée |
 |          Location de biens immobiliers |        6820B |      6820H |           10 % |                              |
 |               Production d'électricité |        3511Z |      3512Y |            3 % | Type renouvelable, si personne physique |
@@ -83,74 +142,261 @@ Impact dans le jeu d'apprentissage
 
 : Requalification de certaines correspondances en biunivoque dans le jeu  : {#tbl-dist-faux-multivoques-niv5}
 
-Suppression de près d'un tiers [^remarque-tbl-passage] des multivoque dans la base d'apprentissage.
-Pas mal mais toujours insuffisant.
+Grâce à cette approche métier, 32,5 %, soit près d'un tiers, des codes multivoques initialement identifiés ont pu être corrigés ou reclassifiés dans la base d'apprentissage. Cependant, cette méthode ne peut raisonnablement s'appliquer qu'à moins de 50% des multivoques dans le jeu, dont le volume total (univoques et multivoques) atteint deux millions d'observations. Même en reclassifiant la moitié de ces cas, cela laisserait environ 500 000 multivoques à convertir, démontrant que l'efficacité de cette méthode est insuffisante pour éviter une campagne d'annotation massive.
 
-
-[^remarque-3512Y] : pour les personnes physiques, approximation que l'activité se classe en production d'électricité renouvelable.
-
-[^remarque-tbl-passage] : Certains codes dont le 6820B et le 4520A ont, au final, été corrigé lors de la mise à jour de la table de correspondance officielle, confirmant l'hypothèse de départ. Après cette revue, l'économie de multivoques à traiter représenterait tout de même encore 22 % dans la base d'apprentissage
-
-
-### Comment construire un modèle en NAF 2025
+[^remarque-tbl-passage]: Certains codes dont le 6820B et le 4520A ont, au final, été corrigé lors de la mise à jour de la table de correspondance officielle, confirmant l'hypothèse de départ de reclassification.
 
 ## La campagne d'annotation: à l'origine de nos matériaux
 
+En l'absence totale de données étiquetées en NAF 2025, une campagne d'annotation a été menée pour constituer la première vérité terrain exploitable. Ce travail était indispensable pour plusieurs raisons : il permettait non seulement de faire vivre la nouvelle nomenclature en conditions réelles et de préparer les futurs gestionnaires, mais aussi d'obtenir un retour concret sur sa structure. L'objectif était également d'affiner la table de correspondance théorique, de soulever les cas de classement récurrents qui demandent une décision métier pour arbitrage, et d'assurer une mobilisation progressive des équipes.
+
 ### Déroulé 
 
-### Résultats
+La campagne d'annotation a été gérée dynamiquement grâce à une plateforme de labellisation[^label-studio], mise à disposition par l'équipe métier. L'approche méthodologique était simple : les experts réalisaient une annotation simple pour chaque libellé. La plateforme garantissait nativement l'accès concurrent aux données, s'assurant qu'un libellé n'était vu et annoté qu'une seule fois par un expert donné. Les participants pouvaient aussi, pour chaque tâche, attribuer un commentaire et une note de 0 à 5 étoiles sur la difficulté ressentie[^rating-note]. Les consignes mettaient l'accent sur la qualité du codage plutôt que sur la quantité, avec la possibilité de déléguer un libellé inclassable dans la nomenclature au sein d'un "pot commun" pour qu'il soit reproposé à un autre expert annotateur. Lorsqu'un libellé ne décrivait pas clairement une activité ou était inclassable (par manque de précision, ambiguïté, etc.), l'annotateur pouvait appliquer un code **inclassable**. Le travail s'est appuyé sur les tables de correspondance et les notes explicatives disponibles. Initialement, une charge de travail d'environ une heure par jour était recommandée pour l'ensemble des participants.
 
-#### Documents et expérience de codage
+[^rating-note]: la note la plus élevée indiquant la plus grande difficulté
+[^label-studio]: il s'agit de la version open source de Label Studio
 
-Débouche sur l'affinage de la structure, table de correspondance et notes explicatives
-Première formation des experts.
+Au niveau du calendrier, la campagne s'est déroulée sur environ 5 mois, après une phase de formation à la NAF 2025 et un Beta Testing. Elle a mobilisé près de 25 experts du réseau APE. La campagne a été rythmé par des réunions mensuelles avec la _Division Nomenclatures économiques_ (DNE) et le _Département Répertoires, infrastructures et statistiques structurelles_ (RIAS), assurant un retour d'expérience régulier avec les experts de la nomenclature et des administrateurs de Sirene. Ces échanges étaient précieux pour la montée en compétence des annotateurs, la résolution des cas de classement les plus complexes et la gestion collective des cas à trancher. Ces opportunités ont permis d'anticiper certaines consignes de la NAF 2025 et de profiter de l'expertise de la DNE, favorisant un travail stimulant.
+
+L'organisation quotidienne a varié selon les sites, par demi-journée ou selon convenance des agents. Malgré l'intérêt du travail et les échanges de pratiques, la charge prévue d'une heure par jour est devenue difficile à maintenir vers la fin de la campagne en raison de missions annexes.
+
+### Stratégie d'échantillonnage pour l'annotation
+
+Pour garantir la plus grande diversité possible, les libellés soumis à l'annotation ont été échantillonnés de manière distincte au sens strict, ce qui permet d'accepter les variations incluant du bruit ou des coquilles. L'échantillonnage était également stratifié afin d'assurer le codage des libellés les plus fréquents. Cette approche permet de prioriser les cas courants, tout en évitant de traiter les activités très rares qui seraient, de toute façon, destinées à de l'expertise gestionnaire.
+
+Au final, cette approche a permis de constituer un jeu de données très particulier, ne concernant que les multivoques les plus représentatifs de la distribution, par la stratification, tout en assurant la plus grande variété possible sur un échantillon limité.
+
+### Bilan et apports de la campagne
+
+Au niveau national, la campagne a généré un volume important de données et de retours qualitatifs:
+
+- Total annoté : 30 915 libellés.
+- Tâches inclassables : 1 830 libellés, appliqués lorsque l'activité n'était pas claire ou manquait de précisions.
+- Tâches déléguées : 3 553 libellés, mis de côté pour être reproposés à un autre expert.
+
+#### Documents de référence et vérité terrain
+
+Le principal apport de cette campagne a été la stabilisation précoce des ressources de référence nécessaires à la nouvelle nomenclature. Grâce aux remontées des experts, la structure de la NAF 2025, la table de correspondance théorique et les notes explicatives ont pu être affinées. Surtout, cet exercice a permis de constituer la première vérité terrain exploitable, un matériau précieux préparant l'ensemble de la méthodologie suivante.
 
 #### Mode opératoire des experts 
 
-::: {.center}
-![Algorithme de labellisation ou consignes](img/decision-tree-annotation.png){#fig-decision-tree}
+La campagne a permis de mettre au point une feuille de route face aux cas ambigus. Pour guider l'annotation, un arbre de décision a été formalisé, décrivant la séquence logique suivie par les experts pour attribuer un code NAF 2025 à un libellé donné. Ce mode opératoire est illustré ci-dessous.
 
-*Note de lecture : TODO*
+::: {.center}
+![Arbre de décision pour coder en NAF 2025](img/arbre-decision-annotation.drawio.png){#fig-decision-tree}
+
+*Cet arbre de décision inspirera fortement la méthodologie décrite dans la partie suivante*
 :::
+
+#### Evaluation de la difficulté de la campagne
+
+Afin de collecter des retours sur l'effort cognitif, la plateforme de labellisation a permis aux participants d'attribuer une note de difficulté à chaque tâche selon une échelle simple de cinq modalités. Bien que cet indicateur ne présente pas une rigueur absolue, il constitue la seule mesure de difficulté disponible pour l'évaluation de la campagne.
+
+- 0: aucune difficulté ou rien à signaler 
+- 1: plutôt facile [^default-value]
+- 2: facile 
+- 3: moyen
+- 4: difficiles 
+- 5: très difficiles
+
+[^default-value]: La modalité 1 (plutôt facile) correspond à la valeur par défaut de la plateforme. Par conséquent, cette modalité est peu considérée et n'a pas été prise en compte dans les résultats affichés dans les graphes ultérieurs.
+
+**Bilan global**
+
+- 0: 28,85 %  
+- 1: 56,47 % 
+- 2: 6,17 %
+- 3: 6,48% 
+- 4: 1,19 % 
+- 5: 0,1 %
+
+L'exercice d'annotation est jugé de difficulté globalement modéré par les experts, avec seulement quelques cas jugés très complexes. Une analyse est nécessaire pour déterminer si ces cas difficiles correspondent nécessairement à des libellés issus des multivoques présentant le plus grand nombre de possibilités.
 
 #### Difficulté de l'exercice et nombre de multivoques: un lien pas si immédiat
 
-Globalement modéré sauf quelques cas. Est-ce nécessairement des cas où les multivoques sont nombreux ?
+Les figures ci-dessous illustrent la difficulté ressentie par les experts en fonction du nombre de correspondances multivoques possibles (N) en NAF 2025 pour un code NAF rev 2 donné.
 
-::: {.center}
-![Difficulté ressentie en fonction des multivoques](img/difficulte_brute_niv5.png){#fig-diff-brute-niv5}
+::: {#fig-deux-images layout-nrow=2}
+![Moyenne des avis bruts au niveau classe](img/difficulte_brute_niv4.png){#fig-diff-brute-niv4 width=90%}
 
-*Note de lecture : TODO*
+![Moyenne des avis bruts au niveau sous-classe](img/difficulte_brute_niv5.png){#fig-diff-brute-niv5 width=90%}
+
+Difficulté ressentie en fonction des multivoques de l'exercice d'annotation
 :::
 
-::: {.center}
-![Difficulté ressentie en fonction des multivoques (autre librairie pour la représentation)](img/difficulte_brute_niv5_plotly.png){#fig-diff-brute-niv5}
+L'analyse de ces résultats révèle que la difficulté ressentie n'est pas une fonction croissante simple du nombre de multivoques. La difficulté perçue par les répondants reste globalement stable pour les cas présentant entre 10 et 20 options. Une montée progressive de la charge cognitive n'est observée qu'à partir d'une vingtaine de correspondances possibles, et s'accentue nettement autour d'un seuil de 30 options au niveau classe et 35 options au niveau sous-classe.
 
-*Note de lecture : TODO*
+Les activités jugées particulièrement difficiles ne sont pas uniquement associées au plus grand nombre de multivoques. Par exemple, le code 4399D (Autres travaux spécialisés de construction), avec seulement N=8 correspondances possibles, est également concerné par les pics de difficulté, tout autant que le 4799A (Vente à domicile, N=38) et le 4791B (Vente à distance sur catalogue spécialisée, N=36).
+
+En particulier, **la difficulté de classement de la vente à domicile et à distance a une explication connue des experts métier**. Elle provient du fait que les libellés soumis ne précisent souvent pas le type de produits vendus, une information non requise par la NAF rev 2 mais essentielle pour le classement en NAF 2025. Les libellés sont donc parfaitement classables sous l'ancienne nomenclature, mais de fait inclassables en NAF 2025. Par conséquent, un nombre plus restreint de multivoques pour cette sous-classe n'aurait pas rendu la tâche plus facile.
+
+Cette observation met en évidence que d'autres facteurs métier influencent la difficulté, au-delà du simple nombre de choix. L'ensemble de ces cas complexes ne représente au final que 2 077 tâches, soit moins de 7% de l'annotation totale.
+
+::: {#fig-deux-images layout-nrow=2}
+![Part de jugés difficiles au niveau classe](img/part_difficiles_niv4.png){#fig-part-difficiles-niv4 width=90%}
+
+![Part de jugés difficiles au niveau sous-classe](img/part_difficiles_niv5.png){#fig-part-difficiles-niv5 width=90%}
+
+Proportion de cas jugés difficiles (avis supérieur à 3/5) en fonction des multivoques de l'exercice d'annotation
+::::
+
+L'analyse de la proportion de cas jugés difficiles confirme cette observation : un nombre élevé de correspondances multivoques n'entraîne pas nécessairement une augmentation proportionnelle de la part de tâches difficiles. Le même phénomène est observé lorsque l'on analyse les cas déclarés inclassables. Ces résultats sont particulièrement intéressants à mettre en perspective avec la _Table 3 – Distribution des codes multivoques pour la NAF_, qui présente la rareté des cas avec un grand nombre d'options.
+
+#### Concordance des annotateurs
+
+Pour évaluer la difficulté de l’annotation et apprécier la solidité de la vérité terrain issue de la campagne, un exercice de contrôle a été réalisé sur un échantillon de **256 libellés**. Pour des raisons de moyens, cet exercice a été mené par **trois volontaires**, notés **A, B et C**, sur leur temps disponible. Ce contrôle qualité a reposé sur une triple annotation, réalisée en aveugle par trois volontaires distincts (désignés ici A, B et C) sur ce même échantillon. Cet exercice, contrairement à la campagne principale, n'autorisait pas les experts à passer la tâche en cas de doute, limitant le biais de sélection. Il ne s’agissait pas d’un audit exhaustif, mais d’un échantillon exploratoire destiné à éclairer la qualité de l’annotation humaine. L’objectif n’était pas d’obtenir un résultat parfait, mais de disposer d’indicateurs objectifs permettant de situer la variabilité naturelle du jugement humain sur ce type de tâche.
+
+##### Deux niveaux de concordance
+
+* **Concordance _absolue_** : les trois annotateurs choisissent exactement le même code.
+* **Concordance _partielle_** : au moins deux annotateurs sur trois convergent vers le même code.
+
+Sur cet échantillon, la **concordance absolue** entre les trois annotateurs s’élève à **62 %**. Ce résultat, relativement modeste, est cohérent avec la nature interprétative du classement NAF, où des nuances existent entre certains codes proches. Il est attendu que la concordance absolue soit sensiblement plus faible que la concordance partielle sur ce type de tâche. 
+
+Afin d’illustrer la variabilité entre annotateurs, le graphique ci-dessous montre la concordance par paire :
+
+```{python}
+#| label: fig-concordance-annotateurs-abc
+#| echo: false
+#| fig-cap: "Graphe de concordance entre les annotateurs A, B et C"
+#| fig-align: center
+#| fig-width: 3
+#| fig-height: 3
+
+import networkx as nx
+import matplotlib.pyplot as plt
+
+# 1. Créer le graphe (non dirigé pour les flèches doubles)
+G = nx.Graph()
+
+# 2. Définir les nœuds et les positions pour une forme triangulaire
+nodes = ['A', 'B', 'C']
+# Coordonnées pour un triangle (ajustez si besoin)
+pos = {
+    'A': (0, 1),
+    'B': (1, 0),
+    'C': (-1, 0)
+}
+G.add_nodes_from(nodes)
+
+# 3. Définir les poids/étiquettes
+# Note: Nous utilisons l'attribut 'weight' mais affichons le 'label'
+weights = {
+    ('A', 'C'): '73.05 %',
+    ('A', 'B'): '76.17 %',
+    ('C', 'B'): '61.72 %'
+}
+
+# Ajouter les arêtes avec les poids
+for (u, v), label in weights.items():
+    G.add_edge(u, v, label=label)
+
+# 4. Préparer le tracé Matplotlib
+fig, ax = plt.subplots(figsize=(4, 3))
+
+# Dessiner les nœuds et les arêtes
+nx.draw_networkx_nodes(G, pos, node_size=1000, node_color='white', edgecolors='black', linewidths=1.5)
+nx.draw_networkx_labels(G, pos, font_size=16, font_weight='bold')
+
+# Dessiner les arêtes avec des flèches bidirectionnelles (approximation)
+# NetworkX dessine des lignes, nous devons utiliser des annotations pour simuler les flèches doubles
+# et les étiquettes de manière précise.
+
+# 5. Dessiner les flèches bidirectionnelles et étiqueter manuellement
+for (u, v), label in weights.items():
+    x1, y1 = pos[u]
+    x2, y2 = pos[v]
+    
+    # Calculer le point médian pour le placement du label
+    mid_x, mid_y = (x1 + x2) / 2, (y1 + y2) / 2
+    
+    # Légèrement décaler les flèches pour les rendre visibles
+    offset = 0.05 
+    
+    # Calculer l'angle de la ligne
+    angle = plt.np.arctan2(y2 - y1, x2 - x1)
+    
+    # Ajouter le label au centre (légèrement décalé)
+    ax.text(mid_x - 0.05 * plt.np.sin(angle), 
+            mid_y + 0.05 * plt.np.cos(angle), 
+            label, 
+            fontsize=12, color='black', ha='center', va='center')
+
+    # Dessiner les flèches : u -> v
+    # Utiliser plt.arrow ou ax.annotate pour des flèches doubles est complexe.
+    # On revient à la fonction draw standard mais on peut la personnaliser
+    
+    nx.draw_networkx_edges(
+        G, pos, edgelist=[(u, v)], 
+        arrowstyle='<->', 
+        arrowsize=20, 
+        arrows=True,
+        edge_color='#2D7FB2', 
+        width=4, 
+        ax=ax
+    )
+
+ax.set_title("Concordance inter-annotateur", loc='center', fontsize=9, fontweight='bold')
+ax.set_xlim(-1.2, 1.2)
+ax.set_ylim(-0.2, 1.2)
+ax.axis('off') # Masquer les axes
+plt.show()
+```
+
+Malgré la faiblesse de la concordance pure, soit près de 62 %, l'analyse révèle qu'un accord majoritaire est atteint dans 96 % des cas, ce qui signifie qu'au moins deux annotateurs sur trois ont convergé vers le même code. Cela démontre que l'annotation est robuste dans sa grande majorité, même si les trois experts ne sont pas systématiquement parvenus à une concordance absolue.
+
+Il semble que le taux de concordance pure ait été tiré vers le bas par la divergence prononcée entre deux annotateurs spécifiques, B et C, dont l'accord par paire n'atteint que 62 %. Cette faiblesse de la concordance partielle entre B et C limite l'accord simultané de l'ensemble du triplet.
+
+L’analyse du schéma de concordance met en évidence une hétérogénéité dans les niveaux d’accord entre annotateurs. Deux annotateurs présentent un niveau de concordance sensiblement plus faible, ce qui laisse penser à une divergence d’interprétation ou de sensibilité aux cas plus ambigus. Ce point n’invalide pas l’exercice, mais rappelle que même entre experts motivés et formés, une part de subjectivité subsiste dans le codage NAF, en particulier au niveau 5.[^difficultes-annotation]
+
+[^difficultes-annotation]: Outre des erreurs manifestes, les divergences de codage peuvent être attribuées à plusieurs facteurs, notamment des erreurs de saisie, des différences d'interprétation, l'ambiguïté des cas de classement ou une asymétrie d'information causé par une différence d'expérience.
+
+Cette observation est importante, car elle montre qu’un désalignement marqué entre deux personnes peut réduire la concordance absolue à trois, tout en laissant émerger un consensus majoritaire fiable. Autrement dit, l’absence d’unanimité ne signifie pas absence de cohérence : dans la majorité des cas, deux annotateurs convergent vers la même réponse, ce qui permet à un consensus d’émerger malgré des profils d’annotation différents.
+
+La même analyse menée au **niveau 4** et au **niveau 5** donne les résultats suivants :
+
+| Pair  |     Niveau 4 |     Niveau 5 |
+| :---- | ---------: | ---------: |
+| A – B | 76.56% | 73.05% |
+| A – C | 80.86% | 76.17% |
+| B – C | 79.69% | 61.72% |
+
+Malgré une concordance absolue limitée, la **concordance partielle est élevée**, ce qui signifie que le consensus majoritaire est très souvent atteint :
+
+**Concordance partielle (≥ 2 sur 3)**
+
+- Niveau 4 : **97.27 %**
+- Niveau 5 : **96.09 %**
+
+Ce résultat est important : il montre que l’annotation humaine reste **largement convergente**, même si les trois annotateurs ne choisissent pas toujours strictement le même code.
+
+#### Mise en perspective avec la vérité terrain de la campagne
+
+Sur les **256 cas annotés**, **97** correspondaient à des libellés issus de la campagne principale. Cela a permis d’estimer dans quelle mesure un vote majoritaire entre trois annotateurs serait aligné avec le **code officiel retenu lors de la campagne** :
+
+::: {.center}
+
+| Alignement avec le ground truth            | Taux    |
+| ------------------------------------------ | ----------- |
+|  au niveau 5 | **79.38 %** |
+|  au niveau 4 | **85.57 %** |
 :::
 
-A partir de 20 correspondances possibles, la difficulté ressentie augmente progressivement.
-seuil de difficulté autour de 30 options (niv4) et 35 niv5
+La proximité de ces taux avec les niveaux de concordance observés montre que :
 
-Entre 10 et 20 options, la difficulté perçue par les répondants reste globalement stable. À partir d’une vingtaine de choix, on observe une montée progressive de la charge cognitive, qui s’accentue nettement autour de 30 (niv4) et 35 au niv5
+* la vérité terrain issue de l’annotation simple est **cohérente avec un vote majoritaire**,
+* les divergences sont souvent **à un niveau de granularité fine** (concordance niveau 4 > niveau 5),
+* un désaccord ne signifie pas nécessairement une erreur, mais peut refléter la subtilité du choix final.
 
-Parmi les activités particulièrement difficiles, il y avait donc le 4399D (Autres travaux spécialisés de construction), le 4399A (Vente à domicile) et le 4791B (Vente à distance sur catalogue spécialisée). Pour autant, toutes ces activités combinés ne représentent que 2077 cas soit moins de 7% des tâches.
+**Le rôle du ground truth de l'annotation**
 
+La vérité terrain (ou ground truth) représente l'ensemble des données de référence en NAF 2025. Dans le cadre de cette campagne, elle repose sur le jugement moyen des experts et doit être considérée comme suffisamment acceptée par le métier pour être qualifiée de donnée de référence. Elle est fondée sur la confiance accordée au travail collectif et au consensus majoritaire des annotateurs, en tant que première base de travail.
 
-Avoir beaucoup de cas multivoques n'augmente pas la part de tâches difficiles.
-Même pour les cas inclassables, on retrouve le même phénomène.
+Quelle lecture pour la suite ?
 
+Ces résultats suggèrent que la vérité terrain construite lors de la campagne est **suffisamment solide** pour servir de référence dans l’évaluation des modèles de la prochaine partie, tout en gardant à l’esprit qu’elle n’est pas exempte d’imperfections comme toute annotation humaine.
 
-### L'apport de Label Studio
+Chercher une concordance de 100 % entre un modèle et cette vérité terrain n’est ni réaliste ni souhaitable. L’enjeu est plutôt d’identifier les modèles capables de s’aligner suffisamment bien avec cette référence pour garantir un niveau satisfaisant de qualité de codage.
 
-Un outil pour mieux gérer la saisie manuelle
-organisation campagne: capacité à skipp, inclassable, triple annoté
-
-
-## Data Editing: correction de la base d'apprentissage
-
-nécessite correction manuelle ou semi-manuelle
-
-moteur de règles pour corriger la base d'apprentissage, data cleansing,
-matching d'expressions: expression régulières, fuzzy, recherche par similarité
-ajout de termes manquants.
+La section suivante s’inscrit dans cette logique : évaluer le degré d’alignement des LLM comme annotateurs avec cette vérité terrain afin de sélectionner ceux qui offrent le meilleur compromis entre performance, robustesse et cohérence métier.

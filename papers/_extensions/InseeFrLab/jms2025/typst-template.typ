@@ -68,15 +68,18 @@
       }
     }
   )
-  set par(justify: true, first-line-indent: 1em) // alinéa a chaque début de paragraphe
+  set par(justify: true, first-line-indent: (amount: 1em, all: true))
   set text(lang: lang,
            region: region,
            font: font,
            size: fontsize)
+
   set heading(numbering: sectionnumbering)
-  show heading.where(level: 1): set text(size: 1em)
-  show heading.where(level: 2): set text(size: 1.1em)
-  show heading.where(level: 3): set text(size: 1em)
+  show heading: set text(size: 1.1em)
+  show heading.where(level: 1): set block(below: 1.2em, above: 1.6em)
+  show heading.where(level: 2): set block(below: 1.2em, above: 1.6em)
+  show heading.where(level: 3): set block(below: 1.2em, above: 1.6em)
+  
   show footnote: set text(size: 1.2em) // taille de l'appel de note dans le corps du texte
   set footnote.entry(indent: 0em) // indentation dans la note de bas de page
   // modifie les tailles dans la note de bas de page
@@ -151,10 +154,13 @@
     arr
   }
 
+    v(15pt)
+
+
     if keywords.len() > 0 {
     block[
       #set par(justify: false)
-      #set text(size: 1.1em)
+      #set text(size: 0.95em)
       #strong[Mots-clés] : #if type(keywords) == array {
         capitalize-first-word(keywords).join(", ")
       } else {
@@ -166,7 +172,7 @@
   if domains.len() > 0 {
     block[
       #set par(justify: false)
-      #set text(size: 1.1em)
+      #set text(size: 0.95em)
       #strong[Domaines] : #if type(domains) == array {
         capitalize-first-word(domains).join(", ")
       } else {
@@ -181,11 +187,18 @@
     ]]
   }
 
+    align(center)[
+      #line(length: 50%, stroke: 1pt + rgb("#633250"))
+    ]  
+
   if resume != none {
+
     block[
       #text(weight: "semibold", size: 1.2em)[Résumé] \ 
       #set par(justify: true, first-line-indent: 1em)
-      #emph(resume)
+      #v(3pt) 
+      #text(size: 0.9em)[#resume]
+      #v(8pt) 
     ]
   }
 
@@ -193,9 +206,15 @@
     block[
       #text(weight: "semibold", size: 1.2em)[#abstract-title] \ 
       #set par(justify: true, first-line-indent: 1em)
-      #emph(abstract)
+      #v(3pt) 
+      #text(size: 0.9em)[#abstract]
+      #v(8pt) 
     ]
   }
+
+  align(center)[
+    #line(length: 50%, stroke: 1pt + rgb("#633250"))
+  ]
 
   if toc {
     let title = if toc_title == none {

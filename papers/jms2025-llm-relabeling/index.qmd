@@ -39,7 +39,7 @@ resume: |
 
 abstract: |
     The overhaul of the French Nomenclature of Activities (NAF 2025) creates a critical training challenge for the automatic APE coding model used by the Sirene registry. While the model handles the coding task, its performance requires a massive training corpus (millions of observations). The transition invalidates historical data for ambiguous cases, and manual expert annotation capacity is severely limited and unsustainable for generating the required volume. To overcome this initial data deficit crucial to model retraining, the presented work introduces an innovative methodology. The solution leverages Augmented Generation Techniques based on Large Language Models (LLMs) to generate the full NAF 2025 training base. 
-# This approach models expert operational logic, providing a scalable, reliable, and replicable solution for any National Statistical Institute facing a nomenclature change.
+    This approach models expert operational logic, providing a scalable, reliable, and replicable solution for any National Statistical Institute facing a nomenclature change.
 bibliography: biblio.bib
 format:
   jms2025-typst:
@@ -60,13 +60,13 @@ format:
 
 {{< pagebreak >}}
 
-# Sirene 4 : une nouvelle application pour traiter les déclarations d'entreprises en continu 
+# La codification APE dans Sirene 4, une nouvelle application pour traiter les déclarations d'entreprises en continu 
 
 {{< include sections/1-prod.qmd >}}
 
 {{< pagebreak >}}
 
-# Comment coder en NAF 2025 ? campagne d'annotation et vérité terrain
+# Comment convertir notre base d'apprentissage en NAF 2025 ? campagne d'annotation et vérité terrain
 
 {{< include sections/2-naf.qmd >}}
 
