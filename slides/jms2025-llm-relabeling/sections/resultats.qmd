@@ -1,0 +1,175 @@
+## Le fléau de l'évaluation
+
+- ❓ Question cruciale : 
+  - Comment [**évaluer**]{.orange} un LLM ?
+  - Classification ➡️ plus facile, vraiment ?
+  - Complexité de la nomenclature
+
+- Utilisation des $27k$ annotations comme ground truth 🥇
+  
+- [**3 métriques**]{.orange} de performances :
+  - Précision [**totale**]{.blue2}
+  - Précision parmi les [**"codables"**]{.blue2}
+  - Précision [**"LLM"**]{.blue2} (erreurs imputables à la génération seulement)
+
+
+## Reconstruction du jeu multivoques
+
+- 💡[**Principe**]{.orange} : considérer les LLMs comme des [**annotateurs classiques**]{.blue2} ➡️ X-annotation
+- ❓Peut-on améliorer performances en [**mixant les résultats**]{.blue2} de chaque modèles ?
+- Construction de [**3 annotations**]{.orange} supplémentaires 
+  1. Choix en [**cascade**]{.blue2} (un modèle en priorité)
+  2. Choix par [**vote à la majorité**]{.blue2} 
+  3. Choix par [**vote pondéré**]{.blue2}
+
+
+## Ré-entrainement en NAF 2025
+
+- [**Reconstruction**]{.orange} du stock Sirene 4 en NAF 2025 ($~2$ millions d'observations)
+- Distribution des données [**quasi-inchangées**]{.orange}
+- Utilisation de [**nouvelles variables**]{.orange} propres à Sirene 4
+- [**Performances similaires**]{.orange} au modèle en NAF 2008
+
+## Ré-entrainement en NAF 2025 {background-color="white"}
+
+### Résultats du modèle de fastText
+
+::: {.center}
+```{python}
+#| label: fig-performances-fasttext
+#| echo: false
+#| fig-cap: Comparaison performances sur jeu de test classique et manuellement annoté
+
+import pandas as pd
+import numpy as np
+from plotnine import *
+
+# Create the data
+data = {
+    'data_type': ['Données Test'] * 5 + ['Données manuellement annotées'] * 5,
+    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 2,
+    'accuracy': [
+        0.8551939324497377,
+        0.8328925927834847,
+        0.7973293897956999,
+        0.7843529836218961,
+        0.7762214195942544,
+        0.9668600758759206,
+        0.95529271739939,
+        0.9162389347615859,
+        0.8986461355352228,
+        0.8887153165216097
+    ]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Define the correct order of levels
+level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
+
+# Convert level to categorical with the specified order
+df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
+
+# Format accuracy values for labels (rounded to 3 decimal places)
+df['accuracy_label'] = df['accuracy'].round(2).astype(str)
+
+# Create the lollipop chart
+p = (ggplot(df, aes(x='level', y='accuracy'))
+ + geom_segment(aes(x='level', xend='level', y=0, yend='accuracy'))
+ + geom_point(size=3, color='blue')
+ + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
+             size=8, nudge_y=0.02)  # Add value labels
+ + facet_wrap('~data_type')
+ + theme_minimal()
+ + labs(
+     x='',
+     y=''
+ )
+ + theme(
+     figure_size=(12, 6),  # Increased width to accommodate labels
+     panel_spacing=0.05,
+     axis_text=element_text(size=10),
+     axis_title=element_text(size=12),
+
+ )
+ + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
+)
+p.draw()
+```
+:::
+
+### Résultats du modèle de torchTextClassifier
+
+
+::: {.center}
+```{python}
+#| label: fig-performances-fasttext-torch
+#| echo: false
+#| fig-cap: Comparaison fastText vs torchTextClassifiers
+
+import pandas as pd
+import numpy as np
+from plotnine import *
+
+# Create the data
+data = {
+    'data_type': ['Modèle via librairie fastText'] * 5 + ['Modèle fastText via TorchTextClassifiers'] * 5,
+    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 2,
+    'accuracy': [
+        0.8551939324497377,
+        0.8328925927834847,
+        0.7973293897956999,
+        0.7843529836218961,
+        0.7762214195942544,
+        0.92,
+        0.89,
+        0.86,
+        0.84,
+        0.83
+    ]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Define the correct order of levels
+level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
+
+# Convert level to categorical with the specified order
+df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
+
+# Format accuracy values for labels (rounded to 3 decimal places)
+df['accuracy_label'] = df['accuracy'].round(2).astype(str)
+
+# Create the lollipop chart
+plot = (ggplot(df, aes(x='level', y='accuracy'))
+ + geom_segment(aes(x='level', xend='level', y=0, yend='accuracy'))
+ + geom_point(size=3, color='blue')
+ + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
+             size=8, nudge_y=0.02)  # Add value labels
+ + facet_wrap('~data_type')
+ + theme_minimal()
+ + labs(
+     x='',
+     y=''
+ )
+ + theme(
+     figure_size=(12, 6),  # Increased width to accommodate labels
+     panel_spacing=0.05,
+     axis_text=element_text(size=10),
+     axis_title=element_text(size=12),
+
+ )
+ + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
+)
+plot.draw()
+```
+
+:::
+
+
+
+```{ojs}
+import { debounce } from "@mbostock/debouncing-input" 
+```

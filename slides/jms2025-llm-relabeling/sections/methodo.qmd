@@ -1,0 +1,105 @@
+## Méthodologie
+
+- 🎯 [**Objectif**]{.orange} : Reconstruire un jeu d'entraînement le plus exhaustif possible
+- Expérimentation [**one-shot**]{.orange} ➡️ pas de contrainte de reproductibilité ... en production
+- Utilisation de [**LLMs**]{.orange} pour générer des annotations en NAF 2025
+- [**Données**]{.orange} à disposition : 
+  1. Stock [**Sirene 4**]{.blue2} ($~2.7$ millions d'observations)
+  2. [**Table de passage**]{.blue2} réalisée par les experts APE
+  3. [**Notes explicatives**]{.blue2} de la NAF 2025
+  4. [**Annotations manuelles**]{.blue2} ($~27k$ observations)
+
+## Méthodologie
+
+![](../img/methodo-nace-rev.png){fig-align="center"}
+
+## Tirer profit des LLMs
+
+- [**Retrieval Augmented Generation**]{.orange} (RAG) vs [**fine-tunning**]{.orange}
+
+- [**2 possibilités**]{.orange} :
+  1. RAG avec les [**notes explicatives**]{.blue2}
+    - Pas encore testé 📝
+  2. [**Pseudo-RAG**]{.blue2} : 
+    - [**Retriever manuel**]{.green2} utilisant la table de passage
+
+- 💡 Idée générale ➡️ Fournir les données essentielles au LLM pour convertir les codes NAF 2008 vers 2025
+
+::: {.callout-warning icon="false"}
+L'idée n'est pas de construire un classifier, seulement créer des annotations.
+:::
+
+## Le prompting
+
+- Prompt [**système**]{.orange} identique pour toutes les observations
+
+  <details> 
+  <summary> 
+      <font size=3 color=black><b>Afficher le prompt sytème</b></font> 
+  </summary>
+
+  ```
+  Tu es un expert de la Nomenclature statistique des Activités économiques dans la Communauté Européenne (NACE). Tu es chargé de réaliser le changement de nomenclature. Ta mission consiste à attribuer un code NACE 2025 à une entreprise, en t'appuyant sur le descriptif de son activité et à partir d'une liste de codes proposés (identifiée à partir de son code NACE 2008 existant). Voici les instructions à suivre :
+  1. Analyse la description de l'activité principale de l'entreprise et le code NACE 2008 fourni par l'utilisateur.
+  2. À partir de la liste des codes NACE 2025 disponible, identifie la catégorie la plus appropriée qui correspond à l'activité principale de l'entreprise.
+  3. Retourne le code NACE 2025 au format JSON comme spécifié par l'utilisateur. Si la description de l'activité de l'entreprise n'est pas suffisamment précise pour identifier un code NACE 2025 adéquat, retourne `null` dans le JSON.
+  4. Évalue la cohérence entre le code NACE 2008 fourni et la description de l'activité de l'entreprise. Si le code NACE 2008 ne semble pas correspondre à cette description, retourne `False` dans le champ `nace08_valid` du JSON. Note que si tu arrives à classer la description de l'activité de l'entreprise dans un code NACE 2025, le champ `nace08_valid` devrait `True`, sinon il y a incohérence.
+  5. Réponds seulement avec le JSON complété aucune autres information ne doit être retourné.
+  ```
+
+  </details>
+
+
+- Un prompt [**spécifique**]{.orange} pour chaque observations comprenant : 
+  - le [**libellé**]{.blue2} de l'activité principale de l'entreprise
+  - l'ancien [**code NAF 2008**]{.blue2} connu
+  - La [**liste des codes possibles**]{.blue2} issues du mapping avec leurs [**notes explicatives**]{.blue2}
+
+- Une [**instruction sur le format**]{.orange} de réponse attendu
+
+## Qualifier la réponse générée
+
+- Tendance des LLMs a être très [**volubiles**]{.orange}...
+- Construction d'une [**réponse type**]{.orange}, claire et brèves dans un [**format spécifique**]{.orange}
+- [**Format JSON**]{.orange} est le plus abondamment utilisé dans l'écosystème
+
+<details> 
+<summary> 
+    <font size=3 color=black><b>Afficher un exemple de réponse attendue</b></font> 
+</summary>
+
+```json
+{
+    "codable": true,
+    "nace_2008_valid": true,
+    "nace2025": "0147J" 
+}
+```
+
+</details>
+
+- [**Parsing**]{.orange} de la réponse :
+  1. [**Vérification**]{.blue2} du format
+  2. Contrôle des [**hallucinations**]{.blue2}
+
+
+## Augmenter le contexte du LLM
+
+### Les risques d'hallucination
+
+![](../img/hallucination.drawio.png){fig-align="center"}
+
+### RAG: Retrieval-Augmented Generation
+
+![](../img/rag_application_naf.drawio.png){fig-align="center"}
+
+### CAG: Context-Augmented Generation
+
+![](../img/cag_application_naf.png){fig-align="center"}
+
+### Quelle stratégie retenir ?
+
+| Stratégie | Principe | Avantages | Limites | Pertinence pour NAF 2025 |
+|:---------:|:---------|:---------|:--------|:-------------------------:|
+| **RAG** | Recherche des descriptifs les plus similaires à la requête pour fournir un contexte au LLM | Permet de générer des codes indépendamment de l’ancien code, exploration de correspondances nouvelles | Cohérence avec l’ancien code non garantie, risque d’incodabilité si aucun code pertinent n’est trouvé | Utile si ancien code incertain ou pour explorer de nouvelles correspondances |
+| **CAG** | Fourniture d’un contexte structuré préexistant au LLM, encapsulé sous forme d’objets | Assure la cohérence avec l’ancien code, haute qualité des propositions si l’ancien code est fiable | Propagation possible d’erreurs historiques, limitation par multivoques | Pertinent si l’ancien code est fiable, comme dans le cas de cette étude |

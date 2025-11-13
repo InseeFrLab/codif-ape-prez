@@ -5,13 +5,13 @@ Il est important pour être en mesure de saisir les conséquences transversales 
 
 Dans le cadre de la loi _PACTE (n° 2019-486 du 22 mai 2019)_, la mise en place d'un _guichet unique_ pour remplacer _les centres des formalités des entreprises (CFE)_ est décrite en ces termes: **à partir du 1er janvier 2023, l’ensemble des formalités d’entreprise doit être déposé en ligne auprès d’un organisme unique** et ce, afin de dématérialiser les démarches ainsi que d'avoir un unique point d'entrée pour effectuer les différentes formalités de création, de modification et de cessation d'activité directement en ligne sur le guichet 
 
-Par conséquent, le _guichet unique des entreprises_ est le principal flux d'alimentation des déclarations du répertoire Sirene qui les reçoit par envoi du portail du guichet unique. L'envoi des liasses se fait en temps quasi-réels dans la mesure où les informations sont envoyées à Sirene dès que le déclarant a terminé sa démarche sur le portail. Pour la qualité du déclarant, il peut s'agir du chef d'entreprise, d'un salarié-délégataire ou d'un mandataire.
+Par conséquent, le _guichet unique des entreprises_ est le principal flux d'alimentation des déclarations du répertoire Sirene qui les reçoit par envoi du portail du guichet unique. L'envoi des liasses se fait en temps quasi-réels dans la mesure où les informations sont envoyées à Sirene dès que le déclarant a terminé sa démarche sur le portail. Le déclarant peut être un chef d'entreprise, un salarié-délégataire ou un mandataire.
 
-Parmi les informations déclarées, est déclarée la description textuelle de l'activité principale de l'entreprise **ou libellé d'activité**. Avant la mise en place du guichet, un gestionnaire accompagnait le déclarant dans la manière de rédiger ce libellé d'activité. Le libellé était donc méticuleusement formaté et harmonisé, de sorte que l'attribution d'un code d'activité [^code-naf] par le système expert Sicore s'en trouvait grandement facilitée. Pour connaître les limites de Sicore, il est recommandé de lire l'article de la dernière session des JMS à ce sujet bien exposées par @sicore_limit_JMS. 
+Parmi les informations, est déclarée la description textuelle de l'activité principale de l'entreprise **ou libellé d'activité**. Avant la mise en place du guichet, un gestionnaire accompagnait le déclarant dans la manière de rédiger ce libellé d'activité. Le libellé était donc méticuleusement formaté et harmonisé, de sorte que l'attribution d'un code d'activité [^code-naf] par le système expert Sicore s'en trouvait grandement facilitée. Pour connaître les limites de Sicore, il est recommandé de lire l'article de la dernière session des JMS à ce sujet bien exposées par @sicore_limit_JMS. 
 
 Dorénavant, le déclarant n'est plus encadré par un gestionnaire ; la saisie s'effectue en totale autonomie via un champ libre non structuré sur le portail en ligne. Si l'absence de contraintes est un avantage, elle expose au risque d'erreurs de saisie notamment les fautes syntaxiques et à une incompréhension de ce qui doit être saisi en tant qu'activité principale, ce qui exige un système de codification plus élaboré pour s'adapter à ce choc.
 
-C'est dans ce contexte que Sirene et ses gestionnaires ont dû être en mesure de gérer un flux constant de libellés d'activité à codifier. Pour cela, ils ont mis en place une méthodologie adaptée pour gérer à la fois le volume, la fréquence et la variété des descriptions saisies, qui se comptent dans l'ordre du million par an, ainsi que des libellés pouvant être déroutants.
+C'est dans ce contexte que Sirene et ses gestionnaires ont dû être en mesure de gérer un flux constant de libellés d'activité à codifier. Pour cela, ils ont mis en place une méthodologie adaptée pour gérer à la fois le volume, la fréquence et la variété des descriptions saisies, qui se comptent par millions annuellement, avec notamment des libellés pouvant être déroutants.
 
 [^code-naf]: code APE ou code NAF
 
@@ -23,12 +23,12 @@ Sirene est un répertoire historique de l'Insee, dont l'application de gestion p
 
 Sirene _"Système Informatique pour le Répertoire des Entreprises et de leurs Établissements"_ est un répertoire historique de l'Insee créé (par le décret n°73-314 du 14 mars 1973) dont la gestion a été confiée à l'Insee. 
 
-Ce répertoire de référence enregistre l'état civil de toutes les entreprises et de leurs établissements et gère leur cycle complet: de leur naissance à leur cessation. C'est un processus vivant qui continue à traiter les différents évènements du vivant de l'entreprise.
+Ce répertoire de référence enregistre l'état civil de toutes les entreprises et de leurs établissements et gère leur cycle complet: de leur naissance à leur cessation. C'est un processus vivant qui continue à traiter les différents évènements du cycle de vie de l'entreprise.
 
 Sirene est notamment garant juridique du SIREN, du SIRET [^siren-siret] et du code APE.
 Ce rôle demande une disponibilité de l'application de gestion et de ses gestionnaires pour traiter des formalités au quotidien. 
 
-En tant que répertoire de référence, les exigences de qualité du code APE, la disponibilité de l'application et la nécessité d'un traitement régulier des formalités sont inhérentes à sa mission historique. Ce rôle exige toujours la mobilisation constante des gestionnaires; ce n'est donc pas la nature du travail qui change, mais son unité.
+En tant que répertoire de référence, les exigences de qualité du code APE, la disponibilité de l'application et la nécessité d'un traitement régulier des formalités sont inhérentes à sa mission historique. Ce rôle exige toujours la mobilisation constante des gestionnaires.
 
 [^siren-siret]: respectivement les identifiants uniques des entreprises et leurs établissement
 
@@ -36,15 +36,22 @@ En tant que répertoire de référence, les exigences de qualité du code APE, l
 
 Historiquement, particulièrement dans Sirene 3, ce processus s'effectuait par le traitement de formalités en batch (ou en lots), avec des interventions groupées à intervalles réguliers.
 
-Ce nouveau partenariat exige de l'Insee qu'elle soit capable de répondre rapidement. Le traitement en flux continu impose une **gestion unitaire et très réactive des dossiers d'entreprises**, avec la flexibilité nécessaire pour les débloquer. C'est une performance que le traitement par lots (batch) peut difficilement garantir, ce dernier nécessitant d'attendre la prochaine transmission.
+Ceci exige de l'Insee qu'elle soit capable de répondre rapidement. Le traitement en flux continu impose une **gestion unitaire et très réactive des dossiers d'entreprises**, avec la flexibilité nécessaire pour les débloquer. C'est une performance que le traitement par lots (batch) peut difficilement garantir, ce dernier nécessitant d'attendre la prochaine transmission.
 
 C'est précisément en ce sens que Sirene 4 marque un véritable changement de paradigme, permettant de quitter définitivement le monde des batches. La modernisation du répertoire s'appuie sur une architecture en micro-services qui rend possible la gestion continue des formalités.
 
-Au cœur de cette architecture réside un workflow de traitement structuré. Ce dernier séquence de manière souple les différentes étapes d'analyse et de codification, assurant la flexibilité nécessaire à la gestion unitaire des dossiers. En somme, le traitement des tâches répétitives est automatisé, ce qui a deux effets majeurs : un soulagement de la charge sur le circuit et une concentration de l'activité humaine sur les cas complexes à forte plus-value. Ce transfert d'expertise pose de nouveaux défis structurels et d'organisation.
+Au cœur de cette architecture, chaque module est autonome et orchestré par un workflow structuré qui appelle les services métier.
+L’architecture permet à un service d’appeler des API internes ou externes à différents endroits de l’application selon les besoins.
+Cela offre la souplesse d’utiliser le langage le plus adapté pour des cas d’usage spécifiques, par exemple en intégrant un modèle de codification exposé via une API Python.
+Cette organisation assure un couplage faible et facilite l’évolution du système ainsi que l’intégration de nouvelles fonctionnalités.
 
-Bien que l'application Sirene se soit modernisée, l'outil Sicore ne convenait plus face au **format non-structuré des libellés provenant du Guichet Unique**. Son taux de codage automatique n'atteignait que 30%, impliquant près de 70% de reprise manuelle et surchargeant considérablement les équipes.
+Le workflow séquence de manière souple les différentes étapes du traitement d’une formalité, incluant notamment son analyse métier et la codification, assurant la flexibilité nécessaire à la gestion unitaire des dossiers.
+En somme, l’automatisation des tâches répétitives soulage le circuit et permet aux équipes de se concentrer sur les cas complexes à forte valeur ajoutée.
+Cette réorganisation des tâches pose de nouveaux défis organisationnels et structurels.
 
-De plus, le fonctionnement du système expert Sicore était fortement adhérent à l'ancienne architecture de l'application de gestion du répertoire (Sirene 3). La nouvelle architecture en micro-services de Sirene 4 a permis de découpler cet outil, rendant le système de classification moins dépendant de l'application principale. Il a ainsi été facilité de rapidement le remplacer par un modèle d'apprentissage supervisé, dès le début du projet, tirant pleinement parti de la modularité de Sirene 4.
+Par ailleurs, l'outil Sicore ne convenait plus face au **format non-structuré des libellés provenant du Guichet Unique**. Son taux de codage automatique n'atteignait que 30%, impliquant près de 70% de reprise manuelle et surchargeant considérablement les équipes.
+
+De plus, le fonctionnement du système expert Sicore était fortement adhérent à l'ancienne architecture de l'application de gestion du répertoire (Sirene 3). La nouvelle architecture en micro-services de Sirene 4 a permis de découpler cet outil, rendant le système de classification moins dépendant de l'application principale. Il a ainsi été possible de le remplacer par un modèle d'apprentissage supervisé, dès le début du projet, tirant pleinement parti de la modularité de Sirene 4.
 
 C'est dans cette logique de modularité et de performance qu'il est pertinent d'expliquer comment s'articule un modèle dans le nouveau système de codification.
 
@@ -71,8 +78,8 @@ Le processus est séquentiel et vise à garantir la méthode la plus fiable en p
 
 Le schéma ci-dessous illustre le séquencement des étapes.
 
-::: {.center}
-![Détail de la codification de l'APE dans Sirene 4](img/table-passage-codification.png){#fig-codif-sirene}
+::: {.column-screen .center}
+![Détail de la codification de l'APE dans Sirene 4](img/table-passage-codification.png){#fig-codif-sirene width="700px"}
 
 *La modularité de l'architecture Sirene 4 (découplage par micro-services) permet de remplacer la codification probabiliste sans impacter les étapes précédentes. Cela a facilité sa migration rapide vers un appel d'API Python déployée sur Kube (la plateforme des nouvelles applications), favorisant son évolution. À terme, l'API entière intégrant toutes les étapes de codification peut également être migrée sur Kube, en bénéficiant de cette faible adhérence.*
 :::
@@ -113,7 +120,9 @@ $$
 $$
 
 Le risque majeur de ne pas fixer de _seuil_ serait d'accepter des codifications complètement aléatoires et incertaines, ce qui nuirait gravement à la qualité du répertoire.
-Le _seuil_ théorique recommandé se situe entre 0.65 et 0.7. Par précaution, Sirene 4 avait initié un _seuil_ de 0,8 qui a depuis été abaissé plus proche du _seuil_ recommandé pour soulager la charge.
+Le _seuil_ théorique recommandé se situe entre 0.65 et 0.7 pour le modèle _fastText_[^remarque-IC-modele]. Par précaution, Sirene 4 avait initié un _seuil_ de 0,8 qui a depuis été abaissé plus proche du _seuil_ recommandé pour soulager la charge.
+
+[^remarque-IC-modele]: Le position du seuil dépend du modèle d'apprentissage. Si une dérive des données réduit la performance du modèle, le seuil devient insuffisant. Face à la dégradation, la solution est le réentraînement du modèle. L'augmentation temporaire du seuil est une alternative qui, cependant, n'est pas toujours suffisante en cas de forte baisse de performance.
 
 #### Arbitrage entre la qualité et l'automatisation
 
@@ -130,14 +139,14 @@ En définitive, la détermination du _seuil_ est un arbitrage répondant aux bes
 ::: {.center}
 ![Distributions des bonnes et mauvaises codifications selon IC](img/IC.png){#fig-IC}
 
-*Approche méthodologique partagée par d'autres projets de codification automatique à l'Insee*
+*Approche méthodologique partagée par d'autres projets de codification automatique à l'Insee. Sur un échantillon de test. L’axe vertical représente la fréquence des codifications pour chaque niveau d’IC. Les lignes verticales indiquent, pour différents seuils d’IC, la part de codifications devant être reprises manuellement. Par exemple, avec un seuil de 0,75, environ 20 % des codifications nécessitent une reprise, soit 80 % peuvent être automatisées.*
 :::
 
 Afin de soulager la charge des gestionnaires et d'augmenter l'automatisation, le seuil de l'indicateur de confiance, initialement fixé à 0,8 par prudence et supérieur à la recommandation théorique de 0,65-0,7, a été abaissé pour se rapprocher de la valeur théorique.
 
 ### La reprise gestionnaire des cas incertains
 
-Bien que la codification automatique soit la plus prépondérant[^odg-codif], le rôle du gestionnaire est crucial pour traiter les cas incertains et garantir la qualité.
+Bien que la codification automatique soit la plus prépondérante[^odg-codif], le rôle du gestionnaire est crucial pour traiter les cas incertains et garantir la qualité.
 
 ::: {.center}
 ![Représentation temporelle de la part des différents types de codification](img/taux_automatisation.png){#fig-poste-reprise-gestionnaire}
@@ -168,20 +177,26 @@ L'efficacité opérationnelle repose sur la capacité du modèle à gérer la va
 
 ### Choisir un bon modèle d'apprentissage supervisé
 
-Un modèle adéquat pour Sirene 4 ne se limite pas à atteindre l'état de l'art, aussi appelé State of the Art ou SOTA. L'adoption en environnement de production engage plusieurs facteurs critiques, cités à titre d'exemple :
+Pourquoi ne pas déployer dès maintenant en production l’un des modèles de dernière génération, tels que les LLM, afin de tirer parti des avancées les plus récentes ?
 
-- contraintes d'architecture et de coût : le modèle doit être compatible avec une architecture open source et maîtriser le coût d'entraînement et d'inférence, notamment la compatibilité des ressources si une évolutivité verticale est requise.
-- taux d'automatisation : pour limiter la charge de travail.
-- facteurs de pérennité : le choix d'une librairie standard est privilégié pour faciliter la maintenance du code source et minimiser la vulnérabilité de la librairie sur le long terme.
-- stabilité: la robustesse du modèle face aux données bruitées ou aux légères dérives des données et précision 
-- précision: l'exactitude des classifications.
-- temps d'inférence: la rapidité de la prédiction, essentielle pour le traitement en flux continu.
-- explicabilité : la capacité à justifier le choix du modèle, facilitant la confiance et le débogage.
+Un modèle adéquat pour Sirene 4 ne se résume pas à atteindre l'état de l'art, aussi appelé State of the Art ou SOTA. Son intégration en production nécessite de trouver un équilibre entre performance, valeur métier et pragmatisme. Il ne s’agit pas de viser la sophistication maximale, mais plutôt d’opter pour une solution utile, maîtrisable et durable, développant itérativement le degré de maturité technique et fonctionnelle[^maturite-technique-fonctionnelle] nécessaire avant d’introduire des modèles plus avancés. 
+
+[^maturite-technique-fonctionnelle]: notamment en terme de LLMops, plus généralement MLops et la progression métier en terme d'organisation des remontées des gestionnaires et de capacité d'évaluation.
+
+Par ailleurs, l'adoption en environnement de production engage plusieurs facteurs critiques, cités à titre d'exemple :
+
+- **contraintes d'architecture et de coût** : le modèle doit être compatible avec une architecture open source et maîtriser le coût d'entraînement et d'inférence, notamment la compatibilité des ressources si une évolutivité verticale est requise.
+- **taux d'automatisation** : pour limiter la charge de travail.
+- **facteurs de pérennité** : le choix d'une librairie standard est privilégié pour faciliter la maintenance du code source et minimiser la vulnérabilité de la librairie sur le long terme.
+- **stabilité**: la robustesse du modèle face aux données bruitées ou aux légères dérives des données et précision.
+- **précision**: l'exactitude des classifications.
+- **temps d'inférence**: la rapidité de la prédiction, essentielle pour le traitement en flux continu.
+- **explicabilité** : la capacité à justifier le choix du modèle, facilitant la confiance et le débogage.
 
 L'architecture micro-services de Sirene 4 a permis d'itérer rapidement sur les choix de modélisation :
 
-1. première implémentation (FastText) : la première version a été déployée en s'appuyant sur la librairie FastText. Ce choix open source était adapté pour une mise en production rapide, offrant un bon compromis entre la vitesse et la précision, avec un faible coût de ressources sur CPU. Toutefois, cette librairie limite l'évolution du modèle de codification en termes de maintenance, prise en main et de performances.
-2. seconde implémentation (PyTorch via torchTextClassifiers) : La transition vers PyTorch est stratégique car elle permet de répondre plus finement aux besoins métiers. L'implémentation est désormais basée sur PyTorch via la librairie torchTextClassifiers, maintenue par le SSP Lab. Utiliser ce framework open source offre une plus grande souplesse et une mainmise complète sur l'architecture du modèle. Cela devient crucial pour répondre aux spécificités du métier, notamment pour permettre l'explicabilité des prédictions ou optimiser les différentes briques du modèle voire en ajouter, ce que le FastText standard ne permettait pas.
+1. **première implémentation (FastText)** : la première version a été déployée en s'appuyant sur la librairie FastText. Ce choix open source était adapté pour une mise en production rapide, offrant un bon compromis entre la vitesse et la précision, avec un faible coût de ressources sur CPU. Toutefois, cette librairie limite l'évolution du modèle de codification en termes de maintenance, prise en main et de performances.
+2. **seconde implémentation (PyTorch via torchTextClassifiers)** : La transition vers PyTorch est stratégique car elle permet de répondre plus finement aux besoins métiers. L'implémentation est désormais basée sur PyTorch via la librairie torchTextClassifiers, maintenue par le SSP Lab. Utiliser ce cadriciel (ou _framework_) open source offre une plus grande souplesse et une mainmise complète sur l'architecture du modèle. Cela devient crucial pour répondre aux spécificités du métier, notamment pour permettre l'**explicabilité** des prédictions ou optimiser les différentes briques du modèle voire en ajouter, ce que le FastText standard ne permettait pas.
 
 #### Implémentation avec la librairie _fastText_ de Meta 
 
@@ -231,7 +246,8 @@ Le passage à une implémentation basée sur PyTorch a été une décision strat
 La nouvelle implémentation a été conçue pour surmonter les limitations de FastText, à la fois technique et méthodologiques, tout en respectant les fortes contraintes de production :
 
 - réponse aux besoins métiers : la transition est cruciale pour permettre des fonctionnalités spécifiques, comme l'explicabilité des prédictions ou l'optimisation des différentes briques du modèle, ce que le FastText standard ne permettait pas.
-- performance et coût : Le modèle doit maintenir un temps d'inférence acceptable (inférieure à 20 ms) et un taux d'automatisation élevé. Le nouveau modèle est conçu pour être plus léger, facilitant le transfert rapide et préparant le système à une inférence GPU pour une évolutivité verticale future (même si les GPU ne sont pas encore en production).
+- performance opérationnelle : Le modèle est conçu pour satisfaire aux contraintes de production strictes, notamment le maintien d'un temps d'inférence acceptable (inférieur à 20 ms) et l'atteinte d'un taux d'automatisation élevé.
+- optimisation, coût et architecture : le nouveau modèle est conçu pour être plus léger, facilitant le transfert rapide et répondant aux exigences de coût. Il prépare également le système à une inférence GPU pour une évolutivité verticale future, même si cette ressource n'est pas encore prévue en production.
 - capacité d'innovation : Le choix de PyTorch offre une mainmise complète sur l'architecture comme changer le tokenizer ou ajouter des couches et permet d'intégrer des avancées qui rendront le modèle plus performant que FastText [^amelioration-modele].
 
 [^amelioration-modele]: qui était, lui-même, déjà meilleur que l'ancien système Sicore
@@ -252,13 +268,13 @@ Pour en savoir davantage sur cette librairie, il est conseillé de consulter l'a
 
 #### Quelle librairie en production ?
 
-Actuellement, la librairie _fastText_ est toujours utilisée. Toutefois, le passage à la nouvelle librairie est programmé pour cette fin d'année 2025, en même temps qu'une migration de la codification probabiliste sur Kube.
+Actuellement, la librairie _fastText_ est toujours utilisée. Toutefois, le passage à la nouvelle librairie est programmé pour début d'année 2026, en même temps qu'une migration de la codification probabiliste sur Kube.
 
 ## L'entraînement et la livraison du modèle
 
 Mettre un modèle en production est un processus transversal qui dépasse la simple livraison du fichier de poids. Il nécessite une organisation rigoureuse et une coordination entre le Data Scientist (qui joue le rôle d'interface), l'équipe métier et l'équipe informatique, notamment en raison des différences de compétence (Python pour le modèle, Java pour l'application Sirene).
 
-Ce processus est soumis à de nombreuses contraintes : gestion des vulnérabilités, tests de charge, validation fonctionnelle et métier, et performance technique. Le changement de nomenclature, par exemple, peut doubler le travail nécessaire dans le cycle de vie du modèle..
+Ce processus est soumis à de nombreuses contraintes : gestion des vulnérabilités, tests de charge, validation fonctionnelle et métier, et performance technique. Le changement de nomenclature, par exemple, peut doubler le travail nécessaire dans le cycle de vie du modèle.
 
 ::: {.center}
 ![Process simplifié de qualification du modèle](img/orga_ape_actuelle.png){#fig-orga_modele}
@@ -307,7 +323,7 @@ En préparation du changement de Nomenclature d'Activités Française (NAF), une
 
 Pour cela, la codification a été appliquée sur un échantillon représentatif de 10 000 annotations. Les données étaient échantillonnées aléatoirement sur une période glissante afin d'avoir les informations les plus fraîches possibles. Les objectifs étaient:
 
-1. vérifier la qualité de codage global : Appliquer la codification en NAF rév. 2 sur un échantillon représentatif de 10000 annotations, par le _Pôle Qualité Sirene_, pour vérifier la qualité de codage globale. Un intérêt particulier a été porté aux cas traités en automatique pour en garantir la fiabilité. Les données étaient échantillonnées aléatoirement sur période glissante pour avoir les données les plus fraîches possibles.
+1. vérifier la qualité de codage global : Appliquer la codification en NAF rév. 2 sur un échantillon représentatif de 10000 annotations, effectuées par le _Pôle Qualité Sirene_, pour vérifier la qualité de codage globale. Un intérêt particulier a été porté aux cas traités en automatique pour en garantir la fiabilité. Les données étaient échantillonnées aléatoirement sur période glissante pour avoir les données les plus fraîches possibles.
 2. préparation du changement : utiliser ces données de bonne qualité pour préparer la future campagne d'annotation en NAF 2025 sur des données réelles et variées provenant du Guichet Unique.
 
 Cette expérimentation a été fructueuse, permettant la validation globale de la codification en NAF rév. 2 et le développement d'outils qui sont la base du futur processus de surveillance routinière.
@@ -338,7 +354,14 @@ Ci-dessous, quelques extraits d'un tableau de bord pour éclairer la décision.
 *Le couloir représente l'intervalle de confiance: plus il y a d'annotations, plus il est resserré*
 :::
 
-L'enjeu fondamental est d'intégrer la surveillance dans le flux de travail habituel (tâche routinière). L'équipe devra reprendre cette surveillance avec la NAF 2025 dès son déploiement pour piloter le nouveau modèle, garantissant une qualité constante des données du répertoire.
+::: {.center}
+![Surveillance de la distribution des IC sur une période donnée](img/tab4.png){#fig-critere-codif}
+
+*Un échantillon de test permettrait aussi d'afficher la séparation entre bon et mauvais codage comme dans la Figure 3. Ainsi, il serait possible de surveiller la pertinence du seuil appliqué.*
+:::
+
+L'enjeu fondamental est d'intégrer la surveillance dans le flux de travail habituel (tâche routinière).
+Celle-ci repose sur l'annotation journalière d'un échantillon représentatif du flux de production. L'équipe devra reprendre cette surveillance avec la NAF 2025 dès son déploiement pour piloter le nouveau modèle, garantissant une qualité constante des données du répertoire. 
 
 Le changement de nomenclature (NAF 2025) n'implique pas qu'une simple mise à jour du modèle de _machine learning_. Il a des conséquences transversales qui impactent profondément plusieurs maillons de la chaîne de production de l'application de gestion Sirene 4.
 

@@ -1,0 +1,41 @@
+---
+title: Les LLM au coeur du réentraînement d'un modèle d'apprentissage en nouvelle nomenclature
+subtitle: |
+  [**Journée méthodologie statistique**]{.orange}
+author: |
+  [Thomas Faria](https://github.com/ThomasFaria),
+  [Nathan Randriamanana]{.orange}(https://github.com/TheAIWizard)
+date: "25/11/2025"
+date-format: "D MMMM YYYY"
+slide-number: true
+# uncomment for French presentations:
+lang: fr-FR
+# for blind readers:
+slide-tone: false
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  onyxia-revealjs:
+    output-file: index.html
+controls: true
+css: ../custom.css
+ascii: true
+---
+
+# 1️⃣ Introduction
+
+{{< include sections/introduction.qmd >}}
+
+# 2️⃣ Passage de la NAF 2008 à la NAF 2025
+
+{{< include sections/chgmt-nom-naf2025.qmd >}}
+
+# 3️⃣ Méthodologie appliquée
+
+{{< include sections/methodo.qmd >}}
+
+# 4️⃣ Résultats 
+
+{{< include sections/resultats.qmd >}}

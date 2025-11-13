@@ -5,7 +5,7 @@ En particulier, la classification automatique, dans une nomenclature prédéfini
 Par ailleurs, l'Insee a des engagements d'évaluation et validation des données produites aux différentes étapes de la production. Ce principe d'exactitude et de fiabilité est introduit par le _code de bonnes pratiques de la statistique européenne_ dans les termes suivants: **les données collectées, les données intégrées, les résultats intermédiaires et les productions statistiques sont régulièrement évalués et validés**. Cela s'applique évidemment aux modèles de _machine learning_ dans le processus de production. Par conséquent, ces modèles ont besoin de maintenance dans le temps. 
 
 De surcroît, Sirene est un répertoire administratif et en tant que répertoire de référence, des méthodes rigoureuses et éprouvées doivent _assurer la qualité de la codification_ des variables. Ainsi, le traitement de l'APE repose sur une approche algorithmique, probabiliste mais aussi sur une reprise des cas complexes par les gestionnaires.
-Pour la tenue d'un répertoire, est notamment recensé le besoin que :
+Pour la tenue d'un répertoire, il est indispensable que :
 
   * des procédures performantes de codification soient mises en œuvre
   * les procédures automatiques soient contrôlées par des expertises individuelles
@@ -18,7 +18,7 @@ Or, les données réelles peuvent dévier de ces données de référence dans le
 C'est ce qu'on appelle une _dérive des données_ et notamment une _dérive conceptuelle_ lorsque la relation se dégrade entre les entrées (X) et la cible (Y).
 Pour maintenir voire améliorer la qualité de codification et donc du répertoire, le réentrainement du modèle devient ainsi nécessaire.
 À plus forte raison, pour un répertoire de référence, une **surveillance** par des expertises individuelles doivent assurer la qualité de la codification.
-Qui plus est, un répertoire est un _système vivant_: de nouvelles activités apparaissent, d’autres disparaissent, et les descriptifs textuels dans la mesure où le monde n'est pas figé: la démographie des entreprises peut évoluer et l'action des partenaires aussi.
+Qui plus est, un répertoire est un _système vivant_: de nouvelles activités apparaissent, d’autres disparaissent, et les descriptifs textuels peuvent évoluer au fil des années.
 Tout particulièrement, les libellés d'activités sont envoyés à Sirene par le portail du _Guichet Unique des Entreprises_ (GUE) de l' _Institut National de la Propriété Industrielle_
 (INPI), plateforme sur laquelle les déclarants renseignent les informations de leur entreprise dont leur activité principale, ce qui implique que toute modification du formulaire ou de son interprétation est susceptible de provoquer une dérive de données. 
 
@@ -28,6 +28,9 @@ Une simple application de la table de correspondance sur le jeu d'apprentissage 
 
 Pour coder des millions de données en nouvelles nomenclature, il faut une expertise métier et un volume d'annotation conséquent. L'expert APE dispose de la connaissance métier mais ne peut traiter l'exhaustivité manuellement. Comment passer à l'échelle et tirer profit du travail et du savoir-faire des experts ?
 
-Après avoir présenté le contexte de traitement en flux dans lequel s'inscrit le modèle de _machine learning_ actuellement en production et son évolution, la seconde partie de cet article s'articulera autour de la problématique de la correspondance entre la NAF rev 2 (ou NAF 2008) et la NAF 2025 pour la conversion du jeu d'apprentissage, notamment sur la campagne d'annotation débouchant sur une vérité terrain et l'explicitation du mode opératoire des experts sur cet exercice, puis la génération de données d'apprentissage calibrées sur la vérité terrain sera abordée, en s'appuyant sur les notes explicatives de la nomenclature, avec dans une autre partie, la construction du modèle d'apprentissage supervisé adapté en nouvelle nomenclature, ses performances et l'approche pour le corriger et le qualifier pour un passage en production. Enfin, des pistes prometteuses d'améliorations seront illustrées ainsi que des perspectives de cas d'usage au sein de répertoires de référence de la statistique publique intégrant des systèmes de codification.
+Après avoir présenté le contexte de traitement en flux dans lequel s'inscrit le modèle de machine learning actuellement en production et son évolution, la seconde partie de cet article s'articulera autour de la problématique de la correspondance entre la NAF rev 2 (ou NAF 2008) et la NAF 2025 pour la conversion du jeu d'apprentissage, y compris la campagne d'annotation débouchant sur une vérité terrain et l'explicitation du mode opératoire des experts sur cet exercice.
+Puis, la troisième partie décrira la génération de données d'apprentissage par LLM calibrées sur la vérité terrain, en s'appuyant sur la table de correspondance théorique et les notes explicatives de la nomenclature pour augmenter le contexte.
+Ensuite, la quatrième partie présentera la construction du modèle d'apprentissage supervisé adapté en nouvelle nomenclature, ses performances et l'approche pour le corriger et le qualifier pour un passage en production.
+Enfin, des pistes prometteuses d'améliorations seront illustrées, ainsi que des perspectives de cas d'usage au sein de répertoires de référence de la statistique publique intégrant des systèmes de codification.
 
 [^remark-data-editing]: Du _data editing_ est aussi employé pour corriger la base d'apprentissage dans une moindre mesure.

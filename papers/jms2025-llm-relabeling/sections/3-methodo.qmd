@@ -12,7 +12,8 @@ Le principe consiste à utiliser les LLM comme des _annotateurs virtuels_, en re
 
 À partir de la base d’apprentissage initiale en NAF 2008, la démarche consiste d’abord à séparer les unités univoques des unités multivoques à l’aide de la table de correspondance. Les univoques sont ensuite directement recodées et constituent une première composante de la future base d’apprentissage. Les multivoques font, quant à elles, l’objet d’un traitement spécifique: après suppression des libellés dupliqués afin de réduire le nombre d’inférences, un LLM est mobilisé comme _annotateur virtuel_. Comme le modèle ne dispose pas de l’expertise métier des annotateurs, et encore moins en NAF 2025 qui est encore provisoire, son contexte est enrichi en lui fournissant, pour chaque observation, la liste des codes NAF 2025 envisageables accompagnés de leurs notes explicatives. Plusieurs approches d’augmentation du contexte seront présentées, notamment le RAG[^remark-rag] et le CAG ; ce dernier sera privilégié, car il répond le mieux aux besoins métier tout en minimisant le coût d’inférence. Une phase d’évaluation permet ensuite d’identifier le LLM dont les annotations sont les plus alignées avec la vérité terrain issue de la campagne d’annotation manuelle. Enfin, les multivoques ainsi recodées sont réunies avec les univoques, afin de constituer la nouvelle base d’apprentissage en NAF 2025 destinée à entraîner le futur classifieur.
 
-[^remark-rag]: Le RAG (Retrieval‑Augmented Generation) décrit plus se montre très prometteur. Cependant, son intégration reste aujourd’hui confrontée à des défis techniques et métier (temps d'inférence, évaluation et efficacité du retrieval, performance globale avec la génération). Pour ces raisons, le RAG est encore en phase de recherche et de prototypage dans notre contexte. Les résultats associés ne seront pas présentés dans cet article.
+[^remark-rag]: Le RAG (Retrieval‑Augmented Generation) décrit plus se montre très prometteur. Cependant, son intégration reste aujourd’hui confrontée à des défis techniques et métier (temps d'inférence, évaluation et efficacité du retrieval, performance globale avec la génération). Pour ces raisons, le RAG est encore en phase de recherche et de prototypage dans notre contexte.
+
 [^ref-techno-cloud]: Pour en savoir plus sur l’apport des technologies cloud à la statistique publique, il est recommandé de consulter l’article de l’édition JMS de cette année @cloudprod.
 
 ::: {.center}
@@ -23,15 +24,15 @@ Le principe consiste à utiliser les LLM comme des _annotateurs virtuels_, en re
 
 ## Le datalab SSP Cloud comme plateforme d’expérimentation
 
-Le datalab **SSP Cloud** n’est pas destiné à héberger un LLM en production ; il s’agit d’un environnement **expérimental et ponctuel** qui permet de tester des modèles et des pipelines sans les contraintes d’une mise en service continue. Cette orientation expérimentale s’inscrit naturellement dans une démarche **open‑source**, car elle favorise la transparence, la réutilisabilité du code et la maîtrise des coûts.
+Le datalab _SSP Cloud_ n’est pas destiné à héberger un LLM en production ; il s’agit d’un environnement expérimental et ponctuel qui permet de tester des modèles et des pipelines sans les contraintes d’une mise en service continue. Cette orientation expérimentale s’inscrit naturellement dans une démarche _open‑source_, car elle favorise la transparence, la réutilisabilité du code et la maîtrise des coûts.
 
-Développée à l’Insee, la plateforme SSP Cloud repose sur une **infrastructure normalisée** : tous les serveurs partagent la même configuration matérielle et utilisent la même distribution Linux (Debian). Cette homogénéité garantit la **reproductibilité** des environnements de travail et facilite le partage des résultats entre équipes. En outre, le SSP Cloud s’appuie sur un **cluster Kubernetes** qui constitue le socle d’une infrastructure robuste. Grâce à ce cluster, le déploiement automatisé d’applications potentiellement intensives en données devient possible, ce qui permet de **simuler un véritable environnement de production** tout en conservant la flexibilité d’un cadre de test.
+Développée à l’Insee, la plateforme SSP Cloud est un datalab à destination du _système statistique publique_ (SSP) et au milieu académique. En outre, le SSP Cloud s’appuie sur un cluster _Kubernetes_ qui constitue le socle d’une infrastructure robuste. Grâce à ce cluster, le déploiement automatisé d’applications potentiellement intensives en données devient possible, ce qui permet de simuler un véritable environnement de production tout en conservant la flexibilité d’un cadre de test.
 
-Par ailleurs, le SSP Cloud a été construit selon les **standards les plus récents des infrastructures de data‑science**. Concrètement, les services sont lancés sous forme de **conteneurs Docker** ; ainsi, chaque composant est empaqueté avec ses dépendances, ce qui assure une forte **reproductibilité des déploiements**. Cette approche implique toutefois une phase de développement légèrement plus coûteuse, car elle requiert la définition et la gestion des images Docker. Le datalab adopte également une philosophie **cloud‑native** : il est organisé autour d’un ensemble **modulaire de briques logicielles** (code, données, configuration, environnement d’exécution). Cette séparation nette constitue un principe majeur des bonnes pratiques, car elle facilite la maintenance, le scaling et l’intégration de nouveaux outils.
+Par ailleurs, le SSP Cloud a été construit selon les standards les plus récents des infrastructures de data‑science. Concrètement, les services sont lancés sous forme de conteneurs _Docker_ ; ainsi, chaque composant est empaqueté avec ses dépendances, ce qui assure une forte reproductibilité des déploiements. Cette approche implique toutefois une phase de développement légèrement plus coûteuse, car elle requiert la définition et la gestion des images Docker. Le datalab adopte également une philosophie _cloud‑native_ : il est organisé autour d’un ensemble modulaire de briques logicielles (code, données, configuration, environnement d’exécution). Cette séparation nette constitue un principe majeur des bonnes pratiques, car elle facilite la maintenance, le scaling et l’intégration de nouveaux outils.
 
-Sur le plan de la **souveraineté et de l’indépendance**, toutes les technologies utilisées sont **auto‑hébergées et open‑source**. Même si les jeux de données manipulés ne sont pas sensibles, aucune offre propriétaire n’est employée, ce qui préserve la maîtrise totale du système. Il convient de préciser que, conformément à la politique de la plateforme, **seules des données non sensibles**[^remarque-onyxia-interne] (données publiques, jeux de données synthétiques, données agrégées anonymisées, etc.) peuvent être déposées ou traitées sur le datalab ; les données à caractère personnel ou confidentielles sont strictement exclues. En adoptant une **approche frugale**, nous sélectionnons des modèles open‑source adaptés à nos besoins pour une période déterminée, réduisant ainsi les dépenses liées aux licences de solutions commerciales. L’auto‑hébergement nous garantit en outre un **contrôle complet sur nos données** et un accès à des modèles affichant des performances comparables à celles des solutions propriétaires, spécifiquement pour notre cas d’usage.
+Sur le plan de la souveraineté et de l’indépendance, toutes les technologies utilisées sont auto‑hébergées et open‑source. Même si les jeux de données manipulés ne sont pas sensibles, aucune offre propriétaire n’est employée, ce qui préserve la maîtrise totale du système. Il convient de préciser que, conformément à la politique de la plateforme, seules des données non sensibles[^remarque-onyxia-interne] (données publiques, jeux de données synthétiques, données agrégées anonymisées, etc.) peuvent être déposées ou traitées sur le datalab ; les données à caractère personnel ou confidentielles sont strictement exclues. En adoptant une approche frugale, nous sélectionnons des modèles open‑source adaptés à nos besoins pour une période déterminée, réduisant ainsi les dépenses liées aux licences de solutions commerciales. L’auto‑hébergement nous garantit en outre un contrôle complet sur nos données et un accès à des modèles affichant des performances comparables à celles des solutions propriétaires, spécifiquement pour notre cas d’usage.
 
-Enfin, le SSP Cloud met à disposition des **ressources matérielles précieuses**. Chaque projet bénéficie d’un espace de calcul pouvant atteindre **30 CPU**, ainsi que d’un accès sur demande à des **GPU NVIDIA H100** (PCI‑e, NVLink), ressources rares mais essentielles pour les traitements IA massifs. Le stockage est assuré par un **espace S3**, offrant une capacité élevée et une grande disponibilité pour le versionnage et le partage des jeux de données.
+Enfin, le SSP Cloud met à disposition des ressources matérielles précieuses. Chaque projet bénéficie d’un espace de calcul pouvant atteindre au moins 30 CPU, ainsi que d’un accès sur demande à des GPU NVIDIA H100 (PCI‑e, NVLink), ressources rares mais essentielles pour les traitements IA massifs. Le stockage est assuré par un espace S3, offrant une capacité élevée et une grande disponibilité pour le versionnage et le partage des jeux de données.
 
 En résumé, le datalab SSP Cloud combine normalisation, modularité, souveraineté et puissance de calcul, tout en imposant la restriction à des données non sensibles, ce qui en fait une plateforme idéale pour mener des expérimentations IA rigoureuses, maîtriser les coûts et respecter les exigences de la fonction publique.
 
@@ -51,9 +52,9 @@ Au-delà du simple stockage, l’enjeu réside dans la capacité à interroger e
 
 Les serveurs d’inférence permettent l’exécution performante des modèles LLM. Plusieurs projets open source existent, dont _Llama.cpp_ et _Ollama_, mais _vLLM_ se distingue par son optimisation sur GPU et sa capacité à gérer l’inférence sur des millions de données. Cette solution est particulièrement adaptée au traitement par batch, un domaine récent présentant des défis spécifiques, notamment en termes de vitesse et de scalabilité. 
 
-Les moteurs d’inférence classiques fonctionnent avec un **batching statique**, comparable à une chaîne de production traditionnelle : un lot de requêtes est traité, puis l’opération s’arrête avant de passer au lot suivant. Cette approche entraîne des latences, notamment lorsque de nouvelles requêtes arrivent alors qu’un batch est déjà en cours de traitement.
+Les moteurs d’inférence classiques fonctionnent avec un _batching statique_, comparable à une chaîne de production traditionnelle : un lot de requêtes est traité, puis l’opération s’arrête avant de passer au lot suivant. Cette approche entraîne des latences, notamment lorsque de nouvelles requêtes arrivent alors qu’un batch est déjà en cours de traitement.
 
-À l’inverse, _vLLM_ adopte le principe du **continuous batching** : au lieu d’attendre que toutes les séquences d’un lot soient terminées, les requêtes finalisées sont immédiatement remplacées par de nouvelles, à chaque itération. Cela permet de maintenir les GPU constamment occupés, d’augmenter drastiquement le débit de traitement, de réduire la latence et d’améliorer l’utilisation des ressources. L’analogie serait celle d’un serveur de restaurant prenant les commandes de plusieurs tables en continu, plutôt que de multiplier les allers-retours pour chaque commande individuellement. Grâce à cette approche dynamique, vLLM est particulièrement adapté aux traitements portant sur des millions de données, en particulier lorsqu’une exécution en batch est requise.
+À l’inverse, _vLLM_ adopte le principe du _continuous batching_ : au lieu d’attendre que toutes les séquences d’un lot soient terminées, les requêtes finalisées sont immédiatement remplacées par de nouvelles, à chaque itération. Cela permet de maintenir les GPU constamment occupés, d’augmenter drastiquement le débit de traitement, de réduire la latence et d’améliorer l’utilisation des ressources. L’analogie serait celle d’un serveur de restaurant prenant les commandes de plusieurs tables en continu, plutôt que de multiplier les allers-retours pour chaque commande individuellement. Grâce à cette approche dynamique, vLLM est particulièrement adapté aux traitements portant sur des millions de données, en particulier lorsqu’une exécution en batch est requise.
 
 #### Gestionnaire de prompts
 
@@ -81,7 +82,7 @@ La première étape consiste à rassembler et structurer l’ensemble des donné
 
 S’y ajoutent les ressources des experts de la nomenclature de la DNE, en particulier la table de correspondance théorique et les notes explicatives, qui apportent un contexte métier crucial pour traiter les cas multivoques ou ambigus. L’annotation manuelle effectuée lors de la campagne nationale fournit une première vérité terrain (ground truth), servant de référence pour évaluer la qualité des prédictions générées par les modèles.
 
-Selon la stratégie choisie pour enrichir le contexte, les données sont organisées différemment. Avec la stratégie RAG (Retrieval-Augmented Generation), elles sont stockées dans une base de données vectorielle, permettant une recherche efficace de passages pertinents pour chaque libellé. Avec la stratégie CAG (Context-Augmented Generation), elles sont encapsulées sous forme d’objets en programmation orientée objet, ce qui facilite la manipulation et l’exploitation des informations lors de l’inférence.
+Selon la stratégie choisie pour enrichir le contexte, les données sont organisées différemment. Avec la stratégie RAG (Retrieval-Augmented Generation), elles sont stockées dans une base de données vectorielle, permettant une recherche efficace de passages pertinents pour chaque libellé. Avec la stratégie CAG (Context-Augmented Generation), ces informations sont encapsulées sous forme d’objets en programmation orientée objet, chaque code et son descriptif devenant un attribut. Cette organisation facilite la manipulation et l’exploitation des informations lors de l’inférence, garantissant que le LLM dispose du contexte nécessaire pour produire des annotations cohérentes.
 
 Les notions de RAG et CAG seront définies plus en détail ultérieurement, afin de préciser leur impact sur l’annotation automatique.
 
@@ -99,14 +100,13 @@ Pour ce qui concerne les LLM à utiliser, la recherche se fait sur _Hugging Face
 
 #### Prompting
 
-Qu'est ce qu'un prompt ? description textuelle de la tâche qu'une IA doit effectuer
+Un **prompt** correspond à la description textuelle de la tâche que le modèle doit accomplir. Il sert de guide au LLM pour orienter sa génération, fournir un format attendu et garantir que la réponse respecte les contraintes métier.
 
 ##### Donner une feuille de route au LLM: le prompt système, un prompt structurant
 
-un prompt particulier
-Prompt système:
+Le **prompt système** décrit globalement le rôle ou le mode opératoire du LLM avant qu’il traite les requêtes. Il agit comme un manuel d’instruction que le LLM « lit » avant de traiter toute requête. Il fixe le cadre général et la manière dont les réponses doivent être structurées.
 
-_manuel d’instruction lu par les IA génératives avant de vous répondre_
+Le prompt système appliqué au LLM pour labelliser en NAF 2025 est le suivant:
 
 ```
 Tu es un expert de la Nomenclature statistique des Activités économiques dans la Communauté Européenne (NACE). Tu es chargé de réaliser le changement de nomenclature. Ta mission consiste à attribuer un code NACE 2025 à une entreprise, en t'appuyant sur le descriptif de son activité et à partir d'une liste de codes proposés (identifiée à partir de son code NACE 2008 existant). Voici les instructions à suivre :
@@ -116,45 +116,78 @@ Tu es un expert de la Nomenclature statistique des Activités économiques dans 
 4. Évalue la cohérence entre le code NACE 2008 fourni et la description de l'activité de l'entreprise. Si le code NACE 2008 ne semble pas correspondre à cette description, retourne `False` dans le champ `nace08_valid` du JSON. Note que si tu arrives à classer la description de l'activité de l'entreprise dans un code NACE 2025, le champ `nace08_valid` devrait `True`, sinon il y a incohérence.
 5. Réponds seulement avec le JSON complété aucune autres information ne doit être retourné.
 ```
-##### Le prompt utilisateur, une requête contextuelle au LLM
- Prompt utilisateur ou Requête:
- - Un prompt [**spécifique**]{.orange} pour chaque observations comprenant : 
-  - le [**libellé**]{.blue2} de l'activité principale de l'entreprise
-  - l'ancien [**code NAF 2008**]{.blue2} connu
-  - La [**liste des codes possibles**]{.blue2} issues du mapping avec leurs [**notes explicatives**]{.blue2}
 
-- Une [**instruction sur le format**]{.orange} de réponse attendu
+##### Le prompt utilisateur, une requête contextuelle au LLM
+
+Un **prompt utilisateur** correspond à la requête spécifique adressée à un LLM pour exécuter une tâche. Il fournit le contexte précis et structuré, ainsi que les indications nécessaires pour générer une réponse conforme aux attentes. Contrairement au prompt système, qui fixe les règles et le cadre global de réponse, le prompt utilisateur décrit la tâche concrète à traiter.
+
+Le comportement du LLM dépend fortement de la formulation du prompt. En tant que modèle basé sur l’attention, le LLM pondère les éléments du texte et adapte sa réponse en fonction de la structure et des mots employés. Une variation dans la formulation peut entraîner des sorties différentes. Cela explique l’importance de versionner et d’optimiser les prompts, démarche connue sous le nom de _prompt engineering_, afin d’obtenir des réponses fiables et reproductibles[^prompt-engineering].
+
+Pour chaque observation à annoter, le prompt compren :
+Un prompt spécifique est appliqué pour chaque observation comprenant : 
+
+- le **libellé** de l'activité principale de l'entreprise
+- l'ancien **code NAF 2008 ou NAF rev 2** connu
+- La **liste des codes possibles** issues de l'appariement avec leurs **notes explicatives**
+- Une **instruction sur le format** de réponse attendu
+
+Chaque prompt utilisateur constitue ainsi un ensemble d’informations structurées permettant au LLM de produire une sortie directement exploitable dans le travail d’annotation, tout en restant sensible à la formulation et à l’ordre des informations fournies.
+
+[^prompt-engineering]: Il est important de noter que la reproductibilité exacte d’une réponse n’est garantie que si le modèle est configuré de manière déterministe, c’est-à-dire avec une absence de randomisation (temperature=0) et des seeds fixes lorsque le LLM le permet. Dans la pratique, les modèles sont souvent configurés pour générer des réponses variées, ce qui peut produire des sorties différentes pour un même prompt. La discipline du prompt engineering consiste à concevoir et versionner les prompts pour maximiser la cohérence et la pertinence des réponses, tout en réduisant cette variabilité lorsqu’elle est préjudiciable au projet.
 
 ### Étape 4: Apporter le contexte au LLM
 
-Génération augmentée, insufissance de la base de connaissance
+Les LLM pré-entraînés possèdent une _base de connaissance implicite_, issue de l’apprentissage massif sur de grandes quantités de textes, mais cette connaissance reste générale et insuffisante pour des tâches spécifiques, telles que le recodage précis des activités économiques selon la NAF 2025. Il est donc nécessaire d’enrichir le modèle avec un contexte externe pour orienter la génération et réduire les erreurs. Faute d'informations précises, le modèle risque d'_halluciner_, c’est-à-dire de générer des réponses plausibles mais factuellement erronées. Il est donc nécessaire d’enrichir le modèle avec un contexte externe pour orienter la génération et réduire les erreurs.
 
-#### RAG
+::: {.center}
+![Hallucination du LLM en l'absence de contexte métier](img/hallucination.drawio.png){#fig-hallucination-naf}
 
-@rag_paper
+:::
 
-#### CAG 
+Deux stratégies principales permettent d’intégrer ce contexte :
 
-@cag_paper
+#### RAG (Retrieval-Augmented Generation)
 
-Quelle statégie utiliser ?
+RAG combine un modèle génératif avec un module de recherche d’information. La requête est comparée à des documents ou embeddings existants via une mesure de similarité, et les documents les plus proches servent de contexte au LLM @rag_paper
 
-Réponse: contexte métier 
+Dans le contexte d’annotation pour la NAF 2025, la stratégie RAG consiste à rechercher, parmi un ensemble de documents ou d’embeddings, les descriptifs les plus similaires à l’activité de l’entreprise. Ces éléments servent alors de contexte pour le modèle. Cette approche présente l’avantage de proposer des codes basés sur la similarité avec les descriptifs, indépendamment de l’ancien code attribué. Elle évite donc la propagation d’éventuelles erreurs historiques et permet de générer des correspondances nouvelles ou inattendues. En revanche, elle ne garantit pas la cohérence avec l’ancien code : si aucun des codes récupérés n’est pertinent, la tâche peut devenir incodable, ou produire des propositions incorrectes ou incohérentes.
 
-Lequel utiliser ? Don't do RAG ? Oui et non, à nuancer mais du coup
+::: {.center}
+![Application du RAG comme stratégie pour la labellisation de masse](img/rag_application_naf.drawio.png){#fig-rag-application-naf}
 
-avantage/inconvénients: retrieval immédiat mais propagation de l'erreur en NAF rev 2
-Intéressant si bonne classification en NAF rev 2, notre cas donc CAG
+:::
+
+
+#### CAG (Context-Augmented Generation)
+
+La stratégie CAG, quant à elle, consiste à fournir un contexte structuré et préexistant au LLM. Pour en savoir davantage, il est recommandé de le lire l'article de @cag_paper. 
+Cette méthode tire parti des grandes fenêtres de contexte des LLM récents, qui permettent désormais d’inclure l’ensemble des informations nécessaires à la tâche. Cela présente un intérêt particulier, car le modèle peut s’affranchir des erreurs de retrieval lorsque le document complet est fourni comme contexte. Ce type d’intégration n’était pas possible avec les premiers modèles open source, dont la fenêtre de contexte limitée restreignait fortement la quantité d’informations exploitables.
+
+Dans cette application, les codes NAF, leurs descriptifs et les notes explicatives correspondantes sont encapsulés sous forme d’objets en programmation orientée objet, chaque objet associant le code à son libellé et à ses notes explicatives. Cette approche permet de garantir que les codes proposés restent cohérents avec l’ancien code de l’entreprise. Lorsque les correspondances historiques sont fiables, comme cela a été vérifié lors de la campagne d’annotation, cette méthode offre une qualité élevée des propositions. Toutefois, si l’ancien code contient une erreur, celle-ci peut se propager dans la liste des codes candidats, augmentant les risques de mauvaise attribution ou de limitation dans le choix des codes disponibles.
+
+::: {.center}
+![Application du CAG comme stratégie pour la labellisation de masse](img/cag_application_naf.png){#fig-cag-application-naf}
+
+:::
+
+#### Quelle stratégie retenir pour la suite ?
+
+### Comparaison des stratégies de génération de contexte pour NAF 2025
+
+| Stratégie | Principe | Avantages | Limites | Pertinence pour NAF 2025 |
+|:---------:|:---------|:---------|:--------|:-------------------------:|
+| **RAG** | Recherche des descriptifs les plus similaires à la requête pour fournir un contexte au LLM | Permet de générer des codes indépendamment de l’ancien code, exploration de correspondances nouvelles | Cohérence avec l’ancien code non garantie, risque d’incodabilité si aucun code pertinent n’est trouvé | Utile si ancien code incertain ou pour explorer de nouvelles correspondances |
+| **CAG** | Fourniture d’un contexte structuré préexistant au LLM, encapsulé sous forme d’objets | Assure la cohérence avec l’ancien code, haute qualité des propositions si l’ancien code est fiable | Propagation possible d’erreurs historiques, limitation par multivoques | Pertinent si l’ancien code est fiable, comme dans le cas de cette étude |
+
+Compte tenu des résultats obtenus lors de la campagne d’annotation et du faible risque de problèmes de cohérence évalué pour l’application métier, la stratégie CAG est retenue pour l’ensemble de l’étude et pour constituer la base du futur modèle en production. Cette approche garantit des propositions cohérentes et exploitables, notamment grâce à l’encapsulation des codes et descriptifs associés dans des objets en POO, facilitant leur manipulation et exploitation lors de l’inférence.
+
+La piste RAG reste ouverte pour des expérimentations conjointes entre le SSP Lab, le Data Scientist et le métier, afin d’évaluer son intérêt dans des contextes où l’ancien code pourrait être incertain ou pour enrichir la recherche de correspondances multivoques. Elle permet alors d’explorer de nouvelles associations de codes indépendamment de l’historique, mais avec un risque accru de propositions incohérentes ou incodables.
 
 ### Étape 5: Générer les annotations
 
-Contrôler la sortie du LLM: spécification et formatage
+Cette étape concerne la génération des annotations par le LLM, avec une attention particulière sur le contrôle de sa sortie, la spécification des informations attendues et le formatage afin de garantir des résultats exploitables et cohérents.
 
-Qualifier la réponse générée
-
-- Tendance des LLMs a être très [**volubiles**]{.orange}...
-- Construction d'une [**réponse type**]{.orange}, claire et brèves dans un [**format spécifique**]{.orange}
-- [**Format JSON**]{.orange} est le plus abondamment utilisé dans l'écosystème
+Les LLM ont tendance à produire des réponses très **volubiles** et détaillées, ce qui peut compliquer leur exploitation directe pour des tâches structurées. Pour pallier ce phénomène, il est recommandé de construire une **réponse type** claire et concise, organisée selon un **format spécifique**. Dans de nombreux projets et selon la littérature scientifique, le format JSON est largement utilisé car il permet une manipulation simple et automatisée des données générées tout en assurant une validation facile.
 
 ```json
 {
@@ -164,113 +197,44 @@ Qualifier la réponse générée
 }
 ```
 
-
-- [**Parsing**]{.orange} de la réponse :
-  1. [**Vérification**]{.blue2} du format
-  2. Contrôle des [**hallucinations**]{.blue2}
+Une fois la réponse générée, un **parsing** est appliqué. Il consiste d’abord à **vérifier** que le format respecte le schéma attendu, puis à contrôler l’absence d’**hallucinations** ou d’informations incohérentes. Cette démarche de spécification et contrôle strict des sorties est largement documentée dans la littérature comme étant efficace pour fiabiliser les résultats des LLM. Des travaux récents, tels que l’approche StructuredRAG @structuredrag, montrent d’ailleurs l’intérêt de combiner génération augmentée et contraintes de structure pour obtenir des sorties précises, normalisées et robustes.
 
 ### Étape 6 : Évaluation des LLM
 
-#### Quels LLM utiliser ?
-
-| Modèle | Taille | Vitesse d'inférence | Performance | Caractéristique |
-| --------- | ----------- | ---------- | ------------- | ------- |
-| Qwen 2.5 | 32B | [Lent]{.orange} | [Bonnes performances]{.green2} | Très restrictif |
-| Ministral | 8B | [Extrêmement rapide]{.green2} | [Très raisonnable]{.orange} | Pas restrictif |
-| Mistal Small | 44B | [Lent]{.orange} | [Bonnes performances]{.green2} | Assez restrictif |
-| Llama 3.1 | 70B (quantisé) | [Extrêmement lent]{.red2} | [Très bonnes performances]{.green2} | Assez restrictif |
-
 La sélection des Large Language Models (LLM) s'est concentrée sur les modèles les plus reconnus, considérés comme State-of-the-Art (SOTA) à un moment donné, ou **disponibles en open source**. Il est certain qu'au moment de la rédaction, d'autres LLM pourraient supplanter ceux présentés, et c'est une excellente nouvelle pour l'innovation. Cependant, ces modèles ont été choisis pour établir la base de référence (baseline) de cette première analyse. Cette approche était indispensable pour des raisons de faisabilité et d'optimisation des ressources, privilégiant l'étude approfondie de cet échantillon clé plutôt qu'une multiplication exhaustive des tests.
 
-#### Le fléau de l'évaluation des LLM
+Les modèles retenus présentent des profils variés, permettant d’observer un éventail contrasté de comportements selon les ressources matérielles, les contraintes d’inférence et les exigences de performance. 
 
-- ❓ Question cruciale : 
-  - Comment [**évaluer**]{.orange} un LLM ?
-  - Classification ➡️ plus facile, vraiment ?
-  - Complexité de la nomenclature
+#### Le défi de l'évaluation des LLM
 
-- Utilisation des $27k$ annotations comme ground truth 🥇
-  
-- [**3 métriques**]{.orange} de performances :
-  - Précision [**totale**]{.blue2}
-  - Précision parmi les [**"codables"**]{.blue2}
-  - Précision [**"LLM"**]{.blue2} (erreurs imputables à la génération seulement)
+L’évaluation des performances d’un LLM représente un véritable défi, en particulier lorsqu’il s’agit d’une tâche de classification fine dans une nomenclature. Contrairement à une classification classique, l’attribution d’un code NAF 2025 s’inscrit dans une nomenclature complexe où les frontières entre catégories peuvent être subtiles et où plusieurs choix peuvent paraître justifiables. Cette spécificité rend l’évaluation nettement moins triviale qu’il n’y paraît.
 
+Afin de garantir une mesure fiable, les 30 000 annotations de la campagne en NAF 2025 ont été utilisé comme ground truth. Ce jeu de données constitue la référence permettant de comparer objectivement les prédictions générées par les modèles.
 
-#### Performance des LLM {.scollable}
+#### Les métriques d'évaluation
 
+Trois métriques complémentaires ont été retenues pour évaluer les performances :
 
+- la **précision totale** qui mesure la proportion de prédictions correctes sur l’ensemble des observations.
+- la **précision sur les cas “codables”** qui évalue la justesse uniquement sur les observations pour lesquelles le modèle a estimé qu’un code pouvait être attribué. Cette métrique mesure la qualité lorsque le LLM prend effectivement une décision.
+- la **précision “LLM”** qui isole les erreurs imputables au modèle lui-même en excluant les biais provenant de la stratégie de contexte ou du choix des candidats. Elle permet d’évaluer la performance intrinsèque du modèle génératif.
 
+L’utilisation conjointe de ces trois métriques offre une vision plus nuancée de la performance, en distinguant la justesse globale, la fiabilité des décisions prises et la robustesse intrinsèque du LLM.
 
 ### Étape 7 : Générer le jeu multivoques
 
-#### Reconstruction du jeu multivoques: plusieurs stratégies
+#### Le principe
 
-- 💡[**Principe**]{.orange} : considérer les LLMs comme des [**annotateurs classiques**]{.blue2} ➡️ X-annotation
-- ❓Peut-on améliorer performances en [**mixant les résultats**]{.blue2} de chaque modèles ?
-- Construction de [**3 annotations**]{.orange} supplémentaires 
-  1. Choix en [**cascade**]{.blue2} (un modèle en priorité)
-  2. Choix par [**vote à la majorité**]{.blue2} 
-  3. Choix par [**vote pondéré**]{.blue2}
+Une fois les prédictions produites par chaque modèle, l’objectif est de capitaliser sur la diversité des réponses afin de construire un jeu d’annotations multiples, plutôt que de retenir l’avis d’un seul modèle. L’approche consiste à considérer chaque LLM comme un annotateur individuel, à l’image d’un groupe d’experts humains fournissant chacun leur propre proposition de code. Cette logique rapproche l’usage des LLM des pratiques d’annotation traditionnelle en garantissant un regard croisé sur chaque observation.
 
-#### "Plusieurs cerveaux valent mieux qu'un seul": combiner les annotations
+L’idée sous-jacente repose sur un constat simple : plusieurs “cerveaux” valent mieux qu’un seul. En combinant les prédictions de différents LLM, il devient possible d’exploiter leurs forces respectives et, potentiellement, d’améliorer la qualité globale des annotations.
 
-```{python}
-#| echo: false
-#| fig-cap: Performance des LLM et leurs combinaisons avec dans l'ordre Qwen, Ministral, Mistral et Llama 3.1
-import pandas as pd
-import numpy as np
-from plotnine import *
+#### Les stratégies d'annotation
 
-# Create the data
-data = {
-    'model': ['Qwen'] * 5 + ['Ministral'] * 5 + ['Mistral'] * 5 + ['Llama3.1'] * 5 + ['Cascade'] * 5 + ['Vote'] * 5,
-    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 6,
-    'accuracy': [.8431, .8213, .7335, .6835, .6657,
-                 .9016, .8726, .7729, .7044, .6784,
-                 .9110, .8869, .7928, .7375, .7173,
-                 .8771, .8508, .7627, .7041, .6836,
-                 .9233, .8978, .8063, .7544, .7351,
-                 .9215, .8963, .8044, .7529, .7330]
-}
+L’enjeu est alors de déterminer si la combinaison de plusieurs prédictions permet d’obtenir de meilleures performances qu’un LLM utilisé seul. Dans cette perspective, trois stratégies de consolidation ont été étudiées pour tirer parti de la complémentarité des modèles:
 
-# Convert to DataFrame
-df = pd.DataFrame(data)
+- **sélection en cascade**, consistant à définir un ordre de priorité entre annotateurs individuels et à retenir la première annotation jugée exploitable.
+- **vote à la majorité**, où le code retenu est celui proposé par le plus grand nombre de modèles.
+- **vote pondéré**, attribuant à chaque modèle un poids proportionnel à sa performance afin de privilégier les décisions des annotateurs réputés les plus fiables.
 
-# Define the model order (you can adjust this if you want a different order)
-model_order = ['Qwen', 'Ministral', 'Mistral', 'Llama3.1', "Cascade", "Vote",]
-df['model'] = pd.Categorical(df['model'], categories=model_order, ordered=True)
-
-# Define the correct order of levels
-level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
-
-# Convert level to categorical with the specified order
-df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
-
-# Format accuracy values for labels
-df['accuracy_label'] = df['accuracy'].round(2).astype(str)
-
-# Create the lollipop chart
-(ggplot(df, aes(x='model', y='accuracy'))
- + geom_segment(aes(x='model', xend='model', y=0, yend='accuracy'))
- + geom_point(size=3, color='blue')
- + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
-             size=8, nudge_y=0.02)
- + facet_wrap('~level', ncol=3)
- + theme_minimal()
- + labs(
-     x='',
-     y=''
- )
- + theme(
-     figure_size=(12, 6),  # Increased width to accommodate labels
-     panel_spacing=0.05,
-     axis_text=element_text(size=9),
-     axis_title=element_text(size=12),
-
- )
- + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
-)
-```
-
-Transition: Une première base d'apprentissage obtenu, il reste à entraîner un modèle en NAF 2025 et pouvoir le qualifier pour un passage en production
+Ce jeu multivoques constitue ainsi une première base d’apprentissage en NAF 2025. La prochaine étape consiste à entraîner un modèle spécialisé sur cette nouvelle nomenclature et à évaluer ses performances en vue d’un passage en production, les bases univoques et multivoques étant concaténées pour former la nouvelle base d'apprentissage en NAF 2025.

@@ -35,7 +35,7 @@ Les correspondances **univoques** (ou bijections) désignent les cas où un code
 |---------------------------:|--------------------------------:|
 |                        573 |                             551 |
 
-: Distribution de codes univoques ou bijections (Cette table indique qu'une large majorité des codes, 75%, sont univoques.) {#tbl-dist-univoques}
+: Effectif des codes univoques ou bijections. Cette table indique qu'une large majorité des codes, 75%, sont univoques.  {#tbl-dist-univoques}
 :::
 
 #### Multivoques
@@ -56,7 +56,7 @@ Les surjections (correspondances N:1) ne posent pas de problème fonctionnel maj
 *Cette figure illustre un éclatement (1:N) où un ancien code correspond à plusieurs codes possibles de la NAF 2025.*
 :::
 
-Les **multivoques désigneront**, tout au long de cet article, principalement les correspondances 1:N (éclatements), où N représente le nombre de possibilités dans la nouvelle nomenclature. Ces cas, qui concernent 25 % des codes, sont ceux qui requièrent une annotation manuelle pour déterminer la
+Les **multivoques désigneront**, tout au long de cet article, principalement les correspondances 1:N (éclatements), où N représente le nombre de possibilités dans la nouvelle nomenclature. Ces cas, qui concernent 25 % des codes, sont ceux qui requièrent une annotation manuelle pour déterminer la sous-classe correcte en NAF 2025 associé au libellé dans le jeu d'apprentissage, dont la conversion sera approfondie dans la section qui suit.
 
 ::: {#tbl-dist-multivoques layout-ncol=2}
 |   1-to-N |   Occurrences |
@@ -128,7 +128,7 @@ Bien que les codes multivoques ne représentent que 25% des codes dans la nomenc
 
 Une stratégie métier a été mise en place pour réduire ce volume. Elle consiste en la requalification de certains codes multivoques en correspondances biunivoques sur la base du principe de réalité métier et des informations contextuelles disponibles dans la déclaration.
 
-Cette table de passage métier identifie les "faux" multivoques[^remarque-tbl-passage]. Par exemple, le code 6820A ("Location de logements") est souvent requalifié en 6820G dans 16% des cas, en partant du postulat métier que ces locations sont majoritairement de longue durée. De même, les activités de production d'électricité des personnes physiques (3511Z) sont approximées comme de l'électricité de type renouvelable (3512Y).
+Cette table de passage métier permet d'identifier et de résoudre les "faux multivoques"[^remarque-tbl-passage]. Prenons l'exemple du code 6820A ("Location de logements") : bien qu'il puisse théoriquement correspondre à plusieurs nouveaux codes NAF, l'analyse manuelle montre qu'il est recodé en 6820G dans la grande majorité des cas multivoques (16% des cas ambigus). Le postulat métier est alors retenu que cette situation est univoque, car ces locations sont majoritairement de longue durée. De même, les activités de production d'électricité des personnes physiques (3511Z) sont approximées comme de l'électricité de type renouvelable (3512Y), en supposant qu'il s'agit principalement de la production par panneaux solaires.
 
 |      Type d'activité principale concerné       | Code initial | Code final | Proportion | Parti pris métier |
 |----------------------------------------------------:|-------------:|-----------:|------------:|------------------------------------:|
@@ -142,7 +142,7 @@ Cette table de passage métier identifie les "faux" multivoques[^remarque-tbl-pa
 
 : Requalification de certaines correspondances en biunivoque dans le jeu  : {#tbl-dist-faux-multivoques-niv5}
 
-Grâce à cette approche métier, 32,5 %, soit près d'un tiers, des codes multivoques initialement identifiés ont pu être corrigés ou reclassifiés dans la base d'apprentissage. Cependant, cette méthode ne peut raisonnablement s'appliquer qu'à moins de 50% des multivoques dans le jeu, dont le volume total (univoques et multivoques) atteint deux millions d'observations. Même en reclassifiant la moitié de ces cas, cela laisserait environ 500 000 multivoques à convertir, démontrant que l'efficacité de cette méthode est insuffisante pour éviter une campagne d'annotation massive.
+Grâce à cette approche métier, 32,5 %, soit près d'un tiers, des codes multivoques initialement identifiés ont pu être corrigés ou reclassifiés dans la base d'apprentissage. Cependant, cette méthode n'est applicable qu'à moins de 50 % du volume total des cas multivoques. Étant donné que la base d'apprentissage complète (univoques et multivoques) atteint deux millions d'observations, et qu'un nombre important de cas ambigus subsiste même après cette première reclassification, il resterait environ 500 000 multivoques à convertir. Ce volume résiduel est trop important pour être traité manuellement, car il nécessiterait des moyens humains importants que l'équipe n'a pas à disposition. Cela démontre l'inefficacité de cette méthode pour une conversion à grande échelle et souligne la nécessité de mettre en place un outil de codage automatique pour traiter ces cas de manière exhaustive.
 
 [^remarque-tbl-passage]: Certains codes dont le 6820B et le 4520A ont, au final, été corrigé lors de la mise à jour de la table de correspondance officielle, confirmant l'hypothèse de départ de reclassification.
 
@@ -157,7 +157,7 @@ La campagne d'annotation a été gérée dynamiquement grâce à une plateforme 
 [^rating-note]: la note la plus élevée indiquant la plus grande difficulté
 [^label-studio]: il s'agit de la version open source de Label Studio
 
-Au niveau du calendrier, la campagne s'est déroulée sur environ 5 mois, après une phase de formation à la NAF 2025 et un Beta Testing. Elle a mobilisé près de 25 experts du réseau APE. La campagne a été rythmé par des réunions mensuelles avec la _Division Nomenclatures économiques_ (DNE) et le _Département Répertoires, infrastructures et statistiques structurelles_ (RIAS), assurant un retour d'expérience régulier avec les experts de la nomenclature et des administrateurs de Sirene. Ces échanges étaient précieux pour la montée en compétence des annotateurs, la résolution des cas de classement les plus complexes et la gestion collective des cas à trancher. Ces opportunités ont permis d'anticiper certaines consignes de la NAF 2025 et de profiter de l'expertise de la DNE, favorisant un travail stimulant.
+Au niveau du calendrier, la campagne s'est déroulée sur environ 5 mois, après une phase de formation à la NAF 2025 et un bêta-test. Elle a mobilisé près de 25 experts du réseau APE. La campagne a été rythmé par des réunions mensuelles avec la _Division Nomenclatures économiques_ (DNE) et la _Division Répertoire interadministratif Sirene_ (RIAS), toutes deux rattachées au _Département Répertoires, infrastructures et statistiques structurelles_ (DRISS), assurant un retour d'expérience régulier avec les experts de la nomenclature et des administrateurs de Sirene. Ces échanges étaient précieux pour la montée en compétence des annotateurs, la résolution des cas de classement les plus complexes et la gestion collective des cas à trancher. Ces opportunités ont permis d'anticiper certaines consignes de la NAF 2025 et de profiter de l'expertise de la DNE, favorisant un travail stimulant.
 
 L'organisation quotidienne a varié selon les sites, par demi-journée ou selon convenance des agents. Malgré l'intérêt du travail et les échanges de pratiques, la charge prévue d'une heure par jour est devenue difficile à maintenir vers la fin de la campagne en raison de missions annexes.
 
@@ -169,7 +169,8 @@ Au final, cette approche a permis de constituer un jeu de données très particu
 
 ### Bilan et apports de la campagne
 
-Au niveau national, la campagne a généré un volume important de données et de retours qualitatifs:
+Au niveau national, la campagne a généré un volume important de données et de retours qualitatifs.
+Le bilan est le suivant:
 
 - Total annoté : 30 915 libellés.
 - Tâches inclassables : 1 830 libellés, appliqués lorsque l'activité n'était pas claire ou manquait de précisions.
@@ -193,23 +194,25 @@ La campagne a permis de mettre au point une feuille de route face aux cas ambigu
 
 Afin de collecter des retours sur l'effort cognitif, la plateforme de labellisation a permis aux participants d'attribuer une note de difficulté à chaque tâche selon une échelle simple de cinq modalités. Bien que cet indicateur ne présente pas une rigueur absolue, il constitue la seule mesure de difficulté disponible pour l'évaluation de la campagne.
 
-- 0: aucune difficulté ou rien à signaler 
-- 1: plutôt facile [^default-value]
-- 2: facile 
-- 3: moyen
-- 4: difficiles 
-- 5: très difficiles
+Les modalités de la note de difficulté sont les suivantes:
 
-[^default-value]: La modalité 1 (plutôt facile) correspond à la valeur par défaut de la plateforme. Par conséquent, cette modalité est peu considérée et n'a pas été prise en compte dans les résultats affichés dans les graphes ultérieurs.
+- 0 étoile: aucune difficulté ou rien à signaler 
+- 1 étoile: plutôt facile
+- 2 étoiles: facile 
+- 3 étoiles: moyenne
+- 4 étoiles: difficile 
+- 5 étoiles: très difficile
+
+{{< pagebreak >}}
 
 **Bilan global**
 
-- 0: 28,85 %  
-- 1: 56,47 % 
-- 2: 6,17 %
-- 3: 6,48% 
-- 4: 1,19 % 
-- 5: 0,1 %
+- 0 étoile: 28,85 %  
+- 1 étoile: 56,47 % 
+- 2 étoiles: 6,17 %
+- 3 étoiles: 6,48% 
+- 4 étoiles: 1,19 % 
+- 5 étoiles: 0,1 %
 
 L'exercice d'annotation est jugé de difficulté globalement modéré par les experts, avec seulement quelques cas jugés très complexes. Une analyse est nécessaire pour déterminer si ces cas difficiles correspondent nécessairement à des libellés issus des multivoques présentant le plus grand nombre de possibilités.
 
@@ -252,7 +255,7 @@ Pour évaluer la difficulté de l’annotation et apprécier la solidité de la 
 * **Concordance _absolue_** : les trois annotateurs choisissent exactement le même code.
 * **Concordance _partielle_** : au moins deux annotateurs sur trois convergent vers le même code.
 
-Sur cet échantillon, la **concordance absolue** entre les trois annotateurs s’élève à **62 %**. Ce résultat, relativement modeste, est cohérent avec la nature interprétative du classement NAF, où des nuances existent entre certains codes proches. Il est attendu que la concordance absolue soit sensiblement plus faible que la concordance partielle sur ce type de tâche. 
+Sur cet échantillon, la **concordance absolue** entre les trois annotateurs s’élève à environ **62 %**. Ce résultat, relativement modeste, est cohérent avec la nature interprétative du classement NAF, où des nuances existent entre certains codes proches. Il est attendu que la concordance absolue soit sensiblement plus faible que la concordance partielle sur ce type de tâche. 
 
 Afin d’illustrer la variabilité entre annotateurs, le graphique ci-dessous montre la concordance par paire :
 
@@ -398,7 +401,6 @@ La vérité terrain (ou ground truth) représente l'ensemble des données de ré
 Quelle lecture pour la suite ?
 
 Ces résultats suggèrent que la vérité terrain construite lors de la campagne est **suffisamment solide** pour servir de référence dans l’évaluation des modèles de la prochaine partie, tout en gardant à l’esprit qu’elle n’est pas exempte d’imperfections comme toute annotation humaine.
-
 Chercher une concordance de 100 % entre un modèle et cette vérité terrain n’est ni réaliste ni souhaitable. L’enjeu est plutôt d’identifier les modèles capables de s’aligner suffisamment bien avec cette référence pour garantir un niveau satisfaisant de qualité de codage.
 
 La section suivante s’inscrit dans cette logique : évaluer le degré d’alignement des LLM comme annotateurs avec cette vérité terrain afin de sélectionner ceux qui offrent le meilleur compromis entre performance, robustesse et cohérence métier.

@@ -1,0 +1,36 @@
+## Les modèles de ML en production
+
+- De plus en plus de modèle ML sont voués à être [**mis en production**]{.orange} à l'Insee
+- [**Multiples cas d'usages**]{.orange} : codification automatique, imputation, détection de valeurs extrêmes
+
+::: {.callout-note icon=false}
+
+## Quality Assurance Framework of the European Statistical System
+Source data, integrated data, intermediate results and statistical outputs must be [**regularly assessed and validated**]{.orange}.
+:::
+
+- Cela s'applique évidemment aux modèles de ML dans le processus de production statistique ➡️ [**besoin de maintenance**]{.orange} dans le temps
+
+## Qualité des modèles ML
+
+- Un modèle ML est entrainé pour résoudre un tâche à partir de [**données de référence**]{.orange}
+- Données réelles [**peuvent dévier**]{.orange} de ces données de références dans le temps ➡️ perte de performance ?
+- [**Ré-entrainement**]{.orange} du modèle devient nécessaire
+- [**Cas extrême**]{.orange} courant dans le cas de la statistique publique ➡️ [**changement de nomenclature**]{.blue2}
+
+## Historique du projet APE
+
+- [**Eté 2022**]{.orange} : entraînement d'un modèle fasttext sur les données Sirene 3
+- [**Novembre 2022**]{.orange} : 1ère mise en production (partielle) d'un modèle ML. 
+- [**Janvier 2023**]{.orange} : Prise en compte des valideurs dans Sirene 4 : éligibilité de l'activité du déclarant (CMA,...)
+- [**Mai 2023**]{.orange} : 1er ré-entrainement pour corriger un problème de classification
+- [**Mars 2024**]{.orange} : Toutes les liasses passent par fasttext. Complète bascule de Sirene 3 à 4
+- Et maintenant ?
+
+## Enjeux actuels
+
+- Plusieurs problématiques : 
+  - Modèle entrainé sur les données [**Sirene 3**]{.orange}
+  - Changement de nomenclature NAF 2008 vers [**NAF 2025**]{.orange}
+  - [**Explicabilité**]{.orange} du modèle pour les gestionnaires
+    - Groupe de veille n°10 en janvier 📅

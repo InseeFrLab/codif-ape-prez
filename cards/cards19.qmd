@@ -1,0 +1,12 @@
+---
+title: JMS - Présentation sur le réentrainement lié à la révision de la NAF
+image: /cards/img/logo-card-19.jpg
+date: "2025-11-25"
+description: |
+  <b>Description :</b> Présentation sur la génération de données d'entraînement pour un modèle de ML dans un contexte de changement de nomenclature
+author: Nathan Randriamanana
+slides:
+  text: pdf
+  url: /slides/jms2025-llm-relabeling/index.pdf
+order: 19
+---
