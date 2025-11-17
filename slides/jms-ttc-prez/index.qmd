@@ -1,0 +1,30 @@
+---
+title: "Modernisation de la codification automatique à l'Insee"
+subtitle: |
+  [**torchTextClassifiers et cas d'usage de l'APE**]{.orange}
+author:
+  - name: Meilame Tayebjee
+    email: meilame.tayebjee@insee.fr
+    affiliations:
+      - name: Insee, DMCSI, SSP Lab
+date: today
+slide-number: true
+footer: |
+  **[15e édition des journées de méthodologie statistique](https://journees-methodologie-statistique.insee.net/)**
+format:
+  jms-revealjs:
+    output-file: index.html
+# css: styles.css
+---
+
+# 1️⃣ Contexte
+
+{{< include sections/contexte.qmd >}}
+
+# 2️⃣ Présentation du package
+
+{{< include sections/package.qmd >}}
+
+# 
+
+**Merci de votre attention !**
