@@ -280,11 +280,25 @@ fig.add_hline(y=baseline_value, line_dash="dash",
 # Update layout with colored Y-axes
 fig.update_layout(
     xaxis_title="Test Batch Size",
-    yaxis=dict(title="Inference Time (LS)", side="left", titlefont=dict(color=color_primary), tickfont=dict(color=color_primary)),
-    yaxis2=dict(title="Inference Time / Num Steps", overlaying="y", side="right", titlefont=dict(color=color_secondary), tickfont=dict(color=color_secondary)),
+
+    yaxis=dict(
+        title=dict(text="Inference Time (LS)", font=dict(color=color_primary)),
+        tickfont=dict(color=color_primary),
+        side="left"
+    ),
+
+    yaxis2=dict(
+        title=dict(text="Inference Time / Num Steps", font=dict(color=color_secondary)),
+        tickfont=dict(color=color_secondary),
+        overlaying="y",
+        side="right"
+    ),
+
     legend=dict(x=5, y=1),
-    width=800, height=600
+    width=800,
+    height=600
 )
+
 
 fig.show()
 ```
