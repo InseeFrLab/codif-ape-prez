@@ -57,4 +57,4 @@
 
 ## Zone d'intérêt de la librairie
 
-![D'un point de vue production](../img/TTC_overview.png){width=1000px fig-align="center"}
+![D'un point de vue production](../img/positioning_matrix.png){width=800px fig-align="center"}
