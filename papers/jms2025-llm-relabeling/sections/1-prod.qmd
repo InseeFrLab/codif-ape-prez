@@ -149,10 +149,9 @@ Afin de soulager la charge des gestionnaires et d'augmenter l'automatisation, le
 Bien que la codification automatique soit la plus prépondérante[^odg-codif], le rôle du gestionnaire est crucial pour traiter les cas incertains et garantir la qualité.
 
 ::: {.center}
-![Représentation temporelle de la part des différents types de codification](img/taux_automatisation.png){#fig-poste-reprise-gestionnaire}
-
-*Est représenté ici, une année complète de codification APE*
+![Représentation temporelle de la part des différents types de codification](img/taux_automatisation.png){#fig-poste-reprise-gestionnaire width=70%}
 :::
+*Est représenté ici, une année complète de codification APE*
 
 [^odg-codif]: de l'ordre de 2 millions de codifications l'année
 
@@ -164,10 +163,10 @@ Lorsque le système envoie un dossier en reprise, le modèle est intégré pour 
 - Si le gestionnaire n'est pas satisfait ou si aucun code n'est proposé, il peut relancer des propositions en modifiant ou en saisissant un nouveau libellé, ou en recherchant directement dans la nomenclature via un moteur de recherche.
 
 ::: {.center}
-![Exemple de poste de reprise de la codification](img/reprise_gestionnaire_manque_contexte.png){#fig-poste-reprise-gestionnaire width=70%}
+![Exemple de poste de reprise de la codification dans Sirene 4](img/reprise_gestionnaire_manque_contexte.png){#fig-poste-reprise-gestionnaire width=90%}
 
-*Le modèle hésite entre plusieurs codes possibles. La proposition des échos permet au gestionnaire de coder plus vite, ce qui lui fait gagner du temps de recherche.*
 :::
+*Le modèle hésite entre plusieurs codes possibles. La proposition des échos permet au gestionnaire de coder plus vite, ce qui lui fait gagner du temps de recherche.*
 
 #### Signalement et retour au déclarant
 
@@ -217,8 +216,8 @@ En somme, fastText utilise une architecture simple mais efficace :
 ::: {.center}
 ![Architecture de fastText](img/diag-fasttext-rectif.png){#fig-diag-simple-fasttext}
 
-*Architecture simplifié avec plongement lexical et moyennage des plongements (ou des vectorisations), classification des vecteurs, puis conversion des scores en probabilité.*
 :::
+*Architecture simplifiée avec plongement lexical et moyennage des plongements (ou des vectorisations), classification des vecteurs, puis conversion des scores en probabilité.*
 
 De manière classique, un modèle attribue un score brut qui est converti en probabilité.
 Pour interpréter ces scores comme des probabilités, la fonction *softmax* s'applique:
@@ -248,6 +247,7 @@ La nouvelle implémentation a été conçue pour surmonter les limitations de Fa
 - réponse aux besoins métiers : la transition est cruciale pour permettre des fonctionnalités spécifiques, comme l'explicabilité des prédictions ou l'optimisation des différentes briques du modèle, ce que le FastText standard ne permettait pas.
 - performance opérationnelle : Le modèle est conçu pour satisfaire aux contraintes de production strictes, notamment le maintien d'un temps d'inférence acceptable (inférieur à 20 ms) et l'atteinte d'un taux d'automatisation élevé.
 - optimisation, coût et architecture : le nouveau modèle est conçu pour être plus léger, facilitant le transfert rapide et répondant aux exigences de coût. Il prépare également le système à une inférence GPU pour une évolutivité verticale future, même si cette ressource n'est pas encore prévue en production.
+- maintenabilité et gouvernance: Face à l'archivage de fastText de Meta depuis le 19 mars 2024, le développement d'une librairie maison est essentiel pour assurer la maintenabilité et la gouvernance de l'outil, sécuriser les corrections de bugs et la compatibilité, et positionner l'Insee dans les outils open source de classification supervisée.
 - capacité d'innovation : Le choix de PyTorch offre une mainmise complète sur l'architecture comme changer le tokenizer ou ajouter des couches et permet d'intégrer des avancées qui rendront le modèle plus performant que FastText [^amelioration-modele].
 
 [^amelioration-modele]: qui était, lui-même, déjà meilleur que l'ancien système Sicore
@@ -261,8 +261,8 @@ Pour stabiliser l'adaptation et l'organisation métier en production, la premiè
 ::: {.center}
 ![Exemple d'architecture possible séparant les variables catégorielles](img/NN.drawio.png){#fig-fasttext-pytorch}
 
-*il s'agit de l'architecture par défaut. Au lieu d'être concaténé avec le libellé en entrée, chaque variable catégorielle possède sa propre représentation vectorielle.*
 :::
+*Il s'agit de l'architecture par défaut. Au lieu d'être concaténé avec le libellé en entrée, chaque variable catégorielle possède sa propre représentation vectorielle.*
 
 Pour en savoir davantage sur cette librairie, il est conseillé de consulter l'article @torchTextClassifiers.
 
@@ -279,7 +279,7 @@ Ce processus est soumis à de nombreuses contraintes : gestion des vulnérabilit
 ::: {.center}
 ![Process simplifié de qualification du modèle](img/orga_ape_actuelle.png){#fig-orga_modele}
 
-*le déploiement du modèle en production est du ressort de l'informatique. Toutefois, le Data Scientist peut contribuer à la construction de l'image et la fourniture de cas tests*
+*Le déploiement du modèle en production est du ressort de l'informatique. Toutefois, le Data Scientist peut contribuer à la construction de l'image et la fourniture de cas tests*
 :::
 
 Deux principaux environnements sont utilisées respectivement pour entraîner le modèle et pour l'inférence en production.
@@ -296,7 +296,7 @@ Le datalab est l'environnement privilégié pour l'entraînement et l'expérimen
 - stockage : la plateforme bénéficie d'une grande capacité de stockage standard (type S3). Ce stockage est utilisé pour archiver tout ce qui touche au projet IA ou data science : les modèles, les versions stables, les données d'entraînement, et tous les intermédiaires d'expérimentation.
 
 ::: {.center}
-![Environnement et gestion de l'entraînement du modèle ](img/api-datalab.png){#fig-model-store width=70%}
+![Environnement et gestion de l'entraînement du modèle ](img/api-datalab.png){#fig-model-store width=60%}
 
 :::
 
@@ -317,7 +317,7 @@ Une fois qualifié, le modèle est préparé pour l'inférence en production :
 
 La pérennité et la fiabilité d'un modèle d'apprentissage supervisé en production, surtout en flux continu, exigent que la surveillance devienne une tâche routinière et permanente, et non pas une simple campagne d'annotation ponctuelle.
 
-### une campagne d'annotation pour valider la démarche
+### Une campagne d'annotation pour valider la démarche
 
 En préparation du changement de Nomenclature d'Activités Française (NAF), une campagne d'annotation spécifique a été menée en NAF rév. 2 (la nomenclature actuellement utilisée), avec un double objectif précis. 
 
@@ -336,29 +336,27 @@ Ci-dessous, quelques extraits d'un tableau de bord pour éclairer la décision.
 
 ::: {.center}
 ![Monitoring du modèle sur inférence d'un échantillon de surveillance représentatif](img/tab2.png){#fig-critere-codif}
-
-*L'hypothèse sous-jacente est que les annotations humaines représentent la vérité terrain* [^def-ground-truth]
 :::
+*L'hypothèse sous-jacente est que les annotations humaines représentent la vérité terrain* [^def-ground-truth]
 
 ::: {.center}
 ![Comparaison des taux d'automatisation des activités par période](img/tab6.png){#fig-critere-codif}
-
-*Une visualisation utile pour surveiller l'évolution de la confiance du modèle par activité à différents niveaux de la nomenclature*
 :::
+*Une visualisation utile pour surveiller l'évolution de la confiance du modèle par activité à différents niveaux de la nomenclature*
 
 [^def-ground-truth]: La vérité terrain ou _ground truth_ désigne les faits ou les données réelles et vérifiées qui servent de référence absolue pour entraîner et évaluer la performance d'un modèle d'apprentissage supervisé.
 
 ::: {.center}
 ![Surveillance des performances au cours de l'année 2024](img/tab3.png){#fig-critere-codif}
-
-*Le couloir représente l'intervalle de confiance: plus il y a d'annotations, plus il est resserré*
 :::
+*Le couloir représente l'intervalle de confiance[^ic-bootstrap]: plus il y a d'annotations, plus il est resserré*
+
+[^ic-bootstrap]: En particulier, il s'agit d'un intervalle de confiance bootstrap
 
 ::: {.center}
 ![Surveillance de la distribution des IC sur une période donnée](img/tab4.png){#fig-critere-codif}
-
-*Un échantillon de test permettrait aussi d'afficher la séparation entre bon et mauvais codage comme dans la Figure 3. Ainsi, il serait possible de surveiller la pertinence du seuil appliqué.*
 :::
+*Un échantillon de test permettrait aussi d'afficher la séparation entre bon et mauvais codage comme dans la Figure 3. Ainsi, il serait possible de surveiller la pertinence du seuil appliqué.*
 
 L'enjeu fondamental est d'intégrer la surveillance dans le flux de travail habituel (tâche routinière).
 Celle-ci repose sur l'annotation journalière d'un échantillon représentatif du flux de production. L'équipe devra reprendre cette surveillance avec la NAF 2025 dès son déploiement pour piloter le nouveau modèle, garantissant une qualité constante des données du répertoire. 

@@ -1,0 +1,38 @@
+
+## [Campagnes d'annotation]{.r-fit-text} {.scrollable .smaller} 
+
+*Actions possibles: attribuer un code, déléguer la tâche ou classer comme incodables*
+
+. . .
+
+1. [**En NAF rev 2 ou NAF 2008**: gold standard pour évaluer la _précision_]{.blue2} 
+    - 10 000 annotations pour valider la qualité dans la [**nomenclature actuelle**]{.blue2}
+    - **Pôle Qualité Sirene** ➡️ 6 annotateurs à l'aveugle, sans aide à la codification 
+
+. . .
+
+2. [**En NAF 2025**: ground truth pour servir de _référence_]{.blue2}
+    - 30 000 annotations sur les données [**multivoques uniques**]{.orange}
+    - réseau complet des experts APE ➡️ environ 25 annotateurs
+    - avec proposition de codes multivoques en fonction du code en NAF rev 2
+
+. . .
+
+- 6 % de tâches déléguées
+- 6 % de libellés inclassables
+
+## Concilier l'expertise et l'innovation
+
+![](../img/human_vs_llm.drawio.png){fig-align="center"}
+
+Dans quelle mesure, peut-on tirer profit des LLM ?
+
+::: notes
+Se pose la question de savoir quand
+- réseau complet ➡️ 25 experts APE
+    - avec proposition de codes multivoques en fonction du code en NAF rev 2
+    - Objectif: 
+        - attribuer un [**code NAF 2025**]{.blue2} 🚀
+        - faire "vivre" la NAF 2025
+        - Vérifier la [**qualité**]{.blue2} du code NAF 2008 🗸
+:::

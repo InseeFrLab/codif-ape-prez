@@ -1,77 +1,51 @@
-
-## Calendrier pour l'adoption de la nouvelle NAF 🗓️
-
-- Vers une [**adoption transitoire**]{.orange}
-- [**2025**]{.orange} ➡️ double codification en NAF 2025
-  - [**Sirus**]{.blue2} : recodification pour fin 2025
-  - [**Sirene**]{.blue2} : Intégration de la NAF 2025 [**en flux**]{.green2} et d'une infrastructure MLOps-compatible
-- [**2026**]{.orange} ➡️ amélioration de la codification en NAF 2025
-- [**2027**]{.orange} ➡️ codification en [**NAF 2025**]{.blue2} avec maintien de la codification NAF 2008
-
-
-## NAF 2025 : quels changements ? 
-
-- Au [**niveau 5**]{.orange} : [**746**]{.blue2} sous classes contre [**732**]{.blue2} auparavant
-- Principalement des éclatements au niveau de la classe (niveau 4) ... mais pas que !
-- [**551 classes univoques**]{.orange}, correspondance 1-pour-1 ➡️ cas idéal ! 👌
-
-![](../img/univoques.png){fig-align="center"}
-
-
 ## NAF 2025 : les cas multivoques {.scrollable}
 
+- Au [**niveau 5**]{.orange} : [**746**]{.blue2} sous-classes contre [**732**]{.blue2} auparavant
 - [**181 classes multivoques**]{.orange}, correspondance 1-pour-N ➡️ cas problématiques ! 🚩
 - [**Besoin d'un expert**]{.orange} pour déterminer le nouveau code
 
 ![](../img/multivoques.png){fig-align="center"}
 
 
-<details> 
-<summary> 
-    <font size=3 color=black><b>Afficher la distribution des codes multivoques</b></font> 
-</summary>
+## [Combien représentent-ils ?]{.r-fit-text} {.scrollable}
 
-| 1-to-N | # occurence |
-| ---   | --- |
-| 2 | 109 |
-| 3 | 30 |
-| 4 | 24 |
-| 5 | 6 |
-| 6 | 4 |
-| 8 | 1 |
-| 9 | 2 |
-| 21 | 1 |
-| 27 | 1 |
-| 36 | 1 |
-| 38 | 2 |
+[**Jeu d'apprentissage**]{.orange} issues de [**Sirene 4**]{.blue2}: $~2.7$ millions d'observations
 
-</details>
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Peu en théorie
+
+::: {.center}
+
+|   Part de multivoques  |   Part d'univoques   |
+|---------------------------:|--------------------------------:|
+|                        25 % |                             75 % |
 
 
-## Enjeux et besoins multiples
+: Représentation des multivoques dans la table de correspondance {#tbl-dist-multivoques-corresp}
+:::
 
-- Besoin de recoder le [**stock**]{.orange} de liasse de Sirene ➡️ + [**$14$ millions**]{.orange}...
-- Pouvoir coder le [**flux**]{.orange} en NAF 2025 ➡️ entraîner un modèle ➡️ besoin d'avoir un [**stock**]{.orange}...
-- Modèle en NAF 2008 entrainé sur + [**10 millions**]{.orange}
-- Performance de fastText [**très dépendant**]{.orange} du nombre de données d'entraînement
+:::
 
-## Données à disposition
+::: {.column width="50%"}
+### Beaucoup en pratique
 
-- Stock [**Sirene 3**]{.orange} : [**$~10$ millions**]{.blue2} obs. mais peu adaptées aux nouvelles données
-- Stock [**Sirene 4**]{.orange} : [**$~2.7$ millions**]{.blue2} obs.
-    - Univoques : [**$1.3$ millions**]{.blue2} obs. et 504 sous-classes
-    - Multivoques : [**$1.4$ millions**]{.blue2} obs. et 177 sous-classes
 
-- [**Campagne d'annotation manuelle**]{.orange} indispensable
+::: {.center}
+|   Part de multivoques  |   Part d'univoques   |
+|---------------------------:|--------------------------------:|
+|                        52 % |                             48 % |
 
-## Campagne d'annotation 
+: Réprésentation des multivoques dans le jeu d'apprentissage {#tbl-dist-multivoques-jeu}
+:::
 
-- Lancement d'une campagne d'annotation depuis [**mi-2024**]{.orange}
-- 25 experts APE
-- 1 heure par jour
-- Focus sur les données [**multivoques uniques**]{.orange}
-- 🎯 Objectif [**double**]{.orange} :
-  - Attribuer un [**code NAF 2025**]{.blue2} 🚀
-  - Vérifier la [**qualité**]{.blue2} du code NAF 2008 🗸
+:::
 
-En somme, un peu plus de $~30k$ données annotées... insuffisant !
+::::
+
+. . .
+
+➡️ $~1.4$ millions de multivoques à recoder manuellement !

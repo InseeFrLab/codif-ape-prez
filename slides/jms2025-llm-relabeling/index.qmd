@@ -1,15 +1,18 @@
 ---
 title: Les LLM au coeur du réentraînement d'un modèle d'apprentissage en nouvelle nomenclature
 subtitle: |
-  [**Journée méthodologie statistique**]{.orange}
-author: |
-  [Thomas Faria](https://github.com/ThomasFaria),
-  [Nathan Randriamanana]{.orange}(https://github.com/TheAIWizard)
-date: "25/11/2025"
-date-format: "D MMMM YYYY"
+  [**Journée méthodologie statistique 2025**]{.orange}
+author:
+  - name: Nathan Randriamanana
+    email: nathan.randriamanana@insee.fr
+    affiliations:
+      - name: Insee, DSE
+date: 2025-11-25
+date-format: long
+lang: fr
 slide-number: true
-# uncomment for French presentations:
-lang: fr-FR
+footer: |
+  **[15e édition des journées de méthodologie statistique](https://journees-methodologie-statistique.insee.net/)**
 # for blind readers:
 slide-tone: false
 chalkboard: # press the B key to toggle chalkboard
@@ -17,25 +20,61 @@ chalkboard: # press the B key to toggle chalkboard
 # uncomment to use the multiplex mode:
 # multiplex: true
 format:
-  onyxia-revealjs:
+  jms-revealjs:
     output-file: index.html
+revealjs-plugins:
+  - confetti
+  - pointer
 controls: true
 css: ../custom.css
 ascii: true
+bibliography: references.bib
 ---
+
+# Sommaire
+
+1️⃣ [**Introduction**]{.blue2} 
+
+2️⃣ [**Nouvelle nomenclature et données d'entraînement**]{.blue2} 
+
+3️⃣ [**Annotations humaines et virtuelles**]{.blue2} 
+
+4️⃣ [**Méthodologie**]{.blue2}
+
+5️⃣ [**Résultats**]{.blue2}
+
+6️⃣ [**Conclusion**]{.blue2}
+
+7️⃣ [**Remerciements**]{.blue2}
+
 
 # 1️⃣ Introduction
 
 {{< include sections/introduction.qmd >}}
 
-# 2️⃣ Passage de la NAF 2008 à la NAF 2025
+# 2️⃣ Révision de la NAF et jeu d'apprentissage
 
 {{< include sections/chgmt-nom-naf2025.qmd >}}
 
-# 3️⃣ Méthodologie appliquée
+# 3️⃣ Annotations humaines et virtuelles
+
+{{< include sections/annotations.qmd >}}
+
+# 4️⃣ Méthodologie appliquée
 
 {{< include sections/methodo.qmd >}}
 
-# 4️⃣ Résultats 
+# 5️⃣ Résultats 
 
 {{< include sections/resultats.qmd >}}
+
+# 6️⃣ Conclusion
+
+{{< include sections/conclusion.qmd >}}
+
+# 7️⃣ Remerciements
+
+{{< include sections/remerciements.qmd >}}
+
+
+# Références

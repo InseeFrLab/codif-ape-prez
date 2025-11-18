@@ -1,36 +1,82 @@
-## Les modèles de ML en production
 
-- De plus en plus de modèle ML sont voués à être [**mis en production**]{.orange} à l'Insee
-- [**Multiples cas d'usages**]{.orange} : codification automatique, imputation, détection de valeurs extrêmes
+## Contexte {.smaller}
+
+- De plus en plus de modèle ML sont voués à être [**mis en production**]{.orange} à l'Insee cf @rapport2024IG
+    - [**Multiples cas d'usages de codification**]{.orange} : COICOP, NA2008, PCS2020, APE
+    - 🎯 Présentation axée sur l'Activité Principale Exercée (APE) des entreprises
+- Révision de la Nomenclature d'Activités Française (NAF):
+    - Adaptation au nouveau paysage économique 
+    - coordination avec la révision européenne de la NACE
+- Des innovations d'autres INS sur la recodification par LLM notamment @ClassifAI
+- Concurrence forte et mondiale dans le secteur de l'IA générative: course au _compute_ et aux données cf l'essai de @thebitterlesson, 
+- Littérature **abondante** et en plein essor: @rag_paper, @cag_paper, @structuredrag, @hierarchicalrag
+
+
+::: notes
+(intégration d’activités émergentes et reconnues, ...)
+Les projets de codification basé sur du machine learning en production au sein de la maison sont nombreuses
+si je devais en citer quelques-uns: COICOP, PCS, 
+s'intéresse au cas du répertoire Sirene
+
+:::
+
+## [La source des données d'entreprises et des libellés d'activités]{.r-fit-text} {.nonincremental auto-animate=true .smaller}
 
 ::: {.callout-note icon=false}
 
-## Quality Assurance Framework of the European Statistical System
-Source data, integrated data, intermediate results and statistical outputs must be [**regularly assessed and validated**]{.orange}.
+## Loi PACTE
+À partir du 1er janvier 2023, l’ensemble des formalités d’entreprise doit être déposé en ligne auprès d’un [**organisme unique**]{.orange}.
 :::
 
-- Cela s'applique évidemment aux modèles de ML dans le processus de production statistique ➡️ [**besoin de maintenance**]{.orange} dans le temps
+. . .
 
-## Qualité des modèles ML
+INPI = _Institut National de la Propriété Industrielle_
 
-- Un modèle ML est entrainé pour résoudre un tâche à partir de [**données de référence**]{.orange}
-- Données réelles [**peuvent dévier**]{.orange} de ces données de références dans le temps ➡️ perte de performance ?
-- [**Ré-entrainement**]{.orange} du modèle devient nécessaire
-- [**Cas extrême**]{.orange} courant dans le cas de la statistique publique ➡️ [**changement de nomenclature**]{.blue2}
+- Office des brevets 
+- Opérateur du [**Guichet Unique des Entreprises (GUE)**]{.orange}
 
-## Historique du projet APE
+. . .
 
-- [**Eté 2022**]{.orange} : entraînement d'un modèle fasttext sur les données Sirene 3
-- [**Novembre 2022**]{.orange} : 1ère mise en production (partielle) d'un modèle ML. 
-- [**Janvier 2023**]{.orange} : Prise en compte des valideurs dans Sirene 4 : éligibilité de l'activité du déclarant (CMA,...)
-- [**Mai 2023**]{.orange} : 1er ré-entrainement pour corriger un problème de classification
-- [**Mars 2024**]{.orange} : Toutes les liasses passent par fasttext. Complète bascule de Sirene 3 à 4
-- Et maintenant ?
+- [**Principal flux d'alimentation**]{.orange} des déclarations du répertoire Sirene 
+- Fin des Centre de Formalités des Entreprises (CFE)  
+➡️ description libre du libellé d'activité: [**texte non-structuré**]{.orange}
 
-## Enjeux actuels
+::: notes
+fournisseur des brevets, gestion pièces justificatives
 
-- Plusieurs problématiques : 
-  - Modèle entrainé sur les données [**Sirene 3**]{.orange}
-  - Changement de nomenclature NAF 2008 vers [**NAF 2025**]{.orange}
-  - [**Explicabilité**]{.orange} du modèle pour les gestionnaires
-    - Groupe de veille n°10 en janvier 📅
+:::
+
+## [Le répertoire Sirene]{.r-fit-text} {.nonincremental auto-animate=true .scrollable .smaller}
+
+Sirene = _Système Informatique pour le Répertoire des Entreprises et de leurs Établissements_
+
+- Répertoire [**de référence**]{.orange} historique gérant le cycle de vie des entreprises 
+- garant du SIREN, SIRET [**et**]{.orange} de l'APE basé sur la NAF
+- Bascule de Sirene 3 à [**Sirene 4**]{.orange} ➡️ traitement [**en flux**]{.blue2}
+- Sicore inefficient face au volume à traiter et particulièrement [**diversité**]{.orange} des libellés 
+
+. . .
+
+➡️ Mis en place d'un modèle d'apprentissage supervisé fin d'année 2022.
+
+. . .
+
+- évolution dans le temps des activités ou des descriptifs ➡️ dérive des données
+- [**Cas extrême**]{.orange} courant pour la statistique publique ➡️ [**changement de nomenclature**]{.blue2}
+
+Malgré l'absence naturelle de données, comment entraîner notre modèle en NAF 2025 ?
+
+::: notes
+garant du SIREN, SIRET que vous connaissez mais aussi de l'APE que vous voyez 
+quand vous faites vos courses sur vos tickets de caisse.
+
+gestion unitaire et très réactive des dossiers d’entreprises
+
+Pas seulement sur le ticket de caisse mais dans de nombreux SI d'entreprises et d'administration
+sur ce cas d'usage
+
+Nomenclature actuelle NAF rev 2 ou NAF2008
+Les raisons qui poussent à ré-entraîner un modèle sont nombreuses
+tenue répertoire
+rupture totale et exogène de la définition même des modalités de la variable cible, rendant les codes non bijectifs immédiatement obsolètes
+:::

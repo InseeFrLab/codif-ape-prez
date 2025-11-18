@@ -1,35 +1,20 @@
-## Méthodologie
+## Méthodologie { .smaller}
 
 - 🎯 [**Objectif**]{.orange} : Reconstruire un jeu d'entraînement le plus exhaustif possible
-- Expérimentation [**one-shot**]{.orange} ➡️ pas de contrainte de reproductibilité ... en production
+- 💡[**Principe**]{.orange} : considérer les LLMs comme des [**annotateurs virtuels**]{.blue2} 
+
+![](../img/methodo-nace-rev.png){fig-align="center"}
+
+::: notes
 - Utilisation de [**LLMs**]{.orange} pour générer des annotations en NAF 2025
 - [**Données**]{.orange} à disposition : 
   1. Stock [**Sirene 4**]{.blue2} ($~2.7$ millions d'observations)
   2. [**Table de passage**]{.blue2} réalisée par les experts APE
   3. [**Notes explicatives**]{.blue2} de la NAF 2025
-  4. [**Annotations manuelles**]{.blue2} ($~27k$ observations)
-
-## Méthodologie
-
-![](../img/methodo-nace-rev.png){fig-align="center"}
-
-## Tirer profit des LLMs
-
-- [**Retrieval Augmented Generation**]{.orange} (RAG) vs [**fine-tunning**]{.orange}
-
-- [**2 possibilités**]{.orange} :
-  1. RAG avec les [**notes explicatives**]{.blue2}
-    - Pas encore testé 📝
-  2. [**Pseudo-RAG**]{.blue2} : 
-    - [**Retriever manuel**]{.green2} utilisant la table de passage
-
-- 💡 Idée générale ➡️ Fournir les données essentielles au LLM pour convertir les codes NAF 2008 vers 2025
-
-::: {.callout-warning icon="false"}
-L'idée n'est pas de construire un classifier, seulement créer des annotations.
+  4. [**Annotations manuelles**]{.blue2} ($~30k$ observations)
 :::
 
-## Le prompting
+## Le prompting {.scrollable}
 
 - Prompt [**système**]{.orange} identique pour toutes les observations
 
@@ -49,19 +34,12 @@ L'idée n'est pas de construire un classifier, seulement créer des annotations.
 
   </details>
 
-
-- Un prompt [**spécifique**]{.orange} pour chaque observations comprenant : 
+- Un prompt [**spécifique**]{.orange} pour chaque observation comprenant : 
   - le [**libellé**]{.blue2} de l'activité principale de l'entreprise
   - l'ancien [**code NAF 2008**]{.blue2} connu
   - La [**liste des codes possibles**]{.blue2} issues du mapping avec leurs [**notes explicatives**]{.blue2}
 
 - Une [**instruction sur le format**]{.orange} de réponse attendu
-
-## Qualifier la réponse générée
-
-- Tendance des LLMs a être très [**volubiles**]{.orange}...
-- Construction d'une [**réponse type**]{.orange}, claire et brèves dans un [**format spécifique**]{.orange}
-- [**Format JSON**]{.orange} est le plus abondamment utilisé dans l'écosystème
 
 <details> 
 <summary> 
@@ -78,28 +56,33 @@ L'idée n'est pas de construire un classifier, seulement créer des annotations.
 
 </details>
 
-- [**Parsing**]{.orange} de la réponse :
-  1. [**Vérification**]{.blue2} du format
-  2. Contrôle des [**hallucinations**]{.blue2}
 
 
-## Augmenter le contexte du LLM
+::: notes
+Qualifier la réponse générée
 
-### Les risques d'hallucination
+- Tendance des LLMs a être très [**volubiles**]{.orange}...
+- Construction d'une [**réponse type**]{.orange}, claire et brèves dans un [**format spécifique (JSON)**]{.orange}
+:::
+
+
+## Importance du contexte
 
 ![](../img/hallucination.drawio.png){fig-align="center"}
 
-### RAG: Retrieval-Augmented Generation
+##  Illustration avec ChatGPT
 
-![](../img/rag_application_naf.drawio.png){fig-align="center"}
+### Réponse formatée
 
-### CAG: Context-Augmented Generation
+![](../img/hallucination_chatgpt_NAF_2025.png){fig-align="center"}
+
+##  Illustration avec ChatGPT
+
+### Réponse non formatée
+
+![](../img/demande_contexte_chatgpt_NAF_2025.png){fig-align="center"}
+
+
+## Injection du contexte
 
 ![](../img/cag_application_naf.png){fig-align="center"}
-
-### Quelle stratégie retenir ?
-
-| Stratégie | Principe | Avantages | Limites | Pertinence pour NAF 2025 |
-|:---------:|:---------|:---------|:--------|:-------------------------:|
-| **RAG** | Recherche des descriptifs les plus similaires à la requête pour fournir un contexte au LLM | Permet de générer des codes indépendamment de l’ancien code, exploration de correspondances nouvelles | Cohérence avec l’ancien code non garantie, risque d’incodabilité si aucun code pertinent n’est trouvé | Utile si ancien code incertain ou pour explorer de nouvelles correspondances |
-| **CAG** | Fourniture d’un contexte structuré préexistant au LLM, encapsulé sous forme d’objets | Assure la cohérence avec l’ancien code, haute qualité des propositions si l’ancien code est fiable | Propagation possible d’erreurs historiques, limitation par multivoques | Pertinent si l’ancien code est fiable, comme dans le cas de cette étude |

@@ -25,10 +25,9 @@ Tout au long de cet article, nous emploierons les termes univoques et multivoque
 Les correspondances **univoques** (ou bijections) désignent les cas où un code de l'ancienne nomenclature (NAF rev 2 ou NAF 2008) correspond à un seul code dans la nouvelle nomenclature (NAF 2025). Ces cas ne présentent pas de difficulté majeure pour la conversion automatique des données d'apprentissage.
 
 ::: {.center}
-![Exemple de correspondance univoque 1:1](img/univoques.png){#fig-bijection}
-
-*Cette figure illustre une correspondance de type 1:1 entre un code de l'ancienne NAF et un code unique de la NAF 2025.*
+![Exemple de correspondance univoque 1:1](img/univoques.png){#fig-bijection width=60%}
 :::
+*Cette figure illustre une correspondance de type 1:1 entre un code de l'ancienne NAF et un code unique de la NAF 2025.*
 
 ::: {.center}
 |   Niveau classe (niveau 4) |   Niveau sous-classe (niveau 5) |
@@ -43,18 +42,16 @@ Les correspondances **univoques** (ou bijections) désignent les cas où un code
 Les cas multivoques représentent les situations où l'expertise humaine est indispensable, car ils introduisent une ambiguïté dans la conversion. Deux cas de figures se présentent mais l'attention se portera sur un cas particulier de correspondance.
 
 ::: {.center}
-![Exemple de correspondance N:1 ou surjection](img/surjection.png){#fig-surjection}
-
-*Cette figure illustre une surjection (N:1) où plusieurs anciens codes sont regroupés dans un seul nouveau code*
+![Exemple de correspondance N:1 ou surjection](img/surjection.png){#fig-surjection width=60%}
 :::
+*Cette figure illustre une surjection (N:1) où plusieurs anciens codes sont regroupés dans un seul nouveau code*
 
 Les surjections (correspondances N:1) ne posent pas de problème fonctionnel majeur dans le système de codification, car pour chaque ancien code considéré individuellement, il n'y a qu'un choix possible dans la nouvelle nomenclature. Elles peuvent donc être traitées de manière univoque dans le sens de la conversion.
 
 ::: {.center}
-![Exemple de correspondance multivoque 1:N](img/multivoques.png){#fig-multivoques}
-
-*Cette figure illustre un éclatement (1:N) où un ancien code correspond à plusieurs codes possibles de la NAF 2025.*
+![Exemple de correspondance multivoque 1:N](img/multivoques.png){#fig-multivoques width=60%}
 :::
+*Cette figure illustre un éclatement (1:N) où un ancien code correspond à plusieurs codes possibles de la NAF 2025.*
 
 Les **multivoques désigneront**, tout au long de cet article, principalement les correspondances 1:N (éclatements), où N représente le nombre de possibilités dans la nouvelle nomenclature. Ces cas, qui concernent 25 % des codes, sont ceux qui requièrent une annotation manuelle pour déterminer la sous-classe correcte en NAF 2025 associé au libellé dans le jeu d'apprentissage, dont la conversion sera approfondie dans la section qui suit.
 
@@ -121,14 +118,16 @@ Bien que les codes multivoques ne représentent que 25% des codes dans la nomenc
 |                        52 % |                             48 % |
 
 : Représentation des multivoques dans le jeu d'apprentissage {#tbl-dist-multivoques-data}
-*Malgré un impact sur seulement 25% des codes de la NAF, ces cas multivoques représentent l'essentiel du volume des données d'entraînement à convertir en NAF 2025.*
 :::
+*Malgré un impact sur seulement 25% des codes de la NAF, ces cas multivoques représentent l'essentiel du volume des données d'entraînement à convertir en NAF 2025.*
 
 #### Une approche métier insuffisante pour réduire le nombre
 
 Une stratégie métier a été mise en place pour réduire ce volume. Elle consiste en la requalification de certains codes multivoques en correspondances biunivoques sur la base du principe de réalité métier et des informations contextuelles disponibles dans la déclaration.
 
 Cette table de passage métier permet d'identifier et de résoudre les "faux multivoques"[^remarque-tbl-passage]. Prenons l'exemple du code 6820A ("Location de logements") : bien qu'il puisse théoriquement correspondre à plusieurs nouveaux codes NAF, l'analyse manuelle montre qu'il est recodé en 6820G dans la grande majorité des cas multivoques (16% des cas ambigus). Le postulat métier est alors retenu que cette situation est univoque, car ces locations sont majoritairement de longue durée. De même, les activités de production d'électricité des personnes physiques (3511Z) sont approximées comme de l'électricité de type renouvelable (3512Y), en supposant qu'il s'agit principalement de la production par panneaux solaires.
+
+::: {.center}
 
 |      Type d'activité principale concerné       | Code initial | Code final | Proportion | Parti pris métier |
 |----------------------------------------------------:|-------------:|-----------:|------------:|------------------------------------:|
@@ -141,6 +140,7 @@ Cette table de passage métier permet d'identifier et de résoudre les "faux mul
 |  Construction de maisons individuelles |        4120A |      4100G |          0,5 % | Exclure la restauration de monuments |
 
 : Requalification de certaines correspondances en biunivoque dans le jeu  : {#tbl-dist-faux-multivoques-niv5}
+:::
 
 Grâce à cette approche métier, 32,5 %, soit près d'un tiers, des codes multivoques initialement identifiés ont pu être corrigés ou reclassifiés dans la base d'apprentissage. Cependant, cette méthode n'est applicable qu'à moins de 50 % du volume total des cas multivoques. Étant donné que la base d'apprentissage complète (univoques et multivoques) atteint deux millions d'observations, et qu'un nombre important de cas ambigus subsiste même après cette première reclassification, il resterait environ 500 000 multivoques à convertir. Ce volume résiduel est trop important pour être traité manuellement, car il nécessiterait des moyens humains importants que l'équipe n'a pas à disposition. Cela démontre l'inefficacité de cette méthode pour une conversion à grande échelle et souligne la nécessité de mettre en place un outil de codage automatique pour traiter ces cas de manière exhaustive.
 
@@ -255,7 +255,7 @@ Pour évaluer la difficulté de l’annotation et apprécier la solidité de la 
 * **Concordance _absolue_** : les trois annotateurs choisissent exactement le même code.
 * **Concordance _partielle_** : au moins deux annotateurs sur trois convergent vers le même code.
 
-Sur cet échantillon, la **concordance absolue** entre les trois annotateurs s’élève à environ **62 %**. Ce résultat, relativement modeste, est cohérent avec la nature interprétative du classement NAF, où des nuances existent entre certains codes proches. Il est attendu que la concordance absolue soit sensiblement plus faible que la concordance partielle sur ce type de tâche. 
+Sur cet échantillon, la **concordance absolue** entre les trois annotateurs s’élève à environ 62 %. Ce résultat, relativement modeste, est cohérent avec la nature interprétative du classement NAF, où des nuances existent entre certains codes proches. Il est attendu que la concordance absolue soit sensiblement plus faible que la concordance partielle sur ce type de tâche. 
 
 Afin d’illustrer la variabilité entre annotateurs, le graphique ci-dessous montre la concordance par paire :
 
