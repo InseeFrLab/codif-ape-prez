@@ -123,7 +123,6 @@ Un **prompt utilisateur** correspond à la requête spécifique adressée à un 
 
 Le comportement du LLM dépend fortement de la formulation du prompt. En tant que modèle basé sur l’attention, le LLM pondère les éléments du texte et adapte sa réponse en fonction de la structure et des mots employés. Une variation dans la formulation peut entraîner des sorties différentes. Cela explique l’importance de versionner et d’optimiser les prompts, démarche connue sous le nom de _prompt engineering_, afin d’obtenir des réponses fiables et reproductibles[^prompt-engineering].
 
-Pour chaque observation à annoter, le prompt compren :
 Un prompt spécifique est appliqué pour chaque observation comprenant : 
 
 - le **libellé** de l'activité principale de l'entreprise
