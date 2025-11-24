@@ -1,0 +1,99 @@
+---
+title: Les LLM au coeur du réentraînement d'un modèle d'apprentissage en nouvelle nomenclature
+subtitle: |
+  [**Journée méthodologie statistique 2025**]{.orange}
+author:
+  - name: Nathan Randriamanana
+    email: nathan.randriamanana@insee.fr
+    affiliations:
+      - name: Insee, DSE
+date: 2025-11-25
+date-format: long
+lang: fr
+slide-number: true
+footer: |
+  **[15e édition des journées de méthodologie statistique](https://journees-methodologie-statistique.insee.net/)**
+# for blind readers:
+slide-tone: false
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  jms-revealjs:
+    output-file: index.html
+revealjs-plugins:
+  - confetti
+  - pointer
+controls: true
+css: ../custom.css
+ascii: true
+bibliography: references.bib
+---
+
+# Sommaire
+
+1️⃣ [**Introduction**]{.blue2} 
+
+2️⃣ [**Nouvelle nomenclature et données d'entraînement**]{.blue2} 
+
+3️⃣ [**Annotations humaines et virtuelles**]{.blue2} 
+
+4️⃣ [**Méthodologie**]{.blue2}
+
+5️⃣ [**Résultats**]{.blue2}
+
+6️⃣ [**Conclusion**]{.blue2}
+
+7️⃣ [**Remerciements**]{.blue2}
+
+
+# 1️⃣ Introduction
+
+::: notes
+Introduisons le contexte afin de bien comprendre la situation dans laquelle nous nous situons.
+:::
+
+{{< include sections/introduction.qmd >}}
+
+# 2️⃣ Révision de la NAF et jeu d'apprentissage
+
+::: notes
+Pour entraîner un modèle d'apprentissage ou notre classifieur, il nous faut un jeu d'entraînement sur lequel le classifieur va "apprendre".
+MAIS dans le contexte du changement de NAF, certains cas nous embêtent
+:::
+
+{{< include sections/chgmt-nom-naf2025.qmd >}}
+
+# 3️⃣ Annotations humaines et virtuelles
+
+{{< include sections/annotations.qmd >}}
+
+# 4️⃣ Méthodologie appliquée
+
+::: notes
+Ce qui nous amène à la méthodologie suivante:
+:::
+
+{{< include sections/methodo.qmd >}}
+
+# 5️⃣ Résultats 
+
+{{< include sections/resultats.qmd >}}
+
+# 6️⃣ Conclusion
+
+{{< include sections/conclusion.qmd >}}
+
+::: notes
+En conclusion, ce travail a relevé un gros défi qui apporte des perspectives d'innovation intéressantes
+dans le cadre de nomenclature à l'INSEE et au-delà. Peut être repris sur des problématiques similaires.
+Des pistes pour améliorer la démarche sont en cours d'investigation.
+:::
+
+# 7️⃣ Remerciements
+
+{{< include sections/remerciements.qmd >}}
+
+
+# Références

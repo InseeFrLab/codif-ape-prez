@@ -1,0 +1,365 @@
+Cette partie donne le contexte ayant permis et conditionnant la mise en production actuelle et à venir du modèle d'apprentissage automatique. Il s'agit de la genèse de notre base d'apprentissage et de notre modèle.
+Il est important pour être en mesure de saisir les conséquences transversales du changement de nomenclature et du rôle d'un nouveau modèle dans ce nouveau contexte.
+
+## Le Guichet Unique des Entreprises 
+
+Dans le cadre de la loi _PACTE (n° 2019-486 du 22 mai 2019)_, la mise en place d'un _guichet unique_ pour remplacer _les centres des formalités des entreprises (CFE)_ est décrite en ces termes: **à partir du 1er janvier 2023, l’ensemble des formalités d’entreprise doit être déposé en ligne auprès d’un organisme unique** et ce, afin de dématérialiser les démarches ainsi que d'avoir un unique point d'entrée pour effectuer les différentes formalités de création, de modification et de cessation d'activité directement en ligne sur le guichet 
+
+Par conséquent, le _guichet unique des entreprises_ est le principal flux d'alimentation des déclarations du répertoire Sirene qui les reçoit par envoi du portail du guichet unique. L'envoi des liasses se fait en temps quasi-réels dans la mesure où les informations sont envoyées à Sirene dès que le déclarant a terminé sa démarche sur le portail. Le déclarant peut être un chef d'entreprise, un salarié-délégataire ou un mandataire.
+
+Parmi les informations, est déclarée la description textuelle de l'activité principale de l'entreprise **ou libellé d'activité**. Avant la mise en place du guichet, un gestionnaire accompagnait le déclarant dans la manière de rédiger ce libellé d'activité. Le libellé était donc méticuleusement formaté et harmonisé, de sorte que l'attribution d'un code d'activité [^code-naf] par le système expert Sicore s'en trouvait grandement facilitée. Pour connaître les limites de Sicore, il est recommandé de lire l'article de la dernière session des JMS à ce sujet bien exposées par @sicore_limit_JMS. 
+
+Dorénavant, le déclarant n'est plus encadré par un gestionnaire ; la saisie s'effectue en totale autonomie via un champ libre non structuré sur le portail en ligne. Si l'absence de contraintes est un avantage, elle expose au risque d'erreurs de saisie notamment les fautes syntaxiques et à une incompréhension de ce qui doit être saisi en tant qu'activité principale, ce qui exige un système de codification plus élaboré pour s'adapter à ce choc.
+
+C'est dans ce contexte que Sirene et ses gestionnaires ont dû être en mesure de gérer un flux constant de libellés d'activité à codifier. Pour cela, ils ont mis en place une méthodologie adaptée pour gérer à la fois le volume, la fréquence et la variété des descriptions saisies, qui se comptent par millions annuellement, avec notamment des libellés pouvant être déroutants.
+
+[^code-naf]: code APE ou code NAF
+
+## Sirene 4: une nouvelle refonte face aux demandes de modernisation
+
+Sirene est un répertoire historique de l'Insee, dont l'application de gestion porte le même nom. Avant d'aborder la réponse qu'apporte Sirene 4 face à ce contexte, rappelons brièvement la raison d'être et le rôle de ce répertoire de référence, qui sont encore d'actualité, particulièrement dans ce contexte.
+
+### Le répertoire Sirene 
+
+Sirene _"Système Informatique pour le Répertoire des Entreprises et de leurs Établissements"_ est un répertoire historique de l'Insee créé (par le décret n°73-314 du 14 mars 1973) dont la gestion a été confiée à l'Insee. 
+
+Ce répertoire de référence enregistre l'état civil de toutes les entreprises et de leurs établissements et gère leur cycle complet: de leur naissance à leur cessation. C'est un processus vivant qui continue à traiter les différents évènements du cycle de vie de l'entreprise.
+
+Sirene est notamment garant juridique du SIREN, du SIRET [^siren-siret] et du code APE.
+Ce rôle demande une disponibilité de l'application de gestion et de ses gestionnaires pour traiter des formalités au quotidien. 
+
+En tant que répertoire de référence, les exigences de qualité du code APE, la disponibilité de l'application et la nécessité d'un traitement régulier des formalités sont inhérentes à sa mission historique. Ce rôle exige toujours la mobilisation constante des gestionnaires.
+
+[^siren-siret]: respectivement les identifiants uniques des entreprises et leurs établissement
+
+### La bascule de Sirene 3 à Sirene 4: une rupture et une évolution
+
+Historiquement, particulièrement dans Sirene 3, ce processus s'effectuait par le traitement de formalités en batch (ou en lots), avec des interventions groupées à intervalles réguliers.
+
+Ceci exige de l'Insee qu'elle soit capable de répondre rapidement. Le traitement en flux continu impose une **gestion unitaire et très réactive des dossiers d'entreprises**, avec la flexibilité nécessaire pour les débloquer. C'est une performance que le traitement par lots (batch) peut difficilement garantir, ce dernier nécessitant d'attendre la prochaine transmission.
+
+C'est précisément en ce sens que Sirene 4 marque un véritable changement de paradigme, permettant de quitter définitivement le monde des batches. La modernisation du répertoire s'appuie sur une architecture en micro-services qui rend possible la gestion continue des formalités.
+
+Au cœur de cette architecture, chaque module est autonome et orchestré par un workflow structuré qui appelle les services métier.
+L’architecture permet à un service d’appeler des API internes ou externes à différents endroits de l’application selon les besoins.
+Cela offre la souplesse d’utiliser le langage le plus adapté pour des cas d’usage spécifiques, par exemple en intégrant un modèle de codification exposé via une API Python.
+Cette organisation assure un couplage faible et facilite l’évolution du système ainsi que l’intégration de nouvelles fonctionnalités.
+
+Le workflow séquence de manière souple les différentes étapes du traitement d’une formalité, incluant notamment son analyse métier et la codification, assurant la flexibilité nécessaire à la gestion unitaire des dossiers.
+En somme, l’automatisation des tâches répétitives soulage le circuit et permet aux équipes de se concentrer sur les cas complexes à forte valeur ajoutée.
+Cette réorganisation des tâches pose de nouveaux défis organisationnels et structurels.
+
+Par ailleurs, l'outil Sicore ne convenait plus face au **format non-structuré des libellés provenant du Guichet Unique**. Son taux de codage automatique n'atteignait que 30%, impliquant près de 70% de reprise manuelle et surchargeant considérablement les équipes.
+
+De plus, le fonctionnement du système expert Sicore était fortement adhérent à l'ancienne architecture de l'application de gestion du répertoire (Sirene 3). La nouvelle architecture en micro-services de Sirene 4 a permis de découpler cet outil, rendant le système de classification moins dépendant de l'application principale. Il a ainsi été possible de le remplacer par un modèle d'apprentissage supervisé, dès le début du projet, tirant pleinement parti de la modularité de Sirene 4.
+
+C'est dans cette logique de modularité et de performance qu'il est pertinent d'expliquer comment s'articule un modèle dans le nouveau système de codification.
+
+## Le système de codification dans Sirene 4 
+
+Face à cette concentration de l'expertise humaine sur les cas complexes, la performance du système de codification lui-même devient un enjeu majeur. Il est donc essentiel d'en détailler le fonctionnement.
+La codification APE s'appuie sur deux piliers: 
+
+1. La codification automatique
+2. La reprise gestionnaire
+
+### Le traitement automatique des libellés
+
+Le système de codification de Sirene 4 gère les flux hétérogènes en combinant le libellé d'activité brut et des variables annexes dont catégorielles comme la catégorie juridique (dont certaines sont spécifiques aux administrations), le domaine et le sous-domaine d'activité d'une association.
+
+Le processus est séquentiel et vise à garantir la méthode la plus fiable en premier :
+
+1. **codification déterministe** : Tentée en premier lieu, elle s'appuie uniquement sur des variables catégorielles annexes pour les cas simples (ex: associations, institutions publiques). La tentative de codage est effectuée séquentiellement : d'abord à partir de la catégorie juridique, puis, si elle échoue, une tentative est appliquée sur la nature d'activité, et ainsi de suite sur les autres variables jusqu'au passage à la méthode suivante.
+2. **rejet automatique**: En cas d'échec du déterministe, un filtre rejette les déclarations invalides pour soumission au modèle de classification. Ce rejet concerne les libellés vides de sens (exemple : "idem") et sur l'utilisation d'expressions régulières pour détecter les saisies invalides, comme la simple mention d'un code APE dans le champ. Ces cas activent le retour de la formalité au portail du guichet unique pour demander au déclarant des précisions.
+
+    _Note : Ce filtre peut évoluer avec le changement de la nomenclature d'activités française (NAF), car certains libellés pourraient devenir incodables dû à des activités devenus caduques dans la nomenclature. L'extension du rejet à d'autres libellés incodables est une question en cours d'étude pour soulager la charge de travail._
+
+3. **codification probabiliste**: concerne principalement l'usage d'un classifieur probabiliste, déclenchée si les étapes précédentes échouent, elle cible les libellés non structurés en exploitant le texte libre et les variables annexes pour proposer un code APE avec un niveau de confiance.
+
+Le schéma ci-dessous illustre le séquencement des étapes.
+
+::: {.column-screen .center}
+![Détail de la codification de l'APE dans Sirene 4](img/table-passage-codification.png){#fig-codif-sirene width="700px"}
+
+*La modularité de l'architecture Sirene 4 (découplage par micro-services) permet de remplacer la codification probabiliste sans impacter les étapes précédentes. Cela a facilité sa migration rapide vers un appel d'API Python déployée sur Kube (la plateforme des nouvelles applications), favorisant son évolution. À terme, l'API entière intégrant toutes les étapes de codification peut également être migrée sur Kube, en bénéficiant de cette faible adhérence.*
+:::
+
+En résumé, le processus de codification automatique est le suivant : le système tente d'abord une codification déterministe. En cas d'échec, il passe à la codification probabiliste. Si le résultat probabiliste n'atteint pas un critère de _seuil_, le système conclut à un échec de codification automatique et renvoie le dossier en reprise manuelle.
+
+### Critère de passage en reprise
+
+Le mécanisme pour valider ou rejeter la codification probabiliste s'appuie sur un _indicateur de Confiance_ (IC). L'objectif est simple : séparer les bonnes codifications des mauvaises ou incertaines afin de garantir la qualité des données.
+
+#### L'Indicateur de Confiance (IC)
+
+L'Indicateur de Confiance est une mesure de la confiance accordée à la prédiction du modèle. Il se calcule comme la différence entre la probabilité de la meilleure prédiction (p1​) et celle de la deuxième meilleure prédiction (p2​):
+
+$$
+IC = p_1 - p_2, 
+$$
+
+où $p_i$ est la probabilité de la i-ème prédiction, les probabilités étant triées par ordre décroissant.
+
+::: {.center}
+![Illustration du calcul de l'indice de confiance par un modèle fastText](img/schema-fasttext.png){#fig-critere-codif width=70%}
+
+*Le calcul se fait par la différence des deux premières probabilités. Ce calcul est valable pour tout modèle de classification supervisée qui fournit des probabilités en sortie*
+:::
+
+#### Le Critère de décision
+
+Le critère de décision est un choix binaire, basé sur un _seuil_ prédéfini :
+$$
+\text{Ind}_{\text{Automatique}}
+= \mathbf{1}_{\{IC \ge \text{seuil}\}}
+=
+\begin{cases}
+  1 & \text{si } IC \ge \text{seuil}, \\
+  0 & \text{sinon.}
+\end{cases}
+$$
+
+Le risque majeur de ne pas fixer de _seuil_ serait d'accepter des codifications complètement aléatoires et incertaines, ce qui nuirait gravement à la qualité du répertoire.
+Le _seuil_ théorique recommandé se situe entre 0.65 et 0.7 pour le modèle _fastText_[^remarque-IC-modele]. Par précaution, Sirene 4 avait initié un _seuil_ de 0,8 qui a depuis été abaissé plus proche du _seuil_ recommandé pour soulager la charge.
+
+[^remarque-IC-modele]: Le position du seuil dépend du modèle d'apprentissage. Si une dérive des données réduit la performance du modèle, le seuil devient insuffisant. Face à la dégradation, la solution est le réentraînement du modèle. L'augmentation temporaire du seuil est une alternative qui, cependant, n'est pas toujours suffisante en cas de forte baisse de performance.
+
+#### Arbitrage entre la qualité et l'automatisation
+
+Le choix du _seuil_ de l'Indicateur de Confiance (IC) est une décision stratégique qui établit l'équilibre entre la productivité et la qualité. Baisser le _seuil_ allège la charge des gestionnaires mais augmente le risque d'erreur, tandis que l'augmenter garantit la qualité mais surcharge les équipes. L'objectif est de maximiser l'automatisation tout en maintenant le taux d'erreur sous contrôle.
+
+La distribution des indicateurs de confiance permet d'objectiver cet arbitrage. Le graphique ci-dessous illustre comment, selon le _seuil_ choisi, on parvient à séparer plus ou moins fortement les distributions des bonnes et des mauvaises codifications.
+
+⚠️ **Le _seuil_ : Une décision méthodologique et métier**
+
+Le _seuil_ n'est pas un simple paramètre opérationnel, mais un élément méthodologique sensible. Toute modification doit être rigoureuse : un abaissement mal contrôlé risquerait de polluer la base d'apprentissage du modèle, mettant en péril la performance à moyen-long terme.
+
+En définitive, la détermination du _seuil_ est un arbitrage répondant aux besoins du métier. Pour une prise de décision quantitative fine, un tableau de bord (dashboard) peut être fourni au _product owner_ ou responsable de l'application, permettant de suivre l'impact du _seuil_ sur les métriques clés. Ce besoin de surveillance constante fera l'objet de la dernière sous-partie.
+
+::: {.center}
+![Distributions des bonnes et mauvaises codifications selon IC](img/IC.png){#fig-IC}
+
+*Approche méthodologique partagée par d'autres projets de codification automatique à l'Insee. Sur un échantillon de test. L’axe vertical représente la fréquence des codifications pour chaque niveau d’IC. Les lignes verticales indiquent, pour différents seuils d’IC, la part de codifications devant être reprises manuellement. Par exemple, avec un seuil de 0,75, environ 20 % des codifications nécessitent une reprise, soit 80 % peuvent être automatisées.*
+:::
+
+Afin de soulager la charge des gestionnaires et d'augmenter l'automatisation, le seuil de l'indicateur de confiance, initialement fixé à 0,8 par prudence et supérieur à la recommandation théorique de 0,65-0,7, a été abaissé pour se rapprocher de la valeur théorique.
+
+### La reprise gestionnaire des cas incertains
+
+Bien que la codification automatique soit la plus prépondérante[^odg-codif], le rôle du gestionnaire est crucial pour traiter les cas incertains et garantir la qualité.
+
+::: {.center}
+![Représentation temporelle de la part des différents types de codification](img/taux_automatisation.png){#fig-poste-reprise-gestionnaire width=70%}
+:::
+*Est représenté ici, une année complète de codification APE*
+
+[^odg-codif]: de l'ordre de 2 millions de codifications l'année
+
+#### Aide à la codification et ergonomie
+
+Lorsque le système envoie un dossier en reprise, le modèle est intégré pour aider à la codification :
+
+- Il propose jusqu'aux cinq codes les plus probables et n'affiche pas ceux ayant un Indicateur de Confiance (IC) trop bas, afin d'assurer l'ergonomie et d'éviter des propositions aléatoires.
+- Si le gestionnaire n'est pas satisfait ou si aucun code n'est proposé, il peut relancer des propositions en modifiant ou en saisissant un nouveau libellé, ou en recherchant directement dans la nomenclature via un moteur de recherche.
+
+::: {.center}
+![Exemple de poste de reprise de la codification dans Sirene 4](img/reprise_gestionnaire_manque_contexte.png){#fig-poste-reprise-gestionnaire width=90%}
+
+:::
+*Le modèle hésite entre plusieurs codes possibles. La proposition des échos permet au gestionnaire de coder plus vite, ce qui lui fait gagner du temps de recherche.*
+
+#### Signalement et retour au déclarant
+
+Le gestionnaire peut rejeter manuellement la demande avec le bouton **Signaler un problème**. Cette action produit un retour immédiat au Guichet Unique pour demander au déclarant des précisions, selon les indications fournies par le gestionnaire.
+
+L'efficacité opérationnelle repose sur la capacité du modèle à gérer la variété, la fréquence et le volume des libellés dans le flux continu. Ces contraintes de production sont fortes et dépassent la seule précision statistique.
+
+### Choisir un bon modèle d'apprentissage supervisé
+
+Pourquoi ne pas déployer dès maintenant en production l’un des modèles de dernière génération, tels que les LLM, afin de tirer parti des avancées les plus récentes ?
+
+Un modèle adéquat pour Sirene 4 ne se résume pas à atteindre l'état de l'art, aussi appelé State of the Art ou SOTA. Son intégration en production nécessite de trouver un équilibre entre performance, valeur métier et pragmatisme. Il ne s’agit pas de viser la sophistication maximale, mais plutôt d’opter pour une solution utile, maîtrisable et durable, développant itérativement le degré de maturité technique et fonctionnelle[^maturite-technique-fonctionnelle] nécessaire avant d’introduire des modèles plus avancés. 
+
+[^maturite-technique-fonctionnelle]: notamment en terme de LLMops, plus généralement MLops et la progression métier en terme d'organisation des remontées des gestionnaires et de capacité d'évaluation.
+
+Par ailleurs, l'adoption en environnement de production engage plusieurs facteurs critiques, cités à titre d'exemple :
+
+- **contraintes d'architecture et de coût** : le modèle doit être compatible avec une architecture open source et maîtriser le coût d'entraînement et d'inférence, notamment la compatibilité des ressources si une évolutivité verticale est requise.
+- **taux d'automatisation** : pour limiter la charge de travail.
+- **facteurs de pérennité** : le choix d'une librairie standard est privilégié pour faciliter la maintenance du code source et minimiser la vulnérabilité de la librairie sur le long terme.
+- **stabilité**: la robustesse du modèle face aux données bruitées ou aux légères dérives des données et précision.
+- **précision**: l'exactitude des classifications.
+- **temps d'inférence**: la rapidité de la prédiction, essentielle pour le traitement en flux continu.
+- **explicabilité** : la capacité à justifier le choix du modèle, facilitant la confiance et le débogage.
+
+L'architecture micro-services de Sirene 4 a permis d'itérer rapidement sur les choix de modélisation :
+
+1. **première implémentation (FastText)** : la première version a été déployée en s'appuyant sur la librairie FastText. Ce choix open source était adapté pour une mise en production rapide, offrant un bon compromis entre la vitesse et la précision, avec un faible coût de ressources sur CPU. Toutefois, cette librairie limite l'évolution du modèle de codification en termes de maintenance, prise en main et de performances.
+2. **seconde implémentation (PyTorch via torchTextClassifiers)** : La transition vers PyTorch est stratégique car elle permet de répondre plus finement aux besoins métiers. L'implémentation est désormais basée sur PyTorch via la librairie torchTextClassifiers, maintenue par le SSP Lab. Utiliser ce cadriciel (ou _framework_) open source offre une plus grande souplesse et une mainmise complète sur l'architecture du modèle. Cela devient crucial pour répondre aux spécificités du métier, notamment pour permettre l'**explicabilité** des prédictions ou optimiser les différentes briques du modèle voire en ajouter, ce que le FastText standard ne permettait pas.
+
+#### Implémentation avec la librairie _fastText_ de Meta 
+
+La première implémentation de la codification probabiliste a utilisé la librairie fastText, un outil open source de FAIR (Facebook's AI Research), choisi pour sa rapidité et son faible coût en ressources sur CPU.
+
+##### Une méthodologie mutualisée à l'Insee
+
+L'approche méthodologique adoptée pour Sirene est la même que celle utilisée et mutualisée pour d'autres projets de codification automatique à l'Insee.
+
+Pour les détails méthodologiques, il est recommandé de se référer à l'article JMS @fastText_PCS_JMS de la session dernière sur l'application des techniques de machine learning pour coder les professions en PCS 2020.
+Cette méthodologie est employée aux données Sirene; en particulier, la concaténation des variables catégorielles au libellé pour prendre en compte ces variables.
+
+##### architecture et enjeux techniques
+
+Un papier de FAIR présente et décrit l'architecture de fastText @fastText_paper.
+En somme, fastText utilise une architecture simple mais efficace :
+
+::: {.center}
+![Architecture de fastText](img/diag-fasttext-rectif.png){#fig-diag-simple-fasttext}
+
+:::
+*Architecture simplifiée avec plongement lexical et moyennage des plongements (ou des vectorisations), classification des vecteurs, puis conversion des scores en probabilité.*
+
+De manière classique, un modèle attribue un score brut qui est converti en probabilité.
+Pour interpréter ces scores comme des probabilités, la fonction *softmax* s'applique:
+
+$$
+\text{Softmax}(x_i) = \frac{\exp{x_i}} {\sum\limits_{j=0}^{9}{\exp{x_j}}}.
+$$
+
+Cette opération convertit les scores en une distribution de probabilité, dont la somme vaut 1, et permet de sélectionner la classe associée à la probabilité la plus élevée comme prédiction finale. La fonction *softmax* est particulièrement utile car elle est infiniment dérivable, ce qui garantit la dérivabilité de tout le modèle $f_{\theta}$ par rapport à ses paramètres $\theta$. Cela rend possible l’utilisation de la descente de gradient pour ajuster les poids du réseau au cours de l’apprentissage.
+
+L’algorithme d’entraînement retenu correspond à un schéma one-versus-all. Dans ce schéma, un classifieur binaire indépendant est entraîné pour chaque classe. Cette
+variation est particulièrement utile lorsqu’on souhaite pouvoir prédire plusieurs classes pour un
+même libellé.
+
+La librairie FastText, surcouche optimisée en C++, offre une exécution très rapide et efficace. Elle présente néanmoins plusieurs limites techniques et méthodologiques. Les fichiers binaires résultants (~1,5 Go) nécessitent un stockage adapté et une bonne connexion réseau, car un transfert classique peut corrompre le fichier[^transfert-s3-fasttext]. Méthodologiquement, l’utilisateur ne peut pas modifier l’architecture du modèle : il faut concaténer toutes les variables dans le libellé, ce qui fonctionne mais limite la flexibilité pour traiter différemment certains types de données. Ces contraintes montrent que, malgré sa rapidité, l’usage de cette librairie impacte la capacité d’innovation et d’adaptation pour des besoins futurs.
+
+[^transfert-s3-fasttext]: excepté en utilisant le transfert de fichiers par le protocole S3 où la corruption de fichier pour cause de transfert n'est pas possible. En cas d'échec de chargement, il y a absence du fichier complet.
+
+#### Implémentation avec Pytorch
+
+Le passage à une implémentation basée sur PyTorch a été une décision stratégique motivée par la nécessité de pérenniser le modèle et de répondre plus finement aux besoins métiers après la mise en lecture seule de la librairie FastText.
+
+##### Justification du changement
+
+La nouvelle implémentation a été conçue pour surmonter les limitations de FastText, à la fois technique et méthodologiques, tout en respectant les fortes contraintes de production :
+
+- réponse aux besoins métiers : la transition est cruciale pour permettre des fonctionnalités spécifiques, comme l'explicabilité des prédictions ou l'optimisation des différentes briques du modèle, ce que le FastText standard ne permettait pas.
+- performance opérationnelle : Le modèle est conçu pour satisfaire aux contraintes de production strictes, notamment le maintien d'un temps d'inférence acceptable (inférieur à 20 ms) et l'atteinte d'un taux d'automatisation élevé.
+- optimisation, coût et architecture : le nouveau modèle est conçu pour être plus léger, facilitant le transfert rapide et répondant aux exigences de coût. Il prépare également le système à une inférence GPU pour une évolutivité verticale future, même si cette ressource n'est pas encore prévue en production.
+- maintenabilité et gouvernance: Face à l'archivage de fastText de Meta depuis le 19 mars 2024, le développement d'une librairie maison est essentiel pour assurer la maintenabilité et la gouvernance de l'outil, sécuriser les corrections de bugs et la compatibilité, et positionner l'Insee dans les outils open source de classification supervisée.
+- capacité d'innovation : Le choix de PyTorch offre une mainmise complète sur l'architecture comme changer le tokenizer ou ajouter des couches et permet d'intégrer des avancées qui rendront le modèle plus performant que FastText [^amelioration-modele].
+
+[^amelioration-modele]: qui était, lui-même, déjà meilleur que l'ancien système Sicore
+
+##### Implémentation et architecture
+
+L'implémentation est désormais basée sur PyTorch via la librairie torchTextClassifiers, un développement open source maintenu par le SSP Lab.
+
+Pour stabiliser l'adaptation et l'organisation métier en production, la première itération sous PyTorch est restée volontairement proche de l'architecture FastText. Une différence majeure réside toutefois dans le traitement des variables catégorielles :
+
+::: {.center}
+![Exemple d'architecture possible séparant les variables catégorielles](img/NN.drawio.png){#fig-fasttext-pytorch}
+
+:::
+*Il s'agit de l'architecture par défaut. Au lieu d'être concaténé avec le libellé en entrée, chaque variable catégorielle possède sa propre représentation vectorielle.*
+
+Pour en savoir davantage sur cette librairie, il est conseillé de consulter l'article @torchTextClassifiers.
+
+#### Quelle librairie en production ?
+
+Actuellement, la librairie _fastText_ est toujours utilisée. Toutefois, le passage à la nouvelle librairie est programmé pour début d'année 2026, en même temps qu'une migration de la codification probabiliste sur Kube.
+
+## L'entraînement et la livraison du modèle
+
+Mettre un modèle en production est un processus transversal qui dépasse la simple livraison du fichier de poids. Il nécessite une organisation rigoureuse et une coordination entre le Data Scientist (qui joue le rôle d'interface), l'équipe métier et l'équipe informatique, notamment en raison des différences de compétence (Python pour le modèle, Java pour l'application Sirene).
+
+Ce processus est soumis à de nombreuses contraintes : gestion des vulnérabilités, tests de charge, validation fonctionnelle et métier, et performance technique. Le changement de nomenclature, par exemple, peut doubler le travail nécessaire dans le cycle de vie du modèle.
+
+::: {.center}
+![Process simplifié de qualification du modèle](img/orga_ape_actuelle.png){#fig-orga_modele}
+
+*Le déploiement du modèle en production est du ressort de l'informatique. Toutefois, le Data Scientist peut contribuer à la construction de l'image et la fourniture de cas tests*
+:::
+
+Deux principaux environnements sont utilisées respectivement pour entraîner le modèle et pour l'inférence en production.
+
+### Le datalab comme environnement d'entraînement
+
+Le caractère non-sensible des données de codification Sirene nous permet d'utiliser le SSP Cloud.
+Un hébergement en interne d'Onyxia est recommandé pour les données sensibles.
+Le datalab est l'environnement privilégié pour l'entraînement et l'expérimentation pour plusieurs raisons:
+
+- un environnement reproductible : L'environnement d'entraînement repose sur le même type de cluster (Kubernetes) que l'environnement d'inférence en production. Cela rend l'inférence potentiellement reproductible du développement à la production (moyennant quelques contraintes internes).
+- des ressources : le datalab donne accès à des ressources computationnelles conséquentes en termes de CPU mais aussi de GPU.
+- gestion des modèles (model store) : les modèles sont gérés via un gestionnaire de modèles comme MLflow, le model store. Ce dernier permet de qualifier fonctionnellement les modèles, de gérer la persistance des versions et des artefacts du modèle, et de promouvoir les modèles qualifiés vers les environnements suivants.
+- stockage : la plateforme bénéficie d'une grande capacité de stockage standard (type S3). Ce stockage est utilisé pour archiver tout ce qui touche au projet IA ou data science : les modèles, les versions stables, les données d'entraînement, et tous les intermédiaires d'expérimentation.
+
+::: {.center}
+![Environnement et gestion de l'entraînement du modèle ](img/api-datalab.png){#fig-model-store width=60%}
+
+:::
+
+### Environnement d'inférence: qualification et mise en production
+
+Une fois qualifié, le modèle est préparé pour l'inférence en production :
+
+1. transfert à l'équipe informatique : Le modèle final est préalablement déposé dans le système de stockage standard (type S3) du cluster de développement interne; s'en suit ensuite, plusieurs étapes de promotion, avant sa mise en production. 
+2. déploiement en API REST : Le déploiement est réalisé en exposant le modèle sous la forme d'une API REST sur la plateforme Kube. L'application Sirene (en Java) peut alors appeler cette API (en Python) pour obtenir la prédiction.
+
+::: {.center}
+![Inférence du modèle en environnement de développement](img/API.png){#fig-critere-codif}
+
+*Ce schéma volontairement simplifié illustre l'étape de livraison du modèle, déployé ensuite sous forme d'API par l'équipe informatique*
+:::
+
+## Maintenance et surveillance du modèle
+
+La pérennité et la fiabilité d'un modèle d'apprentissage supervisé en production, surtout en flux continu, exigent que la surveillance devienne une tâche routinière et permanente, et non pas une simple campagne d'annotation ponctuelle.
+
+### Une campagne d'annotation pour valider la démarche
+
+En préparation du changement de Nomenclature d'Activités Française (NAF), une campagne d'annotation spécifique a été menée en NAF rév. 2 (la nomenclature actuellement utilisée), avec un double objectif précis. 
+
+Pour cela, la codification a été appliquée sur un échantillon représentatif de 10 000 annotations. Les données étaient échantillonnées aléatoirement sur une période glissante afin d'avoir les informations les plus fraîches possibles. Les objectifs étaient:
+
+1. vérifier la qualité de codage global : Appliquer la codification en NAF rév. 2 sur un échantillon représentatif de 10000 annotations, effectuées par le _Pôle Qualité Sirene_, pour vérifier la qualité de codage globale. Un intérêt particulier a été porté aux cas traités en automatique pour en garantir la fiabilité. Les données étaient échantillonnées aléatoirement sur période glissante pour avoir les données les plus fraîches possibles.
+2. préparation du changement : utiliser ces données de bonne qualité pour préparer la future campagne d'annotation en NAF 2025 sur des données réelles et variées provenant du Guichet Unique.
+
+Cette expérimentation a été fructueuse, permettant la validation globale de la codification en NAF rév. 2 et le développement d'outils qui sont la base du futur processus de surveillance routinière.
+
+### Outils de surveillance et pilotage métier
+
+Le suivi des performances est crucial pour détecter la dérive ou aider à ajuster les paramètres comme le seuil de l'indicateur de confiance IC en continu. 
+
+Ci-dessous, quelques extraits d'un tableau de bord pour éclairer la décision.
+
+::: {.center}
+![Monitoring du modèle sur inférence d'un échantillon de surveillance représentatif](img/tab2.png){#fig-critere-codif}
+:::
+*L'hypothèse sous-jacente est que les annotations humaines représentent la vérité terrain* [^def-ground-truth]
+
+::: {.center}
+![Comparaison des taux d'automatisation des activités par période](img/tab6.png){#fig-critere-codif}
+:::
+*Une visualisation utile pour surveiller l'évolution de la confiance du modèle par activité à différents niveaux de la nomenclature*
+
+[^def-ground-truth]: La vérité terrain ou _ground truth_ désigne les faits ou les données réelles et vérifiées qui servent de référence absolue pour entraîner et évaluer la performance d'un modèle d'apprentissage supervisé.
+
+::: {.center}
+![Surveillance des performances au cours de l'année 2024](img/tab3.png){#fig-critere-codif}
+:::
+*Le couloir représente l'intervalle de confiance[^ic-bootstrap]: plus il y a d'annotations, plus il est resserré*
+
+[^ic-bootstrap]: En particulier, il s'agit d'un intervalle de confiance bootstrap
+
+::: {.center}
+![Surveillance de la distribution des IC sur une période donnée](img/tab4.png){#fig-critere-codif}
+:::
+*Un échantillon de test permettrait aussi d'afficher la séparation entre bon et mauvais codage comme dans la Figure 3. Ainsi, il serait possible de surveiller la pertinence du seuil appliqué.*
+
+L'enjeu fondamental est d'intégrer la surveillance dans le flux de travail habituel (tâche routinière).
+Celle-ci repose sur l'annotation journalière d'un échantillon représentatif du flux de production. L'équipe devra reprendre cette surveillance avec la NAF 2025 dès son déploiement pour piloter le nouveau modèle, garantissant une qualité constante des données du répertoire. 
+
+Le changement de nomenclature (NAF 2025) n'implique pas qu'une simple mise à jour du modèle de _machine learning_. Il a des conséquences transversales qui impactent profondément plusieurs maillons de la chaîne de production de l'application de gestion Sirene 4.
+

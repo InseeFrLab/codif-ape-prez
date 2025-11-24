@@ -1,0 +1,51 @@
+
+## [Campagnes d'annotation]{.r-fit-text} {.scrollable .smaller} 
+
+*Actions possibles: attribuer un code, déléguer la tâche ou classer comme incodables*
+
+. . .
+
+1. [**En NAF rev 2 ou NAF 2008**: gold standard pour évaluer la _précision_]{.blue2} 
+    - 10 000 annotations pour valider la qualité dans la [**nomenclature actuelle**]{.blue2}
+    - **Pôle Qualité Sirene** ➡️ 6 annotateurs à l'aveugle, sans aide à la codification 
+
+. . .
+
+2. [**En NAF 2025**: ground truth pour servir de _référence_]{.blue2}
+    - 30 000 annotations sur les données [**multivoques uniques**]{.orange}
+    - réseau complet des experts APE ➡️ environ 25 annotateurs
+    - avec proposition de codes multivoques en fonction du code en NAF rev 2
+
+. . .
+
+::: notes
+Pour convertir le jeu d'apprentissage, 2 campagnes d'annotation.
+Une première pour s'assurer que la qualité de codification actuelle est bonne.
+Une seconde qui s'appuie sur le code en NAF rev 2 pour aider à annoter plus rapidement
+et annoter un maximum. ça ne suffit pas pour entraîner un classifieur. (faire vivre la NAF 2025 aussi )
+
+Dans ces campagnes, les participants pouvait attribuer un code, déléguer leur tâche ou indiquer comme inclassable:
+Remarquer des chiffres remarquables, en odg
+:::
+
+
+- 6 % de tâches déléguées
+- 6 % de libellés inclassables
+
+## Concilier l'expertise et l'innovation
+
+![](../img/human_vs_llm.drawio.png){fig-align="center"}
+
+Dans quelle mesure, peut-on tirer profit des LLM ?
+
+::: notes
+On sait que les moyens actuels ne permettent pas un humain de labelliser un nombre suffisant de données.
+D'un autre côté, à l'ère des LLM et compte tenu du contexte présenté en début de présentation, 
+il est possible d'utiliser des méthodes innovantes pour labelliser.
+
+L'expert humain a une expertise qui n'est pas native au LLM. 
+et un robot peut traiter un plus grand nombre de cas.
+
+Nous allons tirer profit des deux en s'inspirant du mode opératoire que nous ont appris les experts de la nomenclature
+et l'appliquer avec des LLM et en utilisant les libellés annotés comme étalon.
+:::

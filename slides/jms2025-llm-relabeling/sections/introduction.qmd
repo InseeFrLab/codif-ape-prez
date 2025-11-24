@@ -1,0 +1,103 @@
+
+## Contexte {.smaller}
+
+- De plus en plus de modèle ML sont voués à être [**mis en production**]{.orange} à l'Insee cf @rapport2024IG
+    - [**Multiples cas d'usages de codification**]{.orange} : COICOP, NA2008, PCS2020, APE
+    - 🎯 Présentation axée sur l'Activité Principale Exercée (APE) des entreprises
+- Révision de la Nomenclature d'Activités Française (NAF):
+    - Adaptation au nouveau paysage économique 
+    - coordination avec la révision européenne de la NACE
+- Des innovations d'autres INS sur la recodification par LLM notamment @ClassifAI
+- Concurrence forte et mondiale dans le secteur de l'IA générative: course au _compute_ et aux données cf l'essai de @thebitterlesson, 
+- Littérature **abondante** et en plein essor: @rag_paper, @cag_paper, @structuredrag, @hierarchicalrag
+
+::: notes
+Aujourd'hui, les expérimentations ayant abouti à une mise en production de ML sont de + en + nb.
+En particulier sur le sujet de la codification. Sans tous les citer, si je devais en citer quelques-uns à titre exemple: 
+Codification de produits (en nomenclature COICOP et NA2008) à partir de libellés pour une partie
+des données de caisse. Les nomenclatures suivantes sont concernés. 
+Nous allons nous intéressé ici à l'APE, une variable du répertoire Sirene que nous présenterons rapidement 
+
+L'APE repose justement sur la NAF.
+Par ailleurs, NAF a connu une révision pour mieux refléter le pays économique qui a un impact que nous détaillerons sur la codification
+Nous ne sommes pas les seuls concernés puisque des initiatives ont été entreprises par d'autres INS pour réformer leur système de codification
+par l'usage de LLM. Ces initiatives s'orientent de plus en plus vers l'utilisation des Large Language Models (LLM).
+
+Les LLM qui par ailleurs font l'objet d'une course et donc livraison compétitive régulière de nouveaux modèles motivé par la recherche de calcul et de données. Si vous voulez en savoir plus, vous pouvez consulter l'essai de Sutton en parle dans son essai "The bitter lesson" qui aide à comprendre les raisons de cette course.
+De plus, aujourd'hui la littérature sur l'application des LLM est bien fourni, ce qui nous offre une base solide pour s'appuyer sur l'état de l'art.
+:::
+
+## [La source des données d'entreprises et des libellés d'activités]{.r-fit-text} {.nonincremental auto-animate=true .smaller}
+
+::: {.callout-note icon=false}
+
+## Loi PACTE
+À partir du 1er janvier 2023, l’ensemble des formalités d’entreprise doit être déposé en ligne auprès d’un [**organisme unique**]{.orange}.
+:::
+
+. . .
+
+INPI = _Institut National de la Propriété Industrielle_
+
+- Office des brevets 
+- Opérateur du [**Guichet Unique des Entreprises (GUE)**]{.orange}
+
+. . .
+
+- [**Principal flux d'alimentation**]{.orange} des déclarations du répertoire Sirene 
+- Fin des Centre de Formalités des Entreprises (CFE)  
+➡️ description libre du libellé d'activité: [**texte non-structuré**]{.orange}
+
+  <details> 
+  <summary> 
+      <font size=3 color=black><b>Afficher un exemple de libellé d'activité</b></font> 
+  </summary>
+
+  ```
+ Je souhaite développer dans le nettoyage et entretien des bureaux d'entreprise : changelent de poubelles , aspirateur, serpillère
+  ```
+
+  </details>
+
+::: notes
+Pour comprendre comment on codifie l'APE, il est important de comprendre ce qu'est le libellé d'activité.
+La donne a changé lors de la mise en place d'un Guichet Unique des Entreprises par l'INPI.
+description littérale de l'activité
+Avant, CFE, Maintenant, ...
+:::
+
+
+## [Le répertoire Sirene]{.r-fit-text} {.nonincremental auto-animate=true .scrollable .smaller}
+
+Sirene = _Système Informatique pour le Répertoire des Entreprises et de leurs Établissements_
+
+- Répertoire [**de référence**]{.orange} historique gérant le cycle de vie des entreprises 
+- garant du SIREN, SIRET [**et**]{.orange} de l'APE basé sur la NAF
+- Bascule de Sirene 3 à [**Sirene 4**]{.orange} ➡️ traitement [**en flux**]{.blue2}
+- Sicore inefficient face au volume à traiter et particulièrement [**diversité**]{.orange} des libellés 
+
+. . .
+
+➡️ Mis en place d'un modèle d'apprentissage supervisé fin d'année 2022.
+
+. . .
+
+- évolution dans le temps des activités ou des descriptifs ➡️ dérive des données
+- [**Cas extrême**]{.orange} courant pour la statistique publique ➡️ [**changement de nomenclature**]{.blue2}
+
+Malgré l'absence naturelle de données, comment entraîner notre modèle en NAF 2025 ?
+
+::: notes
+garant du SIREN, SIRET que vous connaissez mais aussi de l'APE que vous voyez 
+quand vous faites vos courses sur vos tickets de caisse.
+
+gestion unitaire et très réactive des dossiers d’entreprises
+
+Pas seulement sur le ticket de caisse mais dans de nombreux SI d'entreprises et d'administration
+sur ce cas d'usage
+
+Nomenclature actuelle NAF rev 2 ou NAF2008
+Les raisons qui poussent à ré-entraîner un modèle sont nombreuses
+tenue répertoire
+rupture totale et exogène de la définition même des modalités de la variable cible, rendant les codes non bijectifs immédiatement obsolètes
+:::

@@ -1,0 +1,280 @@
+À l’issue de la génération du jeu d’annotations en NAF 2025, cette partie aborde l'entraînement un premier modèle de classification sur cette nouvelle nomenclature, en tirant parti des multivoques produites par les LLM.
+Cette phase marque la transition entre l’expérimentation et la construction d’un modèle opérationnel utilisable par les équipes métier.
+
+## Réentraînement en NAF 2025
+
+### Un premier modèle NAF 2025 : un livrable obtenu avec succès
+
+Les premiers résultats obtenus sont encourageants. Sur un stock initial de 2,7 millions d’unités légales de Sirene 4, environ 2,3 millions ont été reconstruites en NAF 2025, représentant la quasi-totalité des données exploitables. La distribution des données d’apprentissage est restée quasi-inchangée, ce qui garantit une continuité avec les modèles précédents. 
+
+Il est intéressant de noter que le taux d’inclassables est d’environ 6 % pour les experts, chiffre cohérent avec la campagne qualité menée en NAF 2008, alors qu’il atteint 15 % avec l’approche des annotateurs virtuels. Les modèles ont tendance à considérer davantage d’unités comme incodables, sans que cela n’affecte significativement la distribution ni l’ordre de grandeur du volume initial, qui reste proche de celui du stock de départ. Cet indicateur isolé ne permet pas de conclure de manière définitive si l’approche globale par LLM est plus prudente que celle des annotateurs humains, mais il constitue néanmoins un résultat intéressant à suivre.
+
+Dans ce contexte, les annotations virtuelles en NAF 2025 ont servi comme vérité terrain pour l’évaluation du classifieur, en considérant que des erreurs peuvent subsister, à l’instar du ground truth en NAF rev 2 issu de la gestion courante. L’objectif principal reste d’assurer un codage cohérent et fiable à l’échelle globale, même si certaines erreurs ponctuelles ou un manque de précision au niveau 5 sont tolérables.
+
+Plusieurs besoins d’amélioration ont été identifiés. Il s’agit principalement de corriger les cas problématiques détectés lors des premières évaluations et d’améliorer la cohérence globale entre les modèles NAF 2008 et NAF 2025. Pour ce faire, le modèle NAF 2008 actuellement en production est réentraîné et corrigé en parallèle, afin de garantir la compatibilité et l’alignement avec la nouvelle version.
+
+Cette première version validée constitue donc une base exploitable, tout en restant perfectible pour intégrer les corrections nécessaires et optimiser la précision globale du classifieur en NAF 2025.
+
+Un **premier modèle de prédiction NAF 2025** a été entraîné avec succès.
+Les résultats ci-dessous montrent une version initiale satisfaisante, atteignant un niveau de performance comparable au modèle actuellement en production (NAF 2008).
+
+### Résultats
+
+L’évaluation des modèles s’appuie sur la méthodologie classique du machine learning, consistant à diviser les données en ensembles d’apprentissage, de validation et de test. L’ensemble d’apprentissage sert à entraîner le modèle, tandis que l’ensemble de validation permet d’ajuster les hyperparamètres. Enfin, l’ensemble de test n’est jamais utilisé pendant l’entraînement et constitue une référence objective pour mesurer la performance finale du modèle. Cette approche garantit que l’évaluation est indépendante de l’apprentissage et permet de détecter d’éventuels surapprentissages.
+
+#### Modèle _fasttext_ en NAF 2025
+
+::: {.center}
+```{python}
+#| label: fig-performances-fasttext
+#| echo: false
+#| fig-cap: Comparaison performances sur jeu de test classique et manuellement annoté
+
+import pandas as pd
+import numpy as np
+from plotnine import *
+
+# Create the data
+data = {
+    'data_type': ['Données Test'] * 5 + ['Données manuellement annotées'] * 5,
+    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 2,
+    'accuracy': [
+        0.8551939324497377,
+        0.8328925927834847,
+        0.7973293897956999,
+        0.7843529836218961,
+        0.7762214195942544,
+        0.9668600758759206,
+        0.95529271739939,
+        0.9162389347615859,
+        0.8986461355352228,
+        0.8887153165216097
+    ]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Define the correct order of levels
+level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
+
+# Convert level to categorical with the specified order
+df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
+
+# Format accuracy values for labels (rounded to 3 decimal places)
+df['accuracy_label'] = df['accuracy'].round(2).astype(str)
+
+# Create the lollipop chart
+p = (ggplot(df, aes(x='level', y='accuracy'))
+ + geom_segment(aes(x='level', xend='level', y=0, yend='accuracy'))
+ + geom_point(size=3, color='blue')
+ + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
+             size=8, nudge_y=0.02)  # Add value labels
+ + facet_wrap('~data_type')
+ + theme_minimal()
+ + labs(
+     x='',
+     y=''
+ )
+ + theme(
+     figure_size=(12, 6),  # Increased width to accommodate labels
+     panel_spacing=0.05,
+     axis_text=element_text(size=10),
+     axis_title=element_text(size=12),
+
+ )
+ + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
+)
+p.draw()
+```
+
+:::
+
+#### Modèle basé sur Torch naturellement meilleur
+
+::: {.center}
+```{python}
+#| label: fig-performances-fasttext-torch
+#| echo: false
+#| fig-cap: Comparaison fastText vs torchTextClassifiers
+
+import pandas as pd
+import numpy as np
+from plotnine import *
+
+# Create the data
+data = {
+    'data_type': ['Modèle via librairie fastText'] * 5 + ['Modèle fastText via TorchTextClassifiers'] * 5,
+    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 2,
+    'accuracy': [
+        0.8551939324497377,
+        0.8328925927834847,
+        0.7973293897956999,
+        0.7843529836218961,
+        0.7762214195942544,
+        0.92,
+        0.89,
+        0.86,
+        0.84,
+        0.83
+    ]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Define the correct order of levels
+level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
+
+# Convert level to categorical with the specified order
+df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
+
+# Format accuracy values for labels (rounded to 3 decimal places)
+df['accuracy_label'] = df['accuracy'].round(2).astype(str)
+
+# Create the lollipop chart
+plot = (ggplot(df, aes(x='level', y='accuracy'))
+ + geom_segment(aes(x='level', xend='level', y=0, yend='accuracy'))
+ + geom_point(size=3, color='blue')
+ + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
+             size=8, nudge_y=0.02)  # Add value labels
+ + facet_wrap('~data_type')
+ + theme_minimal()
+ + labs(
+     x='',
+     y=''
+ )
+ + theme(
+     figure_size=(12, 6),  # Increased width to accommodate labels
+     panel_spacing=0.05,
+     axis_text=element_text(size=10),
+     axis_title=element_text(size=12),
+
+ )
+ + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
+)
+plot.draw()
+```
+
+:::
+
+L’entraînement sur la même base montre que les modèles Torch tirent avantage des variables annexes et atteignent de meilleures performances globales que fastText. Cela suggère que la gestion des variables supplémentaires, intégrée dans l’architecture Torch, améliore non seulement l’automatisation[^gain-auto-torch] mais aussi la précision. Toutefois, cette conclusion doit être interprétée avec prudence, car il s’agit d’une piste d’analyse et d’observation, et il est nécessaire de confirmer ces tendances sur d’autres ensembles de données pour valider scientifiquement l’impact exact des variables annexes.
+
+[^gain-auto-torch]: non présenté ici, l'automatisation est meilleure avec le modèle basé sur Torch
+
+## Opérations complémentaires avant passage en production
+
+### Data editing de la base d'apprentissage comme ground truth
+
+Avant la mise en production du modèle, il est indispensable de qualifier et nettoyer la base d’apprentissage utilisée comme *ground truth*, en particulier pour les codes jugés sensibles par le métier. L’objectif est de corriger les erreurs historiques de codification afin d’améliorer la cohérence globale du jeu d’apprentissage.
+
+Cette étape repose sur des corrections manuelles ou semi-automatisées, guidées par les remontées des experts métier. Au vu des résultats obtenus (cf. section performance), ces opérations n’ont pas dégradé les performances des modèles ; elles ont au contraire permis un gain significatif d’environ 13 points supplémentaires pour le modèle FastText et 5 points supplémentaires pour le modèle basé sur Torch, révélant une cohérence accrue de la base d’apprentissage.
+
+::: {.center}
+```{python}
+#| echo: false 
+#| fig-cap: Comparaison après nettoyage 
+import pandas as pd
+import numpy as np
+from plotnine import *
+
+# Create the data
+data = {
+    'data_type': ['Modèle via librairie FastText'] * 5 + ['Modèle fastText via TorchTextClassifiers'] * 5,
+    'level': ['Section', 'Division', 'Groupe', 'Classe', 'Sous-classe'] * 2,
+    'accuracy': [
+        0.95,
+        0.93,
+        0.91,
+        0.90,
+        0.90,
+        0.95,
+        0.93,
+        0.90,
+        0.89,
+        0.88
+    ]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Define the correct order of levels
+level_order = ['Sous-classe', 'Classe', 'Groupe', 'Division','Section',]
+
+# Convert level to categorical with the specified order
+df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
+
+# Format accuracy values for labels (rounded to 3 decimal places)
+df['accuracy_label'] = df['accuracy'].round(2).astype(str)
+
+# Create the lollipop chart
+plot = (ggplot(df, aes(x='level', y='accuracy'))
+ + geom_segment(aes(x='level', xend='level', y=0, yend='accuracy'))
+ + geom_point(size=3, color='blue')
+ + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
+             size=8, nudge_y=0.02)  # Add value labels
+ + facet_wrap('~data_type')
+ + theme_minimal()
+ + labs(
+     x='',
+     y=''
+ )
+ + theme(
+     figure_size=(12, 6),  # Increased width to accommodate labels
+     panel_spacing=0.05,
+     axis_text=element_text(size=10),
+     axis_title=element_text(size=12),
+
+ )
+ + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
+)
+plot.draw()
+```
+:::
+
+
+####  Méthodologie de détection et de correction des libellés
+
+Lorsqu’un libellé nécessite un recodage (ex. : si le libellé contient *LMNP*, alors le code doit être 6820G), la difficulté est de détecter automatiquement l’ensemble des variantes textuelles à corriger, présentes en stock et susceptibles d’apparaître en flux. Plusieurs méthodes complémentaires sont mobilisées, chacune présentant des avantages et limites :
+
+| Approche | Intérêt | Limites |
+|------------------------------|------------------------------------|-----------------------------------------|
+| Expressions régulières (regex) | Très fiable pour détecter des formes exactes ou des motifs spécifiques | Nécessite de lister les variantes ; peu généralisable |
+| Fuzzy matching (distance de Levenshtein) | Excellente détection de fautes de frappe, pluriels, accords | Risque de faux positifs si deux termes proches n’ont pas le même sens |
+| Similarité sémantique (ex. : all-MiniLM-L6-v2) | Détecte des variantes sémantiques non triviales, très complémentaire au fuzzy | Sensible au seuil choisi ; seuil trop bas → bruit, trop haut → manqués |
+
+Ces méthodes sont appliquées de manière combinée, afin de maximiser la détection des libellés à corriger sans introduire de bruit.  
+Concrètement, chaque méthode identifie un ensemble de lignes candidates au recodage ; le moteur de règles prend l’union des résultats lorsque cela est pertinent, pour couvrir un spectre de variantes le plus complet possible.
+
+⚠️ Les seuils et combinaisons sont audités systématiquement : chaque changement est journalisé afin de contrôler et valider l’impact sur la base d’apprentissage, notamment sur la distribution statistique des codes.
+
+#### Moteur de règles et data cleansing
+
+L’ensemble de cette démarche constitue un moteur de règles dédié au data cleansing de la base d’apprentissage. Concrètement, les retours métier sont d’abord traduits en règles de recodage qui sont ensuite appliquées de manière systématique afin de corriger les libellés nécessitant une mise à jour, en particulier pour les codes jugés sensibles. Pour identifier les occurrences concernées, le moteur s’appuie sur les méthodes de matching textuel précédemment décrites, sélectionnées ou combinées selon la nature du libellé à traiter.
+
+Cette approche permet d’élargir la détection des cas pertinents tout en conservant un haut niveau de précision, grâce à l’utilisation de seuils restrictifs et à une validation systématique par expertise. Chaque correction est enregistrée dans un journal afin d’en assurer la traçabilité et d’évaluer l’impact sur les données. L’objectif est ainsi d’améliorer la cohérence et la fiabilité de la base d’apprentissage, tout en préservant sa structure globale, afin de pouvoir surveiller la distribution des codes sans nécessairement la figer, puisque certaines évolutions peuvent être légitimes lorsque des erreurs historiques sont corrigées.
+
+#### Idées ou pistes méthodologiques exploratoires
+
+Dans une logique d’amélioration continue, plusieurs pistes pourraient être explorées pour renforcer encore l’efficacité du dispositif. Par exemple, des techniques de clustering sémantique appliquées aux embeddings (ex. all-MiniLM-L6-v2) permettraient de regrouper automatiquement les libellés textuels très proches. Cela offrirait un moyen de détecter, à large échelle, des variantes linguistiques conduisant à des codifications différentes alors qu’elles devraient relever du même code. Ce type d’analyse aiderait ainsi à identifier des incohérences structurelles dans l’historique de la codification.
+
+De plus, une analyse ciblée permettrait d’identifier les libellés sensibles aux effets de bord (par exemple ceux partageant un vocabulaire proche mais renvoyant à des codes distincts). Ces libellés devraient alors être exclus des approches basées sur la distance de Levenshtein ou faire l’objet d’un traitement spécifique afin d’éviter des recodifications erronées par ressemblance textuelle.
+
+Enfin, au-delà du nettoyage ponctuel, l’exploitation de métriques de cohérence intra-code (homogénéité sémantique des libellés regroupés dans un même code) et inter-codes (différenciation sémantique entre codes voisins) constituerait un levier précieux. Ces mesures permettraient non seulement de détecter des codes “fourre-tout” ou ambigus, mais aussi d’ajuster les consignes de codification pour renforcer la distinction entre codes proches, améliorer la précision sémantique du référentiel et, in fine, fiabiliser durablement la qualité du codage.
+
+#### Point d’attention : un équilibre à préserver dans les opérations de data editing
+
+Les opérations de data editing sont essentielles pour améliorer la qualité de la vérité terrain, mais elles comportent intrinsèquement des risques d’effets de bord. En corrigeant une anomalie locale, il est possible, par ricochet, de dégrader la qualité de codage d’autres segments de la base. Cette complexité tient au caractère multidimensionnel du codage, car l’amélioration d’un libellé isolé ne garantit pas la cohérence globale entre l’ensemble des codes, leurs frontières sémantiques et les volumes associés.
+
+Ainsi, renforcer la qualité d’un code peut mécaniquement détériorer celle d’un autre si l’on n’adopte pas une vision systémique. Il est donc indispensable de réserver ces corrections aux cas présentant un enjeu métier réel, notamment lorsqu’elles concernent des codes sensibles ou fortement exposés dans la gestion opérationnelle.
+
+Dans ce contexte, une démarche rigoureuse s’impose. Les ajustements doivent être testés avant leur déploiement à l’aide de cas tests représentatifs pour garantir qu’aucun biais supplémentaire n’est introduit. Parallèlement, le passage en production nécessite la mise en place d’une surveillance active et continue de la qualité du codage. Cette surveillance doit porter à la fois sur le stock existant et sur le flux des nouvelles codifications, afin d’identifier rapidement toute dérive, réapparition d’incohérences ou impact inattendu.
+
+Cette approche de vigilance permanente s’inscrit dans les bonnes pratiques modernes de gouvernance des modèles, garantissant l’évolution de la vérité terrain tout en préservant la stabilité globale du système de codification.
+
+### Des besoins de surveillance en NAF 2025
+
+Dans la perspective d'un déploiement opérationnel, il devient indispensable de disposer d’un dispositif de surveillance adapté au codage en flux. Se reposer uniquement sur un golden test ne permet pas d’assurer un suivi exhaustif et durable de la qualité des classifications en NAF 2025. Bien que ce test reste utile pour valider certains cas critiques, il ne couvre pas toutes les classes et ne permet pas de détecter d’éventuelles dérives globales dans un environnement en production.
+
+Pour y remédier, il est nécessaire de définir des métriques de suivi plus globales et continues. Ces mesures doivent permettre de monitorer les performances du modèle sur l’ensemble du stock de données et de détecter les écarts significatifs, notamment pour les codes sensibles. Une telle approche offre la possibilité de garantir la fiabilité du système de codification, d’identifier les zones à risque, de prioriser les interventions humaines ou semi-automatisées et de soutenir une amélioration continue du modèle et de la vérité terrain associée.
