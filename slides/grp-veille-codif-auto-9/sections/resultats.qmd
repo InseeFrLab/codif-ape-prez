@@ -46,7 +46,7 @@ df['accuracy_type'] = pd.Categorical(df['accuracy_type'], categories=accuracy_or
 df['accuracy_label'] = df['accuracy'].round(2).astype(str)
 
 # Create the lollipop chart
-(ggplot(df, aes(x='model', y='accuracy'))
+plot = (ggplot(df, aes(x='model', y='accuracy'))
  + geom_segment(aes(x='model', xend='model', y=0, yend='accuracy'))
  + geom_point(size=3, color='blue')
  + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
@@ -66,6 +66,7 @@ df['accuracy_label'] = df['accuracy'].round(2).astype(str)
  )
  + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
 )
+plot.show()
 ```
 
 
@@ -114,7 +115,7 @@ df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
 df['accuracy_label'] = df['accuracy'].round(2).astype(str)
 
 # Create the lollipop chart
-(ggplot(df, aes(x='model', y='accuracy'))
+plot = (ggplot(df, aes(x='model', y='accuracy'))
  + geom_segment(aes(x='model', xend='model', y=0, yend='accuracy'))
  + geom_point(size=3, color='blue')
  + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
@@ -134,6 +135,7 @@ df['accuracy_label'] = df['accuracy'].round(2).astype(str)
  )
  + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
 )
+plot.show()
 ```
 
 
@@ -182,7 +184,7 @@ df['level'] = pd.Categorical(df['level'], categories=level_order, ordered=True)
 df['accuracy_label'] = df['accuracy'].round(2).astype(str)
 
 # Create the lollipop chart
-(ggplot(df, aes(x='level', y='accuracy'))
+plot = (ggplot(df, aes(x='level', y='accuracy'))
  + geom_segment(aes(x='level', xend='level', y=0, yend='accuracy'))
  + geom_point(size=3, color='blue')
  + geom_text(aes(label='accuracy_label'), va='bottom', ha='center', 
@@ -202,6 +204,7 @@ df['accuracy_label'] = df['accuracy'].round(2).astype(str)
  )
  + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
 )
+plot.show()
 ```
 
 
