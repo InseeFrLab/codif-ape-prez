@@ -14,6 +14,15 @@
   4. [**Annotations manuelles**]{.blue2} ($~30k$ observations)
 :::
 
+::: notes
+Le principe est de reconstruire la base la plus complète possible.
+En reproduisant le travail des experts par le LLM et en choisissant le LLM qui s'aligne au mieux avec les annotations manuelles
+de la campagne
+On sépare les univoques qui sont recodés par une table, des multivoques qui sont recodés par LLM.
+Cela nous a permis d'avoir une base d'apprentissage suffisamment volumineuse pour entraîner notre classifieur
+S'il faut retenir une chose, c'est qu'on labellise virtuellement les multivoques par LLM
+:::
+
 ## Le prompting {.scrollable}
 
 - Prompt [**système**]{.orange} identique pour toutes les observations
@@ -59,10 +68,12 @@
 
 
 ::: notes
-Qualifier la réponse générée
+Pour guider le LLM il faut le prompter
+2 types: pour lui donner sa feuille de route global, un prompt générique appelé prompt système
+dans lequel on lui donne un rôle et les différentes étapes à effectuer tel un annotateur virtuel.
 
-- Tendance des LLMs a être très [**volubiles**]{.orange}...
-- Construction d'une [**réponse type**]{.orange}, claire et brèves dans un [**format spécifique (JSON)**]{.orange}
+Un prompt spécifique, la requête où on lui donne les infos nécessaire pour coder.
+Un LLM peut être assez verbeux ou volubile, donc important de qualifier sa réponse 
 :::
 
 
@@ -70,11 +81,22 @@ Qualifier la réponse générée
 
 ![](../img/hallucination.drawio.png){fig-align="center"}
 
+::: notes
+Sans ou avec peu de contexte, un LLM peut difficilement coder en NAF 2025
+en tout cas aujourd'hui ...
+Il peut ce qu'on appelle halluciner cad fournir réponses incorrectes, inventées ou inexactes
+:::
+
 ##  Illustration avec ChatGPT
 
 ### Réponse formatée
 
 ![](../img/hallucination_chatgpt_NAF_2025.png){fig-align="center"}
+
+::: notes
+En donnant le prompt système sans le prompt spécifique qui apporte le contexte,
+le LLM ne connaît pas la NAF 2025 et donne le bon code certes mais en NAF rev 2, ce qui est faux
+:::
 
 ##  Illustration avec ChatGPT
 
@@ -82,7 +104,18 @@ Qualifier la réponse générée
 
 ![](../img/demande_contexte_chatgpt_NAF_2025.png){fig-align="center"}
 
+::: notes
+Sans demander de formater la réponse, il comprend qu'il y a besoin de consulter la NAF 2025 
+mais il a fallu une itération supplémentaire, ce qui est coûteux dans le contexte d'inférence par batch.
+:::
 
 ## Injection du contexte
 
-![](../img/cag_application_naf.png){fig-align="center"}
+![](../img/cag_application_naf.png){fig-align="center"}*
+
+::: notes
+C'est pour cela que l'on ajoute du contexte.
+Il existe différentes techniques dont la plus populaire est le RAG.
+mais c'est bien ce contexte que l'on retrouve dans notre requête.
+La quantité de texte que le LLM peut examiner est appelé fenêtre de contexte.
+:::

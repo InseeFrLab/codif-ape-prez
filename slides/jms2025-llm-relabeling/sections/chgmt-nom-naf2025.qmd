@@ -6,6 +6,13 @@
 
 ![](../img/multivoques.png){fig-align="center"}
 
+::: notes
+Dans la nouvelle NAF, surtout des éclatements, davantages de codes 
+Nous pouvons avoir des cas qu'on aime bien 1-pour-1 qu'on appelle multivoque: suffit d'une bijection pour convertir
+1-pour-N multivoques. Ces cas nous compliquent la vie: une simple bijection ne suffit pas il faut une expertise humaine 
+du libellé d'activité
+:::
+
 
 ## [Combien représentent-ils ?]{.r-fit-text} {.scrollable}
 
@@ -45,6 +52,16 @@
 :::
 
 ::::
+
+::: notes
+Certes, ce sont des cas qui demande de la ressource humaine mais peut-être
+qu'il n'y en a pas tant que ça.
+Enjeux de le savoir sur le jeu d'apprentissage qui est conséquent.
+Fausse bonne nouvelle: faible pourcentage dans la table de correspondance théorique
+Toutefois, cela représente beaucoup dans la base d'entraînement.
+dû à la distribution, des codes multivoques sont très représentés dans le jeu.
+Plus de la moitié à recoder: pas possible ...
+:::
 
 . . .
 

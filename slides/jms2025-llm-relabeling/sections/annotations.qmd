@@ -18,6 +18,17 @@
 
 . . .
 
+::: notes
+Pour convertir le jeu d'apprentissage, 2 campagnes d'annotation.
+Une première pour s'assurer que la qualité de codification actuelle est bonne.
+Une seconde qui s'appuie sur le code en NAF rev 2 pour aider à annoter plus rapidement
+et annoter un maximum. ça ne suffit pas pour entraîner un classifieur. (faire vivre la NAF 2025 aussi )
+
+Dans ces campagnes, les participants pouvait attribuer un code, déléguer leur tâche ou indiquer comme inclassable:
+Remarquer des chiffres remarquables, en odg
+:::
+
+
 - 6 % de tâches déléguées
 - 6 % de libellés inclassables
 
@@ -28,11 +39,13 @@
 Dans quelle mesure, peut-on tirer profit des LLM ?
 
 ::: notes
-Se pose la question de savoir quand
-- réseau complet ➡️ 25 experts APE
-    - avec proposition de codes multivoques en fonction du code en NAF rev 2
-    - Objectif: 
-        - attribuer un [**code NAF 2025**]{.blue2} 🚀
-        - faire "vivre" la NAF 2025
-        - Vérifier la [**qualité**]{.blue2} du code NAF 2008 🗸
+On sait que les moyens actuels ne permettent pas un humain de labelliser un nombre suffisant de données.
+D'un autre côté, à l'ère des LLM et compte tenu du contexte présenté en début de présentation, 
+il est possible d'utiliser des méthodes innovantes pour labelliser.
+
+L'expert humain a une expertise qui n'est pas native au LLM. 
+et un robot peut traiter un plus grand nombre de cas.
+
+Nous allons tirer profit des deux en s'inspirant du mode opératoire que nous ont appris les experts de la nomenclature
+et l'appliquer avec des LLM et en utilisant les libellés annotés comme étalon.
 :::

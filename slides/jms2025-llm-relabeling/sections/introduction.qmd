@@ -11,13 +11,20 @@
 - Concurrence forte et mondiale dans le secteur de l'IA générative: course au _compute_ et aux données cf l'essai de @thebitterlesson, 
 - Littérature **abondante** et en plein essor: @rag_paper, @cag_paper, @structuredrag, @hierarchicalrag
 
-
 ::: notes
-(intégration d’activités émergentes et reconnues, ...)
-Les projets de codification basé sur du machine learning en production au sein de la maison sont nombreuses
-si je devais en citer quelques-uns: COICOP, PCS, 
-s'intéresse au cas du répertoire Sirene
+Aujourd'hui, les expérimentations ayant abouti à une mise en production de ML sont de + en + nb.
+En particulier sur le sujet de la codification. Sans tous les citer, si je devais en citer quelques-uns à titre exemple: 
+Codification de produits (en nomenclature COICOP et NA2008) à partir de libellés pour une partie
+des données de caisse. Les nomenclatures suivantes sont concernés. 
+Nous allons nous intéressé ici à l'APE, une variable du répertoire Sirene que nous présenterons rapidement 
 
+L'APE repose justement sur la NAF.
+Par ailleurs, NAF a connu une révision pour mieux refléter le pays économique qui a un impact que nous détaillerons sur la codification
+Nous ne sommes pas les seuls concernés puisque des initiatives ont été entreprises par d'autres INS pour réformer leur système de codification
+par l'usage de LLM. Ces initiatives s'orientent de plus en plus vers l'utilisation des Large Language Models (LLM).
+
+Les LLM qui par ailleurs font l'objet d'une course et donc livraison compétitive régulière de nouveaux modèles motivé par la recherche de calcul et de données. Si vous voulez en savoir plus, vous pouvez consulter l'essai de Sutton en parle dans son essai "The bitter lesson" qui aide à comprendre les raisons de cette course.
+De plus, aujourd'hui la littérature sur l'application des LLM est bien fourni, ce qui nous offre une base solide pour s'appuyer sur l'état de l'art.
 :::
 
 ## [La source des données d'entreprises et des libellés d'activités]{.r-fit-text} {.nonincremental auto-animate=true .smaller}
@@ -41,10 +48,24 @@ INPI = _Institut National de la Propriété Industrielle_
 - Fin des Centre de Formalités des Entreprises (CFE)  
 ➡️ description libre du libellé d'activité: [**texte non-structuré**]{.orange}
 
-::: notes
-fournisseur des brevets, gestion pièces justificatives
+  <details> 
+  <summary> 
+      <font size=3 color=black><b>Afficher un exemple de libellé d'activité</b></font> 
+  </summary>
 
+  ```
+ Je souhaite développer dans le nettoyage et entretien des bureaux d'entreprise : changelent de poubelles , aspirateur, serpillère
+  ```
+
+  </details>
+
+::: notes
+Pour comprendre comment on codifie l'APE, il est important de comprendre ce qu'est le libellé d'activité.
+La donne a changé lors de la mise en place d'un Guichet Unique des Entreprises par l'INPI.
+description littérale de l'activité
+Avant, CFE, Maintenant, ...
 :::
+
 
 ## [Le répertoire Sirene]{.r-fit-text} {.nonincremental auto-animate=true .scrollable .smaller}
 

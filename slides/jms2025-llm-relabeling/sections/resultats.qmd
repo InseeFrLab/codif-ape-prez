@@ -67,6 +67,11 @@ plot.draw()
 
 :::
 
+::: notes
+En entraînant notre classifieur sur notre nouveau jeu d'apprentissage, résultats similaires à ce que nous avons en nomenclature actuelle.
+démarche classique en ML: split train/test/val. Pour passer en prod, data editing du jeu d'apprentissage pour rectifier des cas problématiques
+Notre futur modèle s'appuie sur la librairie TorchTextClassifiers qui sera présenté dans la même salle Jeudi après-midi dans la même salle.
+:::
 
 
 ```{ojs}
