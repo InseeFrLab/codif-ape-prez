@@ -66,7 +66,7 @@ plot = (ggplot(df, aes(x='model', y='accuracy'))
  )
  + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
 )
-plot.show()
+plot.draw()
 ```
 
 
@@ -135,7 +135,7 @@ plot = (ggplot(df, aes(x='model', y='accuracy'))
  )
  + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
 )
-plot.show()
+plot.draw()
 ```
 
 
@@ -204,7 +204,7 @@ plot = (ggplot(df, aes(x='level', y='accuracy'))
  )
  + scale_y_continuous(limits=[0, 1.05], breaks=np.arange(0, 1.1, 0.1))  # Increased upper limit to fit labels
 )
-plot.show()
+plot.draw()
 ```
 
 
