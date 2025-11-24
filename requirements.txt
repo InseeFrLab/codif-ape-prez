@@ -14,5 +14,5 @@ plotnine
 torchFastText
 bs4
 label-studio-sdk
-plotly==5.24
 networkx
+plotly==6.3.1

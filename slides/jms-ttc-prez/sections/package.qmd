@@ -1,0 +1,10 @@
+## Structure générale
+
+<div style="height: 100px;"></div>
+
+![](../img/TTC_overview.png){width=1000px fig-align="center"}
+
+## Une démo ?
+
+[Lien vers le notebook de démo](https://github.com/InseeFrLab/torchTextClassifiers/blob/main/notebooks/example.ipynb)
+

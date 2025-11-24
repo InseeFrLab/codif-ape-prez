@@ -1,4 +1,5 @@
 /.quarto/
+**/*.quarto_ipynb
 /_site/
 /index_files/
 **/*.quarto_ipynb
@@ -10,3 +11,5 @@ mlflow_images/
 index.pdf
 index.typ
 index.html
+*.typ
+site_libs/

@@ -1,10 +1,11 @@
 project:
   type: website
+
   render:
     - /slides/*/*.qmd
     - /papers/*/*.qmd
     - index.qmd
-    - /cards/*.qmd
+    - cards/*.qmd
     
 
 website:

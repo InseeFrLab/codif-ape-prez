@@ -1,0 +1,60 @@
+## fastText : en production, mais archivé {.r-fit-text}
+
+- fastText : le *go-to* pour la classification de texte à l'Insee
+- Efficace, performant, mis en production pour la codification APE...
+- ...mais repo archivé depuis le 19/03/2024
+
+## Enjeux
+
+::: {.incremental}
+- La non-maintenance de la librairie : à terme, risques de maintenance, de compatibilité...
+- Surtout : freine les possibilités de [**modernisation**]{.orange}
+- Dans le même temps, un éco-système **deep learning**/ NLP très dynamique: [**PyTorch**]{.orange}, **Hugging Face**...
+:::
+
+## 2024 : passage à PyTorch ! {.scrollable}
+
+::: {.incremental}
+- Modèle PyTorch proche du modèle fastText : transition en douceur
+- On en parlait [ici](https://inseefrlab.github.io/codif-ape-prez/slides/grp-veille-codif-auto-10/#/title-slide)
+    - PyTorch permet de *customiser* l'architecture et l'adapter à nos besoins (gestion des variables catégorielles)
+    - Meilleur *monitoring* de l'entraînement
+    - Opportunités de modernisation: explicabilité, calibration, [**modèles plus performants**]{.orange}...
+- Les défis de temps d'inférence ont été relevés
+    - dimensionnement du modèle plus raisonné
+    - le modèle est déployé [ici](https://codification-ape2025-pytorch.lab.sspcloud.fr/docs)
+:::
+
+## Pourquoi faire un package ? {.scrollable}
+:::{.incremental}    
+- au début, le modèle a été mis à disposition sous la forme d'un package Python, [**torchFastText**]{.orange}. Pourquoi ?
+
+    - le modèle se balade beaucoup : repo d'entraînement, repo API (inférence), puis prod
+        - il faut s'assurer d'une **source de vérité unique**
+        - [**PyPI**]{.orange} (avec connexion au Nexus interne) permet portabilité, installation et mise à jour
+    - le modèle / la méthodologie a [**une existence propre**]{.orange}, ce qui justifie de le séparer des autres codes (entraînement, inférence)
+        - pour la diffuser
+        - pour collaborer dessus
+:::
+
+## de *torchFastText* à *torchTextClassifiers* {.scrollable}
+
+
+- évolution du package initial vers un [**toolkit**]{.orange} (ou un *unifying framework*) de la classification de texte avec variables catégorielles
+    - d'autres exemples de *toolkits* en PyTorch : [Pythae](https://github.com/clementchadebec/benchmark_VAE) pour les VAE, [TorchSeg](https://github.com/yu-changqian/TorchSeg) pour la segmentation...
+- conceptualisation des différents composants d'un modèle de classification de texte
+- connexion avec l'eco-système Hugging Face
+
+---
+
+:::{.incremental} 
+- **Objectif**: 
+    - manipulation de ces composants, instantiation rapide et entraînement facilité de différentes architectures classiques
+    - en faire le standard de codification automatique au niveau institutionnel (Insee / SSM / INS européens)
+
+- **Destinataires**: tous ceux qui veulent entraîner leur propre modèles maisons à taille réduite, avoir la main sur leur architecture et qui ne peuvent utiliser les gros modèles d'Hugging Face !
+:::
+
+## Zone d'intérêt de la librairie
+
+![D'un point de vue production](../img/positioning_matrix.png){width=800px fig-align="center"}
