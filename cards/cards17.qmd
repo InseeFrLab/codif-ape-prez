@@ -6,7 +6,7 @@ description: |
   <b>Description :</b> Article sur la génération de données d'entraînement pour un modèle de ML dans un contexte de changement de nomenclature
 author: Nathan Randriamanana
 slides:
-  text: pdf
-  url: /slides/jms2025-llm-relabeling/index.pdf
+  text: Paper
+  url: /papers/jms2025-llm-relabeling/index.pdf
 order: 17
 ---
