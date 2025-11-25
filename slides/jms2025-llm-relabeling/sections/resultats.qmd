@@ -68,9 +68,17 @@ plot.draw()
 :::
 
 ::: notes
-En entraînant notre classifieur sur notre nouveau jeu d'apprentissage, résultats similaires à ce que nous avons en nomenclature actuelle.
-démarche classique en ML: split train/test/val. Pour passer en prod, data editing du jeu d'apprentissage pour rectifier des cas problématiques
-Notre futur modèle s'appuie sur la librairie TorchTextClassifiers qui sera présenté dans la même salle Jeudi après-midi dans la même salle.
+En entraînant notre classifieur sur le nouveau jeu d’apprentissage, nous obtenons des performances similaires à celles de la nomenclature actuelle.
+
+Comme dans toute démarche classique de machine learning :
+
+- Split train/test/validation pour évaluer la performance
+- Data editing du jeu d’apprentissage pour corriger les cas problématiques avant la mise en production
+
+Notre futur modèle s’appuiera sur la librairie TorchTextClassifiers, qui sera présenté (par mon collègue, ici présent ?) Jeudi après-midi dans cette même salle.
+
+Cette conclusion montre que notre méthodologie, combinant annotations humaines, LLM et expertise, permet de constituer une base fiable et performante pour la NAF 2025.
+Elle n’est pas limitée à une nomenclature donnée ni à un classifieur particulier et peut être adaptée à toute problématique similaire, ouvrant des perspectives intéressantes en matière d’innovation.
 :::
 
 

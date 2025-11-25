@@ -31,6 +31,12 @@ ascii: true
 bibliography: references.bib
 ---
 
+::: notes
+Bonjour à tous, je m’appelle ____.
+Je travaille à la DSE en tant que Data Scientist et administrateur de l'application Sirene.
+Je vais vous raconter comment nous avons, avec le SSP Lab et les équipes métiers, entraîné notre modèle d’apprentissage en nouvelle nomenclature.
+:::
+
 # Sommaire
 
 1️⃣ [**Introduction**]{.blue2} 
@@ -47,11 +53,21 @@ bibliography: references.bib
 
 7️⃣ [**Remerciements**]{.blue2}
 
+::: notes
+Dans un premier temps, je vais vous introduire le contexte et la problématique,
+puis présenter l’impact de la révision de la NAF sur cette problématique,
+ensuite les initiatives qui ont permis de développer une méthodologie basée sur les LLM,
+puis la méthodologie pour entraîner un modèle en nouvelle nomenclature sans données historiques,
+et enfin les résultats obtenus par ce classifieur,
+avant de conclure et de terminer par un mot de remerciement.
+:::
+
 
 # 1️⃣ Introduction
 
 ::: notes
-Introduisons le contexte afin de bien comprendre la situation dans laquelle nous nous situons.
+Commençons par introduire le contexte, pour bien comprendre la situation dans laquelle nous nous trouvons.
+Tout ce que nous verrons ensuite prend racine dans ce cadre.
 :::
 
 {{< include sections/introduction.qmd >}}
@@ -59,13 +75,18 @@ Introduisons le contexte afin de bien comprendre la situation dans laquelle nous
 # 2️⃣ Révision de la NAF et jeu d'apprentissage
 
 ::: notes
-Pour entraîner un modèle d'apprentissage ou notre classifieur, il nous faut un jeu d'entraînement sur lequel le classifieur va "apprendre".
-MAIS dans le contexte du changement de NAF, certains cas nous embêtent
+Comme nous l’avons vu, la NAF 2025 pose un vrai défi : certaines données n’existent pas encore.
+Pour entraîner notre classifieur, il nous faut un jeu d’entraînement.
+Mais avec la révision de la NAF, certains cas deviennent plus complexes… et c’est exactement ce qui va nous poser problème.
 :::
 
 {{< include sections/chgmt-nom-naf2025.qmd >}}
 
 # 3️⃣ Annotations humaines et virtuelles
+
+::: notes
+Pour répondre à ce problème, nous avons donc lancé des campagnes d’annotation d’envergure, combinant expertise humaine et aides virtuelles.
+:::
 
 {{< include sections/annotations.qmd >}}
 
