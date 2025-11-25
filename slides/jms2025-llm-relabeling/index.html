@@ -242,6 +242,22 @@ Nathan Randriamanana
 
   <p class="date">25 novembre 2025</p>
 </section>
+<section class="slide level2">
+
+<aside class="notes">
+<p>Bonjour à tous, je m’appelle ____. Je travaille à la DSE en tant que Data Scientist et administrateur de l’application Sirene. Je vais vous raconter comment nous avons, avec le SSP Lab et les équipes métiers, entraîné notre modèle d’apprentissage en nouvelle nomenclature.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="sommaire" class="title-slide slide level1 center" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
 <h1>Sommaire</h1>
 <p>1️⃣ <span class="blue2"><strong>Introduction</strong></span></p>
@@ -251,13 +267,26 @@ Nathan Randriamanana
 <p>5️⃣ <span class="blue2"><strong>Résultats</strong></span></p>
 <p>6️⃣ <span class="blue2"><strong>Conclusion</strong></span></p>
 <p>7️⃣ <span class="blue2"><strong>Remerciements</strong></span></p>
+<aside class="notes">
+<p>Dans un premier temps, je vais vous introduire le contexte et la problématique, puis présenter l’impact de la révision de la NAF sur cette problématique, ensuite les initiatives qui ont permis de développer une méthodologie basée sur les LLM, puis la méthodologie pour entraîner un modèle en nouvelle nomenclature sans données historiques, et enfin les résultats obtenus par ce classifieur, avant de conclure et de terminer par un mot de remerciement.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
 <section>
 <section id="introduction" class="title-slide slide level1 center" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
 <h1>1️⃣ Introduction</h1>
 <aside class="notes">
-<p>Introduisons le contexte afin de bien comprendre la situation dans laquelle nous nous situons.</p>
+<p>Commençons par introduire le contexte, pour bien comprendre la situation dans laquelle nous nous trouvons. Tout ce que nous verrons ensuite prend racine dans ce cadre.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -288,9 +317,9 @@ Nathan Randriamanana
 <li>Littérature <strong>abondante</strong> et en plein essor: <span class="citation" data-cites="rag_paper">Patrick Lewis (<a href="#/références" role="doc-biblioref" onclick="">2020</a>)</span>, <span class="citation" data-cites="cag_paper">RANA (<a href="#/références" role="doc-biblioref" onclick="">2025</a>)</span>, <span class="citation" data-cites="structuredrag">Connor Shorten (<a href="#/références" role="doc-biblioref" onclick="">2024</a>)</span>, <span class="citation" data-cites="hierarchicalrag">Haoyu Huang (<a href="#/références" role="doc-biblioref" onclick="">2025</a>)</span></li>
 </ul>
 <aside class="notes">
-<p>Aujourd’hui, les expérimentations ayant abouti à une mise en production de ML sont de + en + nb. En particulier sur le sujet de la codification. Sans tous les citer, si je devais en citer quelques-uns à titre exemple: Codification de produits (en nomenclature COICOP et NA2008) à partir de libellés pour une partie des données de caisse. Les nomenclatures suivantes sont concernés. Nous allons nous intéressé ici à l’APE, une variable du répertoire Sirene que nous présenterons rapidement</p>
-<p>L’APE repose justement sur la NAF. Par ailleurs, NAF a connu une révision pour mieux refléter le pays économique qui a un impact que nous détaillerons sur la codification Nous ne sommes pas les seuls concernés puisque des initiatives ont été entreprises par d’autres INS pour réformer leur système de codification par l’usage de LLM. Ces initiatives s’orientent de plus en plus vers l’utilisation des Large Language Models (LLM).</p>
-<p>Les LLM qui par ailleurs font l’objet d’une course et donc livraison compétitive régulière de nouveaux modèles motivé par la recherche de calcul et de données. Si vous voulez en savoir plus, vous pouvez consulter l’essai de Sutton en parle dans son essai “The bitter lesson” qui aide à comprendre les raisons de cette course. De plus, aujourd’hui la littérature sur l’application des LLM est bien fourni, ce qui nous offre une base solide pour s’appuyer sur l’état de l’art.</p>
+<p>Aujourd’hui, de plus en plus de modèles de machine learning sont mis en production à l’Insee. Ils servent à des cas d’usage variés, notamment la codification : COICOP, NA2008, PCS2020, et l’APE, notre focus du jour.</p>
+<p>L’APE, ou Activité Principale Exercée, repose sur la NAF, la Nomenclature d’Activités Française. La NAF a récemment été révisée pour mieux refléter le paysage économique actuel et s’aligner avec la révision européenne, la NACE.</p>
+<p>Nous ne sommes pas les seuls concernés : d’autres INS expérimentent également la recodification à l’aide de Large Language Models, ou LLM. Et comme vous le savez, dans le domaine de l’IA générative, la course est mondiale : nouveaux modèles, plus de puissance de calcul, plus de données. Pour comprendre cette dynamique, vous pouvez consulter l’essai de Sutton, The Bitter Lesson. La littérature sur l’usage des LLM est aujourd’hui abondante, ce qui nous fournit une base solide pour l’état de l’art.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -315,12 +344,38 @@ Nathan Randriamanana
 </div>
 </div>
 </div>
+<aside class="notes">
+<p>Pour comprendre comment l’APE est codifié, il faut d’abord savoir d’où viennent les libellés d’activité des entreprises. Tout commence avec la loi PACTE. Depuis janvier 2023, toutes les formalités d’entreprise doivent être déposées en ligne auprès d’un organisme unique, le Guichet Unique.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="fragment">
 <p>INPI = <em>Institut National de la Propriété Industrielle</em></p>
 <ul>
 <li>Office des brevets</li>
 <li>Opérateur du <span class="orange"><strong>Guichet Unique des Entreprises (GUE)</strong></span></li>
 </ul>
+<aside class="notes">
+<p>Dans ce contexte, un nouvel acteur entre en scène : l’INPI. Loin de se limiter aux brevets ou à la propriété industrielle, il gère désormais le portail du Guichet Unique, qui devient la source principale des déclarations pour le répertoire Sirene.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </div>
 <div class="fragment">
 <ul>
@@ -335,7 +390,8 @@ Nathan Randriamanana
 </details></li>
 </ul>
 <aside class="notes">
-<p>Pour comprendre comment on codifie l’APE, il est important de comprendre ce qu’est le libellé d’activité. La donne a changé lors de la mise en place d’un Guichet Unique des Entreprises par l’INPI. description littérale de l’activité Avant, CFE, Maintenant, …</p>
+<p>La mise en place du portail change la donne. Aujourd’hui, le répertoire Sirene dépend de l’INPI pour fournir les données nécessaires à l’attribution du code APE.</p>
+<p>Avant, les déclarants passaient par plusieurs Centres de formalités : leurs libellés d’activité étaient guidés, relus et en grande partie normalisés. Maintenant, avec le Guichet unique, chaque déclarant décrit librement son activité principale avec toutes les conséquences que cela entraîne sur la qualité du contenu saisi.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -358,8 +414,36 @@ Nathan Randriamanana
 <li>Bascule de Sirene 3 à <span class="orange"><strong>Sirene 4</strong></span> ➡️ traitement <span class="blue2"><strong>en flux</strong></span></li>
 <li>Sicore inefficient face au volume à traiter et particulièrement <span class="orange"><strong>diversité</strong></span> des libellés</li>
 </ul>
+<aside class="notes">
+<p>On peut se demander quel est le rôle ou simplement qu’est ce que Sirene dans ce contexte. Depuis les années 70, Sirene est le répertoire de référence qui suit la vie des entreprises, de leur création à leur cessation, parfois même leur réactivation. Il attribue le SIREN, le SIRET et le fameux code APE, celui que vous voyez sur vos tickets de caisse.</p>
+<p>L’année dernière, Sirene a connu une refonte historique : fini le monde du tout par batch, où le déclarant devait attendre le prochain traitement. Aujourd’hui, tout se fait en flux continu, quasi en temps réel. À l’instant où je vous parle, des entreprises sont en train d’être enregistrées.</p>
+<p>Dans ce contexte, avec un volume élevé et une grande variété de libellés, l’ancien système expert Sicore ne suffisait plus : il surchargeait les équipes et ne permettait de codifier que 30 % des cas.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="fragment">
 <p>➡️ Mis en place d’un modèle d’apprentissage supervisé fin d’année 2022.</p>
+<aside class="notes">
+<p>Fin 2022, un classifieur supervisé, basé sur le machine learning, a été mis en place, permettant d’automatiser au moins 65 % du codage du code APE, avec une démarche prudente consistant à présenter les autres cas en reprise gestionnaire.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </div>
 <div class="fragment">
 <ul>
@@ -368,10 +452,9 @@ Nathan Randriamanana
 </ul>
 <p>Malgré l’absence naturelle de données, comment entraîner notre modèle en NAF 2025 ?</p>
 <aside class="notes">
-<p>garant du SIREN, SIRET que vous connaissez mais aussi de l’APE que vous voyez quand vous faites vos courses sur vos tickets de caisse.</p>
-<p>gestion unitaire et très réactive des dossiers d’entreprises</p>
-<p>Pas seulement sur le ticket de caisse mais dans de nombreux SI d’entreprises et d’administration sur ce cas d’usage</p>
-<p>Nomenclature actuelle NAF rev 2 ou NAF2008 Les raisons qui poussent à ré-entraîner un modèle sont nombreuses tenue répertoire rupture totale et exogène de la définition même des modalités de la variable cible, rendant les codes non bijectifs immédiatement obsolètes</p>
+<p>Un modèle supervisé n’est pertinent que si les données qui l’ont entraîné restent cohérentes avec la réalité. Or, les activités et leurs descriptifs évoluent avec le temps : c’est ce qu’on appelle la dérive des données. Dans ces situations, il faut réentraîner le modèle.</p>
+<p>Un cas extrême, fréquent en statistique publique, se produit lorsqu’il y a un changement de nomenclature, comme avec la NAF. Autrement dit, les valeurs possibles de notre variable cible (notre Y) changent, rendant les codes précédents obsolètes.</p>
+<p>Alors, comment entraîner un modèle sur la NAF 2025, malgré l’absence de données pour cette nouvelle version ? C’est ce que nous allons explorer.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -389,7 +472,7 @@ Nathan Randriamanana
 <section id="révision-de-la-naf-et-jeu-dapprentissage" class="title-slide slide level1 center" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
 <h1>2️⃣ Révision de la NAF et jeu d’apprentissage</h1>
 <aside class="notes">
-<p>Pour entraîner un modèle d’apprentissage ou notre classifieur, il nous faut un jeu d’entraînement sur lequel le classifieur va “apprendre”. MAIS dans le contexte du changement de NAF, certains cas nous embêtent</p>
+<p>Comme nous l’avons vu, la NAF 2025 pose un vrai défi : certaines données n’existent pas encore. Pour entraîner notre classifieur, il nous faut un jeu d’entraînement. Mais avec la révision de la NAF, certains cas deviennent plus complexes… et c’est exactement ce qui va nous poser problème.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -411,7 +494,7 @@ Nathan Randriamanana
 </ul>
 
 <img data-src="../img/multivoques.png" class="quarto-figure quarto-figure-center r-stretch"><aside class="notes">
-<p>Dans la nouvelle NAF, surtout des éclatements, davantages de codes Nous pouvons avoir des cas qu’on aime bien 1-pour-1 qu’on appelle multivoque: suffit d’une bijection pour convertir 1-pour-N multivoques. Ces cas nous compliquent la vie: une simple bijection ne suffit pas il faut une expertise humaine du libellé d’activité</p>
+<p>Dans la nouvelle NAF, de nombreux codes éclatent et apparaissent de nouveaux cas. Certains cas sont univoques : correspondance 1-pour-1, facile à convertir. Mais les multivoques (1-pour-N) sont problématiques : une simple bijection ne suffit pas, il faut l’expertise d’un humain pour interpréter correctement le libellé d’activité.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -427,6 +510,19 @@ Nathan Randriamanana
 <section id="combien-représentent-ils" class="slide level2 scrollable" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
 <h2><span class="r-fit-text">Combien représentent-ils ?</span></h2>
 <p><span class="orange"><strong>Jeu d’apprentissage</strong></span> issues de <span class="blue2"><strong>Sirene 4</strong></span>: <span class="math inline">\(~2.7\)</span> millions d’observations</p>
+<aside class="notes">
+<p>C’est un volume conséquent. On pourrait espérer que la majorité des cas soient univoques et que les multivoques restent rares…</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="fragment">
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -485,7 +581,7 @@ Table&nbsp;2: Réprésentation des multivoques dans le jeu d’apprentissage
 </div>
 </div></div>
 <aside class="notes">
-<p>Certes, ce sont des cas qui demande de la ressource humaine mais peut-être qu’il n’y en a pas tant que ça. Enjeux de le savoir sur le jeu d’apprentissage qui est conséquent. Fausse bonne nouvelle: faible pourcentage dans la table de correspondance théorique Toutefois, cela représente beaucoup dans la base d’entraînement. dû à la distribution, des codes multivoques sont très représentés dans le jeu. Plus de la moitié à recoder: pas possible …</p>
+<p>Faux espoirs ! Même si les multivoques semblent minoritaires dans la table de correspondance théorique, la réalité du jeu d’apprentissage est différente. La distribution des codes fait que plus de la moitié des observations à recoder sont multivoques. C’est conséquent et pas automatisable facilement, car il faut l’intervention humaine.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -505,34 +601,8 @@ Table&nbsp;2: Réprésentation des multivoques dans le jeu d’apprentissage
 <section>
 <section id="annotations-humaines-et-virtuelles" class="title-slide slide level1 center" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
 <h1>3️⃣ Annotations humaines et virtuelles</h1>
-
-</section>
-<section id="campagnes-dannotation" class="slide level2 scrollable smaller" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
-<h2><span class="r-fit-text">Campagnes d’annotation</span></h2>
-<p><em>Actions possibles: attribuer un code, déléguer la tâche ou classer comme incodables</em></p>
-<div class="fragment">
-<ol type="1">
-<li><span class="blue2"><strong>En NAF rev 2 ou NAF 2008</strong>: gold standard pour évaluer la <em>précision</em></span>
-<ul>
-<li>10 000 annotations pour valider la qualité dans la <span class="blue2"><strong>nomenclature actuelle</strong></span></li>
-<li><strong>Pôle Qualité Sirene</strong> ➡️ 6 annotateurs à l’aveugle, sans aide à la codification</li>
-</ul></li>
-</ol>
-</div>
-<div class="fragment">
-<ol start="2" type="1">
-<li><span class="blue2"><strong>En NAF 2025</strong>: ground truth pour servir de <em>référence</em></span>
-<ul>
-<li>30 000 annotations sur les données <span class="orange"><strong>multivoques uniques</strong></span></li>
-<li>réseau complet des experts APE ➡️ environ 25 annotateurs</li>
-<li>avec proposition de codes multivoques en fonction du code en NAF rev 2</li>
-</ul></li>
-</ol>
-</div>
-<div class="fragment">
 <aside class="notes">
-<p>Pour convertir le jeu d’apprentissage, 2 campagnes d’annotation. Une première pour s’assurer que la qualité de codification actuelle est bonne. Une seconde qui s’appuie sur le code en NAF rev 2 pour aider à annoter plus rapidement et annoter un maximum. ça ne suffit pas pour entraîner un classifieur. (faire vivre la NAF 2025 aussi )</p>
-<p>Dans ces campagnes, les participants pouvait attribuer un code, déléguer leur tâche ou indiquer comme inclassable: Remarquer des chiffres remarquables, en odg</p>
+<p>Pour répondre à ce problème, nous avons donc lancé des campagnes d’annotation d’envergure, combinant expertise humaine et aides virtuelles.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -544,10 +614,86 @@ Table&nbsp;2: Réprésentation des multivoques dans le jeu d’apprentissage
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="campagnes-dannotation" class="slide level2 scrollable smaller" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
+<h2><span class="r-fit-text">Campagnes d’annotation</span></h2>
+<p><em>Actions possibles: attribuer un code, déléguer la tâche ou classer comme incodables</em></p>
+<aside class="notes">
+<p>Pour convertir le jeu d’apprentissage, nous avons mené deux campagnes d’annotation. Chaque annotateur pouvait attribuer un code, déléguer la tâche ou marquer le libellé comme inclassable.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="fragment">
+<ol type="1">
+<li><span class="blue2"><strong>En NAF rev 2 ou NAF 2008</strong>: gold standard pour évaluer la <em>précision</em></span>
+<ul>
+<li>10 000 annotations pour valider la qualité dans la <span class="blue2"><strong>nomenclature actuelle</strong></span></li>
+<li><strong>Pôle Qualité Sirene</strong> ➡️ 6 annotateurs à l’aveugle, sans aide à la codification</li>
+</ul></li>
+</ol>
+<aside class="notes">
+<p>Cette première campagne visait à s’assurer de la qualité du codage actuel. Le gold standard est ici un jeu de test fiable, qui permet d’évaluer la précision d’un classifieur avant de passer à la NAF 2025. N’ayant aucune expérience en NAF 2025 au départ, il était essentiel de vérifier que le codage NAF rev 2 était fiable, pour pouvoir s’appuyer dessus ensuite.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li><span class="blue2"><strong>En NAF 2025</strong>: ground truth pour servir de <em>référence</em></span>
+<ul>
+<li>30 000 annotations sur les données <span class="orange"><strong>multivoques uniques</strong></span></li>
+<li>réseau complet des experts APE ➡️ environ 25 annotateurs</li>
+<li>avec proposition de codes multivoques en fonction du code en NAF rev 2</li>
+</ul></li>
+</ol>
+<aside class="notes">
+<p>Cette seconde campagne s’appuie sur le codage NAF rev 2 pour annoter plus rapidement et efficacement. La seconde campagne crée la vérité terrain ou ground truth, c’est-à-dire un étalon de référence pour nos LLM et classifieurs. Elle permet aussi de former les experts à la NAF 2025 et de clarifier certaines règles de classement et démarches. Même avec 30 000 annotations, ce n’est pas suffisant pour entraîner un classifieur, mais c’est une étape essentielle pour constituer ce qu’on appelle une vérité terrain ou ground truth.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+<div class="fragment">
 <ul>
 <li>6&nbsp;% de tâches déléguées</li>
 <li>6&nbsp;% de libellés inclassables</li>
 </ul>
+<aside class="notes">
+<p>Un point intéressant à noter : dans les deux campagnes, le taux de tâches déléguées et de libellés inclassables est identique, ce qui serait intéressant à comparer avec d’autres projets d’annotation.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </div>
 </section>
 <section id="concilier-lexpertise-et-linnovation" class="slide level2" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
@@ -555,9 +701,9 @@ Table&nbsp;2: Réprésentation des multivoques dans le jeu d’apprentissage
 
 <img data-src="../img/human_vs_llm.drawio.png" class="quarto-figure quarto-figure-center r-stretch"><p>Dans quelle mesure, peut-on tirer profit des LLM ?</p>
 <aside class="notes">
-<p>On sait que les moyens actuels ne permettent pas un humain de labelliser un nombre suffisant de données. D’un autre côté, à l’ère des LLM et compte tenu du contexte présenté en début de présentation, il est possible d’utiliser des méthodes innovantes pour labelliser.</p>
-<p>L’expert humain a une expertise qui n’est pas native au LLM. et un robot peut traiter un plus grand nombre de cas.</p>
-<p>Nous allons tirer profit des deux en s’inspirant du mode opératoire que nous ont appris les experts de la nomenclature et l’appliquer avec des LLM et en utilisant les libellés annotés comme étalon.</p>
+<p>Nous savons que les humains seuls ne peuvent pas labelliser suffisamment de données. Mais à l’ère des LLM et compte tenu du contexte présenté, des méthodes innovantes peuvent compléter l’expertise humaine.</p>
+<p>L’expert apporte une compréhension fine et non native aux LLM, tandis que le robot peut traiter un plus grand nombre de cas.</p>
+<p>L’idée : tirer parti des deux en s’inspirant du mode opératoire des experts et en utilisant les libellés annotés comme étalon pour guider les LLM.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -595,29 +741,10 @@ Table&nbsp;2: Réprésentation des multivoques dans le jeu d’apprentissage
 </ul>
 
 <img data-src="../img/methodo-nace-rev.png" class="quarto-figure quarto-figure-center r-stretch"><aside class="notes">
-<ul>
-<li>Utilisation de <span class="orange"><strong>LLMs</strong></span> pour générer des annotations en NAF 2025</li>
-<li><span class="orange"><strong>Données</strong></span> à disposition :
-<ol type="1">
-<li>Stock <span class="blue2"><strong>Sirene 4</strong></span> (<span class="math inline">\(~2.7\)</span> millions d’observations)</li>
-<li><span class="blue2"><strong>Table de passage</strong></span> réalisée par les experts APE</li>
-<li><span class="blue2"><strong>Notes explicatives</strong></span> de la NAF 2025</li>
-<li><span class="blue2"><strong>Annotations manuelles</strong></span> (<span class="math inline">\(~30k\)</span> observations)</li>
-</ol></li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<aside class="notes">
-<p>Le principe est de reconstruire la base la plus complète possible. En reproduisant le travail des experts par le LLM et en choisissant le LLM qui s’aligne au mieux avec les annotations manuelles de la campagne On sépare les univoques qui sont recodés par une table, des multivoques qui sont recodés par LLM. Cela nous a permis d’avoir une base d’apprentissage suffisamment volumineuse pour entraîner notre classifieur S’il faut retenir une chose, c’est qu’on labellise virtuellement les multivoques par LLM</p>
+<p>Le principe est de reproduire le travail des experts par LLM et de sélectionner le modèle qui s’aligne le mieux avec les annotations manuelles.</p>
+<p>Les cas univoques sont recodés via une table de correspondance.</p>
+<p>Les cas multivoques sont recodés via LLM. Cela permet de créer une base d’apprentissage volumineuse pour entraîner le classifieur.</p>
+<p>En résumé : les multivoques sont labellisés virtuellement par LLM.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -664,8 +791,7 @@ Table&nbsp;2: Réprésentation des multivoques dans le jeu d’apprentissage
 <span id="cb3-5"><a></a><span class="fu">}</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <aside class="notes">
-<p>Pour guider le LLM il faut le prompter 2 types: pour lui donner sa feuille de route global, un prompt générique appelé prompt système dans lequel on lui donne un rôle et les différentes étapes à effectuer tel un annotateur virtuel.</p>
-<p>Un prompt spécifique, la requête où on lui donne les infos nécessaire pour coder. Un LLM peut être assez verbeux ou volubile, donc important de qualifier sa réponse</p>
+<p>Le LLM a besoin de directives claires pour produire des réponses fiables : Prompt système : définit sa feuille de route globale, lui donne un rôle d’expert NACE. C’est un exemple parmi les nombreuses techniques du prompt engineering pour optimiser les LLM. Prompt spécifique : fourni pour chaque observation, avec les informations nécessaires pour coder correctement, et surtout pour ajouter le contexte. Nous verrons quelques exemples pour comprendre pourquoi c’est crucial. Consigne de format : pour éviter les réponses volubiles ou incorrectes et garantir une sortie structurée et exploitable.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -682,7 +808,7 @@ Table&nbsp;2: Réprésentation des multivoques dans le jeu d’apprentissage
 <h2>Importance du contexte</h2>
 
 <img data-src="../img/hallucination.drawio.png" class="quarto-figure quarto-figure-center r-stretch"><aside class="notes">
-<p>Sans ou avec peu de contexte, un LLM peut difficilement coder en NAF 2025 en tout cas aujourd’hui … Il peut ce qu’on appelle halluciner cad fournir réponses incorrectes, inventées ou inexactes</p>
+<p>Sans contexte suffisant, le LLM peut halluciner, c’est-à-dire fournir des réponses incorrectes ou inventées. Pour coder correctement en NAF 2025, il est indispensable de lui fournir le contexte nécessaire.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -735,7 +861,7 @@ Table&nbsp;2: Réprésentation des multivoques dans le jeu d’apprentissage
 <h2>Injection du contexte</h2>
 <p><img data-src="../img/cag_application_naf.png" class="quarto-figure quarto-figure-center">*</p>
 <aside class="notes">
-<p>C’est pour cela que l’on ajoute du contexte. Il existe différentes techniques dont la plus populaire est le RAG. mais c’est bien ce contexte que l’on retrouve dans notre requête. La quantité de texte que le LLM peut examiner est appelé fenêtre de contexte.</p>
+<p>C’est pour cela que l’on ajoute du contexte. Il existe différentes techniques dont la plus populaire est le RAG. Le schéma présente le contexte injecté qui constitue notre prompt spécifique ou requête. La quantité de texte que le LLM peut examiner est appelée fenêtre de contexte (sur le schéma, repérée comme “fenêtre étendue”).</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -772,7 +898,14 @@ Figure&nbsp;1: Comparaison fastText vs torchTextClassifiers
 </div>
 </div>
 <aside class="notes">
-<p>En entraînant notre classifieur sur notre nouveau jeu d’apprentissage, résultats similaires à ce que nous avons en nomenclature actuelle. démarche classique en ML: split train/test/val. Pour passer en prod, data editing du jeu d’apprentissage pour rectifier des cas problématiques Notre futur modèle s’appuie sur la librairie TorchTextClassifiers qui sera présenté dans la même salle Jeudi après-midi dans la même salle.</p>
+<p>En entraînant notre classifieur sur le nouveau jeu d’apprentissage, nous obtenons des performances similaires à celles de la nomenclature actuelle.</p>
+<p>Comme dans toute démarche classique de machine learning :</p>
+<ul>
+<li>Split train/test/validation pour évaluer la performance</li>
+<li>Data editing du jeu d’apprentissage pour corriger les cas problématiques avant la mise en production</li>
+</ul>
+<p>Notre futur modèle s’appuiera sur la librairie TorchTextClassifiers, qui sera présenté (par mon collègue, ici présent ?) Jeudi après-midi dans cette même salle.</p>
+<p>Cette conclusion montre que notre méthodologie, combinant annotations humaines, LLM et expertise, permet de constituer une base fiable et performante pour la NAF 2025. Elle n’est pas limitée à une nomenclature donnée ni à un classifieur particulier et peut être adaptée à toute problématique similaire, ouvrant des perspectives intéressantes en matière d’innovation.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
