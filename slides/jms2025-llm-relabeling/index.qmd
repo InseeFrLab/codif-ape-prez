@@ -31,6 +31,15 @@ ascii: true
 bibliography: references.bib
 ---
 
+# Brève présentation {.nonincremental auto-animate=true}
+
+![](https://minio.lab.sspcloud.fr/nrandriamanana/portfolio/Nathan_resize.JPG){fig-align="left"} 
+
+- [**Qui suis-je ?**]{.orange}
+    - [**Data Scientist**]{.blue2} de l'Insee
+    - travaille à la [**Direction des statistiques d'entreprises**]{.blue2}
+    - administration du répertoire [**SIRENE**](https://fr.wikipedia.org/wiki/Syst%C3%A8me_national_d%27identification_et_du_r%C3%A9pertoire_des_entreprises_et_de_leurs_%C3%A9tablissements){.blue2} des entreprises
+
 ::: notes
 Bonjour à tous, je m’appelle ____.
 Je travaille à la DSE en tant que Data Scientist et administrateur de l'application Sirene.
