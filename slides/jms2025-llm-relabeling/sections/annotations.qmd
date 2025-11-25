@@ -3,11 +3,22 @@
 
 *Actions possibles: attribuer un code, déléguer la tâche ou classer comme incodables*
 
+::: notes
+Pour convertir le jeu d’apprentissage, nous avons mené deux campagnes d’annotation.
+Chaque annotateur pouvait attribuer un code, déléguer la tâche ou marquer le libellé comme inclassable.
+:::
+
 . . .
 
 1. [**En NAF rev 2 ou NAF 2008**: gold standard pour évaluer la _précision_]{.blue2} 
     - 10 000 annotations pour valider la qualité dans la [**nomenclature actuelle**]{.blue2}
-    - **Pôle Qualité Sirene** ➡️ 6 annotateurs à l'aveugle, sans aide à la codification 
+    - **Pôle Qualité Sirene** ➡️ 6 annotateurs à l'aveugle, sans aide à la codification
+
+::: notes
+Cette première campagne visait à s’assurer de la qualité du codage actuel.
+Le gold standard est ici un jeu de test fiable, qui permet d’évaluer la précision d’un classifieur avant de passer à la NAF 2025.
+N’ayant aucune expérience en NAF 2025 au départ, il était essentiel de vérifier que le codage NAF rev 2 était fiable, pour pouvoir s’appuyer dessus ensuite.
+::: 
 
 . . .
 
@@ -16,21 +27,20 @@
     - réseau complet des experts APE ➡️ environ 25 annotateurs
     - avec proposition de codes multivoques en fonction du code en NAF rev 2
 
-. . .
-
 ::: notes
-Pour convertir le jeu d'apprentissage, 2 campagnes d'annotation.
-Une première pour s'assurer que la qualité de codification actuelle est bonne.
-Une seconde qui s'appuie sur le code en NAF rev 2 pour aider à annoter plus rapidement
-et annoter un maximum. ça ne suffit pas pour entraîner un classifieur. (faire vivre la NAF 2025 aussi )
-
-Dans ces campagnes, les participants pouvait attribuer un code, déléguer leur tâche ou indiquer comme inclassable:
-Remarquer des chiffres remarquables, en odg
+Cette seconde campagne s’appuie sur le codage NAF rev 2 pour annoter plus rapidement et efficacement.
+La seconde campagne crée la vérité terrain ou ground truth, c’est-à-dire un étalon de référence pour nos LLM et classifieurs.
+Elle permet aussi de former les experts à la NAF 2025 et de clarifier certaines règles de classement et démarches.
+Même avec 30 000 annotations, ce n’est pas suffisant pour entraîner un classifieur, mais c’est une étape essentielle pour constituer ce qu'on appelle une vérité terrain ou ground truth.
 :::
-
+. . .
 
 - 6 % de tâches déléguées
 - 6 % de libellés inclassables
+
+::: notes
+Un point intéressant à noter : dans les deux campagnes, le taux de tâches déléguées et de libellés inclassables est identique, ce qui serait intéressant à comparer avec d’autres projets d’annotation.
+:::
 
 ## Concilier l'expertise et l'innovation
 
@@ -39,13 +49,10 @@ Remarquer des chiffres remarquables, en odg
 Dans quelle mesure, peut-on tirer profit des LLM ?
 
 ::: notes
-On sait que les moyens actuels ne permettent pas un humain de labelliser un nombre suffisant de données.
-D'un autre côté, à l'ère des LLM et compte tenu du contexte présenté en début de présentation, 
-il est possible d'utiliser des méthodes innovantes pour labelliser.
+Nous savons que les humains seuls ne peuvent pas labelliser suffisamment de données.
+Mais à l’ère des LLM et compte tenu du contexte présenté, des méthodes innovantes peuvent compléter l’expertise humaine.
 
-L'expert humain a une expertise qui n'est pas native au LLM. 
-et un robot peut traiter un plus grand nombre de cas.
+L’expert apporte une compréhension fine et non native aux LLM, tandis que le robot peut traiter un plus grand nombre de cas.
 
-Nous allons tirer profit des deux en s'inspirant du mode opératoire que nous ont appris les experts de la nomenclature
-et l'appliquer avec des LLM et en utilisant les libellés annotés comme étalon.
+L’idée : tirer parti des deux en s’inspirant du mode opératoire des experts et en utilisant les libellés annotés comme étalon pour guider les LLM.
 :::

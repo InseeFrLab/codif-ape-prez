@@ -12,19 +12,14 @@
 - Littérature **abondante** et en plein essor: @rag_paper, @cag_paper, @structuredrag, @hierarchicalrag
 
 ::: notes
-Aujourd'hui, les expérimentations ayant abouti à une mise en production de ML sont de + en + nb.
-En particulier sur le sujet de la codification. Sans tous les citer, si je devais en citer quelques-uns à titre exemple: 
-Codification de produits (en nomenclature COICOP et NA2008) à partir de libellés pour une partie
-des données de caisse. Les nomenclatures suivantes sont concernés. 
-Nous allons nous intéressé ici à l'APE, une variable du répertoire Sirene que nous présenterons rapidement 
+Aujourd’hui, de plus en plus de modèles de machine learning sont mis en production à l’Insee.
+Ils servent à des cas d’usage variés, notamment la codification : COICOP, NA2008, PCS2020, et l’APE, notre focus du jour.
 
-L'APE repose justement sur la NAF.
-Par ailleurs, NAF a connu une révision pour mieux refléter le pays économique qui a un impact que nous détaillerons sur la codification
-Nous ne sommes pas les seuls concernés puisque des initiatives ont été entreprises par d'autres INS pour réformer leur système de codification
-par l'usage de LLM. Ces initiatives s'orientent de plus en plus vers l'utilisation des Large Language Models (LLM).
+L’APE, ou Activité Principale Exercée, repose sur la NAF, la Nomenclature d’Activités Française. La NAF a récemment été révisée pour mieux refléter le paysage économique actuel et s’aligner avec la révision européenne, la NACE.
 
-Les LLM qui par ailleurs font l'objet d'une course et donc livraison compétitive régulière de nouveaux modèles motivé par la recherche de calcul et de données. Si vous voulez en savoir plus, vous pouvez consulter l'essai de Sutton en parle dans son essai "The bitter lesson" qui aide à comprendre les raisons de cette course.
-De plus, aujourd'hui la littérature sur l'application des LLM est bien fourni, ce qui nous offre une base solide pour s'appuyer sur l'état de l'art.
+Nous ne sommes pas les seuls concernés : d’autres INS expérimentent également la recodification à l’aide de Large Language Models, ou LLM.
+Et comme vous le savez, dans le domaine de l’IA générative, la course est mondiale : nouveaux modèles, plus de puissance de calcul, plus de données. Pour comprendre cette dynamique, vous pouvez consulter l’essai de Sutton, The Bitter Lesson.
+La littérature sur l’usage des LLM est aujourd’hui abondante, ce qui nous fournit une base solide pour l’état de l’art.
 :::
 
 ## [La source des données d'entreprises et des libellés d'activités]{.r-fit-text} {.nonincremental auto-animate=true .smaller}
@@ -35,12 +30,22 @@ De plus, aujourd'hui la littérature sur l'application des LLM est bien fourni, 
 À partir du 1er janvier 2023, l’ensemble des formalités d’entreprise doit être déposé en ligne auprès d’un [**organisme unique**]{.orange}.
 :::
 
+::: notes
+Pour comprendre comment l’APE est codifié, il faut d’abord savoir d’où viennent les libellés d’activité des entreprises.
+Tout commence avec la loi PACTE. Depuis janvier 2023, toutes les formalités d’entreprise doivent être déposées en ligne auprès d’un organisme unique, le Guichet Unique.
+:::
+
 . . .
 
 INPI = _Institut National de la Propriété Industrielle_
 
 - Office des brevets 
 - Opérateur du [**Guichet Unique des Entreprises (GUE)**]{.orange}
+
+::: notes
+Dans ce contexte, un nouvel acteur entre en scène : l’INPI.
+Loin de se limiter aux brevets ou à la propriété industrielle, il gère désormais le portail du Guichet Unique, qui devient la source principale des déclarations pour le répertoire Sirene.
+:::
 
 . . .
 
@@ -60,10 +65,11 @@ INPI = _Institut National de la Propriété Industrielle_
   </details>
 
 ::: notes
-Pour comprendre comment on codifie l'APE, il est important de comprendre ce qu'est le libellé d'activité.
-La donne a changé lors de la mise en place d'un Guichet Unique des Entreprises par l'INPI.
-description littérale de l'activité
-Avant, CFE, Maintenant, ...
+La mise en place du portail change la donne.
+Aujourd’hui, le répertoire Sirene dépend de l’INPI pour fournir les données nécessaires à l’attribution du code APE.
+
+Avant, les déclarants passaient par plusieurs Centres de formalités : leurs libellés d’activité étaient guidés, relus et en grande partie normalisés.
+Maintenant, avec le Guichet unique, chaque déclarant décrit librement son activité principale avec toutes les conséquences que cela entraîne sur la qualité du contenu saisi.
 :::
 
 
@@ -76,9 +82,22 @@ Sirene = _Système Informatique pour le Répertoire des Entreprises et de leurs 
 - Bascule de Sirene 3 à [**Sirene 4**]{.orange} ➡️ traitement [**en flux**]{.blue2}
 - Sicore inefficient face au volume à traiter et particulièrement [**diversité**]{.orange} des libellés 
 
+::: notes
+On peut se demander quel est le rôle ou simplement qu'est ce que Sirene dans ce contexte.
+Depuis les années 70, Sirene est le répertoire de référence qui suit la vie des entreprises, de leur création à leur cessation, parfois même leur réactivation. Il attribue le SIREN, le SIRET et le fameux code APE, celui que vous voyez sur vos tickets de caisse. 
+
+L’année dernière, Sirene a connu une refonte historique : fini le monde du tout par batch, où le déclarant devait attendre le prochain traitement. Aujourd’hui, tout se fait en flux continu, quasi en temps réel. À l’instant où je vous parle, des entreprises sont en train d’être enregistrées.
+
+Dans ce contexte, avec un volume élevé et une grande variété de libellés, l’ancien système expert Sicore ne suffisait plus : il surchargeait les équipes et ne permettait de codifier que 30 % des cas.
+:::
+
 . . .
 
 ➡️ Mis en place d'un modèle d'apprentissage supervisé fin d'année 2022.
+
+::: notes
+Fin 2022, un classifieur supervisé, basé sur le machine learning, a été mis en place, permettant d’automatiser au moins 65 % du codage du code APE, avec une démarche prudente consistant à présenter les autres cas en reprise gestionnaire.
+:::
 
 . . .
 
@@ -88,16 +107,11 @@ Sirene = _Système Informatique pour le Répertoire des Entreprises et de leurs 
 Malgré l'absence naturelle de données, comment entraîner notre modèle en NAF 2025 ?
 
 ::: notes
-garant du SIREN, SIRET que vous connaissez mais aussi de l'APE que vous voyez 
-quand vous faites vos courses sur vos tickets de caisse.
+Un modèle supervisé n’est pertinent que si les données qui l’ont entraîné restent cohérentes avec la réalité.
+Or, les activités et leurs descriptifs évoluent avec le temps : c’est ce qu’on appelle la dérive des données. Dans ces situations, il faut réentraîner le modèle.
 
-gestion unitaire et très réactive des dossiers d’entreprises
+Un cas extrême, fréquent en statistique publique, se produit lorsqu’il y a un changement de nomenclature, comme avec la NAF.
+Autrement dit, les valeurs possibles de notre variable cible (notre Y) changent, rendant les codes précédents obsolètes.
 
-Pas seulement sur le ticket de caisse mais dans de nombreux SI d'entreprises et d'administration
-sur ce cas d'usage
-
-Nomenclature actuelle NAF rev 2 ou NAF2008
-Les raisons qui poussent à ré-entraîner un modèle sont nombreuses
-tenue répertoire
-rupture totale et exogène de la définition même des modalités de la variable cible, rendant les codes non bijectifs immédiatement obsolètes
+Alors, comment entraîner un modèle sur la NAF 2025, malgré l’absence de données pour cette nouvelle version ? C’est ce que nous allons explorer.
 :::
