@@ -63,12 +63,11 @@ Je vais vous raconter comment nous avons, avec le SSP Lab et les équipes métie
 7️⃣ [**Remerciements**]{.blue2}
 
 ::: notes
-Dans un premier temps, je vais vous introduire le contexte et la problématique,
-puis présenter l’impact de la révision de la NAF sur cette problématique,
-ensuite les initiatives qui ont permis de développer une méthodologie basée sur les LLM,
-puis la méthodologie pour entraîner un modèle en nouvelle nomenclature sans données historiques,
-et enfin les résultats obtenus par ce classifieur,
-avant de conclure et de terminer par un mot de remerciement.
+Dans un premier temps, je vais vous présenter le contexte et la problématique, pour comprendre les enjeux du réentraînement.
+Ensuite, nous verrons l’impact de la révision de la NAF sur cette problématique, et ce que cela implique pour notre jeu d’entraînement.
+Je vous montrerai ensuite les initiatives d’annotation humaine et virtuelle qui ont permis de développer une méthodologie innovante basée sur les LLM.
+Puis, je détaillerai comment cette méthodologie permet d’entraîner notre modèle en nouvelle nomenclature, même sans données historiques.
+Enfin, nous passerons aux résultats du classifieur, avant de conclure et de terminer par un mot de remerciement.
 :::
 
 
