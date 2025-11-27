@@ -6,7 +6,7 @@
 
 ## Une démo ?
 
-[Lien vers le notebook de démo](https://github.com/InseeFrLab/torchTextClassifiers/blob/main/notebooks/example.ipynb)
+[Lien vers le notebook de démo](https://inseefrlab.github.io/torchTextClassifiers/notebooks/example.html)
 
 ## Lien vers la documentation
 
