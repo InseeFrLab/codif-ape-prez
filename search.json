@@ -525,6 +525,13 @@
     "text": "Une démo ?\nLien vers le notebook de démo"
   },
   {
+    "objectID": "slides/jms-ttc-prez/index.html#lien-vers-la-documentation",
+    "href": "slides/jms-ttc-prez/index.html#lien-vers-la-documentation",
+    "title": "Modernisation de la codification automatique à l’Insee",
+    "section": "Lien vers la documentation",
+    "text": "Lien vers la documentation\n\nhttps://inseefrlab.github.io/torchTextClassifiers/"
+  },
+  {
     "objectID": "slides/inserm-echange/index.html#contexte-1",
     "href": "slides/inserm-echange/index.html#contexte-1",
     "title": "Codification automatique de l’APE à l’Insee",
