@@ -8,3 +8,6 @@
 
 [Lien vers le notebook de démo](https://github.com/InseeFrLab/torchTextClassifiers/blob/main/notebooks/example.ipynb)
 
+## Lien vers la documentation
+
+![https://inseefrlab.github.io/torchTextClassifiers/](../img/QRcode_doc_ttc.png){width=1000px fig-align="center"}

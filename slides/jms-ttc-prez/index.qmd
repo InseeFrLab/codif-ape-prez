@@ -17,6 +17,10 @@ format:
 # css: styles.css
 ---
 
+# Pour suivre la présentation...
+
+![](../img/QRcode_prez_jms.png){width=1000px fig-align="center"}
+
 # 1️⃣ Contexte
 
 {{< include sections/contexte.qmd >}}
