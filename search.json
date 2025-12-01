@@ -471,63 +471,63 @@
   {
     "objectID": "slides/jms-ttc-prez/index.html#fasttext-en-production-mais-archivé",
     "href": "slides/jms-ttc-prez/index.html#fasttext-en-production-mais-archivé",
-    "title": "Modernisation de la codification automatique à l’Insee",
+    "title": "torchTextClassifiers, un framework en PyTorch pour la classification de texte",
     "section": "fastText : en production, mais archivé",
     "text": "fastText : en production, mais archivé\n\nfastText : le go-to pour la classification de texte à l’Insee\nEfficace, performant, mis en production pour la codification APE…\n…mais repo archivé depuis le 19/03/2024"
   },
   {
     "objectID": "slides/jms-ttc-prez/index.html#enjeux",
     "href": "slides/jms-ttc-prez/index.html#enjeux",
-    "title": "Modernisation de la codification automatique à l’Insee",
+    "title": "torchTextClassifiers, un framework en PyTorch pour la classification de texte",
     "section": "Enjeux",
     "text": "Enjeux\n\nLa non-maintenance de la librairie : à terme, risques de maintenance, de compatibilité…\nSurtout : freine les possibilités de modernisation\nDans le même temps, un éco-système deep learning/ NLP très dynamique: PyTorch, Hugging Face…"
   },
   {
     "objectID": "slides/jms-ttc-prez/index.html#passage-à-pytorch",
     "href": "slides/jms-ttc-prez/index.html#passage-à-pytorch",
-    "title": "Modernisation de la codification automatique à l’Insee",
+    "title": "torchTextClassifiers, un framework en PyTorch pour la classification de texte",
     "section": "2024 : passage à PyTorch !",
     "text": "2024 : passage à PyTorch !\n\nModèle PyTorch proche du modèle fastText : transition en douceur\nOn en parlait ici\n\nPyTorch permet de customiser l’architecture et l’adapter à nos besoins (gestion des variables catégorielles)\nMeilleur monitoring de l’entraînement\nOpportunités de modernisation: explicabilité, calibration, modèles plus performants…\n\nLes défis de temps d’inférence ont été relevés\n\ndimensionnement du modèle plus raisonné\nle modèle est déployé ici"
   },
   {
     "objectID": "slides/jms-ttc-prez/index.html#pourquoi-faire-un-package",
     "href": "slides/jms-ttc-prez/index.html#pourquoi-faire-un-package",
-    "title": "Modernisation de la codification automatique à l’Insee",
+    "title": "torchTextClassifiers, un framework en PyTorch pour la classification de texte",
     "section": "Pourquoi faire un package ?",
     "text": "Pourquoi faire un package ?\n\nau début, le modèle a été mis à disposition sous la forme d’un package Python, torchFastText. Pourquoi ?\n\nle modèle se balade beaucoup : repo d’entraînement, repo API (inférence), puis prod\n\nil faut s’assurer d’une source de vérité unique\nPyPI (avec connexion au Nexus interne) permet portabilité, installation et mise à jour\n\nle modèle / la méthodologie a une existence propre, ce qui justifie de le séparer des autres codes (entraînement, inférence)\n\npour la diffuser\npour collaborer dessus"
   },
   {
     "objectID": "slides/jms-ttc-prez/index.html#de-torchfasttext-à-torchtextclassifiers",
     "href": "slides/jms-ttc-prez/index.html#de-torchfasttext-à-torchtextclassifiers",
-    "title": "Modernisation de la codification automatique à l’Insee",
+    "title": "torchTextClassifiers, un framework en PyTorch pour la classification de texte",
     "section": "de torchFastText à torchTextClassifiers",
     "text": "de torchFastText à torchTextClassifiers\n\névolution du package initial vers un toolkit (ou un unifying framework) de la classification de texte avec variables catégorielles\n\nd’autres exemples de toolkits en PyTorch : Pythae pour les VAE, TorchSeg pour la segmentation…\n\nconceptualisation des différents composants d’un modèle de classification de texte\nconnexion avec l’eco-système Hugging Face"
   },
   {
     "objectID": "slides/jms-ttc-prez/index.html#zone-dintérêt-de-la-librairie",
     "href": "slides/jms-ttc-prez/index.html#zone-dintérêt-de-la-librairie",
-    "title": "Modernisation de la codification automatique à l’Insee",
+    "title": "torchTextClassifiers, un framework en PyTorch pour la classification de texte",
     "section": "Zone d’intérêt de la librairie",
     "text": "Zone d’intérêt de la librairie\n\nD’un point de vue production"
   },
   {
     "objectID": "slides/jms-ttc-prez/index.html#structure-générale",
     "href": "slides/jms-ttc-prez/index.html#structure-générale",
-    "title": "Modernisation de la codification automatique à l’Insee",
+    "title": "torchTextClassifiers, un framework en PyTorch pour la classification de texte",
     "section": "Structure générale",
     "text": "Structure générale"
   },
   {
     "objectID": "slides/jms-ttc-prez/index.html#une-démo",
     "href": "slides/jms-ttc-prez/index.html#une-démo",
-    "title": "Modernisation de la codification automatique à l’Insee",
+    "title": "torchTextClassifiers, un framework en PyTorch pour la classification de texte",
     "section": "Une démo ?",
     "text": "Une démo ?\nLien vers le notebook de démo"
   },
   {
     "objectID": "slides/jms-ttc-prez/index.html#lien-vers-la-documentation",
     "href": "slides/jms-ttc-prez/index.html#lien-vers-la-documentation",
-    "title": "Modernisation de la codification automatique à l’Insee",
+    "title": "torchTextClassifiers, un framework en PyTorch pour la classification de texte",
     "section": "Lien vers la documentation",
     "text": "Lien vers la documentation\n\nhttps://inseefrlab.github.io/torchTextClassifiers/"
   },

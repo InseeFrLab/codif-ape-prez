@@ -10,8 +10,8 @@
   <meta name="generator" content="quarto-1.8.26">
 
   <meta name="author" content="Meilame Tayebjee">
-  <meta name="dcterms.date" content="2025-11-27">
-  <title>Présentations codification automatique de l'APE – Modernisation de la codification automatique à l’Insee</title>
+  <meta name="dcterms.date" content="2025-12-01">
+  <title>Présentations codification automatique de l'APE – torchTextClassifiers, un framework en PyTorch pour la classification de texte</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,7 +30,9 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-0e8f85a093e12b2642bbceaf1261425f.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ea8535d309a38c52e88d69daf30b07d0.css">
+  <link rel="stylesheet" href="../_extensions/InseeFrLab/onyxia/logo.css">
+  <link rel="stylesheet" href="../custom.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -122,18 +124,16 @@
       margin-right: 0; 
     }
   </style>
-  <link rel="icon" type="image/png" sizes="32x32" href="logo_insee.png">
-<meta property="og:title" content="Modernisation de la codification automatique à l’Insee – Présentations codification automatique de l’APE">
-<meta property="og:description" content="torchTextClassifiers et cas d’usage de l’APE">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<meta property="og:title" content="torchTextClassifiers, un framework en PyTorch pour la classification de texte – Présentations codification automatique de l’APE">
 <meta property="og:site_name" content="Présentations codification automatique de l'APE">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="../_extensions/InseeFrLab/jms/cover.png" data-background-opacity="0.8" data-background-size="cover" class="quarto-title-block center">
-  <h1 class="title">Modernisation de la codification automatique à l’Insee</h1>
-  <p class="subtitle"></p><p><span class="orange"><strong>torchTextClassifiers et cas d’usage de l’APE</strong></span></p><p></p>
+<section id="title-slide" data-background-image="../_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center">
+  <h1 class="title">torchTextClassifiers, un framework en PyTorch pour la classification de texte</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -144,24 +144,24 @@ Meilame Tayebjee
 <a href="mailto:meilame.tayebjee@insee.fr">meilame.tayebjee@insee.fr</a>
 </div>
         <p class="quarto-title-affiliation">
-            Insee, DMCSI, SSP Lab
+            Insee, SSP Lab
           </p>
     </div>
 </div>
 
-  <p class="date">2025-11-27</p>
+  <p class="date">2025-12-01</p>
 </section>
-<section id="pour-suivre-la-présentation" class="title-slide slide level1 center" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
+<section id="pour-suivre-la-présentation" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
 <h1>Pour suivre la présentation…</h1>
 
 <img data-src="../img/QRcode_prez_jms.png" class="quarto-figure quarto-figure-center r-stretch" width="1000"></section>
 
 <section>
-<section id="contexte" class="title-slide slide level1 center" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
+<section id="contexte" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
 <h1>1️⃣ Contexte</h1>
 
 </section>
-<section id="fasttext-en-production-mais-archivé" class="slide level2" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
+<section id="fasttext-en-production-mais-archivé" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>fastText : en production, mais archivé</h2>
 <ul>
 <li>fastText : le <em>go-to</em> pour la classification de texte à l’Insee</li>
@@ -169,7 +169,7 @@ Meilame Tayebjee
 <li>…mais repo archivé depuis le 19/03/2024</li>
 </ul>
 </section>
-<section id="enjeux" class="slide level2" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
+<section id="enjeux" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Enjeux</h2>
 <ul>
 <li class="fragment">La non-maintenance de la librairie : à terme, risques de maintenance, de compatibilité…</li>
@@ -177,7 +177,7 @@ Meilame Tayebjee
 <li class="fragment">Dans le même temps, un éco-système <strong>deep learning</strong>/ NLP très dynamique: <span class="orange"><strong>PyTorch</strong></span>, <strong>Hugging Face</strong>…</li>
 </ul>
 </section>
-<section id="passage-à-pytorch" class="slide level2 scrollable" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
+<section id="passage-à-pytorch" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
 <h2>2024 : passage à PyTorch !</h2>
 <ul>
 <li class="fragment">Modèle PyTorch proche du modèle fastText : transition en douceur</li>
@@ -194,7 +194,7 @@ Meilame Tayebjee
 </ul></li>
 </ul>
 </section>
-<section id="pourquoi-faire-un-package" class="slide level2 scrollable" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
+<section id="pourquoi-faire-un-package" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
 <h2>Pourquoi faire un package ?</h2>
 <ul>
 <li class="fragment"><p>au début, le modèle a été mis à disposition sous la forme d’un package Python, <span class="orange"><strong>torchFastText</strong></span>. Pourquoi ?</p>
@@ -212,7 +212,7 @@ Meilame Tayebjee
 </ul></li>
 </ul>
 </section>
-<section id="de-torchfasttext-à-torchtextclassifiers" class="slide level2 scrollable" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
+<section id="de-torchfasttext-à-torchtextclassifiers" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
 <h2>de <em>torchFastText</em> à <em>torchTextClassifiers</em></h2>
 <ul>
 <li>évolution du package initial vers un <span class="orange"><strong>toolkit</strong></span> (ou un <em>unifying framework</em>) de la classification de texte avec variables catégorielles
@@ -234,31 +234,31 @@ Meilame Tayebjee
 <li class="fragment"><strong>Destinataires</strong>: tous ceux qui veulent entraîner leur propre modèles maisons à taille réduite, avoir la main sur leur architecture et qui ne peuvent utiliser les gros modèles d’Hugging Face !</li>
 </ul>
 </section>
-<section id="zone-dintérêt-de-la-librairie" class="slide level2" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
+<section id="zone-dintérêt-de-la-librairie" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Zone d’intérêt de la librairie</h2>
 
 <img data-src="../img/TTC_positioning_matrix.png" width="300" class="r-stretch quarto-figure-center"><p class="caption">D’un point de vue production</p></section></section>
 <section>
-<section id="présentation-du-package" class="title-slide slide level1 center" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
+<section id="présentation-du-package" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
 <h1>2️⃣ Présentation du package</h1>
 
 </section>
-<section id="structure-générale" class="slide level2" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
+<section id="structure-générale" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Structure générale</h2>
 <div style="height: 100px;">
 
 </div>
 
 <img data-src="../img/TTC_overview.png" class="quarto-figure quarto-figure-center r-stretch" width="1000"></section>
-<section id="une-démo" class="slide level2" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
+<section id="une-démo" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Une démo ?</h2>
 <p><a href="https://inseefrlab.github.io/torchTextClassifiers/notebooks/example.html">Lien vers le notebook de démo</a></p>
 </section>
-<section id="lien-vers-la-documentation" class="slide level2" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
+<section id="lien-vers-la-documentation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Lien vers la documentation</h2>
 
 <img data-src="../img/QRcode_doc_ttc.png" width="1000" class="r-stretch quarto-figure-center"><p class="caption">https://inseefrlab.github.io/torchTextClassifiers/</p></section></section>
-<section id="section" class="title-slide slide level1 center" data-background-image="header_jms2025.png" data-background-opacity="0.1" data-background-size="contain" data-background-position="top center" data-background-repeat="no-repeat">
+<section id="section" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
 <h1></h1>
 <p><strong>Merci de votre attention !</strong></p>
 
@@ -267,7 +267,7 @@ Meilame Tayebjee
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p><strong><a href="https://journees-methodologie-statistique.insee.net/">15e édition des journées de méthodologie statistique</a></strong></p>
+
 </div>
 </div></div>
 
