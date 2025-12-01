@@ -1,20 +1,17 @@
 ---
-title: "Modernisation de la codification automatique à l'Insee"
-subtitle: |
-  [**torchTextClassifiers et cas d'usage de l'APE**]{.orange}
+title: "torchTextClassifiers, un framework en PyTorch pour la classification de texte"
 author:
   - name: Meilame Tayebjee
     email: meilame.tayebjee@insee.fr
     affiliations:
-      - name: Insee, DMCSI, SSP Lab
+      - name: Insee, SSP Lab
 date: today
 slide-number: true
-footer: |
-  **[15e édition des journées de méthodologie statistique](https://journees-methodologie-statistique.insee.net/)**
 format:
-  jms-revealjs:
+  onyxia-revealjs:
     output-file: index.html
-# css: styles.css
+css: ../custom.css
+ascii: true
 ---
 
 # Pour suivre la présentation...
