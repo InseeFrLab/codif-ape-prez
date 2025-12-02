@@ -25,7 +25,7 @@ Tout au long de cet article, nous emploierons les termes univoques et multivoque
 Les correspondances **univoques** (ou bijections) désignent les cas où un code de l'ancienne nomenclature (NAF rev 2 ou NAF 2008) correspond à un seul code dans la nouvelle nomenclature (NAF 2025). Ces cas ne présentent pas de difficulté majeure pour la conversion automatique des données d'apprentissage.
 
 ::: {.center}
-![Exemple de correspondance univoque 1:1](img/univoques.png){#fig-bijection width=60%}
+![Exemple de correspondance univoque 1:1](../img/univoques.png){#fig-bijection width=60%}
 :::
 *Cette figure illustre une correspondance de type 1:1 entre un code de l'ancienne NAF et un code unique de la NAF 2025.*
 
@@ -42,14 +42,14 @@ Les correspondances **univoques** (ou bijections) désignent les cas où un code
 Les cas multivoques représentent les situations où l'expertise humaine est indispensable, car ils introduisent une ambiguïté dans la conversion. Deux cas de figures se présentent mais l'attention se portera sur un cas particulier de correspondance.
 
 ::: {.center}
-![Exemple de correspondance N:1 ou surjection](img/surjection.png){#fig-surjection width=60%}
+![Exemple de correspondance N:1 ou surjection](../img/surjection.png){#fig-surjection width=60%}
 :::
 *Cette figure illustre une surjection (N:1) où plusieurs anciens codes sont regroupés dans un seul nouveau code*
 
 Les surjections (correspondances N:1) ne posent pas de problème fonctionnel majeur dans le système de codification, car pour chaque ancien code considéré individuellement, il n'y a qu'un choix possible dans la nouvelle nomenclature. Elles peuvent donc être traitées de manière univoque dans le sens de la conversion.
 
 ::: {.center}
-![Exemple de correspondance multivoque 1:N](img/multivoques.png){#fig-multivoques width=60%}
+![Exemple de correspondance multivoque 1:N](../img/multivoques.png){#fig-multivoques width=60%}
 :::
 *Cette figure illustre un éclatement (1:N) où un ancien code correspond à plusieurs codes possibles de la NAF 2025.*
 
@@ -185,10 +185,11 @@ Le principal apport de cette campagne a été la stabilisation précoce des ress
 La campagne a permis de mettre au point une feuille de route face aux cas ambigus. Pour guider l'annotation, un arbre de décision a été formalisé, décrivant la séquence logique suivie par les experts pour attribuer un code NAF 2025 à un libellé donné. Ce mode opératoire est illustré ci-dessous.
 
 ::: {.center}
-![Arbre de décision pour coder en NAF 2025](img/arbre-decision-annotation.drawio.png){#fig-decision-tree}
+![Arbre de décision pour coder en NAF 2025](../img/arbre-decision-annotation.drawio.png){#fig-decision-tree}
+
+:::
 
 *Cet arbre de décision inspirera fortement la méthodologie décrite dans la partie suivante*
-:::
 
 #### Evaluation de la difficulté de la campagne
 
@@ -220,10 +221,10 @@ L'exercice d'annotation est jugé de difficulté globalement modéré par les ex
 
 Les figures ci-dessous illustrent la difficulté ressentie par les experts en fonction du nombre de correspondances multivoques possibles (N) en NAF 2025 pour un code NAF rev 2 donné.
 
-::: {#fig-deux-images layout-nrow=2}
-![Moyenne des avis bruts au niveau classe](img/difficulte_brute_niv4.png){#fig-diff-brute-niv4 width=90%}
+::: {#fig-diff-brute layout-nrow=2 float-placement="!tbp"}
+![Moyenne des avis bruts au niveau classe](../img/difficulte_brute_niv4.png){#fig-diff-brute-niv4 width=80%}
 
-![Moyenne des avis bruts au niveau sous-classe](img/difficulte_brute_niv5.png){#fig-diff-brute-niv5 width=90%}
+![Moyenne des avis bruts au niveau sous-classe](../img/difficulte_brute_niv5.png){#fig-diff-brute-niv5 width=80%}
 
 Difficulté ressentie en fonction des multivoques de l'exercice d'annotation
 :::
@@ -236,15 +237,19 @@ En particulier, **la difficulté de classement de la vente à domicile et à dis
 
 Cette observation met en évidence que d'autres facteurs métier influencent la difficulté, au-delà du simple nombre de choix. L'ensemble de ces cas complexes ne représente au final que 2 077 tâches, soit moins de 7% de l'annotation totale.
 
-::: {#fig-deux-images layout-nrow=2}
-![Part de jugés difficiles au niveau classe](img/part_difficiles_niv4.png){#fig-part-difficiles-niv4 width=90%}
+{{< pagebreak >}}
 
-![Part de jugés difficiles au niveau sous-classe](img/part_difficiles_niv5.png){#fig-part-difficiles-niv5 width=90%}
+::: {#fig-part-diff layout-nrow=2 }
+![Part de jugés difficiles au niveau classe](../img/part_difficiles_niv4.png){#fig-part-difficiles-niv4 width=90%}
 
-Proportion de cas jugés difficiles (avis supérieur à 3/5) en fonction des multivoques de l'exercice d'annotation
+![Part de jugés difficiles au niveau sous-classe](../img/part_difficiles_niv5.png){#fig-part-difficiles-niv5 width=90%}
+
+Proportion de cas jugés difficiles (avis supérieur à 3/5) en fonction des multivoques
 ::::
 
 L'analyse de la proportion de cas jugés difficiles confirme cette observation : un nombre élevé de correspondances multivoques n'entraîne pas nécessairement une augmentation proportionnelle de la part de tâches difficiles. Le même phénomène est observé lorsque l'on analyse les cas déclarés inclassables. Ces résultats sont particulièrement intéressants à mettre en perspective avec la _Table 3 – Distribution des codes multivoques pour la NAF_, qui présente la rareté des cas avec un grand nombre d'options.
+
+{{< pagebreak >}}
 
 #### Concordance des annotateurs
 

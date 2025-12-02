@@ -1,9 +1,9 @@
 ---
-title: JMS - Présentation sur le réentrainement lié à la révision de la NAF
+title: Présentation JMS
 image: /slides/_extensions/InseeFrLab/jms2025/head_jms2025.png
 date: "2025-11-25"
 description: |
-  <b>Description :</b> Présentation sur la génération de données d'entraînement pour un modèle de ML dans un contexte de changement de nomenclature
+  <b>Description :</b> Présentation sur la génération de données d'entraînement via LLM pour un classifieur dans un contexte de changement de nomenclature
 author: Nathan Randriamanana
 slides:
   text: slides

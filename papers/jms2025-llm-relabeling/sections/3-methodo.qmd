@@ -17,7 +17,7 @@ Le principe consiste à utiliser les LLM comme des _annotateurs virtuels_, en re
 [^ref-techno-cloud]: Pour en savoir plus sur l’apport des technologies cloud à la statistique publique, il est recommandé de consulter l’article de l’édition JMS de cette année @cloudprod.
 
 ::: {.center}
-![Approche globale pour construire le modèle en NAF 2025](img/methodo-nace-rev.png){#fig-methodo-nace-rev}
+![Approche globale pour construire le modèle en NAF 2025](../img/methodo-nace-rev.png){#fig-methodo-nace-rev}
 
 *Le schéma illustre fastText comme modèle de classification, car il a servi aux premières itérations, mais la méthodologie est indépendante du modèle : une fois la base d’apprentissage NAF 2025 constituée, tout autre classifieur supervisé peut être utilisé, notamment ceux de la librairie torchTextClassifiers ou d’architectures plus récentes adaptées au contexte métier.*
 :::
@@ -139,7 +139,7 @@ Chaque prompt utilisateur constitue ainsi un ensemble d’informations structur�
 Les LLM pré-entraînés possèdent une _base de connaissance implicite_, issue de l’apprentissage massif sur de grandes quantités de textes, mais cette connaissance reste générale et insuffisante pour des tâches spécifiques, telles que le recodage précis des activités économiques selon la NAF 2025. Il est donc nécessaire d’enrichir le modèle avec un contexte externe pour orienter la génération et réduire les erreurs. Faute d'informations précises, le modèle risque d'_halluciner_, c’est-à-dire de générer des réponses plausibles mais factuellement erronées. Il est donc nécessaire d’enrichir le modèle avec un contexte externe pour orienter la génération et réduire les erreurs.
 
 ::: {.center}
-![Hallucination du LLM en l'absence de contexte métier](img/hallucination.drawio.png){#fig-hallucination-naf}
+![Hallucination du LLM en l'absence de contexte métier](../img/hallucination.drawio.png){#fig-hallucination-naf}
 
 :::
 
@@ -152,20 +152,20 @@ RAG combine un modèle génératif avec un module de recherche d’information. 
 Dans le contexte d’annotation pour la NAF 2025, la stratégie RAG consiste à rechercher, parmi un ensemble de documents ou d’embeddings, les descriptifs les plus similaires à l’activité de l’entreprise. Ces éléments servent alors de contexte pour le modèle. Cette approche présente l’avantage de proposer des codes basés sur la similarité avec les descriptifs, indépendamment de l’ancien code attribué. Elle évite donc la propagation d’éventuelles erreurs historiques et permet de générer des correspondances nouvelles ou inattendues. En revanche, elle ne garantit pas la cohérence avec l’ancien code : si aucun des codes récupérés n’est pertinent, la tâche peut devenir incodable, ou produire des propositions incorrectes ou incohérentes.
 
 ::: {.center}
-![Application du RAG comme stratégie pour la labellisation de masse](img/rag_application_naf.drawio.png){#fig-rag-application-naf}
+![Application du RAG comme stratégie pour la labellisation de masse](../img/rag_application_naf.drawio.png){#fig-rag-application-naf}
 
 :::
 
 
 #### CAG (Context-Augmented Generation)
 
-La stratégie CAG, quant à elle, consiste à fournir un contexte structuré et préexistant au LLM. Pour en savoir davantage, il est recommandé de le lire l'article de @cag_paper. 
+La stratégie CAG, quant à elle, consiste à fournir un contexte structuré et préexistant au LLM. Pour en savoir davantage, il est recommandé de lire l'article de @cag_paper. 
 Cette méthode tire parti des grandes fenêtres de contexte des LLM récents, qui permettent désormais d’inclure l’ensemble des informations nécessaires à la tâche. Cela présente un intérêt particulier, car le modèle peut s’affranchir des erreurs de retrieval lorsque le document complet est fourni comme contexte. Ce type d’intégration n’était pas possible avec les premiers modèles open source, dont la fenêtre de contexte limitée restreignait fortement la quantité d’informations exploitables.
 
 Dans cette application, les codes NAF, leurs descriptifs et les notes explicatives correspondantes sont encapsulés sous forme d’objets en programmation orientée objet, chaque objet associant le code à son libellé et à ses notes explicatives. Cette approche permet de garantir que les codes proposés restent cohérents avec l’ancien code de l’entreprise. Lorsque les correspondances historiques sont fiables, comme cela a été vérifié lors de la campagne d’annotation, cette méthode offre une qualité élevée des propositions. Toutefois, si l’ancien code contient une erreur, celle-ci peut se propager dans la liste des codes candidats, augmentant les risques de mauvaise attribution ou de limitation dans le choix des codes disponibles.
 
 ::: {.center}
-![Application du CAG comme stratégie pour la labellisation de masse](img/cag_application_naf.png){#fig-cag-application-naf}
+![Application du CAG comme stratégie pour la labellisation de masse](../img/cag_application_naf.png){#fig-cag-application-naf}
 
 :::
 

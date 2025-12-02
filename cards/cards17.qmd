@@ -1,9 +1,9 @@
 ---
-title: JMS - Article sur le réentrainement lié à la révision de la NAF
-image: /cards/img/logo-card-17.jpg
+title: JMS2025 - réentraînement lié au changement de NAF
+image: /papers/_extensions/InseeFrLab/jms2025/head_jms2025.png
 date: "2025-11-25"
 description: |
-  <b>Description :</b> Article sur la génération de données d'entraînement pour un modèle de ML dans un contexte de changement de nomenclature
+  <b>Description :</b> Papier JMS sur la méthodologie basée sur LLM
 author: Nathan Randriamanana
 slides:
   text: Paper

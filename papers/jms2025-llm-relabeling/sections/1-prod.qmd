@@ -79,7 +79,7 @@ Le processus est séquentiel et vise à garantir la méthode la plus fiable en p
 Le schéma ci-dessous illustre le séquencement des étapes.
 
 ::: {.column-screen .center}
-![Détail de la codification de l'APE dans Sirene 4](img/table-passage-codification.png){#fig-codif-sirene width="700px"}
+![Détail de la codification de l'APE dans Sirene 4](../img/table-passage-codification.png){#fig-codif-sirene width="700px"}
 
 *La modularité de l'architecture Sirene 4 (découplage par micro-services) permet de remplacer la codification probabiliste sans impacter les étapes précédentes. Cela a facilité sa migration rapide vers un appel d'API Python déployée sur Kube (la plateforme des nouvelles applications), favorisant son évolution. À terme, l'API entière intégrant toutes les étapes de codification peut également être migrée sur Kube, en bénéficiant de cette faible adhérence.*
 :::
@@ -101,7 +101,7 @@ $$
 où $p_i$ est la probabilité de la i-ème prédiction, les probabilités étant triées par ordre décroissant.
 
 ::: {.center}
-![Illustration du calcul de l'indice de confiance par un modèle fastText](img/schema-fasttext.png){#fig-critere-codif width=70%}
+![Illustration du calcul de l'indice de confiance par un modèle fastText](../img/schema-fasttext.png){#fig-critere-codif width=70%}
 
 *Le calcul se fait par la différence des deux premières probabilités. Ce calcul est valable pour tout modèle de classification supervisée qui fournit des probabilités en sortie*
 :::
@@ -137,7 +137,7 @@ Le _seuil_ n'est pas un simple paramètre opérationnel, mais un élément méth
 En définitive, la détermination du _seuil_ est un arbitrage répondant aux besoins du métier. Pour une prise de décision quantitative fine, un tableau de bord (dashboard) peut être fourni au _product owner_ ou responsable de l'application, permettant de suivre l'impact du _seuil_ sur les métriques clés. Ce besoin de surveillance constante fera l'objet de la dernière sous-partie.
 
 ::: {.center}
-![Distributions des bonnes et mauvaises codifications selon IC](img/IC.png){#fig-IC}
+![Distributions des bonnes et mauvaises codifications selon IC](../img/IC.png){#fig-IC}
 
 *Approche méthodologique partagée par d'autres projets de codification automatique à l'Insee. Sur un échantillon de test. L’axe vertical représente la fréquence des codifications pour chaque niveau d’IC. Les lignes verticales indiquent, pour différents seuils d’IC, la part de codifications devant être reprises manuellement. Par exemple, avec un seuil de 0,75, environ 20 % des codifications nécessitent une reprise, soit 80 % peuvent être automatisées.*
 :::
@@ -149,7 +149,7 @@ Afin de soulager la charge des gestionnaires et d'augmenter l'automatisation, le
 Bien que la codification automatique soit la plus prépondérante[^odg-codif], le rôle du gestionnaire est crucial pour traiter les cas incertains et garantir la qualité.
 
 ::: {.center}
-![Représentation temporelle de la part des différents types de codification](img/taux_automatisation.png){#fig-poste-reprise-gestionnaire width=70%}
+![Représentation temporelle de la part des différents types de codification](../img/taux_automatisation.png){#fig-poste-reprise-gestionnaire width=70%}
 :::
 *Est représenté ici, une année complète de codification APE*
 
@@ -163,7 +163,7 @@ Lorsque le système envoie un dossier en reprise, le modèle est intégré pour 
 - Si le gestionnaire n'est pas satisfait ou si aucun code n'est proposé, il peut relancer des propositions en modifiant ou en saisissant un nouveau libellé, ou en recherchant directement dans la nomenclature via un moteur de recherche.
 
 ::: {.center}
-![Exemple de poste de reprise de la codification dans Sirene 4](img/reprise_gestionnaire_manque_contexte.png){#fig-poste-reprise-gestionnaire width=90%}
+![Exemple de poste de reprise de la codification dans Sirene 4](../img/reprise_gestionnaire_manque_contexte.png){#fig-poste-reprise-gestionnaire width=90%}
 
 :::
 *Le modèle hésite entre plusieurs codes possibles. La proposition des échos permet au gestionnaire de coder plus vite, ce qui lui fait gagner du temps de recherche.*
@@ -214,7 +214,7 @@ Un papier de FAIR présente et décrit l'architecture de fastText @fastText_pape
 En somme, fastText utilise une architecture simple mais efficace :
 
 ::: {.center}
-![Architecture de fastText](img/diag-fasttext-rectif.png){#fig-diag-simple-fasttext}
+![Architecture de fastText](../img/diag-fasttext-rectif.png){#fig-diag-simple-fasttext}
 
 :::
 *Architecture simplifiée avec plongement lexical et moyennage des plongements (ou des vectorisations), classification des vecteurs, puis conversion des scores en probabilité.*
@@ -259,7 +259,7 @@ L'implémentation est désormais basée sur PyTorch via la librairie torchTextCl
 Pour stabiliser l'adaptation et l'organisation métier en production, la première itération sous PyTorch est restée volontairement proche de l'architecture FastText. Une différence majeure réside toutefois dans le traitement des variables catégorielles :
 
 ::: {.center}
-![Exemple d'architecture possible séparant les variables catégorielles](img/NN.drawio.png){#fig-fasttext-pytorch}
+![Exemple d'architecture possible séparant les variables catégorielles](../img/NN.drawio.png){#fig-fasttext-pytorch}
 
 :::
 *Il s'agit de l'architecture par défaut. Au lieu d'être concaténé avec le libellé en entrée, chaque variable catégorielle possède sa propre représentation vectorielle.*
@@ -277,7 +277,7 @@ Mettre un modèle en production est un processus transversal qui dépasse la sim
 Ce processus est soumis à de nombreuses contraintes : gestion des vulnérabilités, tests de charge, validation fonctionnelle et métier, et performance technique. Le changement de nomenclature, par exemple, peut doubler le travail nécessaire dans le cycle de vie du modèle.
 
 ::: {.center}
-![Process simplifié de qualification du modèle](img/orga_ape_actuelle.png){#fig-orga_modele}
+![Process simplifié de qualification du modèle](../img/orga_ape_actuelle.png){#fig-orga_modele}
 
 *Le déploiement du modèle en production est du ressort de l'informatique. Toutefois, le Data Scientist peut contribuer à la construction de l'image et la fourniture de cas tests*
 :::
@@ -296,7 +296,7 @@ Le datalab est l'environnement privilégié pour l'entraînement et l'expérimen
 - stockage : la plateforme bénéficie d'une grande capacité de stockage standard (type S3). Ce stockage est utilisé pour archiver tout ce qui touche au projet IA ou data science : les modèles, les versions stables, les données d'entraînement, et tous les intermédiaires d'expérimentation.
 
 ::: {.center}
-![Environnement et gestion de l'entraînement du modèle ](img/api-datalab.png){#fig-model-store width=60%}
+![Environnement et gestion de l'entraînement du modèle ](../img/api-datalab.png){#fig-model-store width=60%}
 
 :::
 
@@ -308,7 +308,7 @@ Une fois qualifié, le modèle est préparé pour l'inférence en production :
 2. déploiement en API REST : Le déploiement est réalisé en exposant le modèle sous la forme d'une API REST sur la plateforme Kube. L'application Sirene (en Java) peut alors appeler cette API (en Python) pour obtenir la prédiction.
 
 ::: {.center}
-![Inférence du modèle en environnement de développement](img/API.png){#fig-critere-codif}
+![Inférence du modèle en environnement de développement](../img/API.png){#fig-critere-codif}
 
 *Ce schéma volontairement simplifié illustre l'étape de livraison du modèle, déployé ensuite sous forme d'API par l'équipe informatique*
 :::
@@ -335,26 +335,26 @@ Le suivi des performances est crucial pour détecter la dérive ou aider à ajus
 Ci-dessous, quelques extraits d'un tableau de bord pour éclairer la décision.
 
 ::: {.center}
-![Monitoring du modèle sur inférence d'un échantillon de surveillance représentatif](img/tab2.png){#fig-critere-codif}
+![Monitoring du modèle sur inférence d'un échantillon de surveillance représentatif](../img/tab2.png){#fig-critere-codif}
 :::
 *L'hypothèse sous-jacente est que les annotations humaines représentent la vérité terrain* [^def-ground-truth]
 
 ::: {.center}
-![Comparaison des taux d'automatisation des activités par période](img/tab6.png){#fig-critere-codif}
+![Comparaison des taux d'automatisation des activités par période](../img/tab6.png){#fig-critere-codif}
 :::
 *Une visualisation utile pour surveiller l'évolution de la confiance du modèle par activité à différents niveaux de la nomenclature*
 
 [^def-ground-truth]: La vérité terrain ou _ground truth_ désigne les faits ou les données réelles et vérifiées qui servent de référence absolue pour entraîner et évaluer la performance d'un modèle d'apprentissage supervisé.
 
 ::: {.center}
-![Surveillance des performances au cours de l'année 2024](img/tab3.png){#fig-critere-codif}
+![Surveillance des performances au cours de l'année 2024](../img/tab3.png){#fig-critere-codif}
 :::
 *Le couloir représente l'intervalle de confiance[^ic-bootstrap]: plus il y a d'annotations, plus il est resserré*
 
 [^ic-bootstrap]: En particulier, il s'agit d'un intervalle de confiance bootstrap
 
 ::: {.center}
-![Surveillance de la distribution des IC sur une période donnée](img/tab4.png){#fig-critere-codif}
+![Surveillance de la distribution des IC sur une période donnée](../img/tab4.png){#fig-critere-codif}
 :::
 *Un échantillon de test permettrait aussi d'afficher la séparation entre bon et mauvais codage comme dans la Figure 3. Ainsi, il serait possible de surveiller la pertinence du seuil appliqué.*
 

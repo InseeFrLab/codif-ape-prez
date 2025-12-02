@@ -73,7 +73,7 @@ format:
     logo:
       location: center-top # ne pas modifier
       width: 160mm # ne pas modifier
-      path: "slides/_extensions/InseeFrLab/jms2025/head_jms2025.png"
+      path: "papers/_extensions/InseeFrLab/jms2025/head_jms2025.png"
     mainfont: "tex gyre heros" # peut être modifié pour "calibri" sous windows, voir le script install-fonts.
     footer: 15^e^ édition des journées de méthodologie statistique de l'Insee (JMS 2025) # ne pas modifier
     section-numbering: 1.1.1.
