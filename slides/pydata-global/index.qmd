@@ -1,0 +1,80 @@
+---
+title: "torchTextClassifiers: A unified framework for text classification in PyTorch"
+title-slide-attributes:
+  style: "font-size:0.9em;"
+author: "[Cédric Couralet](https://github.com/micedre) and [Meilame Tayebjee](https://github.com/meilame-tayebjee)"
+date: "2025-12-09"
+date-format: "D MMMM YYYY"
+slide-number: true
+# uncomment for French presentations:
+lang: en-GB
+# for blind readers:
+slide-tone: false
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  onyxia-revealjs:
+    output-file: index.html
+controls: true
+css: ../custom.css
+ascii: true
+---
+
+## Link to the presentation:
+
+In the chat!
+
+## 👨‍🔬 Who are we ?
+
+Two data scientists from the innovation team at Insee:
+
+- **Cédric Couralet** <cedric.couralet@insee.fr>
+   - Previously software developer, architect, devops/security engineer... at Insee
+   - Currently helping real data scientists bridge the gap between experimentation and production ([**How to talk to IT**]{.orange})
+   - Open Source advocate
+
+
+## 👨‍🔬 Who are we ?
+
+Two data scientists from the innovation team at Insee:
+
+- **Meilame Tayebjee** <meilame.tayebjee@insee.fr>
+  - Graduated 2024
+  - Currently pursuing a part-time PhD in AI applied to health econometrics
+  - At Insee: 
+    - working on [**deep learning for text classification**]{.orange}, computer vision with remote sensing data, [**MLOps practices**]{.orange}
+    - exploring explainability, calibration, LLMs, RAGs & agentic workflows
+
+
+## 💡 What will we talk about ? {.center}
+
+- [**MLOps pipeline**]{.orange} for [**text classification**]{.orange} at Insee
+- The constraint that pushed us to [**open-source a PyTorch package**]{.orange}: why and how
+
+
+# 1️⃣ Context
+
+{{< include sections/1-contexte.qmd >}}
+
+# 2️⃣ MLOps pipeline
+
+{{< include sections/2-pipeline.qmd >}}
+
+# 3️⃣ _torchTextClassifiers_, an open-source package to distribute PyTorch models
+
+{{< include sections/3-torchft.qmd >}}
+
+# 4️⃣ Perspectives 
+
+{{< include sections/4-perspectives.qmd >}}
+
+# 
+
+**Thank you for your attention.**
+
+
+Find here all of our repos on the NACE coding project and our packages: 
+
+![](../img/qr-code-github-repo-search.png){fig-align="center" width=25%}

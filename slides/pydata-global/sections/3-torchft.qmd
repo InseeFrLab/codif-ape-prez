@@ -1,0 +1,57 @@
+## Beyond fastText ?
+
+- fastText: a powerful and efficient model that has been used in production since 2021...
+- ... but the library [repo](https://github.com/facebookresearch/fastText/) has been archived on March 19th, 2024
+
+This non-maintenance is highly problematic in the medium-term:
+
+::: {.incremental}
+- Potential appearance of (non-fixable) [**bugs**]{.orange}
+- Conflicting versions of dependencies
+- [**Modernization hindrance**]{.orange}
+:::
+
+## PyTorch: why ? Some strategic reflections...
+
+💡 Idea: Develop our custom PyTorch-based model to:
+
+::: {.incremental}
+- [**adapt**]{.orange} and [**customize**]{.orange} the architecture for our specific needs (text classification with categorical variables)
+- limit dependencies to external libraries and [**internalize maintenance**]{.orange} for more robustness in the long-term
+- access to the [**vibrant deep learning / NLP community**]{.orange} to develop additional features (**explainability** with [Captum](https://captum.ai/), **calibration** with [torch-uncertainty](https://github.com/ENSTA-U2IS-AI/torch-uncertainty/tree/main)...)...
+:::
+
+## Our solution: [torchTextClassifiers](https://github.com/InseeFrLab/torchTextClassifiers)
+
+::: {.incremental}
+- **The package:**
+    - Conceptualizes the different components of a text classification model to flexibly manipulate them
+    - Distributes SOTA architectures incl. self-attention layers (you can make your own small BERT!)
+    - Enables to easily instantiate and train those components, while proposing additional features such as [**explainability**]{.orange}
+        - You can use any tokenizer from HuggingFace or train your own one
+:::
+
+----
+
+::: {.incremental}
+- **Targets:**
+    - All those who want to train their home-made - possibly small - models, **customize their architectures** and can't deploy big models from HuggingFace
+:::
+
+## Positioning
+
+![Production POV](../img/TTC_positioning_matrix.png){width=300px fig-align="center"}
+
+## The different components
+
+<div style="height: 100px;"></div>
+
+![](../img/TTC_overview.png){width=1000px fig-align="center"}
+
+## Demo
+
+[Link to the demo](https://inseefrlab.github.io/torchTextClassifiers/notebooks/example.html)
+
+## Link to the doc
+
+![https://inseefrlab.github.io/torchTextClassifiers/](../img/QRcode_doc_ttc.png){width=1000px fig-align="center"}

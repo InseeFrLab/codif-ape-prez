@@ -1,0 +1,18 @@
+## MLOps
+
+:::{.incremental}
+- [**Bridging the gap**]{.orange} between innovation and production:
+    - full automation between data extraction, model training and qualification, model deployment
+    - observability of the model in production: logs, continuous annotation...
+:::
+
+## Roadmap for [**torchTextClassifiers**]{.blue}
+
+:::{.incremental}
+- [**Additional features**]{.orange}:
+    - include more architectures: gated attention, text-label cross-attention
+    - [**controlling uncertainty**]{.blue}: calibration & conformal prediction
+    - quantization
+    - push / pull from HF
+- [**Always fully open-sourced!**]{.orange}
+:::
