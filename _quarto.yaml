@@ -2,8 +2,8 @@ project:
   type: website
 
   render:
-    - /slides/*/*.qmd
-    - /papers/*/*.qmd
+    - /slides/pydata-global/*.qmd
+ #   - /papers/*/*.qmd
     - index.qmd
     - cards/*.qmd
     
