@@ -21,6 +21,20 @@ This non-maintenance is highly problematic in the medium-term:
 - access to the [**vibrant deep learning / NLP community**]{.orange} to develop additional features (**explainability** with [Captum](https://captum.ai/), **calibration** with [torch-uncertainty](https://github.com/ENSTA-U2IS-AI/torch-uncertainty/tree/main)...)...
 :::
 
+## Packaging the architecture: why ?
+
+::: {.incremental}
+- Conceptually, the model architecture [**has its own life**]{.orange}
+    - Can be used for many other use cases
+    - Has its own development, versioning etc.
+    - **This justifies to have its own repo**, distinct from the train or API one
+
+- [**From an MLOps point of view**]{.orange}:
+    - The model is travelling between different teams and repos (train, inference, prod): we need to have a **Single Source of Truth** for easy deployment and versioning!
+        - PyPI plays the **remote** role
+
+:::
+
 ## Our solution: [torchTextClassifiers](https://github.com/InseeFrLab/torchTextClassifiers)
 
 ::: {.incremental}
