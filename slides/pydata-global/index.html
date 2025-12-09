@@ -545,6 +545,24 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'
 <li class="fragment">access to the <span class="orange"><strong>vibrant deep learning / NLP community</strong></span> to develop additional features (<strong>explainability</strong> with <a href="https://captum.ai/">Captum</a>, <strong>calibration</strong> with <a href="https://github.com/ENSTA-U2IS-AI/torch-uncertainty/tree/main">torch-uncertainty</a>…)…</li>
 </ul>
 </section>
+<section id="packaging-the-architecture-why" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Packaging the architecture: why ?</h2>
+<ul>
+<li class="fragment">Conceptually, the model architecture <span class="orange"><strong>has its own life</strong></span>
+<ul>
+<li class="fragment">Can be used for many other use cases</li>
+<li class="fragment">Has its own development, versioning etc.</li>
+<li class="fragment"><strong>This justifies to have its own repo</strong>, distinct from the train or API one</li>
+</ul></li>
+<li class="fragment"><span class="orange"><strong>From an MLOps point of view</strong></span>:
+<ul>
+<li class="fragment">The model is travelling between different teams and repos (train, inference, prod): we need to have a <strong>Single Source of Truth</strong> for easy deployment and versioning!
+<ul>
+<li class="fragment">PyPI plays the <strong>remote</strong> role</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
 <section id="our-solution-torchtextclassifiers" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Our solution: <a href="https://github.com/InseeFrLab/torchTextClassifiers">torchTextClassifiers</a></h2>
 <ul>
