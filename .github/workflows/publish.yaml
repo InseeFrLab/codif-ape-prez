@@ -58,6 +58,7 @@ jobs:
         - name: Install python Dependencies
           run: | 
             pip install pybind11
+            pip install torch --index-url https://download.pytorch.org/whl/cpu
             pip install -r requirements.txt
           
         - name: Download nltk corpus
