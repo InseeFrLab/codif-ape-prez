@@ -11,7 +11,7 @@ pydantic
 s3fs
 unidecode
 plotnine
-torch==2.9.0+cpu 
+torch==2.9.1 
 torchFastText
 bs4
 label-studio-sdk
