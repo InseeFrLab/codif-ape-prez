@@ -1,0 +1,22 @@
+## Contexte
+
+* Codification de texte court dans des nomenclatures
+* ...
+
+## De fasttext à torch-fasttext
+
+* Archivage fasttext en mars 2024 : besoin d'une solution pour la maintenabilité
+* Implémentation de l'architecture avec pytorch -> torch-fasttext
+* Ajout de fonctionnalités supplémentaires:
+  - Explicabilité
+  - Variables aditionnelles
+
+
+## de torch-fasttext à torchTextClassifiers
+
+* Besoin d'aller au dela de la simple architecture fasttext
+* Approche boite à outil de construction de modèle (≠ un modèle unique)
+➡️ TorchTextClassifiers
+
+
+
