@@ -1,11 +1,13 @@
 ---
-title: "TorchTextClassifier : un framework unifié pour la codification de textes libres"
+title: "TorchTextClassifier : <br/><small> un framework unifié pour la codification de textes libres</small>"
+title-slide-attributes:
+  style: "font-size:0.9em;"
 subtitle: |
   **[Séminaire DMS]{.orange}**
 author: |
   Meilame Tayebjee,
   Cédric Couralet
-date: "12/03/2026"
+date: "03/12/2026"
 date-format: "D MMMM YYYY"
 slide-number: true
 # uncomment for French presentations:
@@ -28,7 +30,7 @@ execute:
   warning: false
 ---
 
-# Context et historique
+# Contexte et historique
 
 {{< include sections/1-historique.qmd >}}
 
