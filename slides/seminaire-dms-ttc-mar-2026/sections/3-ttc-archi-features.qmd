@@ -1,5 +1,9 @@
 ## Architecture
 
+<div style="height: 100px;"></div>
+
+![](../img/TTC_overview.png){width=1000px fig-align="center"}
+
 ## Features
 
 ## Limites d'utilisations

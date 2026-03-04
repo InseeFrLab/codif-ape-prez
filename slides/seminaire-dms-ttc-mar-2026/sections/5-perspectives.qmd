@@ -1,1 +1,6 @@
 ## Suite
+
+Renforcement de la démarche *open-source* à plusieurs titres:
+
+- dans le développement, en lien avec les retours des cas d'usage métier
+- dans le rebouclage avec l'éco-système Hugging-Face, notamment pour push les modèles entraînés non-sensibles

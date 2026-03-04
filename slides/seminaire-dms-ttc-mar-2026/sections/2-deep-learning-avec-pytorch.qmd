@@ -1,7 +1,21 @@
-## Notions de deep learning
+## C'est quoi un modèle de classification de texte ?
+
+### Tokenizer
+
+Avant même de rentrer dans le modèle de deep learning.
+
+### Deep learning: rappel
+
+- Un modèle de deep learning, c'est un régresseur **paramétrique** $f_{\theta}$ de Y sur X: comme une régression linéaire/logistique, mais pas comme les arbres/modèles ensemblistes
+- $f_{\theta}$ n'est qu'une composition d'opérations matricielles (donc linéaires) - les paramètres sont les valeurs des matrices
+- on minimise $\frac{1}{n} \sum l(f_{\theta}(X_i), y_i)$, où $(X_i, y_i)_{i=1 \dots n}$ les données d'entraînement et $l$ une fonction de perte (souvent la *negative log likelihood* mais pas forcément !) via **une descente de gradient stochastique**
 
 
+### Embedding
 
+### Classifieur linéaire
 
-## Utilisation avec pytorch
+## fastText, c'était quoi ?
+
+## PyTorch : ce que c'est et pourquoi on l'a choisi
 
