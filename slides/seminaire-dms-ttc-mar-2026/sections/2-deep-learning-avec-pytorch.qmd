@@ -2,17 +2,24 @@
 
 ### Tokenizer
 
-Avant même de rentrer dans le modèle de deep learning, on découpe la phrase d'entrée et on associe chaque "morceau" à un entier. 
+Avant même de rentrer dans le modèle de deep learning, on découpe la phrase d'entrée et on associe chaque "morceau" à un entier.
 
 La tokenization est un art en soi et différents algorithmes existent pour *découper* de la bonne façon.
 
-![Une tokenization basique : un mot = un token](../../img/tokenization.png)
+![Une tokenization basique : un mot = un token](../img/tokenization.png)
+
+
+---
+
 
 ### Deep learning: rappel
 
 1. Un modèle de deep learning, c'est un régresseur **paramétrique** $f_{\theta}$ de Y sur X: comme une régression linéaire/logistique, mais pas comme les arbres/modèles ensemblistes
 2. $f_{\theta}$ n'est qu'une composition d'opérations matricielles (donc linéaires, différentiables) et éventuellement d'autres opérations différentiables (fonctions d'activation). Les paramètres sont les valeurs des matrices.
 3. on minimise $\frac{1}{n} \sum l(f_{\theta}(X_i), y_i)$, où $(X_i, y_i)_{i=1 \dots n}$ les données d'entraînement et $l$ une fonction de perte (souvent la *negative log likelihood* mais pas forcément !) via **une descente de gradient stochastique** (ou variante)
+
+
+---
 
 
 ### Embedding
@@ -25,22 +32,31 @@ Donc on projette dans un espace de plus petite dimension (*embedding*):
 
 $\text{Embeddings} = M_{\theta}^T \text{One-hot}$
 
-où : 
+où :
 
 - $M_{\theta} \in \mathbb{R}^{n_{vocab}, d_{embed}}$ est **la matrice d'embedding**, entraînable
 - $\text{One-hot} \in \mathbb{R}^{n_{vocab}, seq\_len}$
 
 Ceci est une opération linéaire !
 
+
+
+---
+
+
 ### Classifieur linéaire
 
 $\text{Predictions} = W_{\theta} * \text{Embeddings}$
 
-où : 
+où :
 
 - $W_{\theta} \in \mathbb{R}^{d_{embed}, n_{labels}}$ est **la matrice d'embedding**, entraînable
 
 Encore une simple multiplication de matrices.
+
+
+
+---
 
 
 ### Entraînement
@@ -55,6 +71,8 @@ Une librarie Python (sur un backed en C), qui proposait:
 - **une** architecture, la plus minimale possible : Embedding puis classification linéaire
 - seulement **deux** fonctions de perte (CrossEntropy et One Vs All)
 - sous une forme monolithique, avec très peu de customisation possible
+
+
 
 ## PyTorch : ce que c'est et pourquoi on l'a choisi {.scrollable}
 
@@ -89,6 +107,7 @@ class MyModel(nn.Module):
 criterion = nn.BCELoss()
 optimizer = optim.SGD(model.parameters(), lr=0.01)
 ```
+
 
 ## Et TTC alors ?
 
