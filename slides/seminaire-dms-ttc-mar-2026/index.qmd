@@ -1,0 +1,51 @@
+---
+title: "TorchTextClassifier : <br/><small> un framework unifié pour la codification de textes libres</small>"
+title-slide-attributes:
+  style: "font-size:0.9em;"
+subtitle: |
+  **[Séminaire DMS]{.orange}**
+author: |
+  Meilame Tayebjee,
+  Cédric Couralet
+date: "03/12/2026"
+date-format: "D MMMM YYYY"
+slide-number: true
+# uncomment for French presentations:
+lang: fr-FR
+# for blind readers:
+slide-tone: false
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  onyxia-revealjs:
+    output-file: index.html
+controls: true
+css: ../custom.css
+from: markdown+emoji
+ascii: true
+execute:
+  echo: false
+  warning: false
+---
+
+# Contexte et historique
+
+{{< include sections/1-historique.qmd >}}
+
+# Pytorch et Deep Learning
+
+{{< include sections/2-deep-learning-avec-pytorch.qmd >}}
+
+# TorchTextClassifiers:  Architecture et fonctionnalités
+
+{{< include sections/3-ttc-archi-features.qmd >}}
+
+# Utilisation en pratique
+
+{{< include sections/4-en-pratique.qmd >}}
+
+# Perspectives
+
+{{< include sections/5-perspectives.qmd >}}

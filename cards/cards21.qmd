@@ -1,0 +1,13 @@
+
+---
+title: Séminaire DMS
+image: https://inseefrlab.github.io/torchTextClassifiers/_static/logo-ttc-light.svg
+date: "2026-03-12"
+description: |
+  <b>Description :</b> Présentation au sémainaire DMZ du 12/03/2026
+author: Cédric Couralet, Meilame Tayebjee
+slides:
+  text: Slides
+  url: /slides/seminaire-dms-ttc-mar-2026/index.html
+order: 21
+---

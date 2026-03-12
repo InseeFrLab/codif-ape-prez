@@ -1,0 +1,37 @@
+
+## Codification COICOP
+
+###
+
+::: {.callout-note title='Contexte'}
+Coder des libellés de produits dans la nomenclature COICOP au niveau 4 (sous classe)
+
+Les libellés proviennent en très grande majorité de scan/photos de tickets de caisse.
+
+```
+SAUCISSES DE STRASBOURG 350G X 10 S PROMO 1 X 2.45€/UNITE
+LAIT MILA BRIQ 1L 1/2 ECREME
+BEUR MOULE DS804 P BRETON 125
+```
+:::
+
+---
+
+###
+
+**Idée initiale:** Entrainer un modèle (type *FastText*) sur les données de caisse
+
+➡️ [*pour un résultat moyen...*](https://ssplab.pages.lab.sspcloud.fr/experimentation-bdf/note-bilan-phase1)
+
+![](https://ssplab.pages.lab.sspcloud.fr/experimentation-bdf/note-bilan-phase1/index_files/figure-html/fig-perf-source-1.png)
+
+
+DEMO ➡️
+
+
+----
+
+## Codification APE
+
+DEMO ➡️
+

@@ -1,0 +1,41 @@
+## Contexte
+
+* Codification de texte court dans des nomenclatures hiérarchiques avec des centaines de classes
+   - **COICOP** : *"XXL ESSUIE-TOUT 5.19 X 1"* ➡️ 05.6.1.9 (Autres biens domestiques non durables (ND))
+   - **APE** :  *"Professionnelle du langage, je retranscris des textes et conversations de la langue française vers la langue portugaise et réciproquement. "* ➡️ 7430Z (Traduction et interprétation)
+* Variables additionnelles disponibles comme facteurs prédictifs
+* Besoin d'explicabilité et d'indicateurs de qualité
+
+
+## fastText : en production, mais archivé {.r-fit-text}
+
+- fastText : le *go-to* pour la classification de texte à l'Insee
+- Efficace, performant, mis en production en 2021 pour la codification APE...
+- ...mais repo archivé depuis le 19/03/2024
+
+## Enjeux
+
+::: {.incremental}
+- La non-maintenance de la librairie : à terme, risques de maintenance, de compatibilité...
+- Surtout : freine les possibilités de [**modernisation**]{.orange}
+- Dans le même temps, un éco-système **deep learning**/ NLP très dynamique: [**PyTorch**]{.orange}, **Hugging Face**...
+:::
+
+## 2024 : passage à PyTorch ! {.scrollable}
+
+::: {.incremental}
+- Modèle PyTorch proche du modèle fastText : transition en douceur
+- On en parlait [ici](https://inseefrlab.github.io/codif-ape-prez/slides/grp-veille-codif-auto-10/#/title-slide)
+    - PyTorch permet de *customiser* l'architecture et l'adapter à nos besoins (gestion des variables catégorielles)
+    - Meilleur *monitoring* de l'entraînement
+    - Opportunités de modernisation: explicabilité, calibration, [**modèles plus performants**]{.orange}...
+- Un package pour séparer la définition du modèle de son usage
+:::
+
+## de *torchFastText* à *torchTextClassifiers* {.scrollable}
+
+
+- évolution du package initial vers une [**boite à outils**]{.orange} (ou un *framework unifié*) de la classification de texte avec variables catégorielles
+    - d'autres exemples de *toolkits* en PyTorch : [Pythae](https://github.com/clementchadebec/benchmark_VAE) pour les VAE, [TorchSeg](https://github.com/yu-changqian/TorchSeg) pour la segmentation...
+- conceptualisation des différents composants d'un modèle de classification de texte
+- connexion avec l'eco-système Hugging Face
