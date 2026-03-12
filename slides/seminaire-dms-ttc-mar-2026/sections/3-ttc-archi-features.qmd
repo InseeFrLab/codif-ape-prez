@@ -6,5 +6,11 @@
 
 ## Features
 
-## Limites d'utilisations
+- explicabilité
+- multilabel
+- modulable
+...
+
+
+
 
