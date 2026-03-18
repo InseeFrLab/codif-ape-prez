@@ -30,6 +30,12 @@
 - Conceptualization of the various components within a text classification model.
 - Seamless integration with the **Hugging Face** ecosystem.
 
+## Library scope and positioning
+
+![From a production standpoint](../img/TTC_positioning_matrix.png){width=300px fig-align="center"}
+
+- If you want to know more, get [here](https://github.com/InseeFrLab/torchTextClassifiers/tree/main) and star this repo :star2:
+
 ## Architecture
 
 <div style="height: 100px;"></div>
