@@ -1,0 +1,12 @@
+---
+title: Webinar with KNBS
+image: https://www.insee.fr/static/img/logoInseeFr.svg
+date: "2026-03-18"
+description: |
+  <b>Description :</b> Classification of business activities by machine learning - The case of France
+author: Nathan Randriamanana
+slides:
+  text: Slides
+  url: /slides/webinar-subsaharan-africa-2026/index.html
+order: 22
+---
