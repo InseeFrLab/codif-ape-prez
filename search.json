@@ -203,6 +203,13 @@
     "text": "From torchFastText to torchTextClassifiers\n\nEvolution from a single package into a toolkit (a unified framework) for text classification with categorical variables.\n\nInspired by other PyTorch toolkits: Pythae for VAEs, TorchSeg for segmentation…\n\nConceptualization of the various components within a text classification model.\nSeamless integration with the Hugging Face ecosystem."
   },
   {
+    "objectID": "slides/webinar-subsaharan-africa-2026/index.html#library-scope-and-positioning",
+    "href": "slides/webinar-subsaharan-africa-2026/index.html#library-scope-and-positioning",
+    "title": "Classification of business activities by machine learning: the case of France",
+    "section": "Library scope and positioning",
+    "text": "Library scope and positioning\n\nFrom a production standpoint\nIf you want to know more, get here and star this repo 🌟"
+  },
+  {
     "objectID": "slides/webinar-subsaharan-africa-2026/index.html#architecture",
     "href": "slides/webinar-subsaharan-africa-2026/index.html#architecture",
     "title": "Classification of business activities by machine learning: the case of France",
