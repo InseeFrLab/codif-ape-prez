@@ -1,0 +1,115 @@
+---
+title: "<br/><small>Classification of business activities by machine learning:  the case of France</small>"
+title-slide-attributes:
+  style: "font-size:0.9em;"
+subtitle: |
+  **[Webinar on automatic coding]{.orange}**
+author: |
+  Nathan RANDRIAMANANA
+date: "03/18/2026"
+date-format: "D MMMM YYYY"
+slide-number: true
+# uncomment for French presentations:
+lang: en-US
+# for blind readers:
+slide-tone: false
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  onyxia-revealjs:
+    output-file: index.html
+    header-includes: |
+       <link rel="icon" type="image/svg" sizes="32x32" href="https://www.insee.fr/static/img/logoInseeFr.svg">
+controls: true
+css: ../custom.css
+from: markdown+emoji
+ascii: true
+execute:
+  echo: false
+  warning: false
+---
+
+# About me {.nonincremental auto-animate=true}
+
+![](https://minio.lab.sspcloud.fr/nrandriamanana/portfolio/Nathan_resize.JPG){fig-align="left"} 
+
+
+- [**Who am I ?**]{.orange}
+    + _Data scientist_ at Insee
+    + INSEE statistician [**civil servant**](https://www.insee.fr/en/information/2404684#attaches){.blue2}
+    + working now at the [**Business Statistics Directorate**]{.blue2}
+    + [**SIRENE**](https://www.insee.fr/en/metadonnees/definition/c1135){.blue2} business register
+
+::: notes
+Hi, I’m Nathan Randriamanana. I’m a data scientist at INSEE. 
+
+Everyone now, what's a data scientist ?
+A data scientist works at the interface between statistics, programming, and domain knowledge. In general, we analyze data, build models, and sometimes use machine learning or computational methods to provide insights that help organizations make informed decisions.
+
+I’m a civil servant, which means I work as an official statistician for the government. I’m currently based in the Business Statistics Directorate, and part of my work involves managing the SIRENE business register, which tracks the full life cycle of companies in France from their creation, through modifications, to their closure, and sometimes even reactivation.
+:::
+
+## [About my job](https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/) {.smaller}
+
+- __I wear two hats__: 
+    - **:tophat: Application Administrator**: Acting as the functional lead for the SIRENE register. I bridge the gap between business needs and IT by writing functional specifications for system maintenance and evolution.
+    - **:billed_cap: Data Scientist**: Managing the end-to-end ML workflow for APE classification from model training and delivery to its integration into the production application.
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![Example from presentation at the [Cloud Native Days France 2026](https://www.cloudnativedays.fr/) conference regarding cloud technologies](https://minio.lab.sspcloud.fr/nrandriamanana/portfolio/photo_cnd_codage.jpg)
+
+:::
+
+::: {.column width="50%"}
+### Linkedin
+{{< qrcode https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/ qr1 width=250 height=250 >}}
+:::
+
+::::
+
+
+# Table of contents
+
+1️⃣ [**Context**]{.blue2}  
+
+2️⃣ [**State of play: How do we assign activity codes today ?**]{.blue2} 
+
+3️⃣ [**Why did we end up using Machine Learning ?**]{.blue2} 
+
+4️⃣ [**fastText: a simple and efficient classifier**]{.blue2} 
+
+5️⃣ [**Beyond fastText: introducing TorchTextClassifiers**]{.blue2}
+
+6️⃣ [**Questions ?**]{.blue2}
+
+::: notes
+
+:::
+
+# 1️⃣ Context 
+
+{{< include sections/1-context.qmd >}}
+
+# 2️⃣ State of play: How do we assign activity codes today ? 
+
+{{< include sections/2-stateofplay.qmd >}}
+
+# 3️⃣ Why did we end up using Machine Learning ? 
+
+{{< include sections/3-whyml.qmd >}}
+
+# 4️⃣ fastText: a simple and efficient classifier
+
+{{< include sections/4-fasttext.qmd >}}
+
+# 5️⃣ Beyond fastText: introducing TorchTextClassifiers 
+
+{{< include sections/5-ttc.qmd >}}
+
+# 6️⃣ Questions ?
+

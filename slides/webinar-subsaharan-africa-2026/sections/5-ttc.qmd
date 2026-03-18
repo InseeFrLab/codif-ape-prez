@@ -1,0 +1,43 @@
+## fastText: In Production, but Archived {.r-fit-text}
+
+- **fastText**: The *go-to* for text classification at Insee.
+- Reliable and high-performing; deployed in 2021 for APE codification...
+- ...but the repository has been [**archived**]{.orange} since March 19, 2024.
+
+## The Stakes
+
+::: {.incremental}
+- Lack of library maintenance: eventual risks regarding stability and compatibility.
+- Most importantly: it [**stalls modernization**]{.orange}.
+- Meanwhile, a highly dynamic **Deep Learning/NLP** ecosystem: [**PyTorch**]{.orange}, **Hugging Face**, etc.
+:::
+
+## 2025: Transitioning to PyTorch! {.scrollable}
+
+::: {.incremental}
+- PyTorch model closely mirrors the fastText architecture: a smooth transition.
+- Discussed [here](https://inseefrlab.github.io/codif-ape-prez/slides/grp-veille-codif-auto-10/#/title-slide):
+    - PyTorch allows for *customized* architectures tailored to our needs (handling categorical variables).
+    - Improved **training monitoring**.
+    - Opportunities for modernization: explainability, calibration, [**higher-performance models**]{.orange}...
+- A dedicated package to decouple model definition from its implementation.
+:::
+
+## From *torchFastText* to *torchTextClassifiers* {.scrollable}
+
+- Evolution from a single package into a [**toolkit**]{.orange} (a unified framework) for text classification with categorical variables.
+    - Inspired by other PyTorch toolkits: [Pythae](https://github.com/clementchadebec/benchmark_VAE) for VAEs, [TorchSeg](https://github.com/yu-changqian/TorchSeg) for segmentation...
+- Conceptualization of the various components within a text classification model.
+- Seamless integration with the **Hugging Face** ecosystem.
+
+## Architecture
+
+<div style="height: 100px;"></div>
+
+![](../img/TTC_overview.png){width=1000px fig-align="center"}
+
+## Features
+
+- Explainability
+- Multi-label support
+- Modular design

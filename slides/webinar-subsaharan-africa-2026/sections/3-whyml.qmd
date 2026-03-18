@@ -1,0 +1,31 @@
+## The methodology: a legacy
+
+- Methodology is not new
+- Automatic coding for difficult cases and manuel check for the easiest one
+- Coding systems since 1981 ! 🧙🏻‍♂️
+
+## The shock
+
+- data not clean anymore 
+➡️ Teams got [**overwhelmed**]{.blue2}
+- automation drop to
+
+ <details> 
+  <summary> 
+      <font size=3 color=black><b>Display an exemple of activity description from business formality centers</b></font> 
+  </summary>
+
+  ```
+  BAKERY
+  ```
+</details> 
+
+<details> 
+  <summary> 
+      <font size=3 color=black><b>Display an exemple of activity description from the one-stop-shop</b></font> 
+  </summary>
+
+  ```
+ I am looking to developpe in the cleaning and maintainance of busines offices: changeing bins, vacuuming, and mopping
+  ```
+</details> 
