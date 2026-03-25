@@ -109,7 +109,7 @@
     "href": "slides/webinar-subsaharan-africa-2026/index.html#the-shock",
     "title": "Classification of business activities by machine learning: the case of France",
     "section": "The shock",
-    "text": "The shock\n\ndata not clean anymore ➡️ Teams got overwhelmed\nautomation drop to\n\n\n\nDisplay an exemple of activity description from business formality centers\n\n  BAKERY\n\n\n\nDisplay an exemple of activity description from the one-stop-shop\n\n I am looking to developpe in the cleaning and maintainance of busines offices: changeing bins, vacuuming, and mopping"
+    "text": "The shock\n\ndata not clean anymore ➡️ Teams got overwhelmed\nautomation drops to 30%\n\n\n\nDisplay an exemple of activity description from business formality centers\n\n  BAKERY\n\n\n\nDisplay an exemple of activity description from the one-stop-shop\n\n I am looking to developpe in the cleaning and maintainance of busines offices: changeing bins, vacuuming, and mopping"
   },
   {
     "objectID": "slides/webinar-subsaharan-africa-2026/index.html#a-package-from-fair-lab",
@@ -221,7 +221,14 @@
     "href": "slides/webinar-subsaharan-africa-2026/index.html#features",
     "title": "Classification of business activities by machine learning: the case of France",
     "section": "Features",
-    "text": "Features\n\nExplainability\nMulti-label support\nModular design"
+    "text": "Features\n\nExplainability 🔍 🤖 📊\nMulti-label support 🏷️\nModular design 🧩⚙️"
+  },
+  {
+    "objectID": "slides/webinar-subsaharan-africa-2026/index.html#get-started",
+    "href": "slides/webinar-subsaharan-africa-2026/index.html#get-started",
+    "title": "Classification of business activities by machine learning: the case of France",
+    "section": "Get started",
+    "text": "Get started\n\ncheck out the example notebook 📚 🚀\nimport your own data in Load and preprocess data\nChoose your section based on your goal\n\ntorchTextClassifiers: a wrapper to handle them all ☺️ ➡️ Fast implementation: just grab-and-go 🛍️\nLet’s dive into the different components 🤓 (experts) ➡️ More control: modular customization 🔧 👌 😎\n\n\n\n\n\n\n\n\nSome tips for data import\n\n\nJust update the import section and match your column names. Works out-of-the-box with Parquet or CSV for instance (Can ask our AI chat)"
   },
   {
     "objectID": "slides/unece-2025/index.html#ml-model-robustness",

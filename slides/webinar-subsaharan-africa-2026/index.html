@@ -6,9 +6,9 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/quarto-contrib/qrcodejs-v1.0.0/qrcode.js"></script><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+  <meta name="generator" content="quarto-1.9.36">
 
   <meta name="author" content="Nathan RANDRIAMANANA">
   <meta name="dcterms.date" content="2026-03-18">
@@ -19,6 +19,9 @@
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -31,7 +34,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ea8535d309a38c52e88d69daf30b07d0.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-c04a83ec71f912e5167c964db8a16515.css">
   <link rel="stylesheet" href="../_extensions/InseeFrLab/onyxia/logo.css">
   <link rel="stylesheet" href="../custom.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -131,7 +134,7 @@
   <link rel="icon" type="image/svg" sizes="32x32" href="https://www.insee.fr/static/img/logoInseeFr.svg">
 <meta property="og:title" content="Classification of business activities by machine learning: the case of France – Présentations codification automatique de l’APE">
 <meta property="og:description" content="Webinar on automatic coding">
-<meta property="og:site_name" content="Présentations codification automatique de l'APE">
+<meta property="og:site_name" content="Présentations codification automatique de l’APE">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -139,7 +142,7 @@
 
 <section id="title-slide" style="font-size:0.9em;" class="quarto-title-block center">
   <h1 class="title"><br><small>Classification of business activities by machine learning: the case of France</small></h1>
-  <p class="subtitle"></p><p><strong><span class="orange">Webinar on automatic coding</span></strong></p><p></p>
+  <p class="subtitle"><strong><span class="orange">Webinar on automatic coding</span></strong></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -365,7 +368,7 @@
 <h2>The shock</h2>
 <ul>
 <li>data not clean anymore ➡️ Teams got <span class="blue2"><strong>overwhelmed</strong></span></li>
-<li>automation drop to</li>
+<li>automation drops to 30%</li>
 </ul>
 <details>
 <summary>
@@ -633,10 +636,35 @@
 <section id="features" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Features</h2>
 <ul>
-<li>Explainability</li>
-<li>Multi-label support</li>
-<li>Modular design</li>
+<li>Explainability <span class="emoji" data-emoji="mag">🔍</span> <span class="emoji" data-emoji="robot">🤖</span> <span class="emoji" data-emoji="bar_chart">📊</span></li>
+<li>Multi-label support <span class="emoji" data-emoji="label">🏷️</span></li>
+<li>Modular design 🧩⚙️</li>
 </ul>
+</section>
+<section id="get-started" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Get started</h2>
+<ol type="1">
+<li>check out the <a href="https://github.com/InseeFrLab/torchTextClassifiers/blob/main/notebooks/example.ipynb">example notebook</a> <span class="emoji" data-emoji="books">📚</span> <span class="emoji" data-emoji="rocket">🚀</span></li>
+<li>import your own data in <strong>Load and preprocess data</strong></li>
+<li>Choose your section based on your goal
+<ul>
+<li><strong>torchTextClassifiers: a wrapper to handle them all</strong> <span class="emoji" data-emoji="relaxed">☺️</span> ➡️ Fast implementation: just grab-and-go <span class="emoji" data-emoji="shopping">🛍️</span></li>
+<li><strong>Let’s dive into the different components</strong> <span class="emoji" data-emoji="nerd_face">🤓</span> (experts) ➡️ More control: modular customization <span class="emoji" data-emoji="wrench">🔧</span> <span class="emoji" data-emoji="ok_hand">👌</span> <span class="emoji" data-emoji="sunglasses">😎</span></li>
+</ul></li>
+</ol>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Some tips for data import</strong></p>
+</div>
+<div class="callout-content">
+<p>Just update the import section and match your column names.<br> Works out-of-the-box with <span class="orange">Parquet</span> or <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">CSV</a> for instance (Can ask our <a href="https://llm.lab.sspcloud.fr/">AI chat</a>)</p>
+</div>
+</div>
+</div>
 </section></section>
 <section id="questions" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
 <h1>6️⃣ Questions ?</h1>
