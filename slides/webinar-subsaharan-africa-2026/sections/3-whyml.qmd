@@ -8,7 +8,7 @@
 
 - data not clean anymore 
 ➡️ Teams got [**overwhelmed**]{.blue2}
-- automation drop to
+- automation drops to 30%
 
  <details> 
   <summary> 

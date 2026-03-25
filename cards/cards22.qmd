@@ -1,5 +1,5 @@
 ---
-title: Webinar with KNBS
+title: Webinars with Africa (KNBS, Morocco, Uganda, ...) and OECD
 image: https://www.insee.fr/static/img/logoInseeFr.svg
 date: "2026-03-18"
 description: |

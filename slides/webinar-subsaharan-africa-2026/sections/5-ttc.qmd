@@ -44,6 +44,21 @@
 
 ## Features
 
-- Explainability
-- Multi-label support
-- Modular design
+- Explainability :mag: :robot: :bar_chart:
+- Multi-label support :label:
+- Modular design 🧩⚙️
+
+## Get started
+
+1. check out the [example notebook](https://github.com/InseeFrLab/torchTextClassifiers/blob/main/notebooks/example.ipynb) :books: :rocket:
+2. import your own data in **Load and preprocess data**
+3. Choose your section based on your goal
+    - **torchTextClassifiers: a wrapper to handle them all** :relaxed: ➡️ Fast implementation: just grab-and-go :shopping:
+    - **Let's dive into the different components** :nerd_face: (experts)  ➡️ More control: modular customization :wrench: :ok_hand: :sunglasses:
+
+::: {.callout-tip icon=true}
+
+### Some tips for data import
+Just update the import section and match your column names.<br>
+Works out-of-the-box with [Parquet]{.orange} or [CSV](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) for instance (Can ask our [AI chat](https://llm.lab.sspcloud.fr/))
+:::
