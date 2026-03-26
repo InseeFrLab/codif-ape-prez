@@ -6,7 +6,7 @@ subtitle: |
   **[Webinar on automatic coding]{.orange}**
 author: |
   Nathan RANDRIAMANANA
-date: "03/18/2026"
+date: "03/26/2026"
 date-format: "D MMMM YYYY"
 slide-number: true
 # uncomment for French presentations:
