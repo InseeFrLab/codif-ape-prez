@@ -9,9 +9,9 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <meta name="author" content="Cédric Couralet and Meilame Tayebjee">
-  <meta name="dcterms.date" content="2025-10-01">
-  <title>Présentations codification automatique de l'APE – torchFastText: Modernizing the MLOps pipeline at Insee for text classsification</title>
+  <meta name="author" content="Meilame Tayebjee">
+  <meta name="dcterms.date" content="2026-06-04">
+  <title>Présentations codification automatique de l'APE – torchTextClassifiers: A unified framework for text classification in PyTorch</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -198,7 +198,7 @@
   <script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
   <link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<meta property="og:title" content="torchFastText: Modernizing the MLOps pipeline at Insee for text classsification – Présentations codification automatique de l’APE">
+<meta property="og:title" content="torchTextClassifiers: A unified framework for text classification in PyTorch – Présentations codification automatique de l’APE">
 <meta property="og:site_name" content="Présentations codification automatique de l’APE">
 </head>
 <body class="quarto-light">
@@ -206,66 +206,23 @@
     <div class="slides">
 
 <section id="title-slide" style="font-size:0.9em;" class="quarto-title-block center">
-  <h1 class="title">torchFastText: Modernizing the MLOps pipeline at Insee for text classsification</h1>
+  <h1 class="title">torchTextClassifiers: A unified framework for text classification in PyTorch</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<a href="https://github.com/micedre">Cédric Couralet</a> and <a href="https://github.com/meilame-tayebjee">Meilame Tayebjee</a> 
+<a href="https://github.com/meilame-tayebjee">Meilame Tayebjee</a> 
 </div>
 </div>
 </div>
 
-  <p class="date">1 October 2025</p>
-</section>
-<section id="link-to-the-presentation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Link to the presentation:</h2>
-
-<img data-src="../img/QRcode_prez_pydata.png" class="quarto-figure quarto-figure-center r-stretch" style="width:25.0%"></section>
-<section id="who-are-we" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>👨‍🔬 Who are we ?</h2>
-<p>Two data scientists from the innovation team at Insee:</p>
-<ul>
-<li><strong>Cédric Couralet</strong> <script type="text/javascript">
-<!--
-h='&#x69;&#110;&#x73;&#x65;&#x65;&#46;&#102;&#114;';a='&#64;';n='&#x63;&#x65;&#100;&#114;&#x69;&#x63;&#46;&#x63;&#x6f;&#x75;&#114;&#x61;&#108;&#x65;&#116;';e=n+a+h;
-document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'+e+'<\/'+'a'+'>');
-// -->
-</script><noscript>cedric.couralet at insee dot fr</noscript>
-<ul>
-<li>Previously software developer, architect, devops/security engineer… at Insee</li>
-<li>Currently helping real data scientists bridge the gap between experimentation and production (<span class="orange"><strong>How to talk to IT</strong></span>)</li>
-<li>Open Source advocate</li>
-</ul></li>
-</ul>
-</section>
-<section id="who-are-we-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>👨‍🔬 Who are we ?</h2>
-<p>Two data scientists from the innovation team at Insee:</p>
-<ul>
-<li><strong>Meilame Tayebjee</strong> <script type="text/javascript">
-<!--
-h='&#x69;&#110;&#x73;&#x65;&#x65;&#46;&#102;&#114;';a='&#64;';n='&#x6d;&#x65;&#x69;&#108;&#x61;&#x6d;&#x65;&#46;&#116;&#x61;&#x79;&#x65;&#98;&#106;&#x65;&#x65;';e=n+a+h;
-document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'+e+'<\/'+'a'+'>');
-// -->
-</script><noscript>meilame.tayebjee at insee dot fr</noscript>
-<ul>
-<li>Graduated 2024</li>
-<li>Currently pursuing a part-time PhD in AI applied to health econometrics</li>
-<li>At Insee:
-<ul>
-<li>working on <span class="orange"><strong>deep learning for text classification</strong></span>, computer vision with remote sensing data, <span class="orange"><strong>MLOps practices</strong></span></li>
-<li>exploring explainability, calibration, LLMs, RAGs &amp; agentic workflows</li>
-</ul></li>
-</ul></li>
-</ul>
+  <p class="date">4 June 2026</p>
 </section>
 <section id="what-will-we-talk-about" class="slide level2 center" data-background-image="background.svg" data-background-size="contain">
 <h2>💡 What will we talk about ?</h2>
 <ul>
 <li><span class="orange"><strong>MLOps pipeline</strong></span> for <span class="orange"><strong>text classification</strong></span> at Insee</li>
-<li>Deploying a <span class="orange"><strong>PyTorch model</strong></span> on <span class="orange"><strong>CPU-bound</strong></span> secured offline environment</li>
-<li><span class="orange"><strong>Open-sourcing a PyTorch package</strong></span>: why and how</li>
+<li>The constraint that pushed us to <span class="orange"><strong>open-source a PyTorch package</strong></span>: why and how</li>
 </ul>
 </section>
 <section>
@@ -313,17 +270,6 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'
 <h2>… vs ours</h2>
 
 <img data-src="../img/MLOps-pipeline.png" class="r-stretch"></section>
-<section id="data-cleaning" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Data cleaning</h2>
-<p>The first step of our pipeline (before any preprocessing or splitting) is a label correction based on <span class="orange"><strong>expert rules</strong></span>:</p>
-<ul>
-<li class="fragment">Raw labels are coming from the previous production model: they are not fully reliable</li>
-<li class="fragment">We correct them using several techniques, based on expert-guided rules
-<ul>
-<li class="fragment">The simplest one being REGEX (<em>if text contains xxx then relabel as yyy</em>)</li>
-</ul></li>
-</ul>
-</section>
 <section id="extensive-use-of-mlflow" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Extensive use of MLFLow</h2>
 <ul>
@@ -374,11 +320,6 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'
 <span id="cb1-31"><a></a>    <span class="cf">return</span> responses</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="model-validation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Model validation</h2>
-<p>We use a <span class="orange"><strong>custom metric</strong></span> reflecting the needs of our use case: <span class="orange"><strong>the automation rate vs accuracy on automatically coded samples curve</strong></span></p>
-
-<img data-src="../img/automatic_coding_accuracy_curve.png" class="r-stretch"></section>
 <section id="api-serving" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>API serving</h2>
 <ul>
@@ -537,39 +478,10 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'
 </div>
 </div>
 </div>
-</section>
-<section id="monitoring" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Monitoring</h2>
-<ul>
-<li class="fragment"><span class="orange"><strong>Monitoring</strong></span> the model in a production environment is necessary:
-<ul>
-<li class="fragment">To detect <span class="blue2"><strong>distribution drifts</strong></span> in input data</li>
-<li class="fragment">To check that the model has a <span class="blue2"><strong>stable behavior</strong></span></li>
-<li class="fragment">To decide <span class="blue2"><strong>when to retrain</strong></span> a model</li>
-</ul></li>
-<li class="fragment">Ideally, we would like to track model <span class="orange"><strong>accuracy in real-time</strong></span> but expensive</li>
-<li class="fragment">In addition, monitoring of the API: <span class="orange"><strong>latency</strong></span>, <span class="orange"><strong>memory managment</strong></span>, <span class="orange"><strong>disk usage</strong></span>, etc.</li>
-</ul>
-</section>
-<section id="monitoring-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Monitoring</h2>
-<ul>
-<li><span class="orange"><strong>How</strong></span> we do it:
-<ul>
-<li>API <span class="blue2"><strong>logs</strong></span> its activity</li>
-<li>Logs are fetched and formatted <span class="blue2"><strong>periodically</strong></span></li>
-<li><span class="blue2"><strong>Metrics</strong></span> are computed from the formatted logs</li>
-<li>Display on a <span class="blue2"><strong>dashboard</strong></span></li>
-</ul></li>
-</ul>
-</section>
-<section id="monitoring-2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Monitoring</h2>
-
-<img data-src="../img/monitoring-datalab.png" class="quarto-figure quarto-figure-center r-stretch"></section></section>
+</section></section>
 <section>
-<section id="torchfasttext-an-open-source-package-to-distribute-pytorch-models" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>3️⃣ <em>torchFastText</em>, an open-source package to distribute PyTorch models</h1>
+<section id="torchtextclassifiers-an-open-source-package-to-distribute-pytorch-models" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>3️⃣ <em>torchTextClassifiers</em>, an open-source package to distribute PyTorch models</h1>
 
 </section>
 <section id="beyond-fasttext" class="slide level2" data-background-image="background.svg" data-background-size="contain">
@@ -592,132 +504,68 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'
 <li class="fragment"><span class="orange"><strong>adapt</strong></span> and <span class="orange"><strong>customize</strong></span> the architecture for our specific needs (text classification with categorical variables)</li>
 <li class="fragment">limit dependencies to external libraries and <span class="orange"><strong>internalize maintenance</strong></span> for more robustness in the long-term</li>
 <li class="fragment">access to the <span class="orange"><strong>vibrant deep learning / NLP community</strong></span> to develop additional features (<strong>explainability</strong> with <a href="https://captum.ai/">Captum</a>, <strong>calibration</strong> with <a href="https://github.com/ENSTA-U2IS-AI/torch-uncertainty/tree/main">torch-uncertainty</a>…)…</li>
-<li class="fragment">… or use <span class="orange"><strong>pre-trained models</strong></span> on <a href="https://huggingface.co/">Hugging Face</a> down the road (when we have GPUs in production…)</li>
 </ul>
 </section>
-<section id="our-solution-the-torchfasttext-package" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Our solution: the <a href="https://github.com/InseeFrLab/torch-fastText">torchFastText</a> package</h2>
-<p>The package:</p>
+<section id="packaging-the-architecture-why" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Packaging the architecture: why ?</h2>
 <ul>
-<li class="fragment">Provides a <span class="orange"><strong>standard</strong></span> yet <span class="orange"><strong>flexible</strong></span> architecture for automatic coding needs…</li>
-<li class="fragment">… that stays close to the fastText methodology for now but is <span class="orange"><strong>led to evolve</strong></span></li>
-<li class="fragment">Distributes the raw PyTorch model, a <span class="orange"><strong>Lightning module</strong></span> as well as a wrapper class for a quick grip</li>
-<li class="fragment">Is open-sourced and aims at fostering <span class="orange"><strong>collaboration</strong></span> ! Feel free to raise an issue, report a bug or open a PR.</li>
+<li class="fragment">Conceptually, the model architecture <span class="orange"><strong>has its own life</strong></span>
+<ul>
+<li class="fragment">Can be used for many other use cases</li>
+<li class="fragment">Has its own development, versioning etc.</li>
+<li class="fragment"><strong>This justifies to have its own repo</strong>, distinct from the train or API one</li>
+</ul></li>
+<li class="fragment"><span class="orange"><strong>From an MLOps point of view</strong></span>:
+<ul>
+<li class="fragment">The model is travelling between different teams and repos (train, inference, prod): we need to have a <strong>Single Source of Truth</strong> for easy deployment and versioning!
+<ul>
+<li class="fragment">PyPI plays the <strong>remote</strong> role</li>
+</ul></li>
+</ul></li>
 </ul>
 </section>
-<section id="pytorch-model-lightning-module" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
-<h2>PyTorch model &amp; Lightning module</h2>
-<div id="lightning-module" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">from</span> torchFastText.model <span class="im">import</span> FastTextModel, FastTextModule</span>
-<span id="cb5-2"><a></a><span class="im">import</span> torch</span>
-<span id="cb5-3"><a></a></span>
-<span id="cb5-4"><a></a>model <span class="op">=</span> FastTextModel(embedding_dim<span class="op">=</span><span class="dv">80</span>,</span>
-<span id="cb5-5"><a></a>                      num_classes<span class="op">=</span><span class="dv">732</span>,</span>
-<span id="cb5-6"><a></a>                      num_rows <span class="op">=</span> <span class="dv">20000</span>,</span>
-<span id="cb5-7"><a></a>                      categorical_vocabulary_sizes<span class="op">=</span>[<span class="dv">10</span>, <span class="dv">20</span>],</span>
-<span id="cb5-8"><a></a>                      categorical_embedding_dims<span class="op">=</span><span class="dv">5</span></span>
-<span id="cb5-9"><a></a>                      )</span>
-<span id="cb5-10"><a></a></span>
-<span id="cb5-11"><a></a>module <span class="op">=</span> FastTextModule(</span>
-<span id="cb5-12"><a></a>    model<span class="op">=</span>model,</span>
-<span id="cb5-13"><a></a>    loss<span class="op">=</span> torch.nn.CrossEntropyLoss(),</span>
-<span id="cb5-14"><a></a>    optimizer<span class="op">=</span>torch.optim.Adam,</span>
-<span id="cb5-15"><a></a>    optimizer_params<span class="op">=</span>{<span class="st">"lr"</span>: <span class="fl">0.001</span>},</span>
-<span id="cb5-16"><a></a>    scheduler <span class="op">=</span> <span class="va">None</span>,</span>
-<span id="cb5-17"><a></a>    scheduler_params<span class="op">=</span><span class="va">None</span></span>
-<span id="cb5-18"><a></a>)</span>
-<span id="cb5-19"><a></a><span class="bu">print</span>(model)</span>
-<span id="cb5-20"><a></a><span class="bu">print</span>(module)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>FastTextModel(
-  (embeddings): Embedding(20000, 80, padding_idx=0, sparse=True)
-  (emb_0): Embedding(10, 5)
-  (emb_1): Embedding(20, 5)
-  (fc): Linear(in_features=85, out_features=732, bias=True)
-)
-FastTextModule(
-  (model): FastTextModel(
-    (embeddings): Embedding(20000, 80, padding_idx=0, sparse=True)
-    (emb_0): Embedding(10, 5)
-    (emb_1): Embedding(20, 5)
-    (fc): Linear(in_features=85, out_features=732, bias=True)
-  )
-  (loss): CrossEntropyLoss()
-  (accuracy_fn): MulticlassAccuracy()
-)</code></pre>
-</div>
-</div>
+<section id="our-solution-torchtextclassifiers" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Our solution: <a href="https://github.com/InseeFrLab/torchTextClassifiers">torchTextClassifiers</a></h2>
+<ul>
+<li class="fragment"><strong>The package:</strong>
+<ul>
+<li class="fragment">Conceptualizes the different components of a text classification model to flexibly manipulate them</li>
+<li class="fragment">Distributes SOTA architectures incl.&nbsp;self-attention layers (you can make your own small BERT!)</li>
+<li class="fragment">Enables to easily instantiate and train those components, while proposing additional features such as <span class="orange"><strong>explainability</strong></span>
+<ul>
+<li class="fragment">You can use any tokenizer from HuggingFace or train your own one</li>
+</ul></li>
+</ul></li>
+</ul>
 </section>
-<section id="tokenizer" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
-<h2>Tokenizer</h2>
-<div id="tokenizer" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> torchFastText.datasets <span class="im">import</span> NGramTokenizer</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a>training_text <span class="op">=</span> [<span class="st">'boulanger'</span>, <span class="st">'coiffeur'</span>, <span class="st">'boucherie'</span>, <span class="st">'boucherie charcuterie'</span>]</span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a>tokenizer <span class="op">=</span> NGramTokenizer(</span>
-<span id="cb7-6"><a></a>    min_n<span class="op">=</span><span class="dv">3</span>, </span>
-<span id="cb7-7"><a></a>    max_n<span class="op">=</span><span class="dv">6</span>, </span>
-<span id="cb7-8"><a></a>    num_tokens<span class="op">=</span> <span class="dv">100</span>,</span>
-<span id="cb7-9"><a></a>    len_word_ngrams<span class="op">=</span><span class="dv">2</span>, </span>
-<span id="cb7-10"><a></a>    min_count<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb7-11"><a></a>    training_text<span class="op">=</span>training_text</span>
-<span id="cb7-12"><a></a>    )</span>
-<span id="cb7-13"><a></a></span>
-<span id="cb7-14"><a></a><span class="bu">print</span>(tokenizer.tokenize([<span class="st">"boulangerie"</span>])[<span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[['&lt;bo', 'bou', 'oul', 'ula', 'lan', 'boul', 'nge', '&lt;boul', 'eri', 'rie', 'ie&gt;', 'boul', 'boul', 'oula', 'ulan', 'lang', 'ange', 'nger', 'geri', 'erie', 'rie&gt;', '&lt;boul', 'boula', 'oulan', 'ulang', 'lange', 'anger', 'ngeri', 'gerie', 'erie&gt;', '&lt;boula', 'boulan', 'oulang', 'ngerie', 'langer', 'angeri', 'ngerie', 'gerie&gt;', '&lt;/s&gt;', 'boulangerie &lt;/s&gt;']]</code></pre>
-</div>
-</div>
+<section class="slide level2">
+
+<ul>
+<li class="fragment"><strong>Targets:</strong>
+<ul>
+<li class="fragment">All those who want to train their home-made - possibly small - models, <strong>customize their architectures</strong> and can’t deploy big models from HuggingFace</li>
+</ul></li>
+</ul>
 </section>
-<section id="the-wrapper-class" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
-<h2>The wrapper class</h2>
-<p>A quick way to launch a training in two lines of code.</p>
-<div id="wrapper-torchft" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execute&quot;,&quot;value&quot;:{&quot;enabled&quot;:false}}" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">from</span> torchFastText <span class="im">import</span> torchFastText</span>
-<span id="cb9-2"><a></a></span>
-<span id="cb9-3"><a></a><span class="co"># Initialize the model</span></span>
-<span id="cb9-4"><a></a>model <span class="op">=</span> torchFastText(</span>
-<span id="cb9-5"><a></a>    num_tokens<span class="op">=</span><span class="dv">1000000</span>,</span>
-<span id="cb9-6"><a></a>    embedding_dim<span class="op">=</span><span class="dv">100</span>,</span>
-<span id="cb9-7"><a></a>    min_count<span class="op">=</span><span class="dv">5</span>,</span>
-<span id="cb9-8"><a></a>    min_n<span class="op">=</span><span class="dv">3</span>,</span>
-<span id="cb9-9"><a></a>    max_n<span class="op">=</span><span class="dv">6</span>,</span>
-<span id="cb9-10"><a></a>    len_word_ngrams<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb9-11"><a></a>    sparse<span class="op">=</span><span class="va">True</span></span>
-<span id="cb9-12"><a></a>)</span>
-<span id="cb9-13"><a></a></span>
-<span id="cb9-14"><a></a><span class="co"># Train the model</span></span>
-<span id="cb9-15"><a></a>model.train(</span>
-<span id="cb9-16"><a></a>    X_train<span class="op">=</span>train_data,</span>
-<span id="cb9-17"><a></a>    y_train<span class="op">=</span>train_labels,</span>
-<span id="cb9-18"><a></a>    X_val<span class="op">=</span>val_data,</span>
-<span id="cb9-19"><a></a>    y_val<span class="op">=</span>val_labels,</span>
-<span id="cb9-20"><a></a>    num_epochs<span class="op">=</span><span class="dv">10</span>,</span>
-<span id="cb9-21"><a></a>    batch_size<span class="op">=</span><span class="dv">64</span></span>
-<span id="cb9-22"><a></a>)</span>
-<span id="cb9-23"><a></a><span class="co"># Make predictions</span></span>
-<span id="cb9-24"><a></a>predictions <span class="op">=</span> model.predict(test_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="positioning" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Positioning</h2>
+
+<img data-src="../img/TTC_positioning_matrix.png" width="300" class="r-stretch quarto-figure-center"><p class="caption">Production POV</p></section>
+<section id="the-different-components" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>The different components</h2>
+<div style="height: 100px;">
+
 </div>
-</section>
-<section id="additional-features-explainability" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Additional features: explainability</h2>
-<p>Using integrated predictions from <a href="https://captum.ai/" class="orange"><strong>Captum</strong></a>, we can measure feature importance in predictions:</p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th><img data-src="../img/4332A-word.png" style="width:90.0%"></th>
-<th><img data-src="../img/4332A-letter.png" style="width:90.0%"></th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-</section></section>
+
+<img data-src="../img/TTC_overview.png" class="quarto-figure quarto-figure-center r-stretch" width="1000"></section>
+<section id="link-to-the-doc" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Link to the doc</h2>
+
+<img data-src="../img/QRcode_doc_ttc.png" width="1000" class="r-stretch quarto-figure-center"><p class="caption">https://inseefrlab.github.io/torchTextClassifiers/</p></section>
+<section id="link-to-the-funathon" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Link to the funathon</h2>
+
+<img data-src="../img/qr_funathon.png" width="1000" class="r-stretch quarto-figure-center"><p class="caption">https://aiml4os.github.io/funathon-project2/</p></section></section>
 <section>
 <section id="perspectives" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
 <h1>4️⃣ Perspectives</h1>
@@ -729,33 +577,9 @@ FastTextModule(
 <li class="fragment"><span class="orange"><strong>Bridging the gap</strong></span> between innovation and production:
 <ul>
 <li class="fragment">full automation between data extraction, model training and qualification, model deployment</li>
-<li class="fragment">observability of the model in production: logs, continuous annotation…</li>
+<li class="fragment">observability of the model in production: logs, continuous annotation… <strong>using AI models!</strong></li>
+<li class="fragment"><a href="https://github.com/InseeFrLab/GRAAL">GRAAL: Graph-based Reasoning Agents for Automatic Labelling</a></li>
 </ul></li>
-</ul>
-</section>
-<section id="from-torchfasttext-to-torchtextclassifiers" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>From torchFastText to <span class="blue"><strong>torchTextClassifiers</strong></span></h2>
-<ul>
-<li class="fragment">Distribution of <em>untrained</em> raw PyTorch text classification architectures
-<ul>
-<li class="fragment">including <span class="blue"><strong>all SOTA architectures</strong></span>, incl.&nbsp;BERT, Label Attention etc.</li>
-<li class="fragment">enable <span class="blue"><strong>custom parametrization</strong></span> (you can make your own small BERT!)</li>
-<li class="fragment">enable easy training and inference on GPU/CPU</li>
-</ul></li>
-</ul>
-</section>
-<section id="from-torchfasttext-to-torchtextclassifiers-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>From torchFastText to <span class="blue"><strong>torchTextClassifiers</strong></span></h2>
-<ul>
-<li class="fragment"><span class="orange"><strong>Additional features</strong></span>:
-<ul>
-<li class="fragment">train and use a custom tokenizer</li>
-<li class="fragment"><span class="blue"><strong>controlling uncertainty</strong></span>: explainability, calibration &amp; conformal prediction</li>
-<li class="fragment">quantization</li>
-<li class="fragment">push / pull from HF</li>
-</ul></li>
-<li class="fragment">For those who can not directly use big models from HF and/or want to train their own flexible models</li>
-<li class="fragment"><span class="orange"><strong>Always fully open-sourced!</strong></span></li>
 </ul>
 </section></section>
 <section id="section-1" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
@@ -988,7 +812,7 @@ FastTextModule(
     </script>
     <script type="module">
     if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
-    window._ojs.paths.runtimeToDoc = "../../slides/pydata";
+    window._ojs.paths.runtimeToDoc = "../../slides/isi-malta";
     window._ojs.paths.runtimeToRoot = "../..";
     window._ojs.paths.docToRoot = "../..";
     window._ojs.selfContained = false;
