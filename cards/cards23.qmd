@@ -1,0 +1,12 @@
+---
+title: ISI Regional Conference 2026 - Malta
+image: https://www.isi-next.org/media/conferences/isi-rsc-malta-2026.jpg
+date: "2026-06-04"
+description: |
+  <b>Description :</b> torchTextClassifiers: a unified framework for text classification with PyTorch, from a MLOps perspective
+author: Meilame Tayebjee
+slides:
+  text: Slides
+  url: /slides/isi-malta/index.html
+order: 23
+---

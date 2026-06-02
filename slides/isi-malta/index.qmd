@@ -1,0 +1,54 @@
+---
+title: "torchTextClassifiers: A unified framework for text classification in PyTorch"
+title-slide-attributes:
+  style: "font-size:0.9em;"
+author: "[Meilame Tayebjee](https://github.com/meilame-tayebjee)"
+date: "2026-06-04"
+date-format: "D MMMM YYYY"
+slide-number: true
+# uncomment for French presentations:
+lang: en-GB
+# for blind readers:
+slide-tone: false
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  onyxia-revealjs:
+    output-file: index.html
+controls: true
+css: ../custom.css
+ascii: true
+---
+
+## 💡 What will we talk about ? {.center}
+
+- [**MLOps pipeline**]{.orange} for [**text classification**]{.orange} at Insee
+- The constraint that pushed us to [**open-source a PyTorch package**]{.orange}: why and how
+
+
+# 1️⃣ Context
+
+{{< include sections/1-contexte.qmd >}}
+
+# 2️⃣ MLOps pipeline
+
+{{< include sections/2-pipeline.qmd >}}
+
+# 3️⃣ _torchTextClassifiers_, an open-source package to distribute PyTorch models
+
+{{< include sections/3-torchft.qmd >}}
+
+# 4️⃣ Perspectives 
+
+{{< include sections/4-perspectives.qmd >}}
+
+# 
+
+**Thank you for your attention.**
+
+
+Find here all of our repos on the NACE coding project and our packages: 
+
+![](../img/qr-code-github-repo-search.png){fig-align="center" width=25%}

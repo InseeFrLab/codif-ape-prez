@@ -1,0 +1,201 @@
+## The ideal MLOps pipeline...
+
+![](https://www.ml4devs.com/images/illustrations/ml-lifecycle-mlops-eternal-knot.webp)
+
+
+## ... vs ours
+
+![](../img/MLOps-pipeline.png)
+
+
+## Extensive use of MLFLow
+
+::: {.incremental}
+- [**MLflow**]{.orange} used as a:
+  1. Training monitor
+  2. Model store and "versioner"
+  3. Model wrapper (using _pyfunc_ object from MLFLow)
+    - Models are packaged with all the metadata necessary to [**run inference**]{.orange}
+:::
+
+## The wrapper {.scrollable}
+
+```{python}
+#| label: wrapper
+#| echo: true
+#| eval: false
+#| fig-cap: "Structure of the wrapper"
+#| execute: 
+#|  enabled: false
+class MLFlowPyTorchWrapper(mlflow.pyfunc.PythonModel):
+  def __init__()
+    ...
+  
+  def predict(self, model_input: list[SingleForm], params=None) -> list[PredictionResponse]:
+    query = self.preprocess_inputs(
+            inputs=model_input,
+        )
+
+    # Preprocess inputs
+    text = query[self.text_feature].values
+    categorical_variables = query[self.categorical_features].values
+
+    ...
+
+    all_scores = []
+    for batch_idx, batch in enumerate(dataloader):
+        with torch.no_grad():
+            scores = self.module(batch).detach()
+            all_scores.append(scores)
+    all_scores = torch.cat(all_scores)
+    probs = torch.nn.functional.softmax(all_scores, dim=1)
+
+    ...
+
+    responses = []
+    for i in range(len(predictions[0])):
+        response = process_response(predictions, i, nb_echos_max, prob_min, self.libs)
+        responses.append(response)
+
+    return responses
+```
+
+## API serving
+
+- Text classification model served through a containerized [**REST API**]{.orange}:
+  - [**Simplicity**]{.blue2} for end users
+  - [**Standard query format**]{.blue2}
+  - [**Scalable**]{.blue2}
+  - [**Modular**]{.blue2} and [**portable**]{.blue2}
+- Simple design thanks to the MLFLow wrapper
+- Continuous deployment with [**Argo CD**]{.orange}
+
+## {.scrollable}
+
+```{python}
+#| label: api
+#| echo: true
+#| eval: false
+#| fig-cap: "Structure of API"
+#| execute: 
+#|  enabled: false
+@router.post("/", response_model=List[PredictionResponse])
+async def predict(
+    credentials: Annotated[HTTPBasicCredentials, Depends(get_credentials)],
+    request: Request,
+    forms: BatchForms,
+    ...
+    num_workers: int = 0,
+    batch_size: int = 1,
+):
+    """
+    Endpoint for predicting batches of data.
+
+    Args:
+        credentials (HTTPBasicCredentials): The credentials for authentication.
+        forms (Forms): The input data in the form of Forms object.
+        num_workers (int, optional): Number of CPU for multiprocessing in Dataloader. Defaults to 1.
+        batch_size (int, optional): Size of a batch for batch prediction.
+
+    For single predictions, we recommend keeping num_workers and batch_size to 1 for better performance.
+    For batched predictions, consider increasing these two parameters (num_workers can range from 4 to 12, batch size can be increased up to 256) to optimize performance.
+
+    Returns:
+        list: The list of predicted responses.
+    """
+    input_data = forms.forms
+
+    ...
+
+    output = request.app.state.model.predict(input_data, params=params_dict)
+    return [out.model_dump() for out in output]
+```
+
+## API serving
+
+![](../img/api-datalab.png){fig-align="center"}
+
+
+## API serving
+
+
+```{ojs}
+async function transformToPost(description, top_k) {
+  // Base URL with query parameters
+  const baseUrl = `https://codification-ape2025-pytorch.lab.sspcloud.fr/predict/?nb_echos_max=${top_k}&prob_min=0.01&num_workers=0&batch_size=1`;
+
+  // Build the request body according to the expected schema
+  const body = {
+    forms: [
+      {
+        description_activity: description
+      }
+    ]
+  };
+
+  // Send the POST request
+  const response = await fetch(baseUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  });
+
+  // Parse and return the JSON response
+  return response.json();
+}
+```
+
+
+
+```{ojs}
+viewof activite = Inputs.text({
+  label: '',
+  value: 'coiffure',
+  width: 800
+})
+
+viewof prediction = Inputs.button("Run Prediction", {
+  reduce: async () => {
+    return await transformToPost(activite, 5);
+  }
+})
+
+// afficher les résultats joliment
+prediction_table = {
+  if (!prediction || !prediction.length) {
+    return html``
+  }
+
+  // la réponse est un tableau avec un seul objet
+  const result = prediction[0]
+  const { IC, MLversion, ...codes } = result
+
+  const rows = Object.values(codes).map(({ code, libelle, probabilite }) => {
+    return html`
+      <tr>
+        <td>${code} – ${libelle}</td>
+        <td style="text-align:right;">${probabilite.toFixed(3)}</td>
+      </tr>
+    `
+  })
+
+  return html`
+    <table style="border-collapse: collapse; width: 100%;">
+      <caption style="margin-bottom: 0.5em;">
+        Confidence score : ${(+IC).toFixed(3)}
+      </caption>
+      <thead>
+        <tr>
+          <th style="text-align:left;">Description (NA2008)</th>
+          <th style="text-align:right;">Probability</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows}
+      </tbody>
+    </table>
+  `
+}
+```
