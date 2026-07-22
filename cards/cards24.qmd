@@ -1,0 +1,12 @@
+---
+title: Recodification NAF 2025 assistée par LLMs
+image: ../slides/prez-codif-ica/img/schema_cag_rag.png
+date: "2026-07-01"
+description: |
+  <b>Description :</b> Recodification présentée à la division ICA
+author: Julien Pramil
+slides:
+  text: Slides
+  url: /slides/prez-codif-ica/index.html
+order: 24
+---
