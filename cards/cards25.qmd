@@ -1,0 +1,12 @@
+---
+title: "ISI 2026 - Malta : Scaling Recoding with LLMs"
+image: https://www.isi-next.org/media/conferences/isi-rsc-malta-2026.jpg
+date: "2026-06-04"
+description: |
+  <b>Description :</b> When Classifications Change but Deadlines Don't — recoder la transition NACE avec des LLM (annotateurs virtuels).
+author: Julien Pramil
+slides:
+  text: Slides
+  url: /slides/isi-malta-relabeling/index.html
+order: 25
+---

@@ -1,0 +1,66 @@
+/**********************CSS PERSONNALISE****************************/
+
+/*.reveal section {
+  border: 5px solid black;
+}*/
+
+.border {
+  border: solid 2px black;
+}
+
+.titreAnimeAvant {
+  margin-top: 200px; 
+  font-size: 2.5em; 
+  font-weight: bold;
+  color: #0F417A;
+}
+
+.titreAnimeApres {
+  color: #0F417A;
+  position: absolute;
+  top: -0.5em;
+  left: 20%;
+  text-align: left;
+  font-weight: bold;
+}
+
+.logoPageFin {
+  width: 200px;
+  height: 200px;
+  bottom: 50px;
+  position: relative;
+}
+
+#imageLogoInseeModal{
+  width: 70%;
+  left: 15%;
+  position: relative;
+}
+
+.width70{
+  width: 70%;
+}
+
+.width65{
+  width: 65%;
+}
+
+/* Final page: swap the Merci background for an EN version (Merci paths stripped) */
+/* and overlay a "Thank you" text where Merci used to sit. */
+div.backgroundPageFinale {
+  background-image: url(img/Diapo-finale-EN.svg) !important;
+}
+
+#pageDeFin::before {
+  content: "Thank you";
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3em;
+  font-weight: 900;
+  color: #001e63;
+  z-index: 5;
+  pointer-events: none;
+  white-space: nowrap;
+}
