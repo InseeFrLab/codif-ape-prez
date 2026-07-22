@@ -1,0 +1,74 @@
+/*-- scss:defaults --*/
+
+// Clean, sans-serif, professional look on top of the "simple" theme.
+$font-family-sans-serif: "Source Sans Pro", "Segoe UI", Helvetica, Arial, sans-serif;
+$presentation-font-size-root: 30px;
+$presentation-heading-font: $font-family-sans-serif;
+$presentation-heading-color: #12406b;
+$link-color: #1a5fa8;
+$body-color: #1c2b39;
+$selection-bg: #cfe3f5;
+
+/*-- scss:rules --*/
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+// Section-divider slides (level-1 headings)
+.reveal .slide h1 {
+  color: #12406b;
+  border-bottom: 3px solid #1a5fa8;
+  padding-bottom: 0.2em;
+}
+
+.reveal section h2 {
+  font-size: 1.35em;
+  margin-bottom: 0.5em;
+}
+
+// Utility text classes
+.small   { font-size: 0.78em; }
+.smaller { font-size: 0.64em; }
+.bold    { font-weight: 700; }
+.muted   { color: #5b6b7a; }
+
+// Tables: compact and readable
+.reveal table {
+  font-size: 0.72em;
+  margin: 0.3em auto;
+}
+.reveal table th {
+  background: #eef4fa;
+  color: #12406b;
+}
+.reveal table td,
+.reveal table th {
+  padding: 0.25em 0.55em;
+}
+
+// Code blocks
+.reveal pre code {
+  font-size: 0.82em;
+  line-height: 1.35;
+}
+
+// Callouts a touch tighter
+.reveal .callout {
+  font-size: 0.85em;
+}
+
+// Give figures a little breathing room
+.reveal .slide figure { margin: 0.2em auto; }
+
+// Zone tampon entre colonnes.
+// Le thème remet .columns en display:initial (inline-block) → gap inopérant.
+// On rétablit flex (sélecteur plus spécifique que `div.columns`) pour activer gap.
+.reveal .columns {
+  display: flex;
+  gap: 2.5em;
+}
+
