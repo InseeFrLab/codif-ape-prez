@@ -1,0 +1,43 @@
+## Assign an activy code: different processes
+
+![](../img/formality-claim-survey.png){fig-align="center"}
+
+::: notes
+
+– Thanks to a literal description of the activity of the enterprise during an
+administrative procedure
+● The most important one : when an enterprise is set up, a form is filled
+in and a large amount of information is sent to Insee. This includes a
+literal description of the activity by the firm
+● New forms can be transmitted if the enterprise changes its activity
+– Claims : if the enterprises disagree with the activity code given by Insee
+– Surveys : structural statistical surveys (the so-called ESA, EAP) in
+which enterprises are asked about the breakdown of their activity
+:::
+
+## Assign an activy code: two outcomes
+
+- Automatic coding
+- Human review
+
+![](../img/orga-post-prod-en.png){fig-align="center"}
+
+## Near-ubiquity of ML
+
+![](../img/automation_rate.png){fig-align="center"}
+
+## Automatic activity classification 
+
+![](../img/automatic-coding-HMI.png){fig-align="center"}
+
+## Human review
+
+![](../img/reprise_gestionnaire_manque_contexte.png){fig-align="center"}
+
+## Model
+
+- [**Text classification**]{.orange} model which uses additional categorical variables
+- Historically, a system expert named [**SICORE**]{.orange} as automatic label coding system
+- First ML usecase with [**fastText**]{.orange} library
+- Originally trained on legacy data annotated partly by the [**coding engine**]{.orange} and partly [**manually**]{.orange}
+
