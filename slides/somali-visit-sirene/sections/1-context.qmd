@@ -1,0 +1,46 @@
+## Quick reminder: What is SIRENE ? {#section_1_0 .backgroundStandard_violet}
+System for the Identification of the Register of Enterprises and Establishments
+
+- [**Sirene**]{.orange} is the French national company registry
+- When a company registers:
+    - sole authority for issuing [**SIREN**]{.blue2} and [**SIRET**]{.blue2} numbers
+    - a [**main activity code**]{.orange} is attributed ([**APE** code]{.blue2}) 
+- Milestones and challenges faced:
+  - Refactoring of the Sirene [**information system**]{.blue2}  [**Sirene 4**]{.blue}
+  - NACE revision ➡️ dual coding in NACE rev 2 and 2.1 
+- End of March 2024:
+  - Officially switch from [**Sirene 3**]{.orange} to [**Sirene 4**]{.blue}
+- Processing **5 million registrations** across 2025–2026 :rocket:
+- [**2027**]{.green}: Transition to NACE rev 2.1
+
+- [**Consequences**]{.orange}: Ideal moment to innovate (but under the constraint!)
+
+## A one-stop shop {#section_1_1 .backgroundStandard_violet}
+
+Another key actor: *National Industrial Property Institute*
+
+- [**INPI**]{.orange} is the operator of the **one-stop shop** (Single Window)
+- This replaces the old paper-based [**CFE**]{.blue} (Business formality centers)
+- It is the [**primary data source**]{.orange} for the Sirene registry
+- Implementation of the **PACTE Law (2019)** to simplify the French economy
+
+::: {.callout-note icon=false}
+
+## PACTE law
+Since January 1, 2023, all business formalities must be filed online via a [single portal]{.orange}.
+:::
+
+## The flow" of formalities {#section_1_2 .backgroundStandard_violet}
+
+![](../img/flow-formalities.png){fig-align="center"}
+
+## The administrative landscape {#section_1_3 .backgroundStandard_violet}
+
+- Siren number: company directory identification system
+- Principal activity code (APE)
+- Classification on a daily basis
+- Different administrations 
+- Different information systems
+- Requirements: quick, responsive and flexible to updated instructions
+
+
