@@ -6,7 +6,7 @@ title-slide-attributes:
   data-backgroupnd-size: contain
   data-background-opacity: "1"
 subtitle: |
-  **[Webinar on automatic coding]{.orange}**
+  **[Somali statistics delegation's visit]{.orange}**
 author: |
   Nathan RANDRIAMANANA
 date: "09/24/2026"
@@ -57,6 +57,7 @@ editor:
 # About me {.nonincremental auto-animate=true}
 
 - [**Who am I ?**]{.orange}
+    - [**Nathan Randriamanana**]{.black}
     + _Data scientist_ at Insee
     + INSEE statistician [**civil servant**](https://www.insee.fr/en/information/2404684#attaches){.blue2}
     + working now at the [**Business Statistics Directorate**]{.blue2}
@@ -80,14 +81,14 @@ I’m a civil servant, which means I work as an official statistician for the go
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="55%"}
 ![Example from presentation at the [Cloud Native Days France 2026](https://www.cloudnativedays.fr/) conference regarding cloud technologies](https://minio.lab.sspcloud.fr/nrandriamanana/portfolio/photo_cnd_codage.jpg)
 
 :::
 
-::: {.column width="50%"}
+::: {.column width="45%"}
 ### Linkedin
-{{< qrcode https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/ qr1 width=250 height=250 >}}
+{{< qrcode https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/ qr1 width=500 height=500 >}}
 :::
 
 ::::
@@ -105,31 +106,57 @@ I’m a civil servant, which means I work as an official statistician for the go
 
 5️⃣ [**Beyond fastText: introducing TorchTextClassifiers**]{.blue2}
 
-6️⃣ [**Questions ?**]{.blue2}
+6️⃣ [**NACE Rev 2.1: update our classifier using LLMs**]{.blue2}
 
 ::: notes
 
 :::
 
-# 1️⃣ Context 
+# 1️⃣ Recap and context {#chapters_1 .backgroundTitre_violet}
 
 {{< include sections/1-context.qmd >}}
 
-# 2️⃣ State of play: How do we assign activity codes today ? 
+# 2️⃣ State of play: How do we assign activity codes today ? {#chapters_2 .backgroundTitre_vert}
 
 {{< include sections/2-stateofplay.qmd >}}
 
-# 3️⃣ Why did we end up using Machine Learning ? 
+# 3️⃣ Why did we end up using Machine Learning ? {#chapters_3 .backgroundTitre_bleu}
 
 {{< include sections/3-whyml.qmd >}}
 
-# 4️⃣ fastText: a simple and efficient classifier
+# 4️⃣ fastText: a simple and efficient classifier {#chapters_4 .backgroundTitre_violet}
 
 {{< include sections/4-fasttext.qmd >}}
 
-# 5️⃣ Beyond fastText: introducing TorchTextClassifiers 
+# 5️⃣ Beyond fastText: introducing TorchTextClassifiers {#chapters_5 .backgroundTitre_jaune}
 
 {{< include sections/5-ttc.qmd >}}
 
-# 6️⃣ Questions ?
+# 6️⃣ NACE Rev 2.1: update our classifier using LLMs {#chapters_6 .backgroundTitre_bleu}
+
+{{< include sections/6-nace-revision.qmd >}}
+
+#  Questions ? {#chapters_7 .backgroundTitre_vert}
+
+# {#pageDeFin data-menu-title="Final page" .unnumbered .backgroundPageFinale}
+
+:::: {.columns .coordonneesFinales}
+
+::: {.column .gauche .coordonnees width=30%}
+- Nathan RANDRIAMANANA
+- Data Scientist
+- [Sirene]{.ligneBlancheApres}
+- [Insee — France]{.ligneBlancheApres}
+- nathan.randriamanana@insee.fr
+:::
+
+::: {.column .coordonnees .milieu width=30%}
+
+:::
+
+::: {.column .coordonnees .droite width=30%}
+
+:::
+
+::::
 

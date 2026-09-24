@@ -1,5 +1,4 @@
-## What is SIRENE ? {.smaller}
-
+## Quick reminder: What is SIRENE ? {#section_1_0 .backgroundStandard_violet}
 System for the Identification of the Register of Enterprises and Establishments
 
 - [**Sirene**]{.orange} is the French national company registry
@@ -12,10 +11,11 @@ System for the Identification of the Register of Enterprises and Establishments
 - End of March 2024:
   - Officially switch from [**Sirene 3**]{.orange} to [**Sirene 4**]{.blue}
 - Processing **5 million registrations** across 2025–2026 :rocket:
+- [**2027**]{.green}: Transition to NACE rev 2.1
 
 - [**Consequences**]{.orange}: Ideal moment to innovate (but under the constraint!)
 
-## A one-stop shop 
+## A one-stop shop {#section_1_1 .backgroundStandard_violet}
 
 Another key actor: *National Industrial Property Institute*
 
@@ -30,11 +30,11 @@ Another key actor: *National Industrial Property Institute*
 Since January 1, 2023, all business formalities must be filed online via a [single portal]{.orange}.
 :::
 
-## The flow" of formalities
+## The flow" of formalities {#section_1_2 .backgroundStandard_violet}
 
 ![](../img/flow-formalities.png){fig-align="center"}
 
-## The administrative landscape
+## The administrative landscape {#section_1_3 .backgroundStandard_violet}
 
 - Siren number: company directory identification system
 - Principal activity code (APE)

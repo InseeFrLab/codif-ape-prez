@@ -42,7 +42,7 @@ contributes:
             {
               title: 'Plugins',
               icon: '<i class="fa-solid fa-circle-info"></i>',
-              src: 'modulesCompl/customMenu.html'
+              src: '../../../../style/insee-clair/modulesCompl/customMenu.html'
             }
           ]
       }
