@@ -43,7 +43,7 @@ jobs:
         
         - name: Retrieve data from s3
           run: |
-            aws s3 cp s3/projet-ape/graphs/ slides/data/ --recursive --endpoint-url "https://${AWS_S3_ENDPOINT}"
+            aws s3 cp s3://projet-ape/graphs/ slides/data/ --recursive --endpoint-url "https://${AWS_S3_ENDPOINT}"
           env:
             AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
             AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
