@@ -15,7 +15,7 @@ window.RevealConfetti = function () {
     id: "RevealConfetti",
     init: function (deck) {
       
-      deck.addKeyBinding({ keyCode: 67, key: "C" }, () => {
+      deck.addKeyBinding({ keyCode: 67, key: "C", description: "Throw confettis" }, () => {
         const config = deck.getConfig();
         const options = config.confetti || {};
         

@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Thomas Faria, Nathan Randriamanana">
   <title>Présentations codification automatique de l'APE – Travaux sur le passage de la nomenclature NAF2008 Rev2.1 à la NAF2025</title>
@@ -20,10 +20,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -212,7 +215,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
- 
+
 </div>
 </div>
 </div>
@@ -496,11 +499,11 @@
 <summary>
 <font size="3" color="black"><b>Afficher un exemple de réponse attendue</b></font>
 </summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a></a><span class="fu">{</span></span>
-<span id="cb2-2"><a></a>    <span class="dt">"codable"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb2-3"><a></a>    <span class="dt">"nace_2008_valid"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb2-4"><a></a>    <span class="dt">"nace2025"</span><span class="fu">:</span> <span class="st">"0147J"</span> </span>
-<span id="cb2-5"><a></a><span class="fu">}</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a aria-label="1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a aria-label="2"></a>    <span class="dt">"codable"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb2-3"><a aria-label="3"></a>    <span class="dt">"nace_2008_valid"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb2-4"><a aria-label="4"></a>    <span class="dt">"nace2025"</span><span class="fu">:</span> <span class="st">"0147J"</span> </span>
+<span id="cb2-5"><a aria-label="5"></a><span class="fu">}</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <ul>
 <li><span class="orange"><strong>Parsing</strong></span> de la réponse :
@@ -586,7 +589,7 @@
 </section>
 <section id="performance-des-modèles" class="slide level2 scollable" data-background-image="background.svg" data-background-size="contain">
 <h2>Performance des modèles</h2>
-<div id="41cf151e" class="cell" data-execution_count="1">
+<div id="a1e7d8f3" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 <figure>
@@ -611,7 +614,7 @@
 </section>
 <section id="combinaison-des-annotations" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Combinaison des annotations</h2>
-<div id="a44679f7" class="cell" data-execution_count="2">
+<div id="1fb82860" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 <figure>
@@ -632,7 +635,7 @@
 </section>
 <section id="ré-entrainement-en-naf-2025-1" class="slide level2" data-background-color="white" data-background-image="background.svg" data-background-size="contain">
 <h2>Ré-entrainement en NAF 2025</h2>
-<div id="02339655" class="cell" data-execution_count="3">
+<div id="a1e03398" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 <figure>
@@ -645,42 +648,42 @@
 <section id="le-modèle-naf-2025" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
 <h2>Le modèle NAF 2025</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="0" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -1;"><span id="cb3-0"><a></a>viewof activite <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>(</span>
-<span id="cb3-1"><a></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">'coiffeur'</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span>}</span>
-<span id="cb3-2"><a></a>)</span>
-<span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a>viewof type_form <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>(</span>
-<span id="cb3-5"><a></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">'Type de la liasse'</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">'X'</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">80</span>}</span>
-<span id="cb3-6"><a></a>)</span>
-<span id="cb3-7"><a></a>urlApe <span class="op">=</span> <span class="vs">`https://codification-ape-dev.lab.sspcloud.fr/predict?description_activity=</span><span class="sc">${</span>activite<span class="sc">}</span><span class="vs">%20&amp;type_form=</span><span class="sc">${</span>type_form<span class="sc">}</span><span class="vs">&amp;event=01P&amp;nb_echos_max=3&amp;prob_min=0.0009`</span></span>
-<span id="cb3-8"><a></a></span>
-<span id="cb3-9"><a></a>d3<span class="op">.</span><span class="fu">json</span>(urlApe)<span class="op">.</span><span class="fu">then</span>( res <span class="kw">=&gt;</span> {</span>
-<span id="cb3-10"><a></a>  <span class="kw">var</span> IC<span class="op">,</span> results<span class="op">;</span></span>
-<span id="cb3-11"><a></a>  ( {IC<span class="op">,</span> <span class="op">...</span>results} <span class="op">=</span> res )</span>
-<span id="cb3-12"><a></a></span>
-<span id="cb3-13"><a></a>  IC <span class="op">=</span> <span class="pp">parseFloat</span>(IC)</span>
-<span id="cb3-14"><a></a></span>
-<span id="cb3-15"><a></a>  <span class="kw">const</span> rows <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">values</span>(results)<span class="op">.</span><span class="fu">map</span>( obj <span class="kw">=&gt;</span> {</span>
-<span id="cb3-16"><a></a>    <span class="cf">return</span> <span class="vs">`</span></span>
-<span id="cb3-17"><a></a><span class="vs">    &lt;tr&gt;</span></span>
-<span id="cb3-18"><a></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>obj<span class="op">.</span><span class="at">code</span><span class="sc">}</span><span class="vs"> | </span><span class="sc">${</span>obj<span class="op">.</span><span class="at">libelle</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
-<span id="cb3-19"><a></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>obj<span class="op">.</span><span class="at">probabilite</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
-<span id="cb3-20"><a></a><span class="vs">    &lt;/tr&gt;</span></span>
-<span id="cb3-21"><a></a><span class="vs">  `</span></span>
-<span id="cb3-22"><a></a>  })<span class="op">.</span><span class="fu">join</span>(<span class="st">''</span>)</span>
-<span id="cb3-23"><a></a>  </span>
-<span id="cb3-24"><a></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb3-25"><a></a><span class="vs">  &lt;table&gt;</span></span>
-<span id="cb3-26"><a></a><span class="vs">    &lt;caption&gt;</span></span>
-<span id="cb3-27"><a></a><span class="vs">      Indice de confiance : </span><span class="sc">${</span>IC<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span></span>
-<span id="cb3-28"><a></a><span class="vs">    &lt;/caption&gt;</span></span>
-<span id="cb3-29"><a></a><span class="vs">    &lt;tr&gt;</span></span>
-<span id="cb3-30"><a></a><span class="vs">      &lt;th style="text-align:center;"&gt;Libellé (NAF 2025)&lt;/th&gt;</span></span>
-<span id="cb3-31"><a></a><span class="vs">      &lt;th&gt;Probabilité&lt;/th&gt;</span></span>
-<span id="cb3-32"><a></a><span class="vs">    &lt;/tr&gt;</span></span>
-<span id="cb3-33"><a></a><span class="vs">      </span><span class="sc">${</span>rows<span class="sc">}</span></span>
-<span id="cb3-34"><a></a><span class="vs">  &lt;/table&gt;`</span></span>
-<span id="cb3-35"><a></a>})</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="0" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -1;"><span id="cb3-0"><a aria-label="0"></a>viewof activite <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>(</span>
+<span id="cb3-1"><a aria-label="1"></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">'coiffeur'</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span>}</span>
+<span id="cb3-2"><a aria-label="2"></a>)</span>
+<span id="cb3-3"><a aria-label="3"></a></span>
+<span id="cb3-4"><a aria-label="4"></a>viewof type_form <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>(</span>
+<span id="cb3-5"><a aria-label="5"></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">'Type de la liasse'</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">'X'</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">80</span>}</span>
+<span id="cb3-6"><a aria-label="6"></a>)</span>
+<span id="cb3-7"><a aria-label="7"></a>urlApe <span class="op">=</span> <span class="vs">`https://codification-ape-dev.lab.sspcloud.fr/predict?description_activity=</span><span class="sc">${</span>activite<span class="sc">}</span><span class="vs">%20&amp;type_form=</span><span class="sc">${</span>type_form<span class="sc">}</span><span class="vs">&amp;event=01P&amp;nb_echos_max=3&amp;prob_min=0.0009`</span></span>
+<span id="cb3-8"><a aria-label="8"></a></span>
+<span id="cb3-9"><a aria-label="9"></a>d3<span class="op">.</span><span class="fu">json</span>(urlApe)<span class="op">.</span><span class="fu">then</span>( res <span class="kw">=&gt;</span> {</span>
+<span id="cb3-10"><a aria-label="10"></a>  <span class="kw">var</span> IC<span class="op">,</span> results<span class="op">;</span></span>
+<span id="cb3-11"><a aria-label="11"></a>  ( {IC<span class="op">,</span> <span class="op">...</span>results} <span class="op">=</span> res )</span>
+<span id="cb3-12"><a aria-label="12"></a></span>
+<span id="cb3-13"><a aria-label="13"></a>  IC <span class="op">=</span> <span class="pp">parseFloat</span>(IC)</span>
+<span id="cb3-14"><a aria-label="14"></a></span>
+<span id="cb3-15"><a aria-label="15"></a>  <span class="kw">const</span> rows <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">values</span>(results)<span class="op">.</span><span class="fu">map</span>( obj <span class="kw">=&gt;</span> {</span>
+<span id="cb3-16"><a aria-label="16"></a>    <span class="cf">return</span> <span class="vs">`</span></span>
+<span id="cb3-17"><a aria-label="17"></a><span class="vs">    &lt;tr&gt;</span></span>
+<span id="cb3-18"><a aria-label="18"></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>obj<span class="op">.</span><span class="at">code</span><span class="sc">}</span><span class="vs"> | </span><span class="sc">${</span>obj<span class="op">.</span><span class="at">libelle</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb3-19"><a aria-label="19"></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>obj<span class="op">.</span><span class="at">probabilite</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb3-20"><a aria-label="20"></a><span class="vs">    &lt;/tr&gt;</span></span>
+<span id="cb3-21"><a aria-label="21"></a><span class="vs">  `</span></span>
+<span id="cb3-22"><a aria-label="22"></a>  })<span class="op">.</span><span class="fu">join</span>(<span class="st">''</span>)</span>
+<span id="cb3-23"><a aria-label="23"></a>  </span>
+<span id="cb3-24"><a aria-label="24"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb3-25"><a aria-label="25"></a><span class="vs">  &lt;table&gt;</span></span>
+<span id="cb3-26"><a aria-label="26"></a><span class="vs">    &lt;caption&gt;</span></span>
+<span id="cb3-27"><a aria-label="27"></a><span class="vs">      Indice de confiance : </span><span class="sc">${</span>IC<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span></span>
+<span id="cb3-28"><a aria-label="28"></a><span class="vs">    &lt;/caption&gt;</span></span>
+<span id="cb3-29"><a aria-label="29"></a><span class="vs">    &lt;tr&gt;</span></span>
+<span id="cb3-30"><a aria-label="30"></a><span class="vs">      &lt;th style="text-align:center;"&gt;Libellé (NAF 2025)&lt;/th&gt;</span></span>
+<span id="cb3-31"><a aria-label="31"></a><span class="vs">      &lt;th&gt;Probabilité&lt;/th&gt;</span></span>
+<span id="cb3-32"><a aria-label="32"></a><span class="vs">    &lt;/tr&gt;</span></span>
+<span id="cb3-33"><a aria-label="33"></a><span class="vs">      </span><span class="sc">${</span>rows<span class="sc">}</span></span>
+<span id="cb3-34"><a aria-label="34"></a><span class="vs">  &lt;/table&gt;`</span></span>
+<span id="cb3-35"><a aria-label="35"></a>})</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -711,7 +714,7 @@
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="-1" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -2;"><span id="cb4--1"><a></a><span class="im">import</span> { debounce } <span class="im">from</span> <span class="st">"@mbostock/debouncing-input"</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="-1" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -2;"><span id="cb4--1"><a aria-label="-1"></a><span class="im">import</span> { debounce } <span class="im">from</span> <span class="st">"@mbostock/debouncing-input"</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 

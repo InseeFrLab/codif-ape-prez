@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Nathan Randriamanana">
   <title>Présentations codification automatique de l'APE – Les LLM au coeur du réentraînement d’un modèle d’apprentissage en nouvelle nomenclature</title>
@@ -20,10 +20,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -231,7 +234,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Nathan Randriamanana 
+Nathan Randriamanana
 </div>
 <div class="quarto-title-author-email">
 <a href="mailto:nathan.randriamanana@insee.fr">nathan.randriamanana@insee.fr</a>
@@ -795,11 +798,11 @@ Table&nbsp;2: Réprésentation des multivoques dans le jeu d’apprentissage
 <summary>
 <font size="3" color="black"><b>Afficher un exemple de réponse attendue</b></font>
 </summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a></a><span class="fu">{</span></span>
-<span id="cb3-2"><a></a>    <span class="dt">"codable"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb3-3"><a></a>    <span class="dt">"nace_2008_valid"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb3-4"><a></a>    <span class="dt">"nace2025"</span><span class="fu">:</span> <span class="st">"0147J"</span> </span>
-<span id="cb3-5"><a></a><span class="fu">}</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a aria-label="1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a aria-label="2"></a>    <span class="dt">"codable"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb3-3"><a aria-label="3"></a>    <span class="dt">"nace_2008_valid"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb3-4"><a aria-label="4"></a>    <span class="dt">"nace2025"</span><span class="fu">:</span> <span class="st">"0147J"</span> </span>
+<span id="cb3-5"><a aria-label="5"></a><span class="fu">}</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <aside class="notes">
 <p>Le LLM a besoin de directives claires pour produire des réponses fiables : Prompt système : définit sa feuille de route globale, lui donne un rôle d’expert NACE. C’est un exemple parmi les nombreuses techniques du prompt engineering pour optimiser les LLM. Prompt spécifique : fourni pour chaque observation, avec les informations nécessaires pour coder correctement, et surtout pour ajouter le contexte. Nous verrons quelques exemples pour comprendre pourquoi c’est crucial. Consigne de format : pour éviter les réponses volubiles ou incorrectes et garantir une sortie structurée et exploitable.</p>
@@ -929,7 +932,7 @@ Figure&nbsp;1: Comparaison fastText vs torchTextClassifiers
           display:block!important;
       }</style></aside>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="-1" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -2;"><span id="cb4--1"><a></a><span class="im">import</span> { debounce } <span class="im">from</span> <span class="st">"@mbostock/debouncing-input"</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="-1" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -2;"><span id="cb4--1"><a aria-label="-1"></a><span class="im">import</span> { debounce } <span class="im">from</span> <span class="st">"@mbostock/debouncing-input"</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 

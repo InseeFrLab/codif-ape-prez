@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -41,14 +44,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6aa45875e2d969cd7eb447e50fc436cc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-fa0e468ae71e8d0f22ae1f332af5e9ee.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-6aa45875e2d969cd7eb447e50fc436cc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-17489b0bd005fee3e10dada114a02b5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-8d5bb431036edc7bf7e36626fe720554.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-17489b0bd005fee3e10dada114a02b5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -87,7 +90,8 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-project','listing-website','listing-format','listing-engines','listing-language','listing-title','listing-image','listing-date','listing-description','listing-author','listing-slides','listing-order','listing-path','listing-outputHref','listing-date-modified','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-paper',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
+      page: 25,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-project","listing-website","listing-format","listing-engines","listing-language","listing-title","listing-image","listing-date","listing-description","listing-author","listing-slides","listing-order","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-paper"],
     };
 
@@ -109,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" sizes="32x32" href="slides/_extensions/InseeFrLab/onyxia/favicon-32x32.png">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -363,7 +367,7 @@ window.Quarto = {
 
 <div class="list grid quarto-listing-cols-3">
 
-  <div class="g-col-1" data-index="0" data-listing-date-sort="1693526400000" data-listing-file-modified-sort="1784733675280" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="0" data-listing-date-sort="1693526400000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/seminaire-dms-oct-2022/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/seminaire-dms-oct-2022/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -416,7 +420,7 @@ window.Quarto = {
               cards1.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -424,7 +428,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="1" data-listing-date-sort="1681689600000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="1" data-listing-date-sort="1681689600000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/journee-ssphub/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/journee-ssphub/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -477,7 +481,7 @@ window.Quarto = {
               cards2.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -485,7 +489,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="2" data-listing-date-sort="1685923200000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="2" data-listing-date-sort="1685923200000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/unece-conf/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/unece-conf/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -538,7 +542,7 @@ window.Quarto = {
               cards3.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -546,7 +550,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="3" data-listing-date-sort="1695772800000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="3" data-listing-date-sort="1695772800000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/bceao-2023/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/bceao-2023/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -599,7 +603,7 @@ window.Quarto = {
               cards4.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -607,7 +611,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="4" data-listing-date-sort="1710806400000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="4" data-listing-date-sort="1710806400000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/statcan-exchange/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/statcan-exchange/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -660,7 +664,7 @@ window.Quarto = {
               cards5.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -668,7 +672,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="5" data-listing-date-sort="1714435200000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="5" data-listing-date-sort="1714435200000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/eurostat-nace-rev-2024/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/eurostat-nace-rev-2024/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -721,7 +725,7 @@ window.Quarto = {
               cards6.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -729,7 +733,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="6" data-listing-date-sort="1715040000000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="6" data-listing-date-sort="1715040000000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/inserm-echange/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/inserm-echange/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -782,7 +786,7 @@ window.Quarto = {
               cards7.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -790,7 +794,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="7" data-listing-date-sort="1716508800000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="7" data-listing-date-sort="1716508800000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/estoril-slides/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/estoril-slides/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -853,7 +857,7 @@ window.Quarto = {
               cards8.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -861,7 +865,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="8" data-listing-date-sort="1730851200000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="8" data-listing-date-sort="1730851200000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/grp-veille-codif-auto-9/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/grp-veille-codif-auto-9/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -914,7 +918,7 @@ window.Quarto = {
               cards9.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -922,7 +926,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="9" data-listing-date-sort="1741132800000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="9" data-listing-date-sort="1741132800000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/grp-veille-codif-auto-10/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/grp-veille-codif-auto-10/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -975,7 +979,7 @@ window.Quarto = {
               cards10.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -983,7 +987,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="10" data-listing-date-sort="1743724800000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="10" data-listing-date-sort="1743724800000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/ateliers-concepteurs/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/ateliers-concepteurs/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1036,7 +1040,7 @@ window.Quarto = {
               cards11.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -1044,7 +1048,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="11" data-listing-date-sort="1747008000000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="11" data-listing-date-sort="1747008000000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/unece-2025/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/unece-2025/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1097,7 +1101,7 @@ window.Quarto = {
               cards12.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -1105,7 +1109,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="12" data-listing-date-sort="1747872000000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="12" data-listing-date-sort="1747872000000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/wp10-country-project/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/wp10-country-project/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1158,7 +1162,7 @@ window.Quarto = {
               cards13.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -1166,7 +1170,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="13" data-listing-date-sort="1759276800000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="57">
+  <div class="g-col-1" data-index="13" data-listing-date-sort="1759276800000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="57">
     <a href="./slides/pydata/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/pydata/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1219,7 +1223,7 @@ window.Quarto = {
               cards14.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -1227,7 +1231,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="14" data-listing-date-sort="1758585600000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="14" data-listing-date-sort="1758585600000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/statec-echange-label-studio/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/statec-echange-label-studio/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1280,7 +1284,7 @@ window.Quarto = {
               cards15.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -1288,7 +1292,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="15" data-listing-date-sort="1758585600000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="15" data-listing-date-sort="1758585600000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./papers/jms-torchft/index.pdf" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./papers/jms-torchft/index.pdf" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1341,7 +1345,7 @@ window.Quarto = {
               cards16.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -1349,7 +1353,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="16" data-listing-date-sort="1764028800000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="16" data-listing-date-sort="1764028800000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./papers/jms2025-llm-relabeling/index.pdf" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./papers/jms2025-llm-relabeling/index.pdf" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1402,7 +1406,7 @@ window.Quarto = {
               cards17.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -1410,7 +1414,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="17" data-listing-date-sort="1762905600000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="17" data-listing-date-sort="1762905600000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/jms-ttc-prez/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/jms-ttc-prez/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1463,7 +1467,7 @@ window.Quarto = {
               cards18.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -1471,7 +1475,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="18" data-listing-date-sort="1764028800000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="18" data-listing-date-sort="1764028800000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/jms2025-llm-relabeling/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/jms2025-llm-relabeling/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1524,7 +1528,7 @@ window.Quarto = {
               cards19.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -1532,7 +1536,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="19" data-listing-date-sort="1765238400000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="19" data-listing-date-sort="1765238400000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/pydata-global/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/pydata-global/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1585,7 +1589,7 @@ window.Quarto = {
               cards20.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -1593,7 +1597,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="20" data-listing-date-sort="1773273600000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="20" data-listing-date-sort="1773273600000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/seminaire-dms-ttc-mar-2026/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/seminaire-dms-ttc-mar-2026/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1646,7 +1650,7 @@ window.Quarto = {
               cards21.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -1654,7 +1658,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="21" data-listing-date-sort="1773792000000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="21" data-listing-date-sort="1773792000000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/webinar-subsaharan-africa-2026/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/webinar-subsaharan-africa-2026/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1707,7 +1711,7 @@ window.Quarto = {
               cards22.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -1715,7 +1719,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="22" data-listing-date-sort="1780531200000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="22" data-listing-date-sort="1780531200000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/isi-malta/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/isi-malta/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1768,7 +1772,7 @@ window.Quarto = {
               cards23.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -1776,7 +1780,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="23" data-listing-date-sort="1782864000000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="23" data-listing-date-sort="1782864000000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/prez-codif-ica/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/prez-codif-ica/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1829,7 +1833,7 @@ window.Quarto = {
               cards24.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -1837,7 +1841,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="24" data-listing-date-sort="1780531200000" data-listing-file-modified-sort="1784733675281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="24" data-listing-date-sort="1780531200000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/isi-malta-relabeling/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/isi-malta-relabeling/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1890,7 +1894,68 @@ window.Quarto = {
               cards25.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              7/22/26, 3:21:15 PM
+              9/25/26, 11:42:02 AM
+            </div>
+        </div> -->
+
+      </div>
+     <!-- Added link wrapper -->
+  </div>
+
+  <div class="g-col-1" data-index="25" data-listing-date-sort="1790208000000" data-listing-file-modified-sort="1790336522598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+    <a href="./slides/somali-visit-sirene/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
+      </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/somali-visit-sirene/index.html" target="_blank" rel="noopener" class="grid-item-link">
+        
+          <p class="card-img-top">
+            <img src="https://www.insee.fr/static/img/logoInseeFr.svg" class="thumbnail-image card-img" style="height: auto;" alt="">
+          </p>
+         
+        
+          </a><div class="card-body post-contents"><a href="./slides/somali-visit-sirene/index.html" target="_blank" rel="noopener" class="grid-item-link">
+            <h5 class="no-anchor card-title listing-title">Somali delegation's visit : Sirene business register</h5>
+            <div class="card-subtitle listing-subtitle"></div>
+
+            
+              <div class="card-text listing-description delink"><b>Description :</b> Presentation of Sirene business Register
+</div>
+            
+
+            
+            
+              <div class="card-attribution card-text-small justify">
+                <div class="listing-author">Nathan Randriamanana</div>
+                <div class="listing-date">Sep 24, 2026</div>
+              </div>
+            
+            <style>
+              .listing-categories .listing-category .listing-href {
+                color: inherit; /* blue colors for links too */
+                text-decoration: none; /* Remove underline */
+              }
+            </style>
+            </a><div class="listing-categories" style="padding-top: 1em;"><a href="./slides/somali-visit-sirene/index.html" target="_blank" rel="noopener" class="grid-item-link">
+              
+                </a><div class="listing-category"><a href="./slides/somali-visit-sirene/index.html" target="_blank" rel="noopener" class="grid-item-link">
+                  
+                    </a><a class="listing-href" href="./slides/somali-visit-sirene/index.html" target="_blank" rel="noopener">
+                      
+                        Slides
+                      
+                    </a>
+                  
+                </div>
+              
+              
+            </div>
+          </div>
+        
+
+        <!-- <div class="card-footer">
+            <div class="card-filename listing-filename">
+              cards26.qmd
+            </div>
+            <div class="card-file-modified listing-file-modified">
+              9/25/26, 11:42:02 AM
             </div>
         </div> -->
 
@@ -1901,6 +1966,9 @@ window.Quarto = {
 </div>
 
 <div class="listing-no-matching d-none">No matching items</div>
+<nav id="presentations-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div>
 
 

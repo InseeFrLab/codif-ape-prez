@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Meilame Tayebjee">
   <title>Présentations codification automatique de l'APE – L’après fastText: Présentation de torchFastText</title>
@@ -20,10 +20,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -4102,7 +4105,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
- 
+
 </div>
 </div>
 </div>
@@ -4163,13 +4166,13 @@
 <li>Le modèle en tant que tel en PyTorch natif</li>
 </ul>
 <div id="pytorch-model" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">from</span> torchFastText.model <span class="im">import</span> FastTextModel</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a>model <span class="op">=</span> FastTextModel(embedding_dim<span class="op">=</span><span class="dv">80</span>,</span>
-<span id="cb1-4"><a></a>                      num_classes<span class="op">=</span><span class="dv">732</span>,</span>
-<span id="cb1-5"><a></a>                      num_rows <span class="op">=</span> <span class="dv">20000</span>,</span>
-<span id="cb1-6"><a></a>                      )</span>
-<span id="cb1-7"><a></a><span class="bu">print</span>(model)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">from</span> torchFastText.model <span class="im">import</span> FastTextModel</span>
+<span id="cb1-2"><a aria-label="2"></a></span>
+<span id="cb1-3"><a aria-label="3"></a>model <span class="op">=</span> FastTextModel(embedding_dim<span class="op">=</span><span class="dv">80</span>,</span>
+<span id="cb1-4"><a aria-label="4"></a>                      num_classes<span class="op">=</span><span class="dv">732</span>,</span>
+<span id="cb1-5"><a aria-label="5"></a>                      num_rows <span class="op">=</span> <span class="dv">20000</span>,</span>
+<span id="cb1-6"><a aria-label="6"></a>                      )</span>
+<span id="cb1-7"><a aria-label="7"></a><span class="bu">print</span>(model)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>FastTextModel(
   (embeddings): Embedding(20000, 80, padding_idx=0, sparse=True)
@@ -4185,15 +4188,15 @@
 <li>Le <a href="https://github.com/InseeFrLab/torch-fastText"><em>read-me</em></a> précise la façon dont le modèle les gère</li>
 </ul>
 <div id="pytorch-model-cat-var" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">from</span> torchFastText.model <span class="im">import</span> FastTextModel</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a>model <span class="op">=</span> FastTextModel(embedding_dim<span class="op">=</span><span class="dv">80</span>,</span>
-<span id="cb3-4"><a></a>                      num_classes<span class="op">=</span><span class="dv">732</span>,</span>
-<span id="cb3-5"><a></a>                      num_rows <span class="op">=</span> <span class="dv">20000</span>,</span>
-<span id="cb3-6"><a></a>                      categorical_vocabulary_sizes<span class="op">=</span>[<span class="dv">10</span>, <span class="dv">20</span>],</span>
-<span id="cb3-7"><a></a>                      categorical_embedding_dims<span class="op">=</span><span class="dv">5</span></span>
-<span id="cb3-8"><a></a>                      )</span>
-<span id="cb3-9"><a></a><span class="bu">print</span>(model)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">from</span> torchFastText.model <span class="im">import</span> FastTextModel</span>
+<span id="cb3-2"><a aria-label="2"></a></span>
+<span id="cb3-3"><a aria-label="3"></a>model <span class="op">=</span> FastTextModel(embedding_dim<span class="op">=</span><span class="dv">80</span>,</span>
+<span id="cb3-4"><a aria-label="4"></a>                      num_classes<span class="op">=</span><span class="dv">732</span>,</span>
+<span id="cb3-5"><a aria-label="5"></a>                      num_rows <span class="op">=</span> <span class="dv">20000</span>,</span>
+<span id="cb3-6"><a aria-label="6"></a>                      categorical_vocabulary_sizes<span class="op">=</span>[<span class="dv">10</span>, <span class="dv">20</span>],</span>
+<span id="cb3-7"><a aria-label="7"></a>                      categorical_embedding_dims<span class="op">=</span><span class="dv">5</span></span>
+<span id="cb3-8"><a aria-label="8"></a>                      )</span>
+<span id="cb3-9"><a aria-label="9"></a><span class="bu">print</span>(model)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>FastTextModel(
   (embeddings): Embedding(20000, 80, padding_idx=0, sparse=True)
@@ -4214,23 +4217,23 @@
 <section id="section" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2></h2>
 <div id="lightning-module" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">from</span> torchFastText.model <span class="im">import</span> FastTextModel, FastTextModule</span>
-<span id="cb5-2"><a></a><span class="im">import</span> torch</span>
-<span id="cb5-3"><a></a></span>
-<span id="cb5-4"><a></a>model <span class="op">=</span> FastTextModel(embedding_dim<span class="op">=</span><span class="dv">80</span>,</span>
-<span id="cb5-5"><a></a>                      num_classes<span class="op">=</span><span class="dv">732</span>,</span>
-<span id="cb5-6"><a></a>                      num_rows <span class="op">=</span> <span class="dv">20000</span>,</span>
-<span id="cb5-7"><a></a>                      )</span>
-<span id="cb5-8"><a></a></span>
-<span id="cb5-9"><a></a>module <span class="op">=</span> FastTextModule(</span>
-<span id="cb5-10"><a></a>    model<span class="op">=</span>model,</span>
-<span id="cb5-11"><a></a>    loss<span class="op">=</span> torch.nn.CrossEntropyLoss(),</span>
-<span id="cb5-12"><a></a>    optimizer<span class="op">=</span>torch.optim.Adam,</span>
-<span id="cb5-13"><a></a>    optimizer_params<span class="op">=</span>{<span class="st">"lr"</span>: <span class="fl">0.001</span>},</span>
-<span id="cb5-14"><a></a>    scheduler <span class="op">=</span> <span class="va">None</span>,</span>
-<span id="cb5-15"><a></a>    scheduler_params<span class="op">=</span><span class="va">None</span></span>
-<span id="cb5-16"><a></a>)</span>
-<span id="cb5-17"><a></a><span class="bu">print</span>(module)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">from</span> torchFastText.model <span class="im">import</span> FastTextModel, FastTextModule</span>
+<span id="cb5-2"><a aria-label="2"></a><span class="im">import</span> torch</span>
+<span id="cb5-3"><a aria-label="3"></a></span>
+<span id="cb5-4"><a aria-label="4"></a>model <span class="op">=</span> FastTextModel(embedding_dim<span class="op">=</span><span class="dv">80</span>,</span>
+<span id="cb5-5"><a aria-label="5"></a>                      num_classes<span class="op">=</span><span class="dv">732</span>,</span>
+<span id="cb5-6"><a aria-label="6"></a>                      num_rows <span class="op">=</span> <span class="dv">20000</span>,</span>
+<span id="cb5-7"><a aria-label="7"></a>                      )</span>
+<span id="cb5-8"><a aria-label="8"></a></span>
+<span id="cb5-9"><a aria-label="9"></a>module <span class="op">=</span> FastTextModule(</span>
+<span id="cb5-10"><a aria-label="10"></a>    model<span class="op">=</span>model,</span>
+<span id="cb5-11"><a aria-label="11"></a>    loss<span class="op">=</span> torch.nn.CrossEntropyLoss(),</span>
+<span id="cb5-12"><a aria-label="12"></a>    optimizer<span class="op">=</span>torch.optim.Adam,</span>
+<span id="cb5-13"><a aria-label="13"></a>    optimizer_params<span class="op">=</span>{<span class="st">"lr"</span>: <span class="fl">0.001</span>},</span>
+<span id="cb5-14"><a aria-label="14"></a>    scheduler <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb5-15"><a aria-label="15"></a>    scheduler_params<span class="op">=</span><span class="va">None</span></span>
+<span id="cb5-16"><a aria-label="16"></a>)</span>
+<span id="cb5-17"><a aria-label="17"></a><span class="bu">print</span>(module)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>FastTextModule(
   (model): FastTextModel(
@@ -4249,20 +4252,20 @@
 <li>L’objet <code>NGramTokenizer</code> reprend la méthode des <strong><em>ngrams</em></strong> du <a href="https://arxiv.org/abs/1607.01759">papier original</a> pour transformer une phrase en une liste de tokens</li>
 </ul>
 <div id="tokenizer" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> torchFastText.datasets <span class="im">import</span> NGramTokenizer</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a>training_text <span class="op">=</span> [<span class="st">'boulanger'</span>, <span class="st">'coiffeur'</span>, <span class="st">'boucherie'</span>, <span class="st">'boucherie charcuterie'</span>]</span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a>tokenizer <span class="op">=</span> NGramTokenizer(</span>
-<span id="cb7-6"><a></a>    min_n<span class="op">=</span><span class="dv">3</span>, </span>
-<span id="cb7-7"><a></a>    max_n<span class="op">=</span><span class="dv">6</span>, </span>
-<span id="cb7-8"><a></a>    num_tokens<span class="op">=</span> <span class="dv">100</span>,</span>
-<span id="cb7-9"><a></a>    len_word_ngrams<span class="op">=</span><span class="dv">2</span>, </span>
-<span id="cb7-10"><a></a>    min_count<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb7-11"><a></a>    training_text<span class="op">=</span>training_text</span>
-<span id="cb7-12"><a></a>    )</span>
-<span id="cb7-13"><a></a></span>
-<span id="cb7-14"><a></a><span class="bu">print</span>(tokenizer.tokenize([<span class="st">"boulangerie"</span>])[<span class="dv">0</span>])</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">from</span> torchFastText.datasets <span class="im">import</span> NGramTokenizer</span>
+<span id="cb7-2"><a aria-label="2"></a></span>
+<span id="cb7-3"><a aria-label="3"></a>training_text <span class="op">=</span> [<span class="st">'boulanger'</span>, <span class="st">'coiffeur'</span>, <span class="st">'boucherie'</span>, <span class="st">'boucherie charcuterie'</span>]</span>
+<span id="cb7-4"><a aria-label="4"></a></span>
+<span id="cb7-5"><a aria-label="5"></a>tokenizer <span class="op">=</span> NGramTokenizer(</span>
+<span id="cb7-6"><a aria-label="6"></a>    min_n<span class="op">=</span><span class="dv">3</span>, </span>
+<span id="cb7-7"><a aria-label="7"></a>    max_n<span class="op">=</span><span class="dv">6</span>, </span>
+<span id="cb7-8"><a aria-label="8"></a>    num_tokens<span class="op">=</span> <span class="dv">100</span>,</span>
+<span id="cb7-9"><a aria-label="9"></a>    len_word_ngrams<span class="op">=</span><span class="dv">2</span>, </span>
+<span id="cb7-10"><a aria-label="10"></a>    min_count<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb7-11"><a aria-label="11"></a>    training_text<span class="op">=</span>training_text</span>
+<span id="cb7-12"><a aria-label="12"></a>    )</span>
+<span id="cb7-13"><a aria-label="13"></a></span>
+<span id="cb7-14"><a aria-label="14"></a><span class="bu">print</span>(tokenizer.tokenize([<span class="st">"boulangerie"</span>])[<span class="dv">0</span>])</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[['&lt;bo', 'bou', 'oul', 'ula', 'lan', 'boul', 'nge', '&lt;boul', 'eri', 'rie', 'ie&gt;', 'boul', 'boul', 'oula', 'ulan', 'lang', 'ange', 'nger', 'geri', 'erie', 'rie&gt;', '&lt;boul', 'boula', 'oulan', 'ulang', 'lange', 'anger', 'ngeri', 'gerie', 'erie&gt;', '&lt;boula', 'boulan', 'oulang', 'ngerie', 'langer', 'angeri', 'ngerie', 'gerie&gt;', '&lt;/s&gt;', 'boulangerie &lt;/s&gt;']]</code></pre>
 </div>
@@ -4275,30 +4278,30 @@
 <li>Orchestre l’ensemble des briques pour lancer un entraînement rapidement</li>
 </ul>
 <div id="wrapper" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execute&quot;,&quot;value&quot;:{&quot;enabled&quot;:false}}" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">from</span> torchFastText <span class="im">import</span> torchFastText</span>
-<span id="cb9-2"><a></a></span>
-<span id="cb9-3"><a></a><span class="co"># Initialize the model</span></span>
-<span id="cb9-4"><a></a>model <span class="op">=</span> torchFastText(</span>
-<span id="cb9-5"><a></a>    num_tokens<span class="op">=</span><span class="dv">1000000</span>,</span>
-<span id="cb9-6"><a></a>    embedding_dim<span class="op">=</span><span class="dv">100</span>,</span>
-<span id="cb9-7"><a></a>    min_count<span class="op">=</span><span class="dv">5</span>,</span>
-<span id="cb9-8"><a></a>    min_n<span class="op">=</span><span class="dv">3</span>,</span>
-<span id="cb9-9"><a></a>    max_n<span class="op">=</span><span class="dv">6</span>,</span>
-<span id="cb9-10"><a></a>    len_word_ngrams<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb9-11"><a></a>    sparse<span class="op">=</span><span class="va">True</span></span>
-<span id="cb9-12"><a></a>)</span>
-<span id="cb9-13"><a></a></span>
-<span id="cb9-14"><a></a><span class="co"># Train the model</span></span>
-<span id="cb9-15"><a></a>model.train(</span>
-<span id="cb9-16"><a></a>    X_train<span class="op">=</span>train_data,</span>
-<span id="cb9-17"><a></a>    y_train<span class="op">=</span>train_labels,</span>
-<span id="cb9-18"><a></a>    X_val<span class="op">=</span>val_data,</span>
-<span id="cb9-19"><a></a>    y_val<span class="op">=</span>val_labels,</span>
-<span id="cb9-20"><a></a>    num_epochs<span class="op">=</span><span class="dv">10</span>,</span>
-<span id="cb9-21"><a></a>    batch_size<span class="op">=</span><span class="dv">64</span></span>
-<span id="cb9-22"><a></a>)</span>
-<span id="cb9-23"><a></a><span class="co"># Make predictions</span></span>
-<span id="cb9-24"><a></a>predictions <span class="op">=</span> model.predict(test_data)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="im">from</span> torchFastText <span class="im">import</span> torchFastText</span>
+<span id="cb9-2"><a aria-label="2"></a></span>
+<span id="cb9-3"><a aria-label="3"></a><span class="co"># Initialize the model</span></span>
+<span id="cb9-4"><a aria-label="4"></a>model <span class="op">=</span> torchFastText(</span>
+<span id="cb9-5"><a aria-label="5"></a>    num_tokens<span class="op">=</span><span class="dv">1000000</span>,</span>
+<span id="cb9-6"><a aria-label="6"></a>    embedding_dim<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb9-7"><a aria-label="7"></a>    min_count<span class="op">=</span><span class="dv">5</span>,</span>
+<span id="cb9-8"><a aria-label="8"></a>    min_n<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb9-9"><a aria-label="9"></a>    max_n<span class="op">=</span><span class="dv">6</span>,</span>
+<span id="cb9-10"><a aria-label="10"></a>    len_word_ngrams<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb9-11"><a aria-label="11"></a>    sparse<span class="op">=</span><span class="va">True</span></span>
+<span id="cb9-12"><a aria-label="12"></a>)</span>
+<span id="cb9-13"><a aria-label="13"></a></span>
+<span id="cb9-14"><a aria-label="14"></a><span class="co"># Train the model</span></span>
+<span id="cb9-15"><a aria-label="15"></a>model.train(</span>
+<span id="cb9-16"><a aria-label="16"></a>    X_train<span class="op">=</span>train_data,</span>
+<span id="cb9-17"><a aria-label="17"></a>    y_train<span class="op">=</span>train_labels,</span>
+<span id="cb9-18"><a aria-label="18"></a>    X_val<span class="op">=</span>val_data,</span>
+<span id="cb9-19"><a aria-label="19"></a>    y_val<span class="op">=</span>val_labels,</span>
+<span id="cb9-20"><a aria-label="20"></a>    num_epochs<span class="op">=</span><span class="dv">10</span>,</span>
+<span id="cb9-21"><a aria-label="21"></a>    batch_size<span class="op">=</span><span class="dv">64</span></span>
+<span id="cb9-22"><a aria-label="22"></a>)</span>
+<span id="cb9-23"><a aria-label="23"></a><span class="co"># Make predictions</span></span>
+<span id="cb9-24"><a aria-label="24"></a>predictions <span class="op">=</span> model.predict(test_data)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
@@ -4331,11 +4334,11 @@
 </section>
 <section id="entraînement---bilan" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Entraînement - bilan</h2>
-<div id="385ce6e2" class="cell" data-execution_count="6">
+<div id="cba3ee08" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
-<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                    <div id="70d3ad6d-9b12-413d-b742-5ac1b8c29515" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("70d3ad6d-9b12-413d-b742-5ac1b8c29515")) {                    Plotly.newPlot(                        "70d3ad6d-9b12-413d-b742-5ac1b8c29515",                        [{"customdata":[["20000","180"],["20000","80"],["20000","180"],["10000","180"],["10000","80"],["100000","180"],["100000","80"],["100000","10"],["20000","180"],["20000","80"],["10000","180"],["10000","80"],["100000","40"],["20000","40"],["10000","40"],["100000","20"],["20000","20"],["20000","10"],["10000","20"],["10000","10"],["10000","180"]],"hovertemplate":"Number of Trainable Parameters=%{x}\u003cbr\u003eValidation Accuracy=%{y}\u003cbr\u003enum_tokens=%{customdata[0]}\u003cbr\u003eembedding_dim=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"","orientation":"v","showlegend":false,"x":{"dtype":"f8","bdata":"AAAAAFKSTkEAAAAAAkNBQQAAAADHZFNBAAAAAO4NSUEAAAAABFE2QQAAAMDRlHJBAAAAgMCFYEEAAAAAQJgwQQAAAADHZFNBAAAAAAJDQUEAAAAA7g1JQQAAAAAEUTZBAAAAAGWIUEEAAAAAlE0xQQAAAAAoZiZBAAAAAK6NQEEAAAAAuGIhQQAAAAAAjRFBAAAAAHCQFkEAAAAAAOUGQQAAAADuDUlB"},"xaxis":"x","y":{"dtype":"f8","bdata":"AAAAAAAA+H8AAABg2kDrPwAAAKCbUes\u002fAAAAIGxB6z8AAAAgozDrPwAAAKCA8uo\u002fAAAA4Nay6j8AAABAZLfoPwAAAOApueo\u002fAAAA4Hlz6j8AAACgJ5bqPwAAACD+Seo\u002fAAAAwL\u002f\u002f6T8AAADAp8vpPwAAAIAKguk\u002fAAAAILVN6T8AAABgfAzpPwAAAOBsx+c\u002fAAAAYOW96D8AAACgk3fnPwAAAEDXYuo\u002f"},"yaxis":"y","type":"scatter"},{"marker":{"color":"rgba(0,0,0,0)","line":{"color":"red","width":1},"size":8},"mode":"markers","showlegend":false,"x":{"dtype":"f8","bdata":"AAAAAARRNkEAAAAABFE2QQ=="},"y":{"dtype":"f8","bdata":"AAAAIKMw6z8AAAAg\u002fknqPw=="},"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Number of Trainable Parameters"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Validation Accuracy"}},"legend":{"tracegroupgap":0},"annotations":[{"arrowhead":1,"ax":15,"ay":-15,"font":{"color":"black","size":10},"showarrow":true,"text":"(100000, 180)","x":19483932.0,"y":0.8421023488044739},{"arrowhead":1,"ax":15,"ay":-15,"font":{"color":"black","size":10},"showarrow":true,"text":"(100000, 80)","x":8662532.0,"y":0.8343309760093689},{"arrowhead":1,"ax":15,"ay":-15,"font":{"color":"black","size":10},"showarrow":true,"text":"(100000, 10)","x":1087552.0,"y":0.7723866701126099},{"arrowhead":1,"ax":15,"ay":-15,"font":{"color":"black","size":10},"showarrow":true,"text":"(100000, 40)","x":4333972.0,"y":0.8124693632125854},{"arrowhead":1,"ax":15,"ay":-15,"font":{"color":"black","size":10},"showarrow":true,"text":"(100000, 20)","x":2169692.0,"y":0.7907357811927795},{"arrowhead":1,"ax":15,"ay":-15,"font":{"color":"black","size":10},"showarrow":true,"text":"(20000, 10)","x":287552.0,"y":0.7430939078330994},{"arrowhead":1,"ax":15,"ay":-15,"font":{"color":"black","size":10},"showarrow":true,"text":"(10000, 10)","x":187552.0,"y":0.7333467602729797},{"arrowhead":2,"ax":-10,"ay":-25,"font":{"color":"red","size":10},"showarrow":true,"text":"(10000, 80)","x":1462532.0,"y":0.8496871590614319},{"arrowhead":2,"ax":-10,"ay":-25,"font":{"color":"red","size":10},"showarrow":true,"text":"(10000, 80)","x":1462532.0,"y":0.8215323090553284}],"width":800,"height":600},                        {"responsive": true}                    ).then(function(){
+<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                    <div id="a76e5b86-a742-42bc-aeb7-449fd435b32f" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("a76e5b86-a742-42bc-aeb7-449fd435b32f")) {                    Plotly.newPlot(                        "a76e5b86-a742-42bc-aeb7-449fd435b32f",                        [{"customdata":[["20000","180"],["20000","80"],["20000","180"],["10000","180"],["10000","80"],["100000","180"],["100000","80"],["100000","10"],["20000","180"],["20000","80"],["10000","180"],["10000","80"],["100000","40"],["20000","40"],["10000","40"],["100000","20"],["20000","20"],["20000","10"],["10000","20"],["10000","10"],["10000","180"]],"hovertemplate":"Number of Trainable Parameters=%{x}\u003cbr\u003eValidation Accuracy=%{y}\u003cbr\u003enum_tokens=%{customdata[0]}\u003cbr\u003eembedding_dim=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"","orientation":"v","showlegend":false,"x":{"dtype":"f8","bdata":"AAAAAFKSTkEAAAAAAkNBQQAAAADHZFNBAAAAAO4NSUEAAAAABFE2QQAAAMDRlHJBAAAAgMCFYEEAAAAAQJgwQQAAAADHZFNBAAAAAAJDQUEAAAAA7g1JQQAAAAAEUTZBAAAAAGWIUEEAAAAAlE0xQQAAAAAoZiZBAAAAAK6NQEEAAAAAuGIhQQAAAAAAjRFBAAAAAHCQFkEAAAAAAOUGQQAAAADuDUlB"},"xaxis":"x","y":{"dtype":"f8","bdata":"AAAAAAAA+H8AAABg2kDrPwAAAKCbUes\u002fAAAAIGxB6z8AAAAgozDrPwAAAKCA8uo\u002fAAAA4Nay6j8AAABAZLfoPwAAAOApueo\u002fAAAA4Hlz6j8AAACgJ5bqPwAAACD+Seo\u002fAAAAwL\u002f\u002f6T8AAADAp8vpPwAAAIAKguk\u002fAAAAILVN6T8AAABgfAzpPwAAAOBsx+c\u002fAAAAYOW96D8AAACgk3fnPwAAAEDXYuo\u002f"},"yaxis":"y","type":"scatter"},{"marker":{"color":"rgba(0,0,0,0)","line":{"color":"red","width":1},"size":8},"mode":"markers","showlegend":false,"x":{"dtype":"f8","bdata":"AAAAAARRNkEAAAAABFE2QQ=="},"y":{"dtype":"f8","bdata":"AAAAIKMw6z8AAAAg\u002fknqPw=="},"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Number of Trainable Parameters"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Validation Accuracy"}},"legend":{"tracegroupgap":0},"annotations":[{"arrowhead":1,"ax":15,"ay":-15,"font":{"color":"black","size":10},"showarrow":true,"text":"(100000, 180)","x":19483932.0,"y":0.8421023488044739},{"arrowhead":1,"ax":15,"ay":-15,"font":{"color":"black","size":10},"showarrow":true,"text":"(100000, 80)","x":8662532.0,"y":0.8343309760093689},{"arrowhead":1,"ax":15,"ay":-15,"font":{"color":"black","size":10},"showarrow":true,"text":"(100000, 10)","x":1087552.0,"y":0.7723866701126099},{"arrowhead":1,"ax":15,"ay":-15,"font":{"color":"black","size":10},"showarrow":true,"text":"(100000, 40)","x":4333972.0,"y":0.8124693632125854},{"arrowhead":1,"ax":15,"ay":-15,"font":{"color":"black","size":10},"showarrow":true,"text":"(100000, 20)","x":2169692.0,"y":0.7907357811927795},{"arrowhead":1,"ax":15,"ay":-15,"font":{"color":"black","size":10},"showarrow":true,"text":"(20000, 10)","x":287552.0,"y":0.7430939078330994},{"arrowhead":1,"ax":15,"ay":-15,"font":{"color":"black","size":10},"showarrow":true,"text":"(10000, 10)","x":187552.0,"y":0.7333467602729797},{"arrowhead":2,"ax":-10,"ay":-25,"font":{"color":"red","size":10},"showarrow":true,"text":"(10000, 80)","x":1462532.0,"y":0.8496871590614319},{"arrowhead":2,"ax":-10,"ay":-25,"font":{"color":"red","size":10},"showarrow":true,"text":"(10000, 80)","x":1462532.0,"y":0.8215323090553284}],"width":800,"height":600},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('70d3ad6d-9b12-413d-b742-5ac1b8c29515');
+var gd = document.getElementById('a76e5b86-a742-42bc-aeb7-449fd435b32f');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -4364,7 +4367,7 @@ if (outputEl) {{
 <section id="résultats-de-la-validation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Résultats de la validation</h2>
 <p>☑️ On choisit le modèle <span class="math inline">\((10000, 80)\)</span></p>
-<div id="fe8c1939" class="cell" data-execution_count="8">
+<div id="0aae5ddf" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <style scoped="">
@@ -4414,7 +4417,7 @@ if (outputEl) {{
 </section>
 <section id="calibration" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Calibration</h2>
-<div id="059a8b6f" class="cell" data-execution_count="9">
+<div id="3ed0eaf3" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -4426,11 +4429,11 @@ if (outputEl) {{
 </section>
 <section id="temps-dinférence" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Temps d’inférence</h2>
-<div id="4f3b86a4" class="cell" data-execution_count="10">
+<div id="e2e9eb9e" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
-<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                    <div id="9749b66c-eaa1-474c-9a04-b958c3351e90" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("9749b66c-eaa1-474c-9a04-b958c3351e90")) {                    Plotly.newPlot(                        "9749b66c-eaa1-474c-9a04-b958c3351e90",                        [{"line":{"color":"royalblue"},"mode":"lines+markers","name":"Inference Time (LS)","x":{"dtype":"f8","bdata":"AAAAAAAA8D8AAAAAAAAkQAAAAAAAAElAAAAAAAAAWUAAAAAAAABwQAAAAAAAAPh\u002f"},"y":{"dtype":"f8","bdata":"AAAAjOZfPUAAAADQpRQmQAAAAJBEThdAAAAA4GemEEAAAADgpuQLQAAAAACAfg1A"},"yaxis":"y","type":"scatter"},{"line":{"color":"orangered"},"mode":"lines+markers","name":"Inference Time \u002f Num Steps","x":{"dtype":"f8","bdata":"AAAAAAAA8D8AAAAAAAAkQAAAAAAAAElAAAAAAAAAWUAAAAAAAABwQAAAAAAAAPh\u002f"},"y":{"dtype":"f8","bdata":"Uu9e7gRDaj9K5kr5Ha+IP7OAfJEgTaA\u002fy6iMynhrpz+SJEmSmIC5PwAAAAAAAPh\u002f"},"yaxis":"y2","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"shapes":[{"line":{"color":"royalblue","dash":"dash"},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":3.686767578125,"y1":3.686767578125,"yref":"y"}],"annotations":[{"showarrow":false,"text":"fastText default parameters","x":0,"xanchor":"left","xref":"x domain","y":3.686767578125,"yanchor":"bottom","yref":"y"}],"yaxis":{"title":{"font":{"color":"royalblue"},"text":"Inference Time (LS)"},"tickfont":{"color":"royalblue"},"side":"left"},"yaxis2":{"title":{"text":"Inference Time \u002f Num Steps","font":{"color":"orangered"}},"tickfont":{"color":"orangered"},"overlaying":"y","side":"right"},"legend":{"x":5,"y":1},"xaxis":{"title":{"text":"Test Batch Size"}},"width":800,"height":600},                        {"responsive": true}                    ).then(function(){
+<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                    <div id="540be64c-004b-46eb-82be-d753e8044d43" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("540be64c-004b-46eb-82be-d753e8044d43")) {                    Plotly.newPlot(                        "540be64c-004b-46eb-82be-d753e8044d43",                        [{"line":{"color":"royalblue"},"mode":"lines+markers","name":"Inference Time (LS)","x":{"dtype":"f8","bdata":"AAAAAAAA8D8AAAAAAAAkQAAAAAAAAElAAAAAAAAAWUAAAAAAAABwQAAAAAAAAPh\u002f"},"y":{"dtype":"f8","bdata":"AAAAjOZfPUAAAADQpRQmQAAAAJBEThdAAAAA4GemEEAAAADgpuQLQAAAAACAfg1A"},"yaxis":"y","type":"scatter"},{"line":{"color":"orangered"},"mode":"lines+markers","name":"Inference Time \u002f Num Steps","x":{"dtype":"f8","bdata":"AAAAAAAA8D8AAAAAAAAkQAAAAAAAAElAAAAAAAAAWUAAAAAAAABwQAAAAAAAAPh\u002f"},"y":{"dtype":"f8","bdata":"Uu9e7gRDaj9K5kr5Ha+IP7OAfJEgTaA\u002fy6iMynhrpz+SJEmSmIC5PwAAAAAAAPh\u002f"},"yaxis":"y2","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"shapes":[{"line":{"color":"royalblue","dash":"dash"},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":3.686767578125,"y1":3.686767578125,"yref":"y"}],"annotations":[{"showarrow":false,"text":"fastText default parameters","x":0,"xanchor":"left","xref":"x domain","y":3.686767578125,"yanchor":"bottom","yref":"y"}],"yaxis":{"title":{"font":{"color":"royalblue"},"text":"Inference Time (LS)"},"tickfont":{"color":"royalblue"},"side":"left"},"yaxis2":{"title":{"text":"Inference Time \u002f Num Steps","font":{"color":"orangered"}},"tickfont":{"color":"orangered"},"overlaying":"y","side":"right"},"legend":{"x":5,"y":1},"xaxis":{"title":{"text":"Test Batch Size"}},"width":800,"height":600},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('9749b66c-eaa1-474c-9a04-b958c3351e90');
+var gd = document.getElementById('540be64c-004b-46eb-82be-d753e8044d43');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -4459,32 +4462,32 @@ if (outputEl) {{
 <section id="explicabilité" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
 <h2>Explicabilité</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="1" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb10-1"><a></a>viewof top_k <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Top k"</span>})</span>
-<span id="cb10-2"><a></a>viewof activite <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({<span class="dt">label</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"coiffeur"</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span><span class="dv">800</span>})</span>
-<span id="cb10-3"><a></a></span>
-<span id="cb10-4"><a></a>urlApe <span class="op">=</span> <span class="fu">transformToUrl</span>(activite<span class="op">,</span> top_k)</span>
-<span id="cb10-5"><a></a></span>
-<span id="cb10-6"><a></a>predictions <span class="op">=</span> d3<span class="op">.</span><span class="fu">json</span>(urlApe)</span>
-<span id="cb10-7"><a></a></span>
-<span id="cb10-8"><a></a>predictions_arr <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">values</span>(predictions)</span>
-<span id="cb10-9"><a></a></span>
-<span id="cb10-10"><a></a>Inputs<span class="op">.</span><span class="fu">table</span>(</span>
-<span id="cb10-11"><a></a>  predictions_arr<span class="op">,</span> {</span>
-<span id="cb10-12"><a></a>    <span class="dt">format</span><span class="op">:</span> {</span>
-<span id="cb10-13"><a></a>     <span class="dt">probabilite</span><span class="op">:</span> (d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)}<span class="op">,</span></span>
-<span id="cb10-14"><a></a></span>
-<span id="cb10-15"><a></a>     <span class="dt">columns</span><span class="op">:</span> [</span>
-<span id="cb10-16"><a></a>    <span class="st">"code"</span><span class="op">,</span></span>
-<span id="cb10-17"><a></a>    <span class="st">"libelle"</span><span class="op">,</span></span>
-<span id="cb10-18"><a></a>    <span class="st">"probabilite"</span><span class="op">,</span></span>
-<span id="cb10-19"><a></a>  ]<span class="op">,</span></span>
-<span id="cb10-20"><a></a>  <span class="dt">header</span><span class="op">:</span> {</span>
-<span id="cb10-21"><a></a>    <span class="dt">code</span><span class="op">:</span> <span class="st">"Code NAF"</span><span class="op">,</span></span>
-<span id="cb10-22"><a></a>    <span class="dt">libelle</span><span class="op">:</span> <span class="st">"Libellé"</span><span class="op">,</span></span>
-<span id="cb10-23"><a></a>    <span class="dt">probabilite</span><span class="op">:</span><span class="st">"Score de confiance"</span></span>
-<span id="cb10-24"><a></a>  }</span>
-<span id="cb10-25"><a></a>    }</span>
-<span id="cb10-26"><a></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="1" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb10-1"><a aria-label="1"></a>viewof top_k <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Top k"</span>})</span>
+<span id="cb10-2"><a aria-label="2"></a>viewof activite <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({<span class="dt">label</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"coiffeur"</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span><span class="dv">800</span>})</span>
+<span id="cb10-3"><a aria-label="3"></a></span>
+<span id="cb10-4"><a aria-label="4"></a>urlApe <span class="op">=</span> <span class="fu">transformToUrl</span>(activite<span class="op">,</span> top_k)</span>
+<span id="cb10-5"><a aria-label="5"></a></span>
+<span id="cb10-6"><a aria-label="6"></a>predictions <span class="op">=</span> d3<span class="op">.</span><span class="fu">json</span>(urlApe)</span>
+<span id="cb10-7"><a aria-label="7"></a></span>
+<span id="cb10-8"><a aria-label="8"></a>predictions_arr <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">values</span>(predictions)</span>
+<span id="cb10-9"><a aria-label="9"></a></span>
+<span id="cb10-10"><a aria-label="10"></a>Inputs<span class="op">.</span><span class="fu">table</span>(</span>
+<span id="cb10-11"><a aria-label="11"></a>  predictions_arr<span class="op">,</span> {</span>
+<span id="cb10-12"><a aria-label="12"></a>    <span class="dt">format</span><span class="op">:</span> {</span>
+<span id="cb10-13"><a aria-label="13"></a>     <span class="dt">probabilite</span><span class="op">:</span> (d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)}<span class="op">,</span></span>
+<span id="cb10-14"><a aria-label="14"></a></span>
+<span id="cb10-15"><a aria-label="15"></a>     <span class="dt">columns</span><span class="op">:</span> [</span>
+<span id="cb10-16"><a aria-label="16"></a>    <span class="st">"code"</span><span class="op">,</span></span>
+<span id="cb10-17"><a aria-label="17"></a>    <span class="st">"libelle"</span><span class="op">,</span></span>
+<span id="cb10-18"><a aria-label="18"></a>    <span class="st">"probabilite"</span><span class="op">,</span></span>
+<span id="cb10-19"><a aria-label="19"></a>  ]<span class="op">,</span></span>
+<span id="cb10-20"><a aria-label="20"></a>  <span class="dt">header</span><span class="op">:</span> {</span>
+<span id="cb10-21"><a aria-label="21"></a>    <span class="dt">code</span><span class="op">:</span> <span class="st">"Code NAF"</span><span class="op">,</span></span>
+<span id="cb10-22"><a aria-label="22"></a>    <span class="dt">libelle</span><span class="op">:</span> <span class="st">"Libellé"</span><span class="op">,</span></span>
+<span id="cb10-23"><a aria-label="23"></a>    <span class="dt">probabilite</span><span class="op">:</span><span class="st">"Score de confiance"</span></span>
+<span id="cb10-24"><a aria-label="24"></a>  }</span>
+<span id="cb10-25"><a aria-label="25"></a>    }</span>
+<span id="cb10-26"><a aria-label="26"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -4527,54 +4530,54 @@ if (outputEl) {{
 </div>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="29" data-source-offset="-534"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 28;"><span id="cb11-29"><a></a>letters <span class="op">=</span> activite<span class="op">.</span><span class="fu">split</span>(<span class="st">''</span>)<span class="op">.</span><span class="fu">filter</span>(letter <span class="kw">=&gt;</span> letter <span class="op">!=</span> <span class="st">' '</span>)</span>
-<span id="cb11-30"><a></a>words <span class="op">=</span> activite<span class="op">.</span><span class="fu">split</span>(<span class="st">" "</span>)<span class="op">.</span><span class="fu">filter</span>(word <span class="kw">=&gt;</span> word <span class="op">!==</span> <span class="st">""</span>)</span>
-<span id="cb11-31"><a></a></span>
-<span id="cb11-32"><a></a>lettersData <span class="op">=</span> letters<span class="op">.</span><span class="fu">map</span>((letter<span class="op">,</span> i) <span class="kw">=&gt;</span> ({</span>
-<span id="cb11-33"><a></a>        <span class="dt">x</span><span class="op">:</span> <span class="vs">`</span><span class="sc">${</span>letter<span class="sc">}</span><span class="vs">_</span><span class="sc">${</span>i<span class="sc">}</span><span class="vs">`</span><span class="op">,</span> </span>
-<span id="cb11-34"><a></a>        <span class="dt">y</span><span class="op">:</span> chosen_label<span class="op">.</span><span class="at">letter_attr</span>[i]<span class="op">,</span> </span>
-<span id="cb11-35"><a></a>        <span class="dt">code</span><span class="op">:</span> chosen_label<span class="op">.</span><span class="at">code</span><span class="op">,</span></span>
-<span id="cb11-36"><a></a>        <span class="dt">letter</span><span class="op">:</span> letter<span class="op">,</span></span>
-<span id="cb11-37"><a></a>        <span class="dt">idx</span><span class="op">:</span> i<span class="op">,</span></span>
-<span id="cb11-38"><a></a>      }))</span>
-<span id="cb11-39"><a></a></span>
-<span id="cb11-40"><a></a>wordsData <span class="op">=</span> words<span class="op">.</span><span class="fu">map</span>((word<span class="op">,</span> i) <span class="kw">=&gt;</span> ({</span>
-<span id="cb11-41"><a></a>        <span class="dt">x</span><span class="op">:</span> <span class="vs">`</span><span class="sc">${</span>word<span class="sc">}</span><span class="vs">_</span><span class="sc">${</span>i<span class="sc">}</span><span class="vs">`</span><span class="op">,</span> </span>
-<span id="cb11-42"><a></a>        <span class="dt">y</span><span class="op">:</span> chosen_label<span class="op">.</span><span class="at">word_attr</span>[i]<span class="op">,</span> </span>
-<span id="cb11-43"><a></a>        <span class="dt">code</span><span class="op">:</span> chosen_label<span class="op">.</span><span class="at">code</span><span class="op">,</span></span>
-<span id="cb11-44"><a></a>        <span class="dt">word</span><span class="op">:</span>word<span class="op">,</span></span>
-<span id="cb11-45"><a></a>        <span class="dt">idx</span><span class="op">:</span>i<span class="op">,</span></span>
-<span id="cb11-46"><a></a>      }))</span>
-<span id="cb11-47"><a></a></span>
-<span id="cb11-48"><a></a>lettersDomain <span class="op">=</span> letters<span class="op">.</span><span class="fu">map</span>((letter<span class="op">,</span> i) <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>letter<span class="sc">}</span><span class="vs">_</span><span class="sc">${</span>i<span class="sc">}</span><span class="vs">`</span>)</span>
-<span id="cb11-49"><a></a>wordsDomain <span class="op">=</span> words<span class="op">.</span><span class="fu">map</span>((word<span class="op">,</span> i) <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>word<span class="sc">}</span><span class="vs">_</span><span class="sc">${</span>i<span class="sc">}</span><span class="vs">`</span>)</span>
-<span id="cb11-50"><a></a></span>
-<span id="cb11-51"><a></a>viewof chosen_label <span class="op">=</span></span>
-<span id="cb11-52"><a></a>  Inputs<span class="op">.</span><span class="fu">select</span>(predictions_arr<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span> <span class="dt">format</span><span class="op">:</span> x<span class="kw">=&gt;</span>x<span class="op">.</span><span class="at">code</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span>predictions_arr[<span class="dv">0</span>]<span class="op">.</span><span class="at">code</span>})</span>
-<span id="cb11-53"><a></a></span>
-<span id="cb11-54"><a></a>viewof aggregateWords <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">toggle</span>({</span>
-<span id="cb11-55"><a></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">""</span></span>
-<span id="cb11-56"><a></a>})</span>
-<span id="cb11-57"><a></a></span>
-<span id="cb11-58"><a></a>data_to_plot <span class="op">=</span> (aggregateWords <span class="op">==</span> <span class="kw">true</span>) <span class="op">?</span> wordsData <span class="op">:</span> lettersData</span>
-<span id="cb11-59"><a></a>domain_to_plot <span class="op">=</span> (aggregateWords <span class="op">==</span> <span class="kw">true</span>) <span class="op">?</span> wordsDomain <span class="op">:</span> lettersDomain</span>
-<span id="cb11-60"><a></a></span>
-<span id="cb11-61"><a></a></span>
-<span id="cb11-62"><a></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb11-63"><a></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb11-64"><a></a>    Plot<span class="op">.</span><span class="fu">barY</span>(</span>
-<span id="cb11-65"><a></a>      data_to_plot<span class="op">,</span></span>
-<span id="cb11-66"><a></a>      { </span>
-<span id="cb11-67"><a></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> </span>
-<span id="cb11-68"><a></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> </span>
-<span id="cb11-69"><a></a>        <span class="dt">fill</span><span class="op">:</span> <span class="st">"code"</span><span class="op">,</span></span>
-<span id="cb11-70"><a></a>      }</span>
-<span id="cb11-71"><a></a>    )</span>
-<span id="cb11-72"><a></a>  ]<span class="op">,</span></span>
-<span id="cb11-73"><a></a>  <span class="dt">x</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span> <span class="dt">tickFormat</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="fu">split</span>(<span class="st">'_'</span>)[<span class="dv">0</span>]<span class="op">,</span> <span class="dt">domain</span><span class="op">:</span>domain_to_plot }<span class="op">,</span></span>
-<span id="cb11-74"><a></a>  <span class="dt">y</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"Score d'influence"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
-<span id="cb11-75"><a></a>  <span class="dt">color</span><span class="op">:</span> { <span class="dt">scheme</span><span class="op">:</span> <span class="st">"Tableau10"</span><span class="op">,</span> <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
-<span id="cb11-76"><a></a>})</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="29" data-source-offset="-534"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 28;"><span id="cb11-29"><a aria-label="29"></a>letters <span class="op">=</span> activite<span class="op">.</span><span class="fu">split</span>(<span class="st">''</span>)<span class="op">.</span><span class="fu">filter</span>(letter <span class="kw">=&gt;</span> letter <span class="op">!=</span> <span class="st">' '</span>)</span>
+<span id="cb11-30"><a aria-label="30"></a>words <span class="op">=</span> activite<span class="op">.</span><span class="fu">split</span>(<span class="st">" "</span>)<span class="op">.</span><span class="fu">filter</span>(word <span class="kw">=&gt;</span> word <span class="op">!==</span> <span class="st">""</span>)</span>
+<span id="cb11-31"><a aria-label="31"></a></span>
+<span id="cb11-32"><a aria-label="32"></a>lettersData <span class="op">=</span> letters<span class="op">.</span><span class="fu">map</span>((letter<span class="op">,</span> i) <span class="kw">=&gt;</span> ({</span>
+<span id="cb11-33"><a aria-label="33"></a>        <span class="dt">x</span><span class="op">:</span> <span class="vs">`</span><span class="sc">${</span>letter<span class="sc">}</span><span class="vs">_</span><span class="sc">${</span>i<span class="sc">}</span><span class="vs">`</span><span class="op">,</span> </span>
+<span id="cb11-34"><a aria-label="34"></a>        <span class="dt">y</span><span class="op">:</span> chosen_label<span class="op">.</span><span class="at">letter_attr</span>[i]<span class="op">,</span> </span>
+<span id="cb11-35"><a aria-label="35"></a>        <span class="dt">code</span><span class="op">:</span> chosen_label<span class="op">.</span><span class="at">code</span><span class="op">,</span></span>
+<span id="cb11-36"><a aria-label="36"></a>        <span class="dt">letter</span><span class="op">:</span> letter<span class="op">,</span></span>
+<span id="cb11-37"><a aria-label="37"></a>        <span class="dt">idx</span><span class="op">:</span> i<span class="op">,</span></span>
+<span id="cb11-38"><a aria-label="38"></a>      }))</span>
+<span id="cb11-39"><a aria-label="39"></a></span>
+<span id="cb11-40"><a aria-label="40"></a>wordsData <span class="op">=</span> words<span class="op">.</span><span class="fu">map</span>((word<span class="op">,</span> i) <span class="kw">=&gt;</span> ({</span>
+<span id="cb11-41"><a aria-label="41"></a>        <span class="dt">x</span><span class="op">:</span> <span class="vs">`</span><span class="sc">${</span>word<span class="sc">}</span><span class="vs">_</span><span class="sc">${</span>i<span class="sc">}</span><span class="vs">`</span><span class="op">,</span> </span>
+<span id="cb11-42"><a aria-label="42"></a>        <span class="dt">y</span><span class="op">:</span> chosen_label<span class="op">.</span><span class="at">word_attr</span>[i]<span class="op">,</span> </span>
+<span id="cb11-43"><a aria-label="43"></a>        <span class="dt">code</span><span class="op">:</span> chosen_label<span class="op">.</span><span class="at">code</span><span class="op">,</span></span>
+<span id="cb11-44"><a aria-label="44"></a>        <span class="dt">word</span><span class="op">:</span>word<span class="op">,</span></span>
+<span id="cb11-45"><a aria-label="45"></a>        <span class="dt">idx</span><span class="op">:</span>i<span class="op">,</span></span>
+<span id="cb11-46"><a aria-label="46"></a>      }))</span>
+<span id="cb11-47"><a aria-label="47"></a></span>
+<span id="cb11-48"><a aria-label="48"></a>lettersDomain <span class="op">=</span> letters<span class="op">.</span><span class="fu">map</span>((letter<span class="op">,</span> i) <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>letter<span class="sc">}</span><span class="vs">_</span><span class="sc">${</span>i<span class="sc">}</span><span class="vs">`</span>)</span>
+<span id="cb11-49"><a aria-label="49"></a>wordsDomain <span class="op">=</span> words<span class="op">.</span><span class="fu">map</span>((word<span class="op">,</span> i) <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>word<span class="sc">}</span><span class="vs">_</span><span class="sc">${</span>i<span class="sc">}</span><span class="vs">`</span>)</span>
+<span id="cb11-50"><a aria-label="50"></a></span>
+<span id="cb11-51"><a aria-label="51"></a>viewof chosen_label <span class="op">=</span></span>
+<span id="cb11-52"><a aria-label="52"></a>  Inputs<span class="op">.</span><span class="fu">select</span>(predictions_arr<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span> <span class="dt">format</span><span class="op">:</span> x<span class="kw">=&gt;</span>x<span class="op">.</span><span class="at">code</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span>predictions_arr[<span class="dv">0</span>]<span class="op">.</span><span class="at">code</span>})</span>
+<span id="cb11-53"><a aria-label="53"></a></span>
+<span id="cb11-54"><a aria-label="54"></a>viewof aggregateWords <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">toggle</span>({</span>
+<span id="cb11-55"><a aria-label="55"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">""</span></span>
+<span id="cb11-56"><a aria-label="56"></a>})</span>
+<span id="cb11-57"><a aria-label="57"></a></span>
+<span id="cb11-58"><a aria-label="58"></a>data_to_plot <span class="op">=</span> (aggregateWords <span class="op">==</span> <span class="kw">true</span>) <span class="op">?</span> wordsData <span class="op">:</span> lettersData</span>
+<span id="cb11-59"><a aria-label="59"></a>domain_to_plot <span class="op">=</span> (aggregateWords <span class="op">==</span> <span class="kw">true</span>) <span class="op">?</span> wordsDomain <span class="op">:</span> lettersDomain</span>
+<span id="cb11-60"><a aria-label="60"></a></span>
+<span id="cb11-61"><a aria-label="61"></a></span>
+<span id="cb11-62"><a aria-label="62"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb11-63"><a aria-label="63"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb11-64"><a aria-label="64"></a>    Plot<span class="op">.</span><span class="fu">barY</span>(</span>
+<span id="cb11-65"><a aria-label="65"></a>      data_to_plot<span class="op">,</span></span>
+<span id="cb11-66"><a aria-label="66"></a>      { </span>
+<span id="cb11-67"><a aria-label="67"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> </span>
+<span id="cb11-68"><a aria-label="68"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> </span>
+<span id="cb11-69"><a aria-label="69"></a>        <span class="dt">fill</span><span class="op">:</span> <span class="st">"code"</span><span class="op">,</span></span>
+<span id="cb11-70"><a aria-label="70"></a>      }</span>
+<span id="cb11-71"><a aria-label="71"></a>    )</span>
+<span id="cb11-72"><a aria-label="72"></a>  ]<span class="op">,</span></span>
+<span id="cb11-73"><a aria-label="73"></a>  <span class="dt">x</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span> <span class="dt">tickFormat</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="fu">split</span>(<span class="st">'_'</span>)[<span class="dv">0</span>]<span class="op">,</span> <span class="dt">domain</span><span class="op">:</span>domain_to_plot }<span class="op">,</span></span>
+<span id="cb11-74"><a aria-label="74"></a>  <span class="dt">y</span><span class="op">:</span> { <span class="dt">label</span><span class="op">:</span> <span class="st">"Score d'influence"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb11-75"><a aria-label="75"></a>  <span class="dt">color</span><span class="op">:</span> { <span class="dt">scheme</span><span class="op">:</span> <span class="st">"Tableau10"</span><span class="op">,</span> <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb11-76"><a aria-label="76"></a>})</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-7" data-nodetype="declaration">
@@ -4654,25 +4657,25 @@ if (outputEl) {{
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="0" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -1;"><span id="cb12-0"><a></a><span class="im">import</span> { debounce } <span class="im">from</span> <span class="st">"@mbostock/debouncing-input"</span> </span>
-<span id="cb12-1"><a></a><span class="im">import</span> {Plot} <span class="im">from</span> <span class="st">"@observablehq/plot"</span><span class="op">;</span></span>
-<span id="cb12-2"><a></a></span>
-<span id="cb12-3"><a></a><span class="kw">function</span> <span class="fu">transformToUrl</span>(description<span class="op">,</span> top_k) {</span>
-<span id="cb12-4"><a></a>  <span class="co">// Base URL</span></span>
-<span id="cb12-5"><a></a>  <span class="kw">const</span> baseUrl <span class="op">=</span> <span class="st">"https://codification-ape-pytorch.lab.sspcloud.fr/predict-and-explain"</span><span class="op">;</span></span>
-<span id="cb12-6"><a></a>  </span>
-<span id="cb12-7"><a></a>  <span class="co">// Encode the description to make it URL-safe</span></span>
-<span id="cb12-8"><a></a>  <span class="kw">const</span> encodedDescription <span class="op">=</span> <span class="pp">encodeURIComponent</span>(description)<span class="op">;</span></span>
-<span id="cb12-9"><a></a>  </span>
-<span id="cb12-10"><a></a>  <span class="co">// Append parameters to the URL</span></span>
-<span id="cb12-11"><a></a>  <span class="kw">const</span> fullUrl <span class="op">=</span> <span class="vs">`</span><span class="sc">${</span>baseUrl<span class="sc">}</span><span class="vs">?text_description=</span><span class="sc">${</span>encodedDescription<span class="sc">}</span><span class="vs">&amp;prob_min=0.01&amp;top_k=</span><span class="sc">${</span>top_k<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
-<span id="cb12-12"><a></a></span>
-<span id="cb12-13"><a></a>  <span class="cf">return</span> fullUrl<span class="op">;</span></span>
-<span id="cb12-14"><a></a>}</span>
-<span id="cb12-15"><a></a></span>
-<span id="cb12-16"><a></a><span class="kw">function</span> <span class="fu">generateLetterLabels</span>(length) {</span>
-<span id="cb12-17"><a></a>  <span class="cf">return</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ length }<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> <span class="bu">String</span><span class="op">.</span><span class="fu">fromCharCode</span>(<span class="dv">65</span> <span class="op">+</span> (i <span class="op">%</span> <span class="dv">26</span>)))<span class="op">;</span></span>
-<span id="cb12-18"><a></a>}</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="0" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -1;"><span id="cb12-0"><a aria-label="0"></a><span class="im">import</span> { debounce } <span class="im">from</span> <span class="st">"@mbostock/debouncing-input"</span> </span>
+<span id="cb12-1"><a aria-label="1"></a><span class="im">import</span> {Plot} <span class="im">from</span> <span class="st">"@observablehq/plot"</span><span class="op">;</span></span>
+<span id="cb12-2"><a aria-label="2"></a></span>
+<span id="cb12-3"><a aria-label="3"></a><span class="kw">function</span> <span class="fu">transformToUrl</span>(description<span class="op">,</span> top_k) {</span>
+<span id="cb12-4"><a aria-label="4"></a>  <span class="co">// Base URL</span></span>
+<span id="cb12-5"><a aria-label="5"></a>  <span class="kw">const</span> baseUrl <span class="op">=</span> <span class="st">"https://codification-ape-pytorch.lab.sspcloud.fr/predict-and-explain"</span><span class="op">;</span></span>
+<span id="cb12-6"><a aria-label="6"></a>  </span>
+<span id="cb12-7"><a aria-label="7"></a>  <span class="co">// Encode the description to make it URL-safe</span></span>
+<span id="cb12-8"><a aria-label="8"></a>  <span class="kw">const</span> encodedDescription <span class="op">=</span> <span class="pp">encodeURIComponent</span>(description)<span class="op">;</span></span>
+<span id="cb12-9"><a aria-label="9"></a>  </span>
+<span id="cb12-10"><a aria-label="10"></a>  <span class="co">// Append parameters to the URL</span></span>
+<span id="cb12-11"><a aria-label="11"></a>  <span class="kw">const</span> fullUrl <span class="op">=</span> <span class="vs">`</span><span class="sc">${</span>baseUrl<span class="sc">}</span><span class="vs">?text_description=</span><span class="sc">${</span>encodedDescription<span class="sc">}</span><span class="vs">&amp;prob_min=0.01&amp;top_k=</span><span class="sc">${</span>top_k<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb12-12"><a aria-label="12"></a></span>
+<span id="cb12-13"><a aria-label="13"></a>  <span class="cf">return</span> fullUrl<span class="op">;</span></span>
+<span id="cb12-14"><a aria-label="14"></a>}</span>
+<span id="cb12-15"><a aria-label="15"></a></span>
+<span id="cb12-16"><a aria-label="16"></a><span class="kw">function</span> <span class="fu">generateLetterLabels</span>(length) {</span>
+<span id="cb12-17"><a aria-label="17"></a>  <span class="cf">return</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ length }<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> <span class="bu">String</span><span class="op">.</span><span class="fu">fromCharCode</span>(<span class="dv">65</span> <span class="op">+</span> (i <span class="op">%</span> <span class="dv">26</span>)))<span class="op">;</span></span>
+<span id="cb12-18"><a aria-label="18"></a>}</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
