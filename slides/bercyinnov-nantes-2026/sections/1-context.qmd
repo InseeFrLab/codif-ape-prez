@@ -1,46 +1,44 @@
-## Quick reminder: What is SIRENE ? {#section_1_0 .backgroundStandard_violet}
-System for the Identification of the Register of Enterprises and Establishments
+## Petit rappel : qu'est-ce que SIRENE ? {#section_1_0 .backgroundStandard_violet}
+Système d'Identification du Répertoire des ENtreprises et des Établissements
 
-- [**Sirene**]{.orange} is the French national company registry
-- When a company registers:
-    - sole authority for issuing [**SIREN**]{.blue2} and [**SIRET**]{.blue2} numbers
-    - a [**main activity code**]{.orange} is attributed ([**APE** code]{.blue2}) 
-- Milestones and challenges faced:
-  - Refactoring of the Sirene [**information system**]{.blue2}  [**Sirene 4**]{.blue}
-  - NACE revision ➡️ dual coding in NACE rev 2 and 2.1 
-- End of March 2024:
-  - Officially switch from [**Sirene 3**]{.orange} to [**Sirene 4**]{.blue}
-- Processing **5 million registrations** across 2025–2026 :rocket:
-- [**2027**]{.green}: Transition to NACE rev 2.1
+- [**Sirene**]{.orange} est le répertoire national des entreprises françaises
+- Lors de l'enregistrement d'une entreprise :
+    - seule autorité habilitée à délivrer les numéros [**SIREN**]{.blue2} et [**SIRET**]{.blue2}
+    - un [**code d'activité principale**]{.orange} est attribué (code [**APE**]{.blue2}) 
+- Jalons et défis rencontrés :
+  - Refonte du [**système d'information**]{.blue2}  [**Sirene 4**]{.blue}
+  - Révision de la NACE ➡️ double codification en NACE rev 2 et 2.1 
+- Fin mars 2024 :
+  - Passage officiel de [**Sirene 3**]{.orange} à [**Sirene 4**]{.blue}
+- Traitement de **5 millions de formalités** sur la période 2025–2026 :rocket:
+- [**2027**]{.green} : passage à la NACE rev 2.1
 
-- [**Consequences**]{.orange}: Ideal moment to innovate (but under the constraint!)
+- [**Conséquence**]{.orange} : moment idéal pour innover (mais sous contrainte !)
 
-## A one-stop shop {#section_1_1 .backgroundStandard_violet}
+## Le guichet unique {#section_1_1 .backgroundStandard_violet}
 
-Another key actor: *National Industrial Property Institute*
+Un autre acteur clé : l'*Institut National de la Propriété Industrielle*
 
-- [**INPI**]{.orange} is the operator of the **one-stop shop** (Single Window)
-- This replaces the old paper-based [**CFE**]{.blue} (Business formality centers)
-- It is the [**primary data source**]{.orange} for the Sirene registry
-- Implementation of the **PACTE Law (2019)** to simplify the French economy
+- L'[**INPI**]{.orange} est l'opérateur du **guichet unique**
+- Il remplace les anciens [**CFE**]{.blue} (centres de formalités des entreprises) sur papier
+- C'est la [**source de données principale**]{.orange} du répertoire Sirene
+- Mise en œuvre de la **loi PACTE (2019)** pour simplifier l'économie française
 
 ::: {.callout-note icon=false}
 
-## PACTE law
-Since January 1, 2023, all business formalities must be filed online via a [single portal]{.orange}.
+## Loi PACTE
+Depuis le 1er janvier 2023, toutes les formalités d'entreprises doivent être déposées en ligne via un [portail unique]{.orange}.
 :::
 
-## The flow" of formalities {#section_1_2 .backgroundStandard_violet}
+## Le flux de formalités {#section_1_2 .backgroundStandard_violet}
 
-![](../img/flow-formalities.png){fig-align="center"}
+![](../img/flux-formalites.png){fig-align="center"}
 
-## The administrative landscape {#section_1_3 .backgroundStandard_violet}
+## Le paysage administratif {#section_1_3 .backgroundStandard_violet}
 
-- Siren number: company directory identification system
-- Principal activity code (APE)
-- Classification on a daily basis
-- Different administrations 
-- Different information systems
-- Requirements: quick, responsive and flexible to updated instructions
-
-
+- Numéro SIREN : système d'identification du répertoire d'entreprises
+- Code d'activité principale (APE)
+- Classification au quotidien
+- Différentes administrations 
+- Différents systèmes d'information
+- Exigences : rapidité, réactivité et flexibilité face aux consignes mises à jour

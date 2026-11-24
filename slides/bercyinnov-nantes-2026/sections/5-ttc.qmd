@@ -1,43 +1,43 @@
-## fastText: In Production, but Archived {#section_5_1 .backgroundStandard_jaune .r-fit-text}
+## fastText : en production, mais archivé {#section_5_1 .backgroundStandard_jaune .r-fit-text}
 
 
-- **fastText**: The *go-to* for text classification at Insee.
-- Reliable and high-performing; deployed in 2021 for APE codification...
-- ...but the repository has been [**archived**]{.orange} since March 19, 2024.
+- **fastText** : le *go-to* pour la classification de texte à l'Insee.
+- Fiable et performant ; déployé en 2021 pour la codification APE...
+- ...mais le dépôt a été [**archivé**]{.orange} depuis le 19 mars 2024.
 
-## The Stakes {#section_5_2 .backgroundStandard_jaune}
-
-
-::: {.incremental}
-- Lack of library maintenance: eventual risks regarding stability and compatibility.
-- Most importantly: it [**stalls modernization**]{.orange}.
-- Meanwhile, a highly dynamic **Deep Learning/NLP** ecosystem: [**PyTorch**]{.orange}, **Hugging Face**, etc.
-:::
-
-## 2025: Transitioning to PyTorch! {#section_5_3 .backgroundStandard_jaune .scrollable}
+## Les enjeux {#section_5_2 .backgroundStandard_jaune}
 
 
 ::: {.incremental}
-- PyTorch model closely mirrors the fastText architecture: a smooth transition.
-- Discussed [here](https://inseefrlab.github.io/codif-ape-prez/slides/grp-veille-codif-auto-10/#/title-slide):
-    - PyTorch allows for *customized* architectures tailored to our needs (handling categorical variables).
-    - Improved **training monitoring**.
-    - Opportunities for modernization: explainability, calibration, [**higher-performance models**]{.orange}...
-- A dedicated package to decouple model definition from its implementation.
+- Absence de maintenance de la librairie : risques à terme sur la stabilité et la compatibilité.
+- Surtout : ça [**freine la modernisation**]{.orange}.
+- Pendant ce temps, un écosystème **Deep Learning/NLP** très dynamique : [**PyTorch**]{.orange}, **Hugging Face**, etc.
 :::
 
-## From *torchFastText* to *torchTextClassifiers* {#section_5_4 .backgroundStandard_jaune .scrollable}
+## 2025 : transition vers PyTorch ! {#section_5_3 .backgroundStandard_jaune .scrollable}
 
-- Evolution from a single package into a [**toolkit**]{.orange} (a unified framework) for text classification with categorical variables.
-    - Inspired by other PyTorch toolkits: [Pythae](https://github.com/clementchadebec/benchmark_VAE) for VAEs, [TorchSeg](https://github.com/yu-changqian/TorchSeg) for segmentation...
-- Conceptualization of the various components within a text classification model.
-- Seamless integration with the **Hugging Face** ecosystem.
 
-## Library scope and positioning {#section_5_5 .backgroundStandard_jaune}
+::: {.incremental}
+- Le modèle PyTorch reprend de près l'architecture de fastText : une transition en douceur.
+- Discuté [ici](https://inseefrlab.github.io/codif-ape-prez/slides/grp-veille-codif-auto-10/#/title-slide) :
+    - PyTorch permet des architectures *sur mesure*, adaptées à nos besoins (gestion des variables catégorielles).
+    - **Suivi de l'entraînement** amélioré.
+    - Opportunités de modernisation : explicabilité, calibration, [**modèles plus performants**]{.orange}...
+- Un package dédié pour découpler la définition du modèle de son implémentation.
+:::
 
-![From a production standpoint](../img/TTC_positioning_matrix.png){width=900px fig-align="center"}
+## De *torchFastText* à *torchTextClassifiers* {#section_5_4 .backgroundStandard_jaune .scrollable}
 
-- If you want to know more, get [here](https://github.com/InseeFrLab/torchTextClassifiers/tree/main) and star this repo :star2:
+- Évolution d'un simple package vers une [**boîte à outils**]{.orange} (un cadre unifié) pour la classification de texte avec variables catégorielles.
+    - Inspiré d'autres toolkits PyTorch : [Pythae](https://github.com/clementchadebec/benchmark_VAE) pour les VAE, [TorchSeg](https://github.com/yu-changqian/TorchSeg) pour la segmentation...
+- Conceptualisation des différents composants d'un modèle de classification de texte.
+- Intégration seamless avec l'écosystème **Hugging Face**.
+
+## Périmètre et positionnement de la librairie {#section_5_5 .backgroundStandard_jaune}
+
+![D'un point de vue production](../img/TTC_positioning_matrix.png){width=900px fig-align="center"}
+
+- Pour en savoir plus, allez [ici](https://github.com/InseeFrLab/torchTextClassifiers/tree/main) et mettez une étoile sur ce repo :star2:
 
 ## Architecture {#section_5_6 .backgroundStandard_jaune}
 
@@ -46,24 +46,28 @@
 
 ![](../img/TTC_overview.png){fig-align="center"}
 
-## Features {#section_5_7 .backgroundStandard_jaune}
+## Fonctionnalités {#section_5_7 .backgroundStandard_jaune}
 
-- Explainability :mag: :robot: :bar_chart:
-- Multi-label support :label:
-- Modular design 🧩⚙️
+- Explicabilité :mag: :robot: :bar_chart:
+- Support du multi-label :label:
+- Conception modulaire 🧩⚙️
 
-## Get started {#section_5_8 .backgroundStandard_jaune}
+## Pour commencer {#section_5_8 .backgroundStandard_jaune}
 
 
-1. check out the [example notebook](https://github.com/InseeFrLab/torchTextClassifiers/blob/main/notebooks/example.ipynb) :books: :rocket:
-2. import your own data in **Load and preprocess data**
-3. Choose your section based on your goal
-    - **torchTextClassifiers: a wrapper to handle them all** :relaxed: ➡️ Fast implementation: just grab-and-go :shopping:
-    - **Let's dive into the different components** :nerd_face: (experts)  ➡️ More control: modular customization :wrench: :ok_hand: :sunglasses:
+1. consultez le [notebook d'exemple](https://github.com/InseeFrLab/torchTextClassifiers/blob/main/notebooks/example.ipynb) :books: :rocket:
+2. importez vos propres données dans **Load and preprocess data**
+3. Choisissez votre section selon votre objectif
+    - **torchTextClassifiers: a wrapper to handle them all** :relaxed: ➡️ Implémentation rapide : tout est prêt à l'emploi :shopping:
+    - **Let's dive into the different components** :nerd_face: (experts)  ➡️ Plus de contrôle : personnalisation modulaire :wrench: :ok_hand: :sunglasses:
 
 ::: {.callout-tip icon=true}
 
-### Some tips for data import
-Just update the import section and match your column names.<br>
-Works out-of-the-box with [Parquet]{.orange} or [CSV](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) for instance (Can ask our [AI chat](https://llm.lab.sspcloud.fr/))
+### Quelques conseils pour l'import de données
+Il suffit de mettre à jour la section d'import et de faire correspondre les noms de vos colonnes.<br>
+Fonctionne en *out-of-the-box* avec [Parquet]{.orange} ou [CSV](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) par exemple (vous pouvez demander à notre [chat IA](https://llm.lab.sspcloud.fr/))
 :::
+
+## Mise en production par portage technique {#section_5_9 .backgroundStandard_jaune}
+
+![Passage d'un module Java intégré à une API Python conteneurisée](../img/table-passage-codification.png){fig-align="center"}

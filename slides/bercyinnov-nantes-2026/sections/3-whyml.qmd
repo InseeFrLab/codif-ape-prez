@@ -1,31 +1,31 @@
-## The methodology: a legacy {#section_3_0 .backgroundStandard_bleu}
+## La méthodologie : un héritage {#section_3_0 .backgroundStandard_bleu}
 
-- Methodology is not new
-- Automatic coding for difficult cases and manuel check for the easiest one
-- Coding systems since 1981 ! 🧙🏻‍♂️
+- La méthodologie n'est pas neuve
+- Codification automatique pour les cas difficiles et contrôle manuel pour les plus simples
+- Des systèmes de codage depuis 1981 ! 🧙🏻‍♂️
 
-## The shock {#section_3_1 .backgroundStandard_bleu}
+## Le choc {#section_3_1 .backgroundStandard_bleu}
 
-- data not clean anymore 
-➡️ Teams got [**overwhelmed**]{.blue2}
-- automation drops to 30%
+- des données moins structurées
+➡️ Équipes [**surchargées**]{.blue2}
+- l'automatisation tombe à 30%
 
  <details> 
-  <summary> 
-      <font size=3 color=black><b>Display an exemple of activity description from business formality centers</b></font> 
-  </summary>
+   <summary> 
+       <font size=3 color=black><b>Afficher un exemple de description d'activité issue des centres de formalités des entreprises</b></font> 
+   </summary>
 
-  ```
-  BAKERY
-  ```
-</details> 
+   ```
+   BOULANGERIE
+   ```
+ </details> 
 
 <details> 
-  <summary> 
-      <font size=3 color=black><b>Display an exemple of activity description from the one-stop-shop</b></font> 
-  </summary>
+   <summary> 
+       <font size=3 color=black><b>Afficher un exemple de description d'activité issue du guichet unique</b></font> 
+   </summary>
 
-  ```
- I am looking to developpe in the cleaning and maintainance of busines offices: changeing bins, vacuuming, and mopping
-  ```
-</details> 
+   ```
+ Prestataire de service dans la vente , Merchandising, étalage, vitrine, habillage de mannequin et aide à la vente aux touristes étrangers
+   ```
+</details>

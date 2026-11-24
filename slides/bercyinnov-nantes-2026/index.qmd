@@ -13,7 +13,7 @@ date: "11/24/2026"
 date-format: "D MMMM YYYY"
 slide-number: true
 # uncomment for French presentations:
-lang: en-US
+lang: fr-FR
 # for blind readers:
 slide-tone: false
 # uncomment to use the multiplex mode:
@@ -47,92 +47,68 @@ transition: slide
 
 embed-resources: true
 custom-toc: true
-toc-title: "Outline"
+toc-title: "Sommaire"
 lightbox: true
 
 editor:
   render-on-save: true
 ---
 
-# About me {.nonincremental auto-animate=true}
+# Qui sommes-nous ? {.nonincremental auto-animate=true}
 
-- [**Who am I ?**]{.orange}
-    - [**Nathan Randriamanana**]{.black}
-    + _Data scientist_ at Insee
-    + INSEE statistician [**civil servant**](https://www.insee.fr/en/information/2404684#attaches){.blue2}
-    + working now at the [**Business Statistics Directorate**]{.blue2}
-    + [**SIRENE**](https://www.insee.fr/en/metadonnees/definition/c1135){.blue2} business register
+- [**Nathan Randriamanana**]{.orange} - [_Data scientist_]{.black} 
+- [**Olivier Bart**]{.orange} - [_DevOps manager_]{.black} 
++ Actuellement à la [**Direction des statistiques des entreprises**]{.blue2}
++ Répertoire des entreprises [**SIRENE**](https://www.insee.fr/fr/metadonnees/definition/c1135){.blue2}
 
 ::: notes
-Hi, I’m Nathan Randriamanana. I’m a data scientist at INSEE. 
+Bonjour, je suis Nathan Randriamanana. Je suis data scientist à l'INSEE.
 
-Everyone now, what's a data scientist ?
-A data scientist works at the interface between statistics, programming, and domain knowledge. In general, we analyze data, build models, and sometimes use machine learning or computational methods to provide insights that help organizations make informed decisions.
+Maintenant, qu'est-ce qu'un data scientist ?
+Un data scientist travaille à l'interface entre la statistique, la programmation et la connaissance métier. En général, nous analysons des données, construisons des modèles, et utilisons parfois le machine learning ou des méthodes computationnelles pour fournir des analyses qui aident les organisations à prendre des décisions éclairées.
 
-I’m a civil servant, which means I work as an official statistician for the government. I’m currently based in the Business Statistics Directorate, and part of my work involves managing the SIRENE business register, which tracks the full life cycle of companies in France from their creation, through modifications, to their closure, and sometimes even reactivation.
+Je suis fonctionnaire, ce qui signifie que je travaille comme statisticien officiel pour l'État. Je suis actuellement basé à la Direction des statistiques des entreprises, et une partie de mon travail consiste à gérer le répertoire d'entreprises SIRENE, qui suit le cycle de vie complet des entreprises en France, de leur création, aux modifications, jusqu'à leur cessation, et parfois même leur réactivation.
 :::
 
-## [About my job](https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/) {.smaller}
+# Sommaire
 
-- __I wear two hats__: 
-    - **:tophat: Application Administrator**: Acting as the functional lead for the SIRENE register. I bridge the gap between business needs and IT by writing functional specifications for system maintenance and evolution.
-    - **:billed_cap: Data Scientist**: Managing the end-to-end ML workflow for APE classification from model training and delivery to its integration into the production application.
+1️⃣ [**Contexte**]{.blue2}  
 
+2️⃣ [**État des lieux : comment attribuons-nous les codes d'activité aujourd'hui ?**]{.blue2} 
 
-:::: {.columns}
+3️⃣ [**Pourquoi avoir recours au Machine Learning ?**]{.blue2} 
 
-::: {.column width="55%"}
-![Example from presentation at the [Cloud Native Days France 2026](https://www.cloudnativedays.fr/) conference regarding cloud technologies](https://minio.lab.sspcloud.fr/nrandriamanana/portfolio/photo_cnd_codage.jpg)
+4️⃣ [**fastText : un classifieur simple et efficace**]{.blue2} 
 
-:::
+5️⃣ [**Au-delà de fastText : TorchTextClassifiers**]{.blue2}
 
-::: {.column width="45%"}
-### Linkedin
-{{< qrcode https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/ qr1 width=500 height=500 >}}
-:::
-
-::::
-
-
-# Table of contents
-
-1️⃣ [**Context**]{.blue2}  
-
-2️⃣ [**State of play: How do we assign activity codes today ?**]{.blue2} 
-
-3️⃣ [**Why did we end up using Machine Learning ?**]{.blue2} 
-
-4️⃣ [**fastText: a simple and efficient classifier**]{.blue2} 
-
-5️⃣ [**Beyond fastText: introducing TorchTextClassifiers**]{.blue2}
-
-6️⃣ [**NACE Rev 2.1: update our classifier using LLMs**]{.blue2}
+6️⃣ [**NACE Rev 2.1 : mettre à jour notre classifieur grâce aux LLMs**]{.blue2}
 
 ::: notes
 
 :::
 
-# 1️⃣ Recap and context {#chapters_1 .backgroundTitre_violet}
+# 1️⃣ Contexte {#chapters_1 .backgroundTitre_violet}
 
 {{< include sections/1-context.qmd >}}
 
-# 2️⃣ State of play: How do we assign activity codes today ? {#chapters_2 .backgroundTitre_vert}
+# 2️⃣ État des lieux : comment attribuons-nous les codes d'activité aujourd'hui ? {#chapters_2 .backgroundTitre_vert}
 
 {{< include sections/2-stateofplay.qmd >}}
 
-# 3️⃣ Why did we end up using Machine Learning ? {#chapters_3 .backgroundTitre_bleu}
+# 3️⃣ Pourquoi avoir recours au Machine Learning ? {#chapters_3 .backgroundTitre_bleu}
 
 {{< include sections/3-whyml.qmd >}}
 
-# 4️⃣ fastText: a simple and efficient classifier {#chapters_4 .backgroundTitre_violet}
+# 4️⃣ fastText : un classifieur simple et efficace {#chapters_4 .backgroundTitre_violet}
 
 {{< include sections/4-fasttext.qmd >}}
 
-# 5️⃣ Beyond fastText: introducing TorchTextClassifiers {#chapters_5 .backgroundTitre_jaune}
+# 5️⃣ Au-delà de fastText : TorchTextClassifiers {#chapters_5 .backgroundTitre_jaune}
 
 {{< include sections/5-ttc.qmd >}}
 
-# 6️⃣ NACE Rev 2.1: update our classifier using LLMs {#chapters_6 .backgroundTitre_bleu}
+# 6️⃣ NACE Rev 2.1 : mettre à jour notre classifieur grâce aux LLMs {#chapters_6 .backgroundTitre_bleu}
 
 {{< include sections/6-nace-revision.qmd >}}
 
@@ -159,4 +135,3 @@ I’m a civil servant, which means I work as an official statistician for the go
 :::
 
 ::::
-
