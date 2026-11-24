@@ -9,7 +9,7 @@ Il était alors codé manuellement par un humain
 - Depuis fin 2022, nous avons mis en place un nouveau modèle basé sur le machine learning
 - Très précis même sur des descriptions littérales jamais codifiées auparavant
 - Un résultat à 100 % même avec une faible probabilité (toujours une réponse produite ...)
-- Cependant nous avons décidé de maintenir une revue humaine si la précision n'est pas suffisante
+- Cependant nous avons décidé de maintenir une revue humaine si la confiance n'est pas suffisante
 
 ## Extraction de caractéristiques {#section_4_2 .backgroundStandard_violet}
 
