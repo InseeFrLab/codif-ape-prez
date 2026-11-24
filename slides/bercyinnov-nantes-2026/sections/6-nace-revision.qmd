@@ -65,7 +65,7 @@ En maintenance ML normale, ce qui change ce sont les entrées — on réentraîn
 À l'Insee, nous avons un classifieur inspiré de fastText en production depuis 2023 (propulsé par la stack TorchTextClassifiers) — 2.7 millions de labels NACE 2.0 derrière. Notre question : comment exploiter cet actif pour amorcer un modèle en NACE 2.1, sans attendre deux ou trois ans un corpus fraîchement labellisé à la main et coûteux ?
 :::
 
-## Notre stratégie : décaler l'ancien jeu d'entraînement {#chapters_6_2 .backgroundStandard_bleu}
+## Notre stratégie : recoder l'ancien jeu d'entraînement {#chapters_6_2 .backgroundStandard_bleu}
 
 :::{.enteteAvecTitre}
 Le problème

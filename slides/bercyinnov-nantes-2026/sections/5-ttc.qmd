@@ -1,12 +1,10 @@
 ## fastText : en production, mais archivé {#section_5_1 .backgroundStandard_jaune .r-fit-text}
 
-
 - **fastText** : le *go-to* pour la classification de texte à l'Insee.
 - Fiable et performant ; déployé en 2021 pour la codification APE...
 - ...mais le dépôt a été [**archivé**]{.orange} depuis le 19 mars 2024.
 
 ## Les enjeux {#section_5_2 .backgroundStandard_jaune}
-
 
 ::: {.incremental}
 - Absence de maintenance de la librairie : risques à terme sur la stabilité et la compatibilité.
@@ -15,7 +13,6 @@
 :::
 
 ## 2025 : transition vers PyTorch ! {#section_5_3 .backgroundStandard_jaune .scrollable}
-
 
 ::: {.incremental}
 - Le modèle PyTorch reprend de près l'architecture de fastText : une transition en douceur.
@@ -41,7 +38,6 @@
 
 ## Architecture {#section_5_6 .backgroundStandard_jaune}
 
-
 <div style="height: 100px;"></div>
 
 ![](../img/TTC_overview.png){fig-align="center"}
@@ -53,7 +49,6 @@
 - Conception modulaire 🧩⚙️
 
 ## Pour commencer {#section_5_8 .backgroundStandard_jaune}
-
 
 1. consultez le [notebook d'exemple](https://github.com/InseeFrLab/torchTextClassifiers/blob/main/notebooks/example.ipynb) :books: :rocket:
 2. importez vos propres données dans **Load and preprocess data**

@@ -1,7 +1,7 @@
 ## La méthodologie : un héritage {#section_3_0 .backgroundStandard_bleu}
 
 - La méthodologie n'est pas neuve
-- Codification automatique pour les cas difficiles et contrôle manuel pour les plus simples
+- Codification automatique pour les cas simples (ML) et revue humaine pour les cas complexes
 - Des systèmes de codage depuis 1981 ! 🧙🏻‍♂️
 
 ## Le choc {#section_3_1 .backgroundStandard_bleu}

@@ -17,8 +17,8 @@ lesquelles les entreprises sont interrogées sur le détail de leur activité
 
 ## Attribuer un code d'activité : deux issues {#section_2_1 .backgroundStandard_vert}
 
-- Codification automatique
-- Reprise gestionnaire
+- Codification automatique (ML)
+- Revue humaine (Reprise gestionnaire)
 
 ![](../img/orga-post-prod-fr.png){fig-align="center"}
 
@@ -30,7 +30,7 @@ lesquelles les entreprises sont interrogées sur le détail de leur activité
 
 ![](../img/automatic-coding-HMI.png){fig-align="center"}
 
-## Reprise gestionnaire {#section_2_4 .backgroundStandard_vert}
+## Revue humaine {#section_2_4 .backgroundStandard_vert}
 
 ![](../img/reprise_gestionnaire_manque_contexte.png){fig-align="center"}
 

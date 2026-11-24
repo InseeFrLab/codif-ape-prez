@@ -1,15 +1,16 @@
 ## Petit rappel : qu'est-ce que SIRENE ? {#section_1_0 .backgroundStandard_violet}
 Système d'Identification du Répertoire des ENtreprises et des Établissements
 
-- [**Sirene**]{.orange} est le répertoire national des entreprises françaises
+- [**Sirene**]{.orange} est le répertoire des entreprises françaises
 - Lors de l'enregistrement d'une entreprise :
-    - seule autorité habilitée à délivrer les numéros [**SIREN**]{.blue2} et [**SIRET**]{.blue2}
-    - un [**code d'activité principale**]{.orange} est attribué (code [**APE**]{.blue2}) 
+    - l'Insee, seul [**garant**]{.orange} du SIREN, du SIRET et de l'APE
+    - les numéros SIREN et SIRET sont attribués
+    - un code d'activité principale est attribué (code APE) 
 - Jalons et défis rencontrés :
-  - Refonte du [**système d'information**]{.blue2}  [**Sirene 4**]{.blue}
+  - Refonte du [**système d'information**]{.blue2} ➡️ [**Sirene 4**]{.blue}
   - Révision de la NACE ➡️ double codification en NACE rev 2 et 2.1 
 - Fin mars 2024 :
-  - Passage officiel de [**Sirene 3**]{.orange} à [**Sirene 4**]{.blue}
+  - Bascule officielle de [**Sirene 3**]{.orange} à [**Sirene 4**]{.blue}
 - Traitement de **5 millions de formalités** sur la période 2025–2026 :rocket:
 - [**2027**]{.green} : passage à la NACE rev 2.1
 

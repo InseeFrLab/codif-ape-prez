@@ -2,14 +2,14 @@
 
 ![](../img/fasttext.png){width=400px fig-align="center"}
 
-- Jusqu'en novembre 2022, nous utilisions un système de codage automatique des libellés, appelé Sicore
+- Jusqu'à fin 2022, nous utilisions un système de codage automatique des libellés, appelé Sicore
     + Basé sur un fichier d'entraînement d'exemples de codage
     + Inconvénient : si le libellé ne correspondait à aucun exemple, aucune suggestion de code n'était retournée.
 Il était alors codé manuellement par un humain
-- Depuis novembre 2022, nous avons mis en place un nouveau modèle basé sur le machine learning
+- Depuis fin 2022, nous avons mis en place un nouveau modèle basé sur le machine learning
 - Très précis même sur des descriptions littérales jamais codifiées auparavant
 - Un résultat à 100 % même avec une faible probabilité (toujours une réponse produite ...)
-- Cependant nous avons décidé de maintenir un contrôle manuel si la précision n'est pas bonne
+- Cependant nous avons décidé de maintenir une revue humaine si la précision n'est pas suffisante
 
 ## Extraction de caractéristiques {#section_4_2 .backgroundStandard_violet}
 
