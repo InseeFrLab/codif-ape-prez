@@ -1,0 +1,12 @@
+---
+title: "BercyINNOV Nantes 2026"
+image: /cards/img/BercyINNOV.png
+date: "2026-11-24"
+description: |
+  <b>Stand :</b> Sirene - Moteur de codification automatique (Insee)
+author: Nathan Randriamanana
+slides:
+  text: Slides
+  url: /slides/bercyinnov-nantes-2026/index.html
+order: 27
+---

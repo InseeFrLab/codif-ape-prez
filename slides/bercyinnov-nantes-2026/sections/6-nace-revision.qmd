@@ -1,0 +1,585 @@
+
+## Les classifications statistiques, en bref {#chapters_6_0 .backgroundStandard_bleu .scrollable}
+
+:::{.enteteAvecTitre}
+Le problème
+:::
+
+
+**Qu'est-ce que la NACE**
+
+- La classification européenne des **activités économiques**
+- Toute unité des répertoires de production se voit attribuer un code NACE
+- Hiérarchique : section → division → groupe → classe → sous-classe
+- Révisée tous les ~15 ans — la transition en cours : NACE 2.0 → NACE 2.1
+
+**La spécificité française : la NAF**
+
+- Nomenclature d'Activités Française : l'adaptation nationale de la NACE, gérée par l'INSEE
+- Même structure que la NACE + un 5ᵉ caractère en plus (une lettre) pour les spécificités nationales
+- Attribuée à chaque entreprise française sous forme du code APE bien connu (Activité Principale Exercée)
+
+::: {.callout-note title="Note"}
+Notre travail a en réalité été réalisé avec la **NAF** française. Cependant, notre approche s'adapte parfaitement au niveau de classification européen plus large qui est la **NACE**.
+:::
+
+::: {.notes}
+Petit contexte pour ceux qui sont extérieurs à la statistique publique. La statistique publique repose sur des classifications partagées — c'est ce qui rend les agrégats comparables entre régions, secteurs et pays. Sans code commun, il n'y a pas de PIB cohérent par branche, pas de démographie d'entreprises européenne harmonisée.
+
+La NACE est la classification des activités économiques de l'Union européenne. Toute unité de nos répertoires d'entreprises se voit attribuer un code NACE. Elle est hiérarchique, de la section large jusqu'à la sous-classe fine. Et elle est révisée environ tous les quinze ans pour refléter l'évolution économique. C'est cette transition que nous gérons maintenant : NACE 2.0 vers NACE 2.1.
+:::
+
+## Quand une classification est révisée {#chapters_6_1 .backgroundStandard_bleu}
+
+::: {.columns}
+
+Un défi récurrent pour tout institut de statistique (NACE, COICOP, ISCO, …). 
+
+::: {.column width="50%"}
+**Maintenance ML standard**
+
+- Les entrées peuvent dériver dans le temps
+- Nous surveillons et **réentraînons sur des labels récents**
+- La variable cible reste la **même**
+:::
+
+::: {.column width="50%"}
+**Révision de classification**
+
+- La **variable cible elle-même change**
+- Les données labellisées dans la nouvelle classification sont **rares ou inexistantes**
+- Les anciens labels sont dans le **mauvais espace**
+- Un réentraînement standard est **impossible**
+:::
+
+:::
+
+- À l'Insee, un classifieur **TorchTextClassifiers** (inspiré de fastText) en production depuis 2025-2026 pour attribuer les codes NACE 2.0
+- Entraîné sur un jeu d'entraînement de 2.7 millions de labels.
+
+**Question centrale** : comment exploiter des années de connaissance accumulée en production dans l'ancienne classification pour amorcer un modèle dans la nouvelle ?
+
+::: {.notes}
+En maintenance ML normale, ce qui change ce sont les entrées — on réentraîne sur des labels récents et la cible reste la même. Avec une révision de classification, c'est différent : le Y lui-même change. Les anciens codes ont disparu ou ont bougé, et les nouveaux labels dans la nouvelle classification n'existent pas encore.
+
+À l'Insee, nous avons un classifieur inspiré de fastText en production depuis 2023 (propulsé par la stack TorchTextClassifiers) — 2.7 millions de labels NACE 2.0 derrière. Notre question : comment exploiter cet actif pour amorcer un modèle en NACE 2.1, sans attendre deux ou trois ans un corpus fraîchement labellisé à la main et coûteux ?
+:::
+
+## Notre stratégie : recoder l'ancien jeu d'entraînement {#chapters_6_2 .backgroundStandard_bleu}
+
+:::{.enteteAvecTitre}
+Le problème
+:::
+
+![](../img/schema_recodif_ape.png){.r-stretch fig-align="center"}
+
+::: {.notes}
+La stratégie est là, sur le schéma. 
+
+On utilise les LLMs une seule fois, pour ajouter un label NACE 2.1 à chaque observation de ce jeu d'entraînement préexistant. 
+
+Puis on entraîne un nouveau classifieur sur le corpus relabellisé. 
+
+Le LLM n'est pas un codeur automatique en temps réel — c'est un outil de traduction utilisé une seule fois.
+:::
+
+## NACE 2.0 → 2.1 et les codes un-vers-plusieurs {#chapters_6_3 .backgroundStandard_bleu}
+
+:::{.enteteAvecTitre}
+Le problème
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+**Ampleur du changement**
+
+- Nombre de sous-classes : **746 → 732** (modéré…)
+- Surtout des **scissions** au niveau 4, quelques fusions / recompositions
+
+**La difficulté vient des cas non bijectifs !**
+
+- **Univoque** : correspondance 1-vers-1
+- **Multivoque** : relation 1-vers-plusieurs (~2 à 5 candidats)
+
+:::
+
+::: {.column width="50%" style="margin-top: 3em;"}
+
+![](../img/multivoques.png){fig-align="center" width=90%}
+:::
+
+:::
+
+::: {.notes}
+La NACE 2.1 est adoptée par les instituts nationaux de statistique européens. 
+
+La complexité pour nous vient du fait que la correspondance entre anciens codes et nouveaux codes peut être non bijective.
+
+La majorité des codes ont un mapping propre 1-vers-1, mais certains anciens codes correspondent à plusieurs nouveaux codes — typiquement deux à cinq candidats, jusqu'à trente-huit dans les cas extrêmes.
+
+Avec ces cas, appelons-les un-vers-plusieurs, une simple recherche dans une table de correspondance ne suffit pas à dire lequel s'applique à une activité donnée de notre ancien jeu d'entraînement — il faut la description d'activité et le jugement d'un expert.
+
+
+:::
+
+## L'ampleur du problème {#chapters_6_4 .backgroundStandard_bleu}
+
+:::{.enteteAvecTitre}
+Le problème
+:::
+
+::: {.columns style="margin-top: 1em;"}
+
+::: {.column width="55%"}
+| | Un-vers-plusieurs | Univoque |
+|---|---|---|
+| Table de correspondance | 25 % | 75 % |
+| Jeu d'entraînement réel | **52 %** | 48 % |
+:::
+
+::: {.column width="45%" style="text-align: center; padding-top: 0.5em;"}
+[~1.4 M]{style="font-size: 2.5em; font-weight: bold;"}
+
+observations qui ne peuvent pas être recodées par simple recherche dans la table
+:::
+
+:::
+
+[Le problème ne peut pas être résolu par une table de correspondance déterministe seule.]{.bold}
+
+::: {.notes}
+Et ces codes un-vers-plusieurs ne sont pas rares. Dans la table de correspondance, ils représentent 25 % — mais pondérés par la distribution réelle de notre jeu d'entraînement, ça monte à 52 %. Environ 1.4 million d'observations qu'on ne peut pas recoder facilement. Bien trop pour des experts humains.
+:::
+
+
+
+## 2. Annotation humaine et virtuelle {#chapters_6_5 .backgroundStandard_bleu}
+
+![](../img/human_vs_llm.drawio.png){fig-align="center"}
+
+::: {.notes}
+Petit chapitre sur l'annotation.
+:::
+
+## Vérité terrain humaine, mise à l'échelle par la machine {#chapters_6_6 .backgroundStandard_bleu}
+
+
+:::{.enteteAvecTitre}
+Annotation humaine et virtuelle
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Campagne de vérité terrain NACE 2.1 {#chapters_6_7 .backgroundStandard_bleu}
+
+- ~30k annotations directement en NACE 2.1
+- ~25 experts NACE
+- Focalisée sur les cas un-vers-plusieurs (les plus difficiles)
+:::
+
+::: {.column width="50%"}
+### Ce qu'on en a retenu {#chapters_6_8 .backgroundStandard_bleu}
+
+**L'accord entre experts est imparfait**
+
+- Re-annotation aveugle par 3 experts : 62 % d'accord strict, 96 % à la majorité
+- Les experts convergent loin d'être systématiquement : nous restons prudents dans l'interprétation de nos métriques de précision
+
+**Protocole de raisonnement explicite**
+
+- Description, puis vérification du code legacy, puis consultation des candidats et des notes explicatives, puis décision
+- Une séquence qu'on peut encoder dans un prompt LLM à l'échelle
+:::
+
+:::
+
+::: {.notes}
+Environ vingt-cinq experts NACE ont annoté trente mille éléments directement en NACE 2.1, en se focalisant sur les cas un-vers-plusieurs. C'est notre vérité terrain.
+
+Deux enseignements de cette campagne d'annotation.
+L'accord est vraiment imparfait entre experts. Si on demande à 3 experts d'annoter le même échantillon, l'accord strict à trois n'est que de 62 %, deux sur trois 96 %.
+
+Donc, les métriques de précision doivent être lues avec un œil critique, voire avec indulgence.
+
+Et la campagne a rendu le raisonnement des experts plus explicite pour nous, ce qui nous a aidé à construire un prompt LLM cohérent. C'est le chapitre suivant.
+:::
+
+
+## 3. Méthodologie 
+
+
+## Génération augmentée par règles (RBAG) comme<br>sélection contrainte {#chapters_6_9 .backgroundStandard_bleu}
+
+:::{.enteteAvecTitre}
+Méthodologie
+:::
+
+**Pourquoi ne pas demander directement au LLM ?**
+
+- **732 codes**, c'est un espace trop large pour une génération ouverte fiable.
+- Les hallucinations sont très fréquentes.
+- Les capacités dépendent fortement de la base de connaissances implicite du LLM.
+
+**La sélection contrainte à la place :**
+
+- Pour chaque observation, on connaît déjà le **code NACE 2.0**
+- La table de correspondance donne l'**ensemble des codes NACE 2.1 admissibles**
+- La tâche devient : **choisir le bon code dans une liste courte et restreinte**
+- Sortie alignée sur les règles officielles
+
+
+::: {.notes}
+D'abord, on ne demande pas au LLM directement de classifier en 732 codes.
+732 codes, c'est un espace trop large pour une génération ouverte fiable, le LLM hallucine très fréquemment.
+
+À la place : la sélection contrainte est bien meilleure. 
+Pour chaque observation, on connaît le code NACE 2.0 legacy. La table de correspondance nous donne les codes NACE 2.1 admissibles — généralement deux à cinq. On demande au LLM de choisir dans cette liste courte. Prompt gérable, décisions alignées sur les règles officielles.
+:::
+
+## Le pipeline {#chapters_6_11 .backgroundStandard_bleu}
+
+:::{.enteteAvecTitre}
+Méthodologie
+:::
+
+::: {.columns}
+
+::: {.column width="60%"}
+**Pour chaque observation** :
+
+1. Récupérer la description d'activité (texte libre + précisions facultatives : activité secondaire, catégorie juridique)
+2. Récupérer le code NACE 2.0 legacy
+3. Utiliser la table de correspondance pour obtenir l'ensemble des codes NACE 2.1 candidats
+4. Injecter les **notes explicatives** de chaque code candidat dans le prompt
+5. Demander au LLM de choisir le code le plus approprié
+6. Parser la réponse JSON structurée
+
+Une forme de **Génération Augmentée par Règles (RBAG)** avec un retriever déterministe.
+:::
+
+::: {.column width="40%"}
+<br>
+
+**Entrées du prompt**
+
+| Élément | Source |
+|---------|--------|
+| Texte d'activité + précisions | Répertoire de production |
+| Code NACE 2.0 | Experts NACE de l'Insee |
+| Ensemble des candidats | Table de correspondance |
+| Notes explicatives | Documentation officielle NACE 2.1 |
+:::
+
+:::
+
+::: {.notes}
+Décrivons le pipeline en six étapes.
+
+- Récupérer le texte d'activité + les précisions facultatives, 
+- récupérer le code legacy, 
+- chercher les candidats dans la table, 
+- injecter les notes explicatives officielles pour chaque candidat, 
+- demander au LLM de choisir, parser la réponse JSON.
+
+L'idée clé est à l'étape 4. Les notes explicatives sont les définitions officielles en prose — avec les règles d'inclusion et d'exclusion et des exemples. On les injecte dans le prompt : même matière de référence qu'un expert humain consulterait.
+
+Appelons ça Génération Augmentée par Règles (RBAG), par analogie avec le RAG. Même idée, mais le retriever n'est pas une recherche vectorielle — c'est une recherche déterministe dans une table officielle.
+:::
+
+## La structure du prompt {#chapters_6_12 .backgroundStandard_bleu}
+
+:::{.enteteAvecTitre}
+Méthodologie
+:::
+
+::: {.columns}
+
+::: {.column width="55%"}
+**Prompt système** — identique pour toutes les observations
+
+> *Tu es un expert de la classification NACE. Ta tâche est d'attribuer un code NACE 2.1 à une entreprise sur la base de sa description d'activité, en utilisant une liste de candidats dérivée du code NACE 2.0 existant…*
+
+**Prompt utilisateur** — spécifique à l'observation
+
+```
+# Main activity : {{activity}}
+# NACE 2.0 code : {{nace_old}}
+# Candidate NACE 2.1 codes + notes : {{proposed_codes}}
+========
+# Instructions (7 rules)
+  → candidate list only — no external code
+  → first activity only
+  → strict JSON — no explanation
+```
+:::
+
+::: {.column width="45%"}
+**Sortie attendue**
+
+```json
+{
+  "codable": true,
+  "nace2.1": "0147J",
+  "nace_legacy_valid": true,
+  "confidence": 0.92
+}
+```
+
+- `nace2.1` : le code choisi (ou `null`)
+- `codable` : la description était-elle suffisante ?
+- `confidence` : auto-évaluation du modèle (0–1)
+- `nace_legacy_valid` : le code legacy est-il cohérent ?
+:::
+
+:::
+
+::: {.smaller style="margin-top: 0.5em;"}
+**`{{proposed_codes}}`** — exemple :
+
+```
+86.95: Physiotherapy activities
+  Includes: physiotherapy, medical massage, occupational therapy, praxitherapy…
+  Does not include: osteopaths, chiropractors, non-medical massage parlors…
+
+86.96: Traditional, complementary, and alternative medicine  [...]
+86.99: Other human health activities n.e.c.  [...]
+```
+:::
+
+::: {.notes}
+Le prompt a deux parties. Un prompt système — toujours le même, il définit le rôle. Un prompt utilisateur — spécifique à l'observation, avec l'activité, le code legacy, les codes candidats avec leurs notes, et sept règles explicites.
+
+La sortie est un JSON structuré avec quatre champs. 
+
+- nace2.1 : le code choisi. 
+- codable : la description était-elle suffisante (auto-évaluation du LLM).
+- confidence : confiance du LLM dans sa classification, utilisée pour filtrer les cas à faible confiance.
+- nace_legacy_valid : un sous-produit utile — le modèle signale les codes legacy suspects. 
+
+Forcer un JSON strict est essentiel à l'échelle — les réponses en texte libre sont coûteuses à parser de façon fiable.
+:::
+
+
+## Annotation multi-modèles {#chapters_6_13 .backgroundStandard_bleu}
+
+:::{.enteteAvecTitre}
+Méthodologie
+:::
+
+| Modèle | Taille | Vitesse d'inférence | Comportement |
+|-------------|------|-----------------|-----------|
+| Qwen3-6-35B MoE | 35B | Très rapide (13 it/s) | Modérément restrictif |
+| Qwen3-6-35B MoE + thinking | 35B | Moins rapide (1 it/s) | Moins restrictif |
+| Gemma4-26B MoE | 26B | Rapide (8 it/s) | Modérément restrictif |
+
+➕️ **Agrégation** : vote à la majorité.
+
+Différentes tailles, différents débits.
+
+
+::: {.notes}
+On a essayé de ne pas dépendre d'un seul LLM. Donc, on lance le processus de classification avec trois modèles MoE open-source en parallèle — Qwen3-6-35B (avec et sans thinking) et Gemma4-26B.
+Ils diffèrent par la taille, le débit, et la fréquence à laquelle ils refusent quand ils sont incertains. Les deux exécutions Qwen3 partagent les mêmes poids, mais la variante thinking est plus de 10 fois plus lente. Gemma4 se situe entre les deux en termes de vitesse.
+
+Chacun est utilisé comme un annotateur virtuel indépendant. On agrège les trois prédictions par un vote à la majorité pour rendre le relabellage final plus précis. Même idée que n'importe quel ensemble : les erreurs complémentaires s'annulent.
+:::
+
+
+## 4. Infrastructure 
+
+::: {.notes}
+Un mot rapide sur l'infrastructure.
+:::
+
+## Notre stack MLOps sur SSPCloud {#chapters_6_14 .backgroundStandard_bleu}
+
+:::{.enteteAvecTitre}
+Infrastructure
+:::
+
+**SSPCloud** est la plateforme data science de l'Insee, construite sur le projet open-source **Onyxia** et propulsée par **Kubernetes** comme stack technique sous-jacente. 
+
+Éléments principaux de la stack technique :
+
+- **MinIO** — stockage compatible S3 pour les jeux de données et les artefacts de modèles
+- **llm.lab** — le fournisseur de LLM on premise de SSPCloud, (**OpenWebUI + LiteLLM + vLLM**)
+- **Langfuse** — versioning des prompts
+- **MLflow** — suivi des expériences
+- **Argo Workflows** — l'orchestrateur du pipeline de bout en bout
+
+::: {style="text-align: center; margin-top: 1em;"}
+![](../img/logos/onyxia.svg){height=50px style="margin: 0 0.6em;"}
+![](../img/logos/kubernetes.svg){height=50px style="margin: 0 0.6em;"}
+![](../img/logos/openwebui.png){height=50px style="margin: 0 0.6em;"}
+![](../img/logos/litellm.jfif){height=50px style="margin: 0 0.6em;"}
+![](../img/logos/vllm.png){height=50px style="margin: 0 0.6em;"}
+![](../img/logos/langfuse.png){height=50px style="margin: 0 0.6em;"}
+![](../img/logos/mlflow.svg){height=50px style="margin: 0 0.6em;"}
+![](../img/logos/argo.svg){height=50px style="margin: 0 0.6em;"}
+![](../img/logos/minio.svg){height=50px style="margin: 0 0.6em;"}
+:::
+
+[Entièrement open-source, conteneurisé, reproductible.]{.bold}
+
+::: {.notes}
+SSPCloud est la plateforme data science de l'Insee, construite sur le projet open-source Onyxia. En dessous, toute la plateforme tourne sur un cluster Kubernetes. Le point opérationnel, c'est que chaque composant de notre pipeline est disponible comme service managé en un clic dans tout projet SSPCloud.
+
+Pour l'inférence LLM, on n'appelle pas vLLM directement : on passe par la passerelle llm.lab on-premise, qui utilise OpenWebUI et vLLM sous le capot. Langfuse versionne les templates de prompt. MLflow suit l'entraînement du classifieur. Argo Workflows orchestre le pipeline comme un graphe acyclique dirigé. MinIO est le stockage S3 partagé.
+
+Entièrement open-source, conteneurisé, reproductible.
+:::
+
+## 5. Résultats 
+
+::: {.notes}
+Passons aux résultats.
+:::
+
+## Évaluation des annotateurs LLM {#chapters_6_15 .backgroundStandard_bleu}
+
+:::{.enteteAvecTitre}
+Résultats
+:::
+
+- Référence : les **~30 000 cas annotés manuellement** un-vers-plusieurs (NACE 2.1, niveau 5)
+- Trois précisions complémentaires — au niveau le plus détaillé (sous-classe) :
+  1. **Globale** — sur toutes les observations
+  2. **Sous-ensemble codable** — restreint aux prédictions que le LLM lui-même a marquées comme codables
+  3. **LLM-only** : restreint aux cas où le code vrai est dans la liste des candidats (isole la qualité du choix du LLM)
+
+
+::: {.notes}
+L'évaluation est difficile. La référence, ce sont les trente mille cas annotés, qui comportent eux-mêmes des désaccords humains. On utilise trois métriques. La précision globale. La précision sur le sous-ensemble codable, où le LLM lui-même a marqué la prédiction comme codable. Et la précision LLM-only, restreinte aux cas où le code vrai est dans la liste des candidats — ça isole la qualité du choix du LLM des cas où le code legacy ne pouvait même pas atteindre la bonne réponse dans la nouvelle classification. Une évaluation naïve sous-estime considérablement le modèle.
+:::
+
+## Précision par modèle et en ensemble {#chapters_6_16 .backgroundStandard_bleu}
+:::{.enteteAvecTitre}
+Résultats
+:::
+
+Précisions au niveau 5 (sous-classe) — % de cas où le code prédit correspond à l'annotation manuelle.
+
+
+| Modèle | Inférence | Globale | Codable | LLM-only |
+|------------------|----------:|--------:|--------:|---------:|
+| Qwen3-6-35B MoE | 13 it/s | 75.2 % | 78.3 % | 83.3 % |
+| Qwen3-6-35B MoE + thinking | ~1 it/s | 75.7 % | 80.4 % | 84.1 % |
+| Gemma4-26B MoE | 8 it/s | 75.2 % | 80.0 % | 83.5 % |
+| [**Vote à la majorité**]{.bold} | — | [**78.3 %**]{.bold} | — | [**86.9 %**]{.bold} |
+
+[Le filtre « codable » est par modèle, d'où le tiret pour le vote en ensemble.]{.small}
+
+[La précision en ensemble a un coût réel : trois passes d'inférence complètes, dont une en mode thinking (~10× plus lente).]{.bold}
+
+Une part substantielle des désaccords ne sont pas des erreurs du LLM mais des descriptions ambiguës ou des erreurs de codage legacy.
+
+::: {.notes}
+Au niveau 5, chaque modèle atteint environ 75 % en global et 83 à 84 sur le sous-ensemble LLM-only. La variante thinking de Qwen3 ajoute un à deux points pour environ dix fois le coût en temps d'inférence.
+
+Le vote à la majorité gagne sur la précision, mais ça signifie trois passes d'inférence complètes dont une en thinking, donc un coût significatif en temps de calcul.
+:::
+
+## Reconstruction du jeu d'entraînement {#chapters_6_17 .backgroundStandard_bleu}
+
+:::{.enteteAvecTitre}
+Résultats
+:::
+
+Une fois satisfaits du LLM sur le benchmark, on applique à l'échelle :
+
+- **~1.0 M observations un-vers-plusieurs** relabellisées via le pipeline LLM
+- Combinées à **1.3 M d'observations univoques** (recherche dans la table)
+- **~2.3 M** labels en NACE 2.1
+- La distribution sur les codes prédits est **très proche** de la distribution labellisée
+
+::: {.callout-tip}
+C'est un jeu d'entraînement **semi-synthétique** : de vraies entreprises, de vraies descriptions, mais des labels algorithmiques.
+:::
+
+::: {.notes}
+Une fois satisfaits du LLM sur le benchmark, on applique à l'échelle : 1.3 millions d'éléments univoques par recherche dans la table, environ 1 million d'éléments un-vers-plusieurs via le pipeline LLM, en écartant les cas non codables. Environ 2.3 millions de labels en NACE 2.1, avec une distribution proche de l'originale. 
+Appelons ça un jeu d'entraînement semi-synthétique — de vraies entreprises, de vraies descriptions, mais des labels algorithmiques.
+:::
+
+## Performance du classifieur réentraîné {#chapters_6_18 .backgroundStandard_bleu}
+:::{.enteteAvecTitre}
+Résultats
+:::
+
+::: {style="text-align: center; margin-top: 1.5em;"}
+
+[**TorchTextClassifiers**]{style="font-size: 1.1em;"} réentraîné sur le corpus semi-synthétique
+
+[~80 %]{style="font-size: 4em; font-weight: bold; display: block; margin: 0.3em 0;"}
+
+précision globale sur un jeu de test NACE 2.1 représentatif
+
+**≈** le classifieur NACE 2.0 legacy sur sa tâche NACE 2.0
+
+::: {style="margin-top: 1.2em; font-size: 0.85em;"}
+*Le dernier réentraînement utilisait une version antérieure du corpus ; le pipeline d'aujourd'hui produit de meilleurs labels.*
+:::
+
+:::
+
+**Des labels semi-synthétiques générés par LLM peuvent se substituer aux annotations manuelles dans les premières phases d'une transition de classification.**
+
+
+::: {.notes}
+
+La dernière fois qu'on a réentraîné le modèle TorchTextClassifiers, le corpus semi-synthétique était encore une version antérieure — le pipeline présenté aujourd'hui produit de meilleurs labels que ceux qui ont alimenté cet entraînement. Même alors, on a atteint environ 80 % de précision globale sur un jeu de test NACE 2.1 représentatif. C'est très comparable à ce que fait le classifieur de génération précédente sur sa propre tâche NACE 2.0 (entraîné sur 100 % de labels humains).
+
+C'est le principal enseignement de la présentation : les labels semi-synthétiques de LLM peuvent se substituer aux annotations manuelles dans les premières phases d'une transition de classification.
+:::
+
+## Récapitulatif
+
+![](../img/methodo-nace-rev.png){width=1000px fig-align="center"}
+
+## 6. Conclusion et perspectives {#chapters_6_19 .backgroundTitre_bleu}
+
+::: {.notes}
+En guise de conclusion.
+:::
+
+## Enseignements et suite {#section_6_20 .backgroundStandard_bleu}
+
+:::{.enteteAvecTitre}
+Conclusion et perspectives
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+**Enseignements**
+
+- Une méthode pratique pour gérer les révisions de classification en ML de production
+- Les LLMs comme **annotateurs virtuels** passent à l'échelle là où les humains ne le peuvent pas
+- Des labels semi-synthétiques atteignent une **précision de niveau production** (~80 %)
+- Stack MLOps entièrement open-source et reproductible
+:::
+
+::: {.column width="50%"}
+**Limites & travaux en cours**
+
+- Le coût d'inférence n'est pas négligeable à ~1 M de requêtes
+- Les erreurs legacy sont héritées
+- Explorer des variantes RAG
+:::
+
+:::
+
+::: {.notes}
+Ce qu'on a montré : les révisions de classification peuvent être gérées en traitant les LLMs comme des annotateurs virtuels, contraints par la table de correspondance et les notes explicatives officielles. Le classifieur entraîné sur le corpus semi-synthétique est au niveau de notre modèle de production de génération précédente.
+
+C'est important car les révisions de classification sont récurrentes, et notre approche réduit drastiquement le temps nécessaire pour produire les annotations manuelles qu'elles exigent d'habitude.
+
+Quelques points ouverts : le coût d'inférence est réel et on hérite des erreurs en amont. Côté méthodologie, on améliore la variante RAG et on étend l'approche à d'autres classifications.
+:::
+
+
+
+

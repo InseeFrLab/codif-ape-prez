@@ -1,0 +1,85 @@
+## Une librairie du laboratoire FAIR {#section_4_1 .backgroundStandard_violet .smaller}
+
+![](../img/fasttext.png){width=400px fig-align="center"}
+
+- Jusqu'à fin 2022, nous utilisions un système de codage automatique des libellés, appelé Sicore
+    + Basé sur un fichier d'entraînement d'exemples de codage
+    + Inconvénient : si le libellé ne correspondait à aucun exemple, aucune suggestion de code n'était retournée.
+Il était alors codé manuellement par un humain
+- Depuis fin 2022, nous avons mis en place un nouveau modèle basé sur le machine learning
+- Très précis même sur des descriptions littérales jamais codifiées auparavant
+- Un résultat à 100 % même avec une faible probabilité (toujours une réponse produite ...)
+- Cependant nous avons décidé de maintenir une revue humaine si la confiance n'est pas suffisante
+
+## Extraction de caractéristiques {#section_4_2 .backgroundStandard_violet}
+
+- [**Word embedding**]{.orange} : une méthode de [**vectorisation**]{.blue2}.
+- Des embeddings [**pré-entraînés**]{.orange} disponibles en open-source.
+- Nous apprenons [**nos propres**]{.orange} embeddings de [**mots**]{.blue2}.
+- En plus, des embeddings pour :
+  - les [**n-grams de mots**]{.blue2} et les [**n-grams de caractères**]{.blue2}.
+
+![](../img/n-grams.png){height="250" fig-align="center"}
+
+## Classifieur linéaire {#section_4_3 .backgroundStandard_violet}
+
+- [**2 méthodes de classification**]{.orange} : 
+  - [**Softmax**]{.blue2} : un classifieur multiclasses [**unique**]{.green2}.
+  - [**One-vs-all**]{.blue2} : [**plusieurs**]{.green2} classifieurs binaires.
+- [**Optimisation**]{.orange} : algorithme de [**descente de gradient stochastique**]{.blue2}.
+- [**Fonction de perte**]{.orange} : [**entropie croisée**]{.blue2}.
+
+## Le modèle fastText {#section_4_4 .backgroundStandard_violet background-image="../img/diag-fasttext.png" background-size="95%" background-position="50% 75%"} 
+
+- [**fastText**]{.orange} : modèle "bag of n-grams" très [**simple**]{.blue2} et [**rapide**]{.blue2} (`C++`).
+
+
+## Traitement des variables catégorielles {#section_4_5 .backgroundStandard_violet}
+
+- [**Concaténation**]{.orange} de la description textuelle avec les noms et valeurs des variables auxiliaires :
+
+Texte | NAT | TYP | EVT | SUR | 
+--------|-----|-----|-----|-----|
+Cours de musique | NaN | X | 01P |NaN
+
+<center>
+&#129155;
+</center>
+
+"Cours de musique [NAT]{.green2}\_[NaN]{.blue2} [TYP]{.green2}\_[X]{.blue2} [EVT]{.green2}\_[01P]{.blue2} [SUR]{.green2}\_[NaN]{.blue2}"
+
+- [**Méthode imparfaite**]{.orange} : 3-grams "AT_" ou "T_0" utilisés.
+
+## Prétraitement {#section_4_6a .backgroundStandard_violet}
+
+- Le [**prétraitement**]{.orange} est essentiel pour le traitement du langage naturel.
+- [**Contraintes**]{.orange} : [**simple**]{.blue2}, [**léger**]{.blue2} et facilement [**reproductible**]{.blue2} en Java <i class='fab fa-java' style='font-size:36px'></i>.
+
+Transformation | Description du texte |
+--|-------------|
+Entrée | 3 D: La Deratisation - La Desinsectisation - La Desinfection |
+Passage en minuscules | 3 d: la deratisation - la desinsectisation - la desinfection |
+Suppression de la ponctuation | 3 d la deratisation la desinsectisation la desinfection |
+
+## Prétraitement {#section_4_6b .backgroundStandard_violet}
+
+Transformation | Description du texte |
+--|-------------|
+Entrée | 3 D: La Deratisation - La Desinsectisation - La Desinfection |
+... | ... |
+Suppression des nombres | d la deratisation la desinsectisation la desinfection |
+Suppression des mots d'une seule lettre | la deratisation la desinsectisation la desinfection |
+Suppression des stop words | deratisation desinsectisation desinfection |
+
+## Prétraitement {#section_4_6c .backgroundStandard_violet}
+
+Transformation | Description du texte |
+--|-------------|
+Entrée | 3 D: La Deratisation - La Desinsectisation - La Desinfection |
+... | ... |
+Suppression des NaN | deratisation desinsectisation desinfection |
+Racinisation (stemming) | deratis desinsectis desinfect |
+
+## Modélisation {#section_4_7 .backgroundStandard_violet}
+
+![](../img/fastText_desc_ape.png){width=85%}

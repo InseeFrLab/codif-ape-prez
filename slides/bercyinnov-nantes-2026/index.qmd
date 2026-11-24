@@ -1,0 +1,137 @@
+---
+title: "<br/><small>L’IA générative pour entraîner un classifieur capable d’attribuer automatiquement les nouveaux codes APE</small>"
+title-slide-attributes:
+  style: "font-size:0.9em;"
+  data-background-image: ../_extensions/insee-clair/ressources/revealJs/1_Template-INSEE-Clair_premiere-page.svg
+  data-backgroupnd-size: contain
+  data-background-opacity: "1"
+subtitle: |
+  **[Sirene : Moteur de codification automatique (Insee)]{.orange}**
+author: |
+  Nathan RANDRIAMANANA
+date: "11/24/2026"
+date-format: "D MMMM YYYY"
+slide-number: true
+# uncomment for French presentations:
+lang: fr-FR
+# for blind readers:
+slide-tone: false
+# uncomment to use the multiplex mode:
+# multiplex: true
+format:
+  insee-clair-revealjs:
+    output-file: index.html
+    header-includes: |
+       <link rel="icon" type="image/svg" sizes="32x32" href="https://www.insee.fr/static/img/logoInseeFr.svg">
+
+from: markdown+emoji
+fig-cap-location: bottom
+
+revealjs-plugins:
+  - pointer
+  - confetti
+  - verticator
+  - multimodal
+    
+execute:
+  echo: false
+  cache: false
+  message: false
+  warning: false
+  error: true
+
+chalkboard: false
+jump-to-slide: true
+mouse-wheel: false
+transition: slide
+
+embed-resources: true
+custom-toc: true
+toc-title: "Sommaire"
+lightbox: true
+
+editor:
+  render-on-save: true
+---
+
+# Qui sommes-nous ? {.nonincremental auto-animate=true}
+
+- [**Nathan Randriamanana**]{.orange} - [_Data scientist_]{.black} 
+- [**Olivier Bart**]{.orange} - [_DevOps manager_]{.black} 
++ Actuellement à la [**Direction des statistiques des entreprises**]{.blue2}
++ Répertoire des entreprises [**SIRENE**](https://www.insee.fr/fr/metadonnees/definition/c1135){.blue2}
+
+::: notes
+Bonjour, je suis Nathan Randriamanana. Je suis data scientist à l'INSEE.
+
+Maintenant, qu'est-ce qu'un data scientist ?
+Un data scientist travaille à l'interface entre la statistique, la programmation et la connaissance métier. En général, nous analysons des données, construisons des modèles, et utilisons parfois le machine learning ou des méthodes computationnelles pour fournir des analyses qui aident les organisations à prendre des décisions éclairées.
+
+Je suis fonctionnaire, ce qui signifie que je travaille comme statisticien officiel pour l'État. Je suis actuellement basé à la Direction des statistiques des entreprises, et une partie de mon travail consiste à gérer le répertoire d'entreprises SIRENE, qui suit le cycle de vie complet des entreprises en France, de leur création, aux modifications, jusqu'à leur cessation, et parfois même leur réactivation.
+:::
+
+# Sommaire
+
+1️⃣ [**Contexte**]{.blue2}  
+
+2️⃣ [**État des lieux : comment attribuons-nous les codes d'activité aujourd'hui ?**]{.blue2} 
+
+3️⃣ [**Pourquoi avoir recours au Machine Learning ?**]{.blue2} 
+
+4️⃣ [**fastText : un classifieur simple et efficace**]{.blue2} 
+
+5️⃣ [**Au-delà de fastText : TorchTextClassifiers**]{.blue2}
+
+6️⃣ [**NACE Rev 2.1 : mettre à jour notre classifieur grâce aux LLMs**]{.blue2}
+
+::: notes
+
+:::
+
+# 1️⃣ Contexte {#chapters_1 .backgroundTitre_violet}
+
+{{< include sections/1-context.qmd >}}
+
+# 2️⃣ État des lieux : comment attribuons-nous les codes d'activité aujourd'hui ? {#chapters_2 .backgroundTitre_vert}
+
+{{< include sections/2-stateofplay.qmd >}}
+
+# 3️⃣ Pourquoi avoir recours au Machine Learning ? {#chapters_3 .backgroundTitre_bleu}
+
+{{< include sections/3-whyml.qmd >}}
+
+# 4️⃣ fastText : un classifieur simple et efficace {#chapters_4 .backgroundTitre_violet}
+
+{{< include sections/4-fasttext.qmd >}}
+
+# 5️⃣ Au-delà de fastText : TorchTextClassifiers {#chapters_5 .backgroundTitre_jaune}
+
+{{< include sections/5-ttc.qmd >}}
+
+# 6️⃣ NACE Rev 2.1 : mettre à jour notre classifieur grâce aux LLMs {#chapters_6 .backgroundTitre_bleu}
+
+{{< include sections/6-nace-revision.qmd >}}
+
+#  Questions ? {#chapters_7 .backgroundTitre_vert}
+
+# {#pageDeFin data-menu-title="Final page" .unnumbered .backgroundPageFinale}
+
+:::: {.columns .coordonneesFinales}
+
+::: {.column .gauche .coordonnees width=30%}
+- Nathan RANDRIAMANANA
+- Data Scientist
+- [Sirene]{.ligneBlancheApres}
+- [Insee — France]{.ligneBlancheApres}
+- nathan.randriamanana@insee.fr
+:::
+
+::: {.column .coordonnees .milieu width=30%}
+
+:::
+
+::: {.column .coordonnees .droite width=30%}
+
+:::
+
+::::

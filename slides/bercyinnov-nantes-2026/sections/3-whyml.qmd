@@ -1,0 +1,31 @@
+## La méthodologie : un héritage {#section_3_0 .backgroundStandard_bleu}
+
+- La méthodologie n'est pas neuve
+- Codification automatique pour les cas simples (ML) et revue humaine pour les cas complexes
+- Des systèmes de codage depuis 1981 ! 🧙🏻‍♂️
+
+## Le choc {#section_3_1 .backgroundStandard_bleu}
+
+- des données moins structurées
+➡️ Équipes [**surchargées**]{.blue2}
+- l'automatisation tombe à 30%
+
+ <details> 
+   <summary> 
+       <font size=3 color=black><b>Afficher un exemple de description d'activité issue des centres de formalités des entreprises</b></font> 
+   </summary>
+
+   ```
+   BOULANGERIE
+   ```
+ </details> 
+
+<details> 
+   <summary> 
+       <font size=3 color=black><b>Afficher un exemple de description d'activité issue du guichet unique</b></font> 
+   </summary>
+
+   ```
+ Prestataire de service dans la vente , Merchandising, étalage, vitrine, habillage de mannequin et aide à la vente aux touristes étrangers
+   ```
+</details>
