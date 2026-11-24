@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,18 +40,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-17489b0bd005fee3e10dada114a02b5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-8d5bb431036edc7bf7e36626fe720554.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-17489b0bd005fee3e10dada114a02b5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-847a376994ab07353d55a5f1db687ae4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-6fc002cc034e0d864a7809c71958e5d8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-847a376994ab07353d55a5f1db687ae4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -102,12 +103,6 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
   </script>
 <script src="https://kit.fontawesome.com/78ddb093ea.js" crossorigin="anonymous"></script>
 <link rel="icon" type="image/png" sizes="32x32" href="slides/_extensions/InseeFrLab/onyxia/favicon-32x32.png">
@@ -147,9 +142,11 @@ window.Quarto = {
 <meta property="og:image" content="https://inseefrlab.github.io/codif-ape-prez/cards/img/logo-card-9.jpg">
 <meta property="og:site_name" content="Présentations codification automatique de l’APE">
 <meta property="og:image:alt" content="">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:width" content="1024">
 </head>
 
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -172,6 +169,7 @@ window.Quarto = {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -201,13 +199,19 @@ window.Quarto = {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -301,6 +305,7 @@ window.Quarto = {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -315,7 +320,7 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
@@ -323,8 +328,7 @@ window.Quarto = {
     <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/1/10/Logo_Insee.svg/1200px-Logo_Insee.svg.png" alt="" class="navbar-logo dark-content">
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -343,8 +347,9 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
+            <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -354,7 +359,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page" id="quarto-document-content" tabindex="-1"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
@@ -367,7 +372,7 @@ window.Quarto = {
 
 <div class="list grid quarto-listing-cols-3">
 
-  <div class="g-col-1" data-index="0" data-listing-date-sort="1693526400000" data-listing-file-modified-sort="1790350598585" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="0" data-listing-date-sort="1693526400000" data-listing-file-modified-sort="1795481291570" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/seminaire-dms-oct-2022/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/seminaire-dms-oct-2022/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -420,7 +425,7 @@ window.Quarto = {
               cards1.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -428,7 +433,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="1" data-listing-date-sort="1681689600000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="1" data-listing-date-sort="1681689600000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/journee-ssphub/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/journee-ssphub/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -481,7 +486,7 @@ window.Quarto = {
               cards2.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -489,7 +494,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="2" data-listing-date-sort="1685923200000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="2" data-listing-date-sort="1685923200000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/unece-conf/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/unece-conf/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -542,7 +547,7 @@ window.Quarto = {
               cards3.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -550,7 +555,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="3" data-listing-date-sort="1695772800000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="3" data-listing-date-sort="1695772800000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/bceao-2023/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/bceao-2023/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -603,7 +608,7 @@ window.Quarto = {
               cards4.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -611,7 +616,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="4" data-listing-date-sort="1710806400000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="4" data-listing-date-sort="1710806400000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/statcan-exchange/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/statcan-exchange/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -664,7 +669,7 @@ window.Quarto = {
               cards5.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -672,7 +677,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="5" data-listing-date-sort="1714435200000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="5" data-listing-date-sort="1714435200000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/eurostat-nace-rev-2024/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/eurostat-nace-rev-2024/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -725,7 +730,7 @@ window.Quarto = {
               cards6.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -733,7 +738,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="6" data-listing-date-sort="1715040000000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="6" data-listing-date-sort="1715040000000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/inserm-echange/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/inserm-echange/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -786,7 +791,7 @@ window.Quarto = {
               cards7.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -794,7 +799,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="7" data-listing-date-sort="1716508800000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="7" data-listing-date-sort="1716508800000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/estoril-slides/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/estoril-slides/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -857,7 +862,7 @@ window.Quarto = {
               cards8.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -865,7 +870,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="8" data-listing-date-sort="1730851200000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="8" data-listing-date-sort="1730851200000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/grp-veille-codif-auto-9/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/grp-veille-codif-auto-9/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -918,7 +923,7 @@ window.Quarto = {
               cards9.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -926,7 +931,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="9" data-listing-date-sort="1741132800000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="9" data-listing-date-sort="1741132800000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/grp-veille-codif-auto-10/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/grp-veille-codif-auto-10/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -979,7 +984,7 @@ window.Quarto = {
               cards10.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -987,7 +992,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="10" data-listing-date-sort="1743724800000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="10" data-listing-date-sort="1743724800000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/ateliers-concepteurs/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/ateliers-concepteurs/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1040,7 +1045,7 @@ window.Quarto = {
               cards11.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -1048,7 +1053,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="11" data-listing-date-sort="1747008000000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="11" data-listing-date-sort="1747008000000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/unece-2025/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/unece-2025/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1101,7 +1106,7 @@ window.Quarto = {
               cards12.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -1109,7 +1114,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="12" data-listing-date-sort="1747872000000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="12" data-listing-date-sort="1747872000000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/wp10-country-project/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/wp10-country-project/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1162,7 +1167,7 @@ window.Quarto = {
               cards13.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -1170,7 +1175,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="13" data-listing-date-sort="1759276800000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="57">
+  <div class="g-col-1" data-index="13" data-listing-date-sort="1759276800000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="57">
     <a href="./slides/pydata/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/pydata/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1223,7 +1228,7 @@ window.Quarto = {
               cards14.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -1231,7 +1236,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="14" data-listing-date-sort="1758585600000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="14" data-listing-date-sort="1758585600000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/statec-echange-label-studio/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/statec-echange-label-studio/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1284,7 +1289,7 @@ window.Quarto = {
               cards15.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -1292,7 +1297,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="15" data-listing-date-sort="1758585600000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="15" data-listing-date-sort="1758585600000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./papers/jms-torchft/index.pdf" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./papers/jms-torchft/index.pdf" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1345,7 +1350,7 @@ window.Quarto = {
               cards16.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -1353,7 +1358,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="16" data-listing-date-sort="1764028800000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="16" data-listing-date-sort="1764028800000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./papers/jms2025-llm-relabeling/index.pdf" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./papers/jms2025-llm-relabeling/index.pdf" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1406,7 +1411,7 @@ window.Quarto = {
               cards17.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -1414,7 +1419,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="17" data-listing-date-sort="1762905600000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="17" data-listing-date-sort="1762905600000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/jms-ttc-prez/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/jms-ttc-prez/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1467,7 +1472,7 @@ window.Quarto = {
               cards18.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -1475,7 +1480,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="18" data-listing-date-sort="1764028800000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="18" data-listing-date-sort="1764028800000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/jms2025-llm-relabeling/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/jms2025-llm-relabeling/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1528,7 +1533,7 @@ window.Quarto = {
               cards19.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -1536,7 +1541,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="19" data-listing-date-sort="1765238400000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="19" data-listing-date-sort="1765238400000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/pydata-global/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/pydata-global/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1589,7 +1594,7 @@ window.Quarto = {
               cards20.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -1597,7 +1602,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="20" data-listing-date-sort="1773273600000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="20" data-listing-date-sort="1773273600000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/seminaire-dms-ttc-mar-2026/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/seminaire-dms-ttc-mar-2026/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1650,7 +1655,7 @@ window.Quarto = {
               cards21.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -1658,7 +1663,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="21" data-listing-date-sort="1773792000000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="21" data-listing-date-sort="1773792000000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/webinar-subsaharan-africa-2026/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/webinar-subsaharan-africa-2026/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1711,7 +1716,7 @@ window.Quarto = {
               cards22.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -1719,7 +1724,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="22" data-listing-date-sort="1780531200000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="22" data-listing-date-sort="1780531200000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/isi-malta/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/isi-malta/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1772,7 +1777,7 @@ window.Quarto = {
               cards23.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -1780,7 +1785,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="23" data-listing-date-sort="1782864000000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="23" data-listing-date-sort="1782864000000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/prez-codif-ica/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/prez-codif-ica/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1833,7 +1838,7 @@ window.Quarto = {
               cards24.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -1841,7 +1846,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="24" data-listing-date-sort="1780531200000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="24" data-listing-date-sort="1780531200000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/isi-malta-relabeling/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/isi-malta-relabeling/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1894,7 +1899,7 @@ window.Quarto = {
               cards25.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -1902,7 +1907,7 @@ window.Quarto = {
      <!-- Added link wrapper -->
   </div>
 
-  <div class="g-col-1" data-index="25" data-listing-date-sort="1790208000000" data-listing-file-modified-sort="1790350598586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <div class="g-col-1" data-index="25" data-listing-date-sort="1790208000000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <a href="./slides/somali-visit-sirene/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
       </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/somali-visit-sirene/index.html" target="_blank" rel="noopener" class="grid-item-link">
         
@@ -1955,7 +1960,68 @@ window.Quarto = {
               cards26.qmd
             </div>
             <div class="card-file-modified listing-file-modified">
-              9/25/26, 3:36:38 PM
+              11/24/26, 12:48:11 AM
+            </div>
+        </div> -->
+
+      </div>
+     <!-- Added link wrapper -->
+  </div>
+
+  <div class="g-col-1" data-index="26" data-listing-date-sort="1795478400000" data-listing-file-modified-sort="1795481291571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+    <a href="./slides/bercyinnov-nantes-2026/index.html" target="_blank" rel="noopener" class="grid-item-link"> <!-- Added link wrapper -->
+      </a><div class="quarto-grid-item card h-100 card-left"><a href="./slides/bercyinnov-nantes-2026/index.html" target="_blank" rel="noopener" class="grid-item-link">
+        
+          <p class="card-img-top">
+            <img src="./cards/img/BercyINNOV.png" class="thumbnail-image card-img" style="height: auto;" alt="">
+          </p>
+         
+        
+          </a><div class="card-body post-contents"><a href="./slides/bercyinnov-nantes-2026/index.html" target="_blank" rel="noopener" class="grid-item-link">
+            <h5 class="no-anchor card-title listing-title">BercyINNOV Nantes 2026</h5>
+            <div class="card-subtitle listing-subtitle"></div>
+
+            
+              <div class="card-text listing-description delink"><b>Stand :</b> Sirene - Moteur de codification automatique (Insee)
+</div>
+            
+
+            
+            
+              <div class="card-attribution card-text-small justify">
+                <div class="listing-author">Nathan Randriamanana</div>
+                <div class="listing-date">Nov 24, 2026</div>
+              </div>
+            
+            <style>
+              .listing-categories .listing-category .listing-href {
+                color: inherit; /* blue colors for links too */
+                text-decoration: none; /* Remove underline */
+              }
+            </style>
+            </a><div class="listing-categories" style="padding-top: 1em;"><a href="./slides/bercyinnov-nantes-2026/index.html" target="_blank" rel="noopener" class="grid-item-link">
+              
+                </a><div class="listing-category"><a href="./slides/bercyinnov-nantes-2026/index.html" target="_blank" rel="noopener" class="grid-item-link">
+                  
+                    </a><a class="listing-href" href="./slides/bercyinnov-nantes-2026/index.html" target="_blank" rel="noopener">
+                      
+                        Slides
+                      
+                    </a>
+                  
+                </div>
+              
+              
+            </div>
+          </div>
+        
+
+        <!-- <div class="card-footer">
+            <div class="card-filename listing-filename">
+              cards27.qmd
+            </div>
+            <div class="card-file-modified listing-file-modified">
+              11/24/26, 12:48:11 AM
             </div>
         </div> -->
 
@@ -1980,15 +2046,50 @@ window.Quarto = {
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -2067,7 +2168,8 @@ window.Quarto = {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -2076,8 +2178,69 @@ window.Quarto = {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -2091,6 +2254,7 @@ window.Quarto = {
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -2253,44 +2417,54 @@ window.Quarto = {
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -2388,6 +2562,9 @@ window.Quarto = {
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 <footer class="footer">
